@@ -1,7 +1,7 @@
 # 气球塔防 TD6 — Bloons TD6 Ripoff 🎈
 
 <p align="center">
-  <img src=".Readme Images/Gemini_Generated_Image_37auag37auag37au.png" alt="气球塔防 TD6 Banner" width="700"/>
+  <img src="Readme Images\BloonsChinaIcon.png" width="700"/>
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@
 
 Let's be honest — this is a **shameless ripoff** of [Bloons TD6](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) by Ninja Kiwi.
 
-This project was created by a group of students as a **school assignment**. We were tasked with making a game, and we thought: _why invent something new when Bloons TD6 already exists?_ So here we are.
+This project was created by a group of students as a **school assignment**. We were tasked with making a game, and we thought: *why invent something new when Bloons TD6 already exists?* So here we are.
 
 We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're just students.
 
@@ -25,13 +25,15 @@ We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're jus
 
 ## 👥 The Team
 
-> A group of highly motivated individuals: A Team made of people
+> A group of highly motivated individuals
+
+
 
 ---
 
 ## 🎮 About the Game
 
-**气球塔防 TD6** (which roughly translates to _Balloon Tower Defense 6_... yes, really) is a tower defense game where:
+**气球塔防 TD6** (which roughly translates to *Balloon Tower Defense 6*... yes, really) is a tower defense game where:
 
 - 🎈 **Balloons** (or other enemies)travel along a path and you must stop them
 - 🐵 **Monkey towers** (or other heros)are placed strategically to pop the balloons
@@ -79,7 +81,7 @@ cd balloon-td6-ripoff
 
 ## ⚠️ Disclaimer
 
-This project is made purely for **educational purposes** as part of a school assignment. All credit for the original concept, design, and gameplay goes to **Ninja Kiwi** and their amazing **Bloons TD6**.
+This project is made purely for **educational purposes** as part of a school assignment. All credit for the original concept, design, and gameplay goes to **Ninja Kiwi** and their amazing **Bloons TD6**. 
 
 We are students. This is a school project. Please play the [real game](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) instead — it's genuinely excellent.
 

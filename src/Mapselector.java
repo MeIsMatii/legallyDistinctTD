@@ -6,7 +6,7 @@ public class Mapselector extends World
     public Mapselector()
     {
         super(9, 9,60);
-        setBackground("cell.jpg");
+        setBackground("cell_grass.png");
         addObject(new MapPreview(1), 1,1);///Map Preview
         addObject(new MapPreview(2), 4,1);///Map Preview
         addObject(new MapPreview(3), 7,1);///Map Preview

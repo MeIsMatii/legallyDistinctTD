@@ -58,13 +58,13 @@ Basically, it's Bloons TD6. We just said that already.
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-group/balloon-td6-ripoff.git
+git clone https://github.com/MeIsMatii/bloonsTDChina.git
 
 # Navigate into the project
-cd balloon-td6-ripoff
+cd bloonsTDChina
 
 # Run the game
-# (instructions to be added once we figure out how to make it run)
+# (instructions to be added once we figure out how to make it run or make the game in the first place)
 ```
 
 ---

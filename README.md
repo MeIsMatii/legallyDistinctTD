@@ -1,7 +1,14 @@
 # 气球塔防 TD6 — Bloons TD6 Ripoff 🎈
 
 <p align="center">
-  <img src="./Readme Images/Gemini_Generated_Image_37auag37auag37au.png" alt="气球塔防 TD6 Banner" width="700"/>
+  <img src=".Readme Images/Gemini_Generated_Image_37auag37auag37au.png" alt="气球塔防 TD6 Banner" width="700"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/status-in%20development-yellow" alt="Status"/>
+  <img src="https://img.shields.io/badge/type-school%20project-blue" alt="Type"/>
+  <img src="https://img.shields.io/badge/inspired%20by-Bloons%20TD6-red" alt="Inspired by"/>
+  <img src="https://img.shields.io/badge/originality-0%25-orange" alt="Originality"/>
 </p>
 
 ---

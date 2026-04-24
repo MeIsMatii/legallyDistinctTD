@@ -1,0 +1,19 @@
+#Greenfoot project file
+class.Carrot.image=karotte.png
+class.Apple.image=apple1.png
+#potions
+class.Potion.image=potion.png
+class.HealPotion.image=heal_potion.png
+
+class.TeleportScroll.image = bus_01.png
+class.Lever.image = Lever_off.png
+class.InventorySlot.image=EmptySlot.png
+class.HotbarSelector.image=hotbar_selector.png
+class.MovingActor.image=Player.png
+class.Player.image=Player.png
+class.Merchant.image=Merchant.png
+class.Rock.image=rock.gif
+class.Star.image=Stern2.png
+project.charset=windows-1252
+simulation.speed=30
+world.lastInstantiated=Level1

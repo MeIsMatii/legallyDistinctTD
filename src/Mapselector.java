@@ -1,6 +1,5 @@
 import greenfoot.*;
-
-public class MapSelector extends World
+public class   MapSelector extends World
 {
 
 
@@ -25,6 +24,8 @@ public class MapSelector extends World
                 addObject(new ImageDisplay("dirtsquare.png", 20,20),i, y);}
         }
         addObject(new ImageDisplay("clickwarning.jpg", 300, 60),10,27);
+        Greenfoot.start();
+
     }
 
 

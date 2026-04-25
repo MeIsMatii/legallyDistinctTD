@@ -17,9 +17,20 @@ public class MapPreview extends MainClass implements Clickable{
     public void setClicked(boolean clicked) {
         this.clicked = clicked;
     }
+    private World loadingScreen;
 
-    public MapPreview(int worldNumber){
+
+    public World getLoadingScreen() {
+        return loadingScreen;
+    }
+    public void setLoadingScreen(World loadingScreen) {
+        this.loadingScreen = loadingScreen;
+    }
+
+
+    public MapPreview(int worldNumber, World loadingScreen){
         setWorldNr(worldNumber);
+        setLoadingScreen(loadingScreen);
         if (getWorldNr()>9 || getWorldNr()<0){
             System.out.println("Too high or low World number Fix map maker");
             return; ///the error Handling of a true genius --Colin
@@ -66,6 +77,7 @@ public class MapPreview extends MainClass implements Clickable{
         setClicked(!isClicked());
         switch (getWorldNr()){///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1:
+                Greenfoot.setWorld(getLoadingScreen());
                 Greenfoot.setWorld(new Map1());
                 break;
             case 2:

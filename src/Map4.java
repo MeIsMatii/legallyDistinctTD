@@ -5,7 +5,6 @@ public class Map4 extends World {
     {
         super(9, 9,60);
         setBackground("cell.jpg");
-        addObject(new MapPreview(4), 3,3);
         addObject(new ComingSoon(), 6,6);
 
     }

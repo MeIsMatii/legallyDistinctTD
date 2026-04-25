@@ -2,7 +2,12 @@ import greenfoot.*;
 public interface Clickable {
 
     default void checkClick() {
-        if (Greenfoot.mouseClicked(this)) {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if(mouse == null) {
+            return;
+        }
+
+        if(mouse.getActor() == this) {
             onClick();
         }
     }

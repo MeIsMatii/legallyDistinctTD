@@ -1,0 +1,12 @@
+import greenfoot.World;
+
+public class Map4 extends World {
+    public Map4()
+    {
+        super(9, 9,60);
+        setBackground("cell.jpg");
+        addObject(new MapPreview(4), 3,3);
+        addObject(new ComingSoon(), 6,6);
+
+    }
+}

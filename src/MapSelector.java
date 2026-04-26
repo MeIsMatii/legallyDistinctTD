@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class MapSelector extends World
+public class MapSelector extends World implements Soundable
 {
 
 
@@ -25,11 +25,6 @@ public class MapSelector extends World
         }
         addObject(new ImageDisplay("clickwarning.jpg", 300, 60),10,27);
         Greenfoot.start();
-
     }
-
-
-
-
 
 }

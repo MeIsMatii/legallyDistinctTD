@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class   MapSelector extends World
+public class MapSelector extends World
 {
 
 

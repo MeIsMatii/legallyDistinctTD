@@ -39,5 +39,4 @@ public interface Clickable {
     default void onClick() {
         System.out.println("onClick is not defined for this object");
     }
-    /// TODO Fix this mess and make it work on the entire picture  --Colin
 }

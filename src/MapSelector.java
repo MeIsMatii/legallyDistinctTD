@@ -23,7 +23,7 @@ public class MapSelector extends World implements HasSound
             for(int i = 0; i < getWidth(); i++){
                 addObject(new ImageDisplay("dirtsquare.png", 20,20),i, y);}
         }
-        addObject(new ImageDisplay("clickwarning.jpg", 300, 60),10,27);
+        addObject(new ImageDisplay("Credits.png", 300, 60),10,27);
         Greenfoot.start();
     }
 

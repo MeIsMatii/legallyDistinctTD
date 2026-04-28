@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class MapSettings extends World implements Soundable{
+public class MapSettings extends World implements HasSound {
     private GreenfootSound backgroundMusic;
 
     public MapSettings(){

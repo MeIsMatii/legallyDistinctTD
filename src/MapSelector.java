@@ -1,5 +1,5 @@
 import greenfoot.*;
-public class MapSelector extends World implements Soundable
+public class MapSelector extends World implements HasSound
 {
 
 

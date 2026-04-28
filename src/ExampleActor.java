@@ -1,7 +1,7 @@
 
 import greenfoot.*;
 
-public class ExampleActor extends MainClass implements Clickable, Soundable {
+public class ExampleActor extends MainClass implements Clickable, HasSound {
 
 
     /// Only Actor I made in another project to show how my clickable Interface wroks --Colin

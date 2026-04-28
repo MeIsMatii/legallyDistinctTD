@@ -14,24 +14,30 @@
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double0"/>
-      <double>750.0</double>
+      <double>1150.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double0"/>
-      <double>170.0</double>
+      <double>160.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>750.0</double>
-     <double>170.0</double>
+     <double>1150.0</double>
+     <double>160.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
    <object class="com.horstmann.violet.InterfaceNode" id="InterfaceNode0">
+    <void property="methods">
+     <void property="text">
+      <string>+checkClick():void
++onClick():void</string>
+     </void>
+    </void>
     <void property="name">
      <void property="text">
       <string>«interface»
@@ -44,19 +50,19 @@ Clickable</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double1"/>
-      <double>530.0</double>
+      <double>450.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double1"/>
-      <double>170.0</double>
+      <double>120.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>530.0</double>
-     <double>170.0</double>
+     <double>450.0</double>
+     <double>120.0</double>
     </void>
    </object>
   </void>
@@ -64,7 +70,9 @@ Clickable</string>
    <object class="com.horstmann.violet.InterfaceNode" id="InterfaceNode1">
     <void property="methods">
      <void property="text">
-      <string>+</string>
+      <string>+playSound(String soundFileName):void
++playSoundAndKeep(String soundFileName):GreenfootSound
++syncVolumeOf(GreenfootSound soundToSync):void</string>
      </void>
     </void>
     <void property="name">
@@ -79,19 +87,19 @@ Soundable</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double2"/>
-      <double>330.0</double>
+      <double>30.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double2"/>
-      <double>170.0</double>
+      <double>120.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>330.0</double>
-     <double>170.0</double>
+     <double>30.0</double>
+     <double>120.0</double>
     </void>
    </object>
   </void>
@@ -108,19 +116,19 @@ Soundable</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double3"/>
-      <double>870.0</double>
+      <double>1300.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double3"/>
-      <double>70.0</double>
+      <double>60.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>870.0</double>
-     <double>70.0</double>
+     <double>1300.0</double>
+     <double>60.0</double>
     </void>
    </object>
   </void>
@@ -137,19 +145,19 @@ Soundable</string>
      <string>x</string>
      <void method="set">
       <object idref="Point2D$Double4"/>
-      <double>990.0</double>
+      <double>1420.0</double>
      </void>
     </void>
     <void class="java.awt.geom.Point2D$Double" method="getField">
      <string>y</string>
      <void method="set">
       <object idref="Point2D$Double4"/>
-      <double>170.0</double>
+      <double>160.0</double>
      </void>
     </void>
     <void method="setLocation">
-     <double>990.0</double>
-     <double>170.0</double>
+     <double>1420.0</double>
+     <double>160.0</double>
     </void>
    </object>
   </void>

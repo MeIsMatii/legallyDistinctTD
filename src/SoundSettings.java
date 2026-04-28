@@ -1,15 +1,16 @@
 import greenfoot.GreenfootSound;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
-public class SoundSettings extends MainClass {
+public class SoundSettings {
 
     private static final int MinimumVolume = 0;
-    private static final int Maximum_Volume = 100;//(max greenfoot lautstärke)
+    private static final int MaximumVolume = 100;
     private static final int DefaultStartingVolume = 80;
-    private static SoundSettings singleInstance = null; //static so dass es bei weltänderungen bestehen bleibt
+
+    private static SoundSettings singleInstance = null;
+
     private List<GreenfootSound> registeredSounds = new ArrayList<GreenfootSound>();
     private int masterVolume;
 
@@ -28,22 +29,16 @@ public class SoundSettings extends MainClass {
         return masterVolume;
     }
 
-    /// setter und getter
-
     public void setMasterVolume(int newVolume) {
-        // Math.max und Math.min stellen sicher das die zahl zwischen 0 und 100 ist(um fehler zu vermeiden)
-        this.masterVolume = Math.max(MinimumVolume, Math.min(Maximum_Volume, newVolume));
-/*
-        List<HasSound> objectsWithSounds = get
-        for (HasSound obj : objectsWithSounds) {
-            obj.setVolume(masterVolume);
-        }
-*/
+        this.masterVolume = Math.max(MinimumVolume, Math.min(MaximumVolume, newVolume));
     }
 
     public void addRegisteredSound(GreenfootSound soundToRegister) {
-
-        if (soundToRegister == null || (!registeredSounds.isEmpty() && registeredSounds.contains(soundToRegister))) {
+        if (soundToRegister == null) {
+            return;
+        }
+        // schaut das nicht zwei mal der gleiche sound in der liste ist
+        if (registeredSounds.contains(soundToRegister)) {
             return;
         }
         registeredSounds.add(soundToRegister);
@@ -60,25 +55,23 @@ public class SoundSettings extends MainClass {
     }
 
     public void syncGlobalVolume() {
-        ///TODO fix colin
-        if(registeredSounds.isEmpty()) {
+        if (registeredSounds.isEmpty()) {
             return;
         }
-        try {
-            for(GreenfootSound sound: registeredSounds) {
 
-                if (!sound.isPlaying()) {
-                    registeredSounds.remove(sound);
-                    continue;
-                }
+        //sounds die gelöscht werden sollen
+        List<GreenfootSound> soundsToRemove = new ArrayList<GreenfootSound>();
+
+        for (GreenfootSound sound : registeredSounds) {
+            if (sound.isPlaying()) {
+                //sound ist aktiv
+                sound.setVolume(masterVolume);
+            } else {
+               // sound nicht aktiv aber trotzdem lautstärke anpassen, so dass loops in der lautstärke verändertt werden können
                 sound.setVolume(masterVolume);
             }
-            } catch (Exception ConcurrentModificationException) {
-                System.out.println("uhmmmmmm DM @colin \"i timing'd the sound\" ");
-            
         }
-
+        //alle sounds die nicht mehr spielen löschen
+        registeredSounds.removeAll(soundsToRemove);
     }
-
-
 }

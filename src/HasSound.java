@@ -4,31 +4,22 @@ import greenfoot.sound.Sound;
 
 public interface HasSound {
     default void playSound(String soundFileName) {
-        GreenfootSound soundToPlay = new GreenfootSound(soundFileName);
-        soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//setzt lautstärke
-        soundToPlay.play();//spielt den sound
-
-        SoundSettings.getInstance().addRegisteredSound(soundToPlay);
+        GreenfootSound soundToPlay = new GreenfootSound(soundFileName);//welcher sound
+        soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//volume control
+        SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
+        soundToPlay.play();//play
     }
     default void playSound(GreenfootSound soundToPlay) {
-        soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//setzt lautstärke
-        soundToPlay.play();//spielt den sound
-
-        SoundSettings.getInstance().addRegisteredSound(soundToPlay);
+        soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//ein bereitsexistierender sound
+        SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
+        soundToPlay.play();//sync
     }
 
     default GreenfootSound playSoundAndKeep(String soundFileName) {
-        //spielt einen sound der looped ()
-        GreenfootSound soundToControl = new GreenfootSound(soundFileName);
-        soundToControl.setVolume(SoundSettings.getInstance().getMasterVolume());//setzt lautstärke
-        return soundToControl;
-    }
-
-   //updated die lautstärke von einem existierendem sound
-    default void syncVolumeOf(GreenfootSound soundToSync) {
-        if (soundToSync != null) {
-            soundToSync.setVolume(SoundSettings.getInstance().getMasterVolume());
-        }
+        GreenfootSound soundToControl = new GreenfootSound(soundFileName);//welcher sound
+        soundToControl.setVolume(SoundSettings.getInstance().getMasterVolume());//set volume
+        SoundSettings.getInstance().addRegisteredSound(soundToControl);//liste hinzufügen
+        return soundToControl;//gibt den fertig angepassten sound zurück
     }
 
 

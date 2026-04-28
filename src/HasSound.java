@@ -1,12 +1,20 @@
 import greenfoot.*;
+import greenfoot.sound.Sound;
 
 
 public interface HasSound {
-
     default void playSound(String soundFileName) {
         GreenfootSound soundToPlay = new GreenfootSound(soundFileName);
         soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//setzt lautstärke
         soundToPlay.play();//spielt den sound
+
+        SoundSettings.getInstance().addRegisteredSound(soundToPlay);
+    }
+    default void playSound(GreenfootSound soundToPlay) {
+        soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//setzt lautstärke
+        soundToPlay.play();//spielt den sound
+
+        SoundSettings.getInstance().addRegisteredSound(soundToPlay);
     }
 
     default GreenfootSound playSoundAndKeep(String soundFileName) {
@@ -22,5 +30,6 @@ public interface HasSound {
             soundToSync.setVolume(SoundSettings.getInstance().getMasterVolume());
         }
     }
-    /// TODO make it automaticly ajust every volume --colin
+
+
 }

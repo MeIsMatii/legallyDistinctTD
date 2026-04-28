@@ -60,5 +60,7 @@ public class VolumeSlider extends MainClass implements Clickable {
         sliderImage.drawString("Volume: " + currentVolume + "%", 55, SliderHightPixel + 15);
 
         setImage(sliderImage);
+
+        ///TODO make slider jump to the mouse instead of incrementing by certain steps --mathilo 4 colin
     }
 }

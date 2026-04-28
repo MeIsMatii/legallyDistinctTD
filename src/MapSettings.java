@@ -13,7 +13,7 @@ public class MapSettings extends World implements HasSound {
     @Override
     public void act() {
         if (Greenfoot.isKeyDown("F2")){
-            backgroundMusic.playLoop();
+            playSound(backgroundMusic);
         }
         if (Greenfoot.isKeyDown("F1")){
             backgroundMusic.stop();

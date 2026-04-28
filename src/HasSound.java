@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 
-public interface Soundable {
+public interface HasSound {
 
     default void playSound(String soundFileName) {
         GreenfootSound soundToPlay = new GreenfootSound(soundFileName);

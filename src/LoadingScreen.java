@@ -16,6 +16,12 @@ public class LoadingScreen extends World {
         setBackground("BloonsTDChinaLoadingScreen.png");
         setNextWorld(nextWorld);
     }
+
+    @Override
+    public void act() {
+        loadNewMap();
+    }
+
     private void loadNewMap(){
         World nextworld = getNextWorld();
         Greenfoot.setWorld(nextworld);

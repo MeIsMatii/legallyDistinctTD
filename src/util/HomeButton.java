@@ -1,10 +1,13 @@
+package util;
+
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import map.MapSelector;
 
-public class HomeButton extends MainClass implements Clickable{
+public class HomeButton extends MainClass implements Clickable {
 
     public HomeButton(){
-        setImage("HomeButton.png");
+        setImage("homeButton.png");
         getImage().scale(40,40);
 
     }

@@ -1,3 +1,5 @@
+package map;
+
 import greenfoot.Greenfoot;
 import greenfoot.World;
 

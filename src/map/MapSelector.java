@@ -1,4 +1,10 @@
+package map;
+
 import greenfoot.*;
+import setting.SettingsButton;
+import util.HasSound;
+import util.ImageDisplay;
+
 public class MapSelector extends World implements HasSound
 {
 
@@ -6,7 +12,7 @@ public class MapSelector extends World implements HasSound
     public MapSelector()
     {
         super(29, 29,20);
-        setPaintOrder(SettingsButton.class, MapSelector.class,ImageDisplay.class);
+        setPaintOrder(SettingsButton.class, MapSelector.class, ImageDisplay.class);
         setBackground("cell_grass.png");
         addObject(new MapPreview(1), 5,3);///Map Preview
         addObject(new MapPreview(2), 14,3);///Map Preview

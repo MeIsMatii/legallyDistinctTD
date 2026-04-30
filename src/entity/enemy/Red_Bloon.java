@@ -1,3 +1,5 @@
+package entity.enemy;
+
 public class Red_Bloon extends Enemy {
     int lives;
     int speed;
@@ -7,8 +9,7 @@ public class Red_Bloon extends Enemy {
         move(speed);
     }
 
-    @Override
-    void onHit() {
+    public void onHit() {
         lives--;
         if (lives <= 0){
             getWorld().removeObject(this);

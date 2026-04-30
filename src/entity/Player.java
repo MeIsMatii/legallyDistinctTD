@@ -1,4 +1,5 @@
-import greenfoot.Actor;
+package entity;
+
 import greenfoot.Greenfoot;
 import greenfoot.World;
 
@@ -13,7 +14,7 @@ public class Player extends Entity {
         getWorld().addObject(hitbox, getX(), getY());
     }
 
-    public void act()  {
+    public void act() {
         performMovement();
     }
 

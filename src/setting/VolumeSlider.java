@@ -1,4 +1,12 @@
-import greenfoot.*;
+package setting;
+
+
+import greenfoot.Color;
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
+import greenfoot.MouseInfo;
+import util.Clickable;
+import util.MainClass;
 
 public class VolumeSlider extends MainClass implements Clickable {
 
@@ -16,6 +24,7 @@ public class VolumeSlider extends MainClass implements Clickable {
         checkClick();
         redrawSlider();//zum updaten des sliders
     }
+
     @Override
     public void onClick() {
         MouseInfo mouseDetails = Greenfoot.getMouseInfo();
@@ -28,7 +37,7 @@ public class VolumeSlider extends MainClass implements Clickable {
 
         // Wo hat der spieler hingedrückt
         int mouseInPixelsX = mouseDetails.getX() * pixelsPerCell;
-        double clickPositionAlongBar = (double)(mouseInPixelsX - actorLeftEdgeInPixels) / SliderWidthPixel;
+        double clickPositionAlongBar = (double) (mouseInPixelsX - actorLeftEdgeInPixels) / SliderWidthPixel;
 
         // lauter oder leiser machen
         if (clickPositionAlongBar < 0.5) {
@@ -40,7 +49,7 @@ public class VolumeSlider extends MainClass implements Clickable {
 
     private void redrawSlider() {
         int currentVolume = SoundSettings.getInstance().getMasterVolume();
-        int filledWidthInPixels = (int)((currentVolume / 100.0) * SliderWidthPixel);//wie viel soll ausgefüllt sein
+        int filledWidthInPixels = (int) ((currentVolume / 100.0) * SliderWidthPixel);//wie viel soll ausgefüllt sein
         GreenfootImage sliderImage = new GreenfootImage(SliderWidthPixel + 2, SliderHightPixel + 20);
 
         // Leerenbereich als hintergrund erstellen

@@ -1,5 +1,7 @@
-import greenfoot.*;
-import greenfoot.sound.Sound;
+package util;
+
+import greenfoot.GreenfootSound;
+import setting.SoundSettings;
 
 
 public interface HasSound {
@@ -9,6 +11,7 @@ public interface HasSound {
         SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
         soundToPlay.play();//play
     }
+
     default void playSound(GreenfootSound soundToPlay) {
         soundToPlay.setVolume(SoundSettings.getInstance().getMasterVolume());//ein bereitsexistierender sound
         SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen

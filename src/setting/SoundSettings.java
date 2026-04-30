@@ -1,3 +1,5 @@
+package setting;
+
 import greenfoot.GreenfootSound;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ public class SoundSettings {
 
     private static SoundSettings singleInstance = null;
 
-    private List<GreenfootSound> registeredSounds = new ArrayList<GreenfootSound>();
+    private final List<GreenfootSound> registeredSounds = new ArrayList<GreenfootSound>();
     private int masterVolume;
 
     private SoundSettings() {
@@ -67,7 +69,7 @@ public class SoundSettings {
                 //sound ist aktiv
                 sound.setVolume(masterVolume);
             } else {
-               // sound nicht aktiv aber trotzdem lautstärke anpassen, so dass loops in der lautstärke verändertt werden können
+                // sound nicht aktiv aber trotzdem lautstärke anpassen, so dass loops in der lautstärke verändertt werden können
                 sound.setVolume(masterVolume);
             }
         }

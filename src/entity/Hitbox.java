@@ -1,3 +1,5 @@
+package entity;
+
 import greenfoot.*;
 
 import java.util.List;
@@ -8,29 +10,26 @@ import java.util.List;
  */
 
 public class Hitbox extends Actor {
-    private Entity owner;
-    private int width, height;
+    private final Entity OWNER;
+    private final int width;
+    private final int height;
     private int widthInCells, heightInCells;
 
     private boolean isHittingSomething;
     private boolean isDebug;
 
     public Hitbox(int width, int height, Entity owner) {
-        this.owner = owner;
+        this.OWNER = owner;
         this.width = width;
         this.height = height;
 
         this.isHittingSomething = false;
         this.isDebug = false;
-
-
-
-
     }
 
     public void addedToWorld(World world) {
-        this.widthInCells = this.width * world.getCellSize() + world.getCellSize()/2;
-        this.heightInCells = this.height * world.getCellSize() + world.getCellSize()/2;
+        this.widthInCells = this.width * world.getCellSize() + world.getCellSize() / 2;
+        this.heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
 
         // w, h*2 bc my offset is in each direction
 
@@ -44,13 +43,13 @@ public class Hitbox extends Actor {
 
     public void act() {
         // rm hitbox when player is gone
-        if (owner == null || owner.getWorld() == null) {
+        if (OWNER == null || OWNER.getWorld() == null) {
             getWorld().removeObject(this);
             return;
         }
 
         //center to player
-        setLocation(owner.getX(), owner.getY());
+        setLocation(OWNER.getX(), OWNER.getY());
 
         checkTouching();
         setDebug();
@@ -65,14 +64,14 @@ public class Hitbox extends Actor {
 
         boolean foundTarget = false;
         for (Actor actor : overlapping) {
-            if (actor != owner && actor != this) {
+            if (actor != OWNER && actor != this) {
                 foundTarget = true;
                 break;
             }
         }
 
-        if(foundTarget) {
-            owner.onHit();
+        if (foundTarget) {
+            OWNER.onHit();
         }
 
         isHittingSomething = foundTarget;
@@ -91,7 +90,7 @@ public class Hitbox extends Actor {
 
         img.clear();
 
-        if(isHittingSomething) {
+        if (isHittingSomething) {
             img.setColor(new Color(255, 0, 0, 150)); // red, semi transparent
         } else {
             img.setColor(new Color(0, 255, 0, 150)); // green, semi transparent

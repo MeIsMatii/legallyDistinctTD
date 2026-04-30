@@ -10,7 +10,7 @@ import java.util.List;
  */
 
 public class Hitbox extends Actor {
-    private final Entity OWNER;
+    private final Entity OWNER; // CAPS, because it's a constant
     private final int width;
     private final int height;
     private int widthInCells, heightInCells;
@@ -71,7 +71,7 @@ public class Hitbox extends Actor {
         }
 
         if (foundTarget) {
-            OWNER.onHit();
+            OWNER.onHit(OWNER);
         }
 
         isHittingSomething = foundTarget;

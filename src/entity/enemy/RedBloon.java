@@ -1,15 +1,13 @@
 package entity.enemy;
 
-public class Red_Bloon extends Enemy {
-    int lives;
-    int speed;
-    @Override
-    void moveTo(int x, int y) {
-        turnTowards(x, y);
-        move(speed);
+import entity.Entity;
+
+public class RedBloon extends Enemy {
+    public RedBloon(int speed, int lives) {
+        super(speed,lives);
     }
 
-    public void onHit() {
+    public void onHit(Entity hitter) {
         lives--;
         if (lives <= 0){
             getWorld().removeObject(this);

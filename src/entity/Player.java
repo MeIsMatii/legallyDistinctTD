@@ -24,7 +24,7 @@ public class Player extends Entity {
         }
     }
 
-    public void onHit() {
-        System.out.println("Player hit");
+    public void onHit(Entity hitter) {
+        System.out.printf("Player hit by %s\n", hitter);
     }
 }

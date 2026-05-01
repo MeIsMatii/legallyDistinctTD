@@ -36,7 +36,7 @@ public class MapPreview extends MainClass implements Clickable {
 
     public MapPreview(int worldNumber){
         setWorldNr(worldNumber);
-        setLoadingScreen(loadingScreen);
+        setLoadingScreen(new LoadingScreen());
         if (getWorldNr()>9 || getWorldNr()<0){
             System.out.println("Too high or low World number Fix map maker");
             return; ///the error Handling of a true genius --Colin
@@ -44,39 +44,30 @@ public class MapPreview extends MainClass implements Clickable {
         switch (getWorldNr()){/// setzt das preview auf die Welt die es sein soll (kann im Konstruktor als Parameter angegeben werden)
             case 1:
                 setImage("TempMap1Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 2:
                 setImage("TempMap2Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 3:
                 setImage("TempMap3Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 4:
                 setImage("TempMap4Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 5:
                 setImage("TempMap5Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 6:
                 setImage("TempMap6Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 7:
                 setImage("TempMap7Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 8:
                 setImage("TempMap8Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
             case 9:
                 setImage("TempMap9Preview.png");
-                setLoadingScreen(new LoadingScreen());
                 break;
         }///Note for Colin: Break in Zukunft nicht mehr vergessen
 
@@ -94,39 +85,39 @@ public class MapPreview extends MainClass implements Clickable {
     @Override
     public void onClick() {
         setClicked(!isClicked());
-        LoadingScreen ls = (LoadingScreen) loadingScreen;
+        LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
         switch (getWorldNr()){///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1:
-                ls.setNextWorld(new Map1());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map1());
                 break;
             case 2:
-                ls.setNextWorld(new Map2());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map2());
                 break;
             case 3:
-                ls.setNextWorld(new Map3());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map3());
                 break;
             case 4:
-                ls.setNextWorld(new Map4());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map4());
                 break;
             case 5:
                 ls.setNextWorld(new Map5());
                 Greenfoot.setWorld(getLoadingScreen());
                 break;
             case 6:
-                ls.setNextWorld(new Map6());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map6());
                 break;
             case 7:
-                ls.setNextWorld(new Map7());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map7());
                 break;
             case 8:
-                ls.setNextWorld(new Map8());
                 Greenfoot.setWorld(getLoadingScreen());
+                ls.setNextWorld(new Map8());
                 break;
             case 9:
                 Greenfoot.setWorld(getLoadingScreen());

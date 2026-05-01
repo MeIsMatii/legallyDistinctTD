@@ -17,7 +17,6 @@ public abstract class Entity extends Actor {
     public abstract void onHover();
 
     public void addedToWorld(World world) {
-        System.out.println("meow, " + this);
         int CELLSIZE = getWorld().getCellSize();
 
         int hitboxWidth = getImage().getWidth() / CELLSIZE;

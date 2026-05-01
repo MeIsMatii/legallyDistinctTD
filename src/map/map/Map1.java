@@ -6,8 +6,8 @@ import map.util.ComingSoon;
 public class Map1 extends World {
 
     public Map1() {
-        super(9, 9, 60);
-        setBackground("cell.jpg");
+        super(14, 9, 60);
+        setBackground("map1placeholder.jpeg");
         addObject(new ComingSoon(), 6, 6);
 
     }

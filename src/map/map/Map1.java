@@ -1,7 +1,6 @@
 package map.map;
 
 import entity.Player;
-import entity.tower.TestTower;
 import greenfoot.World;
 import util.HomeButton;
 

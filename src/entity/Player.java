@@ -1,7 +1,6 @@
 package entity;
 
 import greenfoot.Greenfoot;
-import greenfoot.World;
 
 public class Player extends Entity {
 

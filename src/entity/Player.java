@@ -9,11 +9,6 @@ public class Player extends Entity {
 
     }
 
-    public void addedToWorld(World world) {
-        Hitbox hitbox = new Hitbox(1, 3, this);
-        getWorld().addObject(hitbox, getX(), getY());
-    }
-
     public void act() {
         performMovement();
     }

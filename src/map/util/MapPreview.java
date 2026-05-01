@@ -1,6 +1,7 @@
 package map.util;
 
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 import util.Clickable;
 import util.MainClass;
@@ -78,7 +79,11 @@ public class MapPreview extends MainClass implements Clickable {
                 setLoadingScreen(new LoadingScreen(new Map9()));
                 break;
         }///Note for Colin: Break in Zukunft nicht mehr vergessen
-        getImage().scale(120, 120);
+
+        GreenfootImage img = getImage();
+        img.scale(120, 120);
+
+        setImage(img);
     }
 
     @Override

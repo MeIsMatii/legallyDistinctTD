@@ -14,6 +14,7 @@ public class MapSettings extends World implements HasSound {
         addObject(new HomeButton(), 4, 4);
         addObject(new VolumeSlider(), 6, 10);
         backgroundMusic = playSoundAndKeep("TEMPTropischSound.mp3");
+        addObject(new SongDropDown(),20,10);
     }
 
     @Override

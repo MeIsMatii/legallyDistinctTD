@@ -1,7 +1,8 @@
 package map.util;
 
 import entity.Player;
-import greenfoot.*;
+import greenfoot.Greenfoot;
+import greenfoot.World;
 import setting.SettingsButton;
 import util.HasSound;
 import util.ImageDisplay;

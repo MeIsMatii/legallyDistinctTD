@@ -13,10 +13,10 @@ public class LoadingScreen extends World {
         this.nextWorld = netxWorld;
     }
 
-    public LoadingScreen(World nextWorld){
+    public LoadingScreen(){
         super(9, 9,60);
         setBackground("BloonsTDChinaLoadingScreen.png");
-        setNextWorld(nextWorld);
+        //setNextWorld(nextWorld);
     }
 
     @Override

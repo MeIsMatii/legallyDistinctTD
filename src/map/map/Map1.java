@@ -11,6 +11,7 @@ public class Map1 extends World {
         setBackground("map1placeholder.jpeg");
         addObject(new HomeButton(),1,1);
         addObject(new Player(),6,6);
+
     }
 
 

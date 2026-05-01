@@ -23,4 +23,8 @@ public class Path extends Entity {
     public void onHit(Entity hitter) {
         return; ///nothing needs to be handled in here i think
     }
+
+    public void onHover() {
+        //nothing
+    }
 }

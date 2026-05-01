@@ -37,10 +37,10 @@ public class Hitbox extends Actor {
 
         // w, h*2 bc my offset is in each direction
 
-        GreenfootImage img = new GreenfootImage(widthInCells * 2, heightInCells * 2);
+        GreenfootImage img = new GreenfootImage(widthInCells, heightInCells);
 
         img.setColor(Color.RED);
-        img.drawRect(0, 0, (widthInCells * 2) - 1, (heightInCells * 2) - 1);
+        img.drawRect(0, 0, (widthInCells) - 1, (heightInCells) - 1);
 
         setImage(img);
     }
@@ -56,6 +56,7 @@ public class Hitbox extends Actor {
         setLocation(OWNER.getX(), OWNER.getY());
 
         checkTouching();
+        checkHover();
         setDebug();
 
         // handles visibility
@@ -78,6 +79,12 @@ public class Hitbox extends Actor {
 
 
         isHittingSomething = foundTarget;
+    }
+
+    public void checkHover() {
+        MouseInfo mouseInfo = Greenfoot.getMouseInfo();
+
+        OWNER.checkHover(Greenfoot.mouseMoved(this) || isTouching(MouseInfo.class) || (mouseInfo != null && mouseInfo.getActor() == this));
     }
 
     public void updateAppearance(boolean isHittingSomething) {
@@ -106,7 +113,7 @@ public class Hitbox extends Actor {
     }
 
     public void setDebug() {
-        if (Greenfoot.isKeyDown("f1")) {
+        if (Greenfoot.isKeyDown("f12")) {
             this.isDebug = true;
             return;
         }

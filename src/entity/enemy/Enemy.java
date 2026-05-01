@@ -11,31 +11,35 @@ abstract class Enemy extends Entity {
         this.lives = lives;
     }
 
+    public void onHover() {
+        //nothing?
+    }
+
     // move()
     public void moveTo(int x, int y) {
         /// Hopefully works --Mathilo
-        if(getX() != x) {
+        if (getX() != x) {
             turnTowards(x, getY());
         }
 
         for (int i = 0; i < speed; i++) {
             move(1);
-            if(getX() == x) {
+            if (getX() == x) {
                 break;
             }
         }
 
 
-        if(getY() != y) {
+        if (getY() != y) {
             turnTowards(getX(), y);
         }
 
         for (int i = 0; i < speed; i++) {
             move(1);
-            if(getY() == y) {
+            if (getY() == y) {
                 break;
             }
         }
     }
-    
+
 }

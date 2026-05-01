@@ -19,13 +19,19 @@ public class Player extends Entity {
             move(1);
         }
     }
-    public void CoordinatesDebug(){
-        if (Greenfoot.isKeyDown("F3")){
+
+    public void CoordinatesDebug() {
+        if (Greenfoot.isKeyDown("F3")) {
             MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-            System.out.println("X:"+ mouseInfo.getX() +"   " + "Y:" + mouseInfo.getY());
+            System.out.println("X:" + mouseInfo.getX() + "   " + "Y:" + mouseInfo.getY());
         }
     }
+
     public void onHit(Entity hitter) {
         System.out.printf("Player hit by %s\n", hitter);
+    }
+
+    public void onHover() {
+
     }
 }

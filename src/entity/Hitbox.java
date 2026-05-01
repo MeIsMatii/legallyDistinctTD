@@ -27,6 +27,10 @@ public class Hitbox extends Actor {
         this.isDebug = false;
     }
 
+    public Entity getOWNER() {
+        return this.OWNER;
+    }
+
     public void addedToWorld(World world) {
         this.widthInCells = this.width * world.getCellSize() + world.getCellSize() / 2;
         this.heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
@@ -59,20 +63,19 @@ public class Hitbox extends Actor {
     }
 
     public void checkTouching() {
-
-        List<Entity> overlapping = getIntersectingObjects(Entity.class);
+        List<Hitbox> overlapping = getIntersectingObjects(Hitbox.class);
 
         boolean foundTarget = false;
-        for (Actor actor : overlapping) {
-            if (actor != OWNER && actor != this) {
+        for (Hitbox hitbox : overlapping) {
+            if (hitbox != this) {
                 foundTarget = true;
+                /// DEBUG
+                ///System.out.printf("Owner: %s, Hitter: %s\n", OWNER, actor);
+                OWNER.onHit(hitbox.getOWNER());
                 break;
             }
         }
 
-        if (foundTarget) {
-            OWNER.onHit(OWNER);
-        }
 
         isHittingSomething = foundTarget;
     }

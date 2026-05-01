@@ -1,9 +1,10 @@
-package map;
+package map.util;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import util.Clickable;
 import util.MainClass;
+import map.map.*;
 
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;

@@ -2,7 +2,7 @@ package setting;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.MapSelector;
+import map.util.MapSelector;
 import util.Clickable;
 import util.MainClass;
 

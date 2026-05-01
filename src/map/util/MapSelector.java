@@ -1,4 +1,4 @@
-package map;
+package map.util;
 
 import greenfoot.*;
 import setting.SettingsButton;

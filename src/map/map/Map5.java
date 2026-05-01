@@ -1,6 +1,7 @@
-package map;
+package map.map;
 
 import greenfoot.World;
+import map.util.ComingSoon;
 
 public class Map5 extends World {
     public Map5() {

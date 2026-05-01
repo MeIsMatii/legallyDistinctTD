@@ -2,7 +2,7 @@ package util;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.MapSelector;
+import map.util.MapSelector;
 
 public class HomeButton extends MainClass implements Clickable {
 

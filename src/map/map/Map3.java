@@ -1,9 +1,10 @@
-package map;
+package map.map;
 
 import greenfoot.World;
+import map.util.ComingSoon;
 
-public class Map9 extends World {
-    public Map9() {
+public class Map3 extends World {
+    public Map3() {
         super(9, 9, 60);
         setBackground("cell.jpg");
         addObject(new ComingSoon(), 6, 6);

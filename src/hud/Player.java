@@ -37,6 +37,10 @@ public class Player extends MainClass {
 
     public void addedToWorld(World world){                               //zeigt Leben oben auf der map
         world.addObject(new ImageDisplay("Credits.png", 300, 60),1,1);  //ganz oben Links, jemand muss noch herz bild ertsellen und dann hier einfügen
-        world.showText("Leben: " + getHealth(), 2, 1);            //ganz oben links,links vom herzen
+        world.showText("Leben: " + getHealth(), 2, 1);//ganz oben links,rechts vom herzen
+
+        world.addObject(new ImageDisplay("Credits.png", 300, 60),1,2);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
+        world.showText("Coins: " + getCoins(), 2, 2);//rechts vom coinpng
     }
+
 }

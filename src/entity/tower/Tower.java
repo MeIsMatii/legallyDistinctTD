@@ -1,7 +1,7 @@
 package entity.tower;
 
 import entity.Entity;
-import entity.Player;
+import hud.Player;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
@@ -52,7 +52,7 @@ abstract class Tower extends Entity implements Clickable {
     }
 
     public void onHit(Entity hitter) {
-        if (!(hitter instanceof Path) && !(hitter instanceof Tower) && !(hitter instanceof Player)) { ///is there a better way than instanceof?
+        if (!(hitter instanceof Path) && !(hitter instanceof Tower)) { ///is there a better way than instanceof?
             canPlace = true;
             return;
         }

@@ -1,6 +1,6 @@
 package map.map;
 
-import entity.Player;
+import hud.Player;
 import greenfoot.World;
 import util.HomeButton;
 

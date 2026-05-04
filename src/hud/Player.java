@@ -1,6 +1,7 @@
 package hud;
+import util.MainClass;
 
-public class Player {
+public class Player extends MainClass {
 
     private int coins;
     private int health;

@@ -1,6 +1,6 @@
 package map.util;
 
-import entity.Player;
+import hud.Player;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import setting.SettingsButton;

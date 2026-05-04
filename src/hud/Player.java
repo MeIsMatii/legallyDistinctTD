@@ -1,4 +1,6 @@
 package hud;
+import greenfoot.World;
+import util.ImageDisplay;
 import util.MainClass;
 
 public class Player extends MainClass {
@@ -30,6 +32,11 @@ public class Player extends MainClass {
     public Player(int startCoins, int startHealth){
         coins = startCoins;
         health = startHealth;
-    }
+    }                                               //noch sehr stolz auf mich
 
+
+    public void addedToWorld(World world){                               //zeigt Leben oben auf der map
+        world.addObject(new ImageDisplay("Credits.png", 300, 60),1,1);  //ganz oben Links, jemand muss noch herz bild ertsellen und dann hier einfügen
+        world.showText("Leben: " + getHealth(), 2, 1);            //ganz oben links,links vom herzen
+    }
 }

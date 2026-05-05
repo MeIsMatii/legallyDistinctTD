@@ -10,9 +10,14 @@ public class YellowBloon extends Enemy {
     @Override
     public void onHit(Entity hitter) {
         lives--;
-        if (lives <= 0){
-            getWorld().addObject(new GreenBloon(1,1),getX(),getY());
-            getWorld().removeObject(this);
+        if (lives <= 0) {
+            onDeath();
         }
+    }
+
+    @Override
+    public void onDeath() {
+        getWorld().addObject(new GreenBloon(1,1), getX(), getY());
+        super.onDeath();
     }
 }

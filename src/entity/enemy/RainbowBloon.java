@@ -2,14 +2,10 @@ package entity.enemy;
 
 import entity.Entity;
 
-public class WhiteBloon extends Enemy {
-    public WhiteBloon(int speed, int lives) {
+public class RainbowBloon extends Enemy {
+    public RainbowBloon(int speed, int lives) {
         super(speed, lives);
     }
-
-    //
-     //NEEDS FREEZE RESISTENCE
-     //
 
     @Override
     public void onHit(Entity hitter) {
@@ -21,8 +17,8 @@ public class WhiteBloon extends Enemy {
 
     @Override
     public void onDeath() {
-        getWorld().addObject(new PinkBloon(1,1), getX(), getY());
-        getWorld().addObject(new PinkBloon(1,1), getX(), getY());
+        getWorld().addObject(new ZebraBloon(1,1), getX(), getY());
+        getWorld().addObject(new ZebraBloon(1,1), getX(), getY());
         super.onDeath();
     }
 }

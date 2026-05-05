@@ -15,10 +15,15 @@ public class ZebraBloon extends Enemy {
     public void onHit(Entity hitter) {
         lives--;
         if (lives <= 0) {
-            getWorld().addObject(new BlackBloon(1,1), getX(), getY());
-            getWorld().addObject(new WhiteBloon(1,1), getX(), getY());
-            getWorld().removeObject(this);
+            onDeath();
         }
+    }
+
+    @Override
+    public void onDeath() {
+        getWorld().addObject(new BlackBloon(1,1), getX(), getY());
+        getWorld().addObject(new WhiteBloon(1,1), getX(), getY());
+        super.onDeath();
     }
 }
 

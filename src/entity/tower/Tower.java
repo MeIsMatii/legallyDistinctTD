@@ -10,6 +10,10 @@ import util.Clickable;
 
 import java.util.Objects;
 
+/**
+ * @author matii
+ * @version hopefully the last one
+ */
 
 abstract class Tower extends Entity implements Clickable {
     private boolean isPlacing;
@@ -31,7 +35,7 @@ abstract class Tower extends Entity implements Clickable {
     }
 
     public void act() {
-        System.out.println(isRangeVisible);
+
         if (isPlacing) {
             followCursor();
             checkClick();
@@ -41,6 +45,11 @@ abstract class Tower extends Entity implements Clickable {
 
     }
 
+    /**
+     * Sets the visibility and colour of the range display circle.
+     * @param state whether the range is visible or not.
+     * @param color the colour (can be null) that the range display is set to, in case it's visible.
+     */
     public void setRangeVisibility(boolean state, Color color) {
         if (!state) {
             setImage(sprite);
@@ -75,10 +84,8 @@ abstract class Tower extends Entity implements Clickable {
         }
     }
 
-    public void onHover() { ///TODO FIX so it also stays when i stop moving the cursor --mathilo
-
+    public void onHover() {
         if (!isRangeVisible) {
-
             setRangeVisibility(true, new Color(128, 128, 128, 128));
         }
     }
@@ -89,12 +96,18 @@ abstract class Tower extends Entity implements Clickable {
         }
     }
 
-
+    /**
+     * Places the tower onto the map and makes the range invisible.
+     */
     public void place() {
         isPlacing = false;
         setRangeVisibility(false, null);
     }
 
+    /**
+     * Makes the tower follow the cursor. <br>
+     * Calls the checkPlacement() func to set the placement indicator.
+     */
     public void followCursor() {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
@@ -107,6 +120,15 @@ abstract class Tower extends Entity implements Clickable {
         int mouseY = mouseInfo.getY();
 
         setLocation(mouseX, mouseY);
+        checkPlacement();
+    }
+
+    /**
+     * Checks whether the tower can be placed in the current location.<br>
+     * {@code red} when the placement location is obstructed.<br>
+     * {@code grey} when the placement location is valid.<br>
+     */
+    public void checkPlacement() {
         if (!isRangeVisible) {
             if (canPlace) {
                 setRangeVisibility(true, new Color(128, 128, 128, 128));
@@ -124,10 +146,13 @@ abstract class Tower extends Entity implements Clickable {
                 setRangeVisibility(true, new Color(128, 0, 0, 128));
             }
         }
-
-
     }
 
+    /**
+     * sets the required variables to be given to the getGreenfootImage() func. <br>
+     * sets the image to the returned image.
+     * @param color the colour of the circle.
+     */
     public void displayRange(Color color) {
         ///AAAAAAAAAAAAAAAAAAAAAAAAAAAA WHY DID I DO THIS
         /// WHY DID I NOT JUST LET SOMEONE ELSE DO IT
@@ -142,6 +167,12 @@ abstract class Tower extends Entity implements Clickable {
         isRangeVisible = true;
     }
 
+    /**
+     * draws a circle based on the diameter in the chosen colour.
+     * @param diameter the diameter of the circle.
+     * @param color the colour of the circle.
+     * @return the image.
+     */
     private GreenfootImage getGreenfootImage(int diameter, Color color) {
         GreenfootImage img = getImage();
 

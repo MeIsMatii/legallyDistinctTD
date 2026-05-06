@@ -59,7 +59,6 @@ public class Hitbox extends Actor {
         setLocation(OWNER.getX(), OWNER.getY());
 
         checkTouching();
-        setDebug();
 
         // handles visibility
         updateAppearance(isHittingSomething);
@@ -91,23 +90,30 @@ public class Hitbox extends Actor {
         isHittingSomething = foundTarget;
     }
 
+    /**
+     * Checks whether the hitbox is touching the Cursor class (that constantly follows the mouse).
+     * @return {@code true} if the hitbox is touching the Cursor class.<br>
+     *         {@code false} if the hitbox isn't touching the Cursor class.
+     */
+
     public boolean checkHover() {
-        return (Greenfoot.mouseMoved(this) || isTouching(MouseInfo.class) || isTouching(Cursor.class));
+        return isTouching(Cursor.class);
     }
 
+    /**
+     * Updates the appearance of the hitbox based on whether it is hitting something.<br>
+     * {@code red} if it is hitting something.<br>
+     * {@code green} if it is not hitting anything.<br>
+     * @param isHittingSomething whether the hitbox is hitting something
+     */
     public void updateAppearance(boolean isHittingSomething) {
-        GreenfootImage img = getImage();
-
         // make it transparent if it's not debug time
+        setDebug();
         if (!isDebug) {
-            img.setTransparency(0);
             return;
-        } else {
-            img.setTransparency(255);
         }
-
+        GreenfootImage img = getImage();
         img.clear();
-
         if (isHittingSomething) {
             img.setColor(new Color(255, 0, 0, 150)); // red, semi transparent
         } else {
@@ -118,14 +124,22 @@ public class Hitbox extends Actor {
         img.fillRect(0, 0, img.getWidth() - 1, img.getHeight() - 1);
         img.setColor(Color.BLACK);
         img.drawRect(0, 0, img.getWidth() - 1, img.getHeight() - 1);
+        setImage(img);
     }
 
+    /**
+     * makes the hitbox invisible in case it's not debug time.
+     */
     public void setDebug() {
+        GreenfootImage img = getImage();
         if (Greenfoot.isKeyDown("f12")) {
             this.isDebug = true;
-            return;
+            img.setTransparency(255);
+        } else {
+            this.isDebug = false;
+            img.setTransparency(0);
         }
-        this.isDebug = false;
+        setImage(img);
     }
 
 }

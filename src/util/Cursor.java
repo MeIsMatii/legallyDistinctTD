@@ -4,6 +4,10 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 
+/**
+ * @author matii
+ * @version hopefully the last one
+ */
 public class Cursor extends Actor {
 
     public Cursor() {
@@ -14,7 +18,9 @@ public class Cursor extends Actor {
         followMouse();
     }
 
-
+    /**
+     * follows the mouse for isHovering checks (e.g. in the Hitbox class).
+     */
     public void followMouse() {
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
         if (mouseInfo == null) {
@@ -24,13 +30,4 @@ public class Cursor extends Actor {
             setLocation(mouseInfo.getX(), mouseInfo.getY());
         }
     }
-    /*
-    public void checkHover() {
-        if(isTouching(Hitbox.class)) {
-            List<Hitbox> hitboxes = getWorld().getObjectsAt(getX(),getY(),Hitbox.class);
-            for(Hitbox hitbox: hitboxes) {
-                hitbox.onHover();
-            }
-        }
-    }*/
 }

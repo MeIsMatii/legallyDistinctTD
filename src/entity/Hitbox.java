@@ -1,6 +1,7 @@
 package entity;
 
 import greenfoot.*;
+import util.Cursor;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Hitbox extends Actor {
     private final int width;
     private final int height;
     private int widthInCells, heightInCells;
+    private boolean wasHovering;
 
     private boolean isHittingSomething;
     private boolean isDebug;
@@ -23,6 +25,7 @@ public class Hitbox extends Actor {
         this.width = width;
         this.height = height;
 
+        this.wasHovering = false;
         this.isHittingSomething = false;
         this.isDebug = false;
     }
@@ -56,11 +59,18 @@ public class Hitbox extends Actor {
         setLocation(OWNER.getX(), OWNER.getY());
 
         checkTouching();
-        checkHover();
         setDebug();
 
         // handles visibility
         updateAppearance(isHittingSomething);
+
+
+        boolean isHovering = checkHover();
+        //System.out.println(isHovering + ", " + wasHovering);
+        if (isHovering != wasHovering) {
+            OWNER.checkHover(isHovering);
+            wasHovering = isHovering;
+        }
     }
 
     public void checkTouching() {
@@ -81,10 +91,8 @@ public class Hitbox extends Actor {
         isHittingSomething = foundTarget;
     }
 
-    public void checkHover() {
-        MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-
-        OWNER.checkHover(Greenfoot.mouseMoved(this) || isTouching(MouseInfo.class) || (mouseInfo != null && mouseInfo.getActor() == this));
+    public boolean checkHover() {
+        return (Greenfoot.mouseMoved(this) || isTouching(MouseInfo.class) || isTouching(Cursor.class));
     }
 
     public void updateAppearance(boolean isHittingSomething) {

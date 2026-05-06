@@ -1,7 +1,6 @@
 package entity.tower;
 
 import entity.Entity;
-import hud.Player;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
@@ -32,6 +31,7 @@ abstract class Tower extends Entity implements Clickable {
     }
 
     public void act() {
+        System.out.println(isRangeVisible);
         if (isPlacing) {
             followCursor();
             checkClick();
@@ -63,12 +63,7 @@ abstract class Tower extends Entity implements Clickable {
         if (isPlacing) {
             return;
         }
-        if (isHovering) {
-            onHover();
-        } else if (isRangeVisible) {
-            setRangeVisibility(false, null);
-        }
-        //so i can implement an else tree :D
+        super.checkHover(isHovering);
     }
 
 
@@ -81,8 +76,16 @@ abstract class Tower extends Entity implements Clickable {
     }
 
     public void onHover() { ///TODO FIX so it also stays when i stop moving the cursor --mathilo
+
         if (!isRangeVisible) {
+
             setRangeVisibility(true, new Color(128, 128, 128, 128));
+        }
+    }
+
+    public void onUnhover() {
+        if (isRangeVisible) {
+            setRangeVisibility(false, null);
         }
     }
 

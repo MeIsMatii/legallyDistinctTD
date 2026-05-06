@@ -9,12 +9,22 @@ public abstract class Entity extends Actor {
 
     public void checkHover(boolean isHovering) {
         if (isHovering) {
+            System.out.println("hover");
             onHover();
+        } else {
+            System.out.println("unhover");
+            onUnhover();
         }
         //so i can implement an else tree :D
     }
 
-    public abstract void onHover();
+    public void onHover() {
+        return;
+    }
+
+    public void onUnhover() {
+        return;
+    }
 
     public void addedToWorld(World world) {
         int CELLSIZE = getWorld().getCellSize();

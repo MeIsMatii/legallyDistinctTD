@@ -3,6 +3,14 @@ package entity.enemy;
 import entity.Entity;
 
 abstract class Enemy extends Entity {
+    /// @ELIAS
+    /// TODO make the bloons follow the path
+    /// the path has "getNextPathX() and -Y().
+    /// Make the bloons get that when touching a path and move towards it
+    /// (use the moveTo(x,y) func)
+
+
+
     private int lives;
     private int speed;
 

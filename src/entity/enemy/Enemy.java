@@ -1,10 +1,14 @@
 package entity.enemy;
 
 import entity.Entity;
+import map.util.Path;
+
+import java.util.List;
 
 abstract class Enemy extends Entity {
     /// @ELIAS
     /// TODO make the bloons follow the path
+    /// @mathilo I fucking hated this
     /// the path has "getNextPathX() and -Y().
     /// Make the bloons get that when touching a path and move towards it
     /// (use the moveTo(x,y) func)
@@ -47,6 +51,20 @@ abstract class Enemy extends Entity {
     }
 
     // move()
+
+    public void act() {
+        pathFinding();
+    }
+    public void pathFinding(){
+        if (isTouching(Path.class)){
+            List<Path> Paths = getIntersectingObjects(Path.class);
+            Path path = Paths.get(0);
+            int nextX = path.getNextPathX();
+            int nextY = path.getNextPathY();
+            moveTo(nextX, nextY);
+        }
+    }
+
     public void moveTo(int x, int y) {
         /// Hopefully works --Mathilo
         if (getX() != x) {

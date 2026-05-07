@@ -3,16 +3,39 @@ package entity.enemy;
 import entity.Entity;
 
 abstract class Enemy extends Entity {
-    int lives;
-    int speed;
+    private int lives;
+    private int speed;
 
     public Enemy(int speed, int lives) {
-        this.speed = speed;
+    setSpeed(speed);
+    setLives(lives);
+    }
+
+    public int getLives() {
+        return lives;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void setLives(int lives) {
         this.lives = lives;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
     }
 
     public void onHover() {
         //nothing?
+    }
+    public void onHit(Entity hitter) {
+        lives--;
+        if (lives <= 0) {
+            getWorld().removeObject(this);
+            //getWorld().getPlayer(or what its going to be )
+        }
     }
 
     // move()

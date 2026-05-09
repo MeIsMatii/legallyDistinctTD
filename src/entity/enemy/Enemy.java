@@ -5,7 +5,7 @@ import map.util.Path;
 
 import java.util.List;
 
-abstract class Enemy extends Entity {
+public abstract class Enemy extends Entity {
     /// @ELIAS
     /// TODO make the bloons follow the path
     /// @mathilo I fucking hated this

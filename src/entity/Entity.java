@@ -9,11 +9,19 @@ import greenfoot.World;
  */
 
 public abstract class Entity extends Actor {
+    private Hitbox hitbox;
    /**
     * This method gets called when an Entity collides with a hitbox.
     * @param hitter the Entity that collided with the hitbox.
     */
     public abstract void onHit(Entity hitter);
+
+    /**
+     * @return the hitbox of an Entity
+     */
+    public Hitbox getHitbox() {
+        return this.hitbox;
+    }
 
     /**
      * This method gets called by the hitbox. <br>
@@ -50,6 +58,8 @@ public abstract class Entity extends Actor {
 
 
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
+        this.hitbox = hitbox;
+
         getWorld().addObject(hitbox, getX(), getY());
     }
 }

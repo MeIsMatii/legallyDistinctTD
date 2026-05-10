@@ -3,6 +3,8 @@ package entity;
 import greenfoot.*;
 import util.Cursor;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -86,8 +88,39 @@ public class Hitbox extends Actor {
             }
         }
 
-
         isHittingSomething = foundTarget;
+    }
+
+    /**
+     * gets all entities inside one's hitbox
+     * @return a list of all entities
+     */
+    public List<Entity> getEntitiesInHitbox() {
+        List<Hitbox> overlapping = getIntersectingObjects(Hitbox.class);
+
+        List<Entity> entities = new ArrayList<>();
+
+        for(Hitbox hitbox: overlapping) {
+            entities.add(hitbox.getOWNER());
+        }
+        return entities;
+    }
+
+    /**
+     * gets Entities of a specific subclass (e.g. Tower, Enemy)
+     * @return a list of all Objects of that class
+     */
+    public <T> List<T> getSpecificEntitiesInHitbox(Class<T> targetedClass) {
+        List<Hitbox> overlapping = getIntersectingObjects(Hitbox.class);
+
+        List<T> entities = new ArrayList<>();
+        for(Hitbox hitbox: overlapping) {
+            if(targetedClass.isInstance(hitbox.getOWNER())) {
+                entities.add(targetedClass.cast(hitbox.getOWNER()));
+            }
+        }
+
+        return entities;
     }
 
     /**

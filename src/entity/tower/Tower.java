@@ -1,6 +1,7 @@
 package entity.tower;
 
 import entity.Entity;
+import entity.enemy.Enemy;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
@@ -8,6 +9,7 @@ import greenfoot.MouseInfo;
 import map.util.Path;
 import util.Clickable;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,6 +22,8 @@ abstract class Tower extends Entity implements Clickable {
     private boolean isRangeVisible;
     private final GreenfootImage sprite;
 
+    private Enemy targetedEnemy;
+
     private boolean canPlace;
 
     private final int range;
@@ -30,6 +34,8 @@ abstract class Tower extends Entity implements Clickable {
         setRangeVisibility(false, null);
         this.isPlacing = isPlacing;
         this.canPlace = true;
+
+        targetedEnemy = null;
 
         this.range = range;
     }
@@ -185,5 +191,31 @@ abstract class Tower extends Entity implements Clickable {
 
         canvas.drawImage(img, (size - img.getWidth()) / 2, (size - img.getHeight()) / 2); //so the original image is not in the top left
         return canvas;
+    }
+
+    /**
+     * Targets an enemy
+     * @param enemy the Enemy to target
+     */
+    public void targetEnemy(Enemy enemy) {
+        if(enemy == null) {
+            return;
+        }
+        turnTowards(enemy.getX(), enemy.getY());
+        targetedEnemy = enemy;
+    }
+
+    /**
+     * nothing<br>
+     * ...yet
+     */
+    public void shoot() {
+        // TODO implement @Mathilo
+    }
+
+
+    public void setTargetedEnemy() {
+        // TODO check in range and not inside the hitbox D: @Mathilo
+        List<Enemy> enemiesInRange = super.getHitbox().getSpecificEntitiesInHitbox(Enemy.class);
     }
 }

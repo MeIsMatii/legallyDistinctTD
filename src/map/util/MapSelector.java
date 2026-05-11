@@ -4,6 +4,7 @@ import hud.Player;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import setting.SettingsButton;
+import setting.SlotMachineButton;
 import util.HasSound;
 import util.ImageDisplay;
 
@@ -14,7 +15,7 @@ public class MapSelector extends World implements HasSound
     public MapSelector()
     {
         super(29, 29,20);
-        setPaintOrder(SettingsButton.class, MapSelector.class, ImageDisplay.class);
+        setPaintOrder(SlotMachineButton.class, SettingsButton.class, MapSelector.class, ImageDisplay.class);
         setBackground("cell_grass.png");
         addObject(new MapPreview(1), 5,3);///Map Preview
         addObject(new MapPreview(2), 14,3);///Map Preview
@@ -26,6 +27,8 @@ public class MapSelector extends World implements HasSound
         addObject(new MapPreview(8), 14,21);///Map Preview
         addObject(new MapPreview(9), 23,21);///Map Preview
         addObject(new SettingsButton(),27,27);
+        addObject(new SlotMachineButton(),25,27);
+
         for (int y =25; y<=29;y++){
             for(int i = 0; i < getWidth(); i++){
                 addObject(new ImageDisplay("dirtsquare.png", 20,20),i, y);}

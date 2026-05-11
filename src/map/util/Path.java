@@ -7,12 +7,13 @@ import greenfoot.World;
 public class Path extends Entity {
     private final int nextPathX;
     private final int nextPathY;
+    private final int PATHWIDTH;
 
-
-    public Path(int nextPathX, int nextPathY) {
+    public Path(int nextPathX, int nextPathY, int PATHWIDTH) {
         this.nextPathX = nextPathX;
         this.nextPathY = nextPathY;
-        setImage("cursor_invisible.png");
+        this.PATHWIDTH = PATHWIDTH;
+        setImage("invisible.png");
         //Todo Real Path Size
 
     }
@@ -25,8 +26,6 @@ public class Path extends Entity {
 
         int xOffset = 0;
         int yOffset = 0;
-
-        final int PATHWIDTH = 80;
 
         if (getNextPathX() == 0 && getNextPathY() == 0) {
             hitboxWidth = 80;

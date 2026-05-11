@@ -1,5 +1,6 @@
 package map.util;
 
+import hud.Player;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import setting.SettingsButton;
@@ -30,7 +31,7 @@ public class MapSelector extends World implements HasSound
                 addObject(new ImageDisplay("dirtsquare.png", 20,20),i, y);}
         }
         addObject(new ImageDisplay("Credits.png", 300, 60),10,27);
-
+        addObject(new Player(),6,6);
         Greenfoot.start();
     }
 

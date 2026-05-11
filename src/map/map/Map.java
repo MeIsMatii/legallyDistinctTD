@@ -3,18 +3,31 @@ package map.map;
 import greenfoot.World;
 import hud.Player;
 import map.util.Path;
+import util.Cursor;
 
 abstract class Map extends World {
-    final Player PLAYER;
-
-    public Player getPLAYER() {                   //jannis
-        return PLAYER;
-    }
+    private final Player PLAYER;
+    private final int PATHWIDTH;
 
     public Map() {
         super(1920, 1080, 1);
+        this.PATHWIDTH = 120;
+
         PLAYER = new Player(100,100); //jannis ganz alleine gemacht
+
+        addHud();
+    }
+
+    public void addHud() {
+
         addObject(PLAYER,0,0);
+
+        addObject(new Cursor(),0,0);
+    }
+
+
+    public Player getPLAYER() {                   //jannis
+        return PLAYER;
     }
 
     public void addPath(int[][] pathList){
@@ -27,10 +40,10 @@ abstract class Map extends World {
                 int nextX = pathList[i+1][0];
                 int nextY = pathList[i+1][1];
 
-                addObject(new Path(nextX,nextY),x,y);
+                addObject(new Path(nextX,nextY, PATHWIDTH),x,y);
                 //System.out.println("meow" +x +y);
             } else {
-                addObject(new Path(0,0),x,y);
+                addObject(new Path(0,0, PATHWIDTH),x,y);
             }
 
         }

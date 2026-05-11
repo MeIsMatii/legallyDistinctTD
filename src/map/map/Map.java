@@ -5,11 +5,16 @@ import hud.Player;
 import map.util.Path;
 
 abstract class Map extends World {
-    Player player;
+    final Player PLAYER;
+
+    public Player getPLAYER() {                   //jannis
+        return PLAYER;
+    }
+
     public Map() {
         super(1920, 1080, 1);
-        player = new Player(100,100); //jannis ganz alleine gemacht
-        addObject(player,0,0);
+        PLAYER = new Player(100,100); //jannis ganz alleine gemacht
+        addObject(PLAYER,0,0);
     }
 
     public void addPath(int[][] pathList){

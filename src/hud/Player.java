@@ -44,7 +44,7 @@ public class Player extends MainClass {
         world.addObject(new ImageDisplay("heart.png", 30, 30),1,2);  //ganz oben Links, jemand muss noch herz bild ertsellen und dann hier einfügen
         world.showText("Leben: " + getHealth(), 2, 2);//ganz oben links,rechts vom herzen
 
-        world.addObject(new ImageDisplay("Credits.png", 300, 60),1,3);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
+        world.addObject(new ImageDisplay("Coin.png", 45, 45),1,3);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
         world.showText("Coins: " + getCoins(), 2, 3);//rechts vom coinpng
     }
 

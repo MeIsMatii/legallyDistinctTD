@@ -11,7 +11,7 @@ import greenfoot.MouseInfo;
 public class Cursor extends Actor {
 
     public Cursor() {
-        setImage("cursor_invisible.png");
+        setImage("invisible.png");
     }
 
     public void act() {

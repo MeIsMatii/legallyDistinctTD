@@ -21,11 +21,13 @@ public class Hitbox extends Actor {
 
     private boolean isHittingSomething;
     private boolean isDebug;
+    private boolean isFollowing;
 
-    public Hitbox(int width, int height, Entity owner) {
+    public Hitbox(int width, int height, boolean isFollowing, Entity owner) {
         this.OWNER = owner;
         this.width = width;
         this.height = height;
+        this.isFollowing = isFollowing;
 
         this.wasHovering = false;
         this.isHittingSomething = false;
@@ -50,6 +52,10 @@ public class Hitbox extends Actor {
         setImage(img);
     }
 
+    public void setFollowing(boolean state) {
+        this.isFollowing = state;
+    }
+
     public void act() {
         // rm hitbox when player is gone
         if (OWNER == null || OWNER.getWorld() == null) {
@@ -57,8 +63,9 @@ public class Hitbox extends Actor {
             return;
         }
 
-        //center to player
-        setLocation(OWNER.getX(), OWNER.getY());
+        if(isFollowing) {
+            followPlayer();
+        }
 
         checkTouching();
 
@@ -72,6 +79,11 @@ public class Hitbox extends Actor {
             OWNER.checkHover(isHovering);
             wasHovering = isHovering;
         }
+    }
+
+    public void followPlayer() {
+        //center to player
+        setLocation(OWNER.getX(), OWNER.getY());
     }
 
     public void checkTouching() {

@@ -22,6 +22,9 @@ public abstract class Entity extends Actor {
     public Hitbox getHitbox() {
         return this.hitbox;
     }
+    protected void setHitbox(Hitbox hitbox) {
+        this.hitbox = hitbox;
+    }
 
     /**
      * This method gets called by the hitbox. <br>
@@ -57,7 +60,7 @@ public abstract class Entity extends Actor {
         int hitboxHeight = getImage().getHeight() / CELLSIZE;
 
 
-        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
+        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight,true,this);
         this.hitbox = hitbox;
 
         getWorld().addObject(hitbox, getX(), getY());

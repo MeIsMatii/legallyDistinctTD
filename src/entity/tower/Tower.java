@@ -108,6 +108,7 @@ abstract class Tower extends Entity implements Clickable {
     public void place() {
         isPlacing = false;
         setRangeVisibility(false, null);
+        getHitbox().setFollowing(false);
     }
 
     /**

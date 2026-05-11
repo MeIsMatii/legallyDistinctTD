@@ -2,7 +2,6 @@ package map.util;
 
 import entity.Entity;
 import entity.Hitbox;
-import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 public class Path extends Entity {
@@ -19,6 +18,7 @@ public class Path extends Entity {
     }
 
     public void addedToWorld(World world) {
+        checkLocations();
 
         int hitboxWidth = 0;
         int hitboxHeight = 0;
@@ -26,7 +26,7 @@ public class Path extends Entity {
         int xOffset = 0;
         int yOffset = 0;
 
-
+        final int PATHWIDTH = 80;
 
         if (getNextPathX() == 0 && getNextPathY() == 0) {
             hitboxWidth = 80;
@@ -35,32 +35,34 @@ public class Path extends Entity {
 
         } else if (getX() == getNextPathX()) {
             if (getY() < getNextPathY()) { //DOWN
-                hitboxHeight = getNextPathY() - getY();
-                yOffset=hitboxHeight;
-                //offset hH distance down
+                hitboxHeight = getNextPathY() - getY() + (PATHWIDTH / 2);
+                yOffset = -hitboxHeight; //this needs to be negative D: //idk why tho
 
             } else if (getY() > getNextPathY()) { //UP
-                hitboxHeight = getY() - getNextPathY();
-                yOffset=0;
+                hitboxHeight = getY() - getNextPathY() + (PATHWIDTH / 2);
+                yOffset = hitboxHeight; //either this or 0. idfk anymore --mathilo
             }
-            hitboxWidth = 80;
+            hitboxWidth = PATHWIDTH;
 
 
         } else if (getY() == getNextPathY()) {
             if (getX() < getNextPathX()) { // RIGHT
-                hitboxWidth = getNextPathX() - getX();
-                xOffset=0;
+                hitboxWidth = getNextPathX() - getX() + (PATHWIDTH / 2);
+                xOffset = -hitboxWidth; // huh
 
             } else if (getX() > getNextPathX()) { //LEFT
-                hitboxWidth = getX() - getNextPathX();
-                xOffset=hitboxWidth;
+                hitboxWidth = getX() - getNextPathX() + (PATHWIDTH / 2);
+                xOffset = hitboxWidth;
             }
-            hitboxHeight = 80;
+            hitboxHeight = PATHWIDTH;
         }
-        //System.out.printf("mewo: w: %d, h: %d\n", hitboxWidth, hitboxHeight);
-        System.out.println(xOffset);
-        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
-        getWorld().addObject(hitbox, getX()-xOffset, getY()-yOffset);
+        xOffset = xOffset / 2;
+        yOffset = yOffset / 2;
+
+
+        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, false, this);
+        super.setHitbox(hitbox);
+        getWorld().addObject(hitbox, getX() - xOffset, getY() - yOffset);
     }
 
     public int getNextPathX() {
@@ -77,6 +79,33 @@ public class Path extends Entity {
 
     public void onHover() {
         //nothing
+    }
+
+    /**
+     * Validates the given path
+     *
+     * @throws RuntimeException when there is an issue with the paths
+     */
+    private void checkLocations() {
+
+        //Path not connected
+        if ((getX() != getNextPathX() && getY() != getNextPathY()) && (getNextPathX() != 0 || getNextPathY() != 0)) {
+            System.out.println("");
+            System.out.println("The Path locations are: (" + getX() + " | " + getY() + ") and (" + getNextPathX() + " | " + getNextPathY() + ")");
+            throw new RuntimeException("Path is not connected. Atleast 1 coordinate needs to be the same for each path and next path.\nThe Path locations are: (" + getX() + " | " + getY() + ") and (" + getNextPathX() + " | " + getNextPathY() + ")");
+
+        }
+        //Path out of bounds
+        else if (getX() < 0 || getX() > getWorld().getWidth() || getY() < 0 || getY() > getWorld().getHeight()) {
+            throw new RuntimeException("Path is out of bounds at (" + getX() + " | " + getY() + "). Please fix.");
+
+        }
+        //Next path out of bounds
+        else if (getNextPathX() != 0 && getNextPathY() != 0 &&
+            (getNextPathX() < 0 || getNextPathX() > getWorld().getWidth() || getNextPathY() < 0 || getNextPathY() > getWorld().getHeight())) {
+            throw new RuntimeException("Path is out of bounds at (" + getX() + " | " + getY() + "). Please fix.");
+
+        }
     }
 
 }

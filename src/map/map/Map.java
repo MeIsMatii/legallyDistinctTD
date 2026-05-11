@@ -28,7 +28,7 @@ abstract class Map extends World {
                 int nextY = pathList[i+1][1];
 
                 addObject(new Path(nextX,nextY),x,y);
-                System.out.println("meow" +x +y);
+                //System.out.println("meow" +x +y);
             } else {
                 addObject(new Path(0,0),x,y);
             }

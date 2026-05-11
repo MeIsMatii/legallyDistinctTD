@@ -1,11 +1,15 @@
 package map.map;
 
 import greenfoot.World;
+import hud.Player;
 import map.util.Path;
 
 abstract class Map extends World {
+    Player player;
     public Map() {
         super(1920, 1080, 1);
+        player = new Player(100,100); //jannis ganz alleine gemacht
+        addObject(player,0,0);
     }
 
     public void addPath(int[][] pathList){

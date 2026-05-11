@@ -48,9 +48,9 @@ Basically, it's Bloons TD6. We just said that already.
 
 > Subject to change depending on what our group can actually figure out.
 
-- **Language:** TBD
-- **Engine/Framework:** TBD
-- **Assets:** Suspiciously similar to the original
+- **Language:** uhhh english i think
+- **Engine/Framework:** greenfoot
+- **Assets:** Suspiciously similar to the original (ctrl c ctrl v)
 
 ---
 

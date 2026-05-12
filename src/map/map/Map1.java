@@ -16,7 +16,7 @@ public class Map1 extends Map {
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.jpg");
 
-        img.scale(1920,1080);
+        img.scale(1620,1080);
         setBackground(img);
 
         //addObject(new UpgradeMenu(),800, 1000); <- exact placment

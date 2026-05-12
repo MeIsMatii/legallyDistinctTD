@@ -7,6 +7,7 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
 import map.util.Path;
+import map.map.Map;
 import util.Clickable;
 
 import java.util.List;
@@ -119,7 +120,9 @@ abstract class Tower extends Entity implements Clickable {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
 
-        if (mouseInfo == null) {
+        Map currMap = (Map) getWorld();
+        if (mouseInfo == null || currMap.getCURSOR().getX() > 1620 ) {
+
             return;
         }
 

@@ -5,14 +5,25 @@ import hud.Player;
 import hud.TowerSelector;
 import map.util.Path;
 import util.Cursor;
+import util.MainClass;
 
-public abstract class Map extends World {
+import java.util.List;
+
+abstract class Map extends World {
+    private int resolution;
     private final Player PLAYER;
     private final Cursor CURSOR;
     private final int PATHWIDTH;
+    private int[][] PATHLIST;
 
     public Map() {
         super(1920, 1080, 1);
+
+        //setResolution(this.resolution=getWidth());
+
+
+
+
         this.PATHWIDTH = 120;
 
         PLAYER = new Player(100,100); //jannis ganz alleine gemacht
@@ -30,6 +41,20 @@ public abstract class Map extends World {
         addObject(new TowerSelector(),1760,540);
     }
 
+    public int getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(int newResolution) {
+
+        int ratio = newResolution/resolution;
+        List<MainClass> objects = getObjects(MainClass.class);
+        for (MainClass obj: objects) {
+            obj.scale(ratio);
+        }
+        scalePathLocations(ratio);
+        this.resolution = newResolution;
+    }
 
     public Player getPLAYER() {                   //jannis
         return PLAYER;
@@ -40,6 +65,7 @@ public abstract class Map extends World {
     }
 
     public void addPath(int[][] pathList){
+        this.PATHLIST = pathList;
         for (int i = 0; i < pathList.length; i++) {
             int x = pathList[i][0];
             int y = pathList[i][1];
@@ -55,6 +81,14 @@ public abstract class Map extends World {
                 addObject(new Path(0,0, PATHWIDTH),x,y);
             }
 
+        }
+    }
+
+    public void scalePathLocations(int ratio) {
+        for (int[] i: PATHLIST) {
+            for(int location: i) {
+                location = location * ratio;
+            }
         }
     }
 

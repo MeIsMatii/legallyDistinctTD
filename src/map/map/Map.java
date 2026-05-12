@@ -2,11 +2,13 @@ package map.map;
 
 import greenfoot.World;
 import hud.Player;
+import hud.TowerSelector;
 import map.util.Path;
 import util.Cursor;
 
-abstract class Map extends World {
+public abstract class Map extends World {
     private final Player PLAYER;
+    private final Cursor CURSOR;
     private final int PATHWIDTH;
 
     public Map() {
@@ -14,6 +16,7 @@ abstract class Map extends World {
         this.PATHWIDTH = 120;
 
         PLAYER = new Player(100,100); //jannis ganz alleine gemacht
+        CURSOR = new Cursor();
 
         addHud();
     }
@@ -22,12 +25,18 @@ abstract class Map extends World {
 
         addObject(PLAYER,0,0);
 
-        addObject(new Cursor(),0,0);
+        addObject(CURSOR,0,0);
+
+        addObject(new TowerSelector(),1760,540);
     }
 
 
     public Player getPLAYER() {                   //jannis
         return PLAYER;
+    }
+
+    public Cursor getCURSOR() {
+        return CURSOR;
     }
 
     public void addPath(int[][] pathList){

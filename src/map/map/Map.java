@@ -9,7 +9,7 @@ import util.MainClass;
 
 import java.util.List;
 
-abstract class Map extends World {
+public abstract class Map extends World {
     private int resolution;
     private final Player PLAYER;
     private final Cursor CURSOR;

@@ -2,7 +2,7 @@ package entity.enemy;
 
 import entity.Entity;
 
-abstract class Enemy extends Entity {
+public abstract class Enemy extends Entity {
     int lives;
     int speed;
 

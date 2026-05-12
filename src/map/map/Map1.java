@@ -3,6 +3,7 @@ package map.map;
 import entity.tower.TestTower;
 import greenfoot.GreenfootImage;
 import hud.Player;
+import hud.UpgradeMenu;
 import util.HomeButton;
 
 
@@ -18,6 +19,7 @@ public class Map1 extends Map {
         img.scale(1920,1080);
         setBackground(img);
 
+        //addObject(new UpgradeMenu(),800, 1000); <- exact placment
 
         addObject(new HomeButton(), 1, 1);
         addObject(new Player(), 6, 6);

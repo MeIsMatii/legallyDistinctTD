@@ -2,8 +2,8 @@ package hud;
 
 import util.MainClass;
 
-public class UpgradeScreen extends MainClass {
-    public UpgradeScreen(){
+public class TowerSelector extends MainClass {
+    public TowerSelector(){
         setImage("upgradesPrototype.png");
 
     }

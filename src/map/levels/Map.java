@@ -19,9 +19,6 @@ public abstract class Map extends World {
     public Map() {
         super(1920, 1080, 1);
 
-        //setResolution(this.resolution=getWidth());
-
-
         this.PATHWIDTH = 120;
 
         PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
@@ -39,20 +36,6 @@ public abstract class Map extends World {
         addObject(new TowerSelector(), 1760, 540);
     }
 
-    public int getResolution() {
-        return resolution;
-    }
-
-    public void setResolution(int newResolution) {
-
-        int ratio = newResolution / resolution;
-        List<MainClass> objects = getObjects(MainClass.class);
-        for (MainClass obj : objects) {
-            obj.scale(ratio);
-        }
-        scalePathLocations(ratio);
-        this.resolution = newResolution;
-    }
 
     public Player getPLAYER() {                   //jannis
         return PLAYER;
@@ -82,13 +65,6 @@ public abstract class Map extends World {
         }
     }
 
-    public void scalePathLocations(int ratio) {
-        for (int[] i : PATHLIST) {
-            for (int location : i) {
-                location = location * ratio;
-            }
-        }
-    }
 
     //TODO add paths like in Map1
 }

@@ -2,6 +2,7 @@ package map.levels;
 
 import core.MainClass;
 import core.Player;
+import entities.tower.Tower;
 import greenfoot.World;
 import map.levels.util.Path;
 import ui.hud.TowerSelector;
@@ -32,8 +33,7 @@ public abstract class Map extends World {
     }
 
     public void addHud() {
-        this.UPGRADEMENU = new UpgradeMenu();
-
+        UPGRADEMENU = null;
         addObject(PLAYER, 0, 0);
 
         addObject(CURSOR, 0, 0);
@@ -41,16 +41,21 @@ public abstract class Map extends World {
         addObject(new TowerSelector(), 1770, 540);
     }
 
-    public void setUpgradeMenuVisibility(boolean isVisible) {
+    public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;
         if(isVisible) {
             int width = (getWidth()-300)/2;
+            removeObject(UPGRADEMENU);
+            UPGRADEMENU = new UpgradeMenu(tower);
             addObject(UPGRADEMENU,width, getHeight()-216/2);
         } else if(!getObjects(UpgradeMenu.class).isEmpty()) {
             removeObject(UPGRADEMENU);
+            UPGRADEMENU = null;
         }
     }
-
+    public UpgradeMenu getUpgradeMenu() {
+        return this.UPGRADEMENU;
+    }
     public boolean isUpgradeMenuVisible() {
         return isUpgradeMenuVisible;
     }

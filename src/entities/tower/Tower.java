@@ -9,6 +9,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
 import map.levels.Map;
 import map.levels.util.Path;
+import ui.hud.UpgradeMenu;
 
 import java.util.List;
 import java.util.Objects;
@@ -18,7 +19,7 @@ import java.util.Objects;
  * @version hopefully the last one
  */
 
-abstract class Tower extends Entity implements Clickable {
+public abstract class Tower extends Entity implements Clickable {
     private boolean isPlacing;
     private boolean isRangeVisible;
     private final GreenfootImage sprite;
@@ -91,11 +92,17 @@ abstract class Tower extends Entity implements Clickable {
             return;
         } else if(!isPlacing){
             Map map = (Map) getWorld();
-            if(!map.isUpgradeMenuVisible()) { //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
-                map.setUpgradeMenuVisibility(true);
+            UpgradeMenu upgradeMenu = map.getUpgradeMenu();
+            if(upgradeMenu == null) {
+                map.setUpgradeMenuVisibility(true, this);
+            } else if(upgradeMenu.getTower() != this) {
+                map.setUpgradeMenuVisibility(true, this);
             } else {
-                map.setUpgradeMenuVisibility(false);
+                map.setUpgradeMenuVisibility(false, null);
             }
+
+
+             //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
         }
     }
 

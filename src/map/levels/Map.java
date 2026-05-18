@@ -5,11 +5,15 @@ import core.Player;
 import greenfoot.World;
 import map.levels.util.Path;
 import ui.hud.TowerSelector;
+import ui.hud.UpgradeMenu;
 import util.Cursor;
 
 import java.util.List;
 
 public abstract class Map extends World {
+    private UpgradeMenu UPGRADEMENU;
+    private boolean isUpgradeMenuVisible;
+
     private int resolution;
     private final Player PLAYER;
     private final Cursor CURSOR;
@@ -28,14 +32,28 @@ public abstract class Map extends World {
     }
 
     public void addHud() {
+        this.UPGRADEMENU = new UpgradeMenu();
 
         addObject(PLAYER, 0, 0);
 
         addObject(CURSOR, 0, 0);
 
-        addObject(new TowerSelector(), 1760, 540);
+        addObject(new TowerSelector(), 1770, 540);
     }
 
+    public void setUpgradeMenuVisibility(boolean isVisible) {
+        isUpgradeMenuVisible = isVisible;
+        if(isVisible) {
+            int width = (getWidth()-300)/2;
+            addObject(UPGRADEMENU,width, getHeight()-216/2);
+        } else if(!getObjects(UpgradeMenu.class).isEmpty()) {
+            removeObject(UPGRADEMENU);
+        }
+    }
+
+    public boolean isUpgradeMenuVisible() {
+        return isUpgradeMenuVisible;
+    }
 
     public Player getPLAYER() {                   //jannis
         return PLAYER;

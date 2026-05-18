@@ -42,10 +42,10 @@ abstract class Tower extends Entity implements Clickable {
     }
 
     public void act() {
-
+        checkClick();
         if (isPlacing) {
             followCursor();
-            checkClick();
+
         }
         this.canPlace = true; //default value
 
@@ -85,11 +85,17 @@ abstract class Tower extends Entity implements Clickable {
 
 
     public void onClick() {
+
         if (isPlacing && canPlace) {
             place();
-        } else {
+            return;
+        } else if(!isPlacing){
             Map map = (Map) getWorld();
-
+            if(!map.isUpgradeMenuVisible()) { //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
+                map.setUpgradeMenuVisibility(true);
+            } else {
+                map.setUpgradeMenuVisibility(false);
+            }
         }
     }
 

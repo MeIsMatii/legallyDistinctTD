@@ -1,5 +1,6 @@
 package entities;
 
+import core.MainClass;
 import greenfoot.*;
 import util.Cursor;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @version hopefully the last one
  */
 
-public class Hitbox extends Actor {
+public class Hitbox extends MainClass {
     private final Entity OWNER; // CAPS, because it's a constant
     private final int width;
     private final int height;

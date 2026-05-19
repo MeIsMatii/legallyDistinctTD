@@ -3,6 +3,7 @@ package map.levels;
 import core.MainClass;
 import core.Player;
 import entities.tower.Tower;
+import entities.tower.util.RangeDisplay;
 import greenfoot.World;
 import map.levels.util.Path;
 import ui.hud.TowerSelector;
@@ -23,6 +24,7 @@ public abstract class Map extends World {
 
     public Map() {
         super(1920, 1080, 1);
+        setPaintOrder(Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.PATHWIDTH = 120;
 

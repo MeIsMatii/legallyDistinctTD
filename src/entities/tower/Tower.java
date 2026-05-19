@@ -3,10 +3,8 @@ package entities.tower;
 import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
-import greenfoot.Color;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.MouseInfo;
+import entities.tower.util.RangeDisplay;
+import greenfoot.*;
 import map.levels.Map;
 import map.levels.util.Path;
 import ui.hud.UpgradeMenu;
@@ -21,8 +19,7 @@ import java.util.Objects;
 
 public abstract class Tower extends Entity implements Clickable {
     private boolean isPlacing;
-    private boolean isRangeVisible;
-    private final GreenfootImage sprite;
+    private final RangeDisplay RANGEDISPLAY;
 
     private Enemy targetedEnemy;
 
@@ -31,9 +28,8 @@ public abstract class Tower extends Entity implements Clickable {
     private final int range;
 
 
-    public Tower(boolean isPlacing, int range, String spriteName) {
-        this.sprite = new GreenfootImage(spriteName);
-        setRangeVisibility(false, null);
+    public Tower(boolean isPlacing, int range) {
+        this.RANGEDISPLAY = new RangeDisplay(this,range,isPlacing);
         this.isPlacing = isPlacing;
         this.canPlace = true;
 
@@ -42,32 +38,28 @@ public abstract class Tower extends Entity implements Clickable {
         this.range = range;
     }
 
+    public void addedToWorld(World world) {
+        super.addedToWorld(world);
+        world.addObject(RANGEDISPLAY,getX(),getY());
+        RANGEDISPLAY.setRangeVisibility(false, null);
+    }
+
     public void act() {
         checkClick();
         if (isPlacing) {
             followCursor();
-
+            RANGEDISPLAY.setFollowing(true);
+        } else {
+            RANGEDISPLAY.setFollowing(false);
+            setTargetedEnemy();
+            targetEnemy(targetedEnemy);
         }
         this.canPlace = true; //default value
 
 
     }
 
-    /**
-     * Sets the visibility and colour of the range display circle.
-     *
-     * @param state whether the range is visible or not.
-     * @param color the colour (can be null) that the range display is set to, in case it's visible.
-     */
-    public void setRangeVisibility(boolean state, Color color) {
-        if (!state) {
-            setImage(sprite);
-        } else {
-            displayRange(color);
-        }
 
-        isRangeVisible = state;
-    }
 
     public void onHit(Entity hitter) {
         if (!(hitter instanceof Path) && !(hitter instanceof Tower)) { ///is there a better way than instanceof?
@@ -84,7 +76,12 @@ public abstract class Tower extends Entity implements Clickable {
         super.checkHover(isHovering);
     }
 
-
+    /**
+     * {@code  if isPlacing AND canPlace:}<br>
+     * Places the Tower.<br>
+     * {@code if not isPlacing:}<br>
+     * Toggles the UpgradeMenu.<br>
+     */
     public void onClick() {
 
         if (isPlacing && canPlace) {
@@ -107,14 +104,14 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
     public void onHover() {
-        if (!isRangeVisible) {
-            setRangeVisibility(true, new Color(128, 128, 128, 128));
+        if (!RANGEDISPLAY.isRangeVisible) {
+            RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
         }
     }
 
     public void onUnhover() {
-        if (isRangeVisible) {
-            setRangeVisibility(false, null);
+        if (RANGEDISPLAY.isRangeVisible) {
+            RANGEDISPLAY.setRangeVisibility(false, null);
         }
     }
 
@@ -123,7 +120,7 @@ public abstract class Tower extends Entity implements Clickable {
      */
     public void place() {
         isPlacing = false;
-        setRangeVisibility(false, null);
+        RANGEDISPLAY.setRangeVisibility(false, null);
         getHitbox().setFollowing(false);
     }
 
@@ -154,65 +151,23 @@ public abstract class Tower extends Entity implements Clickable {
      * {@code grey} when the placement location is valid.<br>
      */
     public void checkPlacement() {
-        if (!isRangeVisible) {
+        if (!RANGEDISPLAY.isRangeVisible) {
             if (canPlace) {
-                setRangeVisibility(true, new Color(128, 128, 128, 128));
+                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
             } else {
-                setRangeVisibility(true, new Color(128, 0, 0, 128));
+                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 0, 0, 128));
             }
         } else {
-            if (Objects.equals(getImage().getColor(), new Color(128, 0, 0, 128)) && canPlace) {
-                //red range, should be grey
-                setImage(sprite);
-                setRangeVisibility(true, new Color(128, 128, 128, 128));
-            } else if (Objects.equals(getImage().getColor(), new Color(128, 128, 128, 128)) && !canPlace) {
+            if (canPlace) {
+                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
+            } else {
                 //grey range, should be red
-                setImage(sprite);
-                setRangeVisibility(true, new Color(128, 0, 0, 128));
+                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 0, 0, 128));
             }
         }
     }
 
-    /**
-     * sets the required variables to be given to the getGreenfootImage() func. <br>
-     * sets the image to the returned image.
-     *
-     * @param color the colour of the circle.
-     */
-    public void displayRange(Color color) {
-        ///AAAAAAAAAAAAAAAAAAAAAAAAAAAA WHY DID I DO THIS
-        /// WHY DID I NOT JUST LET SOMEONE ELSE DO IT
-        // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA --Mathilo
-        int radius = range * getWorld().getCellSize();
-        int diameter = radius * 2;
 
-        GreenfootImage canvas = getGreenfootImage(diameter, color);
-
-        setImage(canvas);
-
-        isRangeVisible = true;
-    }
-
-    /**
-     * draws a circle based on the diameter in the chosen colour.
-     *
-     * @param diameter the diameter of the circle.
-     * @param color    the colour of the circle.
-     * @return the image.
-     */
-    private GreenfootImage getGreenfootImage(int diameter, Color color) {
-        GreenfootImage img = getImage();
-
-        int size = Math.max(diameter, Math.max(img.getWidth(), img.getHeight()));
-        GreenfootImage canvas = new GreenfootImage(size, size);
-
-        canvas.setColor(color); //semi transparent grey  //fuck you intelliJ, im speak BE not AE
-        canvas.fillOval(0, 0, diameter, diameter);
-        canvas.drawOval(0, 0, diameter, diameter);
-
-        canvas.drawImage(img, (size - img.getWidth()) / 2, (size - img.getHeight()) / 2); //so the original image is not in the top left
-        return canvas;
-    }
 
     /**
      * Targets an enemy
@@ -238,6 +193,11 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void setTargetedEnemy() {
         // TODO check in range and not inside the hitbox D: @Mathilo
-        List<Enemy> enemiesInRange = super.getHitbox().getSpecificEntitiesInHitbox(Enemy.class);
+        List<Enemy> enemiesInRange = getObjectsInRange(range,Enemy.class);
+        if(enemiesInRange.isEmpty()) {
+            this.targetedEnemy = null;
+            return;
+        }
+        this.targetedEnemy = enemiesInRange.get(0);
     }
 }

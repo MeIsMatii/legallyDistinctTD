@@ -4,7 +4,8 @@ import greenfoot.GreenfootImage;
 
 public class TestTower extends Tower {
     public TestTower(boolean isPlacing, int range) {
-        super(isPlacing, range, "TestTower2_2.png");
+        super(isPlacing, range);
+        setImage("TestTower2_2.png");
 
 
         GreenfootImage img = getImage();

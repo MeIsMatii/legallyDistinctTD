@@ -1,14 +1,43 @@
 package entities.enemy;
 
 import entities.Entity;
+import greenfoot.World;
+import map.levels.util.Path;
+
+import java.util.List;
 
 public abstract class Enemy extends Entity {
     int lives;
-    int speed;
+    double speed;
+    double realPosX;
+    double realPosY;
 
-    public Enemy(int speed, int lives) {
+    int nextX;
+    int nextY;
+
+    public Enemy(double speed, int lives) {
         this.speed = speed;
         this.lives = lives;
+
+        this.realPosX = 0;
+        this.realPosY = 0;
+    }
+    public void addedToWorld(World world) {
+        this.realPosX = getX();
+        this.realPosY = getY();
+    }
+
+    public void act() {
+        List<Path> pathList = getWorld().getObjectsAt(getX(),getY(), Path.class);
+        if(!pathList.isEmpty()) {
+            Path path = pathList.get(0);
+            this.nextX = path.getNextPathX();
+            this.nextY = path.getNextPathY();
+            if(nextX == 0 && nextY == 0) {
+                //TODO DAMAGE PLAYER @ELIAS
+            }
+        }
+        moveTo(nextX,nextY);
     }
 
     public void onHover() {
@@ -16,30 +45,22 @@ public abstract class Enemy extends Entity {
     }
 
     // move()
-    public void moveTo(int x, int y) {
-        /// Hopefully works --Mathilo
-        if (getX() != x) {
-            turnTowards(x, getY());
+    public void moveTo(int targetX, int targetY) {
+        /// ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA D:
+
+        double dx = targetX - realPosX;
+        double dy = targetY - realPosY;
+
+        if (Math.abs(dx) > speed) {
+            realPosX += speed * Math.signum(dx);
+        } else if (Math.abs(dy) > speed) {
+            realPosY += speed * Math.signum(dy);
+        } else {
+            realPosX = targetX;
+            realPosY = targetY;
         }
 
-        for (int i = 0; i < speed; i++) {
-            move(1);
-            if (getX() == x) {
-                break;
-            }
-        }
-
-
-        if (getY() != y) {
-            turnTowards(getX(), y);
-        }
-
-        for (int i = 0; i < speed; i++) {
-            move(1);
-            if (getY() == y) {
-                break;
-            }
-        }
+        setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
 }

@@ -9,6 +9,9 @@ public class Player extends MainClass {
     private int coins;
     private int health;
 
+    private int oldCoins;
+    private int oldHealth;
+
     public int getCoins() {
         return coins;
     }
@@ -33,11 +36,18 @@ public class Player extends MainClass {
     public Player(int startCoins, int startHealth) {
         coins = startCoins;
         health = startHealth;
+
+        oldCoins = 0;
+        oldHealth = 0;
     }                                               //noch sehr stolz auf mich
 
     public void act() {
         coinCheat();
         show(getWorld());
+
+
+        oldCoins = coins;
+        oldHealth = health;
     }
 
     @Override
@@ -46,9 +56,13 @@ public class Player extends MainClass {
         world.addObject(new ImageDisplay("Coin.png", 45, 45), 1, 3);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
     }
 
-    public void show(World world) {                               //zeigt Leben oben auf der map
-        world.showText("Leben: " + getHealth(), 2, 2);//ganz oben links,rechts vom herzen
-        world.showText("Coins: " + getCoins(), 2, 3);//rechts vom coinpng
+    public void show(World world) {//zeigt Leben oben auf der map
+        if(oldHealth != health) {
+            world.showText("Leben: " + getHealth(), 2, 2);//ganz oben links,rechts vom herzen
+        }
+        if(oldCoins != coins) {
+            world.showText("Coins: " + getCoins(), 2, 3);//rechts vom coinpng
+        }
     }
 
     public void coinCheat() {

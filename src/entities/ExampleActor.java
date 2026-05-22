@@ -22,6 +22,10 @@ public class ExampleActor extends MainClass implements Clickable, HasSound {
 
     @Override
     public void act() {
+        super.act();
+        if(isPaused()) {
+            return;
+        }
         checkClick();
         updateAppearance();
         if (Greenfoot.isKeyDown("F2")) {

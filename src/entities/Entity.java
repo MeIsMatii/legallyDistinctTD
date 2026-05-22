@@ -1,5 +1,6 @@
 package entities;
 
+import core.MainClass;
 import greenfoot.Actor;
 import greenfoot.World;
 
@@ -8,7 +9,7 @@ import greenfoot.World;
  * @version hopefully the last one
  */
 
-public abstract class Entity extends Actor {
+public abstract class Entity extends MainClass {
     private Hitbox hitbox;
 
     /**
@@ -68,5 +69,9 @@ public abstract class Entity extends Actor {
         this.hitbox = hitbox;
 
         getWorld().addObject(hitbox, getX(), getY());
+    }
+
+    public void act() {
+        super.act();
     }
 }

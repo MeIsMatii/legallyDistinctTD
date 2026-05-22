@@ -40,6 +40,7 @@ public abstract class Enemy extends Entity {
         moveTo(nextX,nextY);
     }
 
+
     public void onHover() {
         //nothing?
     }

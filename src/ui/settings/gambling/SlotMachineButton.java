@@ -1,4 +1,4 @@
-package ui.settings;
+package ui.settings.gambling;
 
 import core.Clickable;
 import core.MainClass;

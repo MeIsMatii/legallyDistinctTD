@@ -1,9 +1,11 @@
-package ui.settings;
+package ui.settings.gambling;
 
 import core.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+import greenfoot.UserInfo;
+import greenfoot.UserInfoVisitor;
 
 public class SlotMachineButtonGamble extends MainClass implements Clickable {
 

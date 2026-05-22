@@ -1,4 +1,4 @@
-package ui.settings;
+package ui.settings.gambling;
 
 import greenfoot.World;
 import ui.common.HomeButton;

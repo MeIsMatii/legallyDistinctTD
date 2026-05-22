@@ -24,7 +24,7 @@ public abstract class Map extends World {
 
     public Map() {
         super(1920, 1080, 1);
-        setPaintOrder(Tower.class, RangeDisplay.class); //Tower infront of it's range
+    setPaintOrder(Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.PATHWIDTH = 120;
 
@@ -45,6 +45,7 @@ public abstract class Map extends World {
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;
+        //TODO add paths and delete them @Elias
         if(isVisible) {
             int width = (getWidth()-300)/2;
             removeObject(UPGRADEMENU);
@@ -55,6 +56,7 @@ public abstract class Map extends World {
             UPGRADEMENU = null;
         }
     }
+
     public UpgradeMenu getUpgradeMenu() {
         return this.UPGRADEMENU;
     }

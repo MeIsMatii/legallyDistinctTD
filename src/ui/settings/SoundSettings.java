@@ -71,6 +71,7 @@ public class SoundSettings {
             } else {
                 // sound nicht aktiv aber trotzdem lautstärke anpassen, so dass loops in der lautstärke verändertt werden können
                 sound.setVolume(masterVolume);
+                soundsToRemove.add(sound);
             }
         }
         //alle sounds die nicht mehr spielen löschen

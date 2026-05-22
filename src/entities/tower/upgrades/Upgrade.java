@@ -1,7 +1,7 @@
 package entities.tower.upgrades;
 
-public class Upgrade2 {
-    private int level;
+public class Upgrade {
+    private int level = 1;
     private String description;
 
     public void setLevel(int level) {

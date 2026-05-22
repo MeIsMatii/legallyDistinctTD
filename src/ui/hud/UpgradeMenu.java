@@ -2,7 +2,6 @@ package ui.hud;
 
 import entities.tower.Tower;
 import greenfoot.Actor;
-import greenfoot.Greenfoot;
 import greenfoot.World;
 
 public class UpgradeMenu extends Actor {
@@ -14,9 +13,9 @@ public class UpgradeMenu extends Actor {
     }
 
     protected void addedToWorld(World world) {
-        getWorld().addObject(new UpgradePath(TOWER), getX(), getY());
-        getWorld().addObject(new UpgradePath(TOWER), getX() - 500, getY());
-        getWorld().addObject(new UpgradePath(TOWER), getX() + 500, getY());
+        getWorld().addObject(new UpgradePath(TOWER, 1), getX(), getY());
+        getWorld().addObject(new UpgradePath(TOWER,2), getX() - 500, getY());
+        getWorld().addObject(new UpgradePath(TOWER,3), getX() + 500, getY());
     }
 
     public Tower getTower() {

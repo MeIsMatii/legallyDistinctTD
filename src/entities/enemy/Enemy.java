@@ -2,6 +2,7 @@ package entities.enemy;
 
 import entities.Entity;
 import greenfoot.World;
+import map.levels.Map;
 import map.levels.util.Path;
 
 import java.util.List;
@@ -34,6 +35,9 @@ public abstract class Enemy extends Entity {
             this.nextX = path.getNextPathX();
             this.nextY = path.getNextPathY();
             if(nextX == 0 && nextY == 0) {
+                Map map = (Map) getWorld();
+                map.getPLAYER().damage(10);
+                map.removeObject(this);
                 //TODO DAMAGE PLAYER @ELIAS
             }
         }

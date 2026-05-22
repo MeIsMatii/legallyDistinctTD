@@ -56,6 +56,13 @@ public class Player extends MainClass {
         world.addObject(new ImageDisplay("Coin.png", 45, 45), 1, 3);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
     }
 
+    public void damage(int damage) {
+        setHealth(health-damage);
+        if(health<0) {
+            getWorld().showText("you lost", 400, 400);
+        }
+    }
+
     public void show(World world) {//zeigt Leben oben auf der map
         if(oldHealth != health) {
             world.showText("Leben: " + getHealth(), 2, 2);//ganz oben links,rechts vom herzen

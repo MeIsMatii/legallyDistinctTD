@@ -27,6 +27,9 @@ public abstract class Tower extends Entity implements Clickable {
 
     private final int range;
 
+    private Color colorRed = new Color(128,0,0,128);
+    private Color colorGrey = new Color(128, 128, 128, 128);
+
 
     public Tower(boolean isPlacing, int range) {
         this.RANGEDISPLAY = new RangeDisplay(this,range,isPlacing);
@@ -105,7 +108,7 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void onHover() {
         if (!RANGEDISPLAY.isRangeVisible) {
-            RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
+            RANGEDISPLAY.setRangeVisibility(true, colorGrey);
         }
     }
 
@@ -153,16 +156,16 @@ public abstract class Tower extends Entity implements Clickable {
     public void checkPlacement() {
         if (!RANGEDISPLAY.isRangeVisible) {
             if (canPlace) {
-                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
+                RANGEDISPLAY.setRangeVisibility(true, colorGrey);
             } else {
-                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 0, 0, 128));
+                RANGEDISPLAY.setRangeVisibility(true, colorRed);
             }
         } else {
             if (canPlace) {
-                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 128, 128, 128));
+                RANGEDISPLAY.setRangeVisibility(true, colorGrey);
             } else {
                 //grey range, should be red
-                RANGEDISPLAY.setRangeVisibility(true, new Color(128, 0, 0, 128));
+                RANGEDISPLAY.setRangeVisibility(true, colorRed);
             }
         }
     }

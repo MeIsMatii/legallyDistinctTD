@@ -30,7 +30,6 @@ out/
 *.iml
 
 # --- Assets ---
-.editorconfig
 build.xml
 # --- Keep everything else automatically ---
 # 'src', 'README.md', and future files are tracked by default.

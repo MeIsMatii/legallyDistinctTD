@@ -4,13 +4,15 @@ import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
 import entities.tower.util.RangeDisplay;
-import greenfoot.*;
+import greenfoot.Color;
+import greenfoot.Greenfoot;
+import greenfoot.MouseInfo;
+import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
 import ui.hud.UpgradeMenu;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * @author matii
@@ -18,21 +20,17 @@ import java.util.Objects;
  */
 
 public abstract class Tower extends Entity implements Clickable {
-    private boolean isPlacing;
     private final RangeDisplay RANGEDISPLAY;
-
-    private Enemy targetedEnemy;
-
-    private boolean canPlace;
-
     private final int range;
-
-    private Color colorRed = new Color(128,0,0,128);
-    private Color colorGrey = new Color(128, 128, 128, 128);
+    private boolean isPlacing;
+    private Enemy targetedEnemy;
+    private boolean canPlace;
+    private final Color colorRed = new Color(128, 0, 0, 128);
+    private final Color colorGrey = new Color(128, 128, 128, 128);
 
 
     public Tower(boolean isPlacing, int range) {
-        this.RANGEDISPLAY = new RangeDisplay(this,range,isPlacing);
+        this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
         this.isPlacing = isPlacing;
         this.canPlace = true;
 
@@ -43,7 +41,7 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void addedToWorld(World world) {
         super.addedToWorld(world);
-        world.addObject(RANGEDISPLAY,getX(),getY());
+        world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
     }
 
@@ -61,7 +59,6 @@ public abstract class Tower extends Entity implements Clickable {
 
 
     }
-
 
 
     public void onHit(Entity hitter) {
@@ -89,20 +86,19 @@ public abstract class Tower extends Entity implements Clickable {
 
         if (isPlacing && canPlace) {
             place();
-            return;
-        } else if(!isPlacing){
+        } else if (!isPlacing) {
             Map map = (Map) getWorld();
             UpgradeMenu upgradeMenu = map.getUpgradeMenu();
-            if(upgradeMenu == null) {
+            if (upgradeMenu == null) {
                 map.setUpgradeMenuVisibility(true, this);
-            } else if(upgradeMenu.getTower() != this) {
+            } else if (upgradeMenu.getTower() != this) {
                 map.setUpgradeMenuVisibility(true, this);
             } else {
                 map.setUpgradeMenuVisibility(false, null);
             }
 
 
-             //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
+            //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
         }
     }
 
@@ -124,7 +120,7 @@ public abstract class Tower extends Entity implements Clickable {
     public void place() {
         isPlacing = false;
         RANGEDISPLAY.setRangeVisibility(false, null);
-        getHitbox().setFollowing(false);
+        getHITBOX().setFollowing(false);
     }
 
     /**
@@ -135,16 +131,13 @@ public abstract class Tower extends Entity implements Clickable {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
 
-        Map currMap = (Map) getWorld();
-        if (mouseInfo == null || currMap.getCURSOR().getX() > 1620) {
-
-            return;
-        }
 
         int mouseX = mouseInfo.getX();
         int mouseY = mouseInfo.getY();
 
-        setLocation(mouseX, mouseY);
+        if (mouseX != getX() || mouseY != getY()) {
+            setLocation(mouseX, mouseY);
+        }
         checkPlacement();
     }
 
@@ -171,7 +164,6 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
 
-
     /**
      * Targets an enemy
      *
@@ -186,7 +178,9 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
     public abstract String upgrade1();
+
     public abstract String upgrade2();
+
     public abstract String upgrade3();
 
     /**
@@ -200,11 +194,16 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void setTargetedEnemy() {
         // TODO check in range and not inside the hitbox D: @Mathilo
-        List<Enemy> enemiesInRange = getObjectsInRange(range,Enemy.class);
-        if(enemiesInRange.isEmpty()) {
+        List<Enemy> enemiesInRange = getObjectsInRange(range, Enemy.class);
+        if (enemiesInRange.isEmpty()) {
             this.targetedEnemy = null;
             return;
         }
         this.targetedEnemy = enemiesInRange.get(0);
+    }
+
+    public void delete() {
+        getWorld().removeObject(RANGEDISPLAY);
+        super.delete();
     }
 }

@@ -1,7 +1,6 @@
 package entities;
 
 import core.MainClass;
-import greenfoot.Actor;
 import greenfoot.World;
 
 /**
@@ -10,7 +9,7 @@ import greenfoot.World;
  */
 
 public abstract class Entity extends MainClass {
-    private Hitbox hitbox;
+    private Hitbox HITBOX;
 
     /**
      * This method gets called when an Entity collides with a hitbox.
@@ -22,12 +21,12 @@ public abstract class Entity extends MainClass {
     /**
      * @return the hitbox of an Entity
      */
-    public Hitbox getHitbox() {
-        return this.hitbox;
+    public Hitbox getHITBOX() {
+        return this.HITBOX;
     }
 
-    protected void setHitbox(Hitbox hitbox) {
-        this.hitbox = hitbox;
+    protected void setHITBOX(Hitbox HITBOX) {
+        this.HITBOX = HITBOX;
     }
 
     /**
@@ -66,9 +65,15 @@ public abstract class Entity extends MainClass {
 
 
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, true, this);
-        this.hitbox = hitbox;
+        this.HITBOX = hitbox;
 
         getWorld().addObject(hitbox, getX(), getY());
+    }
+
+    public void delete() {
+        World w = getWorld();
+        w.removeObject(HITBOX);
+        w.removeObject(this);
     }
 
     public void act() {

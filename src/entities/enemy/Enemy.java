@@ -23,25 +23,27 @@ public abstract class Enemy extends Entity {
         this.realPosX = 0;
         this.realPosY = 0;
     }
+
     public void addedToWorld(World world) {
+        super.addedToWorld(world);
         this.realPosX = getX();
         this.realPosY = getY();
     }
 
     public void act() {
-        List<Path> pathList = getWorld().getObjectsAt(getX(),getY(), Path.class);
-        if(!pathList.isEmpty()) {
+        List<Path> pathList = getWorld().getObjectsAt(getX(), getY(), Path.class);
+        if (!pathList.isEmpty()) {
             Path path = pathList.get(0);
             this.nextX = path.getNextPathX();
             this.nextY = path.getNextPathY();
-            if(nextX == 0 && nextY == 0) {
+            if (nextX == 0 && nextY == 0) {
                 Map map = (Map) getWorld();
                 map.getPLAYER().damage(10);
-                map.removeObject(this);
+                delete();
                 //TODO DAMAGE PLAYER @ELIAS
             }
         }
-        moveTo(nextX,nextY);
+        moveTo(nextX, nextY);
     }
 
 
@@ -67,5 +69,6 @@ public abstract class Enemy extends Entity {
 
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
+
 
 }

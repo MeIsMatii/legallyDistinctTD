@@ -47,11 +47,13 @@ public abstract class Map extends World {
         //TODO add paths and delete them @Elias
         if(isVisible) {
             int width = (getWidth()-300)/2;
-            removeObject(UPGRADEMENU);
+            if(UPGRADEMENU!=null) {
+                UPGRADEMENU.delete();
+            }
             UPGRADEMENU = new UpgradeMenu(tower);
             addObject(UPGRADEMENU,width, getHeight()-216/2);
         } else if(!getObjects(UpgradeMenu.class).isEmpty()) {
-            removeObject(UPGRADEMENU);
+            UPGRADEMENU.delete();
             UPGRADEMENU = null;
         }
     }

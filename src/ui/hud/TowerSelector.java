@@ -16,24 +16,20 @@ public class TowerSelector extends MainClass implements Clickable {
 
 
     }
+
     @Override
+    protected void addedToWorld(World world) {
+        getWorld().addObject(new  TowerInHud(),1700,460);
+    }
+
     public void onClick() {
 
     }
 
-    public void allTheUpgrades() {
-    }
-
-    @Override
-    protected void addedToWorld(World world) {
-        ImageDisplay imageDisplay = new ImageDisplay("TestTower2_2.png",30,40);
-        getWorld().addObject(imageDisplay,200,200);
-    }
 
     @Override
     public void act() {
         checkClick();
-        allTheUpgrades();
 
         super.act();
     }

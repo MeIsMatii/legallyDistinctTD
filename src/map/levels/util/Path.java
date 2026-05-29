@@ -60,7 +60,7 @@ public class Path extends Entity {
 
 
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, false, this);
-        super.setHitbox(hitbox);
+        super.setHITBOX(hitbox);
         getWorld().addObject(hitbox, getX() - xOffset, getY() - yOffset);
     }
 

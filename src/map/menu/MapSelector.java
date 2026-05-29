@@ -5,7 +5,7 @@ import greenfoot.Greenfoot;
 import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.settings.SettingsButton;
-import ui.settings.SlotMachineButton;
+import ui.settings.gambling.SlotMachineButton;
 
 public class MapSelector extends World implements HasSound {
 

@@ -17,7 +17,8 @@ public class SongDropDown extends MainClass implements Clickable {
         "backgourndSound2.mp3",
         "backgourndSound3.mp3",
         "ChillSong(Gemini).mp3",
-        "TropicalSong(Gemini).mp3"
+        "TropicalSong(Gemini).mp3",
+            "bloons1.mp3"
     };
 
     private boolean isOpen = false;

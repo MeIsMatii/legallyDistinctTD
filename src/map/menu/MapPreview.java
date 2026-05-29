@@ -74,6 +74,8 @@ public class MapPreview extends MainClass implements Clickable {
             case 9:
                 setImage("TempMap9Preview.png");
                 break;
+            case 69420:
+                setImage("");
         }///Note for Colin: Break in Zukunft nicht mehr vergessen
 
         GreenfootImage img = getImage();

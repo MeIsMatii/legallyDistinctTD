@@ -9,7 +9,12 @@ import greenfoot.UserInfoVisitor;
 
 public class SlotMachineButtonGamble extends MainClass implements Clickable {
 
-    public SlotMachineButtonGamble() {
+    private Gambling gambling;
+
+
+
+    public SlotMachineButtonGamble(Gambling gambling) {
+        this.gambling = gambling;
         setImage("Slot-MachineDefault.png");
         getImage().scale(200, 200);
     }
@@ -17,7 +22,7 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
     @Override
     public void onClick() {
         Gambling world = (Gambling) getWorld();
-
+        getWorld().showText("",15,20);
 
         SlotMachineSlot[] slots = new SlotMachineSlot[]{
                 world.getSlot1(),
@@ -33,27 +38,28 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
                 world.getSlot3().getImage()
         };
 
-        int stop = Greenfoot.getRandomNumber(15);
+        int stop = Greenfoot.getRandomNumber(45);
         for (int i = 0; i < stop; i++) {
 
 
             for (int j = 0; j < 3; j++) {
                 int random = Greenfoot.getRandomNumber(3);
                 slots[j].setImage(images[random]);
-                Greenfoot.delay(240);
+                Greenfoot.delay(2);
 
             }
 
-            Greenfoot.delay(3000000);
+            Greenfoot.delay(2);
 
         }
         if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage())) {
-            Greenfoot.delay(300000);
+            Greenfoot.delay(20);
             Greenfoot.setWorld(new GamblingWonCredits());
+            gambling.setWins(gambling.getWins() + 1);       //wenn safe files bitte machen das auchg speicher weil ich immer neue welt mache
         } else {
             getWorld().showText("You loose. Try again", 15, 20);
-            Greenfoot.delay(3000000);
-            getWorld().showText("",15,20);
+
+
         }
 
     }//slot machien bild weg dafür 3 bilder oder objekte nebeneinander jede viertel sekunde ändern

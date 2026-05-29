@@ -9,6 +9,7 @@ public class Gambling extends World {
     private SlotMachineSlot slot1;
     private SlotMachineSlot slot2;
     private SlotMachineSlot slot3;
+    private int wins = 0;
 
 
 
@@ -24,6 +25,14 @@ public class Gambling extends World {
         return slot3;
     }
 
+    public int getWins() {return wins;}
+
+
+
+    public void setWins(int wins) {this.wins = wins;}
+
+
+
     public Gambling() {
         super(29, 29, 20);
 
@@ -31,8 +40,9 @@ public class Gambling extends World {
 
         setBackground("dirtsquare.png");
         addObject(new HomeButton(), 4, 4);
-        addObject(new SlotMachineButtonGamble(), 15, 25);
+        addObject(new SlotMachineButtonGamble(this), 15, 25);
         showText("Click! Click! Click!", 15, 30);
+        showText("Wins: " + getWins(), 25,0);
 
 
         slot1 = new SlotMachineSlot();
@@ -51,9 +61,9 @@ public class Gambling extends World {
         slot2.setImage(img2);
         slot3.setImage(img3);
 
-        addObject(slot1,10,20);
-        addObject(slot2,15,20);
-        addObject(slot3,20,20);
+        addObject(slot1,8,13);
+        addObject(slot2,15,13);
+        addObject(slot3,22,13);
 
     }
     //hier wird bald gegambelt

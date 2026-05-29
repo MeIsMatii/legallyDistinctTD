@@ -27,7 +27,6 @@ public abstract class Map extends World {
     setPaintOrder(Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.PATHWIDTH = 120;
-
         PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
         CURSOR = new Cursor();
 

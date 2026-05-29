@@ -7,10 +7,10 @@ import entities.tower.Tower;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
+import greenfoot.World;
 import map.levels.Map;
 import java.awt.*;
-
-
+import java.util.List;
 
 public class TowerInHud extends MainClass implements Clickable {
 
@@ -22,9 +22,23 @@ public class TowerInHud extends MainClass implements Clickable {
     }
     @Override
     public void onClick() {
-        MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-        getWorld().addObject(new TestTower(true,300),mouseInfo.getX(), mouseInfo.getY());
+        Map map = (Map) getWorld();
+        map.getPLAYER().getCoins();
+        if (map.getPLAYER().getCoins() > 0){
+            if (isTouching(Tower.class)){
+                List<Tower> towerList = getIntersectingObjects(Tower.class);
+                //TODO fix @Mathilo, gotta make delete method 4 tower to del Hitbox & Range
+                for (Tower tower : towerList) getWorld().removeObject(tower);
+            }
+            map.getPLAYER().setCoins(map.getPLAYER().getCoins() - 100);
+            MouseInfo mouseInfo = Greenfoot.getMouseInfo();
+            getWorld().addObject(new TestTower(true,300),mouseInfo.getX(), mouseInfo.getY());
+
+        }
+
+
     }
+
 
     public void act() {
         checkClick();

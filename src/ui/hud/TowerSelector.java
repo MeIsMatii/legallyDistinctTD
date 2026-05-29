@@ -3,6 +3,7 @@ package ui.hud;
 import core.Clickable;
 import core.MainClass;
 import entities.tower.TestTower;
+import greenfoot.World;
 import ui.common.ImageDisplay;
 
 public class TowerSelector extends MainClass implements Clickable {
@@ -16,13 +17,12 @@ public class TowerSelector extends MainClass implements Clickable {
 
     }
 
-    public void onClick() {
-
+    @Override
+    protected void addedToWorld(World world) {
+        getWorld().addObject(new  TowerInHud(),1700,460);
     }
 
-    public void allTheUpgrades() {
-        ImageDisplay imageDisplay = new ImageDisplay("TestTower2_2.png",30,40);
-        getWorld().addObject(imageDisplay,200,200);
+    public void onClick() {
 
     }
 
@@ -30,7 +30,6 @@ public class TowerSelector extends MainClass implements Clickable {
     @Override
     public void act() {
         checkClick();
-        allTheUpgrades();
 
         super.act();
     }

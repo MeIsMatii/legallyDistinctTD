@@ -185,6 +185,10 @@ public abstract class Tower extends Entity implements Clickable {
         targetedEnemy = enemy;
     }
 
+    public abstract String upgrade1();
+    public abstract String upgrade2();
+    public abstract String upgrade3();
+
     /**
      * nothing<br>
      * ...yet

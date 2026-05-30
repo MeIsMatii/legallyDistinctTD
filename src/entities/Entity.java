@@ -9,7 +9,6 @@ import greenfoot.World;
  */
 
 public abstract class Entity extends MainClass {
-    private Hitbox HITBOX;
 
     /**
      * This method gets called when an Entity collides with a hitbox.
@@ -18,16 +17,6 @@ public abstract class Entity extends MainClass {
      */
     public abstract void onHit(Entity hitter);
 
-    /**
-     * @return the hitbox of an Entity
-     */
-    public Hitbox getHITBOX() {
-        return this.HITBOX;
-    }
-
-    protected void setHITBOX(Hitbox HITBOX) {
-        this.HITBOX = HITBOX;
-    }
 
     /**
      * This method gets called by the hitbox. <br>
@@ -63,18 +52,15 @@ public abstract class Entity extends MainClass {
         int hitboxWidth = getImage().getWidth() / CELLSIZE;
         int hitboxHeight = getImage().getHeight() / CELLSIZE;
 
+        spawnHitbox(hitboxWidth,hitboxHeight);
+    }
 
+    public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, true, this);
-        this.HITBOX = hitbox;
-
         getWorld().addObject(hitbox, getX(), getY());
+
     }
 
-    public void delete() {
-        World w = getWorld();
-        w.removeObject(HITBOX);
-        w.removeObject(this);
-    }
 
     public void act() {
         super.act();

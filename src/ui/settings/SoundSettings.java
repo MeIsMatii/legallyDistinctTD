@@ -1,6 +1,7 @@
 package ui.settings;
 
 import greenfoot.GreenfootSound;
+import util.SaveManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ public class SoundSettings {
 
     private static final int MinimumVolume = 0;
     private static final int MaximumVolume = 100;
-    private static final int DefaultStartingVolume = 80;
+    private static final int DefaultStartingVolume = SaveManager.getInstance().getVolume();
 
     private static SoundSettings singleInstance = null;
 
@@ -33,6 +34,7 @@ public class SoundSettings {
 
     public void setMasterVolume(int newVolume) {
         this.masterVolume = Math.max(MinimumVolume, Math.min(MaximumVolume, newVolume));
+        SaveManager.getInstance().setVolume(this.masterVolume);
     }
 
     public void addRegisteredSound(GreenfootSound soundToRegister) {

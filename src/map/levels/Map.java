@@ -1,6 +1,5 @@
 package map.levels;
 
-import core.MainClass;
 import core.Player;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;

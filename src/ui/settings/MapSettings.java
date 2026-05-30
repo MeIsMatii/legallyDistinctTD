@@ -19,7 +19,7 @@ public class MapSettings extends World implements HasSound {
         addObject(new VolumeSlider(), 9, 7);
         backgroundMusic = playSoundAndKeep("TEMPTropischSound.mp3");
         addObject(new SongDropDown(),21,6);
-        addObject(new ImageDisplay("Lautsprecher.png", 30,30),2,7);
+        addObject(new MuteButton(),2,7);
     }
 
     @Override

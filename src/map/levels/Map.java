@@ -1,6 +1,7 @@
 package map.levels;
 
 import core.Player;
+import entities.Hitbox;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
@@ -15,15 +16,13 @@ public abstract class Map extends World {
     private UpgradeMenu UPGRADEMENU;
     private boolean isUpgradeMenuVisible;
 
-    private int resolution;
     private final Player PLAYER;
     private final Cursor CURSOR;
     private final int PATHWIDTH;
-    private int[][] PATHLIST;
 
     public Map() {
         super(1920, 1080, 1);
-    setPaintOrder(Tower.class, RangeDisplay.class); //Tower infront of it's range
+    setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.PATHWIDTH = 120;
         PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
@@ -73,7 +72,6 @@ public abstract class Map extends World {
     }
 
     public void addPath(int[][] pathList) {
-        this.PATHLIST = pathList;
         for (int i = 0; i < pathList.length; i++) {
             int x = pathList[i][0];
             int y = pathList[i][1];
@@ -93,5 +91,4 @@ public abstract class Map extends World {
     }
 
 
-    //TODO add paths like in Map1
 }

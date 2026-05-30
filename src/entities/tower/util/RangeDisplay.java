@@ -28,6 +28,11 @@ public class RangeDisplay extends MainClass {
 
 
     public void act() {
+
+        if (OWNER == null || OWNER.getWorld() == null) {
+            getWorld().removeObject(this);
+            return;
+        }
         if(isFollowing) {
             followTower();
         }

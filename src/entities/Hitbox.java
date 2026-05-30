@@ -65,7 +65,7 @@ public class Hitbox extends MainClass {
             return;
         }
 
-        if (isFollowing) {
+        if ( (getX() != OWNER.getX() || getY() != OWNER.getY()) && isFollowing ) {
             followPlayer();
         }
 

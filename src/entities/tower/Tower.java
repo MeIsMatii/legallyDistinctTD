@@ -40,7 +40,12 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
     public void addedToWorld(World world) {
-        super.addedToWorld(world);
+        int CELLSIZE = getWorld().getCellSize();
+
+        int hitboxWidth = getImage().getWidth() / CELLSIZE -30;
+        int hitboxHeight = getImage().getHeight() / CELLSIZE -30;
+        spawnHitbox(hitboxWidth,hitboxHeight);
+
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
     }
@@ -120,7 +125,6 @@ public abstract class Tower extends Entity implements Clickable {
     public void place() {
         isPlacing = false;
         RANGEDISPLAY.setRangeVisibility(false, null);
-        getHITBOX().setFollowing(false);
     }
 
     /**
@@ -202,8 +206,5 @@ public abstract class Tower extends Entity implements Clickable {
         this.targetedEnemy = enemiesInRange.get(0);
     }
 
-    public void delete() {
-        getWorld().removeObject(RANGEDISPLAY);
-        super.delete();
-    }
+
 }

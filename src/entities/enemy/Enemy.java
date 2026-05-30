@@ -39,7 +39,7 @@ public abstract class Enemy extends Entity {
             if (nextX == 0 && nextY == 0) {
                 Map map = (Map) getWorld();
                 map.getPLAYER().damage(10);
-                delete();
+                map.removeObject(this);
                 //TODO DAMAGE PLAYER @ELIAS
             }
         }

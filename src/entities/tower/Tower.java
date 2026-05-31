@@ -134,7 +134,9 @@ public abstract class Tower extends Entity implements Clickable {
     public void followCursor() {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-
+        if(mouseInfo == null) {
+            return;
+        }
 
         int mouseX = mouseInfo.getX();
         int mouseY = mouseInfo.getY();

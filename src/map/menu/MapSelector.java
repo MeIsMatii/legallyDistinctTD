@@ -5,13 +5,14 @@ import greenfoot.Greenfoot;
 import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.settings.SettingsButton;
+import ui.settings.gambling.SlotMachineButton;
 
 public class MapSelector extends World implements HasSound {
 
 
     public MapSelector() {
         super(29, 29, 20);
-        setPaintOrder( SettingsButton.class, MapSelector.class, ImageDisplay.class);
+        setPaintOrder( SettingsButton.class, SlotMachineButton.class, MapSelector.class, ImageDisplay.class);
         setBackground("cell_grass.png");
         addObject(new MapPreview(1), 5, 3);///Map Preview
         addObject(new MapPreview(2), 14, 3);///Map Preview
@@ -23,6 +24,7 @@ public class MapSelector extends World implements HasSound {
         addObject(new MapPreview(8), 14, 21);///Map Preview
         addObject(new MapPreview(9), 23, 21);///Map Preview
         addObject(new SettingsButton(), 27, 27);
+        addObject(new SlotMachineButton(), 24, 27);  //hört auf das zu entfernen
 
         for (int y = 25; y <= 29; y++) {
             for (int i = 0; i < getWidth(); i++) {

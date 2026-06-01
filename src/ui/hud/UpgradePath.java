@@ -1,12 +1,13 @@
 package ui.hud;
 
-import entities.tower.TestTower;
+import core.Clickable;
 import entities.tower.Tower;
 import greenfoot.Actor;
-import entities.tower.upgrades.Upgrade;
+import core.Player;
 import greenfoot.World;
+import java.util.List;
 
-public class UpgradePath extends Actor {
+public class UpgradePath extends Actor implements Clickable {
     private Tower tower;
     private int path;
 
@@ -16,16 +17,27 @@ public class UpgradePath extends Actor {
         this.tower = TOWER;
     }
 
+
+
     @Override
-    protected void addedToWorld(World world) {
+    public void onClick() {
+        List<Player> player = getWorld().getObjects(Player.class);
+        Player player1 = player.get(0);
+        if(player1.getCoins() < 500){
+            return;
+        }
+        player1.setCoins(player1.getCoins() - 500);
         if (path == 1){
             tower.upgrade1();
         } else if (path == 2) {
             tower.upgrade2();
         } else if (path == 3) {
             tower.upgrade3();
-        }else{
-
         }
+    }
+
+    @Override
+    public void act() {
+        checkClick();
     }
 }

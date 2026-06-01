@@ -1,7 +1,10 @@
 package entities.enemy;
 
+import core.Player;
 import entities.Entity;
 import entities.tower.Tower;
+
+import java.util.List;
 
 public class RedBloon extends Enemy {
     public RedBloon(double speed, int lives) {
@@ -14,9 +17,10 @@ public class RedBloon extends Enemy {
         {
             lives--;
             if (lives <= 0) {
+                List<Player> player = getWorld().getObjects(Player.class);
+                Player player1 = player.get(0);
+                player1.setCoins(player1.getCoins() + 1);
                 getWorld().removeObject(this);
-                //money(or whatever it will be called)++;
-                //how do you push again?
             }
         }
     }

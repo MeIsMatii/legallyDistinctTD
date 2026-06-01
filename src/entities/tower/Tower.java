@@ -183,7 +183,7 @@ public abstract class Tower extends Entity implements Clickable {
         targetedEnemy = enemy;
     }
 
-    public abstract String upgrade1();
+    public abstract String upgrade1(); // wouldn't it be good if we could make it give back multiple things(string + int)
 
     public abstract String upgrade2();
 

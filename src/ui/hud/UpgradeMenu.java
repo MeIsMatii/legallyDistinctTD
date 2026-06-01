@@ -21,8 +21,8 @@ public class UpgradeMenu extends Actor {
     }
 
     protected void addedToWorld(World world) {
-        getWorld().addObject(path1, getX(), getY());
-        getWorld().addObject(path2, getX() - 500, getY());
+        getWorld().addObject(path1,  getX() - 500, getY());
+        getWorld().addObject(path2, getX(), getY());
         getWorld().addObject(path3, getX() + 500, getY());
     }
 

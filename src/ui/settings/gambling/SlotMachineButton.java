@@ -8,7 +8,7 @@ public class SlotMachineButton extends MainClass implements Clickable {
 
     public SlotMachineButton() {
         setImage("Slot-MachineDefault.png");
-        getImage().scale(40, 40);
+        getImage().scale(50, 50);
     }
 
     @Override

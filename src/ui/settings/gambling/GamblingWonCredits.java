@@ -3,6 +3,8 @@ package ui.settings.gambling;
 import greenfoot.World;
 import ui.common.HomeButton;
 
+import javax.swing.*;
+
 public class GamblingWonCredits extends World {
 
     public GamblingWonCredits() {
@@ -11,8 +13,17 @@ public class GamblingWonCredits extends World {
         addObject(new HomeButton(), 4, 4);
         credits();
     }
+    public static void credits(String[] args){
+        JFrame f = new JFrame();
+        JLabel text = new JLabel("Credits");
 
-    //hier wird bald gegambelt
+        f.setSize(400, 400);
+        f.setLayout(null);
+        f.add(text);
+        f.setVisible(true);                      //bruder keine ahnugn bin am verzweifeln
+
+        text.setLocation(15,15);
+    }
     public void credits() {
         showText("You win", 15, 15);
         showText("Jannis", 15, 16);
@@ -22,5 +33,6 @@ public class GamblingWonCredits extends World {
         showText("Sophia", 15, 20);
         showText("Jan", 15, 21);
         showText("Elias", 15, 22);
+
     }
 }

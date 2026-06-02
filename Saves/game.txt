@@ -1,5 +1,5 @@
 #Tower Defense Save File
-#Sat May 30 17:42:08 CEST 2026
-volume=50
+#Tue Jun 02 10:26:05 CEST 2026
+volume=40
 TutorialStatus=true
 soundEnabled=true

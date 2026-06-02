@@ -28,7 +28,7 @@ public class GamblingWonCredits extends World {
 
         for (int i = 3; i > 0; i--) {
             int v = text.getVerticalAlignment();
-            text.setVerticalTextPosition(v - 1);
+            text.setVerticalTextPosition(v - 1);   // ich lösche die welt jetzt udn zeichen halt so auf schwarzes bild die credits mach den in actor und lasse den im act  zyklus über die welt dingsen
         }
         /*
         for (int i = 3; i > 0; i--) {

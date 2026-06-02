@@ -3,6 +3,8 @@ package entities.tower;
 import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
+import entities.projectiles.Projectile;
+import entities.projectiles.TestProjectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -28,6 +30,9 @@ public abstract class Tower extends Entity implements Clickable {
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
 
+    private int projectileDamage;
+    private int projectileSpeed;
+    private int projectilePiercing;
 
     public Tower(boolean isPlacing, int range) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
@@ -50,6 +55,30 @@ public abstract class Tower extends Entity implements Clickable {
         RANGEDISPLAY.setRangeVisibility(false, null);
     }
 
+    public int getProjectileDamage() {
+        return projectileDamage;
+    }
+
+    public void setProjectileDamage(int projectileDamage) {
+        this.projectileDamage = projectileDamage;
+    }
+
+    public int getProjectileSpeed() {
+        return projectileSpeed;
+    }
+
+    public void setProjectileSpeed(int projectileSpeed) {
+        this.projectileSpeed = projectileSpeed;
+    }
+
+    public int getProjectilePiercing() {
+        return projectilePiercing;
+    }
+
+    public void setProjectilePiercing(int projectilePiercing) {
+        this.projectilePiercing = projectilePiercing;
+    }
+
     public void act() {
         checkClick();
         if (isPlacing) {
@@ -59,6 +88,10 @@ public abstract class Tower extends Entity implements Clickable {
             RANGEDISPLAY.setFollowing(false);
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
+
+            if(targetedEnemy != null) {
+                shoot(targetedEnemy);
+            }
         }
         this.canPlace = true; //default value
 
@@ -193,9 +226,7 @@ public abstract class Tower extends Entity implements Clickable {
      * nothing<br>
      * ...yet
      */
-    public void shoot() {
-        // TODO implement @Mathilo
-    }
+    abstract void shoot(Enemy e);
 
 
     public void setTargetedEnemy() {

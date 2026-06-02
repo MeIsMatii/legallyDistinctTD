@@ -1,6 +1,8 @@
 package entities.enemy;
 
+import core.Player;
 import entities.Entity;
+import entities.projectiles.Projectile;
 import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
@@ -51,6 +53,13 @@ public abstract class Enemy extends Entity {
         //nothing?
     }
 
+    public void damage(int damage) {
+        this.lives = this.lives - damage;
+        if(this.lives <= 0) {
+            getWorld().removeObject(this);
+        }
+    }
+
     // move()
     public void moveTo(int targetX, int targetY) {
         /// ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA D:
@@ -70,5 +79,21 @@ public abstract class Enemy extends Entity {
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
+    public void onHit(Entity hitter) {
+        if(getWorld() == null) {
+            return;
+        }
+        if (hitter instanceof Projectile)
+        {
+            Projectile p = (Projectile) hitter;
+            damage(p.getDamage());
+            if (lives <= 0) {
+                List<Player> player = getWorld().getObjects(Player.class);
+                Player player1 = player.get(0);
+                player1.setCoins(player1.getCoins() + 1);
+                getWorld().removeObject(this);
+            }
+        }
+    }
 
 }

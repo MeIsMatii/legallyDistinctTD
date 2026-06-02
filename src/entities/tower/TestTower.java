@@ -1,7 +1,8 @@
 package entities.tower;
 
+import entities.enemy.Enemy;
+import entities.projectiles.TestProjectile;
 import greenfoot.GreenfootImage;
-import greenfoot.World;
 
 public class TestTower extends Tower {
     public TestTower(boolean isPlacing, int range) {
@@ -11,13 +12,19 @@ public class TestTower extends Tower {
         GreenfootImage img = getImage();
         //img.scale(100, 100);
         setImage(img);
+
+        setProjectileSpeed(10);
+        setProjectileDamage(100);
+        setProjectilePiercing(1);
     }
     private int upgrade1 = 1;
     private int upgrade2 = 1;
     private int upgrade3 = 1;
     //Upgrades need: str description [done] + int Level + option to buy
 
-
+    public void shoot(Enemy e) {
+        getWorld().addObject(new TestProjectile(getProjectileSpeed(), getProjectileDamage(), getProjectilePiercing(), e.getX(),e.getY()), getX(), getY());
+    }
     public int getUpgrade1() {
         return upgrade1;
     }
@@ -58,7 +65,11 @@ public class TestTower extends Tower {
         return "test3";
     }
     public void act() {
+        if(isPaused()) {
+            return;
+        }
         super.act();
+
 
     }
 }

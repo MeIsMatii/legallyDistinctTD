@@ -13,18 +13,31 @@ public class GamblingWonCredits extends World {
         addObject(new HomeButton(), 4, 4);
         credits();
     }
-    public static void credits(String[] args){
+
+
+    public void credits() {
+        /*
         JFrame f = new JFrame();
         JLabel text = new JLabel("Credits");
 
         f.setSize(400, 400);
-        f.setLayout(null);
         f.add(text);
-        f.setVisible(true);                      //bruder keine ahnugn bin am verzweifeln
+        f.setVisible(true);
 
         text.setLocation(15,15);
-    }
-    public void credits() {
+
+        for (int i = 3; i > 0; i--) {
+            int v = text.getVerticalAlignment();
+            text.setVerticalTextPosition(v - 1);
+        }
+        /*
+        for (int i = 3; i > 0; i--) {
+            int v = text.getVerticalTextPosition();
+            text.setVerticalTextPosition(v - 1);
+        }
+        */
+
+
         showText("You win", 15, 15);
         showText("Jannis", 15, 16);
         showText("Colin", 15, 17);
@@ -33,6 +46,8 @@ public class GamblingWonCredits extends World {
         showText("Sophia", 15, 20);
         showText("Jan", 15, 21);
         showText("Elias", 15, 22);
+
+
 
     }
 }

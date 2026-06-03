@@ -55,7 +55,10 @@ public abstract class Enemy extends Entity {
 
     public void damage(int damage) {
         this.lives = this.lives - damage;
-        if(this.lives <= 0) {
+        if (lives <= 0) {
+            List<Player> player = getWorld().getObjects(Player.class);
+            Player player1 = player.get(0);
+            player1.setCoins(player1.getCoins() + 1);
             getWorld().removeObject(this);
         }
     }
@@ -87,12 +90,6 @@ public abstract class Enemy extends Entity {
         {
             Projectile p = (Projectile) hitter;
             damage(p.getDamage());
-            if (lives <= 0) {
-                List<Player> player = getWorld().getObjects(Player.class);
-                Player player1 = player.get(0);
-                player1.setCoins(player1.getCoins() + 1);
-                getWorld().removeObject(this);
-            }
         }
     }
 

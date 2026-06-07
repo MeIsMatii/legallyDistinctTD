@@ -98,7 +98,7 @@ public class Hitbox extends MainClass {
                 /// DEBUG
                 ///System.out.printf("Owner: %s, Hitter: %s\n", OWNER, actor);
                 OWNER.onHit(hitbox.getOWNER());
-                break;
+
             }
         }
 

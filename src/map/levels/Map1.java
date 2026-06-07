@@ -20,8 +20,6 @@ public class Map1 extends Map {
 
         //addObject(new UpgradeMenu(),800, 1000); <- exact placment
 
-        addObject(new HomeButton(), 1, 1);
-        addObject(new Player(), 6, 6);
 
         int[][] pathLocations = {{0,140},{800,140},{800,350},{1680,350},{1680,600},{470,600},{470,970},{1920,970}};
         super.addPath(pathLocations);

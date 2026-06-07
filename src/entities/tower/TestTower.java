@@ -5,17 +5,14 @@ import entities.projectiles.TestProjectile;
 import greenfoot.GreenfootImage;
 
 public class TestTower extends Tower {
-    public TestTower(boolean isPlacing, int range) {
-        super(isPlacing, range);
+    public TestTower(boolean isPlacing, int upgrade1lvl, int upgrade2lvl, int upgrade3lvl) {
+        super(isPlacing, 300, 45, 1, 3, 10, 45);
         setImage("TestTower2_2.png");
 
         GreenfootImage img = getImage();
         //img.scale(100, 100);
         setImage(img);
 
-        setProjectileSpeed(10);
-        setProjectileDamage(100);
-        setProjectilePiercing(1);
     }
     private int upgrade1 = 1;
     private int upgrade2 = 1;
@@ -23,7 +20,7 @@ public class TestTower extends Tower {
     //Upgrades need: str description [done] + int Level + option to buy
 
     public void shoot(Enemy e) {
-        getWorld().addObject(new TestProjectile(getProjectileSpeed(), getProjectileDamage(), getProjectilePiercing(), e.getX(),e.getY()), getX(), getY());
+        getWorld().addObject(new TestProjectile(getProjectileSpeed(), getProjectileDamage(), getProjectilePiercing(), e.getX(),e.getY(), getProjectileIFrames()), getX(), getY());
     }
     public int getUpgrade1() {
         return upgrade1;
@@ -69,7 +66,5 @@ public class TestTower extends Tower {
             return;
         }
         super.act();
-
-
     }
 }

@@ -22,12 +22,11 @@ import java.util.List;
 public abstract class Tower extends Entity implements Clickable {
     private final RangeDisplay RANGEDISPLAY;
     private final int range;
+    private final Color colorRed = new Color(128, 0, 0, 128);
+    private final Color colorGrey = new Color(128, 128, 128, 128);
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
-    private final Color colorRed = new Color(128, 0, 0, 128);
-    private final Color colorGrey = new Color(128, 128, 128, 128);
-
     private int projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
@@ -57,9 +56,9 @@ public abstract class Tower extends Entity implements Clickable {
     public void addedToWorld(World world) {
         int CELLSIZE = getWorld().getCellSize();
 
-        int hitboxWidth = getImage().getWidth() / CELLSIZE -30;
-        int hitboxHeight = getImage().getHeight() / CELLSIZE -30;
-        spawnHitbox(hitboxWidth,hitboxHeight);
+        int hitboxWidth = getImage().getWidth() / CELLSIZE - 30;
+        int hitboxHeight = getImage().getHeight() / CELLSIZE - 30;
+        spawnHitbox(hitboxWidth, hitboxHeight);
 
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
@@ -97,13 +96,13 @@ public abstract class Tower extends Entity implements Clickable {
         this.projectileIFrames = projectileIFrames;
     }
 
-    public void setShootingDelay(int shootingDelay) {
-        this.shootingDelay = shootingDelay;
-    }
     public int getShootingDelay() {
         return shootingDelay;
     }
 
+    public void setShootingDelay(int shootingDelay) {
+        this.shootingDelay = shootingDelay;
+    }
 
     public void act() {
         checkClick();
@@ -115,7 +114,7 @@ public abstract class Tower extends Entity implements Clickable {
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
 
-            if(targetedEnemy != null && canShoot()) {
+            if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);
                 shootingDelayCounter = 0;
             }
@@ -194,7 +193,7 @@ public abstract class Tower extends Entity implements Clickable {
     public void followCursor() {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-        if(mouseInfo == null) {
+        if (mouseInfo == null) {
             return;
         }
 
@@ -251,12 +250,13 @@ public abstract class Tower extends Entity implements Clickable {
 
 
     public boolean canShoot() {
-        if(shootingDelayCounter < shootingDelay) {
+        if (shootingDelayCounter < shootingDelay) {
             shootingDelayCounter++;
             return false;
         }
         return true;
     }
+
     /**
      * nothing<br>
      * ...yet

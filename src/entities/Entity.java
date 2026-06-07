@@ -52,7 +52,7 @@ public abstract class Entity extends MainClass {
         int hitboxWidth = getImage().getWidth() / CELLSIZE;
         int hitboxHeight = getImage().getHeight() / CELLSIZE;
 
-        spawnHitbox(hitboxWidth,hitboxHeight);
+        spawnHitbox(hitboxWidth, hitboxHeight);
     }
 
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {

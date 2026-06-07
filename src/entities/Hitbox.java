@@ -1,7 +1,10 @@
 package entities;
 
 import core.MainClass;
-import greenfoot.*;
+import greenfoot.Color;
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
+import greenfoot.World;
 import util.Cursor;
 
 import java.util.ArrayList;
@@ -65,7 +68,7 @@ public class Hitbox extends MainClass {
             return;
         }
 
-        if ( (getX() != OWNER.getX() || getY() != OWNER.getY()) && isFollowing ) {
+        if ((getX() != OWNER.getX() || getY() != OWNER.getY()) && isFollowing) {
             followPlayer();
         }
 

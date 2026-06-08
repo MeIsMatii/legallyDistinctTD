@@ -105,6 +105,8 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
     public void act() {
+        if(isPaused()) return;
+
         checkClick();
         if (isPlacing) {
             followCursor();

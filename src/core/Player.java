@@ -66,11 +66,9 @@ public class Player extends MainClass {
     }
 
     public void checkPaused(){
-        //System.out.println(Greenfoot.getKey());
-        // TODO @Julian
-        //getKey holen
 
-        // falls lastPressedKey != getkey und getKey == escape dann
+
+
         if (Greenfoot.getKey() == "escape") {
             setPaused(!isPaused());
             System.out.printf("isPaused: %s\n", isPaused);
@@ -80,15 +78,13 @@ public class Player extends MainClass {
                 getWorld().addObject(new PauseMenu(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             }else {
                 for (PauseMenu pauseMenu : pauseMenus){
-                    pauseMenu.onRemove();// TODO Settings pop-up @ Julian
+                    pauseMenu.onRemove();
                 }
             }
         }else if (Greenfoot.getKey() == "space"){
-
+            setPaused(!isPaused());
+            pauseEntity();
         }
-        //  die if abfrage da
-
-        //sonst lastPressedKey auf getKey setztens
 
     }
 

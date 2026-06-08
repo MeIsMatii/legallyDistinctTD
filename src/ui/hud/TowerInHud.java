@@ -32,7 +32,7 @@ public class TowerInHud extends MainClass implements Clickable {
             }
             map.getPLAYER().setCoins(map.getPLAYER().getCoins() - 100);
             MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-            getWorld().addObject(new TestTower(true, 300), mouseInfo.getX(), mouseInfo.getY());
+            getWorld().addObject(new TestTower(true, 1,1,1), mouseInfo.getX(), mouseInfo.getY());
 
         }
 

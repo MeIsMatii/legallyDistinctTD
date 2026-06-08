@@ -26,8 +26,6 @@ public class Map1 extends Map {
 
         //addObject(new UpgradeMenu(),800, 1000); <- exact placment
 
-        addObject(new HomeButton(), 1, 1);
-        addObject(new Player(), 6, 6);
 
 
         //addObject(new RedBloon(2, 100), 1,138);
@@ -35,10 +33,8 @@ public class Map1 extends Map {
         //addObject(new TestTower(, 400), 5, 20);
         addObject(new TestTower(false, 2000), 500, 300);
         int[][] pathLocations = {{1,138},{666,138},{666,355},{1407,355},{1407,614},{429,614},{429,991},{1620,991}};
+        int[][] pathLocations = {{0,140},{800,140},{800,350},{1680,350},{1680,600},{470,600},{470,970},{1920,970}};
         super.addPath(pathLocations);
-
-
-
 
 
         //addObject(new Path(null), 0 ,0);

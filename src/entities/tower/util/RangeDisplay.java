@@ -1,20 +1,15 @@
 package entities.tower.util;
 
 import core.MainClass;
-import entities.Entity;
-import entities.Hitbox;
 import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RangeDisplay extends MainClass {
     //TODO fix @Mathilo
     private final Tower OWNER;
-    private int range;
     public boolean isRangeVisible;
+    private final int range;
     private boolean isFollowing;
 
     public RangeDisplay(Tower tower, int range, boolean isPlacing) {
@@ -26,14 +21,13 @@ public class RangeDisplay extends MainClass {
     }
 
 
-
     public void act() {
 
         if (OWNER == null || OWNER.getWorld() == null) {
             getWorld().removeObject(this);
             return;
         }
-        if(isFollowing) {
+        if (isFollowing) {
             followTower();
         }
     }
@@ -86,7 +80,7 @@ public class RangeDisplay extends MainClass {
     /**
      * draws a circle based on the diameter in the chosen colour.
      *
-     * @param size the diameter of the circle.
+     * @param size  the diameter of the circle.
      * @param color the colour of the circle.
      * @return the image.
      */
@@ -107,12 +101,6 @@ public class RangeDisplay extends MainClass {
     /// TARGETING
 
     //getObjectsInRange exists D:
-
-
-
-
-
-
 
 
 }

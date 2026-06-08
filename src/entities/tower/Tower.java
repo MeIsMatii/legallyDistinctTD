@@ -3,8 +3,6 @@ package entities.tower;
 import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
-import entities.projectiles.Projectile;
-import entities.projectiles.TestProjectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -24,17 +22,20 @@ import java.util.List;
 public abstract class Tower extends Entity implements Clickable {
     private final RangeDisplay RANGEDISPLAY;
     private final int range;
+    private final Color colorRed = new Color(128, 0, 0, 128);
+    private final Color colorGrey = new Color(128, 128, 128, 128);
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
-    private final Color colorRed = new Color(128, 0, 0, 128);
-    private final Color colorGrey = new Color(128, 128, 128, 128);
-
     private int projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
+    private int projectileIFrames;
 
-    public Tower(boolean isPlacing, int range) {
+    private int shootingDelay;
+    private int shootingDelayCounter;
+
+    public Tower(boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
         this.isPlacing = isPlacing;
         this.canPlace = true;
@@ -42,14 +43,22 @@ public abstract class Tower extends Entity implements Clickable {
         targetedEnemy = null;
 
         this.range = range;
+
+        this.shootingDelay = shootingDelay;
+        this.shootingDelayCounter = shootingDelay;
+
+        this.projectileIFrames = projectileIFrames;
+        this.projectileDamage = projectileDamage;
+        this.projectileSpeed = projectileSpeed;
+        this.projectilePiercing = projectilePiercing;
     }
 
     public void addedToWorld(World world) {
         int CELLSIZE = getWorld().getCellSize();
 
-        int hitboxWidth = getImage().getWidth() / CELLSIZE -30;
-        int hitboxHeight = getImage().getHeight() / CELLSIZE -30;
-        spawnHitbox(hitboxWidth,hitboxHeight);
+        int hitboxWidth = getImage().getWidth() / CELLSIZE - 30;
+        int hitboxHeight = getImage().getHeight() / CELLSIZE - 30;
+        spawnHitbox(hitboxWidth, hitboxHeight);
 
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
@@ -79,6 +88,22 @@ public abstract class Tower extends Entity implements Clickable {
         this.projectilePiercing = projectilePiercing;
     }
 
+    public int getProjectileIFrames() {
+        return projectileIFrames;
+    }
+
+    public void setProjectileIFrames(int projectileIFrames) {
+        this.projectileIFrames = projectileIFrames;
+    }
+
+    public int getShootingDelay() {
+        return shootingDelay;
+    }
+
+    public void setShootingDelay(int shootingDelay) {
+        this.shootingDelay = shootingDelay;
+    }
+
     public void act() {
         checkClick();
         if (isPlacing) {
@@ -89,8 +114,9 @@ public abstract class Tower extends Entity implements Clickable {
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
 
-            if(targetedEnemy != null) {
+            if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);
+                shootingDelayCounter = 0;
             }
         }
         this.canPlace = true; //default value
@@ -167,7 +193,7 @@ public abstract class Tower extends Entity implements Clickable {
     public void followCursor() {
 
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-        if(mouseInfo == null) {
+        if (mouseInfo == null) {
             return;
         }
 
@@ -221,6 +247,15 @@ public abstract class Tower extends Entity implements Clickable {
     public abstract String upgrade2();
 
     public abstract String upgrade3();
+
+
+    public boolean canShoot() {
+        if (shootingDelayCounter < shootingDelay) {
+            shootingDelayCounter++;
+            return false;
+        }
+        return true;
+    }
 
     /**
      * nothing<br>

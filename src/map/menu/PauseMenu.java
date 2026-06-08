@@ -5,29 +5,15 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.common.HomeButton;
+import ui.settings.PlayOnButton;
 import ui.settings.SettingsButton;
 
 
 public class PauseMenu extends Actor {
 
    private HomeButton homeButton;
-   private SettingsButton settingsButton;//TODO different Class
-
-    public HomeButton getHomeButton() {
-        return homeButton;
-    }
-
-    public void setHomeButton(HomeButton homeButton) {
-        this.homeButton = homeButton;
-    }
-
-    public SettingsButton getSettingsButton() {
-        return settingsButton;
-    }
-
-    public void setSettingsButton(SettingsButton settingsButton) {
-        this.settingsButton = settingsButton;
-    }
+   private SettingsButton settingsButton;
+   private PlayOnButton playOnButton;
 
     public PauseMenu() {
         GreenfootImage img = new GreenfootImage(1500, 700);
@@ -36,19 +22,40 @@ public class PauseMenu extends Actor {
         setImage(img);
     }
 
+    public HomeButton getHomeButton() {
+        return homeButton;
+    }
+    public void setHomeButton(HomeButton homeButton) {
+        this.homeButton = homeButton;
+    }
+
+    public SettingsButton getSettingsButton() {
+        return settingsButton;
+    }
+    public void setSettingsButton(SettingsButton settingsButton) {
+        this.settingsButton = settingsButton;
+    }
+
+    public PlayOnButton getPlayOnButton() {return playOnButton;}
+    public void setPlayOnButton(PlayOnButton playOnButton) {this.playOnButton = playOnButton;}
+
+
+
     public void addedToWorld(World w){
         setHomeButton(new HomeButton());
         setSettingsButton(new SettingsButton());
+        setPlayOnButton(new PlayOnButton());
 
-        getWorld().addObject(getHomeButton(),getX()-getImage().getWidth()*(1/3), getY());
-        getWorld().addObject(getSettingsButton(),getX(), getY());
-
+        w.addObject(getHomeButton(),getX()-getImage().getWidth()/3, getY());
+        w.addObject(getSettingsButton(),getX(), getY());
+        w.addObject(getPlayOnButton(),getX()+500,getY());
     }
 
 public void onRemove(){
         World w = getWorld();
         w.removeObject(getSettingsButton());
         w.removeObject(getHomeButton());
+        w.removeObject(getPlayOnButton());
         w.removeObject(this);
 }
 

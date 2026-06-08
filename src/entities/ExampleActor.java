@@ -23,7 +23,7 @@ public class ExampleActor extends MainClass implements Clickable, HasSound {
     @Override
     public void act() {
         super.act();
-        if(isPaused()) {
+        if (isPaused()) {
             return;
         }
         checkClick();

@@ -1,8 +1,13 @@
 package core;
 
+import entities.Entity;
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
+import ui.settings.MapSettings;
+
+import java.util.List;
 
 public class Player extends MainClass {
 
@@ -22,7 +27,11 @@ public class Player extends MainClass {
 
         oldCoins = 0;
         oldHealth = 0;
+        isPaused = false;
     }                                               //noch sehr stolz auf mich
+
+    private boolean isPaused;
+    private String lastPressedKey;
 
     public int getCoins() {
         return coins;
@@ -41,6 +50,7 @@ public class Player extends MainClass {
     }
 
     public void act() {
+        checkPaused();
         coinCheat();
         show(getWorld());
 
@@ -53,6 +63,44 @@ public class Player extends MainClass {
     public void addedToWorld(World world) {
         world.addObject(new ImageDisplay("heart.png", 30, 30), 40, 40);  //ganz oben Links, jemand muss noch herz bild ertsellen und dann hier einfügen
         world.addObject(new ImageDisplay("Coin.png", 45, 45), 120, 40);  //ganz oben Links aber unter dem herzen, jemand muss noch coins bild ertsellen und dann hier einfügen
+    }
+
+    public void checkPaused(){
+
+
+
+        if (Greenfoot.getKey() == "escape") {
+            setPaused(!isPaused());
+            System.out.printf("isPaused: %s\n", isPaused);
+            pauseEntity();
+            List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
+            if (pauseMenus.isEmpty()) {
+                getWorld().addObject(new PauseMenu(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+            }else {
+                for (PauseMenu pauseMenu : pauseMenus){
+                    pauseMenu.onRemove();
+                }
+            }
+        }else if (Greenfoot.getKey() == "space"){
+            setPaused(!isPaused());
+            pauseEntity();
+        }
+
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
+
+    public void pauseEntity(){
+        List<Entity> entities = getWorld().getObjects(Entity.class);
+        for(int i = 0; i<entities.size(); i++){
+            entities.get(i).setPaused(isPaused());
+        }
     }
 
     public void damage(int damage) {

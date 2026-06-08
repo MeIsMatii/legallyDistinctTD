@@ -1,5 +1,6 @@
 package entities.enemy;
 
+import core.Player;
 import entities.Entity;
 import greenfoot.World;
 import map.levels.Map;
@@ -31,6 +32,11 @@ public abstract class Enemy extends Entity {
     }
 
     public void act() {
+        findPath();
+        moveTo(nextX, nextY);
+    }
+
+    public void findPath() {
         List<Path> pathList = getWorld().getObjectsAt(getX(), getY(), Path.class);
         if (!pathList.isEmpty()) {
             Path path = pathList.get(0);
@@ -40,15 +46,26 @@ public abstract class Enemy extends Entity {
                 Map map = (Map) getWorld();
                 map.getPLAYER().damage(10);
                 map.removeObject(this);
-                //TODO DAMAGE PLAYER @ELIAS
             }
         }
-        moveTo(nextX, nextY);
     }
 
 
     public void onHover() {
         //nothing?
+    }
+
+    public void damage(int damage) {
+        if (getWorld() == null) {
+            return;
+        }
+        this.lives = this.lives - damage;
+        if (lives <= 0) {
+            List<Player> player = getWorld().getObjects(Player.class);
+            Player player1 = player.get(0);
+            player1.setCoins(player1.getCoins() + 1);
+            getWorld().removeObject(this);
+        }
     }
 
     // move()
@@ -70,5 +87,20 @@ public abstract class Enemy extends Entity {
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
+    /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged
+    /// So i made the proj call damage()
+    /*public void onHit(Entity hitter) {
+        if(getWorld() == null) {
+            return;
+        }
+        if (hitter instanceof Projectile)
+        {
+            System.out.println(lives);
+            Projectile p = (Projectile) hitter;
+            damage(p.getDamage());
+        }
+    }*/
+    public void onHit(Entity e) {
+    }
 
 }

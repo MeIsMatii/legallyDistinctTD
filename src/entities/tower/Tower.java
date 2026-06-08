@@ -28,6 +28,34 @@ public abstract class Tower extends Entity implements Clickable {
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
 
+    private int upgrade1 = 1;// it does nothing but is needed so it works, I hate it already
+    private int upgrade2 = 1;
+    private int upgrade3 = 1;
+
+    public int getUpgrade1() {
+        return upgrade1;
+    }
+
+    public int getUpgrade2() {
+        return upgrade2;
+    }
+
+    public int getUpgrade3() {
+        return upgrade3;
+    }
+
+    public void setUpgrade1(int upgrade1) {
+        this.upgrade1 = upgrade1;
+    }
+
+    public void setUpgrade2(int upgrade2) {
+        this.upgrade2 = upgrade2;
+    }
+
+    public void setUpgrade3(int upgrade3) {
+        this.upgrade3 = upgrade3;
+    }
+
 
     public Tower(boolean isPlacing, int range) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);

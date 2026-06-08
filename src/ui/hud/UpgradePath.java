@@ -18,21 +18,35 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
 
-
     @Override
     public void onClick() {
         List<Player> player = getWorld().getObjects(Player.class);
         Player player1 = player.get(0);
-        if(player1.getCoins() < 500){
+        if (player1.getCoins() < 500) {
             return;
         }
-        player1.setCoins(player1.getCoins() - 500);
-        if (path == 1){
-            tower.upgrade1();
+        if (path == 1) {
+            if (tower.getUpgrade2() <= 3 && tower.getUpgrade3() == 1 || tower.getUpgrade3() <= 3 && tower.getUpgrade2() == 1) {
+                if (tower.getUpgrade1() <= 5) {
+                    player1.setCoins(player1.getCoins() - 500);
+                    tower.upgrade1();
+                }
+            }
         } else if (path == 2) {
-            tower.upgrade2();
+            if (tower.getUpgrade1() <= 3 && tower.getUpgrade3() == 1 || tower.getUpgrade3() <= 3 && tower.getUpgrade1() == 1) {
+                if (tower.getUpgrade2() <= 5) {
+                    player1.setCoins(player1.getCoins() - 500);
+                    tower.upgrade2();
+                }
+            }
+
         } else if (path == 3) {
-            tower.upgrade3();
+            if (tower.getUpgrade2() <= 3 && tower.getUpgrade1() == 1 || tower.getUpgrade1() <= 3 && tower.getUpgrade2() == 1) {
+                if (tower.getUpgrade3() <= 5) {
+                    player1.setCoins(player1.getCoins() - 500);
+                    tower.upgrade3();
+                }
+            }
         }
     }
 

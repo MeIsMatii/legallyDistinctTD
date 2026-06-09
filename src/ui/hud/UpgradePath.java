@@ -25,6 +25,42 @@ public class UpgradePath extends Actor implements Clickable {
         if (player1.getCoins() < 500) {
             return;
         }
+        int maxUpgrade;
+        switch (this.path) {
+            case 1:
+                if(tower.getUpgrade2() > 0 && tower.getUpgrade3() > 0) {
+                    //locked
+                    break;
+                }
+                //max. 1 bought
+                maxUpgrade = Math.max(tower.getUpgrade2(), tower.getUpgrade3());
+
+
+                break;
+            case 2:
+                if(tower.getUpgrade1() > 0 && tower.getUpgrade3() > 0) {
+                    //locked
+                    break;
+                }
+                maxUpgrade = Math.max(tower.getUpgrade1(), tower.getUpgrade3());
+                break;
+            case 3:
+                if(tower.getUpgrade1() > 0 && tower.getUpgrade2() > 0) {
+                    //locked
+                    break;
+                }
+                maxUpgrade = Math.max(tower.getUpgrade1(), tower.getUpgrade2());
+
+
+                break;
+            default:
+                System.out.println("upgrade path must be 0<x<=3");
+                break;
+        }
+
+
+
+
         if (path == 1) {
             if (tower.getUpgrade2() <= 3 && tower.getUpgrade3() == 1 || tower.getUpgrade3() <= 3 && tower.getUpgrade2() == 1) {
                 if (tower.getUpgrade1() <= 5) {

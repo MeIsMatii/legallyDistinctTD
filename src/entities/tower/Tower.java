@@ -31,6 +31,9 @@ public abstract class Tower extends Entity implements Clickable {
     private int projectileSpeed;
     private int projectilePiercing;
     private int projectileIFrames;
+    private int upgrade1 = 0;
+    private int upgrade2 = 0;
+    private int upgrade3 = 0;
 
     private int shootingDelay;
     private int shootingDelayCounter;
@@ -102,6 +105,30 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void setShootingDelay(int shootingDelay) {
         this.shootingDelay = shootingDelay;
+    }
+
+    public int getUpgrade1() {
+        return upgrade1;
+    }
+
+    public void setUpgrade1(int upgrade1) {
+        this.upgrade1 = upgrade1;
+    }
+
+    public int getUpgrade2() {
+        return upgrade2;
+    }
+
+    public void setUpgrade2(int upgrade2) {
+        this.upgrade2 = upgrade2;
+    }
+
+    public int getUpgrade3() {
+        return upgrade3;
+    }
+
+    public void setUpgrade3(int upgrade3) {
+        this.upgrade3 = upgrade3;
     }
 
     public void act() {

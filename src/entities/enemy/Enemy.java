@@ -32,6 +32,8 @@ public abstract class Enemy extends Entity {
     }
 
     public void act() {
+        if(isPaused()) return;
+
         findPath();
         moveTo(nextX, nextY);
     }

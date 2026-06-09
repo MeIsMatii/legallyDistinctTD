@@ -67,9 +67,7 @@ public abstract class Projectile extends Entity {
     }
 
     public void act() {
-        if (getWorld() == null) {
-            return;
-        }
+        if (getWorld() == null || isPaused()) return;
 
 
         updateIFrames();

@@ -42,7 +42,7 @@ public class PauseMenu extends Actor {
 
 
     public void addedToWorld(World w){
-        setHomeButton(new HomeButton());
+        setHomeButton(new HomeButton(new MapSelector()));
         setSettingsButton(new SettingsButton());
         setPlayOnButton(new PlayOnButton());
 

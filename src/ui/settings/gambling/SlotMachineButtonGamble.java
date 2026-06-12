@@ -52,8 +52,9 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
             Greenfoot.delay(2);
 
         }
-        if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage())) {
+        if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage()) || Greenfoot.isKeyDown("C")) {
             Greenfoot.delay(20);
+
             Greenfoot.setWorld(new GamblingWonCredits());
             gambling.setWins(gambling.getWins() + 1);       //wenn safe files bitte machen das auchg speicher weil ich immer neue welt mache
         } else {

@@ -6,6 +6,7 @@ import greenfoot.World;
 import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
 import ui.settings.MapSettings;
+import ui.settings.SettingsPopup;
 
 import java.util.List;
 
@@ -74,6 +75,7 @@ public class Player extends MainClass {
             System.out.printf("isPaused: %s\n", isPaused);
             pauseEntity();
             List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
+            List<SettingsPopup> settingsPopups = getWorld().getObjects(SettingsPopup.class);
             if (pauseMenus.isEmpty()) {
                 getWorld().addObject(new PauseMenu(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             }else {
@@ -81,6 +83,13 @@ public class Player extends MainClass {
                     pauseMenu.onRemove();
                 }
             }
+            if (!settingsPopups.isEmpty()){
+                for (SettingsPopup settingsPopup : settingsPopups){
+                    settingsPopup.onRemove();
+                }
+            }
+
+
         }else if (Greenfoot.getKey() == "space"){
             setPaused(!isPaused());
             pauseEntity();

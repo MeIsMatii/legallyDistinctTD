@@ -6,8 +6,7 @@ import map.menu.PauseMenu;
 import entities.tower.TestTower;
 import greenfoot.GreenfootImage;
 import ui.common.HomeButton;
-import ui.settings.PlayOnButton;
-import ui.settings.SettingsButton;
+import ui.settings.*;
 
 
 public class Map1 extends Map {
@@ -15,7 +14,7 @@ public class Map1 extends Map {
 
     public Map1() {
         //setBackground("Map1.jpg");
-        setPaintOrder(SettingsButton.class,HomeButton.class, PlayOnButton.class,PauseMenu.class);
+        setPaintOrder(MuteButton.class,SongButton.class,CloseButton.class,SongDropDown.class,VolumeSlider.class,SettingsPopup.class,SettingsButton.class,HomeButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");

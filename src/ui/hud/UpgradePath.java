@@ -30,6 +30,9 @@ public class UpgradePath extends Actor implements Clickable {
 
         switch (this.path) {
             case 1:
+                if (tower.getUpgrade1() >= maxPath){
+                    return;
+                }
                 int upgrades1[] = tower.getUpgrades1();
                 price = upgrades1[tower.getUpgrade1()];
                 if (player1.getCoins() < price) {
@@ -53,6 +56,9 @@ public class UpgradePath extends Actor implements Clickable {
 
                 break;
             case 2:
+                if (tower.getUpgrade2() >= maxPath){
+                    return;
+                }
                 int upgrades2[] = tower.getUpgrades2();
                 price = upgrades2[tower.getUpgrade2()];
                 if (tower.getUpgrade1() > 0 && tower.getUpgrade3() > 0) {
@@ -70,6 +76,9 @@ public class UpgradePath extends Actor implements Clickable {
                 }
                 break;
             case 3:
+                if (tower.getUpgrade3() >= maxPath){
+                    return;
+                }
                 int upgrades3[] = tower.getUpgrades3();
                 price = upgrades3[tower.getUpgrade3()];
                 if (tower.getUpgrade1() > 0 && tower.getUpgrade2() > 0) {

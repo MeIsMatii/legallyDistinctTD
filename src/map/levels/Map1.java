@@ -26,7 +26,6 @@ public class Map1 extends Map {
 
 
 
-        addObject(new TrapTower(), 500,200);
         addObject(new EnemyLevel1(), 0,233);
         addObject(new EnemyLevel2(), 0,233);
 

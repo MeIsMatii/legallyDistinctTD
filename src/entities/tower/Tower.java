@@ -37,6 +37,9 @@ public abstract class Tower extends Entity implements Clickable {
     private int upgrade1 = 0;
     private int upgrade2 = 0;
     private int upgrade3 = 0;
+    private int[] upgrades1 = new int[]{500,500,500,500,500};
+    private int[] upgrades2 = new int[]{500,500,500,500,500};
+    private int[] upgrades3 = new int[]{500,500,500,500,500};
 
     private int shootingDelay;
     private int shootingDelayCounter;
@@ -138,6 +141,18 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void setUpgrade3(int upgrade3) {
         this.upgrade3 = upgrade3;
+    }
+
+    public int[] getUpgrades1() {
+        return upgrades1;
+    }
+
+    public int[] getUpgrades2() {
+        return upgrades2;
+    }
+
+    public int[] getUpgrades3() {
+        return upgrades3;
     }
 
     public void act() {

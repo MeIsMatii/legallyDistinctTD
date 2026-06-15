@@ -29,6 +29,7 @@ public class TowerInHud extends MainClass implements Clickable {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
                 //TODO fix @Mathilo, gotta make delete method 4 tower to del Hitbox & Range
                 for (Tower tower : towerList) map.removeObject(tower);
+                map.getPLAYER().setCoins(map.getPLAYER().getCoins() + 100);
             }
             map.getPLAYER().setCoins(map.getPLAYER().getCoins() - 100);
             MouseInfo mouseInfo = Greenfoot.getMouseInfo();

@@ -20,6 +20,8 @@ import java.util.List;
  */
 
 public abstract class Tower extends Entity implements Clickable {
+    private final int PRICE;
+
     private final RangeDisplay RANGEDISPLAY;
     private final int range;
     private final Color colorRed = new Color(128, 0, 0, 128);
@@ -38,8 +40,10 @@ public abstract class Tower extends Entity implements Clickable {
     private int shootingDelay;
     private int shootingDelayCounter;
 
-    public Tower(boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
+    public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
+        this.PRICE = price;
+
         this.isPlacing = isPlacing;
         this.canPlace = true;
 
@@ -65,6 +69,10 @@ public abstract class Tower extends Entity implements Clickable {
 
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
+    }
+
+    public int getPRICE() {
+        return PRICE;
     }
 
     public int getProjectileDamage() {

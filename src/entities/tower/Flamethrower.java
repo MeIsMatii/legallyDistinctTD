@@ -9,7 +9,7 @@ public class Flamethrower extends Tower{
     private int rechargeCounter;
 
     public Flamethrower(int upgrade1, int upgrade2, int upgrade3) {
-        super(true, 100, 1, 1, 10, 1000, 45);
+        super(150,true, 100, 1, 1, 10, 1000, 45);
     }
 
     public String upgrade1() {

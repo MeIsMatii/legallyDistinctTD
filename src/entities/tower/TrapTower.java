@@ -20,7 +20,7 @@ public class TrapTower extends Tower implements Clickable{
     private int mineRadius;
 
     public TrapTower() {
-        super(false, 80, 99999999, 200, 10, 1, 90);
+        super(200,false, 80, 99999999, 200, 10, 1, 90);
         mineRadius = 150;
 
         setImage("cell.jpg");

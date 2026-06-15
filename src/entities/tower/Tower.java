@@ -3,6 +3,7 @@ package entities.tower;
 import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
+import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;

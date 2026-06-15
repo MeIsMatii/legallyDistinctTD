@@ -3,6 +3,7 @@ package entities.projectiles;
 import bluej.utility.filefilter.DirectoryFilter;
 import entities.Entity;
 import entities.enemy.Enemy;
+import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import map.levels.util.Path;
@@ -16,8 +17,8 @@ public class Mine extends Projectile{
 
     private int mineRadius;
 
-    public Mine(int speed, int mineRadius, int damage, int targetX, int targetY, int iframes) {
-        super(10, 99999, damage, targetX, targetY, iframes);
+    public Mine(Tower owner) {
+        super(owner);
         this.mineRadius = mineRadius;
         this.explosionTime = 45;
     }

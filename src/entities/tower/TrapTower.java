@@ -42,6 +42,12 @@ public class TrapTower extends Tower implements Clickable{
     }
 
     public void shoot(Enemy e) {
-        getWorld().addObject(new Mine(getProjectileSpeed(), mineRadius, getProjectileDamage(), e.getX(), e.getY(), getProjectileIFrames()), getX(), getY());
+
+        getWorld().addObject(new Mine(this), getX(), getY());
+    }
+
+    public void act() {
+        if(isPaused()) return;
+        super.act();
     }
 }

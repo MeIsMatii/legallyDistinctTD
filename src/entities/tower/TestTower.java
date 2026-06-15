@@ -1,23 +1,19 @@
 package entities.tower;
 
 import entities.enemy.Enemy;
+import entities.projectiles.HomingProjectile;
 import entities.projectiles.TestProjectile;
 import greenfoot.GreenfootImage;
 
 public class TestTower extends Tower {
-    public TestTower(boolean isPlacing, int upgrade1lvl, int upgrade2lvl, int upgrade3lvl) {
-        super(50, isPlacing, 300, 45, 1, 3, 10, 45);
+    public TestTower() {
+        super(50, true, 300, 45, 1, 3, 10, 45);
         setImage("TestTower2_2.png");
-
-        GreenfootImage img = getImage();
-        //img.scale(100, 100);
-        setImage(img);
-
     }
     //Upgrades need: str description [done] + int Level + option to buy
 
     public void shoot(Enemy e) {
-        getWorld().addObject(new TestProjectile(getProjectileSpeed(), getProjectileDamage(), getProjectilePiercing(), e.getX(), e.getY(), getProjectileIFrames()), getX(), getY());
+        getWorld().addObject(new TestProjectile(this), getX(), getY());
     }
 
 

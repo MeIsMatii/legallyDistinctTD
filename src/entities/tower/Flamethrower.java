@@ -3,13 +3,17 @@ package entities.tower;
 import entities.enemy.Enemy;
 import entities.projectiles.HomingProjectile;
 import entities.projectiles.TestProjectile;
+import greenfoot.GreenfootImage;
 
 public class Flamethrower extends Tower{
     private int magazine = 15;
     private int rechargeCounter;
 
-    public Flamethrower(int upgrade1, int upgrade2, int upgrade3) {
-        super(150,true, 100, 1, 1, 10, 1000, 45);
+    public Flamethrower() {
+        super(150,true, 300, 1, 1, 10, 1000, 45);
+        GreenfootImage img = new GreenfootImage("oldHomeButton.png");
+        img.scale(200,200);
+        setImage(img);
     }
 
     public String upgrade1() {
@@ -33,7 +37,7 @@ public class Flamethrower extends Tower{
     @Override
     void shoot(Enemy e) {
         if (magazine > 0){
-            getWorld().addObject(new TestProjectile(getProjectileSpeed(), getProjectilePiercing(), getProjectileDamage(), e.getX(), e.getY(), getProjectileIFrames()), getX(), getY());
+            getWorld().addObject(new TestProjectile(this),getX(),getY());
             magazine--;
         }else {
             recharge();
@@ -48,8 +52,8 @@ public class Flamethrower extends Tower{
         magazine = magazine + 15;
     }
 
-    @Override
     public void act() {
+        if(isPaused()) return;
         super.act();
     }
 }

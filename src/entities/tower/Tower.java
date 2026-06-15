@@ -303,5 +303,9 @@ public abstract class Tower extends Entity implements Clickable {
         this.targetedEnemy = enemiesInRange.get(0);
     }
 
+    public Enemy getTargetedEnemy() {
+        return targetedEnemy;
+    }
+
 
 }

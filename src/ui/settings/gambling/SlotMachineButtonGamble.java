@@ -56,7 +56,7 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
             Greenfoot.delay(20);
 
             Greenfoot.setWorld(new GamblingWonCredits());
-            gambling.setWins(gambling.getWins() + 1);       //wenn safe files bitte machen das auchg speicher weil ich immer neue welt mache
+            gambling.setWins(gambling.getWins() + 1);       //mathilo mach das das geht also safen kann
         } else {
             getWorld().showText("You loose. Try again", 15, 20);
 

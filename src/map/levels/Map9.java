@@ -2,7 +2,7 @@ package map.levels;
 
 import core.Player;
 import map.menu.MapSelector;
-import ui.common.HomeButton;
+import ui.common.BackButton;
 import ui.common.ImageDisplay;
 
 public class Map9 extends Map {
@@ -10,7 +10,7 @@ public class Map9 extends Map {
         setBackground("cell.jpg");
         addObject(new ImageDisplay("comingSoon.png", 120, 100), 6, 6);
         addObject(new Player(), 6, 6);
-        addObject(new HomeButton(new MapSelector()), 0, 0);
+        addObject(new BackButton(new MapSelector()), 0, 0);
 
     }
 }

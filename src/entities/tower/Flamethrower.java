@@ -11,7 +11,7 @@ public class Flamethrower extends Tower{
 
     public Flamethrower() {
         super(150,true, 300, 1, 1, 10, 1000, 45);
-        GreenfootImage img = new GreenfootImage("oldHomeButton.png");
+        GreenfootImage img = new GreenfootImage("Flamethrower.jpg");
         img.scale(200,200);
         setImage(img);
     }

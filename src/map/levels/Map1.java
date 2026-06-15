@@ -1,7 +1,6 @@
 package map.levels;
 
-import entities.enemy.EnemyLevel1;
-import entities.enemy.EnemyLevel2;
+import entities.enemy.*;
 import entities.tower.TrapTower;
 import map.menu.PauseMenu;
 import entities.tower.TestTower;
@@ -28,7 +27,10 @@ public class Map1 extends Map {
 
         addObject(new EnemyLevel1(), 0,233);
         addObject(new EnemyLevel2(), 0,233);
-
+        addObject(new EnemyLevel3(), 0,233);
+        addObject(new EnemyLevel4(), 0,233);
+        addObject(new EnemyLevel5(), 0,233);
+        addObject(new EnemyLevel6(), 0,233);
         int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
         super.addPath(pathLocations);
 

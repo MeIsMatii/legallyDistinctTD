@@ -14,7 +14,7 @@ public class Map1 extends Map {
 
     public Map1() {
         //setBackground("Map1.jpg");
-        setPaintOrder(MuteButton.class,SongButton.class,CloseButton.class,SongDropDown.class,VolumeSlider.class,SettingsPopup.class,SettingsButton.class,HomeButton.class, PlayOnButton.class,PauseMenu.class);
+        setPaintOrder(RetryButton.class,MuteButton.class,SongButton.class,CloseButton.class,SongDropDown.class,VolumeSlider.class,SettingsPopup.class,SettingsButton.class,HomeButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");

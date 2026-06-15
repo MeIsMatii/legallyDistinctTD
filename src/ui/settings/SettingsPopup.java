@@ -19,7 +19,7 @@ public class SettingsPopup extends Actor {
 
     public SettingsPopup() {
         GreenfootImage img = new GreenfootImage(1500, 700);
-        img.setColor(Color.YELLOW);
+        img.setColor(Color.RED);
         img.fill();
         setImage(img);
     }
@@ -32,6 +32,13 @@ public class SettingsPopup extends Actor {
         w.addObject(songDropDown, getX()+getImage().getWidth()/3, getY());
         w.addObject(muteButton,getX(),getY());
 
+        List<PauseMenu>pauseMenus=w.getObjects(PauseMenu.class);
+        if (!pauseMenus.isEmpty()){
+            for (PauseMenu pauseMenu: pauseMenus){
+                pauseMenu.onRemove();
+            }
+        }
+
     }
 
 
@@ -40,6 +47,7 @@ public class SettingsPopup extends Actor {
 
         w.removeObject(volumeSlider);
         w.removeObject(songDropDown);
+        w.removeObject(muteButton);
         List<SongButton> songButtons = w.getObjects(SongButton.class);
         if (!songButtons.isEmpty()) {
             for (SongButton songButton1 : songButtons) {

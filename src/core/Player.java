@@ -70,9 +70,9 @@ public class Player extends MainClass {
 
 
 
-        if (Greenfoot.getKey() == "escape") {
+        if ("escape".equals(Greenfoot.getKey())) {
             setPaused(!isPaused());
-            System.out.printf("isPaused: %s\n", isPaused);
+            //System.out.printf("isPaused: %s\n", isPaused);
             pauseEntity();
             List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
             List<SettingsPopup> settingsPopups = getWorld().getObjects(SettingsPopup.class);
@@ -90,7 +90,7 @@ public class Player extends MainClass {
             }
 
 
-        }else if (Greenfoot.getKey() == "space"){
+        }else if ("space".equals(Greenfoot.getKey())){
             setPaused(!isPaused());
             pauseEntity();
         }
@@ -133,6 +133,11 @@ public class Player extends MainClass {
         if (Greenfoot.isKeyDown("c")) {
             setCoins(getCoins() + 100000);
         }
+    }
+
+    public void onContinue(){
+        setPaused(false);
+        pauseEntity();
     }
 
 

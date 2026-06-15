@@ -2,6 +2,7 @@ package ui.settings;
 
 import core.Clickable;
 import core.MainClass;
+import core.Player;
 import greenfoot.Greenfoot;
 import map.menu.PauseMenu;
 
@@ -16,12 +17,22 @@ public class PlayOnButton extends MainClass implements Clickable {
 
     @Override
     public void onClick() {
+
+        List<Player>players=getWorld().getObjects(Player.class);
+        if (!players.isEmpty()){
+            for (Player player : players){
+                player.onContinue();
+                System.out.println("cont");
+            }
+        }
+
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
         if (!pauseMenus.isEmpty()){
             for (PauseMenu pauseMenu : pauseMenus) {
                 pauseMenu.onRemove();
             }
         }
+
     }
 
     public void act() {

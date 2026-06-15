@@ -6,8 +6,7 @@ import greenfoot.GreenfootSound;
 import greenfoot.MouseInfo;
 import greenfoot.World;
 import map.menu.MapSelector;
-import ui.common.HomeButton;
-import ui.common.ImageDisplay;
+import ui.common.BackButton;
 
 
 public class MapSettings extends World implements HasSound {
@@ -16,7 +15,7 @@ public class MapSettings extends World implements HasSound {
     public MapSettings() {
         super(29, 29, 20);
         setBackground("dirtsquare.png");
-        addObject(new HomeButton(new MapSelector()), 1, 1);
+        addObject(new BackButton(new MapSelector()), 1, 1);
         addObject(new VolumeSlider(), 9, 7);
         backgroundMusic = playSoundAndKeep("TEMPTropischSound.mp3");
         addObject(new SongDropDown(),21,6);

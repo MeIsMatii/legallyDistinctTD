@@ -18,6 +18,9 @@ import java.util.List;
 
 public class TrapTower extends Tower implements Clickable{
     private int mineRadius;
+    private int[] upgrades1 = new int[]{150,500,2500,7500,17000};
+    private int[] upgrades2 = new int[]{200,450,3000,10000,25000};
+    private int[] upgrades3 = new int[]{100,350,1750,6000, 9500};
 
     public TrapTower() {
         super(200,false, 80, 99999999, 200, 10, 1, 90);
@@ -25,19 +28,33 @@ public class TrapTower extends Tower implements Clickable{
 
         setImage("cell.jpg");
     }
+    public int[] getUpgrades1() {
+        return upgrades1;
+    }
+
+    public int[] getUpgrades2() {
+        return upgrades2;
+    }
+
+    public int[] getUpgrades3() {
+        return upgrades3;
+    }
 
     @Override
     public String upgrade1() {
+        setUpgrade1(getUpgrade1()+1);
         return "";
     }
 
     @Override
     public String upgrade2() {
+        setUpgrade2(getUpgrade2()+1);
         return "";
     }
 
     @Override
     public String upgrade3() {
+        setUpgrade3(getUpgrade3()+1);
         return "";
     }
 

@@ -3,9 +3,11 @@ package core;
 import entities.Entity;
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import map.GameOverPopUp;
 import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
 import ui.settings.MapSettings;
+import ui.settings.SettingsPopup;
 
 import java.util.List;
 
@@ -69,11 +71,12 @@ public class Player extends MainClass {
 
 
 
-        if (Greenfoot.getKey() == "escape") {
+        if ("escape".equals(Greenfoot.getKey())) {
             setPaused(!isPaused());
-            System.out.printf("isPaused: %s\n", isPaused);
+            //System.out.printf("isPaused: %s\n", isPaused);
             pauseEntity();
             List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
+            List<SettingsPopup> settingsPopups = getWorld().getObjects(SettingsPopup.class);
             if (pauseMenus.isEmpty()) {
                 getWorld().addObject(new PauseMenu(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             }else {
@@ -81,7 +84,14 @@ public class Player extends MainClass {
                     pauseMenu.onRemove();
                 }
             }
-        }else if (Greenfoot.getKey() == "space"){
+            if (!settingsPopups.isEmpty()){
+                for (SettingsPopup settingsPopup : settingsPopups){
+                    settingsPopup.onRemove();
+                }
+            }
+
+
+        }else if ("space".equals(Greenfoot.getKey())){
             setPaused(!isPaused());
             pauseEntity();
         }
@@ -106,7 +116,10 @@ public class Player extends MainClass {
     public void damage(int damage) {
         setHealth(health - damage);
         if (health < 0) {
-            getWorld().showText("you lost", 400, 400);
+            //getWorld().showText("you lost", 400, 400);
+            GameOverPopUp gameOverPopUp = new GameOverPopUp();
+            getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
+
         }
     }
 
@@ -125,6 +138,12 @@ public class Player extends MainClass {
             setCoins(getCoins() + 100000);
         }
     }
+
+    public void onContinue(){
+        setPaused(false);
+        pauseEntity();
+    }
+
 
 
 }

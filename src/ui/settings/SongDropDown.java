@@ -64,7 +64,7 @@ public class SongDropDown extends MainClass implements Clickable {
             SongButton button = new SongButton(SONGS[i]);
 
             //3zellen drunter nächtes ding
-            getWorld().addObject(button, getX(), getY() + 4 + (i * 3));
+            getWorld().addObject(button, getX(), getY() + 4 + (i * 60));
 
             songButtons.add(button); // speichern um später zu löschen
         }

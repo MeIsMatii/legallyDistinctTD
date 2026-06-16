@@ -12,27 +12,37 @@ import map.levels.Map;
 import java.util.List;
 
 public class TowerInHud extends MainClass implements Clickable {
-
-    public TowerInHud() {
-        setImage("TestTower2_2.png");
+    private final Tower towerToSpawn;
+    public TowerInHud(Tower towerToSpawn) {
+        setImage(towerToSpawn.getImage());
         GreenfootImage img = getImage();
         img.scale(200, 200);
+        img.drawString(String.valueOf(towerToSpawn.getPRICE()), 30, 20);
         setImage(img);
+
+        this.towerToSpawn = towerToSpawn;
     }
 
     @Override
     public void onClick() {
         Map map = (Map) getWorld();
-        map.getPLAYER().getCoins();
-        if (map.getPLAYER().getCoins() > 0) {
+        if (map.getPLAYER().getCoins() >= towerToSpawn.getPRICE()) {
             if (isTouching(Tower.class)) {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
-                //TODO fix @Mathilo, gotta make delete method 4 tower to del Hitbox & Range
-                for (Tower tower : towerList) map.removeObject(tower);
+                for (Tower tower : towerList) {
+                    map.removeObject(tower);
+                    map.getPLAYER().setCoins(map.getPLAYER().getCoins()+tower.getPRICE());
+                }
+
             }
-            map.getPLAYER().setCoins(map.getPLAYER().getCoins() - 100);
-            MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-            getWorld().addObject(new TestTower(true, 1,1,1), mouseInfo.getX(), mouseInfo.getY());
+            try {
+
+                map.getPLAYER().setCoins(map.getPLAYER().getCoins() - towerToSpawn.getPRICE());
+                MouseInfo mouseInfo = Greenfoot.getMouseInfo();
+                getWorld().addObject((Tower) towerToSpawn.getClass().getDeclaredConstructor().newInstance(), mouseInfo.getX(), mouseInfo.getY());
+            } catch (Exception e) {
+                System.out.println("Error with onClick() at TowerInHud");
+            }
 
         }
 

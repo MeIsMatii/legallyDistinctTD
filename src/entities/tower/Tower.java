@@ -3,6 +3,7 @@ package entities.tower;
 import core.Clickable;
 import entities.Entity;
 import entities.enemy.Enemy;
+import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -20,6 +21,8 @@ import java.util.List;
  */
 
 public abstract class Tower extends Entity implements Clickable {
+    private final int PRICE;
+
     private final RangeDisplay RANGEDISPLAY;
     private final int range;
     private final Color colorRed = new Color(128, 0, 0, 128);
@@ -34,12 +37,17 @@ public abstract class Tower extends Entity implements Clickable {
     private int upgrade1 = 0;
     private int upgrade2 = 0;
     private int upgrade3 = 0;
+    private int[] upgrades1 = new int[]{500,500,500,500,500};
+    private int[] upgrades2 = new int[]{500,500,500,500,500};
+    private int[] upgrades3 = new int[]{500,500,500,500,500};
 
     private int shootingDelay;
     private int shootingDelayCounter;
 
-    public Tower(boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
+    public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
+        this.PRICE = price;
+
         this.isPlacing = isPlacing;
         this.canPlace = true;
 
@@ -65,6 +73,10 @@ public abstract class Tower extends Entity implements Clickable {
 
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
+    }
+
+    public int getPRICE() {
+        return PRICE;
     }
 
     public int getProjectileDamage() {
@@ -129,6 +141,18 @@ public abstract class Tower extends Entity implements Clickable {
 
     public void setUpgrade3(int upgrade3) {
         this.upgrade3 = upgrade3;
+    }
+
+    public int[] getUpgrades1() {
+        return upgrades1;
+    }
+
+    public int[] getUpgrades2() {
+        return upgrades2;
+    }
+
+    public int[] getUpgrades3() {
+        return upgrades3;
     }
 
     public void act() {
@@ -301,6 +325,10 @@ public abstract class Tower extends Entity implements Clickable {
             return;
         }
         this.targetedEnemy = enemiesInRange.get(0);
+    }
+
+    public Enemy getTargetedEnemy() {
+        return targetedEnemy;
     }
 
 

@@ -1,6 +1,7 @@
 package entities.projectiles;
 
 import entities.enemy.Enemy;
+import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -11,8 +12,8 @@ public class HomingProjectile extends Projectile {
     private final int homingRadius;
     private Enemy targetedEnemy;
 
-    public HomingProjectile(int speed, int piercing, int damage, int targetX, int targetY, int iframes, int homingRadius) {
-        super(speed, piercing, damage, targetX, targetY, iframes);
+    public HomingProjectile(Tower owner) {
+        super(owner);
 
         GreenfootImage img = new GreenfootImage(30, 30);
         img.setColor(Color.PINK);
@@ -20,7 +21,7 @@ public class HomingProjectile extends Projectile {
 
         setImage(img);
 
-        this.homingRadius = homingRadius;
+        this.homingRadius = 100;
     }
 
     public void addedToWorld(World w) {

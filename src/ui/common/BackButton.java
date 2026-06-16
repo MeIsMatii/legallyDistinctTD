@@ -4,15 +4,14 @@ import core.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.menu.MapSelector;
 
-public class HomeButton extends MainClass implements Clickable {
+public class BackButton extends MainClass implements Clickable {
 
     private World lastWorld;
 
-    public HomeButton(World destination) {
-        setImage("homeButton.png");
-        getImage().scale(40, 40);
+    public BackButton(World destination) {
+        setImage("BackButton.png");
+        getImage().scale(80, 80);
         lastWorld = destination;
 
     }

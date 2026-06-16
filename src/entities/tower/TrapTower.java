@@ -62,7 +62,7 @@ public class TrapTower extends Tower implements Clickable {
     }
 
     public void onHit(Entity hitter) {
-        //TODO explode when touching enemy (mine projectile is not necessary
+        //TODO explode when touching enemy (mine projectile is not necessary) @sinnaJ @Jannis
     }
 
 

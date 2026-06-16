@@ -1,6 +1,7 @@
 package entities.tower;
 
 import core.Clickable;
+import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Mine;
@@ -20,12 +21,6 @@ public class TrapTower extends Tower implements Clickable {
         mineRadius = 150;
 
         setImage("TestTower2_2.png");
-    }
-
-    public void addedToWorld(World w) {
-        super.addedToWorld(w);
-        setTargetedEnemyManual(getWorld().getObjects(Enemy.class).get(0));
-        getWorld().addObject(new Mine(this), getX(), getY());
     }
 
     public int[] getUpgrades1() {
@@ -64,6 +59,10 @@ public class TrapTower extends Tower implements Clickable {
     public void act() {
         if (isPaused()) return;
         super.act();
+    }
+
+    public void onHit(Entity hitter) {
+        //TODO explode when touching enemy (mine projectile is not necessary
     }
 
 

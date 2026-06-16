@@ -4,7 +4,6 @@ import core.Clickable;
 import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
-import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -48,9 +47,9 @@ public abstract class Tower extends Entity implements Clickable {
     private int upgrade1 = 0;
     private int upgrade2 = 0;
     private int upgrade3 = 0;
-    private int[] upgrades1 = new int[]{500,500,500,500,500};
-    private int[] upgrades2 = new int[]{500,500,500,500,500};
-    private int[] upgrades3 = new int[]{500,500,500,500,500};
+    private int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
+    private int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
+    private int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
 
     private int shootingDelay;
     private int shootingDelayCounter;
@@ -84,6 +83,18 @@ public abstract class Tower extends Entity implements Clickable {
 
         world.addObject(RANGEDISPLAY, getX(), getY());
         RANGEDISPLAY.setRangeVisibility(false, null);
+    }
+
+    public Color getColorRed() {
+        return colorRed;
+    }
+
+    public Color getColorGrey() {
+        return colorGrey;
+    }
+
+    public RangeDisplay getRANGEDISPLAY() {
+        return RANGEDISPLAY;
     }
 
     public int getPRICE() {
@@ -167,7 +178,7 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
     public void act() {
-        if(isPaused()) return;
+        if (isPaused()) return;
 
         checkClick();
         if (isPlacing) {
@@ -273,8 +284,8 @@ public abstract class Tower extends Entity implements Clickable {
     public void checkPlacement() {
         List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
         canPlace = true;
-        for(Hitbox hitbox: hitboxes) {
-            if((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
+        for (Hitbox hitbox : hitboxes) {
+            if ((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
                 canPlace = false;
                 break;
             }
@@ -297,7 +308,7 @@ public abstract class Tower extends Entity implements Clickable {
         if (enemy == null) {
             return;
         }
-        turnTowards(enemy.getX(), enemy.getY());
+        //turnTowards(enemy.getX(), enemy.getY());
         targetedEnemy = enemy;
     }
 
@@ -339,8 +350,6 @@ public abstract class Tower extends Entity implements Clickable {
     public Enemy getTargetedEnemy() {
         return targetedEnemy;
     }
-
-
 
 
 }

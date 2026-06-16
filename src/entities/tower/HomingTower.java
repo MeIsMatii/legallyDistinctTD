@@ -7,8 +7,8 @@ import greenfoot.GreenfootImage;
 public class HomingTower extends Tower {
 
 
-    public HomingTower(boolean isPlacing, int upgrade1lvl, int upgrade2lvl, int upgrade3lvl) {
-        super(isPlacing, 300, 10, 2, 3, 100, 45);
+    public HomingTower() {
+        super(100,true,  300, 10, 20, 30, 2, 10);
 
         GreenfootImage img = new GreenfootImage("MageTower.png");
         img.scale(120, 100);
@@ -36,6 +36,6 @@ public class HomingTower extends Tower {
     }
 
     void shoot(Enemy e) {
-        getWorld().addObject(new HomingProjectile(getProjectileSpeed(), getProjectilePiercing(), getProjectileDamage(), e.getX(), e.getY(), getProjectileIFrames(), 100), getX(), getY());
+        getWorld().addObject(new HomingProjectile(this), getX(), getY());
     }
 }

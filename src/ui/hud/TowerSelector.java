@@ -2,7 +2,7 @@ package ui.hud;
 
 import core.Clickable;
 import core.MainClass;
-import entities.tower.TestTower;
+import entities.tower.*;
 import greenfoot.World;
 import ui.common.ImageDisplay;
 
@@ -19,7 +19,12 @@ public class TowerSelector extends MainClass implements Clickable {
 
     @Override
     protected void addedToWorld(World world) {
-        getWorld().addObject(new  TowerInHud(),1700,460);
+        getWorld().addObject(new  TowerInHud(new TestTower()),1700,460);
+        getWorld().addObject(new  TowerInHud(new HomingTower()),1700,660);
+        getWorld().addObject(new  TowerInHud(new TrapTower()),1900,460);
+        getWorld().addObject(new  TowerInHud(new Flamethrower()),1900,660);
+        getWorld().addObject(new  TowerInHud(new Sniper()),1700,860);
+
     }
 
     public void onClick() {

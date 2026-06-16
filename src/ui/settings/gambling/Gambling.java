@@ -3,7 +3,7 @@ package ui.settings.gambling;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.menu.MapSelector;
-import ui.common.HomeButton;
+import ui.common.BackButton;
 
 public class Gambling extends World {
 
@@ -40,7 +40,7 @@ public class Gambling extends World {
 
 
         setBackground("dirtsquare.png");
-        addObject(new HomeButton(new MapSelector()), 4, 4);
+        addObject(new BackButton(new MapSelector()), 4, 4);
         addObject(new SlotMachineButtonGamble(this), 15, 25);
         showText("Click! Click! Click!", 15, 30);
         showText("Wins: " + getWins(), 25,0);

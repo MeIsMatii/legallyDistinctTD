@@ -1,8 +1,10 @@
 package entities.projectiles;
 
+import entities.tower.Tower;
+
 public class TestProjectile extends Projectile {
-    public TestProjectile(int speed, int damage, int piercing, int targetX, int targetY, int iframes) {
-        super(speed, piercing, damage, targetX, targetY, iframes);
+    public TestProjectile(Tower owner) {
+        super(owner);
         setImage("heart.png");
     }
 

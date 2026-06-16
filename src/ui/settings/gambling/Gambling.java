@@ -50,13 +50,13 @@ public class Gambling extends World {
         slot2 = new SlotMachineSlot();
         slot3 = new SlotMachineSlot();
 
-        GreenfootImage img1 = new GreenfootImage("chinaFlaggeGamble.png");
-        GreenfootImage img2 = new GreenfootImage("lueckenfuellerGamble.jpg");
-        GreenfootImage img3 = new GreenfootImage("lueckefueller2Gamble.jpg");
+        GreenfootImage img1 = new GreenfootImage("GambleOne.png");
+        GreenfootImage img2 = new GreenfootImage("GambleTwo.png");
+        GreenfootImage img3 = new GreenfootImage("GambleThree.png");
 
-        img1.scale(100,100);
-        img2.scale(100,100);
-        img3.scale(100,100);
+        img1.scale(120,120);
+        img2.scale(120,120);
+        img3.scale(120,120);
 
         slot1.setImage(img1);
         slot2.setImage(img2);

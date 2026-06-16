@@ -30,6 +30,16 @@ public abstract class Tower extends Entity implements Clickable {
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
+
+    protected void setCanPlace(boolean canPlace) {                   //hat jannis(ich) jetzt für traptower gemacht hoffe ist ok
+        this.canPlace = canPlace;
+    }
+
+    protected boolean getCanPlace() {
+        return canPlace;
+    }
+
+
     private int projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
@@ -333,6 +343,8 @@ public abstract class Tower extends Entity implements Clickable {
     public Enemy getTargetedEnemy() {
         return targetedEnemy;
     }
+
+
 
 
 }

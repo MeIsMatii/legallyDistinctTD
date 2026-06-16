@@ -72,4 +72,19 @@ public class TrapTower extends Tower implements Clickable{
         if(isPaused()) return;
         super.act();
     }
+
+    @Override
+    public void onHit(Entity hitter) {         //kann man jetzt überall platzieren
+        if (hitter instanceof Tower) {
+            setCanPlace(false);
+            return;
+        }
+
+        if (hitter instanceof Path) {
+            setCanPlace(true);
+            return;
+        }
+
+        setCanPlace(true);
+    }
 }

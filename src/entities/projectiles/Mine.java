@@ -15,6 +15,8 @@ public class Mine extends Projectile{
     private int explosionTime;
     private boolean isExploding = false;
 
+    private boolean isMoving =true;
+
     private int mineRadius;
 
     public Mine(Tower owner) {
@@ -24,16 +26,16 @@ public class Mine extends Projectile{
     }
 
     void move() {
-        List<Path> pathList = getWorld().getObjectsAt(getX(), getY(), Path.class);
-        System.out.println(pathList.isEmpty());
-        if(!pathList.isEmpty()) {
-            System.out.println("no move");
+        if(!isMoving) {
             return;
         }
         move(getSpeed());
     }
 
     public void onHit(Entity hitter) {
+        if(hitter instanceof Path) {
+            isMoving = false;
+        }
         this.isExploding = true;
         GreenfootImage img = new GreenfootImage(mineRadius, mineRadius);
         img.setColor(Color.RED);

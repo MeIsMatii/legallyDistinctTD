@@ -23,11 +23,18 @@ public class TrapTower extends Tower implements Clickable{
     private int[] upgrades3 = new int[]{100,350,1750,6000, 9500};
 
     public TrapTower() {
-        super(200,false, 80, 99999999, 200, 10, 1, 90);
+        super(125,true, 80, 99999999, 200, 10, 1, 90);
         mineRadius = 150;
 
-        setImage("cell.jpg");
+        setImage("TestTower2_2.png");
     }
+
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        setTargetedEnemyManual(getWorld().getObjects(Enemy.class).get(0));
+        getWorld().addObject(new Mine(this), getX(), getY());
+    }
+
     public int[] getUpgrades1() {
         return upgrades1;
     }
@@ -59,8 +66,6 @@ public class TrapTower extends Tower implements Clickable{
     }
 
     public void shoot(Enemy e) {
-
-        getWorld().addObject(new Mine(this), getX(), getY());
     }
 
     public void act() {

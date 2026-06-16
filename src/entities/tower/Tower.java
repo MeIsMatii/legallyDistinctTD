@@ -316,6 +316,9 @@ public abstract class Tower extends Entity implements Clickable {
      */
     abstract void shoot(Enemy e);
 
+    public void setTargetedEnemyManual(Enemy e) {
+        this.targetedEnemy = e;
+    }
 
     public void setTargetedEnemy() {
         // TODO check in range and not inside the hitbox D: @Mathilo

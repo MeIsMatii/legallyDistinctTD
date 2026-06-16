@@ -7,7 +7,7 @@ import greenfoot.GreenfootImage;
 
 public class TestTower extends Tower {
     public TestTower() {
-        super(50, true, 300, 45, 1, 3, 10, 45);
+        super(50, true, 300, 45, 0, 3, 10, 45);
         setImage("TestTower2_2.png");
     }
     //Upgrades need: str description [done] + int Level + option to buy

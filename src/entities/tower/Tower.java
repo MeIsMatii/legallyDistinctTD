@@ -2,6 +2,7 @@ package entities.tower;
 
 import core.Clickable;
 import entities.Entity;
+import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
@@ -172,18 +173,13 @@ public abstract class Tower extends Entity implements Clickable {
                 shootingDelayCounter = 0;
             }
         }
-        this.canPlace = true; //default value
 
 
     }
 
 
     public void onHit(Entity hitter) {
-        if (!(hitter instanceof Path) && !(hitter instanceof Tower)) { ///is there a better way than instanceof?
-            canPlace = true;
-            return;
-        }
-        canPlace = false;
+        return;
     }
 
     public void checkHover(boolean isHovering) {
@@ -265,19 +261,19 @@ public abstract class Tower extends Entity implements Clickable {
      * {@code grey} when the placement location is valid.<br>
      */
     public void checkPlacement() {
-        if (!RANGEDISPLAY.isRangeVisible) {
-            if (canPlace) {
-                RANGEDISPLAY.setRangeVisibility(true, colorGrey);
-            } else {
-                RANGEDISPLAY.setRangeVisibility(true, colorRed);
+        List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
+        canPlace = true;
+        for(Hitbox hitbox: hitboxes) {
+            if((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
+                canPlace = false;
+                break;
             }
+        }
+
+        if (canPlace) {
+            RANGEDISPLAY.setRangeVisibility(true, colorGrey);
         } else {
-            if (canPlace) {
-                RANGEDISPLAY.setRangeVisibility(true, colorGrey);
-            } else {
-                //grey range, should be red
-                RANGEDISPLAY.setRangeVisibility(true, colorRed);
-            }
+            RANGEDISPLAY.setRangeVisibility(true, colorRed);
         }
     }
 

@@ -18,4 +18,4 @@ public class Explosion extends Actor {
         }
     }
 }
-//für traptower
+//für traptower lool

@@ -7,15 +7,14 @@ import entities.tower.TestTower;
 import greenfoot.GreenfootImage;
 import map.util.MapCoordinatesUtilGuy;
 import ui.common.BackButton;
-import ui.settings.PlayOnButton;
-import ui.settings.SettingsButton;
+import ui.settings.*;
 
 
 public class Map1 extends Map {
 
 
     public Map1() {
-        setPaintOrder(SettingsButton.class, BackButton.class, PlayOnButton.class,PauseMenu.class);
+        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class,CloseButton.class,SongDropDown.class,VolumeSlider.class,SettingsPopup.class,SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");
@@ -25,7 +24,10 @@ public class Map1 extends Map {
 
 
 
-        addObject(new EnemyLevel1(), 0,233);
+        for (int i = 0;i<20;i++){
+            addObject(new EnemyLevel1(), 0,233);
+        }
+
         addObject(new EnemyLevel2(), 0,233);
         addObject(new EnemyLevel3(), 0,233);
         addObject(new EnemyLevel4(), 0,233);

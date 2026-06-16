@@ -10,7 +10,6 @@ public class Gambling extends World {
     private SlotMachineSlot slot1;
     private SlotMachineSlot slot2;
     private SlotMachineSlot slot3;
-    private int wins = 0;
 
 
 
@@ -26,12 +25,6 @@ public class Gambling extends World {
         return slot3;
     }
 
-    public int getWins() {return wins;}
-
-
-
-    public void setWins(int wins) {this.wins = wins;}
-
 
 
     public Gambling() {
@@ -41,31 +34,31 @@ public class Gambling extends World {
 
         setBackground("dirtsquare.png");
         addObject(new BackButton(new MapSelector()), 4, 4);
-        addObject(new SlotMachineButtonGamble(this), 15, 25);
-        showText("Click! Click! Click!", 15, 30);
-        showText("Wins: " + getWins(), 25,0);
+        addObject(new SlotMachineButtonGamble(this), 10, 16);
+        showText("Click! Click! Click!", 14, 24);
+
 
 
         slot1 = new SlotMachineSlot();
         slot2 = new SlotMachineSlot();
         slot3 = new SlotMachineSlot();
 
-        GreenfootImage img1 = new GreenfootImage("chinaFlaggeGamble.png");
-        GreenfootImage img2 = new GreenfootImage("lueckenfuellerGamble.jpg");
-        GreenfootImage img3 = new GreenfootImage("lueckefueller2Gamble.jpg");
+        GreenfootImage img1 = new GreenfootImage("Gamble1.png");
+        GreenfootImage img2 = new GreenfootImage("Gamble2.png");
+        GreenfootImage img3 = new GreenfootImage("Gamble3.png");
 
-        img1.scale(100,100);
-        img2.scale(100,100);
-        img3.scale(100,100);
+        img1.scale(500,500);
+        img2.scale(500,500);
+        img3.scale(500,500);
 
         slot1.setImage(img1);
         slot2.setImage(img2);
         slot3.setImage(img3);
 
-        addObject(slot1,8,13);
-        addObject(slot2,15,13);
-        addObject(slot3,22,13);
+        addObject(slot1,25,18);
+        addObject(slot2,22,18);
+        addObject(slot3,19,18);
 
     }
-    //hier wird bald gegambelt
+
 }

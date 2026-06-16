@@ -15,14 +15,14 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
 
     public SlotMachineButtonGamble(Gambling gambling) {
         this.gambling = gambling;
-        setImage("Slot-MachineDefault.png");
-        getImage().scale(200, 200);
+        setImage("SlotMachine.png");
+        getImage().scale(500, 500);
     }
 
     @Override
     public void onClick() {
         Gambling world = (Gambling) getWorld();
-        getWorld().showText("",15,20);
+        getWorld().showText("",14,24);
 
         SlotMachineSlot[] slots = new SlotMachineSlot[]{
                 world.getSlot1(),
@@ -37,6 +37,8 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
                 world.getSlot2().getImage(),
                 world.getSlot3().getImage()
         };
+
+
 
         int stop = Greenfoot.getRandomNumber(45);
         for (int i = 0; i < stop; i++) {
@@ -56,9 +58,8 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
             Greenfoot.delay(20);
 
             Greenfoot.setWorld(new GamblingWonCredits());
-            gambling.setWins(gambling.getWins() + 1);       //mathilo mach das das geht also safen kann
         } else {
-            getWorld().showText("You loose. Try again", 15, 20);
+            getWorld().showText("You loose. Try again", 14, 24);
 
 
         }

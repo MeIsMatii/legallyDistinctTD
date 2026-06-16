@@ -4,14 +4,14 @@ import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import ui.common.HomeButton;
+import ui.common.BackButton;
 import ui.settings.PlayOnButton;
 import ui.settings.SettingsButton;
 
 
 public class PauseMenu extends Actor {
 
-   private HomeButton homeButton;
+   private BackButton homeButton;
    private SettingsButton settingsButton;
    private PlayOnButton playOnButton;
 
@@ -22,10 +22,10 @@ public class PauseMenu extends Actor {
         setImage(img);
     }
 
-    public HomeButton getHomeButton() {
+    public BackButton getHomeButton() {
         return homeButton;
     }
-    public void setHomeButton(HomeButton homeButton) {
+    public void setHomeButton(BackButton homeButton) {
         this.homeButton = homeButton;
     }
 
@@ -42,7 +42,7 @@ public class PauseMenu extends Actor {
 
 
     public void addedToWorld(World w){
-        setHomeButton(new HomeButton(new MapSelector()));
+        setHomeButton(new BackButton(new MapSelector()));
         setSettingsButton(new SettingsButton());
         setPlayOnButton(new PlayOnButton());
 

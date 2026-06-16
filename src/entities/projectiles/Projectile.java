@@ -2,6 +2,7 @@ package entities.projectiles;
 
 import entities.Entity;
 import entities.enemy.Enemy;
+import entities.tower.Tower;
 import greenfoot.World;
 
 import java.util.HashMap;
@@ -16,14 +17,14 @@ public abstract class Projectile extends Entity {
     private int targetY;
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
 
-    public Projectile(int speed, int piercing, int damage, int targetX, int targetY, int iframes) {
-        this.speed = speed;
-        this.piercing = piercing;
-        this.damage = damage;
-        this.targetX = targetX;
-        this.targetY = targetY;
+    public Projectile(Tower owner) {
+        this.speed = owner.getProjectileSpeed();
+        this.piercing = owner.getProjectilePiercing();
+        this.damage = owner.getProjectileDamage();
+        this.targetX = owner.getTargetedEnemy().getX();
+        this.targetY = owner.getTargetedEnemy().getY();
 
-        this.iframes = iframes;
+        this.iframes = owner.getProjectileIFrames();
     }
 
     public int getSpeed() {

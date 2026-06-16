@@ -2,9 +2,7 @@ package ui.settings.gambling;
 
 import greenfoot.World;
 import map.menu.MapSelector;
-import ui.common.HomeButton;
-
-import javax.swing.*;
+import ui.common.BackButton;
 
 public class GamblingWonCredits extends World {
 
@@ -13,6 +11,7 @@ public class GamblingWonCredits extends World {
         "Mathilo",
         "Colin",
         "Jannis",
+        "Julian",
         "Febo",
         "Jan",
         "Sophia"
@@ -27,8 +26,8 @@ public class GamblingWonCredits extends World {
     public GamblingWonCredits() {
         super(29, 29, 20);
         setBackground("dirtsquare.png");
-        setPaintOrder(HomeButton.class, TextBlock.class , Background.class);
-        addObject(new HomeButton(new MapSelector()), 4, 4);
+        setPaintOrder(BackButton.class, TextBlock.class , Background.class);
+        addObject(new BackButton(new MapSelector()), 4, 4);
         credits();
     }
 

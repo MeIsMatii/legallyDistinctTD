@@ -24,6 +24,7 @@ public class TowerSelector extends MainClass implements Clickable {
         getWorld().addObject(new  TowerInHud(new TrapTower()),1900,460);
         getWorld().addObject(new  TowerInHud(new Flamethrower()),1900,660);
         getWorld().addObject(new  TowerInHud(new Sniper()),1700,860);
+        getWorld().addObject(new  TowerInHud(new Rocketlauncher()),1700,60); // temp,TODO needs to be changed later
 
     }
 

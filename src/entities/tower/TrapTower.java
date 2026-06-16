@@ -5,13 +5,18 @@ import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Mine;
+import greenfoot.Actor;
+import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.levels.util.Path;
+import ui.settings.gambling.Explosion;
 
 import java.util.List;
 
 public class TrapTower extends Tower implements Clickable {
     private int mineRadius;
+
     private int[] upgrades1 = new int[]{150, 500, 2500, 7500, 17000};
     private int[] upgrades2 = new int[]{200, 450, 3000, 10000, 25000};
     private int[] upgrades3 = new int[]{100, 350, 1750, 6000, 9500};
@@ -54,6 +59,12 @@ public class TrapTower extends Tower implements Clickable {
     }
 
     public void shoot(Enemy e) {
+        e.damage(getProjectileDamage());
+        //setImage("Explosion.png");
+        //getImage().scale(100, 100);
+        //Greenfoot.delay(20);
+        getWorld().addObject(new Explosion(), getX(), getY());
+        getWorld().removeObject(this);
     }
 
     public void act() {
@@ -63,6 +74,7 @@ public class TrapTower extends Tower implements Clickable {
 
     public void onHit(Entity hitter) {
         //TODO explode when touching enemy (mine projectile is not necessary) @sinnaJ @Jannis
+
     }
 
 

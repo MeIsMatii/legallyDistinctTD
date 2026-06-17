@@ -98,7 +98,6 @@ public abstract class Projectile extends Entity {
         Enemy e = (Enemy) hitter;
         if (hitEnemies.containsKey(e)) return; //already hit
 
-        System.out.println("hit");
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
         e.damage(this.damage);
         this.piercing--;

@@ -24,10 +24,7 @@ public class Map1 extends Map {
 
 
 
-        for (int i = 0;i<20;i++){
-            addObject(new EnemyLevel1(), 0,233);
-        }
-
+        addObject(new EnemyLevel1(), 0,233);
         addObject(new EnemyLevel2(), 0,233);
         addObject(new EnemyLevel3(), 0,233);
         addObject(new EnemyLevel4(), 0,233);

@@ -11,7 +11,7 @@ public class Rocketlauncher extends Tower{
     private int[] upgrades3 = new int[]{100,350,1750,6000, 9500};
 
     public Rocketlauncher() {
-        super(500, true, 500, 250, 25, 25, 0, 0);
+        super(500, true, 500, 250, 25, 25, 1, 0);
         GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
         img.scale(200,200);
         setImage(img);
@@ -49,6 +49,6 @@ public class Rocketlauncher extends Tower{
 
     @Override
     public void shoot(Enemy e) {
-        getWorld().addObject(new TestProjectile(this), getX(), getY());
+        getWorld().addObject(new Rocket(this), getX(), getY());
     }
 }

@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Projectile extends Entity {
+    private Tower owner;
     private final int damage;
     private final int iframes;
     private final int speed;
@@ -18,6 +19,8 @@ public abstract class Projectile extends Entity {
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
 
     public Projectile(Tower owner) {
+        this.owner = owner;
+
         this.speed = owner.getProjectileSpeed();
         this.piercing = owner.getProjectilePiercing();
         this.damage = owner.getProjectileDamage();
@@ -25,6 +28,10 @@ public abstract class Projectile extends Entity {
         this.targetY = owner.getTargetedEnemy().getY();
 
         this.iframes = owner.getProjectileIFrames();
+    }
+
+    public Tower getOwner() {
+        return owner;
     }
 
     public int getSpeed() {

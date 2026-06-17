@@ -1,6 +1,6 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 

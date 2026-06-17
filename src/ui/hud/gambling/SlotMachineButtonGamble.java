@@ -1,20 +1,16 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
-import greenfoot.UserInfo;
-import greenfoot.UserInfoVisitor;
 
 public class SlotMachineButtonGamble extends MainClass implements Clickable {
 
-    private Gambling gambling;
 
 
 
-    public SlotMachineButtonGamble(Gambling gambling) {
-        this.gambling = gambling;
+    public SlotMachineButtonGamble() {
         setImage("SlotMachine.png");
         getImage().scale(500, 500);
     }

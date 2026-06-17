@@ -1,4 +1,4 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
 import core.MainClass;
 

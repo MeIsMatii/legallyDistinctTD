@@ -2,7 +2,7 @@ package map.menu;
 
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import ui.hud.StartingButton;
+import ui.hud.buttons.StartingButton;
 
 public class MapTitlescreen extends World {
     public MapTitlescreen() {

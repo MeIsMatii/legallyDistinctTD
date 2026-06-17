@@ -1,5 +1,5 @@
-#Tower Defense Save File
-#Mon Jun 15 12:19:07 CEST 2026
-volume=74
+#Tower Defense Save File for general data(no saves for games)
+#Wed Jun 17 22:29:10 CEST 2026
+volume=50
 TutorialStatus=true
 soundEnabled=true

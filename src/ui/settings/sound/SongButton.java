@@ -1,7 +1,7 @@
-package ui.settings;
+package ui.settings.sound;
 
-import core.Clickable;
-import core.HasSound;
+import util.Clickable;
+import util.HasSound;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;

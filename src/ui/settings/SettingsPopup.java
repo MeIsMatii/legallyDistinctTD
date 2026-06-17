@@ -1,12 +1,14 @@
 package ui.settings;
 
-import core.Player;
-import entities.Entity;
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.menu.PauseMenu;
+import ui.hud.buttons.MuteButton;
+import ui.settings.sound.SongButton;
+import ui.settings.sound.SongDropDown;
+import ui.settings.sound.VolumeSlider;
 
 import java.util.List;
 

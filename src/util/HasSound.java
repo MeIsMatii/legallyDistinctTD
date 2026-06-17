@@ -1,9 +1,9 @@
-package core;
+package util;
 
 import greenfoot.GreenfootSound;
 import greenfoot.sound.Mp3AudioInputStream;
 import greenfoot.util.GreenfootUtil;
-import ui.settings.SoundSettings;
+import ui.settings.sound.SoundSettings;
 
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;

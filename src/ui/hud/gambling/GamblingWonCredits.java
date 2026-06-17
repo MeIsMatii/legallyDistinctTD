@@ -1,5 +1,7 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
+import greenfoot.Color;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.menu.MapSelector;
 import ui.common.BackButton;
@@ -8,13 +10,14 @@ public class GamblingWonCredits extends World {
 
     private String[] credits = new String[]{
         "Bloons TD China",
-        "Mathilo",
-        "Colin",
-        "Jannis",
-        "Julian",
-        "Febo",
-        "Jan",
-        "Sophia"
+        "Group Leader: Colin",
+        "deputy Group Leader: Mathilo",
+        "Programming: Jannis",
+        "Programming/Music: Julian",
+        "Art: Febo",
+        "Art: Sophia",
+        "Documentation: Jan",
+        "(everyone had a programming part)"
     };
 
     private int creditsLocation = 0;
@@ -26,7 +29,7 @@ public class GamblingWonCredits extends World {
     public GamblingWonCredits() {
         super(29, 29, 20);
         setBackground("dirtsquare.png");
-        setPaintOrder(BackButton.class, TextBlock.class , Background.class);
+        setPaintOrder(BackButton.class, TextBlock.class);
         addObject(new BackButton(new MapSelector()), 4, 4);
         credits();
     }
@@ -34,11 +37,12 @@ public class GamblingWonCredits extends World {
 
     public void credits() {
 
-        //addObject(new TextBlock("Bloons TD China", -0.4), 10, 15);
+        GreenfootImage img = new GreenfootImage(2000, 2000);
+        img.setColor(Color.BLACK);
+        img.fill();
+        setBackground(img);
 
 
-
-        addObject(new Background(), 0,0);
     }
 
     public void act() {

@@ -4,11 +4,10 @@ import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import javafx.scene.image.Image;
 import ui.common.BackButton;
-import ui.settings.PlayOnButton;
-import ui.settings.RetryButton;
-import ui.settings.SettingsButton;
+import ui.hud.buttons.PlayOnButton;
+import ui.hud.buttons.RetryButton;
+import ui.hud.buttons.SettingsButton;
 
 
 public class PauseMenu extends Actor {

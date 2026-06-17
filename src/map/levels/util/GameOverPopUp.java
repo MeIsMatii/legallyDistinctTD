@@ -1,4 +1,4 @@
-package map;
+package map.levels.util;
 
 import greenfoot.Actor;
 import greenfoot.Color;
@@ -6,7 +6,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.menu.MapSelector;
 import ui.common.BackButton;
-import ui.settings.RetryButton;
+import ui.hud.buttons.RetryButton;
 
 public class GameOverPopUp extends Actor {
 

@@ -1,10 +1,9 @@
 package ui.hud;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import entities.tower.*;
 import greenfoot.World;
-import ui.common.ImageDisplay;
 
 public class TowerSelector extends MainClass implements Clickable {
 

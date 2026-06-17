@@ -1,9 +1,8 @@
-package ui.settings;
+package ui.hud.buttons;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import core.Player;
-import greenfoot.Greenfoot;
 import map.menu.PauseMenu;
 
 import java.util.List;

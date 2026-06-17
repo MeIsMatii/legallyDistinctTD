@@ -1,9 +1,9 @@
-package ui.settings;
+package ui.hud.buttons;
 
-import core.Clickable;
+import ui.settings.SettingsPopup;
+import util.Clickable;
 import core.MainClass;
 
-import javax.crypto.Mac;
 import java.util.List;
 
 public class CloseButton extends MainClass implements Clickable {

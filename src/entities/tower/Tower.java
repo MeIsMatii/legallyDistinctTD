@@ -1,6 +1,6 @@
 package entities.tower;
 
-import core.Clickable;
+import util.Clickable;
 import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;

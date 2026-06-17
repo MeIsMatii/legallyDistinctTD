@@ -1,10 +1,10 @@
 package ui.hud;
 
-import core.Clickable;
+import util.Clickable;
 import entities.tower.Tower;
 import greenfoot.Actor;
 import core.Player;
-import greenfoot.World;
+
 import java.util.List;
 
 public class UpgradePath extends Actor implements Clickable {

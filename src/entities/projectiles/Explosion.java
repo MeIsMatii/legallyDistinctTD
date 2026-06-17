@@ -1,4 +1,4 @@
-package ui.settings.gambling;
+package entities.projectiles;
 
 import greenfoot.Actor;
 

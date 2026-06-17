@@ -1,8 +1,7 @@
 package ui.hud;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
-import entities.tower.TestTower;
 import entities.tower.Tower;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

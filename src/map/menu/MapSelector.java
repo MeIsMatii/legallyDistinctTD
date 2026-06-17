@@ -1,11 +1,11 @@
 package map.menu;
 
-import core.HasSound;
+import util.HasSound;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import ui.common.ImageDisplay;
-import ui.settings.SettingsButton;
-import ui.settings.gambling.SlotMachineButton;
+import ui.hud.buttons.SettingsButton;
+import ui.hud.gambling.SlotMachineButton;
 
 public class MapSelector extends World implements HasSound {
 

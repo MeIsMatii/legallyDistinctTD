@@ -1,11 +1,10 @@
-package ui.hud;
+package ui.hud.buttons;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
-import map.levels.Map;
 import map.menu.MapSelector;
-import util.SaveManager;
+import util.saves.SaveManager;
 
 public class StartingButton extends MainClass implements Clickable {
     public StartingButton(){

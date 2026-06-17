@@ -1,12 +1,11 @@
-package ui.settings;
+package ui.hud.buttons;
 
-import core.Clickable;
+import ui.settings.MapSettings;
+import ui.settings.SettingsPopup;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import map.levels.Map;
-import map.levels.Map1;
-import map.levels.Map2;
-import map.menu.MapPreview;
 import map.menu.MapSelector;
 
 public class SettingsButton extends MainClass implements Clickable {

@@ -1,6 +1,9 @@
 package ui.settings;
 
-import core.HasSound;
+import ui.hud.buttons.MuteButton;
+import ui.settings.sound.SongDropDown;
+import ui.settings.sound.VolumeSlider;
+import util.HasSound;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootSound;
 import greenfoot.MouseInfo;

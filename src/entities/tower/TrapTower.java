@@ -1,16 +1,11 @@
 package entities.tower;
 
-import core.Clickable;
+import util.Clickable;
 import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
-import entities.projectiles.Mine;
-import greenfoot.Actor;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.World;
 import map.levels.util.Path;
-import ui.settings.gambling.Explosion;
+import entities.projectiles.Explosion;
 
 import java.util.List;
 

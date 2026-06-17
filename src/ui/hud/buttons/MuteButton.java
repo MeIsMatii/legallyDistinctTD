@@ -1,9 +1,10 @@
-package ui.settings;
+package ui.hud.buttons;
 
-import core.Clickable;
+import ui.settings.sound.SoundSettings;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.GreenfootImage;
-import util.SaveManager;
+import util.saves.SaveManager;
 
 public class MuteButton extends MainClass implements Clickable {
     private boolean muted = !SaveManager.getInstance().isSoundOn();

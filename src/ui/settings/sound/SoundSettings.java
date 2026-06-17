@@ -1,7 +1,7 @@
-package ui.settings;
+package ui.settings.sound;
 
 import greenfoot.GreenfootSound;
-import util.SaveManager;
+import util.saves.SaveManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,11 @@ public class SoundSettings {
     }
 
     public void addRegisteredSound(GreenfootSound soundToRegister) {
+        SaveManager saveManager = SaveManager.getInstance();
         if (soundToRegister == null) {
+            return;
+        }
+        if (!saveManager.isSoundOn()){
             return;
         }
         // schaut das nicht zwei mal der gleiche sound in der liste ist

@@ -1,6 +1,6 @@
 package map.menu;
 
-import core.Clickable;
+import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;

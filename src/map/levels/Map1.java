@@ -1,20 +1,21 @@
 package map.levels;
 
 import entities.enemy.*;
-import entities.tower.TrapTower;
 import map.menu.PauseMenu;
-import entities.tower.TestTower;
 import greenfoot.GreenfootImage;
-import map.util.MapCoordinatesUtilGuy;
 import ui.common.BackButton;
+import ui.hud.buttons.*;
 import ui.settings.*;
+import ui.settings.sound.SongButton;
+import ui.settings.sound.SongDropDown;
+import ui.settings.sound.VolumeSlider;
 
 
 public class Map1 extends Map {
 
 
     public Map1() {
-        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class,CloseButton.class,SongDropDown.class,VolumeSlider.class,SettingsPopup.class,SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
+        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, CloseButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");

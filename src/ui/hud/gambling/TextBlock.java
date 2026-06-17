@@ -1,10 +1,9 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import org.w3c.dom.Text;
 
 public class TextBlock extends Actor {
 

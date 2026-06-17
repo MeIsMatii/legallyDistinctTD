@@ -1,4 +1,4 @@
-package ui.settings.gambling;
+package ui.hud.gambling;
 
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -34,7 +34,7 @@ public class Gambling extends World {
 
         setBackground("dirtsquare.png");
         addObject(new BackButton(new MapSelector()), 4, 4);
-        addObject(new SlotMachineButtonGamble(this), 10, 16);
+        addObject(new SlotMachineButtonGamble(), 10, 16);
         showText("Click! Click! Click!", 14, 24);
 
 

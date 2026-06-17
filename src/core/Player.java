@@ -3,10 +3,9 @@ package core;
 import entities.Entity;
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.GameOverPopUp;
+import map.levels.util.GameOverPopUp;
 import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
-import ui.settings.MapSettings;
 import ui.settings.SettingsPopup;
 
 import java.util.List;

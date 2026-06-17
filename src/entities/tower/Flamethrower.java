@@ -62,13 +62,14 @@ public class Flamethrower extends Tower{
             recharge();
         }
     }
-    private void recharge() {
+    private void recharge() { //works, no need to touch that ever again
         int rechargeDelay = 50;
         if (rechargeCounter < rechargeDelay) {
             rechargeCounter++;
             return;
         }
         magazine = magazine + 15;
+        rechargeCounter = 0;
     }
 
     public void act() {

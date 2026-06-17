@@ -1,6 +1,8 @@
-package util;
+package util.saves;
 
+import java.io.IOException;
 import java.util.Properties;
+import java.io.File;
 
 public class SaveManager implements Saveable {
 
@@ -15,6 +17,11 @@ public class SaveManager implements Saveable {
 
     /** Private constructor — use getInstance() instead. */
     private SaveManager() {
+        try {
+            new File("saves/game.txt").getParentFile().mkdirs();
+            new File("saves/game.txt").createNewFile();
+        } catch (IOException e) { System.out.println("Could not create save file: " + e.getMessage()); }
+        saveData = loadSave(SAVE_PATH);
         saveData = loadSave(SAVE_PATH); // load the file as soon as the manager is created
     }
 
@@ -68,7 +75,7 @@ public class SaveManager implements Saveable {
 
     /** Returns true if the tutorial is completed */
     public boolean getTutorialStatus() {
-        return getBoolean(saveData, "TutorialStatus", false); // read raw string //TODO change to false once it has been programmed
+        return getBoolean(saveData, "TutorialStatus", true); // read raw string //TODO change to false once it has been programmed
     }
 
     /** Saves if the tutorial was completed. */

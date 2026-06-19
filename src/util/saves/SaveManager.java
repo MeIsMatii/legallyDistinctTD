@@ -1,13 +1,16 @@
 package util.saves;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.io.File;
 
 public class SaveManager implements Saveable {
 
     // path to the save file — stored in a "saves" folder next to the project
-    private static final String SAVE_PATH = "saves/game.txt";
+    private static final String SAVE_PATH = "Saves/game.save";
 
     // only instance of this class
     private static SaveManager instance = null;
@@ -18,8 +21,12 @@ public class SaveManager implements Saveable {
     /** Private constructor — use getInstance() instead. */
     private SaveManager() {
         try {
-            new File("saves/game.txt").getParentFile().mkdirs();
-            new File("saves/game.txt").createNewFile();
+            new File("Saves/game.save").getParentFile().mkdirs();
+            new File("Saves/game.save").createNewFile();
+            Path path = Paths.get("Saves/game.save");
+            Files.writeString(path, "volume=50\n" +
+                "TutorialStatus=true\n" +
+                "soundEnabled=true");//Todo change to false when a tutorial is made
         } catch (IOException e) { System.out.println("Could not create save file: " + e.getMessage()); }
         saveData = loadSave(SAVE_PATH);
         saveData = loadSave(SAVE_PATH); // load the file as soon as the manager is created

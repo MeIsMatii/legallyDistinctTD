@@ -22,7 +22,6 @@ public interface Saveable {
             fis.close();     // always close the file after reading
             System.out.println("Save loaded from: " + filePath);
         } catch (FileNotFoundException e) {
-            // file doesn't exist yet — not an error, just means fresh save
             System.out.println("No save file found at: " + filePath + " (will be created on first save)");
         } catch (IOException e) {
             // something went wrong reading the file

@@ -31,5 +31,7 @@ out/
 
 # --- Assets ---
 build.xml
+#--- Saves ---
+Saves.*
 # --- Keep everything else automatically ---
 # 'src', 'README.md', and future files are tracked by default.

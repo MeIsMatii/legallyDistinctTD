@@ -23,7 +23,7 @@ public class SaveManager implements Saveable {
         try {
             new File(SAVE_PATH).getParentFile().mkdirs();
             new File(SAVE_PATH).createNewFile();
-            Path path = Paths.get("Saves/game.save");
+            Path path = Paths.get(SAVE_PATH);
             Files.writeString(path, "volume=50\n" +
                 "TutorialStatus=true\n" +
                 "soundEnabled=true");//Todo change to false when a tutorial is made

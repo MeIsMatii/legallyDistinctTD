@@ -21,8 +21,8 @@ public class SaveManager implements Saveable {
     /** Private constructor — use getInstance() instead. */
     private SaveManager() {
         try {
-            new File("Saves/game.save").getParentFile().mkdirs();
-            new File("Saves/game.save").createNewFile();
+            new File(SAVE_PATH).getParentFile().mkdirs();
+            new File(SAVE_PATH).createNewFile();
             Path path = Paths.get("Saves/game.save");
             Files.writeString(path, "volume=50\n" +
                 "TutorialStatus=true\n" +

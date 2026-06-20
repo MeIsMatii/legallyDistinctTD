@@ -9,7 +9,7 @@ import map.levels.util.Path;
 import java.util.List;
 
 public abstract class Enemy extends Entity {
-    int lives;
+    double lives;
     double speed;
     double realPosX;
     double realPosY;
@@ -57,7 +57,7 @@ public abstract class Enemy extends Entity {
         //nothing?
     }
 
-    public void damage(int damage) {
+    public void damage(double damage) {
         if (getWorld() == null) {
             return;
         }

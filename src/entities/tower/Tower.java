@@ -41,7 +41,7 @@ public abstract class Tower extends Entity implements Clickable, Animations {
     }
 
 
-    private int projectileDamage;
+    private double projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
     private int projectileIFrames;
@@ -105,11 +105,11 @@ public abstract class Tower extends Entity implements Clickable, Animations {
         return PRICE;
     }
 
-    public int getProjectileDamage() {
+    public double getProjectileDamage() {
         return projectileDamage;
     }
 
-    public void setProjectileDamage(int projectileDamage) {
+    public void setProjectileDamage(double projectileDamage) {
         this.projectileDamage = projectileDamage;
     }
 

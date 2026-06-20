@@ -11,8 +11,7 @@ public class TestTower extends Tower{
 
 
     public TestTower() {
-        super(50, true, 300, 45, 0, 3, 10, 45);
-        //setImage("towers/TestTower/TestTower_idle.png");
+        super(50, true, 300, 45, 1, 3, 1, 45);
     }
     //Upgrades need: str description [done] + int Level + option to buy
 
@@ -60,7 +59,7 @@ public class TestTower extends Tower{
             case 1:
                 switch (getUpgrade1()) {
                     case 1:
-
+                        setProjectileDamage((getProjectileDamage() * 1.5));
                         break;
                     case 2:
 

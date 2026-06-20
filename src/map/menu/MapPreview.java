@@ -7,7 +7,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.levels.*;
 
-public class MapPreview extends MainClass implements Clickable {
+public class MapPreview extends MainClass  {
     private boolean clicked = false;
     private int world = 0;
 
@@ -44,52 +44,26 @@ public class MapPreview extends MainClass implements Clickable {
         setLoadingScreen(new LoadingScreen());
         if (getWorldNr() > 9 || getWorldNr() < 0) {
             System.out.println("Too high or low World number Fix map maker");
-            return; ///the error Handling of a true genius --Colin
+            return;
         }
-        switch (getWorldNr()) {/// setzt das preview auf die Welt die es sein soll (kann im Konstruktor als Parameter angegeben werden)
-            case 1:
-                setImage("TempMap1Preview.png");
-                break;
-            case 2:
-                setImage("TempMap2Preview.png");
-                break;
-            case 3:
-                setImage("TempMap3Preview.png");
-                break;
-            case 4:
-                setImage("TempMap4Preview.png");
-                break;
-            case 5:
-                setImage("TempMap5Preview.png");
-                break;
-            case 6:
-                setImage("TempMap6Preview.png");
-                break;
-            case 7:
-                setImage("TempMap7Preview.png");
-                break;
-            case 8:
-                setImage("TempMap8Preview.png");
-                break;
-            case 9:
-                setImage("TempMap9Preview.png");
-                break;
-            case 69420:
-                setImage("");
-        }///Note for Colin: Break in Zukunft nicht mehr vergessen
 
-        GreenfootImage img = getImage();
-        img.scale(120, 120);
+        // 1. Determine the correct image path string first
+        String imagePath = "Map" + getWorldNr() + "Preview.png";
 
-        setImage(img);
+        // 2. Load the image independently, scale it, and THEN apply it to the Actor
+        GreenfootImage img = new GreenfootImage(imagePath);
+        img.scale(500, 300);
+        setImage(img); // This ensures the actor's hitbox matches the 500x300 size exactly
     }
 
     @Override
     public void act() {
-        checkClick();
+        if (Greenfoot.mouseClicked(this)){
+            onClick();
+        }
     }
 
-    @Override
+
     public void onClick() {
         setClicked(!isClicked());
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World

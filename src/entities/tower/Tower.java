@@ -177,6 +177,14 @@ public abstract class Tower extends Entity implements Clickable {
         return upgrades3;
     }
 
+    public void setShootingDelayCounter(int count) {
+        shootingDelayCounter = count;
+    }
+
+    public boolean getPlacing() {
+        return this.isPlacing;
+    }
+
     public void act() {
         if (isPaused()) return;
 
@@ -185,6 +193,7 @@ public abstract class Tower extends Entity implements Clickable {
             followCursor();
             RANGEDISPLAY.setFollowing(true);
         } else {
+            shootingDelayCounter++;
             RANGEDISPLAY.setFollowing(false);
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
@@ -321,11 +330,7 @@ public abstract class Tower extends Entity implements Clickable {
 
 
     public boolean canShoot() {
-        if (shootingDelayCounter < shootingDelay) {
-            shootingDelayCounter++;
-            return false;
-        }
-        return true;
+        return shootingDelayCounter >= shootingDelay;
     }
 
     /**

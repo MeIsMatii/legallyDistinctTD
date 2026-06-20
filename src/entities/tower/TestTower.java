@@ -3,11 +3,8 @@ package entities.tower;
 import entities.enemy.Enemy;
 import entities.projectiles.TestProjectile;
 import greenfoot.World;
-import util.Animations;
 
-import java.util.List;
-
-public class TestTower extends Tower{
+public class TestTower extends Tower {
 
 
     public TestTower() {
@@ -30,9 +27,8 @@ public class TestTower extends Tower{
     }
 
 
-
     public String upgrade1() {
-        setUpgrade1(getUpgrade1()+1);
+        setUpgrade1(getUpgrade1() + 1);
         System.out.println("test upgrade 1" + " " + getUpgrade1());
         upgrade(1);
         return "test1";
@@ -40,31 +36,35 @@ public class TestTower extends Tower{
     }
 
     public String upgrade2() {
-        setUpgrade2(getUpgrade2()+1);
+        setUpgrade2(getUpgrade2() + 1);
         System.out.println("test upgrade 2" + " " + getUpgrade2());
         upgrade(2);
         return "test2";
     }
 
     public String upgrade3() {
-        setUpgrade3(getUpgrade3()+1);
+        setUpgrade3(getUpgrade3() + 1);
         System.out.println("test upgrade 3" + " " + getUpgrade3());
         upgrade(3);
         return "test3";
     }
 
+
     public void upgrade(int path) {
         onUpgrade(path);
-        switch(path) {
+        switch (path) {
             case 1:
                 switch (getUpgrade1()) {
                     case 1:
                         setProjectileDamage((getProjectileDamage() * 1.5));
                         break;
                     case 2:
-
+                        setProjectileDamage((getProjectileDamage() * 1.5));
+                        //some kinda different behaviour
                         break;
                     case 3:
+                        setProjectileDamage((getProjectileDamage() * 1.5));
+                        //some kinda different behaviour
                         break;
                 }
 
@@ -73,10 +73,16 @@ public class TestTower extends Tower{
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
+                        setProjectilePiercing(getProjectilePiercing() * 2);
+
                         break;
                     case 2:
+                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        //some kinda different behaviour
                         break;
                     case 3:
+                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        //some kinda different behaviour
                         break;
                 }
                 break;
@@ -84,10 +90,15 @@ public class TestTower extends Tower{
             case 3:
                 switch (getUpgrade3()) {
                     case 1:
+                        setProjectileSpeed(getProjectileSpeed() * 2);
                         break;
                     case 2:
+                        setProjectileSpeed(getProjectileSpeed() * 2);
+                        //some kinda different behaviour
                         break;
                     case 3:
+                        setProjectileSpeed(getProjectileSpeed() * 2);
+                        //some kinda different behaviour
                         break;
                 }
                 break;

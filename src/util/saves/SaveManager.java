@@ -10,7 +10,7 @@ import java.io.File;
 public class SaveManager implements Saveable {
 
     // path to the save file — stored in a "saves" folder next to the project
-    private static final String SAVE_PATH = "Saves/game.save";
+    private static final String SAVE_PATH = "saves/game.save";
 
     // only instance of this class
     private static SaveManager instance = null;

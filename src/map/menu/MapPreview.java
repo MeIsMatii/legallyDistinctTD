@@ -1,5 +1,8 @@
 package map.menu;
 
+import ui.hud.SaveLoadPopup;
+import ui.hud.buttons.LoadSaveButton;
+import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
@@ -67,35 +70,11 @@ public class MapPreview extends MainClass  implements Clickable{
         SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
         saveManager.setLastMap(getWorldNr());
-        switch (getWorldNr()) {///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-            case 6:
-
-                break;
-            case 7:
-
-                break;
-            case 8:
-
-                break;
-            case 9:
-
-                break;
-        }
+        SaveLoadPopup saveLoadPopup = new SaveLoadPopup("Do you want to continue your previos game?");
+        World world = getWorld();
+        world.addObject(saveLoadPopup,960,540);
+        world.addObject(new LoadSaveButton(getWorldNr()),1200,700);
+        world.addObject(new NewSaveButton(getWorldNr()),800,700);
 
     }
 }

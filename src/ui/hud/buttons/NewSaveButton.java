@@ -9,10 +9,10 @@ import map.menu.LoadingScreen;
 import util.Clickable;
 import util.saves.SaveManager;
 
-public class LoadSaveButton extends MainClass implements Clickable {
+public class NewSaveButton extends MainClass implements Clickable {
 
     int worldNr;
-    private World loadingScreen;
+    private World loadingScreen = new LoadingScreen();
 
 
     public World getLoadingScreen() {
@@ -29,8 +29,8 @@ public class LoadSaveButton extends MainClass implements Clickable {
     }
 
 
-    public LoadSaveButton(int Worldnr){
-        GreenfootImage img = new GreenfootImage("LoadSaveButton.png");
+    public NewSaveButton(int Worldnr){
+        GreenfootImage img = new GreenfootImage("NewSaveButton.png");
         img.scale(100,50);
         setImage(img);
         setWorldNr(Worldnr);
@@ -82,6 +82,5 @@ public class LoadSaveButton extends MainClass implements Clickable {
 
                 break;
         }
-        //todo Make it load game saves and not just enw worlds @Mathilo @Colin
     }
 }

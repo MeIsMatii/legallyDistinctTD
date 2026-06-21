@@ -16,13 +16,13 @@ public class MapSettings extends World implements HasSound {
     private final GreenfootSound backgroundMusic;
 
     public MapSettings() {
-        super(29, 29, 20);
+        super(1920, 1080, 1);
         setBackground("dirtsquare.png");
-        addObject(new BackButton(new MapSelector()), 1, 1);
-        addObject(new VolumeSlider(), 9, 7);
+        addObject(new BackButton(new MapSelector()), 50, 50);
+        addObject(new VolumeSlider(), 700, 500);
         backgroundMusic = playSoundAndKeep("TEMPTropischSound.mp3");
-        addObject(new SongDropDown(),21,6);
-        addObject(new MuteButton(),2,7);
+        addObject(new SongDropDown(),1200,500);
+        addObject(new MuteButton(),400,500);
     }
 
     @Override

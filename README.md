@@ -15,17 +15,25 @@
 
 ## 🐒 What is this?
 
-Let's be honest — this is of course not a **shameless ripoff** of [Bloons TD6](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) by Ninja Kiwi.
+This is a tower Defence game made from scratch. This project will be open source and free forever at least thats what is planned now.
 
-This project was created by a group of students as a **school assignment**. We were tasked with making a game, and we thought: *why invent something new when Bloons TD6 already exists?* So here we are.
+This project was created by a group of students as a **school assignment**. We were tasked with making a game, we will continue this after the deadline and add more features but probally as a fork of this project.
 
-We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're just students.
+We are a group of 8 students who are trying to fix all of the things that are wrong with simple tower defence games such as the whole py2win features the games got over the last few years.
 
 ---
 
 ## 👥 The Team
 
 > A group of (more or less) highly motivated individuals
+> @Vanquish1905 : Group Leader/Programming
+> @MelsMatii : Deputy Grup Leader/Programming
+> @Solo-67 : Art/Programming
+> @TeaNtea939 : Art/Programming
+> @jul3110 : Programming/Sounds
+> @Feuerfisch10 : Programming
+> @jbeecom : Programming
+> @Fredbot36 : Dokumentation/Programming
 
 
 
@@ -33,14 +41,14 @@ We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're jus
 
 ## 🎮 About the Game
 
-**LegallyDistinctTD** (which roughly translates to *Balloon Tower Defense 6*... yes, really) is a tower defense game where:
+**LegallyDistinctTD** is a tower defense game where:
 
-- 🎈 **Parasites** (or other enemies)travel along a path and you must stop them
-- 🐵 **Machine towers** (or other heros)are placed strategically to pop the balloons
+- 🎈 **Parasites** travel along a path and you must stop them
+- 🐵 **Machine towers** are placed strategically to pop the balloons
 - 💰 **Currency** is earned by popping balloons and used to buy/upgrade towers
 - 😰 **You lose lives** when balloons reach the end of the path
 
-Basically, it's just like any other TD game. We just said that already.
+Basically, it's just like any other TD game just without any Pay2win.
 
 ---
 
@@ -48,9 +56,9 @@ Basically, it's just like any other TD game. We just said that already.
 
 > Subject to change depending on what our group can actually figure out.
 
-- **Language:** uhhh english i think
+- **Language:** Java 11
 - **Engine/Framework:** greenfoot
-- **Assets:** Not suspiciously similar to the original anymore (we reworked them)
+- **Assets:** Not suspiciously similar to the other games anymore (we reworked them)
 - 
 ---
 
@@ -66,15 +74,13 @@ Basically, it's just like any other TD game. We just said that already.
 
 ## ⚠️ Disclaimer
 
-This project is made purely for **educational purposes** as part of a school assignment. All credit for the original concept, design, and gameplay goes to **Ninja Kiwi** and their amazing **Bloons TD6**. 
-
-We are students. This is a school project. Please play the [real game](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) instead — it's genuinely excellent.
+This project is made purely for **educational purposes** as part of a school assignment.
 
 ---
 
 ## 📜 License
 
-**Please don't steal our ripoff of a game.** That would be a ripoff of a ripoff, and that's just too many layers. And even if you do good luck fixing our mess(But please dont you will get traumatized).
+**Please don't steal our ripoff of a game.** That would be a ripoff of a (for now) low quality game, and that's just too many layers. And even if you do good luck fixing our mess(But please dont you will get traumatized).
 
 ---
 

@@ -26,7 +26,7 @@ public class MapSelector extends World implements HasSound {
         addObject(new MapPreview(6), 1550, 500);///Map Preview
         addObject(new MapPreview(7), 350, 850);///Map Preview
         addObject(new MapPreview(8), 950, 850);///Map Preview
-        addObject(new MapPreview(9), 1550, 850);///Map Preview
+        addObject(new MultiplayerPreview(), 1550, 850);///Map Preview
         addObject(new SettingsButton(), 50, 27);
         addObject(new SlotMachineButton(), 50, 1018);  //hört auf das zu entfernen
         addObject(new ImageDisplay("MenueBalken1.png", 960,40),1440,1060);

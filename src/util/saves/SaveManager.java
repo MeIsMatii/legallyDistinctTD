@@ -21,15 +21,20 @@ public class SaveManager implements Saveable {
     /** Private constructor — use getInstance() instead. */
     private SaveManager() {
         try {
-            new File(SAVE_PATH).getParentFile().mkdirs();
-            new File(SAVE_PATH).createNewFile();
-            Path path = Paths.get(SAVE_PATH);
-            Files.writeString(path, "volume=50\n" +
-                "TutorialStatus=true\n" +
-                "soundEnabled=true");//Todo change to false when a tutorial is made
-        } catch (IOException e) { System.out.println("Could not create save file: " + e.getMessage()); }
+            File file = new File(SAVE_PATH);
+            file.getParentFile().mkdirs();
+            boolean isNewFile = file.createNewFile(); // true only if it didn't exist before
+
+            if (isNewFile) {
+                Path path = Paths.get(SAVE_PATH);
+                Files.writeString(path, "volume=50\n" +
+                    "TutorialStatus=true\n" +
+                    "soundEnabled=true"); //Todo change to false when a tutorial is made
+            }
+        } catch (IOException e) {
+            System.out.println("Could not create save file: " + e.getMessage());
+        }
         saveData = loadSave(SAVE_PATH);
-        saveData = loadSave(SAVE_PATH); // load the file as soon as the manager is created
     }
 
     public static SaveManager getInstance() {

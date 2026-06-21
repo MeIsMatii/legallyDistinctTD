@@ -17,7 +17,7 @@ public class LoadingScreen extends World {
 
     public LoadingScreen() {
         super(9, 9, 60);
-        setBackground("BloonsTDChinaLoadingScreen.png");
+        setBackground("LoadingScreen.png");
         //setNextWorld(nextWorld);
     }
 

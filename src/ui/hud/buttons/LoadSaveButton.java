@@ -12,7 +12,7 @@ import util.saves.SaveManager;
 public class LoadSaveButton extends MainClass implements Clickable {
 
     int worldNr;
-    private World loadingScreen;
+    private World loadingScreen = new LoadingScreen();
 
 
     public World getLoadingScreen() {

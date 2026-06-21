@@ -1,4 +1,4 @@
-# 气球塔防 TD6 — Bloons TD6 Ripoff 🎈
+#  LegallyDistinctTD🎈
 
 <p align="center">
   <img src="Readme Images\BloonsChinaIcon.png" width="700"/>
@@ -15,7 +15,7 @@
 
 ## 🐒 What is this?
 
-Let's be honest — this is a **shameless ripoff** of [Bloons TD6](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) by Ninja Kiwi.
+Let's be honest — this is of course not a **shameless ripoff** of [Bloons TD6](https://ninjakiwi.com/Games/Mobile/Bloons-TD-6.html) by Ninja Kiwi.
 
 This project was created by a group of students as a **school assignment**. We were tasked with making a game, and we thought: *why invent something new when Bloons TD6 already exists?* So here we are.
 
@@ -25,7 +25,7 @@ We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're jus
 
 ## 👥 The Team
 
-> A group of highly motivated individuals
+> A group of (more or less) highly motivated individuals
 
 
 
@@ -33,14 +33,14 @@ We are not affiliated with Ninja Kiwi in any way. Please don't sue us. We're jus
 
 ## 🎮 About the Game
 
-**气球塔防 TD6** (which roughly translates to *Balloon Tower Defense 6*... yes, really) is a tower defense game where:
+**LegallyDistinctTD** (which roughly translates to *Balloon Tower Defense 6*... yes, really) is a tower defense game where:
 
-- 🎈 **Balloons** (or other enemies)travel along a path and you must stop them
-- 🐵 **Monkey towers** (or other heros)are placed strategically to pop the balloons
+- 🎈 **Parasites** (or other enemies)travel along a path and you must stop them
+- 🐵 **Machine towers** (or other heros)are placed strategically to pop the balloons
 - 💰 **Currency** is earned by popping balloons and used to buy/upgrade towers
 - 😰 **You lose lives** when balloons reach the end of the path
 
-Basically, it's Bloons TD6. We just said that already.
+Basically, it's just like any other TD game. We just said that already.
 
 ---
 
@@ -50,31 +50,16 @@ Basically, it's Bloons TD6. We just said that already.
 
 - **Language:** uhhh english i think
 - **Engine/Framework:** greenfoot
-- **Assets:** Suspiciously similar to the original (ctrl c ctrl v)
-
----
-
-## 🚀 Getting Started
-
-```bash
-# Clone the repo
-git clone https://github.com/MeIsMatii/bloonsTDChina.git
-
-# Navigate into the project
-cd bloonsTDChina
-
-# Run the game
-# (instructions to be added once we figure out how to make it run or make the game in the first place)
-```
-
+- **Assets:** Not suspiciously similar to the original anymore (we reworked them)
+- 
 ---
 
 ## 📅 Project Status
 
-- [x] Came up with the idea (copy Bloons TD6)
+- [x] Came up with the idea (not so copy of Bloons TD6 anymore)
 - [x] Made a cool banner image
 - [x] Wrote the README
-- [ ] Actually made the game
+- [ ] Actually made the game (nearly finished)
 - [ ] Passed the class
 
 ---

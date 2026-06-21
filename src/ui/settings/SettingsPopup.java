@@ -1,9 +1,6 @@
 package ui.settings;
 
-import greenfoot.Actor;
-import greenfoot.Color;
-import greenfoot.GreenfootImage;
-import greenfoot.World;
+import greenfoot.*;
 import map.menu.PauseMenu;
 import ui.hud.buttons.MuteButton;
 import ui.settings.sound.SongButton;
@@ -20,10 +17,14 @@ public class SettingsPopup extends Actor {
 
 
     public SettingsPopup() {
-        GreenfootImage img = new GreenfootImage(1500, 700);
-        img.setColor(Color.RED);
-        img.fill();
-        setImage(img);
+        int width = 1500;
+        int height = 800;
+        GreenfootImage boxImage = new GreenfootImage(width, height);
+        boxImage.setColor(new Color(139, 69, 19));boxImage.fill();
+        boxImage.setColor(Color.WHITE);
+        boxImage.setFont(new Font("Arial", true, false, 24));
+        boxImage.drawString("Settings:", 20, height / 2);
+        setImage(boxImage);
     }
 
     public void addedToWorld(World w) {

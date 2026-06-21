@@ -18,7 +18,7 @@ public class SongDropDown extends MainClass implements Clickable {
         "backgourndSound3.mp3",
         "ChillSong(Gemini).mp3",
         "TropicalSong(Gemini).mp3",
-            "bloons1.mp3"
+        "bloons1.mp3"
     };
 
     private boolean isOpen = false;
@@ -64,7 +64,7 @@ public class SongDropDown extends MainClass implements Clickable {
             SongButton button = new SongButton(SONGS[i]);
 
             //3zellen drunter nächtes ding
-            getWorld().addObject(button, getX(), getY() + 4 + (i * 60));
+            getWorld().addObject(button, getX(), getY() + 60 + (i * 60));
 
             songButtons.add(button); // speichern um später zu löschen
         }

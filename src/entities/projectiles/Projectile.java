@@ -4,11 +4,12 @@ import entities.Entity;
 import entities.enemy.Enemy;
 import entities.tower.Tower;
 import greenfoot.World;
+import util.HasSound;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Projectile extends Entity {
+public abstract class Projectile extends Entity  implements HasSound {
     private Tower owner;
     private final double damage;
     private final int iframes;
@@ -101,7 +102,7 @@ public abstract class Projectile extends Entity {
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
         e.damage(this.damage);
         this.piercing--;
-
+        playSound("hitSound.mp3");
     }
 
 

@@ -13,7 +13,6 @@ public class Map2 extends Map {
         img.scale(1620, 1080);
         setBackground(img);
         addObject(new Player(), 6, 6);
-        addObject(new BackButton(new MapSelector()), 0, 0);
 
     }
 }

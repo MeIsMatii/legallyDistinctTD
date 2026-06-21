@@ -3,22 +3,21 @@ package map.menu;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.Font;
-import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import ui.common.CustomImageDisplay;
-import ui.common.ImageDisplay;
+import ui.hud.buttons.ClosePopupButton;
 import util.Clickable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MultiplayerPreview extends MainClass implements Clickable {
-    CustomImageDisplay img = new CustomImageDisplay(700,500,"coming soon",new Color(139, 69, 19),Color.WHITE,new Font("Arial", true, false, 24));
-    boolean clicked= false;
-    public MultiplayerPreview(){
+    CustomImageDisplay img = new CustomImageDisplay(700, 500, "coming soon", new Color(139, 69, 19), Color.WHITE, new Font("Arial", true, false, 24));
+    ClosePopupButton closeButton;
+    boolean clicked = false;
+
+    public MultiplayerPreview() {
         GreenfootImage im = new GreenfootImage("Multiplayer.png");
-        im.scale(500,300);
+        im.scale(500, 300);
         setImage(im);
+        closeButton = new ClosePopupButton(this);
     }
 
     @Override
@@ -28,12 +27,20 @@ public class MultiplayerPreview extends MainClass implements Clickable {
 
     @Override
     public void onClick() {
-        if (!clicked){
-            getWorld().addObject(img,960,540);
-        }else {
-            getWorld().removeObject(img);
+        if (!clicked) {
+            getWorld().addObject(img, 1000, 540);
+            getWorld().addObject(closeButton, 1220,208);
+            clicked = true;
+        } else {
+            closePopup();
         }
-        clicked = !clicked;
+    }
 
+    public void closePopup() {
+        if (getWorld() != null) {
+            getWorld().removeObject(img);
+            getWorld().removeObject(closeButton);
+        }
+        clicked = false;
     }
 }

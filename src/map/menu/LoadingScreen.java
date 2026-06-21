@@ -16,7 +16,7 @@ public class LoadingScreen extends World {
     }
 
     public LoadingScreen() {
-        super(9, 9, 60);
+        super(1920, 1080, 1);
         setBackground("LoadingScreen.png");
         //setNextWorld(nextWorld);
     }

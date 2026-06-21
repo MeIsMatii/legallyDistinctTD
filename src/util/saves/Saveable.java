@@ -127,7 +127,7 @@ public interface Saveable {
             file.getParentFile().mkdirs(); // creates parent folders if needed
 
             FileOutputStream fos = new FileOutputStream(file); // open for writing
-            props.store(fos, "Tower Defense Save File for general data(no saves for games)");        // write all key=value pairs
+            props.store(fos, "File used for storing save data. Do not modify (u a cheater if u do)");        // write all key=value pairs
             fos.close(); // always close after writing
             System.out.println("Saved: " + key + " = " + value + " at " + filePath);
         } catch (IOException e) {

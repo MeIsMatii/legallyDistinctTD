@@ -1,7 +1,7 @@
 #  LegallyDistinctTD🎈
 
 <p align="center">
-  <img src="Readme Images\BloonsChinaIcon.png" width="700"/>
+  <img src="readme Images/LegallyDistinctTD.png" width="700"/>
 </p>
 
 <p align="center">

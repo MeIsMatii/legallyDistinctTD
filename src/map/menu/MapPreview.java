@@ -46,7 +46,7 @@ public class MapPreview extends MainClass  implements Clickable{
     public MapPreview(int worldNumber) {
         setWorldNr(worldNumber);
         setLoadingScreen(new LoadingScreen());
-        if (getWorldNr() > 9 || getWorldNr() < 0) {
+        if (getWorldNr() > 8 || getWorldNr() < 0) {
             System.out.println("Too high or low World number Fix map maker");
             return;
         }

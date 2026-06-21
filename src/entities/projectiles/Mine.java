@@ -7,10 +7,11 @@ import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import map.levels.util.Path;
+import util.HasSound;
 
 import java.util.List;
 
-public class Mine extends Projectile{
+public class Mine extends Projectile implements HasSound {
     private int explosionCounter = 0;
     private int explosionTime;
     private boolean isExploding = false;
@@ -41,6 +42,7 @@ public class Mine extends Projectile{
         img.setColor(Color.RED);
         img.fill();
         setImage(img);
+        playSound("Explosion.mp3");
     }
 
     public void act() {

@@ -5,10 +5,11 @@ import entities.enemy.Enemy;
 import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
+import util.HasSound;
 
 import java.util.List;
 
-public class Rocket extends Projectile{
+public class Rocket extends Projectile implements HasSound {
 
     public Rocket(Tower owner) {
         super(owner);
@@ -31,6 +32,7 @@ public class Rocket extends Projectile{
                 enemy.damage(getDamage());
             }
         }
+        playSound("Explosion.mp3");
         getWorld().removeObject(this);
     }
 

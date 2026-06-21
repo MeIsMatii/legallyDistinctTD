@@ -13,6 +13,7 @@ import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
 import ui.hud.UpgradeMenu;
+import util.HasSound;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * @version hopefully the last one
  */
 
-public abstract class Tower extends Entity implements Clickable, Animations {
+public abstract class Tower extends Entity implements Clickable, Animations, HasSound {
     private final int PRICE;
 
     private final RangeDisplay RANGEDISPLAY;
@@ -277,6 +278,7 @@ public abstract class Tower extends Entity implements Clickable, Animations {
     public void place() {
         isPlacing = false;
         RANGEDISPLAY.setRangeVisibility(false, null);
+        playSound("Place.mp3");
     }
 
     /**

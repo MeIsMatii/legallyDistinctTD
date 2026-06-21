@@ -67,43 +67,32 @@ public class MapPreview extends MainClass  implements Clickable{
         SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
         saveManager.setLastMap(getWorldNr());
-        LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
         switch (getWorldNr()) {///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map1());
+
                 break;
             case 2:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map2());
+
                 break;
             case 3:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map3());
+
                 break;
             case 4:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map4());
+
                 break;
             case 5:
-                ls.setNextWorld(new Map5());
-                Greenfoot.setWorld(getLoadingScreen());
+
                 break;
             case 6:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map6());
+
                 break;
             case 7:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map7());
+
                 break;
             case 8:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map8());
+
                 break;
             case 9:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map9());
 
                 break;
         }

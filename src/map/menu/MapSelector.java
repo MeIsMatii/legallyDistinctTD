@@ -18,15 +18,15 @@ public class MapSelector extends World implements HasSound {
         super(1920, 1080, 1);
         setPaintOrder(ImageDisplay.class, SettingsButton.class, SlotMachineButton.class, MapSelector.class);
         setBackground("cell_grass.png");
-        addObject(new MapPreview(1), 350, 150);///Map Preview
-        addObject(new MapPreview(2), 950, 150);///Map Preview
-        addObject(new MapPreview(3), 1550, 150);///Map Preview
-        addObject(new MapPreview(4), 350, 500);///Map Preview
-        addObject(new MapPreview(5), 950, 500);///Map Preview
-        addObject(new MapPreview(6), 1550, 500);///Map Preview
-        addObject(new MapPreview(7), 350, 850);///Map Preview
-        addObject(new MapPreview(8), 950, 850);///Map Preview
-        addObject(new MultiplayerPreview(), 1550, 850);///Map Preview
+        addObject(new MapPreview(1), 350, 175);///Map Preview
+        addObject(new MapPreview(2), 950, 175);///Map Preview
+        addObject(new MapPreview(3), 1550, 175);///Map Preview
+        addObject(new MapPreview(4), 350, 525);///Map Preview
+        addObject(new MapPreview(5), 950, 525);///Map Preview
+        addObject(new MapPreview(6), 1550, 525);///Map Preview
+        addObject(new MapPreview(7), 350, 875);///Map Preview
+        addObject(new MapPreview(8), 950, 875);///Map Preview
+        addObject(new MultiplayerPreview(), 1550, 875);///Map Preview
         addObject(new SettingsButton(), 50, 27);
         addObject(new SlotMachineButton(), 50, 1018);  //hört auf das zu entfernen
         addObject(new ImageDisplay("MenueBalken1.png", 960,40),1440,1060);
@@ -49,8 +49,8 @@ public class MapSelector extends World implements HasSound {
 
         int x;
         int y;
-        int offsetX = 230;
-        int offsetY = 150;
+        int offsetX = 250;
+        int offsetY = 125;
         switch (lastPlayedInt) {
             case 1:
                 x = 350 + offsetX;

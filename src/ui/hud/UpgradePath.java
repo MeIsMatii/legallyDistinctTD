@@ -12,6 +12,8 @@ public class UpgradePath extends Actor implements Clickable {
     private int path;
     private int price;
 
+    private int maxUpgradedPath = 1;
+
     public UpgradePath(Tower TOWER, int path) {
         setImage("comingSoon.png");
         this.path = path;
@@ -25,7 +27,7 @@ public class UpgradePath extends Actor implements Clickable {
         Player player1 = player.get(0);
 
         int maxUpgrade;
-        int maxPath = 5;
+        int maxPath = 3;
 
 
         switch (this.path) {
@@ -33,7 +35,7 @@ public class UpgradePath extends Actor implements Clickable {
                 if (tower.getUpgrade1() >= maxPath){
                     return;
                 }
-                int upgrades1[] = tower.getUpgrades1();
+                int[] upgrades1 = tower.getUpgrades1();
                 price = upgrades1[tower.getUpgrade1()];
                 if (player1.getCoins() < price) {
                     return;
@@ -45,8 +47,8 @@ public class UpgradePath extends Actor implements Clickable {
 
                 //max. 1 bought
                 maxUpgrade = Math.max(tower.getUpgrade2(), tower.getUpgrade3());
-                if (maxUpgrade >= 3) {
-                    maxPath = 2;
+                if (maxUpgrade >= 2) {
+                    maxPath = this.maxUpgradedPath;
                 }
                 if (tower.getUpgrade1() < maxPath) {
                     player1.setCoins(player1.getCoins() - price);
@@ -59,15 +61,15 @@ public class UpgradePath extends Actor implements Clickable {
                 if (tower.getUpgrade2() >= maxPath){
                     return;
                 }
-                int upgrades2[] = tower.getUpgrades2();
+                int[] upgrades2 = tower.getUpgrades2();
                 price = upgrades2[tower.getUpgrade2()];
                 if (tower.getUpgrade1() > 0 && tower.getUpgrade3() > 0) {
                     System.out.println("locked case 2");
                     break;
                 }
                 maxUpgrade = Math.max(tower.getUpgrade1(), tower.getUpgrade3());
-                if (maxUpgrade >= 3) {
-                    maxPath = 2;
+                if (maxUpgrade >= 2) {
+                    maxPath = maxUpgradedPath;
                 }
                 if (tower.getUpgrade2() < maxPath) {
                     player1.setCoins(player1.getCoins() - price);
@@ -79,15 +81,15 @@ public class UpgradePath extends Actor implements Clickable {
                 if (tower.getUpgrade3() >= maxPath){
                     return;
                 }
-                int upgrades3[] = tower.getUpgrades3();
+                int[] upgrades3 = tower.getUpgrades3();
                 price = upgrades3[tower.getUpgrade3()];
                 if (tower.getUpgrade1() > 0 && tower.getUpgrade2() > 0) {
                     System.out.println("locked case 3");
                     break;
                 }
                 maxUpgrade = Math.max(tower.getUpgrade1(), tower.getUpgrade2());
-                if (maxUpgrade >= 3) {
-                    maxPath = 2;
+                if (maxUpgrade >= 2) {
+                    maxPath = maxUpgradedPath;
                 }
                 if (tower.getUpgrade3() < maxPath) {
                     player1.setCoins(player1.getCoins() - price);
@@ -97,7 +99,7 @@ public class UpgradePath extends Actor implements Clickable {
 
                 break;
             default:
-                System.out.println("upgrade path must be 0<x<=3");
+                System.out.println("upgrade path must be 0<x<4");
                 break;
         }
     }

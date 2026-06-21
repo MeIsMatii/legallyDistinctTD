@@ -12,9 +12,9 @@ public class Rocketlauncher extends Tower{
 
     public Rocketlauncher() {
         super(500, true, 500, 250, 25, 25, 1, 0);
-        GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
-        img.scale(200,200);
-        setImage(img);
+        //GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
+        //img.scale(200,200);
+        //setImage(img);
     }
 
     public int[] getUpgrades1() {
@@ -50,5 +50,15 @@ public class Rocketlauncher extends Tower{
     @Override
     public void shoot(Enemy e) {
         getWorld().addObject(new Rocket(this), getX(), getY());
+    }
+
+    @Override
+    public String getTowerName() {
+        return "Rocketlauncher";
+    }
+
+    @Override
+    public int getAnimationSpeed() {
+        return 1;
     }
 }

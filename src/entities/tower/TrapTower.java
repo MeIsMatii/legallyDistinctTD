@@ -20,7 +20,7 @@ public class TrapTower extends Tower implements Clickable {
         super(125, true, 80, 99999999, 200, 10, 1, 90);
         mineRadius = 150;
 
-        setImage("TestTower2_2.png");
+        //setImage("comingSoon.png");
     }
 
     public int[] getUpgrades1() {
@@ -60,6 +60,16 @@ public class TrapTower extends Tower implements Clickable {
         //Greenfoot.delay(20);
         getWorld().addObject(new Explosion(), getX(), getY());
         getWorld().removeObject(this);
+    }
+
+    @Override
+    public String getTowerName() {
+        return "TrapTower";
+    }
+
+    @Override
+    public int getAnimationSpeed() {
+        return 1;
     }
 
     public void act() {

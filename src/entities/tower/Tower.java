@@ -1,5 +1,6 @@
 package entities.tower;
 
+import util.Animations;
 import util.Clickable;
 import entities.Entity;
 import entities.Hitbox;
@@ -20,7 +21,7 @@ import java.util.List;
  * @version hopefully the last one
  */
 
-public abstract class Tower extends Entity implements Clickable {
+public abstract class Tower extends Entity implements Clickable, Animations {
     private final int PRICE;
 
     private final RangeDisplay RANGEDISPLAY;
@@ -40,7 +41,7 @@ public abstract class Tower extends Entity implements Clickable {
     }
 
 
-    private int projectileDamage;
+    private double projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
     private int projectileIFrames;
@@ -72,6 +73,9 @@ public abstract class Tower extends Entity implements Clickable {
         this.projectileDamage = projectileDamage;
         this.projectileSpeed = projectileSpeed;
         this.projectilePiercing = projectilePiercing;
+
+        setImage("towers/" + getTowerName() + "/" + getTowerName() + "_idle.png");
+
     }
 
     public void addedToWorld(World world) {
@@ -101,11 +105,11 @@ public abstract class Tower extends Entity implements Clickable {
         return PRICE;
     }
 
-    public int getProjectileDamage() {
+    public double getProjectileDamage() {
         return projectileDamage;
     }
 
-    public void setProjectileDamage(int projectileDamage) {
+    public void setProjectileDamage(double projectileDamage) {
         this.projectileDamage = projectileDamage;
     }
 
@@ -177,6 +181,14 @@ public abstract class Tower extends Entity implements Clickable {
         return upgrades3;
     }
 
+    public void setShootingDelayCounter(int count) {
+        shootingDelayCounter = count;
+    }
+
+    public boolean getPlacing() {
+        return this.isPlacing;
+    }
+
     public void act() {
         if (isPaused()) return;
 
@@ -185,13 +197,23 @@ public abstract class Tower extends Entity implements Clickable {
             followCursor();
             RANGEDISPLAY.setFollowing(true);
         } else {
+            shootingDelayCounter++;
             RANGEDISPLAY.setFollowing(false);
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
 
             if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);
+                Animations.super.startAnimation();
                 shootingDelayCounter = 0;
+            }
+
+            if(isAnimating) {
+                frameCounter++;
+                if(frameCounter > getAnimationSpeed()) {
+                    playAnimation();
+                    frameCounter = 0;
+                }
             }
         }
 
@@ -321,11 +343,7 @@ public abstract class Tower extends Entity implements Clickable {
 
 
     public boolean canShoot() {
-        if (shootingDelayCounter < shootingDelay) {
-            shootingDelayCounter++;
-            return false;
-        }
-        return true;
+        return shootingDelayCounter >= shootingDelay;
     }
 
     /**
@@ -352,5 +370,74 @@ public abstract class Tower extends Entity implements Clickable {
         return targetedEnemy;
     }
 
+    /// <UPGRADES>
+    private int frameCounter = 0;
+    private List<String> frameList;
+    private int frameIndex = 0;
+    private boolean isAnimating = false;
+    private String spritePath;
+    private String spriteName;
 
+    public abstract String getTowerName();
+    public String getSpriteName() {
+        return spriteName;
+    }
+    public void setSpriteName(String spriteName) {
+        this.spriteName = spriteName;
+    }
+    public String getSpritePath() {
+        return spritePath;
+    }
+    public void setSpritePath(String spritePath) {
+        this.spritePath = spritePath;
+    }
+    public abstract int getAnimationSpeed();
+    public int getFrameCounter() {
+        return frameCounter;
+    }
+    public void setFrameCounter(int counter) {
+        this.frameCounter = counter;
+    }
+    public List<String> getFrameList() {
+        return frameList;
+    }
+    public void setFrameList(List<String> frames) {
+        this.frameList = frames;
+    }
+    public int getCurrentFrameIndex() {
+        return frameIndex;
+    }
+    public void setCurrentFrameIndex(int i) {
+        this.frameIndex = i;
+    }
+    public void isAnimating(boolean isAnimating) {
+        this.isAnimating = isAnimating;
+    }
+
+    public void onUpgrade(int path) {
+
+        switch(path) {
+            case 1:
+                setSpriteName(getTowerName() + "_upgrade1");
+                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade1());
+                generateFrameList();
+                break;
+
+            case 2:
+                setSpriteName(getTowerName() + "_upgrade2");
+                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade2());
+                generateFrameList();
+                break;
+
+            case 3:
+                setSpriteName(getTowerName() + "_upgrade3");
+                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade3());
+                generateFrameList();
+                break;
+
+            default:
+                System.out.println("Given Path must be between 1 & 3");
+        }
+    }
+    ///</UPGRADES>
 }

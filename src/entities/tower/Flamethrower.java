@@ -19,9 +19,9 @@ public class Flamethrower extends Tower{
 
     public Flamethrower() {
         super(150,true, 300, 1, 1, 10, 1000, 45);
-        GreenfootImage img = new GreenfootImage("Flamethrower.jpg");
-        img.scale(200,200);
-        setImage(img);
+        //GreenfootImage img = new GreenfootImage("towers/Flamethrower/Flamethrower_idle.jpg");
+        //img.scale(200,200);
+        //setImage(img);
     }
     public int[] getUpgrades1() {
         return upgrades1;
@@ -62,6 +62,17 @@ public class Flamethrower extends Tower{
             recharge();
         }
     }
+
+    @Override
+    public String getTowerName() {
+        return "Flamethrower";
+    }
+
+    @Override
+    public int getAnimationSpeed() {
+        return 0;
+    }
+
     private void recharge() { //works, no need to touch that ever again
         int rechargeDelay = 50;
         if (rechargeCounter < rechargeDelay) {

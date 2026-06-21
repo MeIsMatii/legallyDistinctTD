@@ -14,9 +14,9 @@ public class HomingTower extends Tower {
     public HomingTower() {
         super(100,true,  300, 10, 20, 30, 2, 10);
 
-        GreenfootImage img = new GreenfootImage("MageTower.png");
-        img.scale(120, 100);
-        setImage(img);
+        //GreenfootImage img = new GreenfootImage("MageTower.png");
+        //img.scale(120, 100);
+        //setImage(img);
 
     }
     public int[] getUpgrades1() {
@@ -55,5 +55,15 @@ public class HomingTower extends Tower {
 
     void shoot(Enemy e) {
         getWorld().addObject(new HomingProjectile(this), getX(), getY());
+    }
+
+    @Override
+    public String getTowerName() {
+        return "HomingTower";
+    }
+
+    @Override
+    public int getAnimationSpeed() {
+        return 1;
     }
 }

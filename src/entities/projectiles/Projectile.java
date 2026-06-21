@@ -10,7 +10,7 @@ import java.util.Map;
 
 public abstract class Projectile extends Entity {
     private Tower owner;
-    private final int damage;
+    private final double damage;
     private final int iframes;
     private final int speed;
     private int piercing;
@@ -38,7 +38,7 @@ public abstract class Projectile extends Entity {
         return speed;
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return damage;
     }
 

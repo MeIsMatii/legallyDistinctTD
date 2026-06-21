@@ -7,13 +7,16 @@ import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
+import util.saves.SaveManager;
+
+import java.util.List;
 
 public class MapSelector extends World implements HasSound {
 
 
     public MapSelector() {
         super(1920, 1080, 1);
-        setPaintOrder( SettingsButton.class, SlotMachineButton.class, MapSelector.class, ImageDisplay.class);
+        setPaintOrder(ImageDisplay.class, SettingsButton.class, SlotMachineButton.class, MapSelector.class);
         setBackground("cell_grass.png");
         addObject(new MapPreview(1), 350, 150);///Map Preview
         addObject(new MapPreview(2), 950, 150);///Map Preview
@@ -30,6 +33,7 @@ public class MapSelector extends World implements HasSound {
         addObject(new ImageDisplay("MenueBalken1.png", 960,40),480,1060);
         //addObject(new ImageDisplay("Credits.png", 300, 60), 10, 27);
         Greenfoot.start();
+        lastPlayed();
     }
 
     @Override
@@ -38,5 +42,56 @@ public class MapSelector extends World implements HasSound {
             MouseInfo mouseInfo = Greenfoot.getMouseInfo();
             System.out.println("X: " + mouseInfo.getX() + "  Y: " + mouseInfo.getY());
         }
+    }
+    public void lastPlayed(){
+        SaveManager saveManager = SaveManager.getInstance();
+        int lastPlayedInt = saveManager.getLastMap();
+
+        int x;
+        int y;
+        int offsetX = 230;
+        int offsetY = 150;
+        switch (lastPlayedInt) {
+            case 1:
+                x = 350 + offsetX;
+                y = 150 - offsetY;
+                break;
+            case 2:
+                x = 950 + offsetX;
+                y = 150 - offsetY;
+                break;
+            case 3:
+                x = 1550 + offsetX;
+                y = 150 - offsetY;
+                break;
+            case 4:
+                x = 350 + offsetX;
+                y = 500 - offsetY;
+                break;
+            case 5:
+                x = 950 + offsetX;
+                y = 500 - offsetY;
+                break;
+            case 6:
+                x = 1550 + offsetX;
+                y = 500 - offsetY;
+                break;
+            case 7:
+                x = 350 + offsetX;
+                y = 850 - offsetY;
+                break;
+            case 8:
+                x = 950 + offsetX;
+                y = 850 - offsetY;
+                break;
+            case 9:
+                x = 1550 + offsetX;
+                y = 850 - offsetY;
+                break;
+            default:
+                return; // no valid last map, don't place marker
+        }
+
+        addObject(new ImageDisplay("lastPlayed.png", 100, 100), x, y);
     }
 }

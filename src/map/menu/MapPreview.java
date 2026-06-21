@@ -6,8 +6,9 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.levels.*;
+import util.saves.SaveManager;
 
-public class MapPreview extends MainClass  {
+public class MapPreview extends MainClass  implements Clickable{
     private boolean clicked = false;
     private int world = 0;
 
@@ -58,14 +59,14 @@ public class MapPreview extends MainClass  {
 
     @Override
     public void act() {
-        if (Greenfoot.mouseClicked(this)){
-            onClick();
-        }
+        checkClick();
     }
 
 
     public void onClick() {
+        SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
+        saveManager.setLastMap(getWorldNr());
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
         switch (getWorldNr()) {///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1:

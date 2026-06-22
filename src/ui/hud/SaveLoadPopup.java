@@ -30,9 +30,9 @@ public class SaveLoadPopup extends MainClass {
     }
 
     public void act() {
-        super.act()
+        super.act();
         if ("escape".equals(Greenfoot.getKey())) {
-            closeButton.onClick()
+            closeButton.onClick();
         }
-    
+    }
 }

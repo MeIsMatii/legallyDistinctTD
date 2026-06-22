@@ -1,6 +1,7 @@
 package ui.hud.buttons;
 
 import core.MainClass;
+import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -10,7 +11,6 @@ import util.Clickable;
 import util.saves.SaveManager;
 
 public class LoadSaveButton extends MainClass implements Clickable {
-    Actor owner;
     int worldNr;
     private World loadingScreen = new LoadingScreen();
 
@@ -29,10 +29,9 @@ public class LoadSaveButton extends MainClass implements Clickable {
     }
 
 
-    public LoadSaveButton(int Worldnr, Actor owner){
+    public LoadSaveButton(int Worldnr){
         GreenfootImage img = new GreenfootImage("LoadSaveButton.png");
         img.scale(100,50);
-        this.owner = owner;
         setImage(img);
         setWorldNr(Worldnr);
     }
@@ -40,9 +39,6 @@ public class LoadSaveButton extends MainClass implements Clickable {
     @Override
     public void act() {
         checkClick();
-        if(getWorld().getObject(owner) {
-            getWorld().removeObject(this);
-        }
     }
 
     public void onClick() {

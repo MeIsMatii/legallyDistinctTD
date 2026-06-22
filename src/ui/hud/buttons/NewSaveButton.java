@@ -1,6 +1,7 @@
 package ui.hud.buttons;
 
 import core.MainClass;
+import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -29,9 +30,8 @@ public class NewSaveButton extends MainClass implements Clickable {
     }
 
 
-    public NewSaveButton(int Worldnr, Actor owner){
+    public NewSaveButton(int Worldnr){
         GreenfootImage img = new GreenfootImage("NewSaveButton.png");
-        this.owner = owner;
         img.scale(100,50);
         setImage(img);
         setWorldNr(Worldnr);
@@ -40,9 +40,6 @@ public class NewSaveButton extends MainClass implements Clickable {
     @Override
     public void act() {
         checkClick();
-        if(getWorld().getObject(owner) {
-            getWorld().removeObject(this);
-        }
     }
 
     public void onClick() {

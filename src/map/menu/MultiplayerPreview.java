@@ -5,10 +5,11 @@ import greenfoot.Color;
 import greenfoot.Font;
 import greenfoot.GreenfootImage;
 import ui.common.CustomImageDisplay;
+import ui.hud.PopupScreen;
 import ui.hud.buttons.ClosePopupButton;
 import util.Clickable;
 
-public class MultiplayerPreview extends MainClass implements Clickable {
+public class MultiplayerPreview extends PopupScreen implements Clickable {
     CustomImageDisplay img = new CustomImageDisplay(700, 500, "coming soon", new Color(139, 69, 19), Color.WHITE, new Font("Arial", true, false, 24));
     ClosePopupButton closeButton;
     boolean clicked = false;
@@ -32,11 +33,11 @@ public class MultiplayerPreview extends MainClass implements Clickable {
             getWorld().addObject(closeButton, 1220,208);
             clicked = true;
         } else {
-            closePopup();
+            onRemove();
         }
     }
 
-    public void closePopup() {
+    public void onRemove() {
         if (getWorld() != null) {
             getWorld().removeObject(img);
             getWorld().removeObject(closeButton);

@@ -4,12 +4,14 @@ import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import map.menu.MultiplayerPreview;
+import ui.hud.PopupScreen;
+import ui.hud.SaveLoadPopup;
 import util.Clickable;
 
 public class ClosePopupButton extends Actor implements Clickable {
-    private Actor popupTarget;
+    private PopupScreen popupTarget;
 
-    public ClosePopupButton(Actor popupTarget) {
+    public ClosePopupButton(PopupScreen popupTarget) {
         GreenfootImage image = new GreenfootImage(30, 30);
         image.setColor(new Color(60, 60, 60));
         image.fill();
@@ -34,12 +36,9 @@ public class ClosePopupButton extends Actor implements Clickable {
     @Override
     public void onClick() {
         if (popupTarget != null && getWorld() != null) {
-            if (popupTarget instanceof MultiplayerPreview) {
-                ((MultiplayerPreview) popupTarget).closePopup();
-            } else {
-                getWorld().removeObject(popupTarget);
-                getWorld().removeObject(this);
-            }
+
+            popupTarget.onRemove();
+
         }
     }
 }

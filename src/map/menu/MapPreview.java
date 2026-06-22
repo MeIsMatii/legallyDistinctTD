@@ -70,11 +70,10 @@ public class MapPreview extends MainClass  implements Clickable{
         SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
         saveManager.setLastMap(getWorldNr());
-        SaveLoadPopup saveLoadPopup = new SaveLoadPopup("Do you want to continue your previos game?");
+        SaveLoadPopup saveLoadPopup = new SaveLoadPopup("Do you want to continue your previos game?", getWorldNr());
         World world = getWorld();
         world.addObject(saveLoadPopup,930,540);
-        world.addObject(new LoadSaveButton(getWorldNr()),1200,700);
-        world.addObject(new NewSaveButton(getWorldNr()),800,700);
+       
 
     }
 }

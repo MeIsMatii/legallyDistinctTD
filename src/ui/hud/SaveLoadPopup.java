@@ -28,4 +28,11 @@ public class SaveLoadPopup extends MainClass {
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
         world.addObject(closeButton, buttonX, buttonY);
     }
+
+    public void act() {
+        super.act()
+        if ("escape".equals(Greenfoot.getKey())) {
+            closeButton.onClick()
+        }
+    
 }

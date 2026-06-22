@@ -10,7 +10,7 @@ import util.Clickable;
 import util.saves.SaveManager;
 
 public class NewSaveButton extends MainClass implements Clickable {
-
+    Actor owner;
     int worldNr;
     private World loadingScreen = new LoadingScreen();
 
@@ -29,8 +29,9 @@ public class NewSaveButton extends MainClass implements Clickable {
     }
 
 
-    public NewSaveButton(int Worldnr){
+    public NewSaveButton(int Worldnr, Actor owner){
         GreenfootImage img = new GreenfootImage("NewSaveButton.png");
+        this.owner = owner;
         img.scale(100,50);
         setImage(img);
         setWorldNr(Worldnr);
@@ -39,6 +40,9 @@ public class NewSaveButton extends MainClass implements Clickable {
     @Override
     public void act() {
         checkClick();
+        if(getWorld().getObject(owner) {
+            getWorld().removeObject(this);
+        }
     }
 
     public void onClick() {

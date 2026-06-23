@@ -8,6 +8,7 @@ import greenfoot.World;
 import map.levels.*;
 import map.menu.LoadingScreen;
 import util.Clickable;
+import util.saves.GameSaveManager;
 import util.saves.SaveManager;
 
 public class LoadSaveButton extends MainClass implements Clickable {
@@ -43,45 +44,51 @@ public class LoadSaveButton extends MainClass implements Clickable {
 
     public void onClick() {
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
+        Map nextWorld = null;
         switch (getWorldNr()) {///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map1());
+                nextWorld = new Map1();
+                nextWorld.getGameSaveManager().setMapNr("map1");
                 break;
             case 2:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map2());
+                nextWorld = new Map2();
+                nextWorld.getGameSaveManager().setMapNr("map2");
                 break;
             case 3:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map3());
+                nextWorld = new Map3();
+                nextWorld.getGameSaveManager().setMapNr("map3");
                 break;
             case 4:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map4());
+                nextWorld = new Map4();
+                nextWorld.getGameSaveManager().setMapNr("map4");
                 break;
             case 5:
-                ls.setNextWorld(new Map5());
-                Greenfoot.setWorld(getLoadingScreen());
+                nextWorld = new Map5();
+                nextWorld.getGameSaveManager().setMapNr("map5");
                 break;
             case 6:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map6());
+                nextWorld = new Map6();
+                nextWorld.getGameSaveManager().setMapNr("map6");
                 break;
             case 7:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map7());
+                nextWorld = new Map7();
+                nextWorld.getGameSaveManager().setMapNr("map7");
                 break;
             case 8:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map8());
+                nextWorld = new Map8();
+                nextWorld.getGameSaveManager().setMapNr("map8");
                 break;
             case 9:
-                Greenfoot.setWorld(getLoadingScreen());
-                ls.setNextWorld(new Map9());
-
+                nextWorld = new Map9();
+                nextWorld.getGameSaveManager().setMapNr("map9");
                 break;
         }
+        Greenfoot.setWorld(getLoadingScreen());
+        ls.setNextWorld(nextWorld);
+        nextWorld.getGameSaveManager().reload();
+
+        nextWorld.getGameSaveManager().loadGame(nextWorld);
+
         //todo Make it load game saves and not just enw worlds @Mathilo @Colin
     }
 }

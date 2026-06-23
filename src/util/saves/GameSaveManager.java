@@ -138,16 +138,19 @@ public class GameSaveManager extends Actor implements Saveable {
     public void saveGame() {
         Map map = (Map) getWorld();
         set("currentWave", map.getWave());
+        set("Towers", saveTowerData(map));
         set("coins", map.getPLAYER().getCoins());
         set("health", map.getPLAYER().getHealth());
-        set("Towers", saveTowerData(map));
-
     }
 
     public String saveTowerData(Map map) {
         List<Tower> towers = map.getObjects(Tower.class);
         StringBuilder data = new StringBuilder();
         for(Tower tower: towers) {
+            if(tower.isPlacing()) { //we only wanna save placed towers
+                map.getPLAYER().setCoins(map.getPLAYER().getCoins() + tower.getPRICE());
+                continue;
+            }
             data.append(tower.getTowerName()).append(",")
                 .append(tower.getX()).append(",")
                 .append(tower.getY()).append(",")
@@ -186,12 +189,15 @@ public class GameSaveManager extends Actor implements Saveable {
 
             Tower towerToPlace = null;
             switch(towerType) {
+                //all towers need to go here
                 case "TestTower": towerToPlace = new TestTower(); break;
                 case "HomingTower": towerToPlace = new HomingTower(); break;
                 case "Rocketlauncher": towerToPlace = new Rocketlauncher(); break;
                 case "Sniper": towerToPlace = new Sniper(); break;
                 case "TrapTower": towerToPlace = new TrapTower(); break;
                 case "Flamethrower": towerToPlace = new Flamethrower(); break;
+                case "Helicopter": break; //we do not want to spawn the heli, bc the pad spawns it
+                case "HelicopterPad": towerToPlace = new HelicopterPad(); break;
 
                 default:
                     System.out.println("tower not in list @GameSaveManager.loadTowerData()\n Please fix it or contact @Mathilo");

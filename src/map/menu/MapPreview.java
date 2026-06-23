@@ -84,10 +84,10 @@ public class MapPreview extends MainClass  implements Clickable{
         } else {
             System.out.println(2);
 
-            NewGamePopup newGamePopup = new NewGamePopup("!(Do you want to start a new game?)", getWorldNr(), new CloseButton(), new NewSaveButton(getWorldNr())); //TODO fix
+            NewGamePopup newGamePopup = new NewGamePopup("Press \"no\" if you wanna start a new game\n and \"ESCAPE\" or the \"X\" if you dont", getWorldNr(), new NewSaveButton(getWorldNr()), new NewSaveButton(getWorldNr())); //TODO fix
             world.addObject(newGamePopup, 960, 540);
         }
-        saveManager.setLastMap(getWorldNr());
+
 
     }
 }

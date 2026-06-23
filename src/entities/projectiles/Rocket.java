@@ -24,8 +24,6 @@ public class Rocket extends Projectile implements HasSound {
 
     public void onHit(Entity hitter) {
         if(!(hitter instanceof Enemy) || getWorld() == null) return;
-
-        System.out.println("onHit Rocket");
         List<Enemy> enemies = getObjectsInRange(200, Enemy.class);
         if (!enemies.isEmpty()){
             for (Enemy enemy : enemies) {

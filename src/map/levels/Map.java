@@ -6,12 +6,10 @@ import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
 import map.levels.util.Path;
-import ui.hud.TowerSelector;
+import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
 import util.Cursor;
 import util.saves.GameSaveManager;
-
-import java.util.List;
 
 public abstract class Map extends World {
     private UpgradeMenu UPGRADEMENU;
@@ -45,7 +43,7 @@ public abstract class Map extends World {
 
         addObject(CURSOR, 0, 0);
 
-        addObject(new TowerSelector(), 1770, 540);
+        addObject(new TowerSelectorSpawner(), 1770, 540);
     }
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {

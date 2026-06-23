@@ -1,19 +1,19 @@
 package ui.hud;
 
-import core.MainClass;
 import greenfoot.*;
+import ui.hud.buttons.Button;
 import ui.hud.buttons.ClosePopupButton;
 import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 
-public class SaveLoadPopup extends PopupScreen {
+public class NewGamePopup extends PopupScreen {
     private ClosePopupButton closeButton;
-    private LoadSaveButton loadSaveButton;
-    private NewSaveButton newSaveButton;
+    private Button rightButton;
+    private Button leftButton;
 
     private int worldNumber;
 
-    public SaveLoadPopup(String text, int worldNumber) {
+    public NewGamePopup(String text, int worldNumber, Button leftButton, Button rightButton) {
         int width = 800;
         int height = 600;
         this.worldNumber = worldNumber;
@@ -26,8 +26,8 @@ public class SaveLoadPopup extends PopupScreen {
         setImage(boxImage);
 
         closeButton = new ClosePopupButton(this);
-        loadSaveButton = new LoadSaveButton(worldNumber);
-        newSaveButton = new NewSaveButton(worldNumber);
+        this.rightButton = rightButton;
+        this.leftButton = leftButton;
     }
 
     @Override
@@ -37,8 +37,8 @@ public class SaveLoadPopup extends PopupScreen {
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
         world.addObject(closeButton, buttonX, buttonY);
 
-        world.addObject(loadSaveButton,1200,700);
-        world.addObject(newSaveButton,800,700);
+        world.addObject(rightButton,1200,700);
+        world.addObject(leftButton,800,700);
     }
 
     public void act() {
@@ -49,8 +49,9 @@ public class SaveLoadPopup extends PopupScreen {
     }
 
     public void onRemove() {
-        getWorld().removeObject(loadSaveButton);
-        getWorld().removeObject(newSaveButton);
+        System.out.println("onremove");
+        getWorld().removeObject(rightButton);
+        getWorld().removeObject(leftButton);
         getWorld().removeObject(closeButton);
         getWorld().removeObject(this);
     }

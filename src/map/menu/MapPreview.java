@@ -1,14 +1,15 @@
 package map.menu;
 
-import ui.hud.SaveLoadPopup;
+import ui.common.BackButton;
+import ui.hud.NewGamePopup;
+import ui.hud.PopupScreen;
+import ui.hud.buttons.CloseButton;
 import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
 import core.MainClass;
-import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import map.levels.*;
 import util.saves.SaveManager;
 
 public class MapPreview extends MainClass  implements Clickable{
@@ -67,13 +68,26 @@ public class MapPreview extends MainClass  implements Clickable{
 
 
     public void onClick() {
+        if(!getWorld().getObjects(PopupScreen.class).isEmpty()) {
+            System.out.println(getWorld().getObjects(PopupScreen.class));
+            return;
+        }
         SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
-        saveManager.setLastMap(getWorldNr());
-        SaveLoadPopup saveLoadPopup = new SaveLoadPopup("Do you want to continue your previos game?", getWorldNr());
+
         World world = getWorld();
-        world.addObject(saveLoadPopup,930,540);
-       
+        if(saveManager.getLastMap() == getWorldNr()) {
+            System.out.println(1);
+            NewGamePopup newGamePopup = new NewGamePopup("Do you want to continue your previous game?", getWorldNr(), new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
+
+            world.addObject(newGamePopup, 960, 540);
+        } else {
+            System.out.println(2);
+
+            NewGamePopup newGamePopup = new NewGamePopup("!(Do you want to start a new game?)", getWorldNr(), new CloseButton(), new NewSaveButton(getWorldNr())); //TODO fix
+            world.addObject(newGamePopup, 960, 540);
+        }
+        saveManager.setLastMap(getWorldNr());
 
     }
 }

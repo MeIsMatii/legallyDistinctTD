@@ -186,7 +186,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         shootingDelayCounter = count;
     }
 
-    public boolean getPlacing() {
+    public boolean isPlacing() {
         return this.isPlacing;
     }
 

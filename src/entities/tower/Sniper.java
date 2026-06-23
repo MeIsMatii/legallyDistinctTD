@@ -1,8 +1,6 @@
 package entities.tower;
 
 import entities.enemy.Enemy;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
 
 import java.util.List;
 
@@ -65,7 +63,7 @@ public class Sniper extends Tower{
 
     public void act() {
         super.act();
-        if(canShoot() && !getPlacing()) {
+        if(canShoot() && !isPlacing()) {
             setShootingDelayCounter(0);
             List<Enemy> enemies = getWorld().getObjects(Enemy.class);
             if(!enemies.isEmpty()) {

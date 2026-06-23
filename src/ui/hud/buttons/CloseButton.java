@@ -6,7 +6,7 @@ import core.MainClass;
 
 import java.util.List;
 
-public class CloseButton extends MainClass implements Clickable {
+public class CloseButton extends Button{
 
 
     public CloseButton() {
@@ -23,7 +23,5 @@ public class CloseButton extends MainClass implements Clickable {
             }
         }
     }
-    public void act(){
-        checkClick();
-    }
+
 }

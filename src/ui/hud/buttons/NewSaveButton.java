@@ -10,7 +10,7 @@ import map.menu.LoadingScreen;
 import util.Clickable;
 import util.saves.SaveManager;
 
-public class NewSaveButton extends MainClass implements Clickable {
+public class NewSaveButton extends Button{
     Actor owner;
     int worldNr;
     private World loadingScreen = new LoadingScreen();
@@ -37,10 +37,6 @@ public class NewSaveButton extends MainClass implements Clickable {
         setWorldNr(Worldnr);
     }
 
-    @Override
-    public void act() {
-        checkClick();
-    }
 
     public void onClick() {
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World

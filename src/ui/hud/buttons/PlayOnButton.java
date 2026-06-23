@@ -7,7 +7,7 @@ import map.menu.PauseMenu;
 
 import java.util.List;
 
-public class PlayOnButton extends MainClass implements Clickable {
+public class PlayOnButton extends Button{
 
     public PlayOnButton() {
         setImage("PlayOnButton.png");
@@ -34,8 +34,5 @@ public class PlayOnButton extends MainClass implements Clickable {
 
     }
 
-    public void act() {
-        checkClick();
-    }
 
 }

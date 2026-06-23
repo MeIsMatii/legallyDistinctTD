@@ -11,7 +11,7 @@ import util.Clickable;
 import util.saves.GameSaveManager;
 import util.saves.SaveManager;
 
-public class LoadSaveButton extends MainClass implements Clickable {
+public class LoadSaveButton extends Button{
     int worldNr;
     private World loadingScreen = new LoadingScreen();
 
@@ -37,10 +37,6 @@ public class LoadSaveButton extends MainClass implements Clickable {
         setWorldNr(Worldnr);
     }
 
-    @Override
-    public void act() {
-        checkClick();
-    }
 
     public void onClick() {
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World

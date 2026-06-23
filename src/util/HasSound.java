@@ -1,8 +1,6 @@
 package util;
 
 import greenfoot.GreenfootSound;
-import greenfoot.sound.Mp3AudioInputStream;
-import greenfoot.util.GreenfootUtil;
 import ui.settings.sound.SoundSettings;
 import util.saves.SaveManager;
 
@@ -35,7 +33,7 @@ public interface HasSound {
 
         if(!isAudioHardwareSupported()) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return;
         }
         GreenfootSound soundToPlay;
@@ -48,7 +46,7 @@ public interface HasSound {
             soundToPlay.play();//play
         } catch (Exception e) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return;
         }
     }
@@ -59,7 +57,7 @@ public interface HasSound {
         }
         if(!isAudioHardwareSupported()) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return;
         }
         try {
@@ -68,7 +66,7 @@ public interface HasSound {
             soundToPlay.play();//sync
         } catch (Exception e) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return;
         }
     }
@@ -79,7 +77,7 @@ public interface HasSound {
         }
         if(!isAudioHardwareSupported()) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return null;
         }
 
@@ -90,12 +88,12 @@ public interface HasSound {
             return soundToControl;//gibt den fertig angepassten sound zurück
         } catch (Exception e) {
             System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            mute();
+            hardWareMute();
             return null;
         }
     }
 
-    default void mute() {
+    default void hardWareMute() { //incase hardware doesnt work
         SaveManager.getInstance().setSoundOn(false);
     }
 }

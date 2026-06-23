@@ -8,7 +8,7 @@ import greenfoot.Greenfoot;
 import map.levels.Map;
 import map.menu.MapSelector;
 
-public class SettingsButton extends MainClass implements Clickable {
+public class SettingsButton extends Button{
 
     public SettingsButton() {
         setImage("settingsIcon.png");
@@ -24,9 +24,5 @@ public class SettingsButton extends MainClass implements Clickable {
         }
 
         }
-
-        public void act() {
-        checkClick();
-    }
 
 }

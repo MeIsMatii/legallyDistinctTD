@@ -3,12 +3,10 @@ package ui.hud.buttons;
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
-import map.menu.MultiplayerPreview;
 import ui.hud.PopupScreen;
-import ui.hud.SaveLoadPopup;
 import util.Clickable;
 
-public class ClosePopupButton extends Actor implements Clickable {
+public class ClosePopupButton extends Button{
     private PopupScreen popupTarget;
 
     public ClosePopupButton(PopupScreen popupTarget) {
@@ -28,10 +26,6 @@ public class ClosePopupButton extends Actor implements Clickable {
         this.popupTarget = popupTarget;
     }
 
-    @Override
-    public void act() {
-        checkClick();
-    }
 
     @Override
     public void onClick() {

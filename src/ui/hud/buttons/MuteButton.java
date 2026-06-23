@@ -6,16 +6,12 @@ import core.MainClass;
 import greenfoot.GreenfootImage;
 import util.saves.SaveManager;
 
-public class MuteButton extends MainClass implements Clickable {
+public class MuteButton extends Button{
     private boolean muted = !SaveManager.getInstance().isSoundOn();
     public MuteButton(){
         updateApperance();
     }
 
-    @Override
-    public void act() {
-        checkClick();
-    }
 
     @Override
     public void onClick() {

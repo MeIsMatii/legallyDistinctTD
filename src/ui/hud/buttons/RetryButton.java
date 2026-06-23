@@ -4,7 +4,7 @@ import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 
-public class RetryButton extends MainClass implements Clickable {
+public class RetryButton extends Button{
 
 
     public RetryButton() {
@@ -20,8 +20,5 @@ public class RetryButton extends MainClass implements Clickable {
         }
     }
 
-    public void act(){
-        checkClick();
-    }
 
 }

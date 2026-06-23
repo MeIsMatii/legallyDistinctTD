@@ -41,7 +41,5 @@ public interface Clickable {
         }
     }
 
-    default void onClick() {
-        System.out.println("onClick is not defined for this object");
-    }
+    void onClick();
 }

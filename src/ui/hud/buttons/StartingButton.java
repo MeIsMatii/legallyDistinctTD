@@ -6,14 +6,9 @@ import greenfoot.Greenfoot;
 import map.menu.MapSelector;
 import util.saves.SaveManager;
 
-public class StartingButton extends MainClass implements Clickable {
+public class StartingButton extends Button{
     public StartingButton(){
         setImage("StartingButton.PNG");
-    }
-
-    @Override
-    public void act() {
-        checkClick();
     }
 
     @Override

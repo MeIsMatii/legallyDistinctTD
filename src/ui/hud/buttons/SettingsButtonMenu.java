@@ -5,7 +5,7 @@ import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 
-public class SettingsButtonMenu extends MainClass implements Clickable {
+public class SettingsButtonMenu extends Button{
 
 
     public SettingsButtonMenu() {
@@ -17,7 +17,4 @@ public class SettingsButtonMenu extends MainClass implements Clickable {
         Greenfoot.setWorld(new MapSettings());
     }
 
-    public void act(){
-        checkClick();
-}
 }

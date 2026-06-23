@@ -9,6 +9,7 @@ import map.levels.util.Path;
 import ui.hud.TowerSelector;
 import ui.hud.UpgradeMenu;
 import util.Cursor;
+import util.saves.GameSaveManager;
 
 import java.util.List;
 
@@ -20,9 +21,16 @@ public abstract class Map extends World {
     private final Cursor CURSOR;
     private final int PATHWIDTH;
 
+    private final GameSaveManager GAMESAVEMANAGER;
+
+    private int wave = 1;
+
     public Map() {
         super(1920, 1080, 1);
-    setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
+        this.GAMESAVEMANAGER = new GameSaveManager();
+        addObject(GAMESAVEMANAGER, 0,0);
+
+        setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.PATHWIDTH = 120;
         PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
@@ -67,6 +75,10 @@ public abstract class Map extends World {
         return PLAYER;
     }
 
+    public GameSaveManager getGameSaveManager() {
+        return GAMESAVEMANAGER;
+    }
+
     public Cursor getCURSOR() {
         return CURSOR;
     }
@@ -88,6 +100,14 @@ public abstract class Map extends World {
             }
 
         }
+    }
+
+    public int getWave() {
+        return wave;
+    }
+
+    public void setWave(int wave) {
+        this.wave = wave;
     }
 
 

@@ -12,6 +12,15 @@ public class HelicopterPad extends Tower {
     public void onHit(Entity hitter) {
     }
 
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        if(!getPlacing()) {
+            Helicopter heli = new Helicopter();
+            heli.setPlacing(false);
+            getWorld().addObject(heli,getX(),getY());
+        }
+    }
+
     public void place() {
         super.place();
         Helicopter heli = new Helicopter();

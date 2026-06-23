@@ -1,20 +1,10 @@
 package entities.tower;
 
-import entities.Entity;
 import entities.enemy.Enemy;
-import greenfoot.World;
 
-public class HelicopterPad extends Tower {
-    public HelicopterPad() {
-        super(0, true, 1, 99999999, 0, 0, 0, 0);
-    }
-    @Override
-    public void onHit(Entity hitter) {
-
-    }
-    @Override
-    public void addedToWorld(World world) {
-        getWorld().addObject(new Helicopter(),getX(),getY());
+public class Helicopter extends Tower{
+    public Helicopter() {
+        super(0, true, 250, 50, 1, 10, 1, 45);
     }
 
     @Override
@@ -39,7 +29,7 @@ public class HelicopterPad extends Tower {
 
     @Override
     public String getTowerName() {
-        return "HelicopterPad";
+        return "Helicopter";
     }
 
     @Override

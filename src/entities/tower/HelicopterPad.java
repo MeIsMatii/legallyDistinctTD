@@ -6,15 +6,17 @@ import greenfoot.World;
 
 public class HelicopterPad extends Tower {
     public HelicopterPad() {
-        super(0, true, 1, 99999999, 0, 0, 0, 0);
+        super(0, true, 150, 99999999, 0, 0, 0, 0);
     }
     @Override
     public void onHit(Entity hitter) {
-
     }
-    @Override
-    public void addedToWorld(World world) {
-        getWorld().addObject(new Helicopter(),getX(),getY());
+
+    public void place() {
+        super.place();
+        Helicopter heli = new Helicopter();
+        heli.setPlacing(false);
+        getWorld().addObject(heli,getX(),getY());
     }
 
     @Override

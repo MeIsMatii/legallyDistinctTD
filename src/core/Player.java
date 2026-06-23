@@ -3,6 +3,7 @@ package core;
 import entities.Entity;
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import map.levels.Map;
 import map.levels.util.GameOverPopUp;
 import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
@@ -54,6 +55,7 @@ public class Player extends MainClass {
         checkPaused();
         coinCheat();
         show(getWorld());
+        saveTest();
 
 
         oldCoins = coins;
@@ -142,6 +144,13 @@ public class Player extends MainClass {
     public void onContinue(){
         setPaused(false);
         pauseEntity();
+    }
+
+    public void saveTest() {
+        if(Greenfoot.isKeyDown("space")) {
+            Map map = (Map) getWorld();
+            map.getGameSaveManager().saveGame();
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package entities.tower;
 
 import entities.enemy.Enemy;
+import entities.projectiles.FlameProjectile;
 import entities.projectiles.HomingProjectile;
 import entities.projectiles.Rocket;
 import entities.projectiles.TestProjectile;
@@ -12,9 +13,13 @@ import java.util.List;
 public class Flamethrower extends Tower{
     private int magazine = 15;
     private int rechargeCounter;
-    private int[] upgrades1 = new int[]{150,500,2500,7500,17000};
-    private int[] upgrades2 = new int[]{200,450,3000,10000,25000};
-    private int[] upgrades3 = new int[]{100,350,1750,6000, 9500};
+    private final int[] upgrades1 = new int[]{150,500,2500};
+    private final int[] upgrades2 = new int[]{200,450,3000};
+    private final int[] upgrades3 = new int[]{100,350,1750};
+    private final String[] upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting","The fastest Flamethrower","final upgrade done"};
+    private final String[] upgradeDescription2 = new String[]{"Yellow hot", "White hot","Blue hot","final upgrade done"};
+    private final String[] upgradeDescription3 = new String[]{"More range", "Even more range","Very long range","final upgrade done"};
+
 
 
     public Flamethrower() {
@@ -56,7 +61,7 @@ public class Flamethrower extends Tower{
     @Override
     void shoot(Enemy e) {
         if (magazine > 0){
-            getWorld().addObject(new Rocket(this),getX(),getY());
+            getWorld().addObject(new FlameProjectile(this),getX(),getY());
             magazine--;
         }else {
             recharge();

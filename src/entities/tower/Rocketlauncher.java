@@ -6,12 +6,12 @@ import entities.projectiles.TestProjectile;
 import greenfoot.GreenfootImage;
 
 public class Rocketlauncher extends Tower{
-    private int[] upgrades1 = new int[]{150,500,2500,7500,17000};
-    private int[] upgrades2 = new int[]{200,450,3000,10000,25000};
-    private int[] upgrades3 = new int[]{100,350,1750,6000, 9500};
+    private int[] upgrades1 = new int[]{150,500,2500};
+    private int[] upgrades2 = new int[]{200,450,3000};
+    private int[] upgrades3 = new int[]{100,350,1750};
 
     public Rocketlauncher() {
-        super(500, true, 500, 250, 25, 25, 1, 0);
+        super(500, true, 500, 150, 50, 25, 1, 0);
         //GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
         //img.scale(200,200);
         //setImage(img);

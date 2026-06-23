@@ -190,6 +190,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return this.isPlacing;
     }
 
+    public void setPlacing(boolean isPlacing) {
+        this.isPlacing = isPlacing;
+    }
+
     public void act() {
         if (isPaused()) return;
 

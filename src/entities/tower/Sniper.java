@@ -65,7 +65,6 @@ public class Sniper extends Tower{
 
     public void act() {
         super.act();
-        System.out.println(getShootingDelay());
         if(canShoot() && !getPlacing()) {
             setShootingDelayCounter(0);
             List<Enemy> enemies = getWorld().getObjects(Enemy.class);

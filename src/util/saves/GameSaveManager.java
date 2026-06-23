@@ -1,31 +1,38 @@
 package util.saves;
 
+import entities.tower.*;
+import greenfoot.Actor;
+import map.levels.Map;
+
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Properties;
 import java.io.File;
 
-public class GameSaveManager implements Saveable {
+
+public class GameSaveManager extends Actor implements Saveable {
 
     // path to the save file — stored in a "saves" folder next to the project
-    private static String Map;
-    private static String SAVE_PATH = "saves/game saves/" + Map;
-    public static String getMapNr() {
+    private String Map;
+    private String SAVE_PATH = "saves/savedgames/" + "testFile";
+    public String getMapNr() {
         return Map;
     }
-    public static void setMapNr(String map) {
+    public void setMapNr(String map) {
         Map = map;
+        SAVE_PATH = "saves/savedgames/" + Map + ".save";
     }
     // only instance of this class
-    private static GameSaveManager instance = null;
+    private GameSaveManager instance = null;
 
     // holds all key=value data loaded from the file
     private Properties saveData;
 
     /** Private constructor — use getInstance() instead. */
-    private GameSaveManager() {
+    public GameSaveManager() {
+        setImage("invisible.png");
         try {
             File file = new File(SAVE_PATH);
             file.getParentFile().mkdirs();
@@ -41,7 +48,7 @@ public class GameSaveManager implements Saveable {
         saveData = loadSave(SAVE_PATH);
     }
 
-    public static GameSaveManager getInstance() {
+    public GameSaveManager getInstance() {
         if (instance == null) {
             instance = new GameSaveManager(); // create once
         }
@@ -124,5 +131,82 @@ public class GameSaveManager implements Saveable {
      */
     public boolean getAsBoolean(String key, boolean defaultValue) {
         return getBoolean(saveData, key, defaultValue);
+    }
+
+
+
+    public void saveGame() {
+        Map map = (Map) getWorld();
+        set("currentWave", map.getWave());
+        set("coins", map.getPLAYER().getCoins());
+        set("health", map.getPLAYER().getHealth());
+        set("Towers", saveTowerData(map));
+
+    }
+
+    public String saveTowerData(Map map) {
+        List<Tower> towers = map.getObjects(Tower.class);
+        StringBuilder data = new StringBuilder();
+        for(Tower tower: towers) {
+            data.append(tower.getTowerName()).append(",")
+                .append(tower.getX()).append(",")
+                .append(tower.getY()).append(",")
+                .append(tower.getUpgrade1()).append(",")
+                .append(tower.getUpgrade2()).append(",")
+                .append(tower.getUpgrade3()).append("\n");
+        }
+        return data.toString();
+    }
+
+    public void loadGame(Map map) {
+        System.out.println(SAVE_PATH);
+        map.setWave(Integer.parseInt(get("currentWave")));
+        map.getPLAYER().setCoins(Integer.parseInt(get("coins")));
+        map.getPLAYER().setHealth(Integer.parseInt(get("health")));
+        loadTowerData();
+
+
+    }
+
+    public void loadTowerData() {
+        String towers = get("Towers");
+        String[] entries = towers.split("\n");
+
+        for (String entry: entries) {
+            if(entry.isBlank()) { //no towers
+                return;
+            }
+            String[] data = entry.split(",");
+            String towerType = data[0];
+            int x = Integer.parseInt(data[1]);
+            int y = Integer.parseInt(data[2]);
+            int u1 = Integer.parseInt(data[3]);
+            int u2 = Integer.parseInt(data[4]);
+            int u3 = Integer.parseInt(data[5]);
+
+            Tower towerToPlace = null;
+            switch(towerType) {
+                case "TestTower": towerToPlace = new TestTower(); break;
+                case "HomingTower": towerToPlace = new HomingTower(); break;
+                case "Rocketlauncher": towerToPlace = new Rocketlauncher(); break;
+                case "Sniper": towerToPlace = new Sniper(); break;
+                case "TrapTower": towerToPlace = new TrapTower(); break;
+                case "Flamethrower": towerToPlace = new Flamethrower(); break;
+
+                default:
+                    System.out.println("tower not in list @GameSaveManager.loadTowerData()\n Please fix it or contact @Mathilo");
+                    break;
+            }
+
+            if (towerToPlace != null) {
+                towerToPlace.setUpgrade1(u1);
+                towerToPlace.setUpgrade2(u2);
+                towerToPlace.setUpgrade3(u3);
+
+                towerToPlace.setPlacing(false);
+                getWorld().addObject(towerToPlace, x, y);
+
+            }
+        }
     }
 }

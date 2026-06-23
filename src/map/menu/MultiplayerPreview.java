@@ -9,7 +9,7 @@ import ui.hud.PopupScreen;
 import ui.hud.buttons.ClosePopupButton;
 import util.Clickable;
 
-public class MultiplayerPreview extends PopupScreen implements Clickable {
+public class MultiplayerPreview extends MainClass implements Clickable {
     CustomImageDisplay img = new CustomImageDisplay(700, 500, "coming soon", new Color(139, 69, 19), Color.WHITE, new Font("Arial", true, false, 24));
     ClosePopupButton closeButton;
     boolean clicked = false;
@@ -18,7 +18,6 @@ public class MultiplayerPreview extends PopupScreen implements Clickable {
         GreenfootImage im = new GreenfootImage("Multiplayer.png");
         im.scale(500, 300);
         setImage(im);
-        closeButton = new ClosePopupButton(this);
     }
 
     @Override
@@ -30,7 +29,6 @@ public class MultiplayerPreview extends PopupScreen implements Clickable {
     public void onClick() {
         if (!clicked) {
             getWorld().addObject(img, 1000, 540);
-            getWorld().addObject(closeButton, 1220,208);
             clicked = true;
         } else {
             onRemove();

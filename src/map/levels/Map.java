@@ -3,6 +3,7 @@ package map.levels;
 import core.Player;
 import entities.Hitbox;
 import entities.enemy.Enemy;
+import entities.projectiles.Projectile;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
@@ -197,6 +198,10 @@ public abstract class Map extends World {
         setWave(getWave() - 1); //so the new wave is the old wave
         waveEndMoney = 0; //so it does not give money
         getPLAYER().setCoins(getPLAYER().getCoins() - receivedWaveMoney); //so you cant dupe coins
+
+        for(Projectile p : getObjects(Projectile.class)) {
+            removeObject(p);
+        }
     }
 
     public void act() {

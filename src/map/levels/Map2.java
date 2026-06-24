@@ -15,4 +15,9 @@ public class Map2 extends Map {
         addObject(new Player(), 6, 6);
 
     }
+
+    @Override
+    public int getMapNumber() {
+        return 2;
+    }
 }

@@ -46,6 +46,7 @@ public abstract class Map extends World {
         this.WAVEMANAGER = WaveManager.getInstance();
         this.SPAWNDELAY = 45;
 
+        GAMESAVEMANAGER.setMapNr("map" + getMapNumber());
         addObject(GAMESAVEMANAGER, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
@@ -65,6 +66,8 @@ public abstract class Map extends World {
 
         addObject(new TowerSelectorSpawner(), 1770, 540);
     }
+
+    public abstract int getMapNumber();
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;

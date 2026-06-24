@@ -12,8 +12,6 @@ import ui.settings.sound.VolumeSlider;
 
 
 public class Map1 extends Map {
-
-
     public Map1() {
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class,CloseButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
 
@@ -36,6 +34,10 @@ public class Map1 extends Map {
         super.addPath(pathLocations);
 
 
+    }
+
+    public int getMapNumber() {
+        return 1;
     }
 
 

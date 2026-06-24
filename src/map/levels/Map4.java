@@ -13,4 +13,9 @@ public class Map4 extends Map {
         addObject(new BackButton(new MapSelector()), 0, 0);
 
     }
+
+    @Override
+    public int getMapNumber() {
+        return 4;
+    }
 }

@@ -164,13 +164,15 @@ public abstract class Map extends World {
     }
 
     public void removeDeadEnemies() {
+        List<Enemy> deadEnemies = new ArrayList<>();
         for(Enemy enemy : aliveEnemies) {
             if(!(enemy.getWorld() == null || enemy.getLives() < 0)) {
                 return;
             }
-            aliveEnemies.remove(enemy);
+            deadEnemies.add(enemy);
             receivedWaveMoney += enemy.getInitialLives();
         }
+        aliveEnemies.removeAll(deadEnemies);
     }
 
     public void resetWave() {

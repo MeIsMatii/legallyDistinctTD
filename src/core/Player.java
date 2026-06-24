@@ -55,7 +55,6 @@ public class Player extends MainClass {
         checkPaused();
         coinCheat();
         show(getWorld());
-        saveTest();
 
 
         oldCoins = coins;
@@ -121,7 +120,8 @@ public class Player extends MainClass {
             //getWorld().showText("you lost", 400, 400);
             GameOverPopUp gameOverPopUp = new GameOverPopUp();
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
-
+            setPaused(true);
+            pauseEntity();
         }
     }
 
@@ -144,13 +144,6 @@ public class Player extends MainClass {
     public void onContinue(){
         setPaused(false);
         pauseEntity();
-    }
-
-    public void saveTest() {
-        if(Greenfoot.isKeyDown("space")) {
-            Map map = (Map) getWorld();
-            map.getGameSaveManager().saveGame();
-        }
     }
 
 

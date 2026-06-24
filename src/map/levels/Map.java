@@ -37,7 +37,7 @@ public abstract class Map extends World {
     private int receivedWaveMoney;
 
 
-    private int wave = 0;
+    private int wave = 1;
 
     public Map() {
         super(1920, 1080, 1);
@@ -141,26 +141,34 @@ public abstract class Map extends World {
 
     public void spawnWave(int wave, int spawnDelay) {
 
-        if(enemiesToSpawn.isEmpty()) {
-            enemiesToSpawn = WAVEMANAGER.generateWave(wave);
+        if(enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
             setWave(wave +1);
             System.out.println("New Wave: " + wave);
+
+            enemiesToSpawn = WAVEMANAGER.generateWave(wave);
+
             getPLAYER().setCoins(getPLAYER().getCoins() + waveEndMoney);
 
             waveEndMoney = 0;
             receivedWaveMoney = 0;
+
             for(Enemy enemy : enemiesToSpawn) {
               waveEndMoney += (int) enemy.getLives();
             }
             waveEndMoney *= getWave();
+
+            GAMESAVEMANAGER.saveGame(); //so when you quit it continues on the last wave
         }
 
-        if(spawnDelayCounter < spawnDelay) {
+        if(spawnDelayCounter < spawnDelay) { //so they don't all spawn on 1 tick
             spawnDelayCounter++;
             return;
         }
         spawnDelayCounter = 0;
 
+        if(enemiesToSpawn.isEmpty()) { //just incase
+            return;
+        }
         Enemy enemy = enemiesToSpawn.get(0);
         addObject(enemy, SPAWNLOCATION[0], SPAWNLOCATION[1]);
         aliveEnemies.add(enemy);

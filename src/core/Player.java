@@ -122,6 +122,9 @@ public class Player extends MainClass {
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
             setPaused(true);
             pauseEntity();
+
+            Map map = (Map) getWorld();
+            map.getGameSaveManager().removeSaveFile();
         }
     }
 

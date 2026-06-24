@@ -26,6 +26,7 @@ public class GameSaveManager extends Actor implements Saveable {
     public void setMapNr(String map) {
         Map = map;
         SAVE_PATH = "saves/savedgames/" + Map + ".save";
+        createSaveFile();
     }
     // only instance of this class
     private GameSaveManager instance = null;
@@ -36,19 +37,24 @@ public class GameSaveManager extends Actor implements Saveable {
     /** Private constructor — use getInstance() instead. */
     public GameSaveManager() {
         setImage("invisible.png");
+        createSaveFile();
+        saveData = loadSave(SAVE_PATH);
+    }
+
+    public void createSaveFile() {
         try {
             File file = new File(SAVE_PATH);
             file.getParentFile().mkdirs();
             boolean isNewFile = file.createNewFile(); // true only if it didn't exist before
+            System.out.println("created: " + SAVE_PATH);
 
             if (isNewFile) {
                 Path path = Paths.get(SAVE_PATH);
-               // Files.writeString(path, "");
+                // Files.writeString(path, "");
             }
         } catch (IOException e) {
             System.out.println("Could not create save file: " + e.getMessage());
         }
-        saveData = loadSave(SAVE_PATH);
     }
 
     public GameSaveManager getInstance() {
@@ -216,6 +222,18 @@ public class GameSaveManager extends Actor implements Saveable {
                 getWorld().addObject(towerToPlace, x, y);
 
             }
+        }
+    }
+
+    public boolean saveFileExists(String saveFile) {
+        File file = new File("saves/savedgames/" + saveFile);
+        return file.exists();
+    }
+
+    public void removeSaveFile() {
+        File file = new File(SAVE_PATH);
+        if(file.delete()) {
+            System.out.println("Successfully deleted " + SAVE_PATH);
         }
     }
 }

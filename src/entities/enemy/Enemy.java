@@ -14,12 +14,15 @@ public abstract class Enemy extends Entity {
     double realPosX;
     double realPosY;
 
+    int initialLives;
+
     int nextX;
     int nextY;
 
     public Enemy(double speed, int lives) {
         this.speed = speed;
         this.lives = lives;
+        initialLives = lives;
 
         this.realPosX = 0;
         this.realPosY = 0;
@@ -65,7 +68,7 @@ public abstract class Enemy extends Entity {
         if (lives <= 0) {
             List<Player> player = getWorld().getObjects(Player.class);
             Player player1 = player.get(0);
-            player1.setCoins(player1.getCoins() + 1);
+            player1.setCoins(player1.getCoins() + getInitialLives());
             getWorld().removeObject(this);
         }
     }
@@ -107,6 +110,10 @@ public abstract class Enemy extends Entity {
 
     public double getLives() {
         return this.lives;
+    }
+
+    public int getInitialLives() {
+        return initialLives;
     }
 
 }

@@ -33,7 +33,9 @@ public abstract class Map extends World {
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
     private List<Enemy> aliveEnemies = new ArrayList<>();
     private int spawnDelayCounter = 0;
-    private int waveMoney;
+    private int waveEndMoney;
+    private int receivedWaveMoney;
+
 
     private int wave = 0;
 
@@ -139,13 +141,14 @@ public abstract class Map extends World {
             enemiesToSpawn = WAVEMANAGER.generateWave(wave);
             setWave(wave +1);
             System.out.println("New Wave: " + wave);
-            getPLAYER().setCoins(getPLAYER().getCoins() + waveMoney);
+            getPLAYER().setCoins(getPLAYER().getCoins() + waveEndMoney);
 
-            waveMoney = 0;
+            waveEndMoney = 0;
+            receivedWaveMoney = 0;
             for(Enemy enemy : enemiesToSpawn) {
-              waveMoney += (int) enemy.getLives();
+              waveEndMoney += (int) enemy.getLives();
             }
-            waveMoney *= getWave();
+            waveEndMoney *= getWave();
         }
 
         if(spawnDelayCounter < spawnDelay) {
@@ -161,14 +164,21 @@ public abstract class Map extends World {
     }
 
     public void removeDeadEnemies() {
-        aliveEnemies.removeIf(enemy -> enemy.getWorld() == null || enemy.getLives() < 0);
+        for(Enemy enemy : aliveEnemies) {
+            if(!(enemy.getWorld() == null || enemy.getLives() < 0)) {
+                return;
+            }
+            aliveEnemies.remove(enemy);
+            receivedWaveMoney += enemy.getInitialLives();
+        }
     }
 
     public void resetWave() {
         aliveEnemies.clear();
         enemiesToSpawn.clear();
         setWave(getWave()-1); //so the new wave is the old wave
-        waveMoney = 0; //so it does not give money
+        waveEndMoney = 0; //so it does not give money
+        getPLAYER().setCoins(getPLAYER().getCoins()-receivedWaveMoney); //so you cant dupe coins
     }
 
     public void act() {

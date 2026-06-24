@@ -12,12 +12,33 @@ import java.util.function.Supplier;
 // === Metadata === \\
 /**
  * @author Fred
- * @version 1.0-beta
+ * @version 1.1-beta
  */
 
 
 // ========== WAVE MANAGER ========== \\
 public class WaveManager extends MainClass {
+
+
+    // ===== Instance Variable ===== \\
+    private static WaveManager INSTANCE;
+
+
+
+    // ===== Constructor ===== \\
+    private WaveManager(){}
+
+
+
+    // ===== WaveManager Getter ===== \\
+    public static WaveManager getInstance() {
+        
+        if(INSTANCE == null) {
+            INSTANCE = new WaveManager();
+        }
+
+        return INSTANCE;
+    }
 
 
 

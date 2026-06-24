@@ -11,12 +11,15 @@ import java.util.List;
 import java.util.Properties;
 import java.io.File;
 
-
+/**
+ * @author matii
+ * @version hopefully a functional hone
+ */
 public class GameSaveManager extends Actor implements Saveable {
 
     // path to the save file — stored in a "saves" folder next to the project
     private String Map;
-    private String SAVE_PATH = "saves/savedgames/" + "testFile";
+    private String SAVE_PATH = "saves/savedgames/" + "testFile"; //bc it immediately creates one before i can set the wave number
     public String getMapNr() {
         return Map;
     }

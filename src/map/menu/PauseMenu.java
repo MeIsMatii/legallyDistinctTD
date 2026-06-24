@@ -8,6 +8,7 @@ import ui.common.BackButton;
 import ui.hud.buttons.PlayOnButton;
 import ui.hud.buttons.RetryButton;
 import ui.hud.buttons.SettingsButton;
+import ui.hud.buttons.WaveResetButton;
 
 
 public class PauseMenu extends Actor {
@@ -16,6 +17,7 @@ public class PauseMenu extends Actor {
    private SettingsButton settingsButton;
    private PlayOnButton playOnButton;
    private RetryButton retryButton;
+   private WaveResetButton waveResetButton;
 
     public PauseMenu() {
         GreenfootImage img = new GreenfootImage(1500, 700);
@@ -32,11 +34,13 @@ public class PauseMenu extends Actor {
         settingsButton = new SettingsButton();
         playOnButton = new PlayOnButton();
         retryButton = new RetryButton();
+        waveResetButton = new WaveResetButton();
 
         w.addObject(backButton,getX()-getImage().getWidth()/3, getY());
         w.addObject(settingsButton,getX(), getY());
         w.addObject(playOnButton,getX()+500,getY());
         w.addObject(retryButton,getX(),getY()- getImage().getHeight()/3);
+        w.addObject(waveResetButton,getX(),getY()+250);
     }
 
 public void onRemove(){
@@ -45,6 +49,7 @@ public void onRemove(){
         w.removeObject(backButton);
         w.removeObject(playOnButton);
         w.removeObject(retryButton);
+        w.removeObject(waveResetButton);
         w.removeObject(this);
 }
 

@@ -37,7 +37,8 @@ public abstract class Map extends World {
     private int receivedWaveMoney;
 
 
-    private int wave = 1;
+    private int wave = 0;
+    private int oldWave = 0;
 
     public Map() {
         super(1920, 1080, 1);
@@ -45,7 +46,7 @@ public abstract class Map extends World {
         this.WAVEMANAGER = WaveManager.getInstance();
         this.SPAWNDELAY = 45;
 
-        addObject(GAMESAVEMANAGER, 0,0);
+        addObject(GAMESAVEMANAGER, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
@@ -68,14 +69,14 @@ public abstract class Map extends World {
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;
         //TODO add paths and delete them @Elias
-        if(isVisible) {
-            int width = (getWidth()-300)/2;
-            if(UPGRADEMENU!=null) {
+        if (isVisible) {
+            int width = (getWidth() - 300) / 2;
+            if (UPGRADEMENU != null) {
                 UPGRADEMENU.delete();
             }
             UPGRADEMENU = new UpgradeMenu(tower);
-            addObject(UPGRADEMENU,width, getHeight()-216/2);
-        } else if(!getObjects(UpgradeMenu.class).isEmpty()) {
+            addObject(UPGRADEMENU, width, getHeight() - 216 / 2);
+        } else if (!getObjects(UpgradeMenu.class).isEmpty()) {
             UPGRADEMENU.delete();
             UPGRADEMENU = null;
         }
@@ -84,6 +85,7 @@ public abstract class Map extends World {
     public UpgradeMenu getUpgradeMenu() {
         return this.UPGRADEMENU;
     }
+
     public boolean isUpgradeMenuVisible() {
         return isUpgradeMenuVisible;
     }
@@ -105,7 +107,7 @@ public abstract class Map extends World {
     }
 
     public int[] getSpawnLocation() {
-        if(this.SPAWNLOCATION == null) {
+        if (this.SPAWNLOCATION == null) {
             throw new RuntimeException("No spawnlocation. Please fix.");
         }
         return this.SPAWNLOCATION;
@@ -140,10 +142,9 @@ public abstract class Map extends World {
     }
 
     public void spawnWave(int wave, int spawnDelay) {
-
-        if(enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
-            setWave(wave +1);
-            System.out.println("New Wave: " + wave);
+        if (enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
+            setWave(wave + 1);
+            System.out.println("New Wave: " + getWave());
 
             enemiesToSpawn = WAVEMANAGER.generateWave(wave);
 
@@ -152,33 +153,33 @@ public abstract class Map extends World {
             waveEndMoney = 0;
             receivedWaveMoney = 0;
 
-            for(Enemy enemy : enemiesToSpawn) {
-              waveEndMoney += (int) enemy.getLives();
+            for (Enemy enemy : enemiesToSpawn) {
+                waveEndMoney += (int) enemy.getLives();
             }
             waveEndMoney *= getWave();
 
             GAMESAVEMANAGER.saveGame(); //so when you quit it continues on the last wave
         }
 
-        if(spawnDelayCounter < spawnDelay) { //so they don't all spawn on 1 tick
+        if (spawnDelayCounter < spawnDelay) { //so they don't all spawn on 1 tick
             spawnDelayCounter++;
             return;
         }
         spawnDelayCounter = 0;
 
-        if(enemiesToSpawn.isEmpty()) { //just incase
+        if (enemiesToSpawn.isEmpty()) { //just incase
             return;
         }
         Enemy enemy = enemiesToSpawn.get(0);
-        addObject(enemy, SPAWNLOCATION[0], SPAWNLOCATION[1]);
+        addObject(enemy, getSpawnLocation()[0], getSpawnLocation()[1]);
         aliveEnemies.add(enemy);
         enemiesToSpawn.remove(enemy);
     }
 
     public void removeDeadEnemies() {
         List<Enemy> deadEnemies = new ArrayList<>();
-        for(Enemy enemy : aliveEnemies) {
-            if(!(enemy.getWorld() == null || enemy.getLives() < 0)) {
+        for (Enemy enemy : aliveEnemies) {
+            if (!(enemy.getWorld() == null || enemy.getLives() < 0)) {
                 return;
             }
             deadEnemies.add(enemy);
@@ -190,17 +191,25 @@ public abstract class Map extends World {
     public void resetWave() {
         aliveEnemies.clear();
         enemiesToSpawn.clear();
-        setWave(getWave()-1); //so the new wave is the old wave
+        setWave(getWave() - 1); //so the new wave is the old wave
         waveEndMoney = 0; //so it does not give money
-        getPLAYER().setCoins(getPLAYER().getCoins()-receivedWaveMoney); //so you cant dupe coins
+        getPLAYER().setCoins(getPLAYER().getCoins() - receivedWaveMoney); //so you cant dupe coins
     }
 
     public void act() {
-        if(!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
+        if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
             spawnWave(getWave(), SPAWNDELAY);
         }
         removeDeadEnemies();
+        showWave();
     }
 
+    public void showWave() {
+        if (oldWave != wave) {
+            showText("Wave: " + getWave(), 1540, 40);
+            oldWave = wave;
+        }
+    }
 
 }
+

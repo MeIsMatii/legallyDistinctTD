@@ -109,7 +109,7 @@ public class WaveManager extends MainClass {
 
             for (int e = amount; e >0; e--) {
 
-                int zahl = Greenfoot.getRandomNumber(mappedEnemies.size() + 1);
+                int zahl = Greenfoot.getRandomNumber(mappedEnemies.size());
 
                 Enemy enemy = mappedEnemies.get(zahl).get();
                 enemies.add(enemy);

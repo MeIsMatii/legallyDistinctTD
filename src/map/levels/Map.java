@@ -200,6 +200,9 @@ public abstract class Map extends World {
     }
 
     public void act() {
+        if(getPLAYER().isPaused()) {
+            return;
+        }
         if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
             spawnWave(getWave(), SPAWNDELAY);
         }

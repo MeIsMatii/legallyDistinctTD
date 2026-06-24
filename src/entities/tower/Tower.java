@@ -1,5 +1,6 @@
 package entities.tower;
 
+import ui.hud.TowerSelector;
 import util.Animations;
 import util.Clickable;
 import entities.Entity;
@@ -247,7 +248,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     public void onClick() {
 
         if (isPlacing && canPlace) {
-            place();
+            if(!(getX() >1620)) {
+                place();
+            } else if(getWorld().getObjectsAt(getX(),getY(), TowerSelector.class).isEmpty()) {
+                Map map = (Map) getWorld();
+                map.getPLAYER().setCoins(map.getPLAYER().getCoins() + getPRICE());
+                getWorld().removeObject(this);
+                return;
+            }
         } else if (!isPlacing) {
             Map map = (Map) getWorld();
             UpgradeMenu upgradeMenu = map.getUpgradeMenu();
@@ -291,8 +299,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      */
     public void followCursor() {
 
+
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-        if (mouseInfo == null) {
+        if (mouseInfo == null || getWorld() == null) {
             return;
         }
 
@@ -311,12 +320,20 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * {@code grey} when the placement location is valid.<br>
      */
     public void checkPlacement() {
+
+
         List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
         canPlace = true;
-        for (Hitbox hitbox : hitboxes) {
-            if ((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
-                canPlace = false;
-                break;
+        if(getX() > 1620) {
+            RANGEDISPLAY.setRangeVisibility(false, null);
+            return;
+        }
+        if(canPlace) {
+            for (Hitbox hitbox : hitboxes) {
+                if ((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
+                    canPlace = false;
+                    break;
+                }
             }
         }
 

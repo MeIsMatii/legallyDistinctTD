@@ -2,6 +2,7 @@ package map.levels;
 
 import core.Player;
 import entities.Hitbox;
+import entities.enemy.Enemy;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
@@ -9,7 +10,11 @@ import map.levels.util.Path;
 import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
 import util.Cursor;
+import util.WaveManager;
 import util.saves.GameSaveManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Map extends World {
     private UpgradeMenu UPGRADEMENU;
@@ -18,14 +23,26 @@ public abstract class Map extends World {
     private final Player PLAYER;
     private final Cursor CURSOR;
     private final int PATHWIDTH;
+    private int[] SPAWNLOCATION;
+
 
     private final GameSaveManager GAMESAVEMANAGER;
+    private final WaveManager WAVEMANAGER;
+    private int SPAWNDELAY;
 
-    private int wave = 1;
+    private List<Enemy> enemiesToSpawn = new ArrayList<>();
+    private List<Enemy> aliveEnemies = new ArrayList<>();
+    private int spawnDelayCounter = 0;
+    private int waveMoney;
+
+    private int wave = 0;
 
     public Map() {
         super(1920, 1080, 1);
         this.GAMESAVEMANAGER = new GameSaveManager();
+        this.WAVEMANAGER = WaveManager.getInstance();
+        this.SPAWNDELAY = 45;
+
         addObject(GAMESAVEMANAGER, 0,0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
@@ -81,7 +98,15 @@ public abstract class Map extends World {
         return CURSOR;
     }
 
+    public int[] getSpawnLocation() {
+        if(this.SPAWNLOCATION == null) {
+            throw new RuntimeException("No spawnlocation. Please fix.");
+        }
+        return this.SPAWNLOCATION;
+    }
+
     public void addPath(int[][] pathList) {
+        this.SPAWNLOCATION = pathList[0];
         for (int i = 0; i < pathList.length; i++) {
             int x = pathList[i][0];
             int y = pathList[i][1];
@@ -106,6 +131,51 @@ public abstract class Map extends World {
 
     public void setWave(int wave) {
         this.wave = wave;
+    }
+
+    public void spawnWave(int wave, int spawnDelay) {
+
+        if(enemiesToSpawn.isEmpty()) {
+            enemiesToSpawn = WAVEMANAGER.generateWave(wave);
+            setWave(wave +1);
+            System.out.println("New Wave: " + wave);
+            getPLAYER().setCoins(getPLAYER().getCoins() + waveMoney);
+
+            waveMoney = 0;
+            for(Enemy enemy : enemiesToSpawn) {
+              waveMoney += (int) enemy.getLives();
+            }
+            waveMoney *= getWave();
+        }
+
+        if(spawnDelayCounter < spawnDelay) {
+            spawnDelayCounter++;
+            return;
+        }
+        spawnDelayCounter = 0;
+
+        Enemy enemy = enemiesToSpawn.get(0);
+        addObject(enemy, SPAWNLOCATION[0], SPAWNLOCATION[1]);
+        aliveEnemies.add(enemy);
+        enemiesToSpawn.remove(enemy);
+    }
+
+    public void removeDeadEnemies() {
+        aliveEnemies.removeIf(enemy -> enemy.getWorld() == null || enemy.getLives() < 0);
+    }
+
+    public void resetWave() {
+        aliveEnemies.clear();
+        enemiesToSpawn.clear();
+        setWave(getWave()-1); //so the new wave is the old wave
+        waveMoney = 0; //so it does not give money
+    }
+
+    public void act() {
+        if(!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
+            spawnWave(getWave(), SPAWNDELAY);
+        }
+        removeDeadEnemies();
     }
 
 

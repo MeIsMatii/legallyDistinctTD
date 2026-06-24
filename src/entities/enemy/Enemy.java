@@ -105,4 +105,8 @@ public abstract class Enemy extends Entity {
     public void onHit(Entity e) {
     }
 
+    public double getLives() {
+        return this.lives;
+    }
+
 }

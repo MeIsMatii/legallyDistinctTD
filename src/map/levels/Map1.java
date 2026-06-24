@@ -24,13 +24,14 @@ public class Map1 extends Map {
         setBackground(img);
 
 
-
+        /*
         addObject(new EnemyLevel1(), 0,233);
         addObject(new EnemyLevel2(), 0,233);
         addObject(new EnemyLevel3(), 0,233);
         addObject(new EnemyLevel4(), 0,233);
         addObject(new EnemyLevel5(), 0,233);
         addObject(new EnemyLevel6(), 0,233);
+         */
         int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
         super.addPath(pathLocations);
 

@@ -1,73 +1,121 @@
 package util;
 
 import core.MainClass;
-import entities.enemy.Enemy;
-import entities.enemy.EnemyLevel1;
+import entities.enemy.*;
 import greenfoot.Greenfoot;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Supplier;
 
+
+// === Metadata === \\
+/**
+ * @author Fred
+ * @version 1.0-beta
+ */
+
+
+// ========== WAVE MANAGER ========== \\
 public class WaveManager extends MainClass {
 
+
+
+    // ===== Enemy Map ===== \\
+    private static final Map<Integer, List<Supplier<Enemy>>> ENEMY_MAP =
+        Map.of(
+            10, List.of(
+                EnemyLevel1::new
+            ),
+
+            20, List.of(
+                EnemyLevel1::new,
+                EnemyLevel2::new
+            ),
+
+            30, List.of(
+                EnemyLevel1::new,
+                EnemyLevel2::new,
+                EnemyLevel3::new
+            ),
+
+            50, List.of(
+                EnemyLevel1::new,
+                EnemyLevel2::new,
+                EnemyLevel3::new,
+                EnemyLevel4::new
+            ),
+
+            70, List.of(
+                EnemyLevel1::new,
+                EnemyLevel2::new,
+                EnemyLevel3::new,
+                EnemyLevel4::new,
+                EnemyLevel5::new
+            ),
+
+            100, List.of(
+                EnemyLevel1::new,
+                EnemyLevel2::new,
+                EnemyLevel3::new,
+                EnemyLevel4::new,
+                EnemyLevel5::new,
+                EnemyLevel6::new
+            )
+
+        );
+
+
+
+    // ===== Map Generator ===== \\
     public List<Enemy> generateWave(int level) {
 
-        // Enemy Array
+        // === Enemy Array === \\
         List<Enemy> enemies = new ArrayList<>();
 
 
-        // Easy Entry Level
-        if (level < 10) {
-            for (int i = 0; i<3; i++) {
-                int random = Greenfoot.getRandomNumber(level);
-                int amount = random + 2;
-                for (int e = amount; e >0; e--) {
-                    Enemy enemy = createEnemyOfLevel(level);
-                    enemies.add(enemy);
-                }
+        // === Mapped Enemy Array === \\
+        List<Supplier<Enemy>> mappedEnemies = ENEMY_MAP.get(mapCheck(level));
 
+
+
+        // === Generator Logic === \\
+        for (int i = 0; i<3; i++) {
+
+            int random = Greenfoot.getRandomNumber(level + 1);
+            int amount = random + 2;
+
+
+            for (int e = amount; e >0; e--) {
+
+                int zahl = Greenfoot.getRandomNumber(mappedEnemies.size() + 1);
+
+                Enemy enemy = mappedEnemies.get(zahl).get();
+                enemies.add(enemy);
             }
 
         }
-        //else if () {
-
-        //}
-        /*
-        private static final Map<Integer, List<Supplier<Enemy>>> LEVEL_ENEMIES =
-            Map.of(
-                1, List.of(Goblin::new),
-                2, List.of(Goblin::new, Orc::new),
-                3, List.of(Orc::new, Dragon::new)
-            );
-
-        public static Enemy createEnemy(int level) {
-            List<Supplier<Enemy>> enemies = LEVEL_ENEMIES.get(level);
-
-            if (enemies == null || enemies.isEmpty()) {
-                throw new IllegalArgumentException("Ungültiges Level");
-            }
-
-            Supplier<Enemy> supplier =
-                enemies.get(RANDOM.nextInt(enemies.size()));
-
-            return supplier.get();
-        }
-
-        */
-
-
-
-
-
-
 
         return enemies;
     }
 
 
 
-    public  Enemy createEnemyOfLevel(int level){
+    // ===== Map Check ===== \\
+    private int mapCheck(int level) {
 
-        return new EnemyLevel1();
+        // === Map Target === \\
+        int mapTarget = level;
+
+
+        // === Checks Map for nearest Key === \\
+        while(!ENEMY_MAP.containsKey(mapTarget)) {
+            mapTarget++;
+        }
+
+        return mapTarget;
     }
+
+
+
 }

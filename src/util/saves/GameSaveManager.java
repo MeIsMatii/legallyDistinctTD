@@ -13,7 +13,7 @@ import java.io.File;
 
 /**
  * @author matii
- * @version hopefully a functional hone
+ * @version hopefully a functional one
  */
 public class GameSaveManager extends Actor implements Saveable {
 

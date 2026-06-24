@@ -100,6 +100,10 @@ public abstract class Map extends World {
         return CURSOR;
     }
 
+    public int getReceivedWaveMoney() {
+        return receivedWaveMoney;
+    }
+
     public int[] getSpawnLocation() {
         if(this.SPAWNLOCATION == null) {
             throw new RuntimeException("No spawnlocation. Please fix.");

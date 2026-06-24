@@ -137,9 +137,9 @@ public class GameSaveManager extends Actor implements Saveable {
 
     public void saveGame() {
         Map map = (Map) getWorld();
-        set("currentWave", map.getWave());
+        set("currentWave", map.getWave() -1); //bc the wave immediately advances bc all enemies are dead
         set("Towers", saveTowerData(map));
-        set("coins", map.getPLAYER().getCoins());
+        set("coins", map.getPLAYER().getCoins() - map.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
         set("health", map.getPLAYER().getHealth());
     }
 

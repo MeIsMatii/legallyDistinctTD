@@ -4,12 +4,12 @@ import entities.tower.*;
 import greenfoot.Actor;
 import map.levels.Map;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
-import java.io.File;
 
 /**
  * @author matii
@@ -20,25 +20,28 @@ public class GameSaveManager extends Actor implements Saveable {
     // path to the save file — stored in a "saves" folder next to the project
     private String Map;
     private String SAVE_PATH = "saves/savedgames/" + "testFile"; //bc it immediately creates one before i can set the wave number
-    public String getMapNr() {
-        return Map;
-    }
-    public void setMapNr(String map) {
-        Map = map;
-        SAVE_PATH = "saves/savedgames/" + Map + ".save";
-        createSaveFile();
-    }
     // only instance of this class
     private GameSaveManager instance = null;
-
     // holds all key=value data loaded from the file
     private Properties saveData;
 
-    /** Private constructor — use getInstance() instead. */
+    /**
+     * Private constructor — use getInstance() instead.
+     */
     public GameSaveManager() {
         setImage("invisible.png");
         createSaveFile();
         saveData = loadSave(SAVE_PATH);
+    }
+
+    public String getMapNr() {
+        return Map;
+    }
+
+    public void setMapNr(String map) {
+        Map = map;
+        SAVE_PATH = "saves/savedgames/" + Map + ".save";
+        createSaveFile();
     }
 
     public void createSaveFile() {
@@ -70,22 +73,28 @@ public class GameSaveManager extends Actor implements Saveable {
     }
 
 
-
-    /** Returns last round 1. */
+    /**
+     * Returns last round 1.
+     */
     public int getLastRound() {
         return getInt(saveData, "lastRound", 1);
     }
 
-    /** Saves last Round. */
+    /**
+     * Saves last Round.
+     */
     public void setLastRound(int RoundNumber) {
         saveData.setProperty("lastRound", String.valueOf(RoundNumber));
         saveValue(SAVE_PATH, "lastRound", RoundNumber);
     }
+
     public int getCoins() {
         return getInt(saveData, "Coins", 100);
     }
 
-    /** Saves coins. */
+    /**
+     * Saves coins.
+     */
     public void setCoins(int Coins) {
         saveData.setProperty("Coins", String.valueOf(Coins));
         saveValue(SAVE_PATH, "Coins", Coins);
@@ -94,10 +103,10 @@ public class GameSaveManager extends Actor implements Saveable {
     /**
      * Saves any custom key=value pair.
      * Works with int, double, boolean, String
-     *
+     * <p>
      * Example:
-     *   SaveManager.getInstance().set("highScore", 9999);
-     *   SaveManager.getInstance().set("endBossDefeated", true);
+     * SaveManager.getInstance().set("highScore", 9999);
+     * SaveManager.getInstance().set("endBossDefeated", true);
      */
     public void set(String key, Object value) {
         saveData.setProperty(key, String.valueOf(value)); // update in memory
@@ -143,20 +152,28 @@ public class GameSaveManager extends Actor implements Saveable {
     }
 
 
-
+    /**
+     * saves the current game to a savefile.
+     */
     public void saveGame() {
         Map map = (Map) getWorld();
-        set("currentWave", map.getWave() -1); //bc the wave immediately advances bc all enemies are dead
+        set("currentWave", map.getWave() - 1); //bc the wave immediately advances bc all enemies are dead
         set("Towers", saveTowerData(map));
         set("coins", map.getPLAYER().getCoins() - map.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
         set("health", map.getPLAYER().getHealth());
     }
 
+    /**
+     * saves the Tower data.
+     *
+     * @param map the map where the Towers are located.
+     * @return the string to be stored inside the savefile.
+     */
     public String saveTowerData(Map map) {
         List<Tower> towers = map.getObjects(Tower.class);
         StringBuilder data = new StringBuilder();
-        for(Tower tower: towers) {
-            if(tower.isPlacing()) { //we only wanna save placed towers
+        for (Tower tower : towers) {
+            if (tower.isPlacing()) { //we only wanna save placed towers
                 map.getPLAYER().setCoins(map.getPLAYER().getCoins() + tower.getPRICE());
                 continue;
             }
@@ -170,6 +187,11 @@ public class GameSaveManager extends Actor implements Saveable {
         return data.toString();
     }
 
+    /**
+     * loads a game from a savefile.
+     *
+     * @param map the map for the savedata to be loaded to.
+     */
     public void loadGame(Map map) {
         System.out.println(SAVE_PATH);
         map.setWave(Integer.parseInt(get("currentWave")));
@@ -180,12 +202,15 @@ public class GameSaveManager extends Actor implements Saveable {
 
     }
 
+    /**
+     * Loads the Tower data.
+     */
     public void loadTowerData() {
         String towers = get("Towers");
         String[] entries = towers.split("\n");
 
-        for (String entry: entries) {
-            if(entry.isBlank()) { //no towers
+        for (String entry : entries) {
+            if (entry.isBlank()) { //no towers
                 return;
             }
             String[] data = entry.split(",");
@@ -197,16 +222,31 @@ public class GameSaveManager extends Actor implements Saveable {
             int u3 = Integer.parseInt(data[5]);
 
             Tower towerToPlace = null;
-            switch(towerType) {
+            switch (towerType) {
                 //all towers need to go here
-                case "TestTower": towerToPlace = new TestTower(); break;
-                case "HomingTower": towerToPlace = new HomingTower(); break;
-                case "Rocketlauncher": towerToPlace = new Rocketlauncher(); break;
-                case "Sniper": towerToPlace = new Sniper(); break;
-                case "TrapTower": towerToPlace = new TrapTower(); break;
-                case "Flamethrower": towerToPlace = new Flamethrower(); break;
-                case "Helicopter": break; //we do not want to spawn the heli, bc the pad spawns it
-                case "HelicopterPad": towerToPlace = new HelicopterPad(); break;
+                case "TestTower":
+                    towerToPlace = new TestTower();
+                    break;
+                case "HomingTower":
+                    towerToPlace = new HomingTower();
+                    break;
+                case "Rocketlauncher":
+                    towerToPlace = new Rocketlauncher();
+                    break;
+                case "Sniper":
+                    towerToPlace = new Sniper();
+                    break;
+                case "TrapTower":
+                    towerToPlace = new TrapTower();
+                    break;
+                case "Flamethrower":
+                    towerToPlace = new Flamethrower();
+                    break;
+                case "Helicopter":
+                    break; //we do not want to spawn the heli, bc the pad spawns it
+                case "HelicopterPad":
+                    towerToPlace = new HelicopterPad();
+                    break;
 
                 default:
                     System.out.println("tower not in list @GameSaveManager.loadTowerData()\n Please fix it or contact @Mathilo");
@@ -225,14 +265,23 @@ public class GameSaveManager extends Actor implements Saveable {
         }
     }
 
+    /**
+     * Checks whether a saveFile exists.
+     *
+     * @param saveFile the path/file to check.
+     * @return whether it exists.
+     */
     public boolean saveFileExists(String saveFile) {
         File file = new File("saves/savedgames/" + saveFile);
         return file.exists();
     }
 
+    /**
+     * deletes a saveFile
+     */
     public void removeSaveFile() {
         File file = new File(SAVE_PATH);
-        if(file.delete()) {
+        if (file.delete()) {
             System.out.println("Successfully deleted " + SAVE_PATH);
         }
     }

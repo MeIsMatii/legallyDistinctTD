@@ -22,21 +22,18 @@ import java.util.List;
  * @author waves & gamesaves: Mati
  */
 public abstract class Map extends World {
-    private UpgradeMenu UPGRADEMENU;
-    private boolean isUpgradeMenuVisible;
-
     private final Player PLAYER;
     private final Cursor CURSOR;
     private final int PATHWIDTH;
-    private int[] SPAWNLOCATION;
-
-
     private final GameSaveManager GAMESAVEMANAGER;
     private final WaveManager WAVEMANAGER;
-    private int SPAWNDELAY;
+    private UpgradeMenu UPGRADEMENU;
+    private boolean isUpgradeMenuVisible;
+    private int[] SPAWNLOCATION;
+    private final int SPAWNDELAY;
 
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
-    private List<Enemy> aliveEnemies = new ArrayList<>();
+    private final List<Enemy> aliveEnemies = new ArrayList<>();
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
     private int receivedWaveMoney;
@@ -143,6 +140,7 @@ public abstract class Map extends World {
 
     /**
      * adds the paths for enemies to the map.
+     *
      * @param pathList the list of corners.
      */
     public void addPath(int[][] pathList) {
@@ -178,7 +176,8 @@ public abstract class Map extends World {
 
     /**
      * Spawns a given wave.
-     * @param wave the Enemies to spawn.
+     *
+     * @param wave       the Enemies to spawn.
      * @param spawnDelay the delay between enemies.
      */
     public void spawnWave(int wave, int spawnDelay) {
@@ -241,13 +240,13 @@ public abstract class Map extends World {
         waveEndMoney = 0; //so it does not give money
         getPLAYER().setCoins(getPLAYER().getCoins() - receivedWaveMoney); //so you cant dupe coins
 
-        for(Projectile p : getObjects(Projectile.class)) {
+        for (Projectile p : getObjects(Projectile.class)) {
             removeObject(p);
         }
     }
 
     public void act() {
-        if(getPLAYER().isPaused()) {
+        if (getPLAYER().isPaused()) {
             return;
         }
         if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {

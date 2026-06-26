@@ -30,6 +30,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final int range;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
+    private final int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
@@ -40,9 +43,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private int upgrade1 = 0;
     private int upgrade2 = 0;
     private int upgrade3 = 0;
-    private final int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
     private int shootingDelay;
     private int shootingDelayCounter;
     /// <UPGRADES>
@@ -438,12 +438,13 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     /**
      * Changes the sprite and animation
+     *
      * @param path the path to upgrade
      */
     public void onUpgrade(int path) {
         int maxPath = (Math.max(Math.max(getUpgrade1(), getUpgrade2()), getUpgrade3()));
         //so a lesser upgrade does not override the animation
-        if(maxPath != path) {
+        if (maxPath != path) {
             return;
         }
         switch (path) {

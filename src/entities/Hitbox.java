@@ -26,11 +26,11 @@ public class Hitbox extends MainClass {
     private boolean isDebug;
     private boolean isFollowing;
 
-    public Hitbox(int width, int height, boolean isFollowing, Entity owner) {
+    public Hitbox(int width, int height, Entity owner) {
         this.OWNER = owner;
         this.width = width;
         this.height = height;
-        this.isFollowing = isFollowing;
+        this.isFollowing = true;
 
         this.wasHovering = false;
         this.isHittingSomething = false;
@@ -86,11 +86,16 @@ public class Hitbox extends MainClass {
         }
     }
 
+    /**
+     * centers itself to the player.
+     */
     public void followPlayer() {
-        //center to player
         setLocation(OWNER.getX(), OWNER.getY());
     }
 
+    /**
+     * incase it is touching another hitbox, it calls the onHit function inside the owner.
+     */
     public void checkTouching() {
         List<Hitbox> overlapping = getIntersectingObjects(Hitbox.class);
 

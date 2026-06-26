@@ -59,7 +59,8 @@ public class Path extends Entity {
         yOffset = yOffset / 2;
 
 
-        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, false, this);
+        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight,  this);
+        hitbox.setFollowing(false);
         getWorld().addObject(hitbox, getX() - xOffset, getY() - yOffset);
     }
 
@@ -80,9 +81,8 @@ public class Path extends Entity {
     }
 
     /**
-     * Validates the given path
-     *
-     * @throws RuntimeException when there is an issue with the paths
+     * Validates the given path.
+     * @throws RuntimeException when there is an issue with the paths.
      */
     private void checkLocations() {
 

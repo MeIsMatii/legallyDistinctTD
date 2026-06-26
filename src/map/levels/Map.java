@@ -17,6 +17,10 @@ import util.saves.GameSaveManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author paths: Julian
+ * @author waves & gamesaves: Mati
+ */
 public abstract class Map extends World {
     private UpgradeMenu UPGRADEMENU;
     private boolean isUpgradeMenuVisible;
@@ -59,6 +63,9 @@ public abstract class Map extends World {
         addHud();
     }
 
+    /**
+     * adds hud elements to the screen.
+     */
     public void addHud() {
         UPGRADEMENU = null;
         addObject(PLAYER, 0, 0);
@@ -68,6 +75,9 @@ public abstract class Map extends World {
         addObject(new TowerSelectorSpawner(), 1770, 540);
     }
 
+    /**
+     * @return the current map number.
+     */
     public abstract int getMapNumber();
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
@@ -86,30 +96,44 @@ public abstract class Map extends World {
         }
     }
 
+    /**
+     * @return the currently active upgrade screen or null.
+     */
     public UpgradeMenu getUpgradeMenu() {
         return this.UPGRADEMENU;
     }
 
+    /**
+     * @return whether there is a visible upgrade screen.
+     */
     public boolean isUpgradeMenuVisible() {
         return isUpgradeMenuVisible;
     }
 
+    /**
+     * @return the player (for lives etc).
+     */
     public Player getPLAYER() {                   //jannis
         return PLAYER;
     }
 
+    /**
+     * @return the gamesavemanager.
+     */
     public GameSaveManager getGameSaveManager() {
         return GAMESAVEMANAGER;
     }
 
-    public Cursor getCURSOR() {
-        return CURSOR;
-    }
-
+    /**
+     * @return the money given to the player via enemies dying from the current wave.
+     */
     public int getReceivedWaveMoney() {
         return receivedWaveMoney;
     }
 
+    /**
+     * @return the spawn location for enemies.
+     */
     public int[] getSpawnLocation() {
         if (this.SPAWNLOCATION == null) {
             throw new RuntimeException("No spawnlocation. Please fix.");
@@ -117,6 +141,10 @@ public abstract class Map extends World {
         return this.SPAWNLOCATION;
     }
 
+    /**
+     * adds the paths for enemies to the map.
+     * @param pathList the list of corners.
+     */
     public void addPath(int[][] pathList) {
         this.SPAWNLOCATION = pathList[0];
         for (int i = 0; i < pathList.length; i++) {
@@ -137,6 +165,9 @@ public abstract class Map extends World {
         }
     }
 
+    /**
+     * @return the current wave.
+     */
     public int getWave() {
         return wave;
     }
@@ -145,6 +176,11 @@ public abstract class Map extends World {
         this.wave = wave;
     }
 
+    /**
+     * Spawns a given wave.
+     * @param wave the Enemies to spawn.
+     * @param spawnDelay the delay between enemies.
+     */
     public void spawnWave(int wave, int spawnDelay) {
         if (enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
             setWave(wave + 1);
@@ -180,6 +216,9 @@ public abstract class Map extends World {
         enemiesToSpawn.remove(enemy);
     }
 
+    /**
+     * removes dead enemies from the "aliveEnemies" list.
+     */
     public void removeDeadEnemies() {
         List<Enemy> deadEnemies = new ArrayList<>();
         for (Enemy enemy : aliveEnemies) {
@@ -192,6 +231,9 @@ public abstract class Map extends World {
         aliveEnemies.removeAll(deadEnemies);
     }
 
+    /**
+     * restarts the wave.
+     */
     public void resetWave() {
         aliveEnemies.clear();
         enemiesToSpawn.clear();
@@ -215,6 +257,9 @@ public abstract class Map extends World {
         showWave();
     }
 
+    /**
+     * displays the current wave on the screen
+     */
     public void showWave() {
         if (oldWave != wave) {
             showText("Wave: " + getWave(), 1540, 40);

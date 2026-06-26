@@ -1,8 +1,5 @@
 package entities.tower;
 
-import ui.hud.TowerSelector;
-import util.Animations;
-import util.Clickable;
 import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
@@ -13,13 +10,16 @@ import greenfoot.MouseInfo;
 import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
+import ui.hud.TowerSelector;
 import ui.hud.UpgradeMenu;
+import util.Animations;
+import util.Clickable;
 import util.HasSound;
 
 import java.util.List;
 
 /**
- * @author matii
+ * @author mati
  * @version hopefully the last one
  */
 
@@ -33,16 +33,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
-
-    protected void setCanPlace(boolean canPlace) {                   //hat jannis(ich) jetzt für traptower gemacht hoffe ist ok
-        this.canPlace = canPlace;
-    }
-
-    protected boolean getCanPlace() {
-        return canPlace;
-    }
-
-
     private double projectileDamage;
     private int projectileSpeed;
     private int projectilePiercing;
@@ -50,12 +40,18 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private int upgrade1 = 0;
     private int upgrade2 = 0;
     private int upgrade3 = 0;
-    private int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
-    private int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
-    private int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
-
+    private final int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
     private int shootingDelay;
     private int shootingDelayCounter;
+    /// <UPGRADES>
+    private int frameCounter = 0;
+    private List<String> frameList;
+    private int frameIndex = 0;
+    private boolean isAnimating = false;
+    private String spritePath;
+    private String spriteName;
 
     public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
@@ -78,6 +74,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
         setImage("towers/" + getTowerName() + "/" + getTowerName() + "_idle.png");
 
+    }
+
+    protected boolean getCanPlace() {
+        return canPlace;
+    }
+
+    protected void setCanPlace(boolean canPlace) {                   //hat jannis(ich) jetzt für traptower gemacht hoffe ist ok
+        this.canPlace = canPlace;
     }
 
     public void addedToWorld(World world) {
@@ -214,9 +218,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
                 shootingDelayCounter = 0;
             }
 
-            if(isAnimating) {
+            if (isAnimating) {
                 frameCounter++;
-                if(frameCounter > getAnimationSpeed()) {
+                if (frameCounter > getAnimationSpeed()) {
                     playAnimation();
                     frameCounter = 0;
                 }
@@ -224,12 +228,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
 
 
-
     }
 
-
     public void onHit(Entity hitter) {
-        return;
     }
 
     public void checkHover(boolean isHovering) {
@@ -248,13 +249,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     public void onClick() {
 
         if (isPlacing && canPlace) {
-            if(!(getX() >1620)) {
+            if (!(getX() > 1620)) {
                 place();
-            } else if(getWorld().getObjectsAt(getX(),getY(), TowerSelector.class).isEmpty()) {
+            } else if (getWorld().getObjectsAt(getX(), getY(), TowerSelector.class).isEmpty()) {
                 Map map = (Map) getWorld();
                 map.getPLAYER().setCoins(map.getPLAYER().getCoins() + getPRICE());
                 getWorld().removeObject(this);
-                return;
             }
         } else if (!isPlacing) {
             Map map = (Map) getWorld();
@@ -298,8 +298,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * Calls the checkPlacement() func to set the placement indicator.
      */
     public void followCursor() {
-
-
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
         if (mouseInfo == null || getWorld() == null) {
             return;
@@ -324,11 +322,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
         List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
         canPlace = true;
-        if(getX() > 1620) {
+        if (getX() > 1620) {
             RANGEDISPLAY.setRangeVisibility(false, null);
             return;
         }
-        if(canPlace) {
+        if (canPlace) {
             for (Hitbox hitbox : hitboxes) {
                 if ((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
                     canPlace = false;
@@ -343,7 +341,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             RANGEDISPLAY.setRangeVisibility(true, colorRed);
         }
     }
-
 
     /**
      * Targets an enemy
@@ -364,14 +361,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public abstract String upgrade3();
 
-
     public boolean canShoot() {
         return shootingDelayCounter >= shootingDelay;
     }
 
     /**
-     * nothing<br>
-     * ...yet
+     * this method gets called when an enemy e is inside the range of the tower.
      */
     abstract void shoot(Enemy e);
 
@@ -393,53 +388,65 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return targetedEnemy;
     }
 
-    /// <UPGRADES>
-    private int frameCounter = 0;
-    private List<String> frameList;
-    private int frameIndex = 0;
-    private boolean isAnimating = false;
-    private String spritePath;
-    private String spriteName;
-
     public abstract String getTowerName();
+
     public String getSpriteName() {
         return spriteName;
     }
+
     public void setSpriteName(String spriteName) {
         this.spriteName = spriteName;
     }
+
     public String getSpritePath() {
         return spritePath;
     }
+
     public void setSpritePath(String spritePath) {
         this.spritePath = spritePath;
     }
+
     public abstract int getAnimationSpeed();
+
     public int getFrameCounter() {
         return frameCounter;
     }
+
     public void setFrameCounter(int counter) {
         this.frameCounter = counter;
     }
+
     public List<String> getFrameList() {
         return frameList;
     }
+
     public void setFrameList(List<String> frames) {
         this.frameList = frames;
     }
+
     public int getCurrentFrameIndex() {
         return frameIndex;
     }
+
     public void setCurrentFrameIndex(int i) {
         this.frameIndex = i;
     }
+
     public void isAnimating(boolean isAnimating) {
         this.isAnimating = isAnimating;
     }
 
+    /**
+     * Changes the sprite and animation
+     * @param path the path to upgrade
+     */
     public void onUpgrade(int path) {
-
-        switch(path) {
+        int maxPath = (Math.max(Math.max(getUpgrade1(), getUpgrade2()), getUpgrade3()));
+        //so a lesser upgrade does not override the animation
+        if(maxPath != path) {
+            return;
+        }
+        switch (path) {
             case 1:
                 setSpriteName(getTowerName() + "_upgrade1");
                 setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade1());

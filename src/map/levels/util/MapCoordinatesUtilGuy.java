@@ -1,14 +1,15 @@
-package map.util;
+package map.levels.util;
 
 import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import static java.lang.Math.*;
 
+/**
+ * @author mati
+ * @Purpose: class to help add Paths to maps easily
+ */
 
 public class MapCoordinatesUtilGuy extends Actor {
     private int[][] clickLocations = new int[200][2]; //should be long enough
@@ -37,6 +38,10 @@ public class MapCoordinatesUtilGuy extends Actor {
         }
     }
 
+    /**
+     * Prints an array in a format that can be copy-pasted into the editor inside a map subclass.
+     * @param arr the array to print
+     */
     public void printArray(int[][] arr) {
         int[][] roundedArr = roundCoordinates(arr);
         System.out.print("int[][] pathLocations = {");
@@ -51,6 +56,11 @@ public class MapCoordinatesUtilGuy extends Actor {
         System.out.print("};\nsuper.addPath(pathLocations);\n");
     }
 
+    /**
+     * adds the given points to the "clicklocations" array.
+     * @param x the x value
+     * @param y the y value
+     */
     public void addCoordinates(int x, int y) {
         for (int i = 0; i < clickLocations.length; i++) {
             if (clickLocations[i][0] == 0 && clickLocations[i][1] == 0) {
@@ -62,6 +72,11 @@ public class MapCoordinatesUtilGuy extends Actor {
         }
     }
 
+    /**
+     * Rounds the given coordinates to be valid path points.
+     * @param arr the array to round.
+     * @return the rounded array.
+     */
     public int[][] roundCoordinates(int[][] arr) {
         for (int i = 1; i<arr.length;i++) {
             if (arr[i][0] == 0 && arr[i][1] == 0) {

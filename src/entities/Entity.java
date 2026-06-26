@@ -4,8 +4,8 @@ import core.MainClass;
 import greenfoot.World;
 
 /**
- * @author matii
- * @version hopefully the last one
+ * @author mati
+ * @version probably broken
  */
 
 public abstract class Entity extends MainClass {
@@ -55,8 +55,13 @@ public abstract class Entity extends MainClass {
         spawnHitbox(hitboxWidth, hitboxHeight);
     }
 
+    /**
+     * spawns a new hitbox for an entity
+     * @param hitboxWidth width of the hitbox
+     * @param hitboxHeight height of the hitbox
+     */
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
-        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, true, this);
+        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
         getWorld().addObject(hitbox, getX(), getY());
 
     }

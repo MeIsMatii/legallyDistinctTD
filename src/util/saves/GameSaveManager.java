@@ -8,11 +8,16 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author matii
+ * @author colin
  * @version hopefully a functional one
  */
 public class GameSaveManager extends Actor implements Saveable {
@@ -24,6 +29,20 @@ public class GameSaveManager extends Actor implements Saveable {
     private GameSaveManager instance = null;
     // holds all key=value data loaded from the file
     private Properties saveData;
+
+    /**
+     * Hashmap that stores the TowerData
+     */
+    private final HashMap<String, Supplier<Tower>> towerSpawn = new HashMap<>() {{
+        put("TestTower", TestTower::new);
+        put("HomingTower", HomingTower::new);
+        put("Rocketlauncher", Rocketlauncher::new);
+        put("Sniper", Sniper::new);
+        put("TrapTower", TrapTower::new);
+        put("Flamethrower", Flamethrower::new);
+        put("Helicopter", null); //we do not want to spawn the heli, bc the pad spawns it
+        put("HelicopterPad", HelicopterPad::new);
+    }};
 
     /**
      * Private constructor — use getInstance() instead.
@@ -182,7 +201,7 @@ public class GameSaveManager extends Actor implements Saveable {
                 .append(tower.getY()).append(",")
                 .append(tower.getUpgrade1()).append(",")
                 .append(tower.getUpgrade2()).append(",")
-                .append(tower.getUpgrade3()).append("\n");
+                .append(tower.getUpgrade3()).append(";");
         }
         return data.toString();
     }
@@ -207,7 +226,7 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void loadTowerData() {
         String towers = get("Towers");
-        String[] entries = towers.split("\n");
+        String[] entries = towers.split(";");
 
         for (String entry : entries) {
             if (entry.isBlank()) { //no towers
@@ -221,39 +240,9 @@ public class GameSaveManager extends Actor implements Saveable {
             int u2 = Integer.parseInt(data[4]);
             int u3 = Integer.parseInt(data[5]);
 
-            Tower towerToPlace = null;
-            switch (towerType) {
-                //all towers need to go here
-                case "TestTower":
-                    towerToPlace = new TestTower();
-                    break;
-                case "HomingTower":
-                    towerToPlace = new HomingTower();
-                    break;
-                case "Rocketlauncher":
-                    towerToPlace = new Rocketlauncher();
-                    break;
-                case "Sniper":
-                    towerToPlace = new Sniper();
-                    break;
-                case "TrapTower":
-                    towerToPlace = new TrapTower();
-                    break;
-                case "Flamethrower":
-                    towerToPlace = new Flamethrower();
-                    break;
-                case "Helicopter":
-                    break; //we do not want to spawn the heli, bc the pad spawns it
-                case "HelicopterPad":
-                    towerToPlace = new HelicopterPad();
-                    break;
-
-                default:
-                    System.out.println("tower not in list @GameSaveManager.loadTowerData()\n Please fix it or contact @Mathilo");
-                    break;
-            }
-
-            if (towerToPlace != null) {
+            Supplier<Tower> towerSupplier = towerSpawn.get(towerType);
+            if (towerSupplier != null) {
+                Tower towerToPlace = towerSupplier.get();
                 towerToPlace.setUpgrade1(u1);
                 towerToPlace.setUpgrade2(u2);
                 towerToPlace.setUpgrade3(u3);
@@ -261,6 +250,8 @@ public class GameSaveManager extends Actor implements Saveable {
                 towerToPlace.setPlacing(false);
                 getWorld().addObject(towerToPlace, x, y);
 
+            } else if(!Objects.equals(towerType, "Helicopter")){
+                throw new RuntimeException(towerType + " could not be spawned. Please add to HashMap (if you created a new tower) or contact @Mati (you still do that)");
             }
         }
     }

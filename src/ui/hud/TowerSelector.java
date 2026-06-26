@@ -26,7 +26,7 @@ public class TowerSelector extends MainClass implements Clickable {
     public void onClick() {
         Map map = (Map) getWorld();
         if (map.getPLAYER().getCoins() >= towerToSpawn.getPRICE()) {
-            if (isTouching(Tower.class)) {
+            if (isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing()) {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
                 for (Tower tower : towerList) {
                     map.removeObject(tower);

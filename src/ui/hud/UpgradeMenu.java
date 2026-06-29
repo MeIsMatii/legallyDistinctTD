@@ -4,12 +4,14 @@ import entities.tower.TestTower;
 import entities.tower.Tower;
 import greenfoot.Actor;
 import greenfoot.World;
+import ui.hud.buttons.SellButton;
 
 public class UpgradeMenu extends Actor {
     private final Tower TOWER;
     private UpgradePath path1;
     private UpgradePath path2;
     private UpgradePath path3;
+    private SellButton sellButton;
 
     public UpgradeMenu(Tower tower) {
         setImage("comingSoon.png");
@@ -24,6 +26,7 @@ public class UpgradeMenu extends Actor {
         getWorld().addObject(path1,  getX() - 500, getY());
         getWorld().addObject(path2, getX(), getY());
         getWorld().addObject(path3, getX() + 500, getY());
+        // getWorld().addObject(sellButton, getX() + 400, getY());  //weiß nicht wohin und stürzt irgendwie ab wenn ich dann das dings öffne
     }
 
     public Tower getTower() {

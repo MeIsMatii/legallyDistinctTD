@@ -2,6 +2,7 @@ package ui.hud.buttons;
 
 import core.Player;
 import entities.tower.Tower;
+import greenfoot.GreenfootImage;
 import ui.hud.UpgradePath;
 
 public class SellButton extends Button{
@@ -12,15 +13,9 @@ public class SellButton extends Button{
     public SellButton(Tower tower, Player player) {
         this.TOWER = tower;
         this.PLAYER = player;
-
-        setImage("comingSoon.png");
-        getImage().scale(30, 30);
-    }
-
-
-    @Override
-    public void checkClick() {
-        super.checkClick();
+        GreenfootImage img = new GreenfootImage("comingSoom.png");
+        img.scale(30, 30);
+        setImage(img);
     }
 
     @Override

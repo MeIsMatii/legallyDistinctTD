@@ -1,10 +1,12 @@
 package ui.hud;
 
-import entities.tower.TestTower;
+import core.Player;
 import entities.tower.Tower;
 import greenfoot.Actor;
 import greenfoot.World;
 import ui.hud.buttons.SellButton;
+
+import java.util.List;
 
 public class UpgradeMenu extends Actor {
     private final Tower TOWER;
@@ -12,6 +14,7 @@ public class UpgradeMenu extends Actor {
     private UpgradePath path2;
     private UpgradePath path3;
     private SellButton sellButton;
+    private Player player;
 
     public UpgradeMenu(Tower tower) {
         setImage("comingSoon.png");
@@ -22,11 +25,19 @@ public class UpgradeMenu extends Actor {
         path3 = new UpgradePath(TOWER, 3);
     }
 
+    @Override
     protected void addedToWorld(World world) {
-        getWorld().addObject(path1,  getX() - 500, getY());
-        getWorld().addObject(path2, getX(), getY());
-        getWorld().addObject(path3, getX() + 500, getY());
-        // getWorld().addObject(sellButton, getX() + 400, getY());  //weiß nicht wohin und stürzt irgendwie ab wenn ich dann das dings öffne
+        List<Player> pl = world.getObjects(Player.class);
+        if (!pl.isEmpty()){
+            player = pl.get(0);
+        }
+
+        sellButton = new SellButton(TOWER, player);
+
+        world.addObject(path1, getX() - 500, getY());
+        world.addObject(path2, getX(), getY());
+        world.addObject(path3, getX() + 500, getY());
+        world.addObject(sellButton, getX() + 700, getY());
     }
 
     public Tower getTower() {
@@ -34,9 +45,15 @@ public class UpgradeMenu extends Actor {
     }
 
     public void delete(){
-        getWorld().removeObject(path1);
-        getWorld().removeObject(path2);
-        getWorld().removeObject(path3);
-        getWorld().removeObject(this);
+        World world = getWorld();
+        if (world != null) {
+            world.removeObject(path1);
+            world.removeObject(path2);
+            world.removeObject(path3);
+            if (sellButton != null) {
+                world.removeObject(sellButton); // Don't forget to remove the sell button too!
+            }
+            world.removeObject(this);
+        }
     }
 }

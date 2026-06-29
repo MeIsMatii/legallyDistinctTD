@@ -13,8 +13,8 @@ public class SellButton extends Button{
     public SellButton(Tower tower, Player player) {
         this.TOWER = tower;
         this.PLAYER = player;
-        GreenfootImage img = new GreenfootImage("comingSoom.png");
-        img.scale(30, 30);
+        GreenfootImage img = new GreenfootImage("sellButton.png");
+        img.scale(100, 50);
         setImage(img);
     }
 

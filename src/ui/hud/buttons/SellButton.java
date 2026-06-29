@@ -9,7 +9,10 @@ public class SellButton extends Button{
     private Tower TOWER;
     private Player PLAYER;
 
-    public SellButton() {
+    public SellButton(Tower tower, Player player) {
+        this.TOWER = tower;
+        this.PLAYER = player;
+
         setImage("comingSoon.png");
         getImage().scale(30, 30);
     }
@@ -22,7 +25,8 @@ public class SellButton extends Button{
 
     @Override
     public void onClick() {
+        getWorld().removeObject(TOWER);
+        PLAYER.setCoins(PLAYER.getCoins()+TOWER.getPRICE()/2);
         getWorld().removeObject(this);
-        PLAYER.setCoins(TOWER.getPRICE()/2);
     }
 }

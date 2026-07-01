@@ -15,10 +15,8 @@ public class HomingProjectile extends Projectile {
     public HomingProjectile(Tower owner) {
         super(owner);
 
-        GreenfootImage img = new GreenfootImage(30, 30);
-        img.setColor(Color.PINK);
-        img.fillOval(img.getWidth() / 2, img.getHeight() / 2, img.getWidth() / 2, img.getHeight() / 2);
-
+        GreenfootImage img = new GreenfootImage("projectile.png");
+        img.scale(100,60);
         setImage(img);
 
         this.homingRadius = 100;

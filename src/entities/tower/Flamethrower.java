@@ -61,6 +61,7 @@ public class Flamethrower extends Tower{
     @Override
     void shoot(Enemy e) {
         if (magazine > 0){
+            playSound("fire.mp3");
             getWorld().addObject(new FlameProjectile(this),getX(),getY());
             magazine--;
         }else {

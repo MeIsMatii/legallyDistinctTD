@@ -12,4 +12,7 @@ public class ImageDisplay extends MainClass{
     public ImageDisplay(GreenfootImage img){
         setImage(img);
     }
+    public ImageDisplay(String filename){
+        setImage(filename);
+    }
 }

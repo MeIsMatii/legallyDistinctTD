@@ -4,8 +4,9 @@ import core.Player;
 import entities.tower.Tower;
 import greenfoot.GreenfootImage;
 import ui.hud.UpgradePath;
+import util.HasSound;
 
-public class SellButton extends Button{
+public class SellButton extends Button implements HasSound {
 
     private Tower TOWER;
     private Player PLAYER;
@@ -21,6 +22,7 @@ public class SellButton extends Button{
     @Override
     public void onClick() {
         getWorld().removeObject(TOWER);
+        playSound("sellSound.mp3");
         PLAYER.setCoins(PLAYER.getCoins()+TOWER.getPRICE()/2);
         getWorld().removeObject(this);
     }

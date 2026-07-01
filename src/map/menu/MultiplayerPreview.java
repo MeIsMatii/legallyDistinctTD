@@ -1,18 +1,17 @@
 package map.menu;
 
 import core.MainClass;
-import greenfoot.Color;
-import greenfoot.Font;
 import greenfoot.GreenfootImage;
-import ui.common.CustomImageDisplay;
-import ui.hud.PopupScreen;
-import ui.hud.buttons.ClosePopupButton;
+import ui.hud.IPMenuOverlay;
 import util.Clickable;
 
 public class MultiplayerPreview extends MainClass implements Clickable {
-    CustomImageDisplay img = new CustomImageDisplay(700, 500, "coming soon", new Color(139, 69, 19), Color.WHITE, new Font("Arial", true, false, 24));
-    ClosePopupButton closeButton;
-    boolean clicked = false;
+
+    /** The IP address the user last confirmed. Empty string if none yet. */
+    private String lastIP = "";
+
+    /** Reference to the currently open popup, null when not open. */
+    private IPMenuOverlay overlay = null;
 
     public MultiplayerPreview() {
         GreenfootImage im = new GreenfootImage("Multiplayer.png");
@@ -23,23 +22,39 @@ public class MultiplayerPreview extends MainClass implements Clickable {
     @Override
     public void act() {
         checkClick();
+
+        // Check whether the overlay was closed because the user pressed Connect
+        // overlay.getWorld() == null means it has been removed from the world
+        if (overlay != null && overlay.getWorld() == null) {
+            if (overlay.isConnected()) {
+                lastIP = overlay.getIP();
+                System.out.println("Connecting to: " + lastIP);
+                // TODO: put code for multiplayer here @Colin @Mathilo
+            }
+            overlay = null;
+        }
     }
 
     @Override
     public void onClick() {
-        if (!clicked) {
-            getWorld().addObject(img, 1000, 540);
-            clicked = true;
+        if (overlay == null) {
+            // No popup open yet — open one
+            if (getWorld() != null) {
+                overlay = new IPMenuOverlay();
+                getWorld().addObject(overlay, 960, 540);
+            }
         } else {
-            onRemove();
+            // Popup is already open — close it
+            overlay.onRemove();
+            overlay = null;
         }
     }
 
-    public void onRemove() {
-        if (getWorld() != null) {
-            getWorld().removeObject(img);
-            getWorld().removeObject(closeButton);
-        }
-        clicked = false;
+    /**
+     * Returns the last IP address the user typed and confirmed.
+     * Empty string if the user has never pressed Connect.
+     */
+    public String getLastIP() {
+        return lastIP;
     }
 }

@@ -33,6 +33,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
     private final int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
     private final int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
+    private final String[] upgradeDescription1 = new String[]{"test upgrade 1-1", "test upgrade 2-1","test upgrade 3-1","4-1 final upgrade done"};
+    private final String[] upgradeDescription2 = new String[]{"test upgrade 1-2", "test upgrade 2-2","test upgrade 3-2","4-2 final upgrade done"};
+    private final String[] upgradeDescription3 = new String[]{"test upgrade 1-3", "test upgrade 2-3","test upgrade 3-3","4-3 final upgrade done"};
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
@@ -185,6 +188,18 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public int[] getUpgrades3() {
         return upgrades3;
+    }
+
+    public String getUpgradeDescription1() {
+        return upgradeDescription1[getUpgrade1()];
+    }
+
+    public String getUpgradeDescription2() {
+        return upgradeDescription2[getUpgrade2()];
+    }
+
+    public String getUpgradeDescription3() {
+        return upgradeDescription3[getUpgrade3()];
     }
 
     public void setShootingDelayCounter(int count) {

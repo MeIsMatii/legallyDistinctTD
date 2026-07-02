@@ -20,8 +20,6 @@ public class Flamethrower extends Tower{
     private final String[] upgradeDescription2 = new String[]{"Yellow hot", "White hot","Blue hot","final upgrade done"};
     private final String[] upgradeDescription3 = new String[]{"More range", "Even more range","Very long range","final upgrade done"};
 
-
-
     public Flamethrower() {
         super(150,true, 300, 1, 1, 10, 1000, 45);
         //GreenfootImage img = new GreenfootImage("towers/Flamethrower/Flamethrower_idle.jpg");
@@ -42,23 +40,35 @@ public class Flamethrower extends Tower{
 
     public String upgrade1() {
         setUpgrade1(getUpgrade1()+1);
-        System.out.println("flamethrower upgrade 1" + " " + getUpgrade1());
+        System.out.println("flamethrower upgrade 1" + " " + getUpgrade1() + getUpgradeDescription1());
         return "flamethrower 1";
     }
 
     public String upgrade2() {
         setUpgrade2(getUpgrade2()+1);
-        System.out.println("flamethrower upgrade 2" + " " + getUpgrade2());
+        System.out.println("flamethrower upgrade 2" + " " + getUpgrade2() + getUpgradeDescription2());
         return "flamethrower 2";
     }
 
     public String upgrade3() {
         setUpgrade3(getUpgrade3()+1);
-        System.out.println("flamethrower upgrade 3" + " " + getUpgrade3());
+        System.out.println("flamethrower upgrade 3" + " " + getUpgrade3() + getUpgradeDescription3());
         return "flamethrower 3";
     }
 
-    @Override
+    public String getUpgradeDescription1() {
+        return upgradeDescription1[getUpgrade1()];
+    }
+
+    public String getUpgradeDescription2() {
+        return upgradeDescription2[getUpgrade2()];
+    }
+
+    public String getUpgradeDescription3() {
+        return upgradeDescription3[getUpgrade3()];
+    }
+
+        @Override
     void shoot(Enemy e) {
         if (magazine > 0){
             playSound("fire.mp3");

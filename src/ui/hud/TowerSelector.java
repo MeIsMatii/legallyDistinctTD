@@ -24,6 +24,9 @@ public class TowerSelector extends MainClass implements Clickable {
 
     @Override
     public void onClick() {
+if(isPaused()) {
+return;
+}
         Map map = (Map) getWorld();
         if (map.getPLAYER().getCoins() >= towerToSpawn.getPRICE()) {
             if (isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing()) {
@@ -49,10 +52,4 @@ public class TowerSelector extends MainClass implements Clickable {
     }
 
 
-    public void act() {
-if(isPaused()) {
-return;
-}
-        checkClick();
-    }
-}
+    

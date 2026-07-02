@@ -116,7 +116,7 @@ public class Player extends MainClass {
 
     public void damage(int damage) {
         setHealth(health - damage);
-        if (health < 0) {
+        if (health <= 0) {
             //getWorld().showText("you lost", 400, 400);
             GameOverPopUp gameOverPopUp = new GameOverPopUp();
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);

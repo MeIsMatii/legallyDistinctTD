@@ -50,6 +50,9 @@ public class TowerSelector extends MainClass implements Clickable {
 
 
     public void act() {
+if(isPaused()) {
+return;
+}
         checkClick();
     }
 }

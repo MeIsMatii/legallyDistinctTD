@@ -48,6 +48,10 @@ return;
 
         }
 
+    public void act() {
+      checkClick();
+    }
+
 
     }
 

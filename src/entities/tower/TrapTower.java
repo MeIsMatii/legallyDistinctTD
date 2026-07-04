@@ -93,7 +93,7 @@ public class TrapTower extends Tower implements Clickable {
             }
         }
 
-        if (getCanPlace()) {
+        if (canPlace()) {
             getRANGEDISPLAY().setRangeVisibility(true, getColorGrey());
         } else {
             getRANGEDISPLAY().setRangeVisibility(true, getColorRed());

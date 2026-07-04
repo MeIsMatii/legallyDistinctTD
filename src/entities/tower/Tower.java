@@ -48,13 +48,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private int upgrade3 = 0;
     private int shootingDelay;
     private int shootingDelayCounter;
-    /// <UPGRADES>
+    /// <ANIMATIONS>
     private int frameCounter = 0;
     private List<String> frameList;
     private int frameIndex = 0;
     private boolean isAnimating = false;
     private String spritePath;
     private String spriteName;
+    /// </ANIMATIONS>
 
     public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
@@ -79,7 +80,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     }
 
-    protected boolean getCanPlace() {
+    protected boolean canPlace() {
         return canPlace;
     }
 

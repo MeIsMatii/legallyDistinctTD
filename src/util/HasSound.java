@@ -32,8 +32,6 @@ public interface HasSound {
         }
 
         if(!isAudioHardwareSupported()) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return;
         }
         GreenfootSound soundToPlay;
@@ -45,8 +43,6 @@ public interface HasSound {
             SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
             soundToPlay.play();//play
         } catch (Exception e) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return;
         }
     }
@@ -56,8 +52,6 @@ public interface HasSound {
             return;
         }
         if(!isAudioHardwareSupported()) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return;
         }
         try {
@@ -65,8 +59,6 @@ public interface HasSound {
             SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
             soundToPlay.play();//sync
         } catch (Exception e) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return;
         }
     }
@@ -76,8 +68,6 @@ public interface HasSound {
             return null;
         }
         if(!isAudioHardwareSupported()) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return null;
         }
 
@@ -87,8 +77,6 @@ public interface HasSound {
             SoundSettings.getInstance().addRegisteredSound(soundToControl);//liste hinzufügen
             return soundToControl;//gibt den fertig angepassten sound zurück
         } catch (Exception e) {
-            System.out.println("ur speaker not working\n bc i cool n nice n stuff i muted if for ya <3 --Mathilo");
-            hardWareMute();
             return null;
         }
     }

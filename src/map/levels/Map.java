@@ -1,15 +1,19 @@
 package map.levels;
 
+import core.MainClass;
 import core.Player;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Projectile;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
+import greenfoot.Greenfoot;
 import greenfoot.World;
 import map.levels.util.Path;
+import map.menu.PauseMenu;
 import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
+import ui.settings.SettingsPopup;
 import util.Cursor;
 import util.WaveManager;
 import util.saves.GameSaveManager;
@@ -42,6 +46,11 @@ public abstract class Map extends World {
     private int wave = 0;
     private int oldWave = 0;
 
+    private boolean isPaused;
+    private boolean isForcedPause;
+
+    private String lastKeyPressed;
+
     public Map() {
         super(1920, 1080, 1);
         this.GAMESAVEMANAGER = new GameSaveManager();
@@ -56,6 +65,11 @@ public abstract class Map extends World {
         this.PATHWIDTH = 120;
         PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
         CURSOR = new Cursor();
+
+        isPaused = false;
+        isForcedPause = false;
+
+        lastKeyPressed = Greenfoot.getKey();
 
         addHud();
     }
@@ -246,7 +260,9 @@ public abstract class Map extends World {
     }
 
     public void act() {
-        if (getPLAYER().isPaused()) {
+        lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
+        checkPaused();
+        if (isPaused()) {
             return;
         }
         if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
@@ -264,6 +280,73 @@ public abstract class Map extends World {
             showText("Wave: " + getWave(), 1540, 40);
             oldWave = wave;
         }
+    }
+
+    public void checkPaused() {
+        if (isForcedPause) {
+            return;
+        }
+
+        if ("escape".equals(lastKeyPressed)) {
+            System.out.println("popup");
+            setPaused(!isPaused());
+            //System.out.printf("isPaused: %s\n", isPaused);
+            pauseObjects();
+            List<PauseMenu> pauseMenus = getObjects(PauseMenu.class);
+            List<SettingsPopup> settingsPopups = getObjects(SettingsPopup.class);
+            if (pauseMenus.isEmpty()) {
+                addObject(new PauseMenu(), getWidth() / 2, getHeight() / 2);
+            } else {
+                for (PauseMenu pauseMenu : pauseMenus) {
+                    pauseMenu.onRemove();
+                }
+            }
+            if (!settingsPopups.isEmpty()) {
+                for (SettingsPopup settingsPopup : settingsPopups) {
+                    settingsPopup.onRemove();
+                }
+            }
+
+
+        } else if ("space".equals(lastKeyPressed)) {
+            setPaused(!isPaused());
+            pauseObjects();
+        }
+
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
+
+    public boolean isForcedPause() {
+        return isForcedPause;
+    }
+
+    public void setForcedPause(boolean paused) {
+        this.isForcedPause = paused;
+    }
+
+
+    public void pauseObjects() {
+        List<MainClass> objs = getObjects(MainClass.class);
+        for (int i = 0; i < objs.size(); i++) {
+            objs.get(i).setPaused(isPaused());
+        }
+    }
+
+    public void pauseObjects(boolean isPaused) {
+        this.isPaused = isPaused;
+        pauseObjects();
+    }
+
+    public void onContinue() {
+        setPaused(false);
+        pauseObjects();
     }
 
 }

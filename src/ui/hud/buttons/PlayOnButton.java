@@ -1,5 +1,6 @@
 package ui.hud.buttons;
 
+import map.levels.Map;
 import util.Clickable;
 import core.MainClass;
 import core.Player;
@@ -17,13 +18,7 @@ public class PlayOnButton extends Button{
     @Override
     public void onClick() {
 
-        List<Player>players=getWorld().getObjects(Player.class);
-        if (!players.isEmpty()){
-            for (Player player : players){
-                player.onContinue();
-                System.out.println("cont");
-            }
-        }
+        getWorldOfType(Map.class).onContinue();
 
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
         if (!pauseMenus.isEmpty()){

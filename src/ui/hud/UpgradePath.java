@@ -1,5 +1,6 @@
 package ui.hud;
 
+import greenfoot.World;
 import util.Clickable;
 import entities.tower.Tower;
 import greenfoot.Actor;
@@ -20,6 +21,10 @@ public class UpgradePath extends Actor implements Clickable {
         this.tower = TOWER;
     }
 
+    @Override
+    protected void addedToWorld(World world) {
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(), getY());
+    }
 
     @Override
     public void onClick() {
@@ -28,8 +33,8 @@ public class UpgradePath extends Actor implements Clickable {
 
         int maxUpgrade;
         int maxPath = 3;
-
-
+        List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+        UpgradeDescriptionOverlay upgradedesctoremove = upgradedesc.get(0);
         switch (this.path) {
             case 1:
                 if (tower.getUpgrade1() >= maxPath){
@@ -54,6 +59,8 @@ public class UpgradePath extends Actor implements Clickable {
                     player1.setCoins(player1.getCoins() - price);
                     System.out.println(price);
                     tower.upgrade1();
+                    getWorld().removeObject(upgradedesctoremove);
+                    getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(),getY());
                 }
 
                 break;

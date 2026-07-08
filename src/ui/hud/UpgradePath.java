@@ -22,7 +22,7 @@ public class UpgradePath extends Actor implements Clickable {
     @Override
     protected void addedToWorld(World world) {
         updateText(3);
-        getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(), getY());
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path), getX(), getY());
     }
 
     @Override
@@ -40,7 +40,12 @@ public class UpgradePath extends Actor implements Clickable {
         int otherUpgradeB;
 
         List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
-        UpgradeDescriptionOverlay upgradedesctoremove = upgradedesc.get(0);
+        UpgradeDescriptionOverlay upgradedesctoremove = null;
+        for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
+            if(upgradeDescription.getPath() == this.path) {
+                upgradedesctoremove = upgradeDescription;
+            }
+        }
         switch (this.path) {
             case 1:
                 upgradeLevel = tower.getUpgrade1();
@@ -76,6 +81,7 @@ public class UpgradePath extends Actor implements Clickable {
 
         if (otherUpgradeA > 0 && otherUpgradeB > 0) {
             System.out.println("locked case " + this.path);
+            updateText(0);
             return;
         }
 
@@ -94,7 +100,7 @@ public class UpgradePath extends Actor implements Clickable {
                 case 3: tower.upgrade3(); break;
             }
             getWorld().removeObject(upgradedesctoremove);
-            getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(),getY());
+            getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path), getX(),getY());
 
         }
 
@@ -109,17 +115,23 @@ public class UpgradePath extends Actor implements Clickable {
     public void checkText() {
         switch (this.path) {
             case 1:
-                if(tower.getUpgrade2() > 1 || tower.getUpgrade3() > 1) {
+                if(tower.getUpgrade2() > 0 && tower.getUpgrade3() > 0) {
+                    updateText(0);
+                } else if(tower.getUpgrade2() > 1 ^ tower.getUpgrade3() > 1) { // ^ is XOR
                     updateText(1);
                 }
                 break;
             case 2:
-                if(tower.getUpgrade1() > 1 || tower.getUpgrade3() > 1) {
+                if(tower.getUpgrade1() > 0 && tower.getUpgrade3() > 0) {
+                    updateText(0);
+                } else if(tower.getUpgrade1() > 1 ^ tower.getUpgrade3() > 1) {
                     updateText(1);
                 }
                 break;
             case 3:
-                if(tower.getUpgrade1() > 1 || tower.getUpgrade2() > 1) {
+                if(tower.getUpgrade1() > 0 && tower.getUpgrade2() > 0) {
+                    updateText(0);
+                } else if(tower.getUpgrade1() > 1 ^ tower.getUpgrade2() > 1) {
                     updateText(1);
                 }
                 break;
@@ -146,7 +158,18 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
     public void onRemove() {
+        List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+        UpgradeDescriptionOverlay upgradedesctoremove = null;
+        for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
+            if(upgradeDescription.getPath() == this.path) {
+                upgradedesctoremove = upgradeDescription;
+            }
+        }
+        getWorld().removeObject(upgradedesctoremove);
+
         getWorld().showText("", getX(), getY() + 65); //to delete the text
+
         getWorld().removeObject(this);
+
     }
 }

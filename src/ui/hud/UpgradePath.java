@@ -19,10 +19,11 @@ public class UpgradePath extends Actor implements Clickable {
         this.tower = TOWER;
     }
 
-    public void addedToWorld(World w) {
+    @Override
+    protected void addedToWorld(World world) {
         updateText(3);
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(), getY());
     }
-
 
     @Override
     public void onClick() {
@@ -38,6 +39,8 @@ public class UpgradePath extends Actor implements Clickable {
         int otherUpgradeA; //e.g. path = 1; then otherUpgradeA = 2; otherUpgradeB = 3;
         int otherUpgradeB;
 
+        List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+        UpgradeDescriptionOverlay upgradedesctoremove = upgradedesc.get(0);
         switch (this.path) {
             case 1:
                 upgradeLevel = tower.getUpgrade1();
@@ -90,6 +93,9 @@ public class UpgradePath extends Actor implements Clickable {
                 case 2: tower.upgrade2(); break;
                 case 3: tower.upgrade3(); break;
             }
+            getWorld().removeObject(upgradedesctoremove);
+            getWorld().addObject(new UpgradeDescriptionOverlay(tower), getX(),getY());
+
         }
 
         updateText(maxPath);

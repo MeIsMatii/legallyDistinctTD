@@ -142,11 +142,11 @@ public class UpgradePath extends Actor implements Clickable {
                 System.out.println("upgrade path must be 0<x<4");
                 return;
         }
-        getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY());
+        getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
     }
 
     public void onRemove() {
-        getWorld().showText("", getX(), getY()); //to delete the text
+        getWorld().showText("", getX(), getY() + 65); //to delete the text
         getWorld().removeObject(this);
     }
 }

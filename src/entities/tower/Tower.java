@@ -30,9 +30,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final int range;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
-    private final int[] upgrades1 = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrades2 = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrades3 = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrade1Prices = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrade2Prices = new int[]{500, 500, 500, 500, 500};
+    private final int[] upgrade3Prices = new int[]{500, 500, 500, 500, 500};
     private final String[] upgradeDescription1 = new String[]{"test upgrade 1-1", "test upgrade 2-1","test upgrade 3-1","4-1 final upgrade done"};
     private final String[] upgradeDescription2 = new String[]{"test upgrade 1-2", "test upgrade 2-2","test upgrade 3-2","4-2 final upgrade done"};
     private final String[] upgradeDescription3 = new String[]{"test upgrade 1-3", "test upgrade 2-3","test upgrade 3-3","4-3 final upgrade done"};
@@ -179,16 +179,16 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.upgrade3 = upgrade3;
     }
 
-    public int[] getUpgrades1() {
-        return upgrades1;
+    public int[] getUpgrade1Prices() {
+        return upgrade1Prices;
     }
 
-    public int[] getUpgrades2() {
-        return upgrades2;
+    public int[] getUpgrade2Prices() {
+        return upgrade2Prices;
     }
 
-    public int[] getUpgrades3() {
-        return upgrades3;
+    public int[] getUpgrade3Prices() {
+        return upgrade3Prices;
     }
 
     public String getUpgradeDescription1() {
@@ -458,7 +458,20 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * @param path the path to upgrade
      */
     public void onUpgrade(int path) {
-        int maxPath = (Math.max(Math.max(getUpgrade1(), getUpgrade2()), getUpgrade3()));
+        int u1 = getUpgrade1();
+        int u2 = getUpgrade2();
+        int u3 = getUpgrade3();
+
+        int maxPath;
+
+        if (u1 >= u2 && u1 >= u3) {
+            maxPath = 1;
+        } else if (u2 >= u1 && u2 >= u3) {
+            maxPath = 2;
+        } else {
+            maxPath = 3;
+        }
+
         //so a lesser upgrade does not override the animation
         if (maxPath != path) {
             return;

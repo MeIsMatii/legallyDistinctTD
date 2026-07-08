@@ -47,9 +47,9 @@ public class UpgradeMenu extends Actor {
     public void delete(){
         World world = getWorld();
         if (world != null) {
-            world.removeObject(path1);
-            world.removeObject(path2);
-            world.removeObject(path3);
+            path1.onRemove();
+            path2.onRemove();
+            path3.onRemove();
             if (sellButton != null) {
                 world.removeObject(sellButton); // Don't forget to remove the sell button too!
             }

@@ -22,7 +22,7 @@ public class UpgradePath extends Actor implements Clickable {
     @Override
     protected void addedToWorld(World world) {
         updateText(3);
-        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path), getX(), getY());
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, 3), getX(), getY());
     }
 
     @Override
@@ -100,7 +100,7 @@ public class UpgradePath extends Actor implements Clickable {
                 case 3: tower.upgrade3(); break;
             }
             getWorld().removeObject(upgradedesctoremove);
-            getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path), getX(),getY());
+            getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(),getY());
 
         }
 
@@ -154,6 +154,19 @@ public class UpgradePath extends Actor implements Clickable {
                 System.out.println("upgrade path must be 0<x<4");
                 return;
         }
+
+        if(maxPath == 0) {
+            List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+            UpgradeDescriptionOverlay upgradedesctoremove = null;
+            for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
+                if(upgradeDescription.getPath() == this.path) {
+                    upgradedesctoremove = upgradeDescription;
+                }
+            }
+            getWorld().removeObject(upgradedesctoremove);
+            getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(),getY());
+        }
+
         getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
     }
 

@@ -33,9 +33,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final int[] upgrade1Prices = new int[]{500, 500, 500, 500, 500};
     private final int[] upgrade2Prices = new int[]{500, 500, 500, 500, 500};
     private final int[] upgrade3Prices = new int[]{500, 500, 500, 500, 500};
-    private final String[] upgradeDescription1 = new String[]{"test upgrade 1-1", "test upgrade 2-1","test upgrade 3-1","4-1 final upgrade done"};
-    private final String[] upgradeDescription2 = new String[]{"test upgrade 1-2", "test upgrade 2-2","test upgrade 3-2","4-2 final upgrade done"};
-    private final String[] upgradeDescription3 = new String[]{"test upgrade 1-3", "test upgrade 2-3","test upgrade 3-3","4-3 final upgrade done"};
+    private String[] upgradeDescription1 = new String[3];
+    private String[] upgradeDescription2 = new String[3];
+    private String[] upgradeDescription3 = new String[3];
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
@@ -78,6 +78,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
         setImage("towers/" + getTowerName() + "/" + getTowerName() + "_idle.png");
 
+        defineDescriptions();
     }
 
     protected boolean canPlace() {
@@ -201,6 +202,58 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public String getUpgradeDescription3() {
         return upgradeDescription3[getUpgrade3()];
+    }
+
+    /**
+     * Put the descriptions for all path 1 upgrades here.
+     * @param desc the description
+     */
+    public void setUpgradeDescription1(String[] desc) {
+        this.upgradeDescription1 = desc;
+    }
+
+    /**
+     * Put the descriptions for all path 2 upgrades here.
+     * @param desc the description
+     */
+    public void setUpgradeDescription2(String[] desc) {
+        this.upgradeDescription2 = desc;
+    }
+
+    /**
+     * Put the descriptions for all path 3 upgrades here.
+     * @param desc the description
+     */
+    public void setUpgradeDescription3(String[] desc) {
+        this.upgradeDescription3 = desc;
+    }
+
+    /**
+     * <!-- IMPORTANT --!>
+     * IMPORTANT, NEEDS TO BE DONE:<br>
+     * setUpgradeDescription1(desc1);<br>
+     * setUpgradeDescription2(desc2);<br>
+     * setUpgradeDescription3(desc3);<br>
+     */
+    public void defineDescriptions() {
+        setUpgradeDescription1(
+            new String[]{
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+            });
+        setUpgradeDescription2(
+            new String[]{
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+            });
+        setUpgradeDescription3(
+            new String[]{
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+                "define descriptions using defineDescriptions()",
+            });
     }
 
     public void setShootingDelayCounter(int count) {
@@ -458,6 +511,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * @param path the path to upgrade
      */
     public void onUpgrade(int path) {
+
+
         int u1 = getUpgrade1();
         int u2 = getUpgrade2();
         int u3 = getUpgrade3();
@@ -473,6 +528,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
 
         //so a lesser upgrade does not override the animation
+        if(true) { //bc we dont have animations yet
+            return;
+        }
         if (maxPath != path) {
             return;
         }

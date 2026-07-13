@@ -39,6 +39,10 @@ public class SongButton extends MainClass implements Clickable, HasSound {
         }
         // sound volume zu volume anpassen
         currentlyPlaying = playSoundAndKeep(songName);
+        if(currentlyPlaying == null) {
+            System.out.println("muted or something");
+            return;
+        }
         currentlyPlaying.playLoop();
     }
 

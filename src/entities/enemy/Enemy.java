@@ -2,6 +2,7 @@ package entities.enemy;
 
 import core.Player;
 import entities.Entity;
+import entities.Hitbox;
 import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
@@ -32,6 +33,11 @@ public abstract class Enemy extends Entity {
         super.addedToWorld(world);
         this.realPosX = getX();
         this.realPosY = getY();
+    }
+
+    public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
+        EnemyHitbox hitbox = new EnemyHitbox(hitboxWidth, hitboxHeight, this);
+        getWorld().addObject(hitbox, getX(), getY());
     }
 
     public void act() {

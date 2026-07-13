@@ -9,10 +9,10 @@ public class RangeDisplay extends MainClass {
     //TODO fix @Mathilo
     private final Tower OWNER;
     public boolean isRangeVisible;
-    private final int range;
+    private double range;
     private boolean isFollowing;
 
-    public RangeDisplay(Tower tower, int range, boolean isPlacing) {
+    public RangeDisplay(Tower tower, double range, boolean isPlacing) {
         setImage("invisible.png");
         this.OWNER = tower;
         this.range = range;
@@ -22,11 +22,17 @@ public class RangeDisplay extends MainClass {
 
 
     public void act() {
+        if(isPaused()) return;
 
         if (OWNER == null || OWNER.getWorld() == null) {
             getWorld().removeObject(this);
             return;
         }
+
+        if(this.range != OWNER.getRange()) {
+            updateRange(OWNER.getRange());
+        }
+
         if (isFollowing) {
             followTower();
         }
@@ -49,12 +55,15 @@ public class RangeDisplay extends MainClass {
      */
     public void setRangeVisibility(boolean state, Color color) {
         if (!state) {
-
             displayRange(new Color(255, 255, 255, 1)); //invisible
         } else {
             displayRange(color);
         }
         isRangeVisible = state;
+    }
+
+    public void updateRange(double range) {
+        this.range = range;
     }
 
     /**
@@ -67,7 +76,7 @@ public class RangeDisplay extends MainClass {
         ///AAAAAAAAAAAAAAAAAAAAAAAAAAAA WHY DID I DO THIS
         /// WHY DID I NOT JUST LET SOMEONE ELSE DO IT
         // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA --Mathilo
-        int radius = range * getWorld().getCellSize();
+        int radius = (int) Math.round(range) * getWorld().getCellSize();
         int diameter = radius * 2;
 
         GreenfootImage canvas = getGreenfootImage(diameter, color);

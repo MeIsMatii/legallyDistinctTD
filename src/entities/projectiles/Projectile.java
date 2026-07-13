@@ -13,10 +13,11 @@ public abstract class Projectile extends Entity  implements HasSound {
     private Tower owner;
     private final double damage;
     private final int iframes;
-    private final int speed;
-    private int piercing;
+    private final double speed;
+    private double piercing;
     private int targetX;
     private int targetY;
+
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
 
     public Projectile(Tower owner) {
@@ -35,7 +36,7 @@ public abstract class Projectile extends Entity  implements HasSound {
         return owner;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
@@ -43,7 +44,7 @@ public abstract class Projectile extends Entity  implements HasSound {
         return damage;
     }
 
-    public int getPiercing() {
+    public double getPiercing() {
         return piercing;
     }
 
@@ -110,6 +111,11 @@ public abstract class Projectile extends Entity  implements HasSound {
         turnTowards(targetX, targetY);
     }
 
-    abstract void move();
+    /**
+     * default implementation
+     */
+    public void move() {
+        move((int) Math.round(speed));
+    }
 }
 

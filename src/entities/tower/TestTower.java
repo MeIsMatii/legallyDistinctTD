@@ -26,6 +26,12 @@ public class TestTower extends Tower {
         return 1;
     }
 
+    public void defineDescriptions() {
+        setUpgradeDescription1(new String[]{"slightly larger\n range", "even larger\n range","very large\n range"});
+        setUpgradeDescription2(new String[]{"slightly more\n piercing", "even more\n piercing","very much piercing"});
+        setUpgradeDescription3(new String[]{"slightly faster\n arrows", "even faster\n arrows","very quick arrows"});
+    }
+
 
     public String upgrade1() {
         setUpgrade1(getUpgrade1() + 1);
@@ -56,14 +62,14 @@ public class TestTower extends Tower {
             case 1:
                 switch (getUpgrade1()) {
                     case 1:
-                        setProjectileDamage((getProjectileDamage() * 1.5));
+                        setRange((getRange() * 1.1));
                         break;
                     case 2:
-                        setProjectileDamage((getProjectileDamage() * 1.5));
+                        setRange((getRange() * 1.3));
                         //some kinda different behaviour
                         break;
                     case 3:
-                        setProjectileDamage((getProjectileDamage() * 1.5));
+                        setRange((getRange() * 1.5));
                         //some kinda different behaviour
                         break;
                 }
@@ -73,7 +79,7 @@ public class TestTower extends Tower {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        setProjectilePiercing(getProjectilePiercing() * 1.5);
 
                         break;
                     case 2:
@@ -81,7 +87,7 @@ public class TestTower extends Tower {
                         //some kinda different behaviour
                         break;
                     case 3:
-                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        setProjectilePiercing(getProjectilePiercing() * 3);
                         //some kinda different behaviour
                         break;
                 }
@@ -90,14 +96,14 @@ public class TestTower extends Tower {
             case 3:
                 switch (getUpgrade3()) {
                     case 1:
-                        setProjectileSpeed(getProjectileSpeed() * 2);
+                        setProjectileSpeed(getProjectileSpeed() * 1.5);
                         break;
                     case 2:
                         setProjectileSpeed(getProjectileSpeed() * 2);
                         //some kinda different behaviour
                         break;
                     case 3:
-                        setProjectileSpeed(getProjectileSpeed() * 2);
+                        setProjectileSpeed(getProjectileSpeed() * 3);
                         //some kinda different behaviour
                         break;
                 }

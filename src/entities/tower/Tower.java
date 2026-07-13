@@ -27,7 +27,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final int PRICE;
 
     private final RangeDisplay RANGEDISPLAY;
-    private final int range;
+    private double range;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
     private final int[] upgrade1Prices = new int[]{500, 500, 500, 500, 500};
@@ -40,8 +40,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private Enemy targetedEnemy;
     private boolean canPlace;
     private double projectileDamage;
-    private int projectileSpeed;
-    private int projectilePiercing;
+    private double projectileSpeed;
+    private double projectilePiercing;
     private int projectileIFrames;
     private int upgrade1 = 0;
     private int upgrade2 = 0;
@@ -116,6 +116,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return PRICE;
     }
 
+    public double getRange() {
+        return range;
+    }
+
+    public void setRange(double range) {
+        this.range = range;
+    }
+
     public double getProjectileDamage() {
         return projectileDamage;
     }
@@ -124,19 +132,19 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.projectileDamage = projectileDamage;
     }
 
-    public int getProjectileSpeed() {
+    public double getProjectileSpeed() {
         return projectileSpeed;
     }
 
-    public void setProjectileSpeed(int projectileSpeed) {
+    public void setProjectileSpeed(double projectileSpeed) {
         this.projectileSpeed = projectileSpeed;
     }
 
-    public int getProjectilePiercing() {
+    public double getProjectilePiercing() {
         return projectilePiercing;
     }
 
-    public void setProjectilePiercing(int projectilePiercing) {
+    public void setProjectilePiercing(double projectilePiercing) {
         this.projectilePiercing = projectilePiercing;
     }
 
@@ -270,6 +278,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public void act() {
         if (isPaused()) return;
+        System.out.println(range);
 
         checkClick();
         if (isPlacing) {
@@ -444,8 +453,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void setTargetedEnemy() {
-        // TODO check in range and not inside the hitbox D: @Mathilo
-        List<Enemy> enemiesInRange = getObjectsInRange(range, Enemy.class);
+        List<Enemy> enemiesInRange = getObjectsInRange((int)Math.round(range), Enemy.class);
         if (enemiesInRange.isEmpty()) {
             this.targetedEnemy = null;
             return;

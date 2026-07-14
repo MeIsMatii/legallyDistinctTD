@@ -16,8 +16,6 @@ public abstract class Enemy extends Entity {
 
     double lives;
     double speed;
-    double realPosX;
-    double realPosY;
 
     int initialLives;
 
@@ -30,9 +28,6 @@ public abstract class Enemy extends Entity {
         this.speed = speed;
         this.lives = lives;
         initialLives = lives;
-
-        this.realPosX = 0;
-        this.realPosY = 0;
     }
     public Enemy(double speed, int lives, String UUID) {
         this.uniqueId = UUID;
@@ -40,9 +35,6 @@ public abstract class Enemy extends Entity {
         this.speed = speed;
         this.lives = lives;
         initialLives = lives;
-
-        this.realPosX = 0;
-        this.realPosY = 0;
     }
 
     public String getUniqueId() {
@@ -51,8 +43,6 @@ public abstract class Enemy extends Entity {
 
     public void addedToWorld(World world) {
         super.addedToWorld(world);
-        this.realPosX = getX();
-        this.realPosY = getY();
     }
 
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
@@ -75,7 +65,9 @@ public abstract class Enemy extends Entity {
             this.nextY = path.getNextPathY();
             if (nextX == 0 && nextY == 0) {
                 Map map = (Map) getWorld();
-                map.getPLAYER().damage(10);
+                if(map.isMultiplayer()) {
+                    map.getPLAYER().damage(getInitialLives());
+                }
                 map.removeObject(this);
             }
         }
@@ -103,9 +95,7 @@ public abstract class Enemy extends Entity {
 
     // move()
     public void moveTo(int targetX, int targetY) {
-        /// ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA D:
-
-        double dx = targetX - realPosX;
+        /*double dx = targetX - realPosX;
         double dy = targetY - realPosY;
 
         if (Math.abs(dx) > speed) {
@@ -117,7 +107,13 @@ public abstract class Enemy extends Entity {
             realPosY = targetY;
         }
 
-        setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
+        realPosX += speed;
+        realPosY += speed;*/
+
+        turnTowards(nextX, nextY);
+        move((int) Math.round(speed));
+        setRotation(0);
+        //setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
     /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged

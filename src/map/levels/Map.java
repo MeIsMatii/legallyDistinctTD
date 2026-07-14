@@ -434,6 +434,9 @@ public abstract class Map extends World {
             int damage = Integer.parseInt(tokens[2]);
 
             damageEnemyFromNetwork(enemyId, damage);
+        } else if(action.equals("DAMAGE_PLAYER")) {
+            int damage = Integer.parseInt(tokens[1]);
+            getPLAYER().damage(damage);
         }
     }
 

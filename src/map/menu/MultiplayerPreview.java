@@ -4,6 +4,7 @@ import core.MainClass;
 import greenfoot.GreenfootImage;
 import ui.hud.IPMenuOverlay;
 import util.Clickable;
+import util.multiplayer.NetworkManager;
 
 public class MultiplayerPreview extends MainClass implements Clickable {
 
@@ -29,7 +30,7 @@ public class MultiplayerPreview extends MainClass implements Clickable {
             if (overlay.isConnected()) {
                 lastIP = overlay.getIP();
                 System.out.println("Connecting to: " + lastIP);
-                // TODO: put code for multiplayer here @Colin @Mathilo
+                NetworkManager.getInstance().startClient(lastIP, 7777); //7777 should be open on most pcs //terraria also uses this
             }
             overlay = null;
         }

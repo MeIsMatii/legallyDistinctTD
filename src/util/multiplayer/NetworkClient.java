@@ -36,15 +36,18 @@ public class NetworkClient implements MultiplayerConnection {
             Socket socket = new Socket();
             socket.connect(new InetSocketAddress(hostIp, port), 5000);
             System.out.println("Client: Successfully connected to host!");
+            this.out = new PrintWriter(socket.getOutputStream(), true);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
-                if (msg != null && !msg.startsWith("MAP:")) {
-                    NetworkManager.getInstance().queueIncomingMessage(msg);
-                    System.out.println("Incoming message: " + msg);
-                } else if (msg != null && msg.startsWith("MAP:")) {
-                    setMap(Integer.parseInt(msg.substring(4)));
+                if(msg != null) {
+                    if (msg.startsWith("MAP:")) {
+                        setMap(Integer.parseInt(msg.substring(4))); //to load a map
+                    } else {
+                        NetworkManager.getInstance().queueIncomingMessage(msg);
+                        System.out.println("Incoming message: " + msg);
+                    }
                 }
             }
         } catch (SocketTimeoutException e) {
@@ -56,7 +59,7 @@ public class NetworkClient implements MultiplayerConnection {
     }
 
     public void setMap(int mapNr) {
-        Map nextWorld = null;
+        Map nextWorld;
         switch (mapNr) {
             case 1:
                 nextWorld = new Map1();

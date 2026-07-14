@@ -15,6 +15,7 @@ import ui.hud.UpgradeMenu;
 import util.Animations;
 import util.Clickable;
 import util.HasSound;
+import util.multiplayer.NetworkManager;
 
 import java.util.List;
 
@@ -369,6 +370,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         isPlacing = false;
         RANGEDISPLAY.setRangeVisibility(false, null);
         playSound("Place.mp3");
+
+        if (getWorldOfType(Map.class).isMultiplayer()) {
+            String msg = "SPAWN:Archer," + getX() + "," + getY();
+            NetworkManager.getInstance().sendData(msg);
+        }
     }
 
     /**

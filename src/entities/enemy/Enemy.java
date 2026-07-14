@@ -6,10 +6,14 @@ import entities.Hitbox;
 import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
+import util.multiplayer.NetworkManager;
 
 import java.util.List;
+import java.util.UUID;
 
 public abstract class Enemy extends Entity {
+    private final String uniqueId; //for multiplayer
+
     double lives;
     double speed;
     double realPosX;
@@ -21,12 +25,28 @@ public abstract class Enemy extends Entity {
     int nextY;
 
     public Enemy(double speed, int lives) {
+        this.uniqueId = UUID.randomUUID().toString();
+
         this.speed = speed;
         this.lives = lives;
         initialLives = lives;
 
         this.realPosX = 0;
         this.realPosY = 0;
+    }
+    public Enemy(double speed, int lives, String UUID) {
+        this.uniqueId = UUID;
+
+        this.speed = speed;
+        this.lives = lives;
+        initialLives = lives;
+
+        this.realPosX = 0;
+        this.realPosY = 0;
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
     }
 
     public void addedToWorld(World world) {
@@ -74,7 +94,9 @@ public abstract class Enemy extends Entity {
         if (lives <= 0) {
             List<Player> player = getWorld().getObjects(Player.class);
             Player player1 = player.get(0);
-            player1.setCoins(player1.getCoins() + getInitialLives());
+            if( NetworkManager.getInstance().isHost()) {
+                player1.setCoins(player1.getCoins() + getInitialLives());
+            }
             getWorld().removeObject(this);
         }
     }

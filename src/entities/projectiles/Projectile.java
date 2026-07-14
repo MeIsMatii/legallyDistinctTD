@@ -5,6 +5,7 @@ import entities.enemy.Enemy;
 import entities.tower.Tower;
 import greenfoot.World;
 import util.HasSound;
+import util.multiplayer.NetworkManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,7 +84,7 @@ public abstract class Projectile extends Entity  implements HasSound {
         updateIFrames();
         move();
 
-        if (isAtEdge() || piercing <= 0 || getX() > 1620) {
+        if (isAtEdge() || piercing <= 0 || getX() > 1620) { //1620 is the upgrade screen
             getWorld().removeObject(this);
         }
 
@@ -101,7 +102,9 @@ public abstract class Projectile extends Entity  implements HasSound {
         if (hitEnemies.containsKey(e)) return; //already hit
 
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
-        e.damage(this.damage);
+        if(NetworkManager.getInstance().isHost()) {
+            e.damage(this.damage);
+        }
         this.piercing--;
         playSound("hitSound.mp3");
     }

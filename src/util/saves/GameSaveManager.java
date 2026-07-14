@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -33,7 +32,7 @@ public class GameSaveManager extends Actor implements Saveable {
     /**
      * Hashmap that stores the TowerData
      */
-    private final HashMap<String, Supplier<Tower>> towerSpawn = new HashMap<>() {{
+    private final HashMap<String, Supplier<Tower>> towerList = new HashMap<>() {{
         put("TestTower", TestTower::new);
         put("HomingTower", HomingTower::new);
         put("Rocketlauncher", Rocketlauncher::new);
@@ -55,6 +54,10 @@ public class GameSaveManager extends Actor implements Saveable {
 
     public String getMapNr() {
         return Map;
+    }
+
+    public HashMap<String, Supplier<Tower>> getTowerList() {
+        return towerList;
     }
 
     public void setMapNr(String map) {
@@ -240,7 +243,7 @@ public class GameSaveManager extends Actor implements Saveable {
             int u2 = Integer.parseInt(data[4]);
             int u3 = Integer.parseInt(data[5]);
 
-            Supplier<Tower> towerSupplier = towerSpawn.get(towerType);
+            Supplier<Tower> towerSupplier = towerList.get(towerType);
             if (towerSupplier != null) {
                 Tower towerToPlace = towerSupplier.get();
                 towerToPlace.setUpgrade1(u1);

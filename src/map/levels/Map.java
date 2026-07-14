@@ -16,10 +16,15 @@ import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
 import ui.settings.SettingsPopup;
 import util.Cursor;
+import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.function.Supplier;
 
 /**
  * @author paths: Julian
@@ -41,6 +46,8 @@ public abstract class Map extends World {
     private int waveEndMoney;
     private int receivedWaveMoney;
 
+    private final boolean isMultiplayer;
+
 
     private int wave = 0;
     private int oldWave = 0;
@@ -52,6 +59,37 @@ public abstract class Map extends World {
 
     public Map() {
         super(1920, 1080, 1);
+
+        System.out.println("Singleplayer");
+        this.isMultiplayer = false;
+
+        this.GAMESAVEMANAGER = new GameSaveManager();
+        this.WAVEMANAGER = WaveManager.getInstance();
+        this.SPAWNDELAY = 45;
+
+        GAMESAVEMANAGER.setMapNr("map" + getMapNumber());
+        addObject(GAMESAVEMANAGER, 0, 0);
+
+        setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
+
+        this.PATHWIDTH = 120;
+        PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
+        CURSOR = new Cursor();
+
+        isPaused = false;
+        isForcedPause = false;
+
+        lastKeyPressed = Greenfoot.getKey();
+
+        addHud();
+    }
+
+    public Map(boolean isMultiplayer) {
+        super(1920, 1080, 1);
+
+        System.out.println("Multiplayer: " + isMultiplayer);
+        this.isMultiplayer = isMultiplayer;
+
         this.GAMESAVEMANAGER = new GameSaveManager();
         this.WAVEMANAGER = WaveManager.getInstance();
         this.SPAWNDELAY = 45;
@@ -259,6 +297,10 @@ public abstract class Map extends World {
     }
 
     public void act() {
+        if(isMultiplayer) {
+            readNetworkData();
+        }
+
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
         if (isPaused()) {
@@ -280,6 +322,27 @@ public abstract class Map extends World {
             oldWave = wave;
         }
     }
+
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public void setPaused(boolean paused) {
+        isPaused = paused;
+    }
+
+    public boolean isForcedPause() {
+        return isForcedPause;
+    }
+
+    public void setForcedPause(boolean paused) {
+        this.isForcedPause = paused;
+    }
+
+
+
+    // <--! PAUSING LOGIC !-->
 
     public void checkPaused() {
         if (isForcedPause) {
@@ -314,22 +377,6 @@ public abstract class Map extends World {
 
     }
 
-    public boolean isPaused() {
-        return isPaused;
-    }
-
-    public void setPaused(boolean paused) {
-        isPaused = paused;
-    }
-
-    public boolean isForcedPause() {
-        return isForcedPause;
-    }
-
-    public void setForcedPause(boolean paused) {
-        this.isForcedPause = paused;
-    }
-
 
     public void pauseObjects() {
         List<MainClass> objs = getObjects(MainClass.class);
@@ -347,6 +394,77 @@ public abstract class Map extends World {
         setPaused(false);
         pauseObjects();
     }
+
+    // <--! MULTIPLAYER !-->
+
+    public boolean isMultiplayer() {
+        return isMultiplayer;
+    }
+
+    public void readNetworkData() {
+        ConcurrentLinkedQueue<String> queue = NetworkManager.getInstance().getInboundQueue();
+
+        while(!queue.isEmpty()) {
+            String msg = queue.poll();
+            processCommand(msg);
+        }
+    }
+
+    public void processCommand(String command) {
+        if(command == null || command.trim().isEmpty()) {
+            return;
+        }
+
+        System.out.println("Porcessing incoming command: " + command);
+
+        String[] tokens = command.split(",");
+        String action = tokens[0]; // Format: <Command>, x,y,z, whatever //example: SPAWN:<Tower>, "x", "y"
+
+        if(action.startsWith("SPAWN:")) {
+            String towerType = action.substring(6); //so the "SPAWN:" is stripped
+            int x = Integer.parseInt(tokens[1]);
+            int y = Integer.parseInt(tokens[2]);
+
+            spawnTowerFromNetwork(towerType, x, y);
+        } else if (action.equals("DAMAGE_ENEMY")) {
+            String enemyId = tokens[1];
+            int damage = Integer.parseInt(tokens[2]);
+
+            damageEnemyFromNetwork(enemyId, damage);
+        }
+    }
+
+    public void spawnTowerFromNetwork(String towerType, int x, int y) {
+        HashMap<String, Supplier<Tower>> possibleTowers = GAMESAVEMANAGER.getTowerList();
+
+        Supplier<Tower> towerSupplier = possibleTowers.get(towerType);
+        if (towerSupplier != null) {
+            Tower towerToPlace = towerSupplier.get();
+
+            //no need to upgrade bc spawned towers are always 0 0 0
+            towerToPlace.setPlacing(false);
+            addObject(towerToPlace, x, y);
+
+        } else if(!Objects.equals(towerType, "Helicopter")){
+            throw new RuntimeException(towerType + " could not be spawned. Please add to HashMap (if you created a new tower) or contact @Mati (you still do that)");
+        }
+
+    }
+
+    public void damageEnemyFromNetwork(String enemyId, int damage) {
+        for (Enemy e: getObjects(Enemy.class)) {
+            if(e.getUniqueId().equals(enemyId)) {
+                e.damage(damage);
+                break;
+            }
+        }
+    }
+
+    public void updateCoins(int coins) {
+
+    }
+
+
 
 }
 

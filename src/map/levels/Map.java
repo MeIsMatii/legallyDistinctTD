@@ -10,12 +10,12 @@ import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import map.levels.util.Path;
+import map.levels.util.WaveManager;
 import map.menu.PauseMenu;
 import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
 import ui.settings.SettingsPopup;
 import util.Cursor;
-import util.WaveManager;
 import util.saves.GameSaveManager;
 
 import java.util.ArrayList;
@@ -31,13 +31,12 @@ public abstract class Map extends World {
     private final int PATHWIDTH;
     private final GameSaveManager GAMESAVEMANAGER;
     private final WaveManager WAVEMANAGER;
+    private final int SPAWNDELAY;
+    private final List<Enemy> aliveEnemies = new ArrayList<>();
     private UpgradeMenu UPGRADEMENU;
     private boolean isUpgradeMenuVisible;
     private int[] SPAWNLOCATION;
-    private final int SPAWNDELAY;
-
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
-    private final List<Enemy> aliveEnemies = new ArrayList<>();
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
     private int receivedWaveMoney;

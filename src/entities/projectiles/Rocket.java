@@ -17,10 +17,6 @@ public class Rocket extends Projectile implements HasSound {
         setImage("rocket.png");
     }
 
-    @Override
-    void move() {
-        move(getSpeed());
-    }
 
 
     public void onHit(Entity hitter) {

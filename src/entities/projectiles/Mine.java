@@ -26,11 +26,11 @@ public class Mine extends Projectile implements HasSound {
         this.explosionTime = 45;
     }
 
-    void move() {
+    public void move() {
         if(!isMoving) {
             return;
         }
-        move(getSpeed());
+        move((int) Math.round(getSpeed()));
     }
 
     public void onHit(Entity hitter) {

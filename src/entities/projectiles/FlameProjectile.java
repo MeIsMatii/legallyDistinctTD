@@ -11,9 +11,5 @@ public class FlameProjectile extends Projectile {
         setImage(img);
     }
 
-    void move() {
-        move(getSpeed());
-    }
-
 }
 

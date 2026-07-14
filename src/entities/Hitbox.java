@@ -46,15 +46,22 @@ public class Hitbox extends MainClass {
         this.heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
 
         // w, h*2 bc my offset is in each direction
-
-        GreenfootImage img = new GreenfootImage(widthInCells, heightInCells);
-
-        img.setColor(Color.RED);
-        img.drawRect(0, 0, (widthInCells) - 1, (heightInCells) - 1);
-
-        setImage(img);
+        setImage(drawHitbox(widthInCells, heightInCells, Color.RED, false));
 
         updateAppearance(isHittingSomething);
+    }
+
+    public GreenfootImage drawHitbox(int w, int h, Color color, boolean fill) {
+        GreenfootImage img = new GreenfootImage(w, h);
+        img.setColor(color);
+        if(fill) {
+            img.fillRect(0, 0, w - 1, h - 1);
+            img.setColor(Color.BLACK);
+        }
+        img.drawRect(0, 0, w - 1, h - 1);
+
+
+        return img;
     }
 
     public void setFollowing(boolean state) {
@@ -91,6 +98,7 @@ public class Hitbox extends MainClass {
      */
     public void followPlayer() {
         setLocation(OWNER.getX(), OWNER.getY());
+        setRotation(OWNER.getRotation());
     }
 
     /**
@@ -174,16 +182,11 @@ public class Hitbox extends MainClass {
         GreenfootImage img = getImage();
         img.clear();
         if (isHittingSomething) {
-            img.setColor(new Color(255, 0, 0, 150)); // red, semi transparent
+            setImage(drawHitbox(img.getWidth(), img.getHeight(), new Color(255, 0, 0, 150), true)); // red, semi transparent
         } else {
-            img.setColor(new Color(0, 255, 0, 150)); // green, semi transparent
+            setImage(drawHitbox(img.getWidth(), img.getHeight(), new Color(0, 255, 0, 150), true)); // green, semi transparent
         }
-
-        // fill area, draw border
-        img.fillRect(0, 0, img.getWidth() - 1, img.getHeight() - 1);
-        img.setColor(Color.BLACK);
-        img.drawRect(0, 0, img.getWidth() - 1, img.getHeight() - 1);
-        setImage(img);
+        //setImage(drawHitbox(img.getWidth(), img.getHeight(), Color.BLACK, false)); //black outline
     }
 
     /**

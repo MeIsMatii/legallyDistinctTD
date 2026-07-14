@@ -89,6 +89,9 @@ public abstract class Map extends World {
 
         System.out.println("Multiplayer: " + isMultiplayer);
         this.isMultiplayer = isMultiplayer;
+        if(isMultiplayer && NetworkManager.getInstance().isHost()) {
+            NetworkManager.getInstance().sendData("MAP:" + getMapNumber());
+        }
 
         this.GAMESAVEMANAGER = new GameSaveManager();
         this.WAVEMANAGER = WaveManager.getInstance();

@@ -33,11 +33,11 @@ public class HomingProjectile extends Projectile {
             if (!enemyList.isEmpty()) {
                 this.targetedEnemy = enemyList.get(0);
             } else {
-                move(getSpeed());
+                move((int) Math.round(getSpeed()));
             }
         }
         if (targetedEnemy.getWorld() == null) {
-            move(getSpeed());
+            move((int) Math.round(getSpeed()));
             return;
         }
 
@@ -49,6 +49,6 @@ public class HomingProjectile extends Projectile {
         setTargetY(e.getY());
 
         target();
-        move(getSpeed());
+        move((int) Math.round(getSpeed()));
     }
 }

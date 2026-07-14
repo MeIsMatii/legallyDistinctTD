@@ -23,6 +23,23 @@ public class UpgradePath extends Actor implements Clickable {
     protected void addedToWorld(World world) {
         updateText(3);
         getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, 3), getX(), getY());
+
+
+        switch(path) {
+            case 1:
+                getWorld().showText(tower.getUpgrade1Prices()[0] + "$", getX(), getY() - 65);
+                break;
+            case 2:
+                getWorld().showText(tower.getUpgrade2Prices()[0] + "$", getX(), getY() - 65);
+                break;
+            case 3:
+                getWorld().showText(tower.getUpgrade3Prices()[0] + "$", getX(), getY() - 65);
+                break;
+            default:
+                System.out.println("upgrade path must be 0<x<4");
+                return;
+
+        }
     }
 
     @Override
@@ -70,11 +87,10 @@ public class UpgradePath extends Actor implements Clickable {
                 return;
         }
 
-        if (upgradeLevel >= maxPath) {
-            return;
-        }
+
 
         int price = upgrades[upgradeLevel];
+
         if (player1.getCoins() < price) {
             return;
         }
@@ -90,9 +106,15 @@ public class UpgradePath extends Actor implements Clickable {
             maxPath = 1;
         }
 
+        if(upgradeLevel +1 >= maxPath) {
+            getWorld().showText("", getX(), getY() - 65);
+        } else {
+            getWorld().showText(price + "$", getX(), getY() - 65);
+        }
+
         if (upgradeLevel < maxPath) {
             player1.setCoins(player1.getCoins() - price);
-            System.out.println(price);
+            //System.out.println(price);
 
             switch (this.path) {
                 case 1: tower.upgrade1(); break;
@@ -165,6 +187,8 @@ public class UpgradePath extends Actor implements Clickable {
             }
             getWorld().removeObject(upgradedesctoremove);
             getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(),getY());
+
+            getWorld().showText("", getX(), getY() - 65); //you dont need price when you are finished
         }
 
         getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
@@ -181,6 +205,7 @@ public class UpgradePath extends Actor implements Clickable {
         getWorld().removeObject(upgradedesctoremove);
 
         getWorld().showText("", getX(), getY() + 65); //to delete the text
+        getWorld().showText("", getX(), getY() - 65);
 
         getWorld().removeObject(this);
 

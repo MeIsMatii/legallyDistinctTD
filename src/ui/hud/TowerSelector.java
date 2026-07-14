@@ -29,8 +29,17 @@ public class TowerSelector extends MainClass implements Clickable {
         }
         Map map = (Map) getWorld();
         if (map.getPLAYER().getCoins() >= towerToSpawn.getPRICE()) {
-            if (isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing()) {
+            if ((isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing())) {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
+
+                if(getIntersectingObjects(Tower.class).get(0).getClass() == towerToSpawn.getClass()) { //so you cannot exchange a tower with another one of the same class. instead its just sold
+                    for (Tower tower : towerList) {
+                        map.removeObject(tower);
+                        map.getPLAYER().setCoins(map.getPLAYER().getCoins() + tower.getPRICE());
+                    }
+                    return;
+                }
+
                 for (Tower tower : towerList) {
                     map.removeObject(tower);
                     map.getPLAYER().setCoins(map.getPLAYER().getCoins() + tower.getPRICE());

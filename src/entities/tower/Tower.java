@@ -31,9 +31,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private double range;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
-    private final int[] upgrade1Prices = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrade2Prices = new int[]{500, 500, 500, 500, 500};
-    private final int[] upgrade3Prices = new int[]{500, 500, 500, 500, 500};
+    private int[] upgrade1Prices = new int[3];
+    private int[] upgrade2Prices = new int[3];
+    private int[] upgrade3Prices = new int[3];
     private String[] upgradeDescription1 = new String[3];
     private String[] upgradeDescription2 = new String[3];
     private String[] upgradeDescription3 = new String[3];
@@ -80,6 +80,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setImage("towers/" + getTowerName() + "/" + getTowerName() + "_idle.png");
 
         defineDescriptions();
+        setPrices();
+
+        System.out.println(getUpgrade3Prices()[1]);
     }
 
     protected boolean canPlace() {
@@ -201,6 +204,18 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgrade3Prices;
     }
 
+    public void setUpgrade1Prices(int[] upgrade1Prices) {
+        this.upgrade1Prices = upgrade1Prices;
+    }
+
+    public void setUpgrade2Prices(int[] upgrade2Prices) {
+        this.upgrade2Prices = upgrade2Prices;
+    }
+
+    public void setUpgrade3Prices(int[] upgrade3Prices) {
+        this.upgrade3Prices = upgrade3Prices;
+    }
+
     public String getUpgradeDescription1() {
         return upgradeDescription1[getUpgrade1()];
     }
@@ -265,6 +280,36 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             });
     }
 
+
+
+    /**
+     * <!-- IMPORTANT --!>
+     * IMPORTANT, NEEDS TO BE DONE:<br>
+     */
+    public void setPrices() {
+        setUpgrade1Prices(
+            new int[]{
+                1,
+                2,
+                3,
+            }
+        );
+        setUpgrade2Prices(
+            new int[]{
+                1,
+                2,
+                3,
+            }
+        );
+        setUpgrade3Prices(
+            new int[]{
+                1,
+                2,
+                3,
+            }
+        );
+    }
+
     public void setShootingDelayCounter(int count) {
         shootingDelayCounter = count;
     }
@@ -279,7 +324,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public void act() {
         if (isPaused()) return;
-        System.out.println(range);
 
         checkClick();
         if (isPlacing) {
@@ -327,7 +371,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      */
     public void onClick() {
 
-        if (isPlacing && canPlace) {
+        if ((isPlacing && canPlace) || getX() > 1620) {
             if (!(getX() > 1620)) {
                 place();
             } else if (getWorld().getObjectsAt(getX(), getY(), TowerSelector.class).isEmpty()) {

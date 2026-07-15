@@ -51,7 +51,7 @@ public class Sniper extends Tower{
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "Sniper";
     }
 

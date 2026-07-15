@@ -49,7 +49,7 @@ public class HelicopterPad extends Tower {
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "HelicopterPad";
     }
 

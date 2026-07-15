@@ -58,7 +58,7 @@ public class HomingTower extends Tower {
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "HomingTower";
     }
 

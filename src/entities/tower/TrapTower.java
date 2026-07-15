@@ -63,7 +63,7 @@ public class TrapTower extends Tower implements Clickable {
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "TrapTower";
     }
 

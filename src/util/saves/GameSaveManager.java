@@ -200,7 +200,7 @@ public class GameSaveManager extends Actor implements Saveable {
                 gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + tower.getPrice());
                 continue;
             }
-            data.append(tower.getTowerName()).append(",")
+            data.append(tower.getName()).append(",")
                 .append(tower.getX()).append(",")
                 .append(tower.getY()).append(",")
                 .append(tower.getUpgrade1()).append(",")

@@ -29,6 +29,8 @@ public abstract class Enemy extends Entity {
         initialLives = lives;
     }
 
+    public abstract String getName();
+
     public String getUniqueId() {
         return uniqueId;
     }
@@ -61,8 +63,11 @@ public abstract class Enemy extends Entity {
             this.nextY = path.getNextPathY();
             if (nextX == 0 && nextY == 0) {
                 GameMap gameMap = (GameMap) getWorld();
-                if (gameMap.isMultiplayer()) {
+                if (gameMap.isMultiplayer() && NetworkManager.getInstance().isHost()) {
                     gameMap.getPlayer().damage(getInitialLives());
+
+                    String msg = "DAMAGE_PLAYER" + "," + getInitialLives();
+                    NetworkManager.getInstance().sendData(msg);
                 }
                 gameMap.removeObject(this);
             }

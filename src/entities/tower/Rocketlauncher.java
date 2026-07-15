@@ -53,7 +53,7 @@ public class Rocketlauncher extends Tower{
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "Rocketlauncher";
     }
 

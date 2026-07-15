@@ -17,7 +17,7 @@ public class TestTower extends Tower {
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "TestTower";
     }
 

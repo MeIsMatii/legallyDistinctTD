@@ -78,7 +78,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.projectileSpeed = projectileSpeed;
         this.projectilePiercing = projectilePiercing;
 
-        setImage("towers/" + getTowerName() + "/" + getTowerName() + "_idle.png");
+        setImage("towers/" + getName() + "/" + getName() + "_idle.png");
 
         defineDescriptions();
         setPrices();
@@ -418,8 +418,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         rangeDisplay.setRangeVisibility(false, null);
         playSound("Place.mp3");
 
-        if (getWorldOfType(GameMap.class).isMultiplayer()) {
-            String msg = "SPAWN" + "," + getTowerName() + "," + getX() + "," + getY();
+        if (getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
+            String msg = "SPAWN" + "," + getName() + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
     }
@@ -518,7 +518,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return targetedEnemy;
     }
 
-    public abstract String getTowerName();
+    public abstract String getName();
 
     public String getSpriteName() {
         return spriteName;
@@ -597,20 +597,20 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
         switch (path) {
             case 1:
-                setSpriteName(getTowerName() + "_upgrade1");
-                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade1());
+                setSpriteName(getName() + "_upgrade1");
+                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade1());
                 generateFrameList();
                 break;
 
             case 2:
-                setSpriteName(getTowerName() + "_upgrade2");
-                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade2());
+                setSpriteName(getName() + "_upgrade2");
+                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade2());
                 generateFrameList();
                 break;
 
             case 3:
-                setSpriteName(getTowerName() + "_upgrade3");
-                setSpritePath("towers/" + getTowerName() + "/upgrades/upgrade" + path + "/" + getUpgrade3());
+                setSpriteName(getName() + "_upgrade3");
+                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade3());
                 generateFrameList();
                 break;
 

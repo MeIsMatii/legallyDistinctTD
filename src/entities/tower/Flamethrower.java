@@ -80,7 +80,7 @@ public class Flamethrower extends Tower{
     }
 
     @Override
-    public String getTowerName() {
+    public String getName() {
         return "Flamethrower";
     }
 

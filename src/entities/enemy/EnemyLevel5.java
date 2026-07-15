@@ -5,4 +5,8 @@ public class EnemyLevel5 extends Enemy {
         super(2, 1);
         setImage("Coin.png"); //TODO FIX @elias/art guys
     }
+    @Override
+    public String getName() {
+        return "EnemyLevel5";
+    }
 }

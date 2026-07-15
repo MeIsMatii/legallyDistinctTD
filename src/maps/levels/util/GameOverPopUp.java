@@ -6,9 +6,10 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.menu.MapSelector;
 import ui.common.BackButton;
+import ui.hud.PopupScreen;
 import ui.hud.buttons.RetryButton;
 
-public class GameOverPopUp extends Actor {
+public class GameOverPopUp extends PopupScreen {
 
     private RetryButton retryButton;
     private BackButton backButton;
@@ -29,4 +30,10 @@ public class GameOverPopUp extends Actor {
 
     }
 
+    @Override
+    public void onRemove() {
+        getWorld().removeObject(retryButton);
+        getWorld().removeObject(backButton);
+        getWorld().removeObject(this);
+    }
 }

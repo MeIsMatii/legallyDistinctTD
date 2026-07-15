@@ -405,6 +405,7 @@ public abstract class GameMap extends World {
 
     public void onContinue() {
         setPaused(false);
+        setForcedPause(false); //cant be forced if its not paused
         pauseObjects();
     }
 

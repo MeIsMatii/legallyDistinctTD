@@ -61,7 +61,7 @@ public abstract class GameMap extends World {
         this.waveManager = WaveManager.getInstance();
         this.spawnDelay = 45;
 
-        gameSaveManager.setMapNr("maps" + getMapNumber());
+        gameSaveManager.setMapNr("map" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
@@ -242,7 +242,7 @@ public abstract class GameMap extends World {
             getPlayer().setCoins(getPlayer().getCoins() + waveEndMoney);
 
             if(isMultiplayer()) {// you alr know it, host and multiplayer
-                String msg = "SET_WAVE" + "," + wave;
+                String msg = "SET_WAVE" + "," + getWave();
                 NetworkManager.getInstance().sendData(msg);
             }
 
@@ -318,7 +318,7 @@ public abstract class GameMap extends World {
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
 
-        if(!NetworkManager.getInstance().isHost() || !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
+        if(NetworkManager.getInstance().isHost() && !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
             if ((!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty())) {
                 spawnWave(getWave(), spawnDelay);
             }
@@ -363,7 +363,6 @@ public abstract class GameMap extends World {
         }
 
         if ("escape".equals(lastKeyPressed)) {
-            System.out.println("popup");
             setPaused(!isPaused());
             //System.out.printf("isPaused: %s\n", isPaused);
             pauseObjects();

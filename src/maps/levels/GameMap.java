@@ -229,14 +229,22 @@ public abstract class GameMap extends World {
      * @param spawnDelay the delay between enemies.
      */
     public void spawnWave(int wave, int spawnDelay) {
-        //should only get called when not multiplayer or is host
+        //should only get called when singleplayer or is host
         if (enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
             setWave(wave + 1);
+
+
+
             System.out.println("New Wave: " + getWave());
 
             enemiesToSpawn = waveManager.generateWave(wave);
 
             getPlayer().setCoins(getPlayer().getCoins() + waveEndMoney);
+
+            if(isMultiplayer()) {// you alr know it, host and multiplayer
+                String msg = "SET_WAVE" + "," + wave;
+                NetworkManager.getInstance().sendData(msg);
+            }
 
             waveEndMoney = 0;
             receivedWaveMoney = 0;
@@ -261,6 +269,10 @@ public abstract class GameMap extends World {
         Enemy enemy = enemiesToSpawn.get(0);
         addObject(enemy, getSpawnLocation()[0], getSpawnLocation()[1]);
         aliveEnemies.add(enemy);
+        if(isMultiplayer && NetworkManager.getInstance().isHost()) {
+            String msg = "SPAWN_ENEMY" + "," + enemy.getName();
+            NetworkManager.getInstance().sendData(msg);
+        }
         enemiesToSpawn.remove(enemy);
     }
 
@@ -283,7 +295,9 @@ public abstract class GameMap extends World {
      * restarts the wave.
      */
     public void resetWave() {
-        if(!isMultiplayer || NetworkManager.getInstance().isHost())
+        if(!NetworkManager.getInstance().isHost()) {
+            return;
+        }
 
         aliveEnemies.clear();
         enemiesToSpawn.clear();
@@ -304,7 +318,7 @@ public abstract class GameMap extends World {
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
 
-        if((!isMultiplayer || NetworkManager.getInstance().isHost() )&& !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
+        if(!NetworkManager.getInstance().isHost() || !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
             if ((!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty())) {
                 spawnWave(getWave(), spawnDelay);
             }
@@ -421,12 +435,25 @@ public abstract class GameMap extends World {
 
 
         switch (action) {
-            case "SPAWN": {
+            case "SPAWN_TOWER": {
                 String towerType = tokens[1];
-                int x = Integer.parseInt(tokens[2]);
-                int y = Integer.parseInt(tokens[3]);
-                spawnTowerFromNetwork(towerType, x, y);
+                String uniqueId = tokens[2];
+                int x = Integer.parseInt(tokens[3]);
+                int y = Integer.parseInt(tokens[4]);
+                spawnTowerFromNetwork(towerType, uniqueId, x, y);
                 break;
+            }
+            case "UPGRADE_TOWER": {
+                String uniqueId = tokens[1];
+                int path = Integer.parseInt(tokens[2]);
+                int level = Integer.parseInt(tokens[3]);
+
+                upgradeTowerFromNetwork(uniqueId,path,level);
+            }
+            case "SPAWN_ENEMY": {
+                String enemyType = tokens[1];
+                String enemyId = tokens[2];
+                spawnEnemyFromNetwork(enemyType, enemyId);
             }
             case "DAMAGE_ENEMY": {
                 String enemyId = tokens[1];
@@ -449,21 +476,18 @@ public abstract class GameMap extends World {
                 setWaveFromNetwork(wave);
                 break;
             }
-            case "SPAWN_ENEMY": {
-                String enemyType = tokens[1];
-                String enemyId = tokens[2];
-                spawnEnemyFromNetwork(enemyType, enemyId);
-            }
+
 
         }
     }
 
-    public void spawnTowerFromNetwork(String towerType, int x, int y) {
+    public void spawnTowerFromNetwork(String towerType,String uuid, int x, int y) {
         Map<String, Supplier<Tower>> possibleTowers = GameSaveManager.getTowerList();
 
         Supplier<Tower> towerSupplier = possibleTowers.get(towerType);
         if (towerSupplier != null) {
             Tower towerToPlace = towerSupplier.get();
+            towerToPlace.setUniqueId(uuid);
 
             //no need to upgrade bc spawned towers are always 0 0 0
             towerToPlace.setPlacing(false);
@@ -475,15 +499,33 @@ public abstract class GameMap extends World {
 
     }
 
+    public void upgradeTowerFromNetwork(String uuid, int upgradePath, int upgradeLevel) {
+        for(Tower t: getObjects(Tower.class)) {
+            if(t.getUniqueId().equals(uuid)) {
+                switch (upgradePath) {
+                    case 1: t.upgrade1(); break;
+                    case 2: t.upgrade2(); break;
+                    case 3: t.upgrade3(); break;
+                }
+                break;
+            }
+        }
+    }
+
     public void spawnEnemyFromNetwork(String enemyType, String enemyId) {
         Map<String, Supplier<Enemy>> possibleEnemies = WaveManager.getEnemyList();
         Supplier<Enemy> enemySupplier = possibleEnemies.get(enemyType);
+        if(enemySupplier == null) {
+            System.out.println("invalid enemy");
+            return;
+        }
         Enemy enemyToSpawn = enemySupplier.get();
 
-        if(enemyToSpawn != null) {
-            enemyToSpawn.setUniqueId(enemyId); //to sync UUID between players
-            addObject(enemyToSpawn, spawnLocation[0], spawnLocation[1]);
-        }
+        System.out.println(enemyToSpawn);
+
+        enemyToSpawn.setUniqueId(enemyId); //to sync UUID between players
+        addObject(enemyToSpawn, spawnLocation[0], spawnLocation[1]);
+
 
     }
 

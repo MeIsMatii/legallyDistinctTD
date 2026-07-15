@@ -5,7 +5,7 @@ import core.Player;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Projectile;
-import entities.tower.Tower;
+import entities.tower.*;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.World;
@@ -19,10 +19,7 @@ import util.Cursor;
 import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 
@@ -30,7 +27,7 @@ import java.util.function.Supplier;
  * @author paths: Julian
  * @author waves & gamesaves: Mati
  */
-public abstract class Map extends World {
+public abstract class GameMap extends World {
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -54,7 +51,7 @@ public abstract class Map extends World {
 
     private String lastKeyPressed;
 
-    public Map() {
+    public GameMap() {
         super(1920, 1080, 1);
 
         System.out.println("Singleplayer");
@@ -81,7 +78,7 @@ public abstract class Map extends World {
         addHud();
     }
 
-    public Map(boolean isMultiplayer) {
+    public GameMap(boolean isMultiplayer) {
         super(1920, 1080, 1);
 
         System.out.println("Multiplayer: " + isMultiplayer);
@@ -414,30 +411,46 @@ public abstract class Map extends World {
             return;
         }
 
-        System.out.println("Porcessing incoming command: " + command);
+        System.out.println("Processing incoming command: " + command);
 
         String[] tokens = command.split(",");
-        String action = tokens[0]; // Format: <Command>, x,y,z, whatever //example: SPAWN:<Tower>, "x", "y"
+        String action = tokens[0]; // Format: <Command>, x,y,z, whatever //example: SPAWN, "tower", "x", "y"
 
-        if (action.startsWith("SPAWN:")) {
-            String towerType = action.substring(6); //so the "SPAWN:" is stripped
-            int x = Integer.parseInt(tokens[1]);
-            int y = Integer.parseInt(tokens[2]);
 
-            spawnTowerFromNetwork(towerType, x, y);
-        } else if (action.equals("DAMAGE_ENEMY")) {
-            String enemyId = tokens[1];
-            int damage = Integer.parseInt(tokens[2]);
-
-            damageEnemyFromNetwork(enemyId, damage);
-        } else if (action.equals("DAMAGE_PLAYER")) {
-            int damage = Integer.parseInt(tokens[1]);
-            getPlayer().damage(damage);
+        switch (action) {
+            case "SPAWN": {
+                String towerType = tokens[1];
+                int x = Integer.parseInt(tokens[2]);
+                int y = Integer.parseInt(tokens[3]);
+                spawnTowerFromNetwork(towerType, x, y);
+                break;
+            }
+            case "DAMAGE_ENEMY": {
+                String enemyId = tokens[1];
+                int damage = Integer.parseInt(tokens[2]);
+                damageEnemyFromNetwork(enemyId, damage);
+                break;
+            }
+            case "DAMAGE_PLAYER": {
+                int damage = Integer.parseInt(tokens[1]);
+                getPlayer().damage(damage);
+                break;
+            }
+            case "SET_COINS": {
+                int coins = Integer.parseInt(tokens[1]);
+                setCoinsFromNetwork(coins);
+                break;
+            }
+            case "SPAWN_ENEMY": {
+                String enemyType = tokens[1];
+                String enemyId = tokens[2];
+                spawnEnemy(enemyType, enemyId);
+            }
         }
     }
 
     public void spawnTowerFromNetwork(String towerType, int x, int y) {
-        HashMap<String, Supplier<Tower>> possibleTowers = gameSaveManager.getTowerList();
+        Map<String, Supplier<Tower>> possibleTowers = GameSaveManager.getTowerList();
 
         Supplier<Tower> towerSupplier = possibleTowers.get(towerType);
         if (towerSupplier != null) {
@@ -465,8 +478,20 @@ public abstract class Map extends World {
     /**
      * @param coins the new value, not the difference.
      */
-    public void updateFromNetworkCoins(int coins) {
+    public void setCoinsFromNetwork(int coins) {
         player.setCoins(coins);
+    }
+
+    public void spawnEnemy(String enemyType, String enemyId) {
+        Map<String, Supplier<Enemy>> possibleEnemies = WaveManager.getEnemyList();
+        Supplier<Enemy> enemySupplier = possibleEnemies.get(enemyType);
+        Enemy enemyToSpawn = enemySupplier.get();
+
+        if(enemyToSpawn != null) {
+            enemyToSpawn.setUniqueId(enemyId); //to sync UUID between players
+            addObject(enemyToSpawn, spawnLocation[0], spawnLocation[1]);
+        }
+
     }
 
 

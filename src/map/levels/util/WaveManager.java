@@ -86,6 +86,19 @@ public class WaveManager extends MainClass {
 
         );
 
+    // ===== Enemy List for other classes to fetch ===== \\
+    private static final Map<String, Supplier<Enemy>> ENEMY_LIST = Map.of(
+        "EnemyLevel1", EnemyLevel1::new,
+        "EnemyLevel2", EnemyLevel2::new,
+        "EnemyLevel3", EnemyLevel3::new,
+        "EnemyLevel4", EnemyLevel4::new,
+        "EnemyLevel5", EnemyLevel5::new
+    );
+
+    public static Map<String, Supplier<Enemy>> getEnemyList() {
+        return ENEMY_LIST;
+    }
+
 
 
     // ===== Map Generator ===== \\

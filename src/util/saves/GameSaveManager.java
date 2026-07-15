@@ -2,13 +2,14 @@ package util.saves;
 
 import entities.tower.*;
 import greenfoot.Actor;
-import map.levels.Map;
+import map.levels.GameMap;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
@@ -24,7 +25,7 @@ public class GameSaveManager extends Actor implements Saveable {
     /**
      * Hashmap that stores the TowerData
      */
-    private final HashMap<String, Supplier<Tower>> towerList = new HashMap<>() {{
+    private final static Map<String, Supplier<Tower>> TOWER_LIST = new HashMap<>() {{
         put("TestTower", TestTower::new);
         put("HomingTower", HomingTower::new);
         put("Rocketlauncher", Rocketlauncher::new);
@@ -34,6 +35,7 @@ public class GameSaveManager extends Actor implements Saveable {
         put("Helicopter", null); //we do not want to spawn the heli, bc the pad spawns it
         put("HelicopterPad", HelicopterPad::new);
     }};
+
     // path to the save file — stored in a "saves" folder next to the project
     private String Map;
     private String savePath = "saves/savedgames/" + "testFile"; //bc it immediately creates one before i can set the wave number
@@ -61,8 +63,8 @@ public class GameSaveManager extends Actor implements Saveable {
         createSaveFile();
     }
 
-    public HashMap<String, Supplier<Tower>> getTowerList() {
-        return towerList;
+    public static Map<String, Supplier<Tower>> getTowerList() {
+        return TOWER_LIST;
     }
 
     public void createSaveFile() {
@@ -177,25 +179,25 @@ public class GameSaveManager extends Actor implements Saveable {
      * saves the current game to a savefile.
      */
     public void saveGame() {
-        Map map = (Map) getWorld();
-        set("currentWave", map.getWave() - 1); //bc the wave immediately advances bc all enemies are dead
-        set("Towers", saveTowerData(map));
-        set("coins", map.getPlayer().getCoins() - map.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
-        set("health", map.getPlayer().getHealth());
+        GameMap gameMap = (GameMap) getWorld();
+        set("currentWave", gameMap.getWave() - 1); //bc the wave immediately advances bc all enemies are dead
+        set("Towers", saveTowerData(gameMap));
+        set("coins", gameMap.getPlayer().getCoins() - gameMap.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
+        set("health", gameMap.getPlayer().getHealth());
     }
 
     /**
      * saves the Tower data.
      *
-     * @param map the map where the Towers are located.
+     * @param gameMap the map where the Towers are located.
      * @return the string to be stored inside the savefile.
      */
-    public String saveTowerData(Map map) {
-        List<Tower> towers = map.getObjects(Tower.class);
+    public String saveTowerData(GameMap gameMap) {
+        List<Tower> towers = gameMap.getObjects(Tower.class);
         StringBuilder data = new StringBuilder();
         for (Tower tower : towers) {
             if (tower.isPlacing()) { //we only wanna save placed towers
-                map.getPlayer().setCoins(map.getPlayer().getCoins() + tower.getPrice());
+                gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + tower.getPrice());
                 continue;
             }
             data.append(tower.getTowerName()).append(",")
@@ -211,13 +213,13 @@ public class GameSaveManager extends Actor implements Saveable {
     /**
      * loads a game from a savefile.
      *
-     * @param map the map for the savedata to be loaded to.
+     * @param gameMap the map for the savedata to be loaded to.
      */
-    public void loadGame(Map map) {
+    public void loadGame(GameMap gameMap) {
         System.out.println(savePath);
-        map.setWave(Integer.parseInt(get("currentWave")));
-        map.getPlayer().setCoins(Integer.parseInt(get("coins")));
-        map.getPlayer().setHealth(Integer.parseInt(get("health")));
+        gameMap.setWave(Integer.parseInt(get("currentWave")));
+        gameMap.getPlayer().setCoins(Integer.parseInt(get("coins")));
+        gameMap.getPlayer().setHealth(Integer.parseInt(get("health")));
         loadTowerData();
 
 
@@ -242,7 +244,7 @@ public class GameSaveManager extends Actor implements Saveable {
             int u2 = Integer.parseInt(data[4]);
             int u3 = Integer.parseInt(data[5]);
 
-            Supplier<Tower> towerSupplier = towerList.get(towerType);
+            Supplier<Tower> towerSupplier = TOWER_LIST.get(towerType);
             if (towerSupplier != null) {
                 Tower towerToPlace = towerSupplier.get();
                 towerToPlace.setUpgrade1(u1);

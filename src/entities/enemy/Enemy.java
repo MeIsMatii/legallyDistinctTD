@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class Enemy extends Entity {
-    private final String uniqueId; //for multiplayer
+    private String uniqueId; //for multiplayer
 
     double lives;
     double speed;
@@ -29,16 +29,12 @@ public abstract class Enemy extends Entity {
         initialLives = lives;
     }
 
-    public Enemy(double speed, int lives, String uuid) {
-        this.uniqueId = uuid;
-
-        this.speed = speed;
-        this.lives = lives;
-        initialLives = lives;
-    }
-
     public String getUniqueId() {
         return uniqueId;
+    }
+
+    public void setUniqueId(String uuid) { //to sync the enemy ids for multiplayer
+        this.uniqueId = uuid;
     }
 
     public void addedToWorld(World world) {

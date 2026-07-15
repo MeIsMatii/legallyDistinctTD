@@ -72,12 +72,10 @@ public class MapPreview extends MainClass implements Clickable {
         World world = getWorld();
         GameSaveManager gameSaveManager = new GameSaveManager();
         if (gameSaveManager.saveFileExists("maps" + getWorldNr() + ".save")) {
-            System.out.println(1);
             QuestionPopup questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
 
             world.addObject(questionPopup, 960, 540);
         } else {
-            System.out.println(2);
 
             QuestionPopup questionPopup = new QuestionPopup("Press \"no\" if you wanna start a new game\n and \"ESCAPE\" or the \"X\" if you dont", new NewSaveButton(getWorldNr()), new NewSaveButton(getWorldNr())); //TODO fix
             world.addObject(questionPopup, 960, 540);

@@ -427,7 +427,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         rangeDisplay.setRangeVisibility(false, null);
         playSound("Place.mp3");
 
-        if (getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
             String msg = "SPAWN_TOWER" + "," + uniqueId + "," + getName() + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -501,6 +501,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
         upgrade(1);
         onUpgrade(1);
+
+        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+            String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 1 + "," + getUpgrade1();
+            NetworkManager.getInstance().sendData(msg);
+        }
     }
 
     public void upgrade2() {
@@ -509,6 +514,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
         upgrade(2);
         onUpgrade(2);
+        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+            String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 2 + "," + getUpgrade2();
+            NetworkManager.getInstance().sendData(msg);
+        }
     }
 
     public void upgrade3() {
@@ -517,6 +526,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
         upgrade(3);
         onUpgrade(3);
+        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+            String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 3 + "," + getUpgrade3();
+            NetworkManager.getInstance().sendData(msg);
+        }
     }
 
     public boolean canShoot() {

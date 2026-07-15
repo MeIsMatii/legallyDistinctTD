@@ -58,7 +58,6 @@ public class Sniper extends Tower{
 
     public void upgrade(int path) {
         //TODO better upgrades
-        onUpgrade(path);
         switch (path) {
             case 1:
                 switch (getUpgrade1()) {

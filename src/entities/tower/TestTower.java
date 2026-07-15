@@ -34,7 +34,6 @@ public class TestTower extends Tower {
 
 
     public void upgrade(int path) {
-        onUpgrade(path);
         switch (path) {
             case 1:
                 switch (getUpgrade1()) {

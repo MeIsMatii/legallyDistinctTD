@@ -502,6 +502,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setUpgrade1(getUpgrade1() + 1);
         System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
         upgrade(1);
+        onUpgrade(1);
     }
 
     public void upgrade2() {
@@ -509,6 +510,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
         upgrade(2);
+        onUpgrade(2);
     }
 
     public void upgrade3() {
@@ -516,6 +518,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
         upgrade(3);
+        onUpgrade(3);
     }
 
     public boolean canShoot() {

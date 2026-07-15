@@ -3,8 +3,8 @@ package entities.enemy;
 import core.Player;
 import entities.Entity;
 import greenfoot.World;
-import map.levels.GameMap;
-import map.levels.util.Path;
+import maps.levels.GameMap;
+import maps.levels.util.Path;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;

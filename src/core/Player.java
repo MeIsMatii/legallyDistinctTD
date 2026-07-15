@@ -2,8 +2,8 @@ package core;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.levels.GameMap;
-import map.levels.util.GameOverPopUp;
+import maps.levels.GameMap;
+import maps.levels.util.GameOverPopUp;
 import ui.common.ImageDisplay;
 
 public class Player extends MainClass {

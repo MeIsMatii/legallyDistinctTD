@@ -1,4 +1,4 @@
-package map.menu;
+package maps.menu;
 
 import core.MainClass;
 import greenfoot.GreenfootImage;

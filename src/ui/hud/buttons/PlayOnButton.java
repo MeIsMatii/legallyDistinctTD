@@ -1,7 +1,7 @@
 package ui.hud.buttons;
 
-import map.levels.GameMap;
-import map.menu.PauseMenu;
+import maps.levels.GameMap;
+import maps.menu.PauseMenu;
 
 import java.util.List;
 

@@ -2,4 +2,4 @@
 
 project.charset=windows-1252
 simulation.speed=45
-world.lastInstantiated=gameMap.menu.MapSelector
+world.lastInstantiated=maps.menu.MapSelector

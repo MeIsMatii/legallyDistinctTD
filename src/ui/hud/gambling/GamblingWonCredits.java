@@ -3,7 +3,7 @@ package ui.hud.gambling;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import ui.common.BackButton;
 
 public class GamblingWonCredits extends World {

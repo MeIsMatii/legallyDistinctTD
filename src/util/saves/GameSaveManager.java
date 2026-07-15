@@ -2,7 +2,7 @@ package util.saves;
 
 import entities.tower.*;
 import greenfoot.Actor;
-import map.levels.GameMap;
+import maps.levels.GameMap;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package ui.hud.buttons;
 
-import map.levels.GameMap;
+import maps.levels.GameMap;
 import greenfoot.Greenfoot;
 
 public class RetryButton extends Button{

@@ -1,12 +1,12 @@
-package map.levels;
+package maps.levels;
 
 import core.Player;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
 
-public class GameMap7 extends GameMap {
-    public GameMap7() {
+public class GameMap9 extends GameMap {
+    public GameMap9() {
         setBackground("cell.jpg");
         addObject(new ImageDisplay("comingSoon.png", 120, 100), 6, 6);
         addObject(new Player(), 6, 6);
@@ -16,6 +16,6 @@ public class GameMap7 extends GameMap {
 
     @Override
     public int getMapNumber() {
-        return 7;
+        return 9;
     }
 }

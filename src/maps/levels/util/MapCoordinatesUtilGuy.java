@@ -1,4 +1,4 @@
-package map.levels.util;
+package maps.levels.util;
 
 import greenfoot.Actor;
 import greenfoot.Greenfoot;

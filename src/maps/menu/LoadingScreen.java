@@ -1,4 +1,4 @@
-package map.menu;
+package maps.menu;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;

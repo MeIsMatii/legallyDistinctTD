@@ -3,8 +3,8 @@ package ui.hud.buttons;
 import ui.settings.MapSettings;
 import ui.settings.SettingsPopup;
 import greenfoot.Greenfoot;
-import map.levels.GameMap;
-import map.menu.MapSelector;
+import maps.levels.GameMap;
+import maps.menu.MapSelector;
 
 public class SettingsButton extends Button{
 

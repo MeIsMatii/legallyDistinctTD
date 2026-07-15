@@ -1,12 +1,11 @@
 package entities.projectiles;
 
-import bluej.utility.filefilter.DirectoryFilter;
 import entities.Entity;
 import entities.enemy.Enemy;
 import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
-import map.levels.util.Path;
+import maps.levels.util.Path;
 import util.HasSound;
 
 import java.util.List;

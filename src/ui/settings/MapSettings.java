@@ -8,7 +8,7 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootSound;
 import greenfoot.MouseInfo;
 import greenfoot.World;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import ui.common.BackButton;
 
 

@@ -1,8 +1,8 @@
 package util.multiplayer;
 
 import greenfoot.Greenfoot;
-import map.levels.*;
-import map.menu.LoadingScreen;
+import maps.levels.*;
+import maps.menu.LoadingScreen;
 import util.saves.SaveManager;
 
 import java.io.BufferedReader;

@@ -1,9 +1,7 @@
 package ui.hud.buttons;
 
-import util.Clickable;
-import core.MainClass;
 import greenfoot.Greenfoot;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import util.saves.SaveManager;
 
 public class StartingButton extends Button{

@@ -1,10 +1,10 @@
-package map.levels.util;
+package maps.levels.util;
 
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import ui.common.BackButton;
 import ui.hud.buttons.RetryButton;
 

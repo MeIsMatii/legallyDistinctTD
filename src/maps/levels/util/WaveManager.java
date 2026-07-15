@@ -1,4 +1,4 @@
-package map.levels.util;
+package maps.levels.util;
 
 import core.MainClass;
 import entities.enemy.*;

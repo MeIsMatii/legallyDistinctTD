@@ -1,4 +1,4 @@
-package map.menu;
+package maps.menu;
 
 import greenfoot.MouseInfo;
 import util.HasSound;
@@ -8,8 +8,6 @@ import ui.common.ImageDisplay;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
 import util.saves.SaveManager;
-
-import java.util.List;
 
 public class MapSelector extends World implements HasSound {
 

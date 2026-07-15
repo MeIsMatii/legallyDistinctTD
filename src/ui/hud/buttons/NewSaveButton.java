@@ -3,8 +3,8 @@ package ui.hud.buttons;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import map.levels.*;
-import map.menu.LoadingScreen;
+import maps.levels.*;
+import maps.menu.LoadingScreen;
 import util.saves.SaveManager;
 
 public class NewSaveButton extends Button {

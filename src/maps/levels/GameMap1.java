@@ -1,6 +1,6 @@
-package map.levels;
+package maps.levels;
 
-import map.menu.PauseMenu;
+import maps.menu.PauseMenu;
 import greenfoot.GreenfootImage;
 import ui.common.BackButton;
 import ui.hud.buttons.*;

@@ -1,4 +1,4 @@
-package map.levels;
+package maps.levels;
 
 import core.MainClass;
 import core.Player;
@@ -9,9 +9,9 @@ import entities.tower.*;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.levels.util.Path;
-import map.levels.util.WaveManager;
-import map.menu.PauseMenu;
+import maps.levels.util.Path;
+import maps.levels.util.WaveManager;
+import maps.menu.PauseMenu;
 import ui.hud.TowerSelectorSpawner;
 import ui.hud.UpgradeMenu;
 import ui.settings.SettingsPopup;
@@ -61,7 +61,7 @@ public abstract class GameMap extends World {
         this.waveManager = WaveManager.getInstance();
         this.spawnDelay = 45;
 
-        gameSaveManager.setMapNr("map" + getMapNumber());
+        gameSaveManager.setMapNr("maps" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
@@ -91,7 +91,7 @@ public abstract class GameMap extends World {
         this.waveManager = WaveManager.getInstance();
         this.spawnDelay = 45;
 
-        gameSaveManager.setMapNr("map" + getMapNumber());
+        gameSaveManager.setMapNr("maps" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
@@ -229,6 +229,7 @@ public abstract class GameMap extends World {
      * @param spawnDelay the delay between enemies.
      */
     public void spawnWave(int wave, int spawnDelay) {
+        //should only get called when not multiplayer or is host
         if (enemiesToSpawn.isEmpty() && aliveEnemies.isEmpty()) { //spawns new wave
             setWave(wave + 1);
             System.out.println("New Wave: " + getWave());
@@ -282,6 +283,8 @@ public abstract class GameMap extends World {
      * restarts the wave.
      */
     public void resetWave() {
+        if(!isMultiplayer || NetworkManager.getInstance().isHost())
+
         aliveEnemies.clear();
         enemiesToSpawn.clear();
         setWave(getWave() - 1); //so the new wave is the old wave
@@ -300,14 +303,14 @@ public abstract class GameMap extends World {
 
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
-        if (isPaused()) {
-            return;
+
+        if((!isMultiplayer || NetworkManager.getInstance().isHost() )&& !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
+            if ((!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty())) {
+                spawnWave(getWave(), spawnDelay);
+            }
+            removeDeadEnemies();
+            showWave();
         }
-        if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
-            spawnWave(getWave(), spawnDelay);
-        }
-        removeDeadEnemies();
-        showWave();
     }
 
     /**

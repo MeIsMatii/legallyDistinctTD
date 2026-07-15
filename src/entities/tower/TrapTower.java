@@ -4,7 +4,7 @@ import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
-import map.levels.util.Path;
+import maps.levels.util.Path;
 import util.Clickable;
 
 import java.util.List;

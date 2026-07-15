@@ -3,7 +3,7 @@ package ui.hud.buttons;
 import core.Player;
 import entities.tower.Tower;
 import greenfoot.GreenfootImage;
-import map.levels.GameMap;
+import maps.levels.GameMap;
 import util.HasSound;
 
 public class SellButton extends Button implements HasSound {

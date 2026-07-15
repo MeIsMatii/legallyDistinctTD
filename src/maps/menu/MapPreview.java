@@ -1,4 +1,4 @@
-package map.menu;
+package maps.menu;
 
 import core.MainClass;
 import greenfoot.GreenfootImage;
@@ -9,7 +9,6 @@ import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
 import util.saves.GameSaveManager;
-import util.saves.SaveManager;
 
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
@@ -72,7 +71,7 @@ public class MapPreview extends MainClass implements Clickable {
 
         World world = getWorld();
         GameSaveManager gameSaveManager = new GameSaveManager();
-        if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
+        if (gameSaveManager.saveFileExists("maps" + getWorldNr() + ".save")) {
             System.out.println(1);
             QuestionPopup questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
 

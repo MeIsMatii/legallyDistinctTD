@@ -5,7 +5,7 @@ import entities.tower.Tower;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
-import map.levels.GameMap;
+import maps.levels.GameMap;
 import util.Clickable;
 
 import java.util.List;

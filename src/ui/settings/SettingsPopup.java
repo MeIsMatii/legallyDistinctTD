@@ -1,7 +1,7 @@
 package ui.settings;
 
 import greenfoot.*;
-import map.menu.PauseMenu;
+import maps.menu.PauseMenu;
 import ui.hud.buttons.MuteButton;
 import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;

@@ -1,7 +1,7 @@
-package map.levels;
+package maps.levels;
 
 import core.Player;
-import map.menu.MapSelector;
+import maps.menu.MapSelector;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
 

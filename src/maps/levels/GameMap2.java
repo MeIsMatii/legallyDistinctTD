@@ -1,4 +1,4 @@
-package map.levels;
+package maps.levels;
 
 import core.Player;
 import greenfoot.GreenfootImage;

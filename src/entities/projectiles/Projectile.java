@@ -4,6 +4,7 @@ import entities.Entity;
 import entities.enemy.Enemy;
 import entities.tower.Tower;
 import greenfoot.World;
+import maps.levels.GameMap;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
 
@@ -101,8 +102,12 @@ public abstract class Projectile extends Entity implements HasSound {
         if (hitEnemies.containsKey(e)) return; //already hit
 
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
-        if (NetworkManager.getInstance().isHost()) {
+        if (NetworkManager.getInstance().isHost()) { //host or singleplayer
             e.damage(this.damage);
+            if((getWorldOfType(GameMap.class).isMultiplayer())) {//multiplayer and is host
+                String msg = "DAMAGE_ENEMY" + "," + e.getUniqueId() + "," + damage;
+                NetworkManager.getInstance().sendData(msg);
+            }
         }
         this.piercing--;
         playSound("hitSound.mp3");

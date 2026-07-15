@@ -35,23 +35,6 @@ public class TrapTower extends Tower implements Clickable {
         return upgrades3;
     }
 
-    @Override
-    public String upgrade1() {
-        setUpgrade1(getUpgrade1() + 1);
-        return "";
-    }
-
-    @Override
-    public String upgrade2() {
-        setUpgrade2(getUpgrade2() + 1);
-        return "";
-    }
-
-    @Override
-    public String upgrade3() {
-        setUpgrade3(getUpgrade3() + 1);
-        return "";
-    }
 
     public void shoot(Enemy e) {
         e.damage(getProjectileDamage());
@@ -100,5 +83,62 @@ public class TrapTower extends Tower implements Clickable {
         }
     }
 
+    public void upgrade(int path) {
+        //TODO better upgrades
+        onUpgrade(path);
+        switch (path) {
+            case 1:
+                switch (getUpgrade1()) {
+                    case 1:
+                        setRange((getRange() * 1.1));
+                        break;
+                    case 2:
+                        setRange((getRange() * 1.3));
+                        //some kinda different behaviour
+                        break;
+                    case 3:
+                        setRange((getRange() * 1.5));
+                        //some kinda different behaviour
+                        break;
+                }
+
+                break;
+
+            case 2:
+                switch (getUpgrade2()) {
+                    case 1:
+                        setProjectilePiercing(getProjectilePiercing() * 1.5);
+
+                        break;
+                    case 2:
+                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        //some kinda different behaviour
+                        break;
+                    case 3:
+                        setProjectilePiercing(getProjectilePiercing() * 3);
+                        //some kinda different behaviour
+                        break;
+                }
+                break;
+
+            case 3:
+                switch (getUpgrade3()) {
+                    case 1:
+                        setProjectileSpeed(getProjectileSpeed() * 1.5);
+                        break;
+                    case 2:
+                        setProjectileSpeed(getProjectileSpeed() * 2);
+                        //some kinda different behaviour
+                        break;
+                    case 3:
+                        setProjectileSpeed(getProjectileSpeed() * 3);
+                        //some kinda different behaviour
+                        break;
+                }
+                break;
+            default:
+                System.out.println("Given Path must be between 1 & 3");
+        }
+    }
 
 }

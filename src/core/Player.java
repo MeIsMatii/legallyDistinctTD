@@ -5,6 +5,7 @@ import greenfoot.World;
 import maps.levels.GameMap;
 import maps.levels.util.GameOverPopUp;
 import ui.common.ImageDisplay;
+import util.multiplayer.NetworkManager;
 
 public class Player extends MainClass {
 
@@ -36,6 +37,11 @@ public class Player extends MainClass {
 
     public void setCoins(int coins) {
         this.coins = coins;
+
+        if(getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
+            String msg = "SET_COINS" + "," + getCoins();
+            NetworkManager.getInstance().sendData(msg);
+        }
     }
 
     public int getHealth() {
@@ -44,6 +50,10 @@ public class Player extends MainClass {
 
     public void setHealth(int health) {
         this.health = health;
+
+
+        String msg = "SET_HEALTH" + "," + getHealth();
+        NetworkManager.getInstance().sendData(msg);
     }
 
     public void act() {

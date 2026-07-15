@@ -63,11 +63,13 @@ public abstract class Enemy extends Entity {
             this.nextY = path.getNextPathY();
             if (nextX == 0 && nextY == 0) {
                 GameMap gameMap = (GameMap) getWorld();
-                if (gameMap.isMultiplayer() && NetworkManager.getInstance().isHost()) {
+                if (NetworkManager.getInstance().isHost()) { // host or singleplayer
                     gameMap.getPlayer().damage(getInitialLives());
 
-                    String msg = "DAMAGE_PLAYER" + "," + getInitialLives();
-                    NetworkManager.getInstance().sendData(msg);
+                    if(gameMap.isMultiplayer()) { //host and is multiplayer
+                        String msg = "DAMAGE_PLAYER" + "," + getInitialLives();
+                        NetworkManager.getInstance().sendData(msg);
+                    }
                 }
                 gameMap.removeObject(this);
             }
@@ -89,6 +91,10 @@ public abstract class Enemy extends Entity {
             Player player1 = player.get(0);
             if (NetworkManager.getInstance().isHost()) {
                 player1.setCoins(player1.getCoins() + getInitialLives());
+                if(getWorldOfType(GameMap.class).isMultiplayer()) {// you alr know it, host and multiplayer
+                    String msg = "DAMAGE_PLAYER" + "," + damage;
+                    NetworkManager.getInstance().sendData(msg);
+                }
             }
             getWorld().removeObject(this);
         }

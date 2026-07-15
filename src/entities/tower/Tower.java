@@ -18,6 +18,7 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author mati
@@ -26,6 +27,7 @@ import java.util.List;
 
 public abstract class Tower extends Entity implements Clickable, Animations, HasSound {
     private final int price;
+    private String uniqueId; //for multiplayer
 
     private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
@@ -62,6 +64,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.rangeDisplay = new RangeDisplay(this, range, isPlacing);
         this.price = price;
+        this.uniqueId = UUID.randomUUID().toString();
 
         this.isPlacing = isPlacing;
         this.canPlace = true;
@@ -84,6 +87,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setPrices();
 
         System.out.println(getUpgrade3Prices()[1]);
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uuid) { //to sync the enemy ids for multiplayer
+        this.uniqueId = uuid;
     }
 
     protected boolean canPlace() {
@@ -419,7 +430,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         playSound("Place.mp3");
 
         if (getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
-            String msg = "SPAWN" + "," + getName() + "," + getX() + "," + getY();
+            String msg = "SPAWN" + "," + uniqueId + "," + getName() + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
     }
@@ -486,11 +497,26 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         targetedEnemy = enemy;
     }
 
-    public abstract String upgrade1(); // wouldn't it be good if we could make it give back multiple things(string + int) --Elias //why? --mathilo
+    public void upgrade1() {
+        int oldLevel = getUpgrade1();
+        setUpgrade1(getUpgrade1() + 1);
+        System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
+        upgrade(1);
+    }
 
-    public abstract String upgrade2();
+    public void upgrade2() {
+        int oldLevel = getUpgrade2();
+        setUpgrade2(getUpgrade2() + 1);
+        System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
+        upgrade(2);
+    }
 
-    public abstract String upgrade3();
+    public void upgrade3() {
+        int oldLevel = getUpgrade3();
+        setUpgrade3(getUpgrade3() + 1);
+        System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
+        upgrade(3);
+    }
 
     public boolean canShoot() {
         return shootingDelayCounter >= shootingDelay;
@@ -618,5 +644,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
                 System.out.println("Given Path must be between 1 & 3");
         }
     }
+
+    abstract void upgrade(int path);
     ///</UPGRADES>
 }

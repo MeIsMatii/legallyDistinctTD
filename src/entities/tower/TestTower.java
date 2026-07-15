@@ -33,29 +33,6 @@ public class TestTower extends Tower {
     }
 
 
-    public String upgrade1() {
-        setUpgrade1(getUpgrade1() + 1);
-        System.out.println("test upgrade 1" + " " + getUpgrade1());
-        upgrade(1);
-        return "test1";
-
-    }
-
-    public String upgrade2() {
-        setUpgrade2(getUpgrade2() + 1);
-        System.out.println("test upgrade 2" + " " + getUpgrade2());
-        upgrade(2);
-        return "test2";
-    }
-
-    public String upgrade3() {
-        setUpgrade3(getUpgrade3() + 1);
-        System.out.println("test upgrade 3" + " " + getUpgrade3());
-        upgrade(3);
-        return "test3";
-    }
-
-
     public void upgrade(int path) {
         onUpgrade(path);
         switch (path) {

@@ -441,11 +441,17 @@ public abstract class GameMap extends World {
                 setCoinsFromNetwork(coins);
                 break;
             }
+            case "SET_WAVE": {
+                int wave = Integer.parseInt(tokens[1]);
+                setWaveFromNetwork(wave);
+                break;
+            }
             case "SPAWN_ENEMY": {
                 String enemyType = tokens[1];
                 String enemyId = tokens[2];
-                spawnEnemy(enemyType, enemyId);
+                spawnEnemyFromNetwork(enemyType, enemyId);
             }
+
         }
     }
 
@@ -466,6 +472,19 @@ public abstract class GameMap extends World {
 
     }
 
+    public void spawnEnemyFromNetwork(String enemyType, String enemyId) {
+        Map<String, Supplier<Enemy>> possibleEnemies = WaveManager.getEnemyList();
+        Supplier<Enemy> enemySupplier = possibleEnemies.get(enemyType);
+        Enemy enemyToSpawn = enemySupplier.get();
+
+        if(enemyToSpawn != null) {
+            enemyToSpawn.setUniqueId(enemyId); //to sync UUID between players
+            addObject(enemyToSpawn, spawnLocation[0], spawnLocation[1]);
+        }
+
+    }
+
+
     public void damageEnemyFromNetwork(String enemyId, int damage) {
         for (Enemy e : getObjects(Enemy.class)) {
             if (e.getUniqueId().equals(enemyId)) {
@@ -482,17 +501,10 @@ public abstract class GameMap extends World {
         player.setCoins(coins);
     }
 
-    public void spawnEnemy(String enemyType, String enemyId) {
-        Map<String, Supplier<Enemy>> possibleEnemies = WaveManager.getEnemyList();
-        Supplier<Enemy> enemySupplier = possibleEnemies.get(enemyType);
-        Enemy enemyToSpawn = enemySupplier.get();
-
-        if(enemyToSpawn != null) {
-            enemyToSpawn.setUniqueId(enemyId); //to sync UUID between players
-            addObject(enemyToSpawn, spawnLocation[0], spawnLocation[1]);
-        }
-
+    public void setWaveFromNetwork(int wave) {
+        this.wave = wave; //func not needed but now its uniform
     }
+
 
 
 }

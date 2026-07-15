@@ -430,7 +430,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         playSound("Place.mp3");
 
         if (getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
-            String msg = "SPAWN" + "," + uniqueId + "," + getName() + "," + getX() + "," + getY();
+            String msg = "SPAWN_TOWER" + "," + uniqueId + "," + getName() + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
     }

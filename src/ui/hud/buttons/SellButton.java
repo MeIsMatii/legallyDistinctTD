@@ -3,7 +3,7 @@ package ui.hud.buttons;
 import core.Player;
 import entities.tower.Tower;
 import greenfoot.GreenfootImage;
-import map.levels.Map;
+import map.levels.GameMap;
 import util.HasSound;
 
 public class SellButton extends Button implements HasSound {
@@ -24,6 +24,6 @@ public class SellButton extends Button implements HasSound {
         getWorld().removeObject(tower);
         playSound("sellSound.mp3");
         player.setCoins(player.getCoins() + tower.getPrice() / 2);
-        getWorldOfType(Map.class).setUpgradeMenuVisibility(false, tower);
+        getWorldOfType(GameMap.class).setUpgradeMenuVisibility(false, tower);
     }
 }

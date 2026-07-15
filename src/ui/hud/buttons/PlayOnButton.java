@@ -1,9 +1,6 @@
 package ui.hud.buttons;
 
-import map.levels.Map;
-import util.Clickable;
-import core.MainClass;
-import core.Player;
+import map.levels.GameMap;
 import map.menu.PauseMenu;
 
 import java.util.List;
@@ -18,7 +15,7 @@ public class PlayOnButton extends Button{
     @Override
     public void onClick() {
 
-        getWorldOfType(Map.class).onContinue();
+        getWorldOfType(GameMap.class).onContinue();
 
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
         if (!pauseMenus.isEmpty()){

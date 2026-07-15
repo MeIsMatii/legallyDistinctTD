@@ -3,7 +3,7 @@ package entities.enemy;
 import core.Player;
 import entities.Entity;
 import greenfoot.World;
-import map.levels.Map;
+import map.levels.GameMap;
 import map.levels.util.Path;
 import util.multiplayer.NetworkManager;
 
@@ -64,11 +64,11 @@ public abstract class Enemy extends Entity {
             this.nextX = path.getNextPathX();
             this.nextY = path.getNextPathY();
             if (nextX == 0 && nextY == 0) {
-                Map map = (Map) getWorld();
-                if (map.isMultiplayer()) {
-                    map.getPlayer().damage(getInitialLives());
+                GameMap gameMap = (GameMap) getWorld();
+                if (gameMap.isMultiplayer()) {
+                    gameMap.getPlayer().damage(getInitialLives());
                 }
-                map.removeObject(this);
+                gameMap.removeObject(this);
             }
         }
     }

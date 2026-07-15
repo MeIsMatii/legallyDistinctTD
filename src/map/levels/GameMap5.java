@@ -5,8 +5,8 @@ import map.menu.MapSelector;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
 
-public class Map8 extends Map {
-    public Map8() {
+public class GameMap5 extends GameMap {
+    public GameMap5() {
         setBackground("cell.jpg");
         addObject(new ImageDisplay("comingSoon.png", 120, 100), 6, 6);
         addObject(new Player(), 6, 6);
@@ -16,6 +16,6 @@ public class Map8 extends Map {
 
     @Override
     public int getMapNumber() {
-        return 8;
+        return 5;
     }
 }

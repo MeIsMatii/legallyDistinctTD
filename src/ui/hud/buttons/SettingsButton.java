@@ -2,10 +2,8 @@ package ui.hud.buttons;
 
 import ui.settings.MapSettings;
 import ui.settings.SettingsPopup;
-import util.Clickable;
-import core.MainClass;
 import greenfoot.Greenfoot;
-import map.levels.Map;
+import map.levels.GameMap;
 import map.menu.MapSelector;
 
 public class SettingsButton extends Button{
@@ -17,7 +15,7 @@ public class SettingsButton extends Button{
 
     @Override
     public void onClick() {
-        if (getWorld() instanceof Map){
+        if (getWorld() instanceof GameMap){
             getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
     } else if (getWorld() instanceof MapSelector) {
             Greenfoot.setWorld(new MapSettings());

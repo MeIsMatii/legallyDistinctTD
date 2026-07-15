@@ -1,6 +1,5 @@
 package map.levels;
 
-import entities.enemy.*;
 import map.menu.PauseMenu;
 import greenfoot.GreenfootImage;
 import ui.common.BackButton;
@@ -11,8 +10,8 @@ import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
 
 
-public class Map1 extends Map {
-    public Map1() {
+public class GameMap1 extends GameMap {
+    public GameMap1() {
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class,CloseButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP

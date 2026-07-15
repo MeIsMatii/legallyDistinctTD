@@ -1,6 +1,6 @@
 package ui.hud.buttons;
 
-import map.levels.Map;
+import map.levels.GameMap;
 import map.menu.PauseMenu;
 import util.Clickable;
 
@@ -23,7 +23,7 @@ public class WaveResetButton extends Button implements Clickable {
 
 
     public void onClick(){
-        ((Map) getWorld()).resetWave();
+        ((GameMap) getWorld()).resetWave();
 
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
         if (!pauseMenus.isEmpty()){

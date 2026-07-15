@@ -5,7 +5,7 @@ import entities.tower.Tower;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
-import map.levels.Map;
+import map.levels.GameMap;
 import util.Clickable;
 
 import java.util.List;
@@ -28,28 +28,28 @@ public class TowerSelector extends MainClass implements Clickable {
         if (isPaused()) {
             return;
         }
-        Map map = (Map) getWorld();
-        if (map.getPlayer().getCoins() >= towerToSpawn.getPrice()) {
+        GameMap gameMap = (GameMap) getWorld();
+        if (gameMap.getPlayer().getCoins() >= towerToSpawn.getPrice()) {
             if ((isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing())) {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
 
                 if (getIntersectingObjects(Tower.class).get(0).getClass() == towerToSpawn.getClass()) { //so you cannot exchange a tower with another one of the same class. instead its just sold
                     for (Tower tower : towerList) {
-                        map.removeObject(tower);
-                        map.getPlayer().setCoins(map.getPlayer().getCoins() + tower.getPrice());
+                        gameMap.removeObject(tower);
+                        gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + tower.getPrice());
                     }
                     return;
                 }
 
                 for (Tower tower : towerList) {
-                    map.removeObject(tower);
-                    map.getPlayer().setCoins(map.getPlayer().getCoins() + tower.getPrice());
+                    gameMap.removeObject(tower);
+                    gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + tower.getPrice());
                 }
 
             }
             try {
 
-                map.getPlayer().setCoins(map.getPlayer().getCoins() - towerToSpawn.getPrice());
+                gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() - towerToSpawn.getPrice());
                 MouseInfo mouseInfo = Greenfoot.getMouseInfo();
                 getWorld().addObject(towerToSpawn.getClass().getDeclaredConstructor().newInstance(), mouseInfo.getX(), mouseInfo.getY());
             } catch (Exception e) {

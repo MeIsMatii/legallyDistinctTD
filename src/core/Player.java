@@ -1,15 +1,10 @@
 package core;
 
-import entities.Entity;
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import map.levels.Map;
+import map.levels.GameMap;
 import map.levels.util.GameOverPopUp;
-import map.menu.PauseMenu;
 import ui.common.ImageDisplay;
-import ui.settings.SettingsPopup;
-
-import java.util.List;
 
 public class Player extends MainClass {
 
@@ -77,11 +72,11 @@ public class Player extends MainClass {
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
             setPaused(true);
 
-            getWorldOfType(Map.class).pauseObjects(isPaused());
-            getWorldOfType(Map.class).setForcedPause(true);
+            getWorldOfType(GameMap.class).pauseObjects(isPaused());
+            getWorldOfType(GameMap.class).setForcedPause(true);
 
-            Map map = (Map) getWorld();
-            map.getGameSaveManager().removeSaveFile();
+            GameMap gameMap = (GameMap) getWorld();
+            gameMap.getGameSaveManager().removeSaveFile();
         }
     }
 

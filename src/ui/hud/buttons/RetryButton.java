@@ -1,8 +1,6 @@
 package ui.hud.buttons;
 
-import map.levels.Map;
-import util.Clickable;
-import core.MainClass;
+import map.levels.GameMap;
 import greenfoot.Greenfoot;
 
 public class RetryButton extends Button{
@@ -15,9 +13,9 @@ public class RetryButton extends Button{
 
     public void onClick(){
         try {
-            Map map = (Map) getWorld().getClass().getDeclaredConstructor().newInstance();
-            Greenfoot.setWorld(map);
-            map.getGameSaveManager().createSaveFile();
+            GameMap gameMap = (GameMap) getWorld().getClass().getDeclaredConstructor().newInstance();
+            Greenfoot.setWorld(gameMap);
+            gameMap.getGameSaveManager().createSaveFile();
         } catch (Exception e) {
             System.out.println("error lmao");
         }

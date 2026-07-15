@@ -8,7 +8,7 @@ import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 import greenfoot.World;
-import map.levels.Map;
+import map.levels.GameMap;
 import map.levels.util.Path;
 import ui.hud.TowerSelector;
 import ui.hud.UpgradeMenu;
@@ -378,19 +378,19 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             if (!(getX() > 1620)) {
                 place();
             } else if (getWorld().getObjectsAt(getX(), getY(), TowerSelector.class).isEmpty()) {
-                Map map = (Map) getWorld();
-                map.getPlayer().setCoins(map.getPlayer().getCoins() + getPrice());
+                GameMap gameMap = (GameMap) getWorld();
+                gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + getPrice());
                 getWorld().removeObject(this);
             }
         } else if (!isPlacing) {
-            Map map = (Map) getWorld();
-            UpgradeMenu upgradeMenu = map.getUpgradeMenu();
+            GameMap gameMap = (GameMap) getWorld();
+            UpgradeMenu upgradeMenu = gameMap.getUpgradeMenu();
             if (upgradeMenu == null) {
-                map.setUpgradeMenuVisibility(true, this);
+                gameMap.setUpgradeMenuVisibility(true, this);
             } else if (upgradeMenu.getTower() != this) {
-                map.setUpgradeMenuVisibility(true, this);
+                gameMap.setUpgradeMenuVisibility(true, this);
             } else {
-                map.setUpgradeMenuVisibility(false, null);
+                gameMap.setUpgradeMenuVisibility(false, null);
             }
 
 
@@ -418,8 +418,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         rangeDisplay.setRangeVisibility(false, null);
         playSound("Place.mp3");
 
-        if (getWorldOfType(Map.class).isMultiplayer()) {
-            String msg = "SPAWN:Archer," + getX() + "," + getY();
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
+            String msg = "SPAWN" + "," + getTowerName() + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
     }
@@ -482,11 +482,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if (enemy == null) {
             return;
         }
-        //turnTowards(enemy.getX(), enemy.getY());
+        //turnTowards(enemy.getX(), enemy.getY()); //not rotating looks better
         targetedEnemy = enemy;
     }
 
-    public abstract String upgrade1(); // wouldn't it be good if we could make it give back multiple things(string + int)
+    public abstract String upgrade1(); // wouldn't it be good if we could make it give back multiple things(string + int) --Elias //why? --mathilo
 
     public abstract String upgrade2();
 

@@ -1,49 +1,20 @@
 package map.menu;
 
-import ui.common.BackButton;
-import ui.hud.NewGamePopup;
-import ui.hud.PopupScreen;
-import ui.hud.buttons.CloseButton;
-import ui.hud.buttons.LoadSaveButton;
-import ui.hud.buttons.NewSaveButton;
-import util.Clickable;
 import core.MainClass;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
+import ui.hud.PopupScreen;
+import ui.hud.QuestionPopup;
+import ui.hud.buttons.LoadSaveButton;
+import ui.hud.buttons.NewSaveButton;
+import util.Clickable;
 import util.saves.GameSaveManager;
 import util.saves.SaveManager;
 
-public class MapPreview extends MainClass  implements Clickable{
+public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
     private int world = 0;
-
-    public int getWorldNr() {
-        return world;
-    }
-
-    public void setWorldNr(int world) {
-        this.world = world;
-    }
-
-    public boolean isClicked() {
-        return clicked;
-    }
-
-    public void setClicked(boolean clicked) {
-        this.clicked = clicked;
-    }
-
     private World loadingScreen;
-
-
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
-
-    public void setLoadingScreen(World loadingScreen) {
-        this.loadingScreen = loadingScreen;
-    }
-
 
     public MapPreview(int worldNumber) {
         setWorldNr(worldNumber);
@@ -62,6 +33,30 @@ public class MapPreview extends MainClass  implements Clickable{
         setImage(img); // This ensures the actor's hitbox matches the 500x300 size exactly
     }
 
+    public int getWorldNr() {
+        return world;
+    }
+
+    public void setWorldNr(int world) {
+        this.world = world;
+    }
+
+    public boolean isClicked() {
+        return clicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
+    }
+
+    public World getLoadingScreen() {
+        return loadingScreen;
+    }
+
+    public void setLoadingScreen(World loadingScreen) {
+        this.loadingScreen = loadingScreen;
+    }
+
     @Override
     public void act() {
         checkClick();
@@ -69,25 +64,24 @@ public class MapPreview extends MainClass  implements Clickable{
 
 
     public void onClick() {
-        if(!getWorld().getObjects(PopupScreen.class).isEmpty()) {
+        if (!getWorld().getObjects(PopupScreen.class).isEmpty()) {
             System.out.println(getWorld().getObjects(PopupScreen.class));
             return;
         }
-        SaveManager saveManager = SaveManager.getInstance();
         setClicked(!isClicked());
 
         World world = getWorld();
         GameSaveManager gameSaveManager = new GameSaveManager();
-        if(gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
+        if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
             System.out.println(1);
-            NewGamePopup newGamePopup = new NewGamePopup("Do you want to continue your previous game?", getWorldNr(), new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
+            QuestionPopup questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
 
-            world.addObject(newGamePopup, 960, 540);
+            world.addObject(questionPopup, 960, 540);
         } else {
             System.out.println(2);
 
-            NewGamePopup newGamePopup = new NewGamePopup("Press \"no\" if you wanna start a new game\n and \"ESCAPE\" or the \"X\" if you dont", getWorldNr(), new NewSaveButton(getWorldNr()), new NewSaveButton(getWorldNr())); //TODO fix
-            world.addObject(newGamePopup, 960, 540);
+            QuestionPopup questionPopup = new QuestionPopup("Press \"no\" if you wanna start a new game\n and \"ESCAPE\" or the \"X\" if you dont", new NewSaveButton(getWorldNr()), new NewSaveButton(getWorldNr())); //TODO fix
+            world.addObject(questionPopup, 960, 540);
         }
 
 

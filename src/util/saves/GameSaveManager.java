@@ -21,14 +21,6 @@ import java.util.function.Supplier;
  */
 public class GameSaveManager extends Actor implements Saveable {
 
-    // path to the save file — stored in a "saves" folder next to the project
-    private String Map;
-    private String SAVE_PATH = "saves/savedgames/" + "testFile"; //bc it immediately creates one before i can set the wave number
-    // only instance of this class
-    private GameSaveManager instance = null;
-    // holds all key=value data loaded from the file
-    private Properties saveData;
-
     /**
      * Hashmap that stores the TowerData
      */
@@ -42,6 +34,13 @@ public class GameSaveManager extends Actor implements Saveable {
         put("Helicopter", null); //we do not want to spawn the heli, bc the pad spawns it
         put("HelicopterPad", HelicopterPad::new);
     }};
+    // path to the save file — stored in a "saves" folder next to the project
+    private String Map;
+    private String savePath = "saves/savedgames/" + "testFile"; //bc it immediately creates one before i can set the wave number
+    // only instance of this class
+    private GameSaveManager instance = null;
+    // holds all key=value data loaded from the file
+    private Properties saveData;
 
     /**
      * Private constructor — use getInstance() instead.
@@ -49,32 +48,32 @@ public class GameSaveManager extends Actor implements Saveable {
     public GameSaveManager() {
         setImage("invisible.png");
         createSaveFile();
-        saveData = loadSave(SAVE_PATH);
+        saveData = loadSave(savePath);
     }
 
     public String getMapNr() {
         return Map;
     }
 
+    public void setMapNr(String map) {
+        Map = map;
+        savePath = "saves/savedgames/" + Map + ".save";
+        createSaveFile();
+    }
+
     public HashMap<String, Supplier<Tower>> getTowerList() {
         return towerList;
     }
 
-    public void setMapNr(String map) {
-        Map = map;
-        SAVE_PATH = "saves/savedgames/" + Map + ".save";
-        createSaveFile();
-    }
-
     public void createSaveFile() {
         try {
-            File file = new File(SAVE_PATH);
-            file.getParentFile().mkdirs();
+            File file = new File(savePath);
+            file.getParentFile().mkdirs(); //idk what this does @colin
             boolean isNewFile = file.createNewFile(); // true only if it didn't exist before
-            System.out.println("created: " + SAVE_PATH);
+            System.out.println("created: " + savePath);
 
             if (isNewFile) {
-                Path path = Paths.get(SAVE_PATH);
+                Path path = Paths.get(savePath);
                 // Files.writeString(path, "");
             }
         } catch (IOException e) {
@@ -91,7 +90,7 @@ public class GameSaveManager extends Actor implements Saveable {
 
     /// rereads the svae file call if something changed
     public void reload() {
-        saveData = loadSave(SAVE_PATH); // reload from disk
+        saveData = loadSave(savePath); // reload from disk
     }
 
 
@@ -107,7 +106,7 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void setLastRound(int RoundNumber) {
         saveData.setProperty("lastRound", String.valueOf(RoundNumber));
-        saveValue(SAVE_PATH, "lastRound", RoundNumber);
+        saveValue(savePath, "lastRound", RoundNumber);
     }
 
     public int getCoins() {
@@ -119,7 +118,7 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void setCoins(int Coins) {
         saveData.setProperty("Coins", String.valueOf(Coins));
-        saveValue(SAVE_PATH, "Coins", Coins);
+        saveValue(savePath, "Coins", Coins);
     }
 
     /**
@@ -132,7 +131,7 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void set(String key, Object value) {
         saveData.setProperty(key, String.valueOf(value)); // update in memory
-        saveValue(SAVE_PATH, key, value);                 // write to disk
+        saveValue(savePath, key, value);                 // write to disk
     }
 
     /**
@@ -181,8 +180,8 @@ public class GameSaveManager extends Actor implements Saveable {
         Map map = (Map) getWorld();
         set("currentWave", map.getWave() - 1); //bc the wave immediately advances bc all enemies are dead
         set("Towers", saveTowerData(map));
-        set("coins", map.getPLAYER().getCoins() - map.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
-        set("health", map.getPLAYER().getHealth());
+        set("coins", map.getPlayer().getCoins() - map.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
+        set("health", map.getPlayer().getHealth());
     }
 
     /**
@@ -196,7 +195,7 @@ public class GameSaveManager extends Actor implements Saveable {
         StringBuilder data = new StringBuilder();
         for (Tower tower : towers) {
             if (tower.isPlacing()) { //we only wanna save placed towers
-                map.getPLAYER().setCoins(map.getPLAYER().getCoins() + tower.getPRICE());
+                map.getPlayer().setCoins(map.getPlayer().getCoins() + tower.getPrice());
                 continue;
             }
             data.append(tower.getTowerName()).append(",")
@@ -215,10 +214,10 @@ public class GameSaveManager extends Actor implements Saveable {
      * @param map the map for the savedata to be loaded to.
      */
     public void loadGame(Map map) {
-        System.out.println(SAVE_PATH);
+        System.out.println(savePath);
         map.setWave(Integer.parseInt(get("currentWave")));
-        map.getPLAYER().setCoins(Integer.parseInt(get("coins")));
-        map.getPLAYER().setHealth(Integer.parseInt(get("health")));
+        map.getPlayer().setCoins(Integer.parseInt(get("coins")));
+        map.getPlayer().setHealth(Integer.parseInt(get("health")));
         loadTowerData();
 
 
@@ -253,7 +252,7 @@ public class GameSaveManager extends Actor implements Saveable {
                 towerToPlace.setPlacing(false);
                 getWorld().addObject(towerToPlace, x, y);
 
-            } else if(!Objects.equals(towerType, "Helicopter")){
+            } else if (!Objects.equals(towerType, "Helicopter")) {
                 throw new RuntimeException(towerType + " could not be spawned. Please add to HashMap (if you created a new tower) or contact @Mati (you still do that)");
             }
         }
@@ -274,9 +273,9 @@ public class GameSaveManager extends Actor implements Saveable {
      * deletes a saveFile
      */
     public void removeSaveFile() {
-        File file = new File(SAVE_PATH);
+        File file = new File(savePath);
         if (file.delete()) {
-            System.out.println("Successfully deleted " + SAVE_PATH);
+            System.out.println("Successfully deleted " + savePath);
         }
     }
 }

@@ -1,6 +1,12 @@
 package util;
 
-public class Tuple<A,B> {
+/**
+ * unused, may delete later.
+ *
+ * @param <A> class a.
+ * @param <B> class b.
+ */
+public class Tuple<A, B> {
 
     private final A first;
     private final B second;

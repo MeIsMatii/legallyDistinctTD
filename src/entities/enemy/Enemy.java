@@ -2,7 +2,6 @@ package entities.enemy;
 
 import core.Player;
 import entities.Entity;
-import entities.Hitbox;
 import greenfoot.World;
 import map.levels.Map;
 import map.levels.util.Path;
@@ -29,8 +28,9 @@ public abstract class Enemy extends Entity {
         this.lives = lives;
         initialLives = lives;
     }
-    public Enemy(double speed, int lives, String UUID) {
-        this.uniqueId = UUID;
+
+    public Enemy(double speed, int lives, String uuid) {
+        this.uniqueId = uuid;
 
         this.speed = speed;
         this.lives = lives;
@@ -51,7 +51,7 @@ public abstract class Enemy extends Entity {
     }
 
     public void act() {
-        if(isPaused()) return;
+        if (isPaused()) return;
 
         findPath();
         moveTo(nextX, nextY);
@@ -65,8 +65,8 @@ public abstract class Enemy extends Entity {
             this.nextY = path.getNextPathY();
             if (nextX == 0 && nextY == 0) {
                 Map map = (Map) getWorld();
-                if(map.isMultiplayer()) {
-                    map.getPLAYER().damage(getInitialLives());
+                if (map.isMultiplayer()) {
+                    map.getPlayer().damage(getInitialLives());
                 }
                 map.removeObject(this);
             }
@@ -86,7 +86,7 @@ public abstract class Enemy extends Entity {
         if (lives <= 0) {
             List<Player> player = getWorld().getObjects(Player.class);
             Player player1 = player.get(0);
-            if( NetworkManager.getInstance().isHost()) {
+            if (NetworkManager.getInstance().isHost()) {
                 player1.setCoins(player1.getCoins() + getInitialLives());
             }
             getWorld().removeObject(this);

@@ -25,12 +25,12 @@ import java.util.List;
  */
 
 public abstract class Tower extends Entity implements Clickable, Animations, HasSound {
-    private final int PRICE;
+    private final int price;
 
-    private final RangeDisplay RANGEDISPLAY;
-    private double range;
+    private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
+    private double range;
     private int[] upgrade1Prices = new int[3];
     private int[] upgrade2Prices = new int[3];
     private int[] upgrade3Prices = new int[3];
@@ -56,11 +56,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private boolean isAnimating = false;
     private String spritePath;
     private String spriteName;
+
     /// </ANIMATIONS>
 
     public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
-        this.RANGEDISPLAY = new RangeDisplay(this, range, isPlacing);
-        this.PRICE = price;
+        this.rangeDisplay = new RangeDisplay(this, range, isPlacing);
+        this.price = price;
 
         this.isPlacing = isPlacing;
         this.canPlace = true;
@@ -100,8 +101,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         int hitboxHeight = getImage().getHeight() / CELLSIZE - 30;
         spawnHitbox(hitboxWidth, hitboxHeight);
 
-        world.addObject(RANGEDISPLAY, getX(), getY());
-        RANGEDISPLAY.setRangeVisibility(false, null);
+        world.addObject(rangeDisplay, getX(), getY());
+        rangeDisplay.setRangeVisibility(false, null);
     }
 
     public Color getColorRed() {
@@ -112,12 +113,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return colorGrey;
     }
 
-    public RangeDisplay getRANGEDISPLAY() {
-        return RANGEDISPLAY;
+    public RangeDisplay getRangeDisplay() {
+        return rangeDisplay;
     }
 
-    public int getPRICE() {
-        return PRICE;
+    public int getPrice() {
+        return price;
     }
 
     public double getRange() {
@@ -196,20 +197,20 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgrade1Prices;
     }
 
-    public int[] getUpgrade2Prices() {
-        return upgrade2Prices;
-    }
-
-    public int[] getUpgrade3Prices() {
-        return upgrade3Prices;
-    }
-
     public void setUpgrade1Prices(int[] upgrade1Prices) {
         this.upgrade1Prices = upgrade1Prices;
     }
 
+    public int[] getUpgrade2Prices() {
+        return upgrade2Prices;
+    }
+
     public void setUpgrade2Prices(int[] upgrade2Prices) {
         this.upgrade2Prices = upgrade2Prices;
+    }
+
+    public int[] getUpgrade3Prices() {
+        return upgrade3Prices;
     }
 
     public void setUpgrade3Prices(int[] upgrade3Prices) {
@@ -220,8 +221,26 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgradeDescription1[getUpgrade1()];
     }
 
+    /**
+     * Put the descriptions for all path 1 upgrades here.
+     *
+     * @param desc the description
+     */
+    public void setUpgradeDescription1(String[] desc) {
+        this.upgradeDescription1 = desc;
+    }
+
     public String getUpgradeDescription2() {
         return upgradeDescription2[getUpgrade2()];
+    }
+
+    /**
+     * Put the descriptions for all path 2 upgrades here.
+     *
+     * @param desc the description
+     */
+    public void setUpgradeDescription2(String[] desc) {
+        this.upgradeDescription2 = desc;
     }
 
     public String getUpgradeDescription3() {
@@ -229,23 +248,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     /**
-     * Put the descriptions for all path 1 upgrades here.
-     * @param desc the description
-     */
-    public void setUpgradeDescription1(String[] desc) {
-        this.upgradeDescription1 = desc;
-    }
-
-    /**
-     * Put the descriptions for all path 2 upgrades here.
-     * @param desc the description
-     */
-    public void setUpgradeDescription2(String[] desc) {
-        this.upgradeDescription2 = desc;
-    }
-
-    /**
      * Put the descriptions for all path 3 upgrades here.
+     *
      * @param desc the description
      */
     public void setUpgradeDescription3(String[] desc) {
@@ -279,7 +283,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
                 "define descriptions using defineDescriptions()",
             });
     }
-
 
 
     /**
@@ -328,10 +331,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         checkClick();
         if (isPlacing) {
             followCursor();
-            RANGEDISPLAY.setFollowing(true);
+            rangeDisplay.setFollowing(true);
         } else {
             shootingDelayCounter++;
-            RANGEDISPLAY.setFollowing(false);
+            rangeDisplay.setFollowing(false);
             setTargetedEnemy();
             targetEnemy(targetedEnemy);
 
@@ -376,7 +379,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
                 place();
             } else if (getWorld().getObjectsAt(getX(), getY(), TowerSelector.class).isEmpty()) {
                 Map map = (Map) getWorld();
-                map.getPLAYER().setCoins(map.getPLAYER().getCoins() + getPRICE());
+                map.getPlayer().setCoins(map.getPlayer().getCoins() + getPrice());
                 getWorld().removeObject(this);
             }
         } else if (!isPlacing) {
@@ -396,14 +399,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void onHover() {
-        if (!RANGEDISPLAY.isRangeVisible) {
-            RANGEDISPLAY.setRangeVisibility(true, colorGrey);
+        if (!rangeDisplay.isRangeVisible) {
+            rangeDisplay.setRangeVisibility(true, colorGrey);
         }
     }
 
     public void onUnhover() {
-        if (RANGEDISPLAY.isRangeVisible) {
-            RANGEDISPLAY.setRangeVisibility(false, null);
+        if (rangeDisplay.isRangeVisible) {
+            rangeDisplay.setRangeVisibility(false, null);
         }
     }
 
@@ -412,7 +415,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      */
     public void place() {
         isPlacing = false;
-        RANGEDISPLAY.setRangeVisibility(false, null);
+        rangeDisplay.setRangeVisibility(false, null);
         playSound("Place.mp3");
 
         if (getWorldOfType(Map.class).isMultiplayer()) {
@@ -451,12 +454,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
         canPlace = true;
         if (getX() > 1620) {
-            RANGEDISPLAY.setRangeVisibility(false, null);
+            rangeDisplay.setRangeVisibility(false, null);
             return;
         }
         if (canPlace) {
             for (Hitbox hitbox : hitboxes) {
-                if ((hitbox.getOWNER() instanceof Path || hitbox.getOWNER() instanceof Tower) && hitbox.getOWNER() != this) {
+                if ((hitbox.getOwner() instanceof Path || hitbox.getOwner() instanceof Tower) && hitbox.getOwner() != this) {
                     canPlace = false;
                     break;
                 }
@@ -464,9 +467,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
 
         if (canPlace) {
-            RANGEDISPLAY.setRangeVisibility(true, colorGrey);
+            rangeDisplay.setRangeVisibility(true, colorGrey);
         } else {
-            RANGEDISPLAY.setRangeVisibility(true, colorRed);
+            rangeDisplay.setRangeVisibility(true, colorRed);
         }
     }
 
@@ -503,7 +506,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void setTargetedEnemy() {
-        List<Enemy> enemiesInRange = getObjectsInRange((int)Math.round(range), Enemy.class);
+        List<Enemy> enemiesInRange = getObjectsInRange((int) Math.round(range), Enemy.class);
         if (enemiesInRange.isEmpty()) {
             this.targetedEnemy = null;
             return;
@@ -586,7 +589,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
 
         //so a lesser upgrade does not override the animation
-        if(true) { //bc we dont have animations yet
+        if (true) { //bc we dont have animations yet
             return;
         }
         if (maxPath != path) {

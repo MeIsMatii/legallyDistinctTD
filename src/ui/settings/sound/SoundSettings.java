@@ -8,26 +8,26 @@ import java.util.List;
 
 public class SoundSettings {
 
-    private static final int MinimumVolume = 0;
-    private static final int MaximumVolume = 100;
-    private static final int DefaultStartingVolume = SaveManager.getInstance().getVolume();
-    private static boolean Muted = false;
+    private static final int MINIMUM_VOLUME = 0;
+    private static final int MAXIMUM_VOLUME = 100;
+    private static final int DEFAULT_STARTING_VOLUME = SaveManager.getInstance().getVolume();
+    private static boolean muted = false;
 
     private static SoundSettings singleInstance = null;
 
-    private final List<GreenfootSound> registeredSounds = new ArrayList<GreenfootSound>();
+    private final List<GreenfootSound> registeredSounds = new ArrayList<>();
     private int masterVolume;
 
-    public static boolean isMuted() {
-        return Muted;
-    }
-
     private SoundSettings() {
-        if (SaveManager.getInstance().isSoundOn()){
-            this.masterVolume = DefaultStartingVolume;
-        }else {
+        if (SaveManager.getInstance().isSoundOn()) {
+            this.masterVolume = DEFAULT_STARTING_VOLUME;
+        } else {
             muteALLSound();
         }
+    }
+
+    public static boolean isMuted() {
+        return muted;
     }
 
     public static SoundSettings getInstance() {
@@ -42,26 +42,27 @@ public class SoundSettings {
     }
 
     public void setMasterVolume(int newVolume) {
-        if (Muted){
+        if (muted) {
             unMuteAllSounds();
             SaveManager.getInstance().setSoundOn(true);
         }
-        this.masterVolume = Math.max(MinimumVolume, Math.min(MaximumVolume, newVolume));
+        this.masterVolume = Math.max(MINIMUM_VOLUME, Math.min(MAXIMUM_VOLUME, newVolume));
         SaveManager.getInstance().setVolume(this.masterVolume);
     }
 
 
-    public void muteALLSound(){
-        this.masterVolume = MinimumVolume;
+    public void muteALLSound() {
+        this.masterVolume = MINIMUM_VOLUME;
         syncGlobalVolume();
-        Muted = true;
+        muted = true;
         SaveManager.getInstance().setSoundOn(false);
     }
-    public void unMuteAllSounds(){
+
+    public void unMuteAllSounds() {
         SaveManager.getInstance().reload();
         this.masterVolume = SaveManager.getInstance().getVolume();
         syncGlobalVolume();
-        Muted = false;
+        muted = false;
         SaveManager.getInstance().setSoundOn(true);
     }
 
@@ -70,7 +71,7 @@ public class SoundSettings {
         if (soundToRegister == null) {
             return;
         }
-        if (!saveManager.isSoundOn()){
+        if (!saveManager.isSoundOn()) {
             return;
         }
         // schaut das nicht zwei mal der gleiche sound in der liste ist

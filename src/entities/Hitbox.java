@@ -16,10 +16,9 @@ import java.util.List;
  */
 
 public class Hitbox extends MainClass {
-    private final Entity OWNER; // CAPS, because it's a constant
+    private final Entity owner;
     private final int width;
     private final int height;
-    private int widthInCells, heightInCells;
     private boolean wasHovering;
 
     private boolean isHittingSomething;
@@ -27,7 +26,7 @@ public class Hitbox extends MainClass {
     private boolean isFollowing;
 
     public Hitbox(int width, int height, Entity owner) {
-        this.OWNER = owner;
+        this.owner = owner;
         this.width = width;
         this.height = height;
         this.isFollowing = true;
@@ -37,13 +36,13 @@ public class Hitbox extends MainClass {
         this.isDebug = false;
     }
 
-    public Entity getOWNER() {
-        return this.OWNER;
+    public Entity getOwner() {
+        return this.owner;
     }
 
     public void addedToWorld(World world) {
-        this.widthInCells = this.width * world.getCellSize() + world.getCellSize() / 2;
-        this.heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
+        int widthInCells = this.width * world.getCellSize() + world.getCellSize() / 2; //this was from when we were not using 1px cells   //ima just leave it here --Mathilo
+        int heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
 
         // w, h*2 bc my offset is in each direction
         setImage(drawHitbox(widthInCells, heightInCells, Color.RED, false));
@@ -54,7 +53,7 @@ public class Hitbox extends MainClass {
     public GreenfootImage drawHitbox(int w, int h, Color color, boolean fill) {
         GreenfootImage img = new GreenfootImage(w, h);
         img.setColor(color);
-        if(fill) {
+        if (fill) {
             img.fillRect(0, 0, w - 1, h - 1);
             img.setColor(Color.BLACK);
         }
@@ -70,12 +69,12 @@ public class Hitbox extends MainClass {
 
     public void act() {
         // rm hitbox when player is gone
-        if (OWNER == null || OWNER.getWorld() == null) {
+        if (owner == null || owner.getWorld() == null) {
             getWorld().removeObject(this);
             return;
         }
 
-        if ((getX() != OWNER.getX() || getY() != OWNER.getY()) && isFollowing) {
+        if ((getX() != owner.getX() || getY() != owner.getY()) && isFollowing) {
             followPlayer();
         }
 
@@ -88,7 +87,7 @@ public class Hitbox extends MainClass {
         boolean isHovering = checkHover();
         //System.out.println(isHovering + ", " + wasHovering);
         if (isHovering != wasHovering) {
-            OWNER.checkHover(isHovering);
+            owner.checkHover(isHovering);
             wasHovering = isHovering;
         }
     }
@@ -97,8 +96,8 @@ public class Hitbox extends MainClass {
      * centers itself to the player.
      */
     public void followPlayer() {
-        setLocation(OWNER.getX(), OWNER.getY());
-        setRotation(OWNER.getRotation());
+        setLocation(owner.getX(), owner.getY());
+        setRotation(owner.getRotation());
     }
 
     /**
@@ -113,7 +112,7 @@ public class Hitbox extends MainClass {
                 foundTarget = true;
                 /// DEBUG
                 ///System.out.printf("Owner: %s, Hitter: %s\n", OWNER, actor);
-                OWNER.onHit(hitbox.getOWNER());
+                owner.onHit(hitbox.getOwner());
 
             }
         }
@@ -132,7 +131,7 @@ public class Hitbox extends MainClass {
         List<Entity> entities = new ArrayList<>();
 
         for (Hitbox hitbox : overlapping) {
-            entities.add(hitbox.getOWNER());
+            entities.add(hitbox.getOwner());
         }
         return entities;
     }
@@ -147,8 +146,8 @@ public class Hitbox extends MainClass {
 
         List<T> entities = new ArrayList<>();
         for (Hitbox hitbox : overlapping) {
-            if (targetedClass.isInstance(hitbox.getOWNER())) {
-                entities.add(targetedClass.cast(hitbox.getOWNER()));
+            if (targetedClass.isInstance(hitbox.getOwner())) {
+                entities.add(targetedClass.cast(hitbox.getOwner()));
             }
         }
 

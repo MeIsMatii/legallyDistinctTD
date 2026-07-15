@@ -9,30 +9,30 @@ import ui.hud.buttons.SellButton;
 import java.util.List;
 
 public class UpgradeMenu extends Actor {
-    private final Tower TOWER;
-    private UpgradePath path1;
-    private UpgradePath path2;
-    private UpgradePath path3;
+    private final Tower tower;
+    private final UpgradePath path1;
+    private final UpgradePath path2;
+    private final UpgradePath path3;
     private SellButton sellButton;
     private Player player;
 
     public UpgradeMenu(Tower tower) {
         setImage("upgradeMenu.png");
         getImage().scale(1620, 216);
-        this.TOWER = tower;
-        path1 = new UpgradePath(TOWER, 1);
-        path2 = new UpgradePath(TOWER, 2);
-        path3 = new UpgradePath(TOWER, 3);
+        this.tower = tower;
+        path1 = new UpgradePath(this.tower, 1);
+        path2 = new UpgradePath(this.tower, 2);
+        path3 = new UpgradePath(this.tower, 3);
     }
 
     @Override
     protected void addedToWorld(World world) {
         List<Player> pl = world.getObjects(Player.class);
-        if (!pl.isEmpty()){
+        if (!pl.isEmpty()) {
             player = pl.get(0);
         }
 
-        sellButton = new SellButton(TOWER, player);
+        sellButton = new SellButton(tower, player);
 
         world.addObject(path1, getX() - 500, getY());
         world.addObject(path2, getX(), getY());
@@ -41,10 +41,10 @@ public class UpgradeMenu extends Actor {
     }
 
     public Tower getTower() {
-        return this.TOWER;
+        return this.tower;
     }
 
-    public void delete(){
+    public void delete() {
         World world = getWorld();
         if (world != null) {
             path1.onRemove();

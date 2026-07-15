@@ -1,14 +1,12 @@
 package ui.common;
 
-import ui.hud.buttons.Button;
-import util.Clickable;
-import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import ui.hud.buttons.Button;
 
 public class BackButton extends Button {
 
-    private World lastWorld;
+    private final World lastWorld;
 
     public BackButton(World destination) {
         setImage("BackButton.png");

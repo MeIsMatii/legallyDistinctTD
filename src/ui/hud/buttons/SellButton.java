@@ -4,17 +4,16 @@ import core.Player;
 import entities.tower.Tower;
 import greenfoot.GreenfootImage;
 import map.levels.Map;
-import ui.hud.UpgradePath;
 import util.HasSound;
 
 public class SellButton extends Button implements HasSound {
 
-    private Tower TOWER;
-    private Player PLAYER;
+    private final Tower tower;
+    private final Player player;
 
     public SellButton(Tower tower, Player player) {
-        this.TOWER = tower;
-        this.PLAYER = player;
+        this.tower = tower;
+        this.player = player;
         GreenfootImage img = new GreenfootImage("sellButton.png");
         img.scale(100, 50);
         setImage(img);
@@ -22,9 +21,9 @@ public class SellButton extends Button implements HasSound {
 
     @Override
     public void onClick() {
-        getWorld().removeObject(TOWER);
+        getWorld().removeObject(tower);
         playSound("sellSound.mp3");
-        PLAYER.setCoins(PLAYER.getCoins()+TOWER.getPRICE()/2);
-        getWorldOfType(Map.class).setUpgradeMenuVisibility(false,TOWER);
+        player.setCoins(player.getCoins() + tower.getPrice() / 2);
+        getWorldOfType(Map.class).setUpgradeMenuVisibility(false, tower);
     }
 }

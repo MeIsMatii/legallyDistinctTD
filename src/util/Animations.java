@@ -10,7 +10,7 @@ import java.util.List;
 public interface Animations {
 
     /**
-     * TODO SET IT (e.g. for TestTower: return "testTower2_2"<br>
+     * TO DO SET IT (e.g. for TestTower: return "testTower2_2"<br>
      *
      * <h1> IMPORTANT </h1>
      * if the file is inside a folder (e.g. entities/towers/testTower/testTower_idle.png)<br>
@@ -29,9 +29,10 @@ public interface Animations {
      * entities/towers/testTower/testTower_idle.png<br>
      * entities/towers/testTower/testTower_0.png<br>
      * entities/towers/testTower/testTower_1.png<br><br>
-     *
+     * <p>
      * Then:<br>
      * return "testTower")
+     *
      * @return the SpriteName
      */
     String getSpriteName();
@@ -56,12 +57,11 @@ public interface Animations {
     void isAnimating(boolean isAnimating);
 
 
-
-     default void addedToWorld(World w) {
+    default void addedToWorld(World w) {
         generateFrameList();
     }
 
-     default void generateFrameList() {
+    default void generateFrameList() {
         String folderPath = "images/" + getSpritePath();
         System.out.printf("generating frameList for %s\n", folderPath);
 
@@ -82,10 +82,10 @@ public interface Animations {
         self.setImage("images/" + getSpritePath() + "/" + getSpriteName() + "_idle.png");
     }
 
-     default void startAnimation() {
-         if(getFrameList() == null || getFrameList().size() <= 0 ) {
-             return;
-         }
+    default void startAnimation() {
+        if (getFrameList() == null || getFrameList().size() <= 0) {
+            return;
+        }
 
         Actor self = (Actor) this;
         isAnimating(true);

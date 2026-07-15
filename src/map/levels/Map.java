@@ -31,24 +31,21 @@ import java.util.function.Supplier;
  * @author waves & gamesaves: Mati
  */
 public abstract class Map extends World {
-    private final Player PLAYER;
-    private final Cursor CURSOR;
-    private final int PATHWIDTH;
-    private final GameSaveManager GAMESAVEMANAGER;
-    private final WaveManager WAVEMANAGER;
-    private final int SPAWNDELAY;
+    private final Player player;
+    private final Cursor cursor;
+    private final int pathWidth;
+    private final GameSaveManager gameSaveManager;
+    private final WaveManager waveManager;
+    private final int spawnDelay;
     private final List<Enemy> aliveEnemies = new ArrayList<>();
-    private UpgradeMenu UPGRADEMENU;
+    private final boolean isMultiplayer;
+    private UpgradeMenu upgradeMenu;
     private boolean isUpgradeMenuVisible;
-    private int[] SPAWNLOCATION;
+    private int[] spawnLocation;
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
     private int receivedWaveMoney;
-
-    private final boolean isMultiplayer;
-
-
     private int wave = 0;
     private int oldWave = 0;
 
@@ -63,18 +60,18 @@ public abstract class Map extends World {
         System.out.println("Singleplayer");
         this.isMultiplayer = false;
 
-        this.GAMESAVEMANAGER = new GameSaveManager();
-        this.WAVEMANAGER = WaveManager.getInstance();
-        this.SPAWNDELAY = 45;
+        this.gameSaveManager = new GameSaveManager();
+        this.waveManager = WaveManager.getInstance();
+        this.spawnDelay = 45;
 
-        GAMESAVEMANAGER.setMapNr("map" + getMapNumber());
-        addObject(GAMESAVEMANAGER, 0, 0);
+        gameSaveManager.setMapNr("map" + getMapNumber());
+        addObject(gameSaveManager, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
-        this.PATHWIDTH = 120;
-        PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
-        CURSOR = new Cursor();
+        this.pathWidth = 120;
+        player = new Player(100, 100); //jannis ganz alleine gemacht
+        cursor = new Cursor();
 
         isPaused = false;
         isForcedPause = false;
@@ -89,22 +86,22 @@ public abstract class Map extends World {
 
         System.out.println("Multiplayer: " + isMultiplayer);
         this.isMultiplayer = isMultiplayer;
-        if(isMultiplayer && NetworkManager.getInstance().isHost()) {
+        if (isMultiplayer && NetworkManager.getInstance().isHost()) {
             NetworkManager.getInstance().sendData("MAP:" + getMapNumber());
         }
 
-        this.GAMESAVEMANAGER = new GameSaveManager();
-        this.WAVEMANAGER = WaveManager.getInstance();
-        this.SPAWNDELAY = 45;
+        this.gameSaveManager = new GameSaveManager();
+        this.waveManager = WaveManager.getInstance();
+        this.spawnDelay = 45;
 
-        GAMESAVEMANAGER.setMapNr("map" + getMapNumber());
-        addObject(GAMESAVEMANAGER, 0, 0);
+        gameSaveManager.setMapNr("map" + getMapNumber());
+        addObject(gameSaveManager, 0, 0);
 
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
-        this.PATHWIDTH = 120;
-        PLAYER = new Player(100, 100); //jannis ganz alleine gemacht
-        CURSOR = new Cursor();
+        this.pathWidth = 120;
+        player = new Player(100, 100); //jannis ganz alleine gemacht
+        cursor = new Cursor();
 
         isPaused = false;
         isForcedPause = false;
@@ -118,10 +115,10 @@ public abstract class Map extends World {
      * adds hud elements to the screen.
      */
     public void addHud() {
-        UPGRADEMENU = null;
-        addObject(PLAYER, 0, 0);
+        upgradeMenu = null;
+        addObject(player, 0, 0);
 
-        addObject(CURSOR, 0, 0);
+        addObject(cursor, 0, 0);
 
         addObject(new TowerSelectorSpawner(), 1770, 540);
     }
@@ -136,14 +133,14 @@ public abstract class Map extends World {
         //TODO add paths and delete them @Elias
         if (isVisible) {
             int width = (getWidth() - 300) / 2;
-            if (UPGRADEMENU != null) {
-                UPGRADEMENU.delete();
+            if (upgradeMenu != null) {
+                upgradeMenu.delete();
             }
-            UPGRADEMENU = new UpgradeMenu(tower);
-            addObject(UPGRADEMENU, width, getHeight() - 216 / 2);
+            upgradeMenu = new UpgradeMenu(tower);
+            addObject(upgradeMenu, width, getHeight() - 216 / 2);
         } else if (!getObjects(UpgradeMenu.class).isEmpty()) {
-            UPGRADEMENU.delete();
-            UPGRADEMENU = null;
+            upgradeMenu.delete();
+            upgradeMenu = null;
         }
     }
 
@@ -151,7 +148,7 @@ public abstract class Map extends World {
      * @return the currently active upgrade screen or null.
      */
     public UpgradeMenu getUpgradeMenu() {
-        return this.UPGRADEMENU;
+        return this.upgradeMenu;
     }
 
     /**
@@ -164,15 +161,15 @@ public abstract class Map extends World {
     /**
      * @return the player (for lives etc).
      */
-    public Player getPLAYER() {                   //jannis
-        return PLAYER;
+    public Player getPlayer() {                   //jannis
+        return player;
     }
 
     /**
      * @return the gamesavemanager.
      */
     public GameSaveManager getGameSaveManager() {
-        return GAMESAVEMANAGER;
+        return gameSaveManager;
     }
 
     /**
@@ -186,10 +183,10 @@ public abstract class Map extends World {
      * @return the spawn location for enemies.
      */
     public int[] getSpawnLocation() {
-        if (this.SPAWNLOCATION == null) {
+        if (this.spawnLocation == null) {
             throw new RuntimeException("No spawnlocation. Please fix.");
         }
-        return this.SPAWNLOCATION;
+        return this.spawnLocation;
     }
 
     /**
@@ -198,7 +195,7 @@ public abstract class Map extends World {
      * @param pathList the list of corners.
      */
     public void addPath(int[][] pathList) {
-        this.SPAWNLOCATION = pathList[0];
+        this.spawnLocation = pathList[0];
         for (int i = 0; i < pathList.length; i++) {
             int x = pathList[i][0];
             int y = pathList[i][1];
@@ -208,10 +205,10 @@ public abstract class Map extends World {
                 int nextX = pathList[i + 1][0];
                 int nextY = pathList[i + 1][1];
 
-                addObject(new Path(nextX, nextY, PATHWIDTH), x, y);
+                addObject(new Path(nextX, nextY, pathWidth), x, y);
                 //System.out.println("meow" +x +y);
             } else {
-                addObject(new Path(0, 0, PATHWIDTH), x, y);
+                addObject(new Path(0, 0, pathWidth), x, y);
             }
 
         }
@@ -239,9 +236,9 @@ public abstract class Map extends World {
             setWave(wave + 1);
             System.out.println("New Wave: " + getWave());
 
-            enemiesToSpawn = WAVEMANAGER.generateWave(wave);
+            enemiesToSpawn = waveManager.generateWave(wave);
 
-            getPLAYER().setCoins(getPLAYER().getCoins() + waveEndMoney);
+            getPlayer().setCoins(getPlayer().getCoins() + waveEndMoney);
 
             waveEndMoney = 0;
             receivedWaveMoney = 0;
@@ -251,7 +248,7 @@ public abstract class Map extends World {
             }
             waveEndMoney *= getWave();
 
-            GAMESAVEMANAGER.saveGame(); //so when you quit it continues on the last wave
+            gameSaveManager.saveGame(); //so when you quit it continues on the last wave
         }
 
         if (spawnDelayCounter < spawnDelay) { //so they don't all spawn on 1 tick
@@ -292,7 +289,7 @@ public abstract class Map extends World {
         enemiesToSpawn.clear();
         setWave(getWave() - 1); //so the new wave is the old wave
         waveEndMoney = 0; //so it does not give money
-        getPLAYER().setCoins(getPLAYER().getCoins() - receivedWaveMoney); //so you cant dupe coins
+        getPlayer().setCoins(getPlayer().getCoins() - receivedWaveMoney); //so you cant dupe coins
 
         for (Projectile p : getObjects(Projectile.class)) {
             removeObject(p);
@@ -300,7 +297,7 @@ public abstract class Map extends World {
     }
 
     public void act() {
-        if(isMultiplayer) {
+        if (isMultiplayer) {
             readNetworkData();
         }
 
@@ -310,7 +307,7 @@ public abstract class Map extends World {
             return;
         }
         if (!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty()) {
-            spawnWave(getWave(), SPAWNDELAY);
+            spawnWave(getWave(), spawnDelay);
         }
         removeDeadEnemies();
         showWave();
@@ -342,7 +339,6 @@ public abstract class Map extends World {
     public void setForcedPause(boolean paused) {
         this.isForcedPause = paused;
     }
-
 
 
     // <--! PAUSING LOGIC !-->
@@ -407,14 +403,14 @@ public abstract class Map extends World {
     public void readNetworkData() {
         ConcurrentLinkedQueue<String> queue = NetworkManager.getInstance().getInboundQueue();
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             String msg = queue.poll();
             processCommand(msg);
         }
     }
 
     public void processCommand(String command) {
-        if(command == null || command.trim().isEmpty()) {
+        if (command == null || command.trim().isEmpty()) {
             return;
         }
 
@@ -423,7 +419,7 @@ public abstract class Map extends World {
         String[] tokens = command.split(",");
         String action = tokens[0]; // Format: <Command>, x,y,z, whatever //example: SPAWN:<Tower>, "x", "y"
 
-        if(action.startsWith("SPAWN:")) {
+        if (action.startsWith("SPAWN:")) {
             String towerType = action.substring(6); //so the "SPAWN:" is stripped
             int x = Integer.parseInt(tokens[1]);
             int y = Integer.parseInt(tokens[2]);
@@ -434,14 +430,14 @@ public abstract class Map extends World {
             int damage = Integer.parseInt(tokens[2]);
 
             damageEnemyFromNetwork(enemyId, damage);
-        } else if(action.equals("DAMAGE_PLAYER")) {
+        } else if (action.equals("DAMAGE_PLAYER")) {
             int damage = Integer.parseInt(tokens[1]);
-            getPLAYER().damage(damage);
+            getPlayer().damage(damage);
         }
     }
 
     public void spawnTowerFromNetwork(String towerType, int x, int y) {
-        HashMap<String, Supplier<Tower>> possibleTowers = GAMESAVEMANAGER.getTowerList();
+        HashMap<String, Supplier<Tower>> possibleTowers = gameSaveManager.getTowerList();
 
         Supplier<Tower> towerSupplier = possibleTowers.get(towerType);
         if (towerSupplier != null) {
@@ -451,25 +447,27 @@ public abstract class Map extends World {
             towerToPlace.setPlacing(false);
             addObject(towerToPlace, x, y);
 
-        } else if(!Objects.equals(towerType, "Helicopter")){
+        } else if (!Objects.equals(towerType, "Helicopter")) {
             throw new RuntimeException(towerType + " could not be spawned. Please add to HashMap (if you created a new tower) or contact @Mati (you still do that)");
         }
 
     }
 
     public void damageEnemyFromNetwork(String enemyId, int damage) {
-        for (Enemy e: getObjects(Enemy.class)) {
-            if(e.getUniqueId().equals(enemyId)) {
+        for (Enemy e : getObjects(Enemy.class)) {
+            if (e.getUniqueId().equals(enemyId)) {
                 e.damage(damage);
                 break;
             }
         }
     }
 
-    public void updateCoins(int coins) {
-
+    /**
+     * @param coins the new value, not the difference.
+     */
+    public void updateFromNetworkCoins(int coins) {
+        player.setCoins(coins);
     }
-
 
 
 }

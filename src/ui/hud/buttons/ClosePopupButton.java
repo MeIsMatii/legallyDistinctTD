@@ -1,13 +1,11 @@
 package ui.hud.buttons;
 
-import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import ui.hud.PopupScreen;
-import util.Clickable;
 
-public class ClosePopupButton extends Button{
-    private PopupScreen popupTarget;
+public class ClosePopupButton extends Button {
+    private final PopupScreen popupTarget;
 
     public ClosePopupButton(PopupScreen popupTarget) {
         GreenfootImage image = new GreenfootImage(30, 30);

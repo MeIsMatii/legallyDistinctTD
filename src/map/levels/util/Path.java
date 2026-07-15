@@ -7,12 +7,12 @@ import greenfoot.World;
 public class Path extends Entity {
     private final int nextPathX;
     private final int nextPathY;
-    private final int PATHWIDTH;
+    private final int pathWidth;
 
-    public Path(int nextPathX, int nextPathY, int PATHWIDTH) {
+    public Path(int nextPathX, int nextPathY, int pathWidth) {
         this.nextPathX = nextPathX;
         this.nextPathY = nextPathY;
-        this.PATHWIDTH = PATHWIDTH;
+        this.pathWidth = pathWidth;
         setImage("invisible.png");
         //Todo Real Path Size
 
@@ -34,32 +34,32 @@ public class Path extends Entity {
 
         } else if (getX() == getNextPathX()) {
             if (getY() < getNextPathY()) { //DOWN
-                hitboxHeight = getNextPathY() - getY() + (PATHWIDTH / 2);
+                hitboxHeight = getNextPathY() - getY() + (pathWidth / 2);
                 yOffset = -hitboxHeight; //this needs to be negative D: //idk why tho
 
             } else if (getY() > getNextPathY()) { //UP
-                hitboxHeight = getY() - getNextPathY() + (PATHWIDTH / 2);
+                hitboxHeight = getY() - getNextPathY() + (pathWidth / 2);
                 yOffset = hitboxHeight; //either this or 0. idfk anymore --mathilo
             }
-            hitboxWidth = PATHWIDTH;
+            hitboxWidth = pathWidth;
 
 
         } else if (getY() == getNextPathY()) {
             if (getX() < getNextPathX()) { // RIGHT
-                hitboxWidth = getNextPathX() - getX() + (PATHWIDTH / 2);
+                hitboxWidth = getNextPathX() - getX() + (pathWidth / 2);
                 xOffset = -hitboxWidth; // huh
 
             } else if (getX() > getNextPathX()) { //LEFT
-                hitboxWidth = getX() - getNextPathX() + (PATHWIDTH / 2);
+                hitboxWidth = getX() - getNextPathX() + (pathWidth / 2);
                 xOffset = hitboxWidth;
             }
-            hitboxHeight = PATHWIDTH;
+            hitboxHeight = pathWidth;
         }
         xOffset = xOffset / 2;
         yOffset = yOffset / 2;
 
 
-        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight,  this);
+        Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
         hitbox.setFollowing(false);
         getWorld().addObject(hitbox, getX() - xOffset, getY() - yOffset);
     }
@@ -82,6 +82,7 @@ public class Path extends Entity {
 
     /**
      * Validates the given path.
+     *
      * @throws RuntimeException when there is an issue with the paths.
      */
     private void checkLocations() {

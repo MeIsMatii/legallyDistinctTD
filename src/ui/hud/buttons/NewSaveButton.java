@@ -1,42 +1,35 @@
 package ui.hud.buttons;
 
-import core.MainClass;
-import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import map.levels.*;
 import map.menu.LoadingScreen;
-import util.Clickable;
 import util.saves.SaveManager;
 
-public class NewSaveButton extends Button{
-    Actor owner;
-    int worldNr;
+public class NewSaveButton extends Button {
+    private int worldNr;
     private World loadingScreen = new LoadingScreen();
 
 
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
-    public void setLoadingScreen(World loadingScreen) {
-        this.loadingScreen = loadingScreen;
-    }
-    public int getWorldNr() {
-        return worldNr;
-    }
-    public void setWorldNr(int worldNr) {
-        this.worldNr = worldNr;
-    }
-
-
-    public NewSaveButton(int Worldnr){
+    public NewSaveButton(int Worldnr) {
         GreenfootImage img = new GreenfootImage("NewSaveButton.png");
-        img.scale(100,50);
+        img.scale(100, 50);
         setImage(img);
         setWorldNr(Worldnr);
     }
 
+    public World getLoadingScreen() {
+        return loadingScreen;
+    }
+
+    public int getWorldNr() {
+        return worldNr;
+    }
+
+    public void setWorldNr(int worldNr) {
+        this.worldNr = worldNr;
+    }
 
     public void onClick() {
         LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
@@ -74,6 +67,7 @@ public class NewSaveButton extends Button{
         ls.setNextWorld(nextWorld);
 
         SaveManager.getInstance().setLastMap(getWorldNr());
+        assert nextWorld != null : "invalid map number";
         nextWorld.getGameSaveManager().saveGame();
     }
 }

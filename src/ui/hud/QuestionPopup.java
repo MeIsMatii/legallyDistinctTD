@@ -3,20 +3,19 @@ package ui.hud;
 import greenfoot.*;
 import ui.hud.buttons.Button;
 import ui.hud.buttons.ClosePopupButton;
-import ui.hud.buttons.LoadSaveButton;
-import ui.hud.buttons.NewSaveButton;
 
-public class NewGamePopup extends PopupScreen {
-    private ClosePopupButton closeButton;
-    private Button rightButton;
-    private Button leftButton;
+/**
+ * a basic popup with text, a left button and a right button.
+ */
 
-    private int worldNumber;
+public class QuestionPopup extends PopupScreen {
+    private final ClosePopupButton closeButton;
+    private final Button rightButton;
+    private final Button leftButton;
 
-    public NewGamePopup(String text, int worldNumber, Button leftButton, Button rightButton) {
+    public QuestionPopup(String text, Button leftButton, Button rightButton) {
         int width = 800;
         int height = 600;
-        this.worldNumber = worldNumber;
         GreenfootImage boxImage = new GreenfootImage(width, height);
         boxImage.setColor(new Color(139, 69, 19));
         boxImage.fill();
@@ -37,8 +36,8 @@ public class NewGamePopup extends PopupScreen {
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
         world.addObject(closeButton, buttonX, buttonY);
 
-        world.addObject(rightButton,1200,700);
-        world.addObject(leftButton,800,700);
+        world.addObject(rightButton, 1200, 700);
+        world.addObject(leftButton, 800, 700);
     }
 
     public void act() {
@@ -49,7 +48,6 @@ public class NewGamePopup extends PopupScreen {
     }
 
     public void onRemove() {
-        System.out.println("onremove");
         getWorld().removeObject(rightButton);
         getWorld().removeObject(leftButton);
         getWorld().removeObject(closeButton);

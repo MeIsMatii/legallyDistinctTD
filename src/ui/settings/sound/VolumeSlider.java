@@ -1,16 +1,16 @@
 package ui.settings.sound;
 
-import util.Clickable;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
+import util.Clickable;
 
 public class VolumeSlider extends MainClass implements Clickable {
 
-    private static final int SliderWidthPixel = 200;
-    private static final int SliderHightPixel = 30;
+    private static final int SLIDER_WIDTH_PIXEL = 200;
+    private static final int SLIDER_HEIGHT_PIXEL = 30;
 
     // Tracks whether the user started their drag on the slider specifically.
     private boolean isDraggingSlider = false;
@@ -56,16 +56,16 @@ public class VolumeSlider extends MainClass implements Clickable {
         int actorCenterY = getY() * pixelsPerCell + pixelsPerCell / 2;
         int mouseX = mouseDetails.getX() * pixelsPerCell + pixelsPerCell / 2;
         int mouseY = mouseDetails.getY() * pixelsPerCell + pixelsPerCell / 2;
-        return Math.abs(mouseX - actorCenterX) <= SliderWidthPixel / 2 && Math.abs(mouseY - actorCenterY) <= SliderHightPixel / 2;
+        return Math.abs(mouseX - actorCenterX) <= SLIDER_WIDTH_PIXEL / 2 && Math.abs(mouseY - actorCenterY) <= SLIDER_HEIGHT_PIXEL / 2;
     }
 
     private void updateVolumeFromMousePosition(MouseInfo mouseDetails) {
         int pixelsPerCell = getWorld().getCellSize();
-        int actorLeftEdgeInPixels = getX() * pixelsPerCell - SliderWidthPixel / 2;
+        int actorLeftEdgeInPixels = getX() * pixelsPerCell - SLIDER_WIDTH_PIXEL / 2;
         int mouseInPixelsX = mouseDetails.getX() * pixelsPerCell;
 
         // Mausposition zu prozent
-        double fractionAlongSlider = (double) (mouseInPixelsX - actorLeftEdgeInPixels) / SliderWidthPixel;
+        double fractionAlongSlider = (double) (mouseInPixelsX - actorLeftEdgeInPixels) / SLIDER_WIDTH_PIXEL;
         int newVolume = (int) (fractionAlongSlider * 100);
         SoundSettings.getInstance().setMasterVolume(newVolume);
         SoundSettings.getInstance().syncGlobalVolume();
@@ -73,32 +73,32 @@ public class VolumeSlider extends MainClass implements Clickable {
 
     private void redrawSlider() {
         int currentVolume = SoundSettings.getInstance().getMasterVolume();
-        int filledWidthInPixels = (int) ((currentVolume / 100.0) * SliderWidthPixel);
-        GreenfootImage sliderImage = new GreenfootImage(SliderWidthPixel + 2, SliderHightPixel + 20);
+        int filledWidthInPixels = (int) ((currentVolume / 100.0) * SLIDER_WIDTH_PIXEL);
+        GreenfootImage sliderImage = new GreenfootImage(SLIDER_WIDTH_PIXEL + 2, SLIDER_HEIGHT_PIXEL + 20);
 
         // Leerenbereich als hintergrund erstellen
         sliderImage.setColor(new Color(180, 180, 180));
-        sliderImage.fillRect(0, 0, SliderWidthPixel, SliderHightPixel);
+        sliderImage.fillRect(0, 0, SLIDER_WIDTH_PIXEL, SLIDER_HEIGHT_PIXEL);
 
         // gefüllten bereich erstellen
         sliderImage.setColor(new Color(50, 200, 80));
-        sliderImage.fillRect(0, 0, filledWidthInPixels, SliderHightPixel);
+        sliderImage.fillRect(0, 0, filledWidthInPixels, SLIDER_HEIGHT_PIXEL);
 
         // schwarze linie zum unterscheiden zwischen map und der Instanz (bitte nicht löschen)
         sliderImage.setColor(Color.BLACK);
-        sliderImage.drawRect(0, 0, SliderWidthPixel, SliderHightPixel);
+        sliderImage.drawRect(0, 0, SLIDER_WIDTH_PIXEL, SLIDER_HEIGHT_PIXEL);
 
         // schwarze linie um zu zeigen wo die volume ist
         sliderImage.setColor(Color.BLACK);
-        sliderImage.fillRect(filledWidthInPixels - 2, 0, 4, SliderHightPixel);
+        sliderImage.fillRect(filledWidthInPixels - 2, 0, 4, SLIDER_HEIGHT_PIXEL);
 
         // wert in weiß reinschreiben
         sliderImage.setColor(Color.WHITE);
-        sliderImage.drawString(currentVolume + "%", Math.max(2, filledWidthInPixels / 2 - 10), SliderHightPixel - 8);
+        sliderImage.drawString(currentVolume + "%", Math.max(2, filledWidthInPixels / 2 - 10), SLIDER_HEIGHT_PIXEL - 8);
 
         //nummer wert drunter schreiben
         sliderImage.setColor(Color.BLACK);
-        sliderImage.drawString("Volume: " + currentVolume + "%", 55, SliderHightPixel + 15);
+        sliderImage.drawString("Volume: " + currentVolume + "%", 55, SLIDER_HEIGHT_PIXEL + 15);
 
         setImage(sliderImage);
     }

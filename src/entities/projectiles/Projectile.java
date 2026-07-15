@@ -10,16 +10,15 @@ import util.multiplayer.NetworkManager;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Projectile extends Entity  implements HasSound {
-    private Tower owner;
+public abstract class Projectile extends Entity implements HasSound {
+    private final Tower owner;
     private final double damage;
     private final int iframes;
     private final double speed;
+    private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
     private double piercing;
     private int targetX;
     private int targetY;
-
-    private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
 
     public Projectile(Tower owner) {
         this.owner = owner;
@@ -102,7 +101,7 @@ public abstract class Projectile extends Entity  implements HasSound {
         if (hitEnemies.containsKey(e)) return; //already hit
 
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
-        if(NetworkManager.getInstance().isHost()) {
+        if (NetworkManager.getInstance().isHost()) {
             e.damage(this.damage);
         }
         this.piercing--;

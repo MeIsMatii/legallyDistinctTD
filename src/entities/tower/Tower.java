@@ -85,8 +85,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
         defineDescriptions();
         setPrices();
-
-        System.out.println(getUpgrade3Prices()[1]);
     }
 
     public String getUniqueId() {

@@ -332,10 +332,36 @@ public abstract class GameMap extends World {
      */
     public void showWave() {
         if (oldWave != wave) {
-            showText("Wave: " + getWave(), 1540, 40);
+            //showText("Wave: " + getWave(), 1540, 40);
+            showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
             oldWave = wave;
         }
     }
+
+    public enum Difficulty {
+        EASY,
+        MEDIUM,
+        HARD
+    }
+
+    private Difficulty difficulty = Difficulty.EASY;
+
+    public int getWinWave(){
+        switch(difficulty){
+            case EASY:
+                return 40;
+
+            case MEDIUM:
+                return 60;
+
+            case HARD:
+                return 80;
+
+            default:
+                return 40;
+        }
+    }
+
 
 
     public boolean isPaused() {

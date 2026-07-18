@@ -9,6 +9,7 @@ import entities.tower.*;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import maps.levels.util.GameOverPopUp;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
 import maps.menu.PauseMenu;
@@ -333,7 +334,17 @@ public abstract class GameMap extends World {
     public void showWave() {
         if (oldWave != wave) {
             //showText("Wave: " + getWave(), 1540, 40);
-            showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
+            if (!freeplay){
+                showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
+                if (getWave() >= getWinWave()){
+                    addObject(new GameOverPopUp(), getWidth()/2, getHeight()/2);
+                    //isForcedPause(true);            funktioniert irgendwie nicht
+                    pauseObjects(true);
+                    freeplay = true;
+                }
+            }else{
+                showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
+            }
             oldWave = wave;
         }
     }
@@ -361,6 +372,9 @@ public abstract class GameMap extends World {
                 return 40;
         }
     }
+
+    private boolean freeplay = false;
+
 
 
 

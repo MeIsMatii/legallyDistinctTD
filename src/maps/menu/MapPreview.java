@@ -71,7 +71,7 @@ public class MapPreview extends MainClass implements Clickable {
 
         World world = getWorld();
         GameSaveManager gameSaveManager = new GameSaveManager();
-        if (gameSaveManager.saveFileExists("maps" + getWorldNr() + ".save")) {
+        if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
             QuestionPopup questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
 
             world.addObject(questionPopup, 960, 540);

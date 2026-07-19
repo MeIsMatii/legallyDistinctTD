@@ -80,10 +80,8 @@ public class Player extends MainClass {
             //getWorld().showText("you lost", 400, 400);
             GameOverPopUp gameOverPopUp = new GameOverPopUp();
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
-            setPaused(true);
 
-            getWorldOfType(GameMap.class).pauseObjects(isPaused());
-            getWorldOfType(GameMap.class).setForcedPause(true);
+            getWorldOfType(GameMap.class).pauseObjects(isPaused(), true);
 
             GameMap gameMap = (GameMap) getWorld();
             gameMap.getGameSaveManager().removeSaveFile();

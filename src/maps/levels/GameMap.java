@@ -9,7 +9,7 @@ import entities.tower.*;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.World;
-import maps.levels.util.GameOverPopUp;
+import maps.levels.util.GameWonPopup;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
 import maps.menu.PauseMenu;
@@ -44,7 +44,7 @@ public abstract class GameMap extends World {
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
     private int receivedWaveMoney;
-    private int wave = 0;
+    private int wave = 39;
     private int oldWave = 0;
 
     private boolean isPaused;
@@ -334,13 +334,13 @@ public abstract class GameMap extends World {
     public void showWave() {
         if (oldWave != wave) {
             //showText("Wave: " + getWave(), 1540, 40);
-            if (!freeplay){
+            if (!isFreeplay){
                 showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
-                if (getWave() >= getWinWave()){
-                    addObject(new GameOverPopUp(), getWidth()/2, getHeight()/2);
-                    //isForcedPause(true);            funktioniert irgendwie nicht
-                    pauseObjects(true);
-                    freeplay = true;
+                if (getWave() > getWinWave()){
+                    showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
+                    addObject(new GameWonPopup(), getWidth()/2, getHeight()/2);
+                    pauseObjects(true, true);
+                    isFreeplay = true;
                 }
             }else{
                 showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
@@ -349,31 +349,30 @@ public abstract class GameMap extends World {
         }
     }
 
-    public enum Difficulty {
-        EASY,
-        MEDIUM,
-        HARD
-    }
+    enum Difficulty {
+        EASY(40),
+        MEDIUM(60),
+        HARD(80);
 
-    private Difficulty difficulty = Difficulty.EASY;
+        private final int winWave;
+        Difficulty(int winWave) {
+            this.winWave = winWave;
+        }
 
-    public int getWinWave(){
-        switch(difficulty){
-            case EASY:
-                return 40;
-
-            case MEDIUM:
-                return 60;
-
-            case HARD:
-                return 80;
-
-            default:
-                return 40;
+        public int getWinWave(){
+            return winWave;
         }
     }
 
-    private boolean freeplay = false;
+    public int getWinWave() {
+        return difficulty.getWinWave();
+    }
+
+    private final Difficulty difficulty = Difficulty.EASY;
+
+
+
+    private boolean isFreeplay = false;
 
 
 
@@ -437,8 +436,9 @@ public abstract class GameMap extends World {
         }
     }
 
-    public void pauseObjects(boolean isPaused) {
+    public void pauseObjects(boolean isPaused, boolean isForcedPause) {
         this.isPaused = isPaused;
+        this.isForcedPause = isForcedPause;
         pauseObjects();
     }
 

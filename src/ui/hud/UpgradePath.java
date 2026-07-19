@@ -88,6 +88,10 @@ public class UpgradePath extends Actor implements Clickable {
         }
 
 
+        if(upgradeLevel >= upgrades.length) {
+            System.out.println("Max upgrade reached");
+            return;
+        }
 
         int price = upgrades[upgradeLevel];
 

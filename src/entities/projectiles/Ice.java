@@ -14,25 +14,7 @@ import java.util.List;
 public class Ice extends Projectile implements HasSound {
     private final long destroyAfter = System.currentTimeMillis() + 60;
 
-    /*public double getSlow() {
-        return slow;
-    }
 
-    public void setSlow(double slow) {
-        this.slow = slow;
-    }
-
-    public double slow = 1;
-
-    public int getSlowTimer() {
-        return slowTimer;
-    }
-
-    public void setSlowTimer(int slowTimer) {
-        this.slowTimer = slowTimer;
-    }
-
-    public int slowTimer = 50; */
     public Ice(Tower owner) {
         super(owner);
         setImage("rocket.png");
@@ -48,8 +30,8 @@ public class Ice extends Projectile implements HasSound {
         if (!enemies.isEmpty()){
             for (Enemy enemy : enemies) {
                 enemy.damage(getDamage());
-                IceTower penis = (IceTower)getOwner();
-                enemy.applySlow(0.3, penis.getSlowTimer());
+                IceTower owner = (IceTower)getOwner();
+                enemy.applySlow(owner.getSlow(), owner.getSlowTimer());
 
             }
         }

@@ -12,7 +12,10 @@ public class IceTower extends Tower{
     private final int[] upgrades2 = new int[]{200,450,3000};
     private final int[] upgrades3 = new int[]{100,350,1750};
 
-    //Ice ice = new Ice(this);
+    private final String[] upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more","The deadlyist freeze","final upgrade done"};
+    private final String[] upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer", "final upgrade done"};
+    private final String[] upgradeDescription1 = new String[]{"More range", "Even more range","Very long range","final upgrade done"};
+
 
 
     public double getSlow() {
@@ -23,7 +26,7 @@ public class IceTower extends Tower{
         this.slow = slow;
     }
 
-    public double slow = 1;
+    public double slow = 0.5;
 
     public int getSlowTimer() {
         return slowTimer;
@@ -53,6 +56,19 @@ public class IceTower extends Tower{
 
     public int[] getUpgrades3() {
         return upgrades3;
+    }
+
+
+    public String getUpgradeDescription1() {
+        return upgradeDescription1[getUpgrade1()];
+    }
+
+    public String getUpgradeDescription2() {
+        return upgradeDescription2[getUpgrade2()];
+    }
+
+    public String getUpgradeDescription3() {
+        return upgradeDescription3[getUpgrade3()];
     }
 
 
@@ -94,13 +110,13 @@ public class IceTower extends Tower{
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setSlow(0);
+                        setSlow(0.3);
                         break;
                     case 2:
-                        setSlowTimer(getSlowTimer()+40);
+                        setSlow(0);
                         break;
                     case 3:
-                        setSlow(-1);
+                        setSlowTimer(getSlowTimer()+40);
                         break;
                 }
                 break;

@@ -9,15 +9,16 @@ import maps.levels.GameMap;
 import util.Clickable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class TowerSelector extends MainClass implements Clickable {
-    private final Tower towerToSpawn;
+    private final Supplier<Tower> towerToSpawn;
 
-    public TowerSelector(Tower towerToSpawn) {
-        setImage(towerToSpawn.getImage());
+    public TowerSelector(Supplier<Tower> towerToSpawn) {
+        setImage(towerToSpawn.get().getImage());
         GreenfootImage img = getImage();
         img.scale(200, 200);
-        img.drawString(String.valueOf(towerToSpawn.getPrice()), 30, 20);
+        img.drawString(String.valueOf(towerToSpawn.get().getPrice()), 30, 20);
         setImage(img);
 
         this.towerToSpawn = towerToSpawn;
@@ -29,11 +30,11 @@ public class TowerSelector extends MainClass implements Clickable {
             return;
         }
         GameMap gameMap = (GameMap) getWorld();
-        if (gameMap.getPlayer().getCoins() >= towerToSpawn.getPrice()) {
+        if (gameMap.getPlayer().getCoins() >= towerToSpawn.get().getPrice()) {
             if ((isTouching(Tower.class) && getIntersectingObjects(Tower.class).get(0).isPlacing())) {
                 List<Tower> towerList = getIntersectingObjects(Tower.class);
 
-                if (getIntersectingObjects(Tower.class).get(0).getClass() == towerToSpawn.getClass()) { //so you cannot exchange a tower with another one of the same class. instead its just sold
+                if (getIntersectingObjects(Tower.class).get(0).getClass() == towerToSpawn.get().getClass()) { //so you cannot exchange a tower with another one of the same class. instead its just sold
                     for (Tower tower : towerList) {
                         gameMap.removeObject(tower);
                         gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() + tower.getPrice());
@@ -49,9 +50,9 @@ public class TowerSelector extends MainClass implements Clickable {
             }
             try {
 
-                gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() - towerToSpawn.getPrice());
+                gameMap.getPlayer().setCoins(gameMap.getPlayer().getCoins() - towerToSpawn.get().getPrice());
                 MouseInfo mouseInfo = Greenfoot.getMouseInfo();
-                getWorld().addObject(towerToSpawn.getClass().getDeclaredConstructor().newInstance(), mouseInfo.getX(), mouseInfo.getY());
+                getWorld().addObject(towerToSpawn.get(), mouseInfo.getX(), mouseInfo.getY());
             } catch (Exception e) {
                 System.out.println("Error with onClick() at TowerInHud");
             }

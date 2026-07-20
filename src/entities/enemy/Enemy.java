@@ -90,7 +90,6 @@ public abstract class Enemy extends Entity {
 
     public void act() {
         if (isPaused()) return;
-        System.out.println(nextX + "   " + nextX);
 
         findPath();
         moveTo(nextX, nextY);

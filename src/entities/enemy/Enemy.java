@@ -16,6 +16,22 @@ public abstract class Enemy extends Entity {
     double lives;
     double speed;
 
+    double normalSpeed;                             //Freezetower
+    private int slowTimer = 0;                          //Freezetower
+
+
+
+    public double getSpeed() {                     //von Jannis hoffe darf das weil ist für freezetower
+        return speed;
+    }
+
+    public void setSpeed(double speed) {                        //Freezetower
+        this.speed = speed;
+    }
+
+
+
+
     int initialLives;
 
     int nextX;
@@ -27,6 +43,25 @@ public abstract class Enemy extends Entity {
         this.speed = speed;
         this.lives = lives;
         initialLives = lives;
+    }
+
+    public void applySlow(double slowSpeed, int duration) {                  //Freezetower
+        if (slowTimer == 0) {
+            normalSpeed = speed;
+        }
+
+        speed = slowSpeed;
+        slowTimer = duration;
+    }
+
+    public void updateSlow() {                                         //Freezetower
+        if (slowTimer > 0) {
+            slowTimer--;
+
+            if (slowTimer == 0) {
+                speed = normalSpeed;
+            }
+        }
     }
 
     public abstract String getName();
@@ -53,6 +88,7 @@ public abstract class Enemy extends Entity {
 
         findPath();
         moveTo(nextX, nextY);
+        updateSlow();              //Freezetower
     }
 
     public void findPath() {
@@ -100,9 +136,12 @@ public abstract class Enemy extends Entity {
         }
     }
 
+    private double realPosX = 0;
+    private double realPosY = 0;
+
     // move()
     public void moveTo(int targetX, int targetY) {
-        /*double dx = targetX - realPosX;
+        double dx = targetX - realPosX;
         double dy = targetY - realPosY;
 
         if (Math.abs(dx) > speed) {
@@ -115,12 +154,12 @@ public abstract class Enemy extends Entity {
         }
 
         realPosX += speed;
-        realPosY += speed;*/
+        realPosY += speed;
 
-        turnTowards(nextX, nextY);
+        /*turnTowards(nextX, nextY);
         move((int) Math.round(speed));
-        setRotation(0);
-        //setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
+        setRotation(0);   */
+        setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
     /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged

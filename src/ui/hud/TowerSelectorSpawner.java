@@ -22,6 +22,7 @@ public class TowerSelectorSpawner extends MainClass implements Clickable {
         getWorld().addObject(new TowerSelector(new Sniper()), 1700, 860);
         getWorld().addObject(new TowerSelector(new Rocketlauncher()), 1700, 60); // temp,TODO needs to be changed later
         getWorld().addObject(new TowerSelector(new HelicopterPad()), 1900, 860);
+        getWorld().addObject(new TowerSelector(new IceTower()), 1900, 900);
     }
 
     public void onClick() {

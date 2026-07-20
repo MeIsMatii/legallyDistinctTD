@@ -71,7 +71,9 @@ public abstract class Enemy extends Entity {
                         NetworkManager.getInstance().sendData(msg);
                     }
                 }
-                gameMap.removeObject(this);
+                if(getWorld() != null) {
+                    gameMap.removeObject(this);
+                }
             }
         }
     }
@@ -116,9 +118,24 @@ public abstract class Enemy extends Entity {
 
         realPosX += speed;
         realPosY += speed;*/
+        if(getWorld() == null) {
+            return;
+        }
 
         turnTowards(nextX, nextY);
+
+        int oldX = getX();
+        int oldY = getY();
         move((int) Math.round(speed));
+        int newX = getX();
+        int newY = getY();
+
+        if((getWorld() != null &&
+            (oldX < nextX && newX > nextX) || (oldX > nextX && newX < nextX) ||
+            (oldY < nextY && newY > nextY) || (oldY > nextY && newY < nextY))) {
+            setLocation(nextX,nextY);
+        }
+
         setRotation(0);
         //setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }

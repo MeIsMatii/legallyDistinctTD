@@ -11,7 +11,6 @@ public class TestTower extends Tower {
     public TestTower() {
         super(50, true, 300, 45, 1, 3, 1, 45);
 
-        System.out.println("test");
     }
 
     public void addedToWorld(World w) {

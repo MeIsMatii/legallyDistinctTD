@@ -3,6 +3,7 @@ package entities.tower;
 import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
+import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -42,6 +43,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
+
+    protected Projectile projectileToShoot = null;
     private double projectileDamage;
     private double projectileSpeed;
     private double projectilePiercing;
@@ -61,7 +64,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     /// </ANIMATIONS>
 
-    public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
+    public Tower(int price, boolean isPlacing, int range, int shootingDelay,int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         this.rangeDisplay = new RangeDisplay(this, range, isPlacing);
         this.price = price;
         this.uniqueId = UUID.randomUUID().toString();
@@ -536,10 +539,23 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return shootingDelayCounter >= shootingDelay;
     }
 
+    public Projectile getProjectileToShoot() {
+        return this.projectileToShoot;
+    }
+    public void setProjectileToShoot(Projectile projectileToShoot) {
+        this.projectileToShoot = projectileToShoot;
+    }
+
     /**
      * this method gets called when an enemy e is inside the range of the tower.
      */
-    abstract void shoot(Enemy e);
+    public void shoot(Enemy e) {
+        if(projectileToShoot == null) {
+            String string = "ProjectileToShoot has not been defined in: " + getName() + ". Please do \"setProjectileToShoot(<type>)\" in the constructor";
+            System.out.println(string);
+        }
+        getWorld().addObject(projectileToShoot, getX(), getY());
+    }
 
     public void setTargetedEnemyManual(Enemy e) {
         this.targetedEnemy = e;

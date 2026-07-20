@@ -78,6 +78,7 @@ public abstract class Enemy extends Entity {
 
     public void addedToWorld(World world) {
         super.addedToWorld(world);
+
         this.realPosX = getX();
         this.realPosY = getY();
     }
@@ -89,6 +90,7 @@ public abstract class Enemy extends Entity {
 
     public void act() {
         if (isPaused()) return;
+        System.out.println(nextX + "   " + nextX);
 
         findPath();
         moveTo(nextX, nextY);
@@ -149,6 +151,8 @@ public abstract class Enemy extends Entity {
             return;
         }
 
+        /// ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA D:
+
         double dx = targetX - realPosX;
         double dy = targetY - realPosY;
 
@@ -161,23 +165,7 @@ public abstract class Enemy extends Entity {
             realPosY = targetY;
         }
 
-        realPosX += speed;
-        realPosY += speed;
-
-
-        int oldX = getX();
-        int oldY = getY();
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
-        int newX = getX();
-        int newY = getY();
-
-        if((getWorld() != null &&
-            (oldX < nextX && newX > nextX) || (oldX > nextX && newX < nextX) ||
-            (oldY < nextY && newY > nextY) || (oldY > nextY && newY < nextY))) {
-            setLocation(nextX,nextY);
-        }
-
-        setRotation(0);
     }
 
     /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged

@@ -102,7 +102,7 @@ public class Path extends Entity {
         //Next path out of bounds
         else if (getNextPathX() != 0 && getNextPathY() != 0 &&
             (getNextPathX() < 0 || getNextPathX() > getWorld().getWidth() || getNextPathY() < 0 || getNextPathY() > getWorld().getHeight())) {
-            throw new RuntimeException("Path is out of bounds at (" + getX() + " | " + getY() + "). Please fix.");
+            throw new RuntimeException("Path is out of bounds at (" + getX() + " | " + getY() + ") for world of size (" + getWorld().getWidth() + " | " + getWorld().getHeight() + "). Please fix.");
 
         }
     }

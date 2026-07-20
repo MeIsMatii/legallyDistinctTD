@@ -107,7 +107,9 @@ public abstract class Enemy extends Entity {
                         NetworkManager.getInstance().sendData(msg);
                     }
                 }
-                gameMap.removeObject(this);
+                if(getWorld() != null) {
+                    gameMap.removeObject(this);
+                }
             }
         }
     }
@@ -136,12 +138,9 @@ public abstract class Enemy extends Entity {
         }
     }
 
-    private double realPosX = 0;
-    private double realPosY = 0;
-
     // move()
     public void moveTo(int targetX, int targetY) {
-        double dx = targetX - realPosX;
+        /*double dx = targetX - realPosX;
         double dy = targetY - realPosY;
 
         if (Math.abs(dx) > speed) {
@@ -154,12 +153,27 @@ public abstract class Enemy extends Entity {
         }
 
         realPosX += speed;
-        realPosY += speed;
+        realPosY += speed;*/
+        if(getWorld() == null) {
+            return;
+        }
 
-        /*turnTowards(nextX, nextY);
+        turnTowards(nextX, nextY);
+
+        int oldX = getX();
+        int oldY = getY();
         move((int) Math.round(speed));
-        setRotation(0);   */
-        setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
+        int newX = getX();
+        int newY = getY();
+
+        if((getWorld() != null &&
+            (oldX < nextX && newX > nextX) || (oldX > nextX && newX < nextX) ||
+            (oldY < nextY && newY > nextY) || (oldY > nextY && newY < nextY))) {
+            setLocation(nextX,nextY);
+        }
+
+        setRotation(0);
+        //setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
     /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged

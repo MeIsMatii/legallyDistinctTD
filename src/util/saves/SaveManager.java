@@ -18,6 +18,12 @@ public class SaveManager implements Saveable {
     // holds all key=value data loaded from the file
     private Properties saveData;
 
+
+    // to customize world proportions
+    private static final int WORLD_HEIGHT = 1040;
+    private static final int WORLD_WIDTH = 1900;
+    private static final int CELL_SIZE = 1;
+
     /** Private constructor — use getInstance() instead. */
     private SaveManager() {
         try {
@@ -35,6 +41,9 @@ public class SaveManager implements Saveable {
             System.out.println("Could not create save file: " + e.getMessage());
         }
         saveData = loadSave(SAVE_PATH);
+        set("world_height", WORLD_HEIGHT);
+        set("world_width", WORLD_WIDTH);
+        set("cell_size", CELL_SIZE);
     }
 
     public static SaveManager getInstance() {

@@ -13,9 +13,9 @@ import java.util.Map;
 
 public abstract class Projectile extends Entity implements HasSound {
     private final Tower owner;
-    private final double damage;
-    private final int iframes;
-    private final double speed;
+    private double damage;
+    private int iframes;
+    private double speed;
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
     private double piercing;
     private int targetX;
@@ -23,14 +23,6 @@ public abstract class Projectile extends Entity implements HasSound {
 
     public Projectile(Tower owner) {
         this.owner = owner;
-
-        this.speed = owner.getProjectileSpeed();
-        this.piercing = owner.getProjectilePiercing();
-        this.damage = owner.getProjectileDamage();
-        this.targetX = owner.getTargetedEnemy().getX();
-        this.targetY = owner.getTargetedEnemy().getY();
-
-        this.iframes = owner.getProjectileIFrames();
     }
 
     public Tower getOwner() {
@@ -75,6 +67,14 @@ public abstract class Projectile extends Entity implements HasSound {
 
 
         target();
+
+        this.speed = owner.getProjectileSpeed();
+        this.piercing = owner.getProjectilePiercing();
+        this.damage = owner.getProjectileDamage();
+        this.targetX = owner.getTargetedEnemy().getX();
+        this.targetY = owner.getTargetedEnemy().getY();
+
+        this.iframes = owner.getProjectileIFrames();
     }
 
     public void act() {

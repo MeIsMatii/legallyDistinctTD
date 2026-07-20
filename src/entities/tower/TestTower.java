@@ -1,6 +1,7 @@
 package entities.tower;
 
 import entities.enemy.Enemy;
+import entities.projectiles.Rocket;
 import entities.projectiles.TestProjectile;
 import greenfoot.World;
 
@@ -9,12 +10,17 @@ public class TestTower extends Tower {
 
     public TestTower() {
         super(50, true, 300, 45, 1, 3, 1, 45);
-    }
-    //Upgrades need: str description [done] + int Level + option to buy
 
-    public void shoot(Enemy e) {
-        getWorld().addObject(new TestProjectile(this), getX(), getY());
+        System.out.println("test");
     }
+
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        projectileToShoot = new TestProjectile(this);
+    }
+
+
+    //Upgrades need: str description [done] + int Level + option to buy
 
     @Override
     public String getName() {
@@ -98,9 +104,6 @@ public class TestTower extends Tower {
         super.act();
     }
 
-    public void addedToWorld(World w) {
-        super.addedToWorld(w);
-    }
 
 
 }

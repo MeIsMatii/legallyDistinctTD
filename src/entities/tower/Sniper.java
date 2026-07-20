@@ -29,7 +29,7 @@ public class Sniper extends Tower{
 
 
     @Override
-    void shoot(Enemy e) {
+    public void shoot(Enemy e) {
         e.damage(getProjectileDamage());
     }
 

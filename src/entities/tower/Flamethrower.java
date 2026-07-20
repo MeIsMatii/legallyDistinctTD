@@ -2,13 +2,7 @@ package entities.tower;
 
 import entities.enemy.Enemy;
 import entities.projectiles.FlameProjectile;
-import entities.projectiles.HomingProjectile;
-import entities.projectiles.Rocket;
-import entities.projectiles.TestProjectile;
-import greenfoot.GreenfootImage;
-import ui.hud.UpgradePath;
-
-import java.util.List;
+import greenfoot.World;
 
 public class Flamethrower extends Tower{
     private int magazine = 15;
@@ -22,9 +16,11 @@ public class Flamethrower extends Tower{
 
     public Flamethrower() {
         super(150,true, 300, 1, 1, 10, 1000, 45);
-        //GreenfootImage img = new GreenfootImage("towers/Flamethrower/Flamethrower_idle.jpg");
-        //img.scale(200,200);
-        //setImage(img);
+    }
+
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        projectileToShoot = new FlameProjectile(this);
     }
     public int[] getUpgrades1() {
         return upgrades1;
@@ -52,10 +48,10 @@ public class Flamethrower extends Tower{
     }
 
         @Override
-    void shoot(Enemy e) {
+    public void shoot(Enemy e) {
         if (magazine > 0){
             playSound("fire.mp3");
-            getWorld().addObject(new FlameProjectile(this),getX(),getY());
+            getWorld().addObject(getProjectileToShoot(),getX(),getY());
             magazine--;
         }else {
             recharge();

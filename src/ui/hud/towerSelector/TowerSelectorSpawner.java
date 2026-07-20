@@ -1,11 +1,9 @@
-package ui.hud;
+package ui.hud.towerSelector;
 
 import core.MainClass;
 import entities.tower.*;
 import greenfoot.World;
 import util.Clickable;
-
-import java.util.function.Supplier;
 
 public class TowerSelectorSpawner extends MainClass implements Clickable {
 

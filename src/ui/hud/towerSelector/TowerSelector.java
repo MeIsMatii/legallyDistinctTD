@@ -1,4 +1,4 @@
-package ui.hud;
+package ui.hud.towerSelector;
 
 import core.MainClass;
 import entities.tower.Tower;

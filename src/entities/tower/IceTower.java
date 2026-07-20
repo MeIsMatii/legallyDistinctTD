@@ -1,11 +1,9 @@
 package entities.tower;
 
 import entities.enemy.Enemy;
-import entities.projectiles.Explosion;
-import entities.projectiles.Ice;
-import entities.projectiles.Rocket;
-import entities.projectiles.TestProjectile;
+import entities.projectiles.*;
 import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 public class IceTower extends Tower{
     private final int[] upgrades1 = new int[]{150,500,2500};
@@ -46,6 +44,11 @@ public class IceTower extends Tower{
         //setImage(img);
     }
 
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        projectileToShoot = new Ice(this);
+    }
+
     public int[] getUpgrades1() {
         return upgrades1;
     }
@@ -72,10 +75,6 @@ public class IceTower extends Tower{
     }
 
 
-    @Override
-    public void shoot(Enemy e) {
-        getWorld().addObject(new Ice(this), getX(), getY());
-    }
 
     @Override
     public String getName() {

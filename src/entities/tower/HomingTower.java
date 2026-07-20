@@ -3,6 +3,7 @@ package entities.tower;
 import entities.enemy.Enemy;
 import entities.projectiles.HomingProjectile;
 import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 public class HomingTower extends Tower {
 
@@ -18,6 +19,10 @@ public class HomingTower extends Tower {
         //img.scale(120, 100);
         //setImage(img);
 
+    }
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        projectileToShoot = new HomingProjectile(this);
     }
     public int[] getUpgrades1() {
         return upgrades1;
@@ -39,9 +44,6 @@ public class HomingTower extends Tower {
     }
 
 
-    void shoot(Enemy e) {
-        getWorld().addObject(new HomingProjectile(this), getX(), getY());
-    }
 
     @Override
     public String getName() {

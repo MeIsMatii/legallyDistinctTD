@@ -7,10 +7,6 @@ public class Helicopter extends Tower{
         super(0, true, 250, 50, 1, 10, 1, 45);
     }
 
-    @Override
-    void shoot(Enemy e) {
-
-    }
 
     @Override
     public String getName() {

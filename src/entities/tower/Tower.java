@@ -11,8 +11,8 @@ import greenfoot.MouseInfo;
 import greenfoot.World;
 import maps.levels.GameMap;
 import maps.levels.util.Path;
-import ui.hud.TowerSelector;
-import ui.hud.UpgradeMenu;
+import ui.hud.towerSelector.TowerSelector;
+import ui.hud.upgrades.UpgradeMenu;
 import util.Animations;
 import util.Clickable;
 import util.HasSound;
@@ -27,33 +27,33 @@ import java.util.UUID;
  */
 
 public abstract class Tower extends Entity implements Clickable, Animations, HasSound {
-    private final int price;
+    protected final int price;
     private String uniqueId; //for multiplayer
 
     private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
     private double range;
-    private int[] upgrade1Prices = new int[3];
-    private int[] upgrade2Prices = new int[3];
-    private int[] upgrade3Prices = new int[3];
-    private String[] upgradeDescription1 = new String[3];
-    private String[] upgradeDescription2 = new String[3];
-    private String[] upgradeDescription3 = new String[3];
+    protected int[] upgrade1Prices = new int[3];
+    protected int[] upgrade2Prices = new int[3];
+    protected int[] upgrade3Prices = new int[3];
+    protected String[] upgradeDescription1 = new String[3];
+    protected String[] upgradeDescription2 = new String[3];
+    protected String[] upgradeDescription3 = new String[3];
     private boolean isPlacing;
     private Enemy targetedEnemy;
     private boolean canPlace;
 
     protected Projectile projectileToShoot = null;
-    private double projectileDamage;
-    private double projectileSpeed;
-    private double projectilePiercing;
-    private int projectileIFrames;
-    private int upgrade1 = 0;
-    private int upgrade2 = 0;
-    private int upgrade3 = 0;
-    private int shootingDelay;
-    private int shootingDelayCounter;
+    protected double projectileDamage;
+    protected double projectileSpeed;
+    protected double projectilePiercing;
+    protected int projectileIFrames;
+    protected int upgrade1 = 0;
+    protected int upgrade2 = 0;
+    protected int upgrade3 = 0;
+    protected int shootingDelay;
+    protected int shootingDelayCounter;
     /// <ANIMATIONS>
     private int frameCounter = 0;
     private List<String> frameList;

@@ -1,4 +1,4 @@
-package ui.hud;
+package ui.hud.upgrades;
 
 import core.Player;
 import entities.tower.Tower;

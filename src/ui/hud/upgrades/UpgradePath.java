@@ -1,6 +1,7 @@
-package ui.hud;
+package ui.hud.upgrades;
 
 import greenfoot.World;
+import ui.hud.UpgradeDescriptionOverlay;
 import util.Clickable;
 import entities.tower.Tower;
 import greenfoot.Actor;

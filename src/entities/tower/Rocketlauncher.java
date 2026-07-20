@@ -4,6 +4,7 @@ import entities.enemy.Enemy;
 import entities.projectiles.Rocket;
 import entities.projectiles.TestProjectile;
 import greenfoot.GreenfootImage;
+import greenfoot.World;
 
 public class Rocketlauncher extends Tower{
     private final int[] upgrades1 = new int[]{150,500,2500};
@@ -12,10 +13,17 @@ public class Rocketlauncher extends Tower{
 
     public Rocketlauncher() {
         super(500, true, 500, 150, 50, 25, 1, 0);
+
         //GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
         //img.scale(200,200);
         //setImage(img);
     }
+
+    public void addedToWorld(World w) {
+        super.addedToWorld(w);
+        projectileToShoot = new Rocket(this);
+    }
+
 
     public int[] getUpgrades1() {
         return upgrades1;
@@ -30,10 +38,6 @@ public class Rocketlauncher extends Tower{
     }
 
 
-    @Override
-    public void shoot(Enemy e) {
-        getWorld().addObject(new Rocket(this), getX(), getY());
-    }
 
     @Override
     public String getName() {

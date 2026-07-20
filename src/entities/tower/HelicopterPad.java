@@ -8,9 +8,6 @@ public class HelicopterPad extends Tower {
     public HelicopterPad() {
         super(0, true, 150, 99999999, 0, 0, 0, 0);
     }
-    @Override
-    public void onHit(Entity hitter) {
-    }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
@@ -29,10 +26,6 @@ public class HelicopterPad extends Tower {
     }
 
 
-    @Override
-    void shoot(Enemy e) {
-
-    }
 
     @Override
     public String getName() {

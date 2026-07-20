@@ -15,6 +15,8 @@ public abstract class Enemy extends Entity {
 
     double lives;
     double speed;
+    private double realPosX;
+    private double realPosY;
 
     double normalSpeed;                             //Freezetower
     private int slowTimer = 0;                          //Freezetower
@@ -76,6 +78,8 @@ public abstract class Enemy extends Entity {
 
     public void addedToWorld(World world) {
         super.addedToWorld(world);
+        this.realPosX = getX();
+        this.realPosY = getY();
     }
 
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
@@ -139,8 +143,13 @@ public abstract class Enemy extends Entity {
     }
 
     // move()
+    
     public void moveTo(int targetX, int targetY) {
-        /*double dx = targetX - realPosX;
+        if(getWorld() == null) {
+            return;
+        }
+
+        double dx = targetX - realPosX;
         double dy = targetY - realPosY;
 
         if (Math.abs(dx) > speed) {
@@ -153,16 +162,12 @@ public abstract class Enemy extends Entity {
         }
 
         realPosX += speed;
-        realPosY += speed;*/
-        if(getWorld() == null) {
-            return;
-        }
+        realPosY += speed;
 
-        turnTowards(nextX, nextY);
 
         int oldX = getX();
         int oldY = getY();
-        move((int) Math.round(speed));
+        setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
         int newX = getX();
         int newY = getY();
 
@@ -173,7 +178,6 @@ public abstract class Enemy extends Entity {
         }
 
         setRotation(0);
-        //setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
     /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged

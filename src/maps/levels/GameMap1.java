@@ -1,5 +1,6 @@
 package maps.levels;
 
+import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.menu.PauseMenu;
 import greenfoot.GreenfootImage;
 import ui.common.BackButton;
@@ -20,16 +21,8 @@ public class GameMap1 extends GameMap {
         img.scale(1620, 1080);
         setBackground(img);
 
-
-        /*
-        addObject(new EnemyLevel1(), 0,233);
-        addObject(new EnemyLevel2(), 0,233);
-        addObject(new EnemyLevel3(), 0,233);
-        addObject(new EnemyLevel4(), 0,233);
-        addObject(new EnemyLevel5(), 0,233);
-        addObject(new EnemyLevel6(), 0,233);
-         */
-        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
+        addObject(new MapCoordinatesUtilGuy(),0,0);
+        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,getHeight()}};
         super.addPath(pathLocations);
 
 

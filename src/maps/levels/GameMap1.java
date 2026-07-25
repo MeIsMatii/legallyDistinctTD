@@ -28,6 +28,21 @@ public class GameMap1 extends GameMap {
 
     }
 
+    public GameMap1(boolean isMultiplayer, boolean isHost) {
+        super(isMultiplayer,isHost);
+        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class,CloseButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
+
+        /// TODO BETTER MAP
+        GreenfootImage img = new GreenfootImage("Map1.png");
+
+        img.scale(1620, 1080);
+        setBackground(img);
+
+        addObject(new MapCoordinatesUtilGuy(),0,0);
+        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,getHeight()}};
+        super.addPath(pathLocations);
+    }
+
     public int getMapNumber() {
         return 1;
     }

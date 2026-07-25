@@ -19,6 +19,18 @@ public class GameMap3 extends GameMap {
         super.addPath(pathLocations);
 
     }
+    public GameMap3(boolean isMultiplayer, boolean isHost) {
+        super(isMultiplayer, isHost);
+        GreenfootImage img = new GreenfootImage("Map3.png");
+
+        img.scale(1620, 1080);
+        setBackground(img);
+
+        addObject(new MapCoordinatesUtilGuy(),0,0);
+        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
+        super.addPath(pathLocations);
+
+    }
 
     @Override
     public int getMapNumber() {

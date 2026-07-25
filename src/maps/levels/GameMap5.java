@@ -18,6 +18,17 @@ public class GameMap5 extends GameMap {
         int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
         super.addPath(pathLocations);
     }
+    public GameMap5(boolean isMultiplayer, boolean isHost) {
+        super(isMultiplayer, isHost);
+        GreenfootImage img = new GreenfootImage("Map5.png");
+
+        img.scale(1620, 1080);
+        setBackground(img);
+
+        addObject(new MapCoordinatesUtilGuy(),0,0);
+        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
+        super.addPath(pathLocations);
+    }
 
     @Override
     public int getMapNumber() {

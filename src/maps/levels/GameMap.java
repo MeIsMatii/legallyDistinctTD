@@ -36,7 +36,7 @@ public abstract class GameMap extends World {
     private final WaveManager waveManager;
     private final int spawnDelay;
     private final List<Enemy> aliveEnemies = new ArrayList<>();
-    private final boolean isMultiplayer;
+    private boolean isMultiplayer;
     private UpgradeMenu upgradeMenu;
     private boolean isUpgradeMenuVisible;
     private int[] spawnLocation;
@@ -53,8 +53,9 @@ public abstract class GameMap extends World {
     private String lastKeyPressed;
 
     public GameMap() {
-        super(1920, 1080, 1);
 
+        super(1920, 1080, 1);
+        System.out.println("test");
         System.out.println("Singleplayer");
         this.isMultiplayer = false;
 
@@ -79,34 +80,17 @@ public abstract class GameMap extends World {
         addHud();
     }
 
-    public GameMap(boolean isMultiplayer) {
-        super(1920, 1080, 1);
-
+    public GameMap(boolean isMultiplayer, boolean isHost) {
+        this();
+        if(!isMultiplayer) {
+            return;
+        }
         System.out.println("Multiplayer: " + isMultiplayer);
         this.isMultiplayer = isMultiplayer;
-        if (isMultiplayer && NetworkManager.getInstance().isHost()) {
-            NetworkManager.getInstance().sendData("MAP:" + getMapNumber());
+        NetworkManager.getInstance().setMapNr(getMapNumber()); //doesnt hurt incase the client also knows the mapnr lmao
+        if(isHost) {
+            NetworkManager.getInstance().startHost(7777); //so the multiplayer session only starts when a map is connected
         }
-
-        this.gameSaveManager = new GameSaveManager();
-        this.waveManager = WaveManager.getInstance();
-        this.spawnDelay = 45;
-
-        gameSaveManager.setMapNr("maps" + getMapNumber());
-        addObject(gameSaveManager, 0, 0);
-
-        setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
-
-        this.pathWidth = 120;
-        player = new Player(100, 100); //jannis ganz alleine gemacht
-        cursor = new Cursor();
-
-        isPaused = false;
-        isForcedPause = false;
-
-        lastKeyPressed = Greenfoot.getKey();
-
-        addHud();
     }
 
     /**

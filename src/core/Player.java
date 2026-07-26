@@ -3,8 +3,11 @@ package core;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import maps.levels.GameMap;
-import maps.levels.util.GameOverPopUp;
+import maps.menu.MapSelector;
+import ui.common.BackButton;
 import ui.common.ImageDisplay;
+import ui.hud.QuestionPopup;
+import ui.hud.buttons.RetryButton;
 import util.multiplayer.NetworkManager;
 
 public class Player extends MainClass {
@@ -38,7 +41,7 @@ public class Player extends MainClass {
     public void setCoins(int coins) {
         this.coins = coins;
 
-        if(getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
+        if (getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
             String msg = "SET_COINS" + "," + getCoins();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -72,16 +75,16 @@ public class Player extends MainClass {
     }
 
 
-
-
     public void damage(int damage) {
         setHealth(health - damage);
         if (health <= 0) {
             //getWorld().showText("you lost", 400, 400);
-            GameOverPopUp gameOverPopUp = new GameOverPopUp();
-            getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
+            QuestionPopup questionPopup = new QuestionPopup("You lost!\n Restart would you like start a new game?", new BackButton(new MapSelector()), new RetryButton());
+            getWorld().removeObject(questionPopup.getCloseButton());
+            questionPopup.setCloseButton(null);
+            getWorld().addObject(questionPopup, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
 
-            getWorldOfType(GameMap.class).pauseObjects(isPaused(), true);
+            getWorldOfType(GameMap.class).pauseObjects(true, true);
 
             GameMap gameMap = (GameMap) getWorld();
             gameMap.getGameSaveManager().removeSaveFile();
@@ -103,9 +106,6 @@ public class Player extends MainClass {
             setCoins(getCoins() + 100000);
         }
     }
-
-
-
 
 
 }

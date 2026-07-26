@@ -13,8 +13,6 @@ import ui.settings.sound.VolumeSlider;
 
 public class GameMap1 extends GameMap {
     public GameMap1() {
-        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
-
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");
 
@@ -30,8 +28,6 @@ public class GameMap1 extends GameMap {
 
     public GameMap1(boolean isMultiplayer, boolean isHost) {
         super(isMultiplayer,isHost);
-        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
-
         /// TODO BETTER MAP
         GreenfootImage img = new GreenfootImage("Map1.png");
 

@@ -6,7 +6,7 @@ import greenfoot.World;
 import maps.levels.*;
 import maps.menu.LoadingScreen;
 
-public class LoadSaveButton extends Button{
+public class LoadSaveButton extends Button {
     int worldNr;
     private World loadingScreen = new LoadingScreen();
 
@@ -14,20 +14,23 @@ public class LoadSaveButton extends Button{
     public World getLoadingScreen() {
         return loadingScreen;
     }
+
     public void setLoadingScreen(World loadingScreen) {
         this.loadingScreen = loadingScreen;
     }
+
     public int getWorldNr() {
         return worldNr;
     }
+
     public void setWorldNr(int worldNr) {
         this.worldNr = worldNr;
     }
 
 
-    public LoadSaveButton(int Worldnr){
-        GreenfootImage img = new GreenfootImage("LoadSaveButton.png");
-        img.scale(100,50);
+    public LoadSaveButton(int Worldnr) {
+        GreenfootImage img = new GreenfootImage("YesButton.png");
+        img.scale(100, 50);
         setImage(img);
         setWorldNr(Worldnr);
     }

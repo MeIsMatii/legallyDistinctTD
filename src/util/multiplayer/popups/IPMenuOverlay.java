@@ -1,21 +1,19 @@
-package ui.hud;
+package util.multiplayer.popups;
 
-import greenfoot.Color;
-import greenfoot.Font;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.MouseInfo;
+import greenfoot.*;
+import ui.hud.PopupScreen;
 import util.Clickable;
+import util.multiplayer.NetworkManager;
 
 /**
  *
  * HOW TO USE:
- *   1. Create an instance:  IPMenuOverlay overlay = new IPMenuOverlay();
- *   2. Add it to the world: world.addObject(overlay, 960, 540);
- *   3. After the user presses Connect (or Enter), the overlay removes itself
- *      and stores the typed IP in ipAddress.
- *   4. Read the result:     String ip = overlay.getIP();
- *      (call this from the parent actor after overlay.getWorld() == null)
+ * 1. Create an instance:  IPMenuOverlay overlay = new IPMenuOverlay();
+ * 2. Add it to the world: world.addObject(overlay, 960, 540);
+ * 3. After the user presses Connect (or Enter), the overlay removes itself
+ * and stores the typed IP in ipAddress.
+ * 4. Read the result:     String ip = overlay.getIP();
+ * (call this from the parent actor after overlay.getWorld() == null)
  */
 public class IPMenuOverlay extends PopupScreen implements Clickable {
 
@@ -23,11 +21,11 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     private static final int H = 640;   // panel height
 
     // Keypad area: 3 columns × 4 rows
-    private static final int KEY_W       = 110;  // width of each key
-    private static final int KEY_H       = 72;   // height of each key
-    private static final int KEY_LEFT    = 30;   // x of column 0
+    private static final int KEY_W = 110;  // width of each key
+    private static final int KEY_H = 72;   // height of each key
+    private static final int KEY_LEFT = 30;   // x of column 0
     private static final int KEY_COL_GAP = 155;  // x distance between column starts (30, 185, 340)
-    private static final int KEY_TOP     = 165;  // y of row 0
+    private static final int KEY_TOP = 165;  // y of row 0
     private static final int KEY_ROW_GAP = 88;   // y distance between row starts
 
     // Connect button area
@@ -40,6 +38,11 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     private static final int CLOSE_X = W - 42;
     private static final int CLOSE_Y = 8;
     private static final int CLOSE_SIZE = 30;
+
+    private boolean isConnecting = false;
+
+    private int dotTimer = 0;
+    private int dotCounter = 0;
 
     // The keypad layout: row 3 col 2 is the backspace key
     private static final String[][] KEYS = {
@@ -63,6 +66,25 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     public void act() {
         handleKeyboard();
         checkClick();          // from Clickable — calls onClick() if this actor was clicked
+
+        if (isConnecting) {
+            dotTimer++;
+            if (dotTimer > 10) {
+                dotTimer = 0;
+                dotCounter++;
+                if (dotCounter > 3) {
+                    dotCounter = 1;
+                }
+                String dots = ".".repeat(dotCounter); //"animation" so the user does not think its stuck
+                getWorld().showText("Connecting to: " + ipAddress + dots, getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
+            }
+            System.out.println(NetworkManager.getInstance().isConnectionTimedOut());
+            if (NetworkManager.getInstance().isConnectionTimedOut()) {
+                System.out.println("meow2");
+                getWorld().showText("Connection timed out! (host not found/available)", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
+                isConnecting = false;
+            }
+        }
     }
 
     // ── Clickable: called when the actor itself is clicked ─────────────────
@@ -94,7 +116,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         for (int row = 0; row < KEYS.length; row++) {
             for (int col = 0; col < KEYS[row].length; col++) {
                 int kx = KEY_LEFT + col * KEY_COL_GAP;
-                int ky = KEY_TOP  + row * KEY_ROW_GAP;
+                int ky = KEY_TOP + row * KEY_ROW_GAP;
                 if (localX >= kx && localX <= kx + KEY_W && localY >= ky && localY <= ky + KEY_H) {
                     String label = KEYS[row][col];
                     if (label.equals("<-")) {
@@ -146,8 +168,13 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
 
     // ── Connect ────────────────────────────────────────────────────────────
     private void onConnect() {
-        connected = true;   // flag that the user confirmed (vs just closing)
-        onRemove();
+        connected = true;   // flag that the user confirmed (vs just closing) //am gonna leave this here bc idk what it do --Mathilo
+        isConnecting = true;
+
+        // <--! Mathilo stuff !-->
+        NetworkManager.getInstance().startClient(ipAddress, 7777); //7777 should be open on most pcs //terraria also uses this --Mathilo
+
+        getWorld().showText("Connecting to: " + ipAddress, getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
     }
 
     /**
@@ -159,7 +186,9 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         return connected ? ipAddress : "";
     }
 
-    /** True if the user pressed Connect or Enter (false if closed without pressing connect). */
+    /**
+     * True if the user pressed Connect or Enter (false if closed without pressing connect).
+     */
     public boolean isConnected() {
         return connected;
     }
@@ -168,6 +197,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     @Override
     public void onRemove() {
         if (getWorld() != null) {
+            getWorld().showText("", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
             getWorld().removeObject(this);
         }
     }
@@ -210,7 +240,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
             for (int col = 0; col < KEYS[row].length; col++) {
                 String label = KEYS[row][col];
                 int kx = KEY_LEFT + col * KEY_COL_GAP;
-                int ky = KEY_TOP  + row * KEY_ROW_GAP;
+                int ky = KEY_TOP + row * KEY_ROW_GAP;
 
                 // Key background
                 Color bg = label.equals("<-") ? new Color(140, 60, 60) : new Color(55, 55, 60);

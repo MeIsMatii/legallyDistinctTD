@@ -5,23 +5,32 @@ import core.Player;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Projectile;
-import entities.tower.*;
+import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import maps.levels.util.GameWonPopup;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
+import maps.menu.MapSelector;
 import maps.menu.PauseMenu;
+import ui.common.BackButton;
+import ui.hud.QuestionPopup;
+import ui.hud.buttons.*;
 import ui.hud.towerSelector.TowerSelectorSpawner;
 import ui.hud.upgrades.UpgradeMenu;
 import ui.settings.SettingsPopup;
+import ui.settings.sound.SongButton;
+import ui.settings.sound.SongDropDown;
+import ui.settings.sound.VolumeSlider;
 import util.Cursor;
 import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 
@@ -74,7 +83,7 @@ public abstract class GameMap extends World {
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.pathWidth = 120;
-        player = new Player(100, 100); //jannis ganz alleine gemacht
+        player = new Player(100, 0); //jannis ganz alleine gemacht
         cursor = new Cursor();
 
         isPaused = false;
@@ -87,15 +96,19 @@ public abstract class GameMap extends World {
 
     public GameMap(boolean isMultiplayer, boolean isHost) {
         this();
-        if(!isMultiplayer) {
+        if (!isMultiplayer) {
+            System.out.println("Singleplayer");
             return;
         }
-        System.out.println("Multiplayer: " + isMultiplayer);
-        this.isMultiplayer = isMultiplayer;
+
+        System.out.println("Multiplayer");
+        this.isMultiplayer = true;
         NetworkManager.getInstance().setMapNr(getMapNumber()); //doesnt hurt incase the client also knows the mapnr lmao
-        if(isHost) {
+        if (isHost) {
             NetworkManager.getInstance().startHost(7777); //so the multiplayer session only starts when a map is connected
         }
+
+        pauseObjects(true, true); //so nothing moves while client not connected
     }
 
     /**
@@ -171,7 +184,7 @@ public abstract class GameMap extends World {
      */
     public int[] getSpawnLocation() {
         if (this.spawnLocation == null) {
-            throw new RuntimeException("No spawnlocation. Please fix.");
+            System.err.println("No spawnlocation. Please fix.");
         }
         return this.spawnLocation;
     }
@@ -224,14 +237,13 @@ public abstract class GameMap extends World {
             setWave(wave + 1);
 
 
-
             System.out.println("New Wave: " + getWave());
 
             enemiesToSpawn = waveManager.generateWave(wave);
 
             getPlayer().setCoins(getPlayer().getCoins() + waveEndMoney);
 
-            if(isMultiplayer()) {// you alr know it, host and multiplayer
+            if (isMultiplayer()) {// you alr know it, host and multiplayer
                 String msg = "SET_WAVE" + "," + getWave();
                 NetworkManager.getInstance().sendData(msg);
             }
@@ -259,7 +271,7 @@ public abstract class GameMap extends World {
         Enemy enemy = enemiesToSpawn.get(0);
         addObject(enemy, getSpawnLocation()[0], getSpawnLocation()[1]);
         aliveEnemies.add(enemy);
-        if(isMultiplayer && NetworkManager.getInstance().isHost()) {
+        if (isMultiplayer && NetworkManager.getInstance().isHost()) {
             String msg = "SPAWN_ENEMY" + "," + enemy.getName();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -285,7 +297,7 @@ public abstract class GameMap extends World {
      * restarts the wave.
      */
     public void resetWave() {
-        if(!NetworkManager.getInstance().isHost()) {
+        if (!NetworkManager.getInstance().isHost()) {
             return;
         }
 
@@ -308,7 +320,7 @@ public abstract class GameMap extends World {
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
 
-        if(NetworkManager.getInstance().isHost() && !isPaused) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused
+        if (NetworkManager.getInstance().isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined
             if ((!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty())) {
                 spawnWave(getWave(), spawnDelay);
             }
@@ -323,15 +335,19 @@ public abstract class GameMap extends World {
     public void showWave() {
         if (oldWave != wave) {
             //showText("Wave: " + getWave(), 1540, 40);
-            if (!isFreeplay){
+            if (!isFreeplay) {
                 showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
-                if (getWave() > getWinWave()){
+                if (getWave() > getWinWave()) {
                     showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
-                    addObject(new GameWonPopup(), getWidth()/2, getHeight()/2);
+
+                    QuestionPopup questionPopup = new QuestionPopup("You won!\nWould you like to continue in Freeplay\nor return to title", new BackButton(new MapSelector()), new PlayOnButton());
+                    removeObject(questionPopup.getCloseButton());
+                    questionPopup.setCloseButton(null);
+                    addObject(questionPopup, getWidth() / 2, getHeight() / 2);
                     pauseObjects(true, true);
                     isFreeplay = true;
                 }
-            }else{
+            } else {
                 showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
             }
             oldWave = wave;
@@ -344,11 +360,12 @@ public abstract class GameMap extends World {
         HARD(80);
 
         private final int winWave;
+
         Difficulty(int winWave) {
             this.winWave = winWave;
         }
 
-        public int getWinWave(){
+        public int getWinWave() {
             return winWave;
         }
     }
@@ -360,10 +377,7 @@ public abstract class GameMap extends World {
     private final Difficulty difficulty = Difficulty.EASY;
 
 
-
     private boolean isFreeplay = false;
-
-
 
 
     public boolean isPaused() {
@@ -477,7 +491,7 @@ public abstract class GameMap extends World {
                 int path = Integer.parseInt(tokens[2]);
                 int level = Integer.parseInt(tokens[3]);
 
-                upgradeTowerFromNetwork(uniqueId,path,level);
+                upgradeTowerFromNetwork(uniqueId, path, level);
             }
             case "SPAWN_ENEMY": {
                 String enemyType = tokens[1];
@@ -510,7 +524,7 @@ public abstract class GameMap extends World {
         }
     }
 
-    public void spawnTowerFromNetwork(String towerType,String uuid, int x, int y) {
+    public void spawnTowerFromNetwork(String towerType, String uuid, int x, int y) {
         Map<String, Supplier<Tower>> possibleTowers = GameSaveManager.getTowerList();
 
         Supplier<Tower> towerSupplier = possibleTowers.get(towerType);
@@ -529,12 +543,18 @@ public abstract class GameMap extends World {
     }
 
     public void upgradeTowerFromNetwork(String uuid, int upgradePath, int upgradeLevel) {
-        for(Tower t: getObjects(Tower.class)) {
-            if(t.getUniqueId().equals(uuid)) {
+        for (Tower t : getObjects(Tower.class)) {
+            if (t.getUniqueId().equals(uuid)) {
                 switch (upgradePath) {
-                    case 1: t.upgrade1(); break;
-                    case 2: t.upgrade2(); break;
-                    case 3: t.upgrade3(); break;
+                    case 1:
+                        t.upgrade1();
+                        break;
+                    case 2:
+                        t.upgrade2();
+                        break;
+                    case 3:
+                        t.upgrade3();
+                        break;
                 }
                 break;
             }
@@ -544,7 +564,7 @@ public abstract class GameMap extends World {
     public void spawnEnemyFromNetwork(String enemyType, String enemyId) {
         Map<String, Supplier<Enemy>> possibleEnemies = WaveManager.getEnemyList();
         Supplier<Enemy> enemySupplier = possibleEnemies.get(enemyType);
-        if(enemySupplier == null) {
+        if (enemySupplier == null) {
             System.out.println("invalid enemy");
             return;
         }
@@ -578,7 +598,6 @@ public abstract class GameMap extends World {
     public void setWaveFromNetwork(int wave) {
         this.wave = wave; //func not needed but now its uniform
     }
-
 
 
 }

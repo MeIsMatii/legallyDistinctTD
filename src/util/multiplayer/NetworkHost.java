@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class NetworkHost implements MultiplayerConnection{
+public class NetworkHost implements MultiplayerConnection {
     private final int port;
     private PrintWriter out;
 
@@ -16,7 +16,7 @@ public class NetworkHost implements MultiplayerConnection{
     }
 
     public void send(String msg) {
-        if(out != null) {
+        if (out != null) {
             out.println(msg);
         }
     }
@@ -26,14 +26,16 @@ public class NetworkHost implements MultiplayerConnection{
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             System.out.println("Host: Waiting for client on port " + port + "...");
             Socket clientsocket = serverSocket.accept();
+            NetworkManager.getInstance().setConnected(true);
             System.out.println("Host: Client connected!");
+            send("MAP:" + NetworkManager.getInstance().getMapNr());
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             this.out = new PrintWriter(clientsocket.getOutputStream(), true);
 
-            while (true)  { //endlosschleife wohoo --Mathilo
+            while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
-                if(msg != null) {
+                if (msg != null) {
                     NetworkManager.getInstance().queueIncomingMessage(msg);
                     System.out.println("Incoming message: " + msg);
                 }

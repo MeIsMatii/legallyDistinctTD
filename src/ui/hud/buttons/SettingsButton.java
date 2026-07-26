@@ -15,12 +15,7 @@ public class SettingsButton extends Button{
 
     @Override
     public void onClick() {
-        if (getWorld() instanceof GameMap){
-            getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
-    } else if (getWorld() instanceof MapSelector) {
-            Greenfoot.setWorld(new MapSettings());
-        }
-
+        getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
         }
 
 }

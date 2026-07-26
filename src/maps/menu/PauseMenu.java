@@ -5,13 +5,14 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.common.BackButton;
+import ui.hud.PopupScreen;
 import ui.hud.buttons.PlayOnButton;
 import ui.hud.buttons.RetryButton;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.buttons.WaveResetButton;
 
 
-public class PauseMenu extends Actor {
+public class PauseMenu extends PopupScreen {
 
    private BackButton backButton;
    private SettingsButton settingsButton;

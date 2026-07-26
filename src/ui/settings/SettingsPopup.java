@@ -2,6 +2,7 @@ package ui.settings;
 
 import greenfoot.*;
 import maps.menu.PauseMenu;
+import ui.hud.PopupScreen;
 import ui.hud.buttons.MuteButton;
 import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;
@@ -9,7 +10,7 @@ import ui.settings.sound.VolumeSlider;
 
 import java.util.List;
 
-public class SettingsPopup extends Actor {
+public class SettingsPopup extends PopupScreen {
 
     private VolumeSlider volumeSlider;
     private SongDropDown songDropDown;

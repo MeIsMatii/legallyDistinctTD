@@ -348,7 +348,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             shootingDelayCounter++;
             rangeDisplay.setFollowing(false);
             setTargetedEnemy();
-            targetEnemy(targetedEnemy);
 
             if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);
@@ -485,18 +484,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
     }
 
-    /**
-     * Targets an enemy
-     *
-     * @param enemy the Enemy to target
-     */
-    public void targetEnemy(Enemy enemy) {
-        if (enemy == null) {
-            return;
-        }
-        //turnTowards(enemy.getX(), enemy.getY()); //not rotating looks better
-        targetedEnemy = enemy;
-    }
 
     public void upgrade1() {
         int oldLevel = getUpgrade1();

@@ -1,33 +1,20 @@
 package maps.levels;
 
-import core.Player;
-import greenfoot.GreenfootImage;
 import maps.levels.util.MapCoordinatesUtilGuy;
-import maps.menu.MapSelector;
-import ui.common.BackButton;
-import ui.common.ImageDisplay;
 
 public class GameMap3 extends GameMap {
     public GameMap3() {
-        GreenfootImage img = new GreenfootImage("Map3.png");
-
-        img.scale(1620, 1080);
-        setBackground(img);
-
-        addObject(new MapCoordinatesUtilGuy(),0,0);
-        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
+        addObject(new MapCoordinatesUtilGuy(), 0, 0);
+        int[][] pathLocations = {{0, 233}, {752, 233}, {752, 531}, {1414, 531}, {1414, 984}};
         super.addPath(pathLocations);
 
     }
+
     public GameMap3(boolean isMultiplayer, boolean isHost) {
         super(isMultiplayer, isHost);
-        GreenfootImage img = new GreenfootImage("Map3.png");
 
-        img.scale(1620, 1080);
-        setBackground(img);
-
-        addObject(new MapCoordinatesUtilGuy(),0,0);
-        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,984}};
+        addObject(new MapCoordinatesUtilGuy(), 0, 0);
+        int[][] pathLocations = {{0, 233}, {752, 233}, {752, 531}, {1414, 531}, {1414, 984}};
         super.addPath(pathLocations);
 
     }

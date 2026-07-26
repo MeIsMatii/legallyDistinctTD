@@ -8,6 +8,7 @@ import entities.projectiles.Projectile;
 import entities.tower.*;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.levels.util.GameWonPopup;
 import maps.levels.util.Path;
@@ -55,8 +56,12 @@ public abstract class GameMap extends World {
     public GameMap() {
 
         super(1920, 1080, 1);
-        System.out.println("test");
-        System.out.println("Singleplayer");
+        GreenfootImage map = new GreenfootImage("Map" + getMapNumber() + ".png");
+        map.scale(1620, 1080);
+        setBackground(map);
+
+        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
+
         this.isMultiplayer = false;
 
         this.gameSaveManager = new GameSaveManager();

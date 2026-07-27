@@ -67,7 +67,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         handleKeyboard();
         checkClick();          // from Clickable — calls onClick() if this actor was clicked
 
-        if (isConnecting) {
+        if (isConnecting && !NetworkManager.getInstance().isConnected()) {
             dotTimer++;
             if (dotTimer > 10) {
                 dotTimer = 0;
@@ -84,6 +84,9 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
                 getWorld().showText("Connection timed out! (host not found/available)", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
                 isConnecting = false;
             }
+        } else if(NetworkManager.getInstance().isConnected() && isConnecting) {
+            getWorld().showText("Connected!", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
+            isConnecting = false;
         }
     }
 

@@ -79,12 +79,14 @@ public class NetworkManager {
 
     public void sendData(String msg) {
         if (activeWorker != null) {
+            System.out.println("Sending: " + msg);
             activeWorker.send(msg);
         }
     }
 
 
     public void queueIncomingMessage(String msg) {
+        System.out.println("Recieved: " + msg);
         incomingMessages.add(msg);
     }
 

@@ -49,7 +49,6 @@ public class NetworkClient implements MultiplayerConnection {
                         setMap(Integer.parseInt(msg.substring(4))); //to load a map
                     } else {
                         NetworkManager.getInstance().queueIncomingMessage(msg);
-                        System.out.println("Incoming message: " + msg);
                     }
                 }
             }

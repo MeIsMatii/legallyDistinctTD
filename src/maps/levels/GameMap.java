@@ -84,7 +84,7 @@ public abstract class GameMap extends World {
         setPaintOrder(Hitbox.class, Tower.class, RangeDisplay.class); //Tower infront of it's range
 
         this.pathWidth = 120;
-        player = new Player(100, 0); //jannis ganz alleine gemacht
+        player = new Player(100, 100); //jannis ganz alleine gemacht
         cursor = new Cursor();
 
         isPaused = false;
@@ -273,7 +273,7 @@ public abstract class GameMap extends World {
         addObject(enemy, getSpawnLocation()[0], getSpawnLocation()[1]);
         aliveEnemies.add(enemy);
         if (isMultiplayer && NetworkManager.getInstance().isHost()) {
-            String msg = "SPAWN_ENEMY" + "," + enemy.getName();
+            String msg = "SPAWN_ENEMY" + "," + enemy.getName() + "," + enemy.getUniqueId();
             NetworkManager.getInstance().sendData(msg);
         }
         enemiesToSpawn.remove(enemy);
@@ -476,8 +476,6 @@ public abstract class GameMap extends World {
             return;
         }
 
-        System.out.println("Processing incoming command: " + command);
-
         String[] tokens = command.split(",");
         String action = tokens[0]; // Format: <Command>, x,y,z, whatever //example: SPAWN, "tower", "x", "y"
 
@@ -497,15 +495,17 @@ public abstract class GameMap extends World {
                 int level = Integer.parseInt(tokens[3]);
 
                 upgradeTowerFromNetwork(uniqueId, path, level);
+                break;
             }
             case "SPAWN_ENEMY": {
                 String enemyType = tokens[1];
                 String enemyId = tokens[2];
                 spawnEnemyFromNetwork(enemyType, enemyId);
+                break;
             }
             case "DAMAGE_ENEMY": {
                 String enemyId = tokens[1];
-                int damage = Integer.parseInt(tokens[2]);
+                double damage = Double.parseDouble(tokens[2]);
                 damageEnemyFromNetwork(enemyId, damage);
                 break;
             }
@@ -552,13 +552,13 @@ public abstract class GameMap extends World {
             if (t.getUniqueId().equals(uuid)) {
                 switch (upgradePath) {
                     case 1:
-                        t.upgrade1();
+                        t.upgrade1(true);
                         break;
                     case 2:
-                        t.upgrade2();
+                        t.upgrade2(true);
                         break;
                     case 3:
-                        t.upgrade3();
+                        t.upgrade3(true);
                         break;
                 }
                 break;
@@ -584,7 +584,7 @@ public abstract class GameMap extends World {
     }
 
 
-    public void damageEnemyFromNetwork(String enemyId, int damage) {
+    public void damageEnemyFromNetwork(String enemyId, double damage) {
         for (Enemy e : getObjects(Enemy.class)) {
             if (e.getUniqueId().equals(enemyId)) {
                 e.damage(damage);

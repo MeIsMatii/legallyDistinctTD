@@ -40,7 +40,6 @@ public class NetworkHost implements MultiplayerConnection {
                 String msg = in.readLine();
                 if (msg != null) {
                     NetworkManager.getInstance().queueIncomingMessage(msg);
-                    System.out.println("Incoming message: " + msg);
                 }
             }
         } catch (IOException e) {

@@ -135,7 +135,7 @@ public abstract class Enemy extends Entity {
             if (NetworkManager.getInstance().isHost()) {
                 player1.setCoins(player1.getCoins() + getInitialLives());
                 if(getWorldOfType(GameMap.class).isMultiplayer()) {// you alr know it, host and multiplayer
-                    String msg = "DAMAGE_PLAYER" + "," + damage;
+                    String msg = "SET_COINS" + "," + player1.getCoins(); //bc its already been changed
                     NetworkManager.getInstance().sendData(msg);
                 }
             }

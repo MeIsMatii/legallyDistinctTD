@@ -78,9 +78,9 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
                 String dots = ".".repeat(dotCounter); //"animation" so the user does not think its stuck
                 getWorld().showText("Connecting to: " + ipAddress + dots, getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
             }
-            System.out.println(NetworkManager.getInstance().isConnectionTimedOut());
+
             if (NetworkManager.getInstance().isConnectionTimedOut()) {
-                System.out.println("meow2");
+                
                 getWorld().showText("Connection timed out! (host not found/available)", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
                 isConnecting = false;
             }

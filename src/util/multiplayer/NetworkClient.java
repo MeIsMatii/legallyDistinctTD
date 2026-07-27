@@ -36,7 +36,7 @@ public class NetworkClient implements MultiplayerConnection {
             NetworkManager.getInstance().setConnectionTimeouted(false);
             System.out.println("Client: Connecting to " + hostIp + ":" + port);
             Socket socket = new Socket();
-            socket.connect(new InetSocketAddress(hostIp, port), 5000);
+            socket.connect(new InetSocketAddress(hostIp, port), 50000);
             NetworkManager.getInstance().setConnected(true);
             System.out.println("Client: Successfully connected to host!");
             this.out = new PrintWriter(socket.getOutputStream(), true);

@@ -1,5 +1,7 @@
 package util.multiplayer;
 
+import greenfoot.Greenfoot;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,6 +30,7 @@ public class NetworkHost implements MultiplayerConnection {
             Socket clientsocket = serverSocket.accept();
             NetworkManager.getInstance().setConnected(true);
             System.out.println("Host: Client connected!");
+            Greenfoot.delay(45);
             send("MAP:" + NetworkManager.getInstance().getMapNr());
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));

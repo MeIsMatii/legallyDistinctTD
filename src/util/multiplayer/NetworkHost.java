@@ -31,10 +31,10 @@ public class NetworkHost implements MultiplayerConnection {
             NetworkManager.getInstance().setConnected(true);
             System.out.println("Host: Client connected!");
             Greenfoot.delay(45);
-            send("MAP:" + NetworkManager.getInstance().getMapNr());
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             this.out = new PrintWriter(clientsocket.getOutputStream(), true);
+            send("MAP:" + NetworkManager.getInstance().getMapNr());
 
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();

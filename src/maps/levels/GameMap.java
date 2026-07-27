@@ -47,6 +47,7 @@ public abstract class GameMap extends World {
     private final int spawnDelay;
     private final List<Enemy> aliveEnemies = new ArrayList<>();
     private boolean isMultiplayer;
+    private boolean hasGameStarted = true;
     private UpgradeMenu upgradeMenu;
     private boolean isUpgradeMenuVisible;
     private int[] spawnLocation;
@@ -107,7 +108,7 @@ public abstract class GameMap extends World {
         if (isHost) {
             NetworkManager.getInstance().startHost(7777); //so the multiplayer session only starts when a map is connected
         }
-
+        hasGameStarted = false;
         pauseObjects(true, true); //so nothing moves while client not connected
     }
 
@@ -314,6 +315,10 @@ public abstract class GameMap extends World {
 
     public void act() {
         if (isMultiplayer) {
+            if(NetworkManager.getInstance().isConnected() && !hasGameStarted) {
+                hasGameStarted = true;
+                onContinue();
+            }
             readNetworkData();
         }
 

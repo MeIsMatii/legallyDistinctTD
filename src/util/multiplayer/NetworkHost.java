@@ -30,7 +30,6 @@ public class NetworkHost implements MultiplayerConnection {
             Socket clientsocket = serverSocket.accept();
             NetworkManager.getInstance().setConnected(true);
             System.out.println("Host: Client connected!");
-            Greenfoot.delay(45);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             this.out = new PrintWriter(clientsocket.getOutputStream(), true);

@@ -318,7 +318,6 @@ public abstract class GameMap extends World {
     }
 
     public void act() {
-        System.out.println(isPaused);
         NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {
             if(nm.isDisconnected()) { //disconnected incase restart on connection loss
@@ -564,6 +563,11 @@ public abstract class GameMap extends World {
                 int wave = Integer.parseInt(tokens[1]);
                 setWaveFromNetwork(wave);
                 break;
+            } case "SET_TARGETED_ENEMY": {
+                String towerID = tokens[1];
+                String enemyID = tokens[2];
+                targetEnemyFromNetwork(towerID,enemyID);
+                break;
             }
 
 
@@ -643,6 +647,22 @@ public abstract class GameMap extends World {
 
     public void setWaveFromNetwork(int wave) {
         this.wave = wave; //func not needed but now its uniform
+    }
+
+    public void targetEnemyFromNetwork(String towerUUID, String enemyUUID) {
+        Enemy enemyToTarget = null;
+        for (Enemy e : getObjects(Enemy.class)) {
+            if (e.getUniqueId().equals(enemyUUID)) {
+                enemyToTarget = e;
+                break;
+            }
+        }
+        for (Tower t: getObjects(Tower.class)) {
+            if(t.getUniqueId().equals(towerUUID)) {
+                t.setTargetedEnemyManual(enemyToTarget);
+                break;
+            }
+        }
     }
 
 

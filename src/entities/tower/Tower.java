@@ -347,7 +347,13 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         } else {
             shootingDelayCounter++;
             rangeDisplay.setFollowing(false);
-            setTargetedEnemy();
+            if(NetworkManager.getInstance().isHost()){
+                setTargetedEnemy();
+                if(NetworkManager.getInstance().isMultiplayer()) {
+                    String msg = "SET_TARGETED_ENEMY" + "," + getUniqueId() + "," + targetedEnemy.getUniqueId();
+                    NetworkManager.getInstance().sendData(msg);
+                }
+            }
 
             if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);

@@ -80,8 +80,8 @@ public class MapPreview extends MainClass implements Clickable {
             newSaveButton = new NewSaveButton(getWorldNr(), true);
             ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
 
-            newSaveButton.setImage("YesButton.png");
-            closeButton.setImage("NoButton.png");
+            newSaveButton.setImage("buttons/YesButton.png");
+            closeButton.setImage("buttons/NoButton.png");
 
             questionPopup = new QuestionPopup("Start a new multiplayer session on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO FIX (rm the loadsave
             closeButton.setOwner(questionPopup); //like now
@@ -94,8 +94,8 @@ public class MapPreview extends MainClass implements Clickable {
             } else {
                 ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
 
-                newSaveButton.setImage("YesButton.png");
-                closeButton.setImage("NoButton.png");
+                newSaveButton.setImage("buttons/YesButton.png");
+                closeButton.setImage("buttons/NoButton.png");
                 questionPopup = new QuestionPopup("Would you like to start a new game on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO fix
                 closeButton.setOwner(questionPopup); //now is later
 

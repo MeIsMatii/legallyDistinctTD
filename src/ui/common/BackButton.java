@@ -9,7 +9,7 @@ public class BackButton extends Button {
     private final World lastWorld;
 
     public BackButton(World destination) {
-        setImage("BackButton.png");
+        setImage("buttons/BackButton.png");
         getImage().scale(80, 80);
         lastWorld = destination;
 

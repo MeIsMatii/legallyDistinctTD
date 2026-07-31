@@ -91,6 +91,6 @@ public class MapSelector extends World implements HasSound {
                 return; // no valid last map, don't place marker
         }
 
-        addObject(new ImageDisplay("lastPlayed.png", 100, 100), x, y);
+        addObject(new ImageDisplay("buttons/lastPlayed.png", 100, 100), x, y);
     }
 }

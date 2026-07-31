@@ -1,8 +1,6 @@
 package ui.hud.buttons;
 
 import ui.settings.sound.SoundSettings;
-import util.Clickable;
-import core.MainClass;
 import greenfoot.GreenfootImage;
 import util.saves.SaveManager;
 
@@ -26,11 +24,11 @@ public class MuteButton extends Button{
     }
     public void updateApperance(){
         if (muted){
-            GreenfootImage img = new GreenfootImage("LautsprecherMuted.png");
+            GreenfootImage img = new GreenfootImage("buttons/LautsprecherMuted.png");
             img.scale(30,30);
             setImage(img);
         }else {
-            GreenfootImage img = new GreenfootImage("Lautsprecher.png");
+            GreenfootImage img = new GreenfootImage("buttons/Lautsprecher.png");
             img.scale(30,30);
             setImage(img);
         }

@@ -7,7 +7,7 @@ public class RetryButton extends Button{
 
 
     public RetryButton() {
-        setImage("RetryButton.png");
+        setImage("buttons/RetryButton.png");
         getImage().scale(60, 60);
     }
 

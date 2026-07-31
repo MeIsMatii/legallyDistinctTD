@@ -15,7 +15,7 @@ public class NewSaveButton extends Button {
 
 
     public NewSaveButton(int worldNr) {
-        GreenfootImage img = new GreenfootImage("NoButton.png");
+        GreenfootImage img = new GreenfootImage("buttons/NoButton.png");
         img.scale(100, 50);
         setImage(img);
         setWorldNr(worldNr);

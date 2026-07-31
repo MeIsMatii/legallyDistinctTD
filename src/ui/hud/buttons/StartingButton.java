@@ -6,7 +6,7 @@ import util.saves.SaveManager;
 
 public class StartingButton extends Button{
     public StartingButton(){
-        setImage("StartingButton.PNG");
+        setImage("buttons/StartingButton.PNG");
     }
 
     @Override

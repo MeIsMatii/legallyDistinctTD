@@ -29,7 +29,7 @@ public class LoadSaveButton extends Button {
 
 
     public LoadSaveButton(int Worldnr) {
-        GreenfootImage img = new GreenfootImage("YesButton.png");
+        GreenfootImage img = new GreenfootImage("buttons/YesButton.png");
         img.scale(100, 50);
         setImage(img);
         setWorldNr(Worldnr);

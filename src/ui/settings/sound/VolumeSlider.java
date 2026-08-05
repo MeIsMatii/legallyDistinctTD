@@ -8,7 +8,7 @@ import greenfoot.MouseInfo;
 import util.Clickable;
 
 public class VolumeSlider extends MainClass implements Clickable {
-
+    /// @Author Colin, Mathilo(Linux Compatibility)
     private static final int SLIDER_WIDTH_PIXEL = 200;
     private static final int SLIDER_HEIGHT_PIXEL = 30;
 

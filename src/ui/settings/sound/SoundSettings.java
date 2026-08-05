@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SoundSettings {
-
+    /// @Author Colin, Mathilo
     private static final int MINIMUM_VOLUME = 0;
     private static final int MAXIMUM_VOLUME = 100;
     private static final int DEFAULT_STARTING_VOLUME = SaveManager.getInstance().getVolume();

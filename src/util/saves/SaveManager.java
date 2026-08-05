@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.io.File;
 
 public class SaveManager implements Saveable {
-
+    /// @Author Colin
     // path to the save file — stored in a "saves" folder next to the project
     private static final String SAVE_PATH = "saves/game.save";
 
@@ -96,7 +96,7 @@ public class SaveManager implements Saveable {
 
     /** Returns true if the tutorial is completed */
     public boolean getTutorialStatus() {
-        return getBoolean(saveData, "TutorialStatus", false); // read raw string //TODO change to false once it has been programmed
+        return getBoolean(saveData, "TutorialStatus", false);
     }
 
     /** Saves if the tutorial was completed. */

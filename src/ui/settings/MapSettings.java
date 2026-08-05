@@ -14,7 +14,7 @@ import ui.common.BackButton;
 
 public class MapSettings extends World implements HasSound {
     private final GreenfootSound backgroundMusic;
-
+    /// @Author Colin, Mathilo
     public MapSettings() {
         super(1920, 1080, 1);
         setBackground("dirtsquare.png");

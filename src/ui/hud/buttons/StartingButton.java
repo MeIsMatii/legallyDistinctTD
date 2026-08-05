@@ -16,6 +16,7 @@ public class StartingButton extends Button{
             Greenfoot.setWorld(new MapSelector());
         }else{
             //TODO implement tutorial
+            Greenfoot.setWorld(new MapSelector());
         }
     }
 }

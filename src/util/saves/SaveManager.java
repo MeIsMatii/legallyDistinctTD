@@ -96,7 +96,7 @@ public class SaveManager implements Saveable {
 
     /** Returns true if the tutorial is completed */
     public boolean getTutorialStatus() {
-        return getBoolean(saveData, "TutorialStatus", true); // read raw string //TODO change to false once it has been programmed
+        return getBoolean(saveData, "TutorialStatus", false); // read raw string //TODO change to false once it has been programmed
     }
 
     /** Saves if the tutorial was completed. */

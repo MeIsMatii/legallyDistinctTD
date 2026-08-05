@@ -3,7 +3,7 @@ package ui.hud.buttons;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import ui.hud.PopupScreen;
-
+/// @Author Colin, mathilo
 public class ClosePopupButton extends Button {
     private final PopupScreen popupTarget;
 

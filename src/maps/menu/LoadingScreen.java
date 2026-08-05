@@ -2,7 +2,7 @@ package maps.menu;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
-
+/// @Author Colin, Mathilo
 public class LoadingScreen extends World {
 
     private World nextWorld;
@@ -30,5 +30,5 @@ public class LoadingScreen extends World {
         World nextworld = getNextWorld();
         Greenfoot.setWorld(nextworld);
     }
-    /// TODO finish loading screens --Colin
+
 }

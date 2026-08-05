@@ -5,7 +5,7 @@ import util.Clickable;
 import core.MainClass;
 import greenfoot.GreenfootImage;
 import util.saves.SaveManager;
-
+/// @Author Colin
 public class MuteButton extends Button{
     private boolean muted = !SaveManager.getInstance().isSoundOn();
     public MuteButton(){

@@ -5,7 +5,7 @@ import greenfoot.Font;
 import greenfoot.GreenfootImage;
 
 import java.awt.*;
-
+/// @Author Colin
 public class CustomImageDisplay extends MainClass {
     public CustomImageDisplay(int height, int width, String message, greenfoot.Color backGroundColor, greenfoot.Color textColor, Font textFont){
         GreenfootImage boxImage = new GreenfootImage(width, height);

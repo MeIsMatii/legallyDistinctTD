@@ -3,7 +3,7 @@ package ui.hud.buttons;
 import greenfoot.Greenfoot;
 import maps.menu.MapSelector;
 import util.saves.SaveManager;
-
+/// @Author Colin
 public class StartingButton extends Button{
     public StartingButton(){
         setImage("StartingButton.PNG");

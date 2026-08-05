@@ -9,7 +9,7 @@ import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
 import util.saves.GameSaveManager;
-
+/// @Author Colin, Mathilo
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
     private int world = 0;

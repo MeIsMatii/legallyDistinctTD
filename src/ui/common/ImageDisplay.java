@@ -3,7 +3,7 @@ package ui.common;
 import core.MainClass;
 import greenfoot.GreenfootImage;
 import util.Clickable;
-
+/// @Author Colin, Mathilo
 public class ImageDisplay extends MainClass{
     public ImageDisplay(String image, int scaleX, int scaleY) {
         setImage(image);

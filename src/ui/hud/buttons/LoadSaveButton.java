@@ -5,7 +5,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.levels.*;
 import maps.menu.LoadingScreen;
-
+/// @Author Colin,Mathilo
 public class LoadSaveButton extends Button{
     int worldNr;
     private World loadingScreen = new LoadingScreen();

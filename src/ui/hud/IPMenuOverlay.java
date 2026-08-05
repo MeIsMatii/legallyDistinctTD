@@ -6,17 +6,8 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
 import util.Clickable;
+/// @Author Colin
 
-/**
- *
- * HOW TO USE:
- *   1. Create an instance:  IPMenuOverlay overlay = new IPMenuOverlay();
- *   2. Add it to the world: world.addObject(overlay, 960, 540);
- *   3. After the user presses Connect (or Enter), the overlay removes itself
- *      and stores the typed IP in ipAddress.
- *   4. Read the result:     String ip = overlay.getIP();
- *      (call this from the parent actor after overlay.getWorld() == null)
- */
 public class IPMenuOverlay extends PopupScreen implements Clickable {
 
     private static final int W = 500;   // panel width
@@ -49,23 +40,23 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         {".", "0", "<-"}
     };
 
-    // ── State ──────────────────────────────────────────────────────────────
+    // State
     private String ipAddress = "";      // what the user has typed so far
     private boolean connected = false;  // true if user pressed Connect/Enter
 
-    // ── Constructor ────────────────────────────────────────────────────────
+    //  Constructor
     public IPMenuOverlay() {
         redraw();
     }
 
-    // ── Act ───────────────────────────────────────────────────────────────
+    // Act
     @Override
     public void act() {
         handleKeyboard();
-        checkClick();          // from Clickable — calls onClick() if this actor was clicked
+        checkClick();
     }
 
-    // ── Clickable: called when the actor itself is clicked ─────────────────
+
     @Override
     public void onClick() {
         MouseInfo mi = Greenfoot.getMouseInfo();
@@ -108,7 +99,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         }
     }
 
-    // ── Keyboard input ─────────────────────────────────────────────────────
+    // Keyboard input
     private void handleKeyboard() {
         String key = Greenfoot.getKey();
         if (key == null) return;
@@ -131,7 +122,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         }
     }
 
-    // ── Typing helpers ─────────────────────────────────────────────────────
+    // Typing helpers
     private void typeChar(char c) {
         ipAddress = ipAddress + c;
         redraw();
@@ -144,7 +135,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         redraw();
     }
 
-    // ── Connect ────────────────────────────────────────────────────────────
+    // Connect
     private void onConnect() {
         connected = true;   // flag that the user confirmed (vs just closing)
         onRemove();
@@ -164,7 +155,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         return connected;
     }
 
-    // ── PopupScreen ────────────────────────────────────────────────────────
+    // PopupScreen
     @Override
     public void onRemove() {
         if (getWorld() != null) {
@@ -172,7 +163,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         }
     }
 
-    // ── Drawing ────────────────────────────────────────────────────────────
+    // Drawing
     private void redraw() {
         GreenfootImage img = new GreenfootImage(W, H);
 
@@ -185,12 +176,12 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         img.drawRect(0, 0, W - 1, H - 1);
         img.drawRect(2, 2, W - 5, H - 5);
 
-        // ── Title ──────────────────────────────────────────────────────────
+        // Title
         img.setColor(Color.WHITE);
         img.setFont(new Font("Arial", true, false, 22));
         img.drawString("Enter Server IP", 150, 45);
 
-        // ── Text field ─────────────────────────────────────────────────────
+        // Text field
         img.setColor(new Color(15, 15, 15));
         img.fillRect(30, 60, W - 60, 60);
         img.setColor(new Color(200, 200, 200));
@@ -205,7 +196,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
             img.drawString(ipAddress, 45, 100);
         }
 
-        // ── Key buttons ────────────────────────────────────────────────────
+        // Key buttons
         for (int row = 0; row < KEYS.length; row++) {
             for (int col = 0; col < KEYS[row].length; col++) {
                 String label = KEYS[row][col];
@@ -229,7 +220,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
             }
         }
 
-        // ── Connect button ─────────────────────────────────────────────────
+        // Connect button
         img.setColor(new Color(40, 130, 50));
         img.fillRect(CONNECT_X, CONNECT_Y, CONNECT_W, CONNECT_H);
         img.setColor(new Color(70, 170, 80));
@@ -238,7 +229,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         img.setFont(new Font("Arial", true, false, 24));
         img.drawString("Connect", W / 2 - 42, CONNECT_Y + 33);
 
-        // ── Close "X" button ───────────────────────────────────────────────
+        // Close "X" button
         img.setColor(new Color(150, 30, 30));
         img.fillRect(CLOSE_X, CLOSE_Y, CLOSE_SIZE, CLOSE_SIZE);
         img.setColor(Color.WHITE);

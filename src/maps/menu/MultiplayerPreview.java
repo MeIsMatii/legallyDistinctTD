@@ -5,7 +5,7 @@ import greenfoot.GreenfootImage;
 import ui.hud.IPMenuOverlay;
 import util.Clickable;
 import util.multiplayer.NetworkManager;
-
+/// @Author Colin; Mathilo
 public class MultiplayerPreview extends MainClass implements Clickable {
 
     /** The IP address the user last confirmed. Empty string if none yet. */

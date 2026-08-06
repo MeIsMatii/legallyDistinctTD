@@ -1,5 +1,6 @@
 package ui.settings;
 
+import ui.hud.buttons.DeveloperNotesButton;
 import ui.hud.buttons.MuteButton;
 import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
@@ -14,7 +15,9 @@ import ui.common.BackButton;
 
 public class MapSettings extends World implements HasSound {
     private final GreenfootSound backgroundMusic;
-    /// @Author Colin, Mathilo
+    /**
+     * @Author Colin, Mathilo
+     */
     public MapSettings() {
         super(1920, 1080, 1);
         setBackground("dirtsquare.png");
@@ -23,6 +26,7 @@ public class MapSettings extends World implements HasSound {
         backgroundMusic = playSoundAndKeep("TEMPTropischSound.mp3");
         addObject(new SongDropDown(),1200,500);
         addObject(new MuteButton(),400,500);
+        addObject(new DeveloperNotesButton(), 700, 1000);
     }
 
     @Override

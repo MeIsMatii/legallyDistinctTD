@@ -44,6 +44,11 @@ public class HomingProjectile extends Projectile {
         target(targetedEnemy);
     }
 
+    @Override
+    public String getName() {
+        return "HomingProjectile";
+    }
+
     public void target(Enemy e) {
         setTargetX(e.getX());
         setTargetY(e.getY());

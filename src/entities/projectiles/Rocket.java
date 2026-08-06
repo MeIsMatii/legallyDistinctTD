@@ -34,6 +34,12 @@ public class Rocket extends Projectile implements HasSound {
         getWorld().removeObject(explosion);
         getWorld().removeObject(this);
     }
+
+    @Override
+    public String getName() {
+        return "Rocket";
+    }
+
     private void handleVisual(){
         playSound("Explosion.mp3");
         ImageDisplay explosion = new ImageDisplay("Explosion.png");

@@ -22,6 +22,7 @@ public abstract class Projectile extends Entity implements HasSound {
     private int targetY;
 
     public Projectile(Tower owner) {
+        super();
         this.owner = owner;
     }
 
@@ -124,5 +125,7 @@ public abstract class Projectile extends Entity implements HasSound {
     public void move() {
         move((int) Math.round(speed));
     }
+
+    public abstract String getName();
 }
 

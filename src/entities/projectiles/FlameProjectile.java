@@ -11,5 +11,10 @@ public class FlameProjectile extends Projectile {
         setImage(img);
     }
 
+    @Override
+    public String getName() {
+        return "FlameProjectile";
+    }
+
 }
 

@@ -43,6 +43,11 @@ public class Ice extends Projectile implements HasSound {
             //getWorld().removeObject(explosion);
             //getWorld().removeObject(this);
         }
+
+    @Override
+    public String getName() {
+        return "Ice";
+    }
     /*private void handleVisual(){
         playSound("Explosion.mp3");
         ImageDisplay explosion = new ImageDisplay("Explosion.png");

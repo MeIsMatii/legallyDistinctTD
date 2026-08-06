@@ -32,6 +32,11 @@ public class Mine extends Projectile implements HasSound {
         move((int) Math.round(getSpeed()));
     }
 
+    @Override
+    public String getName() {
+        return "Mine";
+    }
+
     public void onHit(Entity hitter) {
         if(hitter instanceof Path) {
             isMoving = false;

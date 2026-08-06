@@ -15,6 +15,8 @@ public class Player extends MainClass {
     private int oldCoins;
     private int oldHealth;
 
+    private boolean isGameOver = false;
+
     public Player() {
         this(0, -1);
     }
@@ -57,6 +59,7 @@ public class Player extends MainClass {
     }
 
     public void act() {
+        damage(0);
         coinCheat();
         show(getWorld());
 
@@ -76,15 +79,16 @@ public class Player extends MainClass {
 
     public void damage(int damage) {
         setHealth(health - damage);
-        if (health <= 0) {
+        if (health <= 0 && !isGameOver) {
             //getWorld().showText("you lost", 400, 400);
             GameOverPopUp gameOverPopUp = new GameOverPopUp();
             getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
 
-            getWorldOfType(GameMap.class).pauseObjects(isPaused(), true);
+            getWorldOfType(GameMap.class).pauseObjects(true, true);
 
             GameMap gameMap = (GameMap) getWorld();
             gameMap.getGameSaveManager().removeSaveFile();
+            isGameOver = true;
         }
     }
 

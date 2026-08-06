@@ -133,6 +133,9 @@ public abstract class GameMap extends World {
      *
      * Listed earlier = painted on top (front).
      * Listed later = painted underneath (back).
+     *
+     * An SAE, die kommentare dahinter sind größtenteils falsch
+     * (bsp: "Semi-transparent range circle (under tower image)" ist falsch - das sind die debug-hitboxen)
      */
     private void setupPaintOrder() {
         setPaintOrder(

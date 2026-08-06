@@ -16,7 +16,7 @@ public class GameMap1 extends GameMap {
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class,CloseButton.class, SongDropDown.class, VolumeSlider.class,SettingsPopup.class, SettingsButton.class,BackButton.class, PlayOnButton.class,PauseMenu.class);
 
         /// TODO BETTER MAP
-        GreenfootImage img = new GreenfootImage("Map1.png");
+        GreenfootImage img = new GreenfootImage("Maps/Map1.png");
 
         img.scale(1620, 1080);
         setBackground(img);

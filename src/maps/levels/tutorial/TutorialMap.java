@@ -6,7 +6,7 @@ import maps.levels.GameMap;
 public class TutorialMap extends GameMap {
 
     public TutorialMap(){
-        GreenfootImage img = new GreenfootImage("Map1.png");
+        GreenfootImage img = new GreenfootImage("Maps/Map1.png");
 
         img.scale(1620, 1080);
         setBackground(img);

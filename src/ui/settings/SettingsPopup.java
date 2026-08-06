@@ -10,7 +10,9 @@ import ui.settings.sound.VolumeSlider;
 import java.util.List;
 
 public class SettingsPopup extends Actor {
-    /// @Author Colin, Julian
+    /**
+     * @Author Colin,Julian
+     */
     private VolumeSlider volumeSlider;
     private SongDropDown songDropDown;
     private MuteButton muteButton;

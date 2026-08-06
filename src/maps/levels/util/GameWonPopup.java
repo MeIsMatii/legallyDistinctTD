@@ -15,7 +15,7 @@ public class GameWonPopup extends PopupScreen {
 
     public GameWonPopup() {
         GreenfootImage img = new GreenfootImage(1500, 700);
-        img.setColor(Color.BLUE);
+        img.setColor(Color.GRAY);
         img.fill();
         setImage(img);
     }

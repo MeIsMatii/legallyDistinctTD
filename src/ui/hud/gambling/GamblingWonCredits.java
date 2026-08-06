@@ -8,16 +8,23 @@ import ui.common.BackButton;
 
 public class GamblingWonCredits extends World {
 
-    private String[] credits = new String[]{
-        "Bloons TD China",
-        "Group Leader: Colin",
-        "deputy Group Leader: Mathilo",
-        "Programming: Jannis",
-        "Programming/Music: Julian",
-        "Art: Febo",
-        "Art: Sophia",
-        "Documentation: Jan",
-        "(everyone had a programming part)"
+    private final String[] credits = new String[]{
+        "A long, loong time ago",
+        "in a galaxy, far, faaar away",
+        "there were several idiots",
+        "who spent way too much\ntime on a school project",
+        "",
+        "The projects name was:",
+        "Legally distinct Tower Defense",
+        "",
+        "The idiots were:",
+        "Colin",
+        "Mathilo",
+        "Jannis",
+        "Julian",
+        "Febo",
+        "Sophia",
+        "Jan",
     };
 
     private int creditsLocation = 0;
@@ -27,7 +34,7 @@ public class GamblingWonCredits extends World {
 
 
     public GamblingWonCredits() {
-        super(29, 29, 20);
+        super(1920, 1080, 1);
         setBackground("dirtsquare.png");
         setPaintOrder(BackButton.class, TextBlock.class);
         addObject(new BackButton(new MapSelector()), 4, 4);
@@ -50,7 +57,7 @@ public class GamblingWonCredits extends World {
             return;
         }
 
-        if(counter < 45) {
+        if(counter < 90) {
             counter++;
             return;
         }
@@ -60,7 +67,7 @@ public class GamblingWonCredits extends World {
             return;
         }
         counter = 0;
-        addObject(new TextBlock(credits[creditsLocation], -0.3), getWidth()/2, 25);
+        addObject(new TextBlock(credits[creditsLocation], -4), getWidth()/2, getHeight()-25);
         creditsLocation++;
     }
 }

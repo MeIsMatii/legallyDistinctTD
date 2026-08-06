@@ -31,7 +31,7 @@ public class PauseMenu extends PopupScreen {
 
 
     public void addedToWorld(World w){
-        backButton= new BackButton(new MapSelector());
+        backButton= new BackButton();
         settingsButton = new SettingsButton();
         playOnButton = new PlayOnButton();
         retryButton = new RetryButton();

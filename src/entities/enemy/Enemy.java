@@ -134,10 +134,6 @@ public abstract class Enemy extends Entity {
             Player player1 = player.get(0);
             if (NetworkManager.getInstance().isHost()) {
                 player1.setCoins(player1.getCoins() + getInitialLives());
-                if(getWorldOfType(GameMap.class).isMultiplayer()) {// you alr know it, host and multiplayer
-                    String msg = "SET_COINS" + "," + player1.getCoins(); //bc its already been changed
-                    NetworkManager.getInstance().sendData(msg);
-                }
             }
             getWorld().removeObject(this);
         }

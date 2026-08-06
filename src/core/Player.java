@@ -70,7 +70,6 @@ public class Player extends MainClass {
     }
 
     public void act() {
-        damage(0);
         coinCheat();
         show(getWorld());
 

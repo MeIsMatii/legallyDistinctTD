@@ -11,6 +11,8 @@ public class TextBlock extends Actor {
     private final double speed;
     private double posY;
 
+    private int size = 16;
+
     public double getSpeed() {
         return speed;
     }
@@ -18,7 +20,7 @@ public class TextBlock extends Actor {
     public TextBlock(String text, double speed){
         this.text = text;
         this.speed = speed;
-        setImage(new GreenfootImage(text, 16, Color.WHITE, Color.BLACK));
+        setImage(new GreenfootImage(text, size, Color.YELLOW, Color.BLACK));
 
     }
 
@@ -32,6 +34,8 @@ public class TextBlock extends Actor {
     }
 
     public void goUp(){
+        size++;
+        setImage(new GreenfootImage(text, size, Color.YELLOW, Color.BLACK));
         int x = getX();
         posY += speed;
 

@@ -1,11 +1,12 @@
 package ui.hud.gambling;
 
+import ui.hud.buttons.Button;
 import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
-public class SlotMachineButtonGamble extends MainClass implements Clickable {
+public class SlotMachineButtonGamble extends Button {
 
 
 
@@ -43,11 +44,11 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
             for (int j = 0; j < 3; j++) {
                 int random = Greenfoot.getRandomNumber(3);
                 slots[j].setImage(images[random]);
-                Greenfoot.delay(2);
+                Greenfoot.delay(1);
 
             }
 
-            Greenfoot.delay(2);
+            //Greenfoot.delay(2);
 
         }
         if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage()) || Greenfoot.isKeyDown("C")) {
@@ -62,9 +63,5 @@ public class SlotMachineButtonGamble extends MainClass implements Clickable {
 
     }//slot machien bild weg dafür 3 bilder oder objekte nebeneinander jede viertel sekunde ändern
     //zufallszahl und wenn z.b. 5 ist dann anhalten
-
-    public void act() {
-        checkClick();
-    }
 
 }

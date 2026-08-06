@@ -2,7 +2,10 @@ package maps.menu;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
-/// @Author Colin, Mathilo
+/**
+ * @Author Colin
+ * @Author Mathilo
+ */
 public class LoadingScreen extends World {
 
     private World nextWorld;

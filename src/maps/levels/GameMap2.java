@@ -3,6 +3,10 @@ package maps.levels;
 import greenfoot.GreenfootImage;
 import maps.levels.util.MapCoordinatesUtilGuy;
 
+/**
+ * @Author Colin
+ * @Author Mathilo
+ */
 public class GameMap2 extends GameMap {
     public GameMap2() {
         GreenfootImage img = new GreenfootImage("Maps/Map2.png");

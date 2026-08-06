@@ -4,7 +4,9 @@ import java.io.*;
 import java.util.Properties;
 
 public interface Saveable {
-/// @Author Colin
+/**
+ * @Author Colin
+ */
 
     /**
      * Loads the save file into a Properties object so values can be read.

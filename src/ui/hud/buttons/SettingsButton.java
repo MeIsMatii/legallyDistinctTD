@@ -5,7 +5,11 @@ import ui.settings.SettingsPopup;
 import greenfoot.Greenfoot;
 import maps.levels.GameMap;
 import maps.menu.MapSelector;
-/// @Author Colin, Mathilo,Julian
+/**
+ * @Author Colin
+ * @Author Mathilo
+ * @Author Julian
+ */
 public class SettingsButton extends Button{
 
     public SettingsButton() {

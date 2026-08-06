@@ -4,7 +4,9 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 import greenfoot.World;
-
+/**
+ * @Author Colin
+ */
 public interface Clickable {
 
     default void checkClick() {

@@ -4,6 +4,7 @@ import greenfoot.*;
 import ui.hud.PopupScreen;
 import util.Clickable;
 import util.multiplayer.NetworkManager;
+import util.saves.SaveManager;
 
 /**
  *
@@ -53,11 +54,13 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     };
 
     // ── State ──────────────────────────────────────────────────────────────
-    private String ipAddress = "";      // what the user has typed so far
+    private String ipAddress;   // what the user has typed so far
     private boolean connected = false;  // true if user pressed Connect/Enter
 
     // ── Constructor ────────────────────────────────────────────────────────
     public IPMenuOverlay() {
+        String ip = SaveManager.getInstance().get("lastTypedIP");
+        ipAddress = (ip != null) ? ip: "";
         redraw();
     }
 
@@ -175,6 +178,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         isConnecting = true;
 
         // <--! Mathilo stuff !-->
+        SaveManager.getInstance().set("lastTypedIP", ipAddress);
         NetworkManager.getInstance().startClient(ipAddress, 7777); //7777 should be open on most pcs //terraria also uses this --Mathilo
 
         getWorld().showText("Connecting to: " + ipAddress, getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);

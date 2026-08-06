@@ -21,6 +21,8 @@ public class NetworkManager {
     private boolean isConnectionTimeout = false;
     private boolean isConnected = false;
 
+    private boolean isDisconnected = false; // to use when client/host disconnects
+
     private NetworkManager() {
 
     }
@@ -125,4 +127,18 @@ public class NetworkManager {
     public void setConnected(boolean connected) {
         isConnected = connected;
     }
+
+    public boolean isDisconnected() {
+        return isDisconnected;
+    }
+
+    public void setDisconnected(boolean disconnected) {
+        isDisconnected = disconnected;
+
+        if(disconnected = true) {
+            activeWorker = null; // to reset connection
+        }
+    }
+
+
 }

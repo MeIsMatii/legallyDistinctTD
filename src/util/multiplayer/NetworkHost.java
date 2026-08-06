@@ -38,8 +38,13 @@ public class NetworkHost implements MultiplayerConnection {
 
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
+                System.out.println(msg);
                 if (msg != null) {
                     NetworkManager.getInstance().queueIncomingMessage(msg);
+                } else {
+                    NetworkManager.getInstance().setDisconnected(true);
+                    System.out.println("disconnected@Host");
+                    break;
                 }
             }
         } catch (IOException e) {

@@ -47,7 +47,7 @@ public abstract class GameMap extends World {
     private final int spawnDelay;
     private final List<Enemy> aliveEnemies = new ArrayList<>();
     private boolean isMultiplayer;
-    private boolean hasGameStarted = true;
+    private boolean hasGameStarted;
     private UpgradeMenu upgradeMenu;
     private boolean isUpgradeMenuVisible;
     private int[] spawnLocation;
@@ -73,6 +73,7 @@ public abstract class GameMap extends World {
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
 
         this.isMultiplayer = false;
+        setHasGameStarted(true);
 
         this.gameSaveManager = new GameSaveManager();
         this.waveManager = WaveManager.getInstance();
@@ -103,13 +104,16 @@ public abstract class GameMap extends World {
         }
 
         System.out.println("Multiplayer");
-        this.isMultiplayer = true;
+        setMultiplayer(true);
         NetworkManager.getInstance().setMapNr(getMapNumber()); //doesnt hurt incase the client also knows the mapnr lmao
         if (isHost) {
-            NetworkManager.getInstance().startHost(7777); //so the multiplayer session only starts when a map is connected
+           startHost();//so the multiplayer session only starts when a map is connected
         }
-        hasGameStarted = false;
         pauseObjects(true, true); //so nothing moves while client not connected
+    }
+
+    public void startHost() {
+        NetworkManager.getInstance().startHost(7777);
     }
 
     /**
@@ -314,8 +318,31 @@ public abstract class GameMap extends World {
     }
 
     public void act() {
+        System.out.println(isPaused);
+        NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {
-            if(NetworkManager.getInstance().isConnected() && !hasGameStarted) {
+            if(nm.isDisconnected()) { //disconnected incase restart on connection loss
+                System.out.println("disconnected@Map");
+                if(hasGameStarted){
+                    pauseObjects(true, true);
+                    BackButton backButton = new BackButton();
+                    nm.setDisconnected(false); // to make it stop
+                    if(nm.isHost()) {
+                        QuestionPopup questionPopup = new QuestionPopup("You were disconnected.\nWould you like to start a new session?", backButton, new RestartMultiplayerButton());
+                        removeObject(questionPopup.getCloseButton());
+                        addObject(questionPopup, getWidth() / 2, getHeight() / 2);
+
+                    } else {
+                        addObject(new QuestionPopup("You were disconnected.\nReturn to title?", backButton, null), getWidth() / 2, getHeight() / 2);
+                    }
+                }
+                else {
+                    nm.setDisconnected(false);
+                    nm.setConnected(false);
+                    NetworkManager.getInstance().startHost(7777);
+                }
+            }
+            if(nm.isConnected() && !hasGameStarted) {
                 hasGameStarted = true;
                 onContinue();
             }
@@ -325,13 +352,14 @@ public abstract class GameMap extends World {
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
         checkPaused();
 
-        if (NetworkManager.getInstance().isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined
+        if (nm.isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined
             if ((!enemiesToSpawn.isEmpty() || aliveEnemies.isEmpty())) {
                 spawnWave(getWave(), spawnDelay);
             }
             removeDeadEnemies();
-            showWave();
+
         }
+        showWave();
     }
 
     /**
@@ -345,7 +373,7 @@ public abstract class GameMap extends World {
                 if (getWave() > getWinWave()) {
                     showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
 
-                    QuestionPopup questionPopup = new QuestionPopup("You won!\nWould you like to continue in Freeplay\nor return to title", new BackButton(new MapSelector()), new PlayOnButton());
+                    QuestionPopup questionPopup = new QuestionPopup("You won!\nWould you like to continue in Freeplay\nor return to title", new BackButton(), new PlayOnButton());
                     removeObject(questionPopup.getCloseButton());
                     questionPopup.setCloseButton(null);
                     addObject(questionPopup, getWidth() / 2, getHeight() / 2);
@@ -458,8 +486,21 @@ public abstract class GameMap extends World {
 
     // <--! MULTIPLAYER !-->
 
+
+
     public boolean isMultiplayer() {
         return isMultiplayer;
+    }
+
+
+    public void setMultiplayer(boolean multiplayer) {
+        isMultiplayer = multiplayer;
+        setHasGameStarted(!multiplayer);
+    }
+
+    public void setHasGameStarted(boolean hasGameStarted) {
+        this.hasGameStarted = hasGameStarted;
+        pauseObjects(!hasGameStarted, !hasGameStarted);
     }
 
     public void readNetworkData() {
@@ -597,7 +638,7 @@ public abstract class GameMap extends World {
      * @param coins the new value, not the difference.
      */
     public void setCoinsFromNetwork(int coins) {
-        player.setCoins(coins);
+        player.setCoins(coins, true);
     }
 
     public void setWaveFromNetwork(int wave) {

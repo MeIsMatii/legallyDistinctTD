@@ -51,6 +51,8 @@ public class NetworkManager {
         } //its already running
         isHost = true;
         isMultiplayer = true;
+        setConnected(false);
+        setDisconnected(false);
         NetworkHost host = new NetworkHost(port);
         this.activeWorker = host;
 
@@ -133,10 +135,11 @@ public class NetworkManager {
     }
 
     public void setDisconnected(boolean disconnected) {
-        isDisconnected = disconnected;
+        this.isDisconnected = disconnected;
 
-        if(disconnected = true) {
-            activeWorker = null; // to reset connection
+        if (disconnected) {
+            this.isConnected = false;
+            this.activeWorker = null; // to reset connection
         }
     }
 

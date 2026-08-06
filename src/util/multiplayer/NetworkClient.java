@@ -51,6 +51,7 @@ public class NetworkClient implements MultiplayerConnection {
                         NetworkManager.getInstance().queueIncomingMessage(msg);
                     }
                 } else {
+                    NetworkManager.getInstance().setConnected(false);
                     NetworkManager.getInstance().setDisconnected(true);
                     System.out.println("disconnected@Client");
                     break;

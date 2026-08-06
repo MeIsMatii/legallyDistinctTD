@@ -325,6 +325,7 @@ public abstract class GameMap extends World {
                 if(hasGameStarted){
                     pauseObjects(true, true);
                     BackButton backButton = new BackButton();
+                    nm.setConnected(false);
                     nm.setDisconnected(false); // to make it stop
                     if(nm.isHost()) {
                         QuestionPopup questionPopup = new QuestionPopup("You were disconnected.\nWould you like to start a new session?", backButton, new RestartMultiplayerButton());

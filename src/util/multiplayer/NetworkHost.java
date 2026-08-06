@@ -1,7 +1,5 @@
 package util.multiplayer;
 
-import greenfoot.Greenfoot;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +39,7 @@ public class NetworkHost implements MultiplayerConnection {
                 if (msg != null) {
                     NetworkManager.getInstance().queueIncomingMessage(msg);
                 } else {
+                    NetworkManager.getInstance().setConnected(false);
                     NetworkManager.getInstance().setDisconnected(true);
                     System.out.println("disconnected@Host");
                     break;
@@ -48,6 +47,8 @@ public class NetworkHost implements MultiplayerConnection {
             }
         } catch (IOException e) {
             System.err.println("Host Connection Error: " + e.getMessage());
+            NetworkManager.getInstance().setConnected(false);
+            NetworkManager.getInstance().setDisconnected(true);
         }
     }
 }

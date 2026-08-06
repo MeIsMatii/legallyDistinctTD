@@ -11,7 +11,7 @@ public class WaveResetButton extends Button implements Clickable {
 
 
     public WaveResetButton(){
-        setImage("WaveResetButton.png");
+        setImage("buttons/WaveResetButton.png");
         getImage().scale(60,60);
 
     }

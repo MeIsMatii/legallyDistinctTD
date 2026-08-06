@@ -1,7 +1,6 @@
 package ui.hud.buttons;
 
 import maps.levels.GameMap;
-import maps.menu.PauseMenu;
 import ui.hud.PopupScreen;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 public class PlayOnButton extends Button{
 
     public PlayOnButton() {
-        setImage("PlayOnButton.png");
+        setImage("buttons/PlayOnButton.png");
         getImage().scale(60, 60);
     }
 

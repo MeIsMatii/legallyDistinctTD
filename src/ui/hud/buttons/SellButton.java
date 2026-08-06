@@ -14,7 +14,7 @@ public class SellButton extends Button implements HasSound {
     public SellButton(Tower tower, Player player) {
         this.tower = tower;
         this.player = player;
-        GreenfootImage img = new GreenfootImage("sellButton.png");
+        GreenfootImage img = new GreenfootImage("buttons/sellButton.png");
         img.scale(100, 50);
         setImage(img);
     }

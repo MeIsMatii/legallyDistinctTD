@@ -7,6 +7,7 @@ import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
+import util.multiplayer.popups.MultiplayerPreview;
 import util.saves.SaveManager;
 
 public class MapSelector extends World implements HasSound {
@@ -93,6 +94,6 @@ public class MapSelector extends World implements HasSound {
                 return; // no valid last map, don't place marker
         }
 
-        addObject(new ImageDisplay("lastPlayed.png", 100, 100), x, y);
+        addObject(new ImageDisplay("buttons/lastPlayed.png", 100, 100), x, y);
     }
 }

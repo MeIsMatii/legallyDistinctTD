@@ -5,13 +5,14 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.common.BackButton;
+import ui.hud.PopupScreen;
 import ui.hud.buttons.PlayOnButton;
 import ui.hud.buttons.RetryButton;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.buttons.WaveResetButton;
 
 
-public class PauseMenu extends Actor {
+public class PauseMenu extends PopupScreen {
 
    private BackButton backButton;
    private SettingsButton settingsButton;
@@ -30,7 +31,7 @@ public class PauseMenu extends Actor {
 
 
     public void addedToWorld(World w){
-        backButton= new BackButton(new MapSelector());
+        backButton= new BackButton();
         settingsButton = new SettingsButton();
         playOnButton = new PlayOnButton();
         retryButton = new RetryButton();

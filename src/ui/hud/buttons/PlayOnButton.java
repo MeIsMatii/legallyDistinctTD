@@ -1,6 +1,7 @@
 package ui.hud.buttons;
 
 import maps.levels.GameMap;
+import maps.menu.PauseMenu;
 import ui.hud.PopupScreen;
 
 import java.util.List;

@@ -5,8 +5,9 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.menu.MapSelector;
 import ui.common.BackButton;
+import util.HasSound;
 
-public class GamblingWonCredits extends World {
+public class GamblingWonCredits extends World implements HasSound {
 
     private final String[] credits = new String[]{
         "A long, loong time ago",
@@ -48,6 +49,8 @@ public class GamblingWonCredits extends World {
         img.setColor(Color.BLACK);
         img.fill();
         setBackground(img);
+        playSound("Credits.mp3");
+
 
 
     }

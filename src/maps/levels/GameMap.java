@@ -38,6 +38,7 @@ import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
 import util.Cursor;
+import util.HasSound;
 import util.multiplayer.NetworkManager;
 import util.multiplayer.popups.IPMenuOverlay;
 import util.saves.GameSaveManager;
@@ -53,7 +54,7 @@ import java.util.function.Supplier;
  * @author paths: Julian
  * @author waves & gamesaves: Mati
  */
-public abstract class GameMap extends World {
+public abstract class GameMap extends World implements HasSound {
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -459,6 +460,7 @@ public abstract class GameMap extends World {
                     questionPopup.setCloseButton(null);
                     addObject(questionPopup, getWidth() / 2, getHeight() / 2);
                     pauseObjects(true, true);
+                    playSound("winSound.mp3");
                     isFreeplay = true;
                 }
             } else {

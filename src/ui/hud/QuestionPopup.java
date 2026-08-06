@@ -46,6 +46,7 @@ public class QuestionPopup extends PopupScreen {
         if(leftButton != null) {
             world.addObject(leftButton, 800, 700);
         }
+
     }
 
     public void act() {

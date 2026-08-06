@@ -4,7 +4,7 @@ import ui.settings.MapSettings;
 import util.Clickable;
 import core.MainClass;
 import greenfoot.Greenfoot;
-
+/// @Author Julian
 public class SettingsButtonMenu extends Button{
 
 

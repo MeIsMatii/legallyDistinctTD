@@ -8,8 +8,10 @@ import maps.menu.MapSelector;
 import ui.common.BackButton;
 import ui.hud.PopupScreen;
 import ui.hud.buttons.RetryButton;
+import util.HasSound;
 
-public class GameOverPopUp extends PopupScreen {
+/// @Author Julian
+public class GameOverPopUp extends PopupScreen implements HasSound {
 
     private RetryButton retryButton;
     private BackButton backButton;
@@ -24,7 +26,7 @@ public class GameOverPopUp extends PopupScreen {
     public void addedToWorld(World w){
         retryButton = new RetryButton();
         backButton = new BackButton(new MapSelector());
-
+        playSound("gameOverSound.mp3");
         w.addObject(retryButton,getX()+(getImage().getWidth()/4),getY());
         w.addObject(backButton,getX() - getImage().getWidth()/4,getY());
 

@@ -5,7 +5,7 @@ import ui.settings.SettingsPopup;
 import greenfoot.Greenfoot;
 import maps.levels.GameMap;
 import maps.menu.MapSelector;
-
+/// @Author Colin, Mathilo,Julian
 public class SettingsButton extends Button{
 
     public SettingsButton() {

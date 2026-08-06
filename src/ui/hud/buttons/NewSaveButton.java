@@ -6,7 +6,7 @@ import greenfoot.World;
 import maps.levels.*;
 import maps.menu.LoadingScreen;
 import util.saves.SaveManager;
-
+/// @Author Colin,Mathilo
 public class NewSaveButton extends Button {
     private int worldNr;
     private World loadingScreen = new LoadingScreen();

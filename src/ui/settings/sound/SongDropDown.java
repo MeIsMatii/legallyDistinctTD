@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SongDropDown extends MainClass implements Clickable {
 
-
+    /// @Author Colin
     //Für mehr songs einfach Filename als string hier hinschreiben
     private static final String[] SONGS = {
         "backgourndSound1.mp3",

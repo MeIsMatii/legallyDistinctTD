@@ -1,9 +1,10 @@
 package ui.hud.buttons;
 
 import greenfoot.Greenfoot;
+import maps.levels.tutorial.TutorialText;
 import maps.menu.MapSelector;
 import util.saves.SaveManager;
-
+/// @Author Colin
 public class StartingButton extends Button{
     public StartingButton(){
         setImage("StartingButton.PNG");
@@ -15,7 +16,7 @@ public class StartingButton extends Button{
         if (SaveManager.getInstance().getTutorialStatus()){
             Greenfoot.setWorld(new MapSelector());
         }else{
-            //TODO implement tutorial
+            Greenfoot.setWorld(new TutorialText());
         }
     }
 }

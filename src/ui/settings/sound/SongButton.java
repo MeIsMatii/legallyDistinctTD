@@ -8,7 +8,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
 
 public class SongButton extends MainClass implements Clickable, HasSound {
-
+    /// @Author Colin
     private final String songName;
     private static GreenfootSound currentlyPlaying = null;
 

@@ -1,12 +1,11 @@
 package maps.levels;
 
-import core.Player;
 import greenfoot.GreenfootImage;
 import maps.levels.util.MapCoordinatesUtilGuy;
 
 public class GameMap2 extends GameMap {
     public GameMap2() {
-        GreenfootImage img = new GreenfootImage("Map2.png");
+        GreenfootImage img = new GreenfootImage("Maps/Map2.png");
 
         img.scale(1620, 1080);
         setBackground(img);

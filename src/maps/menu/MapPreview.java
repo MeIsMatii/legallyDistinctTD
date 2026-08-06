@@ -9,7 +9,7 @@ import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
 import util.saves.GameSaveManager;
-
+/// @Author Colin, Mathilo
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
     private int world = 0;
@@ -24,7 +24,7 @@ public class MapPreview extends MainClass implements Clickable {
         }
 
         // 1. Determine the correct image path string first
-        String imagePath = "Map" + getWorldNr() + "Preview.png";
+        String imagePath = "Maps/MapPreview/Map" + getWorldNr() + "Preview.png";
 
         // 2. Load the image independently, scale it, and THEN apply it to the Actor
         GreenfootImage img = new GreenfootImage(imagePath);

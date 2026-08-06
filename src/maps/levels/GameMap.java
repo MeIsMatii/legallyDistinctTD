@@ -6,13 +6,12 @@ import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
 import entities.projectiles.Projectile;
+import entities.tower.Helicopter;
 import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import maps.levels.util.GameOverPopUp;
-import maps.levels.util.GameWonPopup;
 import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
@@ -22,7 +21,6 @@ import ui.common.BackButton;
 import ui.common.CustomImageDisplay;
 import ui.common.ImageDisplay;
 import ui.common.TutorialHud;
-import ui.hud.IPMenuOverlay;
 import ui.hud.PopupScreen;
 import ui.hud.QuestionPopup;
 import ui.hud.Textboard;
@@ -41,6 +39,7 @@ import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
 import util.Cursor;
 import util.multiplayer.NetworkManager;
+import util.multiplayer.popups.IPMenuOverlay;
 import util.saves.GameSaveManager;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public abstract class GameMap extends World {
     public GameMap() {
 
         super(1920, 1080, 1);
-        GreenfootImage map = new GreenfootImage("Map" + getMapNumber() + ".png");
+        GreenfootImage map = new GreenfootImage("Maps/Map" + getMapNumber() + ".png");
         map.scale(1620, 1080);
         setBackground(map);
 
@@ -150,13 +149,11 @@ public abstract class GameMap extends World {
             SongDropDown.class,              // Song dropdown box
 
             // --- UI BUTTONS & CONTROLS (Rendered on top of Popups/Menus) ---
-            ClosePopupButton.class,
-            CloseButton.class,               // "x.png"
+            ClosePopupButton.class,             // "x.png"
             RetryButton.class,
             PlayOnButton.class,
             BackButton.class,                // "BackButton.png"
             SettingsButton.class,
-            SettingsButtonMenu.class,
             MuteButton.class,
             WaveResetButton.class,
             SellButton.class,
@@ -168,8 +165,6 @@ public abstract class GameMap extends World {
             VolumeSlider.class,              // Volume slider control
 
             // --- POPUPS & MODAL OVERLAYS (Rendered over HUD & Game) ---
-            GameOverPopUp.class,
-            GameWonPopup.class,
             QuestionPopup.class,
             IPMenuOverlay.class,
             PopupScreen.class,               // Base class for popups

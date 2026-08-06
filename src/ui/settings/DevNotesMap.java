@@ -14,6 +14,6 @@ public class DevNotesMap extends World {
         GreenfootImage img = new GreenfootImage("Maps/DeveloperNotes.png");
         img.scale(1920,1080);
         setBackground(img);
-        addObject(new BackButton(new MapSelector()),50,50);
+        addObject(new BackButton(),50,50);
     }
 }

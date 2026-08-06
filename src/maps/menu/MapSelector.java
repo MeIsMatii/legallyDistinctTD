@@ -11,7 +11,10 @@ import util.saves.SaveManager;
 
 public class MapSelector extends World implements HasSound {
 
-    /// @Author Colin, Mathilo
+    /**
+     * @Author Colin
+     * @Author Mathilo
+     */
     public MapSelector() {
         super(1920, 1080, 1);
         setPaintOrder(ImageDisplay.class, SettingsButton.class, SlotMachineButton.class, MapSelector.class);

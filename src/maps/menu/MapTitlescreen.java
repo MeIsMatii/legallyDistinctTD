@@ -3,7 +3,10 @@ package maps.menu;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.hud.buttons.StartingButton;
-/// @Author Colin, Mathilo
+/**
+ * @Author Colin
+ * @Author Mathilo
+ */
 public class MapTitlescreen extends World {
     public MapTitlescreen() {
         super(1920, 1080, 1);

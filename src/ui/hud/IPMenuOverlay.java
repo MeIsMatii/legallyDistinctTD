@@ -6,7 +6,10 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
 import util.Clickable;
-/// @Author Colin
+/**
+ * @Author Colin
+ * @Author Mathilo
+ */
 
 public class IPMenuOverlay extends PopupScreen implements Clickable {
 

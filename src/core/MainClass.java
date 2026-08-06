@@ -4,6 +4,11 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 
+/**
+ * @Author Mathilo
+ * @Author Colin
+ * @Author Julian
+ */
 public abstract class MainClass extends Actor {
     private boolean isPaused;
     private int sleepTicks;

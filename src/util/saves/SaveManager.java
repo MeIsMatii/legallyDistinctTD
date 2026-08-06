@@ -8,7 +8,9 @@ import java.util.Properties;
 import java.io.File;
 
 public class SaveManager implements Saveable {
-    /// @Author Colin
+    /**
+     * @Author Colin
+     */
     // path to the save file — stored in a "saves" folder next to the project
     private static final String SAVE_PATH = "saves/game.save";
 

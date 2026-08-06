@@ -18,6 +18,7 @@ public class NetworkClient implements MultiplayerConnection {
     private final int port;
     private PrintWriter out;
 
+
     public NetworkClient(String hostIP, int port) {
         this.hostIp = hostIP;
         this.port = port;
@@ -32,65 +33,84 @@ public class NetworkClient implements MultiplayerConnection {
     @Override
     public void run() {
         try {
-            System.out.println("Client: Connecting to " + hostIp + ":" + port + " ...");
+            NetworkManager.getInstance().setConnectionTimeouted(false);
+            System.out.println("Client: Connecting to " + hostIp + ":" + port);
             Socket socket = new Socket();
-            socket.connect(new InetSocketAddress(hostIp, port), 5000);
+            socket.connect(new InetSocketAddress(hostIp, port), 50000);
+            NetworkManager.getInstance().setConnected(true);
             System.out.println("Client: Successfully connected to host!");
             this.out = new PrintWriter(socket.getOutputStream(), true);
 
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
-                if(msg != null) {
+                if (msg != null) {
                     if (msg.startsWith("MAP:")) {
                         setMap(Integer.parseInt(msg.substring(4))); //to load a map
                     } else {
                         NetworkManager.getInstance().queueIncomingMessage(msg);
-                        System.out.println("Incoming message: " + msg);
                     }
+                } else {
+                    NetworkManager.getInstance().setConnected(false);
+                    NetworkManager.getInstance().setDisconnected(true);
+                    System.out.println("disconnected@Client");
+                    break;
                 }
             }
         } catch (SocketTimeoutException e) {
-            System.err.println("Client: Connection timed out! (host not found/available)");
-
+            System.err.println("Client: Connection timed out! (host not found/available)"); //woah system.err looks cool --Mathilo
+            NetworkManager.getInstance().setConnectionTimeouted(true);
+            NetworkManager.getInstance().setConnected(false);
         } catch (IOException e) {
             System.err.println("Client Connection Error: " + e.getMessage());
+            NetworkManager.getInstance().setConnected(false);
+            NetworkManager.getInstance().setConnectionTimeouted(true);
         }
     }
 
     public void setMap(int mapNr) {
         GameMap nextWorld;
         switch (mapNr) {
-            case 1:
-                nextWorld = new GameMap1();
+            case 1: {
+                nextWorld = new GameMap1(true, false);
                 break;
-            case 2:
-                nextWorld = new GameMap2();
+            }
+            case 2: {
+                nextWorld = new GameMap2(true, false);
                 break;
-            case 3:
-                nextWorld = new GameMap3();
+            }
+            case 3: {
+                nextWorld = new GameMap3(true, false);
                 break;
-            case 4:
-                nextWorld = new GameMap4();
+            }
+            case 4: {
+                nextWorld = new GameMap4(true, false);
                 break;
-            case 5:
-                nextWorld = new GameMap5();
+            }
+            case 5: {
+                nextWorld = new GameMap5(true, false);
                 break;
-            case 6:
-                nextWorld = new GameMap6();
+            }
+            case 6: {
+                nextWorld = new GameMap6(true, false);
                 break;
-            case 7:
-                nextWorld = new GameMap7();
+            }
+            case 7: {
+                nextWorld = new GameMap7(true, false);
                 break;
-            case 8:
-                nextWorld = new GameMap8();
+            }
+            case 8: {
+                nextWorld = new GameMap8(true, false);
                 break;
-            case 9:
-                nextWorld = new GameMap9();
+            }
+            case 9: {
+                nextWorld = new GameMap9(true, false);
                 break;
+            }
 
-            default:
+            default: {
                 throw new RuntimeException("recieved map is invalid");
+            }
         }
         LoadingScreen ls = new LoadingScreen();
         Greenfoot.setWorld(ls);
@@ -99,4 +119,6 @@ public class NetworkClient implements MultiplayerConnection {
         SaveManager.getInstance().setLastMap(mapNr);
         nextWorld.getGameSaveManager().saveGame();
     }
+
+
 }

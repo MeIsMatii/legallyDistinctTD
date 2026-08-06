@@ -3,8 +3,11 @@ package core;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import maps.levels.GameMap;
-import maps.levels.util.GameOverPopUp;
+import maps.menu.MapSelector;
+import ui.common.BackButton;
 import ui.common.ImageDisplay;
+import ui.hud.QuestionPopup;
+import ui.hud.buttons.RetryButton;
 import util.multiplayer.NetworkManager;
 
 public class Player extends MainClass {
@@ -40,8 +43,16 @@ public class Player extends MainClass {
     public void setCoins(int coins) {
         this.coins = coins;
 
-        if(getWorldOfType(GameMap.class).isMultiplayer() && NetworkManager.getInstance().isHost()) {
-            String msg = "SET_COINS" + "," + getCoins();
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
+            String msg = "SET_COINS" + "," + coins;
+            NetworkManager.getInstance().sendData(msg);
+        }
+    }
+    public void setCoins(int coins, boolean wasSentFromMultiplayer) {
+        this.coins = coins;
+
+        if (!wasSentFromMultiplayer) {
+            String msg = "SET_COINS" + "," + coins;
             NetworkManager.getInstance().sendData(msg);
         }
     }
@@ -75,15 +86,14 @@ public class Player extends MainClass {
     }
 
 
-
-
     public void damage(int damage) {
         setHealth(health - damage);
         if (health <= 0 && !isGameOver) {
             //getWorld().showText("you lost", 400, 400);
-
-            GameOverPopUp gameOverPopUp = new GameOverPopUp();
-            getWorld().addObject(gameOverPopUp,getWorld().getWidth()/2,getWorld().getHeight()/2);
+            QuestionPopup questionPopup = new QuestionPopup("You lost!\n Restart would you like start a new game?", new BackButton(), new RetryButton());
+            getWorld().removeObject(questionPopup.getCloseButton());
+            questionPopup.setCloseButton(null);
+            getWorld().addObject(questionPopup, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
 
             getWorldOfType(GameMap.class).pauseObjects(true, true);
 
@@ -108,9 +118,6 @@ public class Player extends MainClass {
             setCoins(getCoins() + 100000);
         }
     }
-
-
-
 
 
 }

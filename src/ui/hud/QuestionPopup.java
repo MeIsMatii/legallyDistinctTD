@@ -12,9 +12,9 @@ import ui.hud.buttons.ClosePopupButton;
  * @Author Mathilo
  */
 public class QuestionPopup extends PopupScreen {
-    private final ClosePopupButton closeButton;
-    private final Button rightButton;
-    private final Button leftButton;
+    private ClosePopupButton closeButton;
+    private Button rightButton;
+    private Button leftButton;
 
     public QuestionPopup(String text, Button leftButton, Button rightButton) {
         int width = 800;
@@ -37,10 +37,15 @@ public class QuestionPopup extends PopupScreen {
         // Automatically adds the close button to the top right of this popup when the popup is added
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
-        world.addObject(closeButton, buttonX, buttonY);
-
-        world.addObject(rightButton, 1200, 700);
-        world.addObject(leftButton, 800, 700);
+        if(closeButton != null) {
+            world.addObject(closeButton, buttonX, buttonY);
+        }
+        if(rightButton != null) {
+            world.addObject(rightButton, 1200, 700);
+        }
+        if(leftButton != null) {
+            world.addObject(leftButton, 800, 700);
+        }
     }
 
     public void act() {
@@ -55,5 +60,29 @@ public class QuestionPopup extends PopupScreen {
         getWorld().removeObject(leftButton);
         getWorld().removeObject(closeButton);
         getWorld().removeObject(this);
+    }
+
+    public ClosePopupButton getCloseButton() {
+        return closeButton;
+    }
+
+    public void setCloseButton(ClosePopupButton closeButton) {
+        this.closeButton = closeButton;
+    }
+
+    public Button getRightButton() {
+        return rightButton;
+    }
+
+    public void setRightButton(Button rightButton) {
+        this.rightButton = rightButton;
+    }
+
+    public Button getLeftButton() {
+        return leftButton;
+    }
+
+    public void setLeftButton(Button leftButton) {
+        this.leftButton = leftButton;
     }
 }

@@ -1,6 +1,5 @@
 package ui.hud.buttons;
 
-import ui.settings.MapSettings;
 import ui.settings.SettingsPopup;
 import greenfoot.Greenfoot;
 import maps.levels.GameMap;
@@ -10,6 +9,7 @@ import maps.menu.MapSelector;
  * @Author Mathilo
  * @Author Julian
  */
+
 public class SettingsButton extends Button{
 
     public SettingsButton() {
@@ -19,12 +19,7 @@ public class SettingsButton extends Button{
 
     @Override
     public void onClick() {
-        if (getWorld() instanceof GameMap){
-            getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
-    } else if (getWorld() instanceof MapSelector) {
-            Greenfoot.setWorld(new MapSettings());
-        }
-
+        getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
         }
 
 }

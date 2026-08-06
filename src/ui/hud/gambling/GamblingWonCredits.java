@@ -37,7 +37,7 @@ public class GamblingWonCredits extends World {
         super(1920, 1080, 1);
         setBackground("dirtsquare.png");
         setPaintOrder(BackButton.class, TextBlock.class);
-        addObject(new BackButton(new MapSelector()), 4, 4);
+        addObject(new BackButton(), 4, 4);
         credits();
     }
 

@@ -5,9 +5,11 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.hud.PopupScreen;
 import ui.hud.QuestionPopup;
+import ui.hud.buttons.ClosePopupButton;
 import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
+import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 /**
  * @Author Colin
@@ -67,23 +69,44 @@ public class MapPreview extends MainClass implements Clickable {
 
     public void onClick() {
         if (!getWorld().getObjects(PopupScreen.class).isEmpty()) {
-            System.out.println(getWorld().getObjects(PopupScreen.class));
+            System.out.println("Map popup could not be opened bc blocked by: " + getWorld().getObjects(PopupScreen.class));
             return;
         }
         setClicked(!isClicked());
 
         World world = getWorld();
-        GameSaveManager gameSaveManager = new GameSaveManager();
-        if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
-            QuestionPopup questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
 
-            world.addObject(questionPopup, 960, 540);
+        QuestionPopup questionPopup;
+        NewSaveButton newSaveButton;
+
+        if (NetworkManager.getInstance().isMultiplayer()) {
+            newSaveButton = new NewSaveButton(getWorldNr(), true);
+            ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
+
+            newSaveButton.setImage("buttons/YesButton.png");
+            closeButton.setImage("buttons/NoButton.png");
+
+            questionPopup = new QuestionPopup("Start a new multiplayer session on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO FIX (rm the loadsave
+            closeButton.setOwner(questionPopup); //like now
         } else {
+            GameSaveManager gameSaveManager = new GameSaveManager();
+            newSaveButton = new NewSaveButton(getWorldNr(), false);
 
-            QuestionPopup questionPopup = new QuestionPopup("Press \"no\" if you wanna start a new game\n and \"ESCAPE\" or the \"X\" if you dont", new NewSaveButton(getWorldNr()), new NewSaveButton(getWorldNr())); //TODO fix
-            world.addObject(questionPopup, 960, 540);
+            if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
+                questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
+            } else {
+                ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
+
+                newSaveButton.setImage("buttons/YesButton.png");
+                closeButton.setImage("buttons/NoButton.png");
+                questionPopup = new QuestionPopup("Would you like to start a new game on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO fix
+                closeButton.setOwner(questionPopup); //now is later
+
+            }
+
         }
 
+        world.addObject(questionPopup, 960, 540);
 
     }
 }

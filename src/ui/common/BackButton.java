@@ -2,16 +2,14 @@ package ui.common;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import maps.menu.MapSelector;
 import ui.hud.buttons.Button;
 
 public class BackButton extends Button {
 
-    private final World lastWorld;
-
-    public BackButton(World destination) {
-        setImage("BackButton.png");
+    public BackButton() {
+        setImage("buttons/BackButton.png");
         getImage().scale(80, 80);
-        lastWorld = destination;
 
     }
 
@@ -22,7 +20,7 @@ public class BackButton extends Button {
 
     @Override
     public void onClick() {
-        getBack(lastWorld);
+        getBack(new MapSelector());
     }
 
 

@@ -8,7 +8,6 @@ import ui.hud.PopupScreen;
  * @Author Mathilo
  */
 public class ClosePopupButton extends Button {
-    private final PopupScreen popupTarget;
 
     public ClosePopupButton(PopupScreen popupTarget) {
         GreenfootImage image = new GreenfootImage(30, 30);
@@ -24,15 +23,15 @@ public class ClosePopupButton extends Button {
         }
 
         setImage(image);
-        this.popupTarget = popupTarget;
+        this.owner = popupTarget;
     }
 
 
     @Override
     public void onClick() {
-        if (popupTarget != null && getWorld() != null) {
+        if (owner != null && getWorld() != null) {
 
-            popupTarget.onRemove();
+            owner.onRemove();
 
         }
     }

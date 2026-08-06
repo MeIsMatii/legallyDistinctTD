@@ -17,20 +17,23 @@ public class LoadSaveButton extends Button{
     public World getLoadingScreen() {
         return loadingScreen;
     }
+
     public void setLoadingScreen(World loadingScreen) {
         this.loadingScreen = loadingScreen;
     }
+
     public int getWorldNr() {
         return worldNr;
     }
+
     public void setWorldNr(int worldNr) {
         this.worldNr = worldNr;
     }
 
 
-    public LoadSaveButton(int Worldnr){
-        GreenfootImage img = new GreenfootImage("LoadSaveButton.png");
-        img.scale(100,50);
+    public LoadSaveButton(int Worldnr) {
+        GreenfootImage img = new GreenfootImage("buttons/YesButton.png");
+        img.scale(100, 50);
         setImage(img);
         setWorldNr(Worldnr);
     }

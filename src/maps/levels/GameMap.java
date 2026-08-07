@@ -2,6 +2,7 @@ package maps.levels;
 
 import core.MainClass;
 import core.Player;
+import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
@@ -15,7 +16,6 @@ import greenfoot.World;
 import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
-import maps.menu.MapSelector;
 import maps.menu.PauseMenu;
 import ui.common.BackButton;
 import ui.common.CustomImageDisplay;
@@ -27,8 +27,6 @@ import ui.hud.Textboard;
 import ui.hud.UpgradeDescriptionOverlay;
 import ui.hud.buttons.*;
 import ui.hud.towerSelector.TowerSelector;
-import ui.common.BackButton;
-import ui.hud.QuestionPopup;
 import ui.hud.buttons.*;
 import ui.hud.towerSelector.TowerSelectorSpawner;
 import ui.hud.upgrades.UpgradeMenu;
@@ -631,6 +629,13 @@ public abstract class GameMap extends World {
                 damageEnemyFromNetwork(enemyId, damage);
                 break;
             }
+            case "SPAWN_PROJECTILE": {
+                String projectileType = tokens[1];
+                String projectileId = tokens[2];
+                String ownerId = tokens[3];
+                spawnProjectileFromNetwork(projectileType,projectileId,ownerId);
+                break;
+            }
             case "DAMAGE_PLAYER": {
                 int damage = Integer.parseInt(tokens[1]);
                 getPlayer().damage(damage);
@@ -650,6 +655,11 @@ public abstract class GameMap extends World {
                 String enemyID = tokens[2];
                 targetEnemyFromNetwork(towerID,enemyID);
                 break;
+            } case "MOVE_ENTITY": {
+                String entityID = tokens[1];
+                int x = Integer.parseInt(tokens[2]);
+                int y = Integer.parseInt(tokens[3]);
+                moveEntityFromNetwork(entityID,x,y);
             }
 
 
@@ -710,6 +720,31 @@ public abstract class GameMap extends World {
 
     }
 
+    public void spawnProjectileFromNetwork(String targetId,String projectileId, String towerOwnerId) {
+        Tower owner = null;
+        for (Tower t : getObjects(Tower.class)) {
+            if (t.getUniqueId().equals(towerOwnerId)) {
+                owner = t;
+            }
+        }
+        if(owner == null) {
+            return;
+        }
+
+        Enemy target = null;
+        for (Enemy e : getObjects(Enemy.class)) {
+            if (e.getUniqueId().equals(targetId)) {
+                target = e;
+            }
+        }
+        if(target == null) {
+            return;
+        }
+
+        owner.shoot(target,projectileId);
+
+    }
+
 
     public void damageEnemyFromNetwork(String enemyId, double damage) {
         for (Enemy e : getObjects(Enemy.class)) {
@@ -742,6 +777,15 @@ public abstract class GameMap extends World {
         for (Tower t: getObjects(Tower.class)) {
             if(t.getUniqueId().equals(towerUUID)) {
                 t.setTargetedEnemyManual(enemyToTarget);
+                break;
+            }
+        }
+    }
+
+    public void moveEntityFromNetwork(String uuid, int x, int y) {
+        for (Entity e : getObjects(Entity.class)) {
+            if (e.getUniqueId().equals(uuid)) {
+                e.setLocation(x,y, true);
                 break;
             }
         }

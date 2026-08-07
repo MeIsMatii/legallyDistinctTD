@@ -66,16 +66,24 @@ public abstract class Projectile extends Entity implements HasSound {
 
         spawnHitbox(hitboxWidth, hitboxHeight);
 
+        if (owner != null) {
+            this.speed = owner.getProjectileSpeed();
+            this.piercing = owner.getProjectilePiercing();
+            this.damage = owner.getProjectileDamage();
+            this.iframes = owner.getProjectileIFrames();
 
-        target();
-
-        this.speed = owner.getProjectileSpeed();
-        this.piercing = owner.getProjectilePiercing();
-        this.damage = owner.getProjectileDamage();
-        this.targetX = owner.getTargetedEnemy().getX();
-        this.targetY = owner.getTargetedEnemy().getY();
-
-        this.iframes = owner.getProjectileIFrames();
+            if (owner.getTargetedEnemy() != null) {
+                this.targetX = owner.getTargetedEnemy().getX();
+                this.targetY = owner.getTargetedEnemy().getY();
+                target();
+            } else if (targetX != 0 || targetY != 0) {
+                target();
+            } else {
+                setRotation(owner.getRotation());
+            }
+        } else if (targetX != 0 || targetY != 0) {
+            target();
+        }
     }
 
     public void act() {

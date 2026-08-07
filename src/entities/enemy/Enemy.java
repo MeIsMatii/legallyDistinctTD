@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.UUID;
 
 public abstract class Enemy extends Entity {
-    private String uniqueId; //for multiplayer
 
     double lives;
     double speed;
@@ -40,7 +39,7 @@ public abstract class Enemy extends Entity {
     int nextY;
 
     public Enemy(double speed, int lives) {
-        this.uniqueId = UUID.randomUUID().toString();
+        super();
 
         this.speed = speed;
         this.lives = lives;
@@ -68,13 +67,7 @@ public abstract class Enemy extends Entity {
 
     public abstract String getName();
 
-    public String getUniqueId() {
-        return uniqueId;
-    }
 
-    public void setUniqueId(String uuid) { //to sync the enemy ids for multiplayer
-        this.uniqueId = uuid;
-    }
 
     public void addedToWorld(World world) {
         super.addedToWorld(world);
@@ -90,9 +83,10 @@ public abstract class Enemy extends Entity {
 
     public void act() {
         if (isPaused()) return;
-
-        findPath();
-        moveTo(nextX, nextY);
+        if(NetworkManager.getInstance().isHost()) {
+            findPath();
+            moveTo(nextX, nextY);
+        }
         updateSlow();              //Freezetower
     }
 

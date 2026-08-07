@@ -28,7 +28,6 @@ import java.util.UUID;
 
 public abstract class Tower extends Entity implements Clickable, Animations, HasSound {
     protected final int price;
-    private String uniqueId; //for multiplayer
 
     private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
@@ -65,6 +64,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     /// </ANIMATIONS>
 
     public Tower(int price, boolean isPlacing, int range, int shootingDelay,int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
+        super();
         this.rangeDisplay = new RangeDisplay(this, range, isPlacing);
         this.price = price;
         this.uniqueId = UUID.randomUUID().toString();
@@ -90,13 +90,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setPrices();
     }
 
-    public String getUniqueId() {
-        return uniqueId;
-    }
-
-    public void setUniqueId(String uuid) { //to sync the enemy ids for multiplayer
-        this.uniqueId = uuid;
-    }
 
     protected boolean canPlace() {
         return canPlace;
@@ -349,7 +342,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             rangeDisplay.setFollowing(false);
             if(NetworkManager.getInstance().isHost()){
                 setTargetedEnemy();
-                if(NetworkManager.getInstance().isMultiplayer()) {
+                if(NetworkManager.getInstance().isMultiplayer() && targetedEnemy != null) {
                     String msg = "SET_TARGETED_ENEMY" + "," + getUniqueId() + "," + targetedEnemy.getUniqueId();
                     NetworkManager.getInstance().sendData(msg);
                 }
@@ -566,6 +559,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return shootingDelayCounter >= shootingDelay;
     }
 
+    public Projectile createProjectile() {
+        return null;
+    }
+
     public Projectile getProjectileToShoot() {
         return this.projectileToShoot;
     }
@@ -577,11 +574,44 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * this method gets called when an enemy e is inside the range of the tower.
      */
     public void shoot(Enemy e) {
-        if(projectileToShoot == null) {
-            String string = "ProjectileToShoot has not been defined in: " + getName() + ". Please do \"setProjectileToShoot(<type>)\" in the constructor";
-            System.out.println(string);
+        Projectile projectile = createProjectile();
+        if (projectile == null) {
+            projectile = getProjectileToShoot();
         }
-        getWorld().addObject(projectileToShoot, getX(), getY());
+        if (projectile == null) {
+            String string = "Projectile to shoot has not been defined in: " + getName();
+            System.out.println(string);
+            return;
+        }
+        NetworkManager nm = NetworkManager.getInstance();
+        if (nm.isHost()) {
+            getWorld().addObject(projectile, getX(), getY());
+
+            if (nm.isMultiplayer()) {
+                String msg = "SPAWN_PROJECTILE" + "," + e.getUniqueId() + "," + projectile.getUniqueId() + "," + getUniqueId();
+                nm.sendData(msg);
+            }
+        }
+    }
+
+    public void shoot(Enemy e, String projectileId) {
+        if(projectileId.isBlank()) {
+            shoot(e);
+            return;
+        }
+        Projectile projectile = createProjectile();
+        if (projectile == null) {
+            projectile = getProjectileToShoot();
+        }
+        if (projectile == null) {
+            String string = "Projectile to shoot has not been defined in: " + getName();
+            System.out.println(string);
+            return;
+        }
+
+        System.out.print("SPAWNING\n\n\n\n\n\n\nProjectile");
+        projectile.setUniqueId(projectileId);
+        getWorld().addObject(projectile, getX(), getY());
     }
 
     public void setTargetedEnemyManual(Enemy e) {

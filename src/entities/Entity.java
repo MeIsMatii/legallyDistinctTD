@@ -2,6 +2,9 @@ package entities;
 
 import core.MainClass;
 import greenfoot.World;
+import util.multiplayer.NetworkManager;
+
+import java.util.UUID;
 
 /**
  * @author mati
@@ -9,6 +12,19 @@ import greenfoot.World;
  */
 
 public abstract class Entity extends MainClass {
+    protected String uniqueId; //for multiplayer
+
+    public Entity() {
+        this.uniqueId = UUID.randomUUID().toString();
+    }
+
+    public String getUniqueId() {
+        return uniqueId;
+    }
+
+    public void setUniqueId(String uuid) { //to sync the enemy ids for multiplayer
+        this.uniqueId = uuid;
+    }
 
     /**
      * This method gets called when an Entity collides with a hitbox.
@@ -65,6 +81,36 @@ public abstract class Entity extends MainClass {
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);
         getWorld().addObject(hitbox, getX(), getY());
 
+    }
+
+    public void move(int speed) {
+        super.move(speed);
+
+        NetworkManager nm = NetworkManager.getInstance();
+        if(nm.isMultiplayer() && nm.isHost()) {
+            String msg = "MOVE_ENTITY" + "," + uniqueId + "," + getX() + "," + getY();
+            nm.sendData(msg);
+        }
+    }
+
+    public void setLocation(int x, int y) {
+        NetworkManager nm = NetworkManager.getInstance();
+        super.setLocation(x, y);
+        if (nm.isHost()) {
+            if (nm.isMultiplayer()) {
+                String msg = "MOVE_ENTITY" + "," + uniqueId + "," + getX() + "," + getY();
+                nm.sendData(msg);
+            }
+        }
+    }
+
+    public void setLocation(int x, int y, boolean isFromNetwork) {
+        if(isFromNetwork) {
+            super.setLocation(x, y);
+        }
+        else {
+            setLocation(x,y);
+        }
     }
 
 

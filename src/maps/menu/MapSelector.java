@@ -10,6 +10,10 @@ import ui.hud.gambling.SlotMachineButton;
 import util.multiplayer.popups.MultiplayerPreview;
 import util.saves.SaveManager;
 
+/**
+ * @author Colin
+ * @author Mathilo
+ */
 public class MapSelector extends World implements HasSound {
 
     /**

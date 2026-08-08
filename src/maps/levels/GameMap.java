@@ -17,6 +17,7 @@ import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
 import maps.menu.MapSelector;
 import maps.menu.PauseMenu;
+import maps.util.CustomWorld;
 import ui.common.BackButton;
 import ui.common.CustomImageDisplay;
 import ui.common.ImageDisplay;
@@ -54,7 +55,7 @@ import java.util.function.Supplier;
  * @author paths: Julian
  * @author waves & gamesaves: Mati
  */
-public abstract class GameMap extends World implements HasSound {
+public abstract class GameMap extends CustomWorld implements HasSound {
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;

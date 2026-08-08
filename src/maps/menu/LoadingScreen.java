@@ -2,11 +2,13 @@ package maps.menu;
 
 import greenfoot.Greenfoot;
 import greenfoot.World;
+import maps.util.CustomWorld;
+
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
-public class LoadingScreen extends World {
+public class LoadingScreen extends CustomWorld {
 
     private World nextWorld;
 

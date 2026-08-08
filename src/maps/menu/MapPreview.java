@@ -12,8 +12,8 @@ import util.Clickable;
 import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;

@@ -4,8 +4,8 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.hud.buttons.StartingButton;
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 public class MapTitlescreen extends World {
     public MapTitlescreen() {

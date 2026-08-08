@@ -77,10 +77,6 @@ public class NewSaveButton extends Button {
                 nextWorld = new GameMap8(isMultiplayer, isMultiplayer);
                 break;
             }
-            case 9: {
-                nextWorld = new GameMap9(isMultiplayer, isMultiplayer);
-                break;
-            }
         }
         Greenfoot.setWorld(getLoadingScreen());
         ls.setNextWorld(nextWorld);

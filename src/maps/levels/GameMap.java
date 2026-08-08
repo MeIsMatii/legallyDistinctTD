@@ -82,7 +82,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public GameMap() {
 
-        super(1920, 1080, 1);
+        super();
         GreenfootImage map = new GreenfootImage("Maps/Map" + getMapNumber() + ".png");
         map.scale(1620, 1080);
         setBackground(map);

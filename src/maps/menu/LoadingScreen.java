@@ -21,7 +21,7 @@ public class LoadingScreen extends CustomWorld {
     }
 
     public LoadingScreen() {
-        super(1920, 1080, 1);
+        super();
         setBackground("LoadingScreen.png");
         //setNextWorld(nextWorld);
     }

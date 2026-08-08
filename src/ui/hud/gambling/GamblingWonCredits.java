@@ -4,10 +4,11 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.menu.MapSelector;
+import maps.util.CustomWorld;
 import ui.common.BackButton;
 import util.HasSound;
 
-public class GamblingWonCredits extends World implements HasSound {
+public class GamblingWonCredits extends CustomWorld implements HasSound {
 
     private final String[] credits = new String[]{
         "A long, loong time ago",
@@ -35,7 +36,7 @@ public class GamblingWonCredits extends World implements HasSound {
 
 
     public GamblingWonCredits() {
-        super(1920, 1080, 1);
+        super();
         setBackground("dirtsquare.png");
         setPaintOrder(BackButton.class, TextBlock.class);
         addObject(new BackButton(), 4, 4);

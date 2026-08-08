@@ -1,6 +1,7 @@
 package maps.menu;
 
 import greenfoot.MouseInfo;
+import maps.util.CustomWorld;
 import util.HasSound;
 import greenfoot.Greenfoot;
 import greenfoot.World;
@@ -14,14 +15,14 @@ import util.saves.SaveManager;
  * @author Colin
  * @author Mathilo
  */
-public class MapSelector extends World implements HasSound {
+public class MapSelector extends CustomWorld implements HasSound {
 
     /**
      * @Author Colin
      * @Author Mathilo
      */
     public MapSelector() {
-        super(1920, 1080, 1);
+        super();
         setPaintOrder(ImageDisplay.class, SettingsButton.class, SlotMachineButton.class, MapSelector.class);
         setBackground("cell_grass.png");
         addObject(new MapPreview(1), 350, 175);///Map Preview

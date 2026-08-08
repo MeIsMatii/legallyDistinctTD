@@ -11,7 +11,7 @@ import util.saves.SaveManager;
  */
 public class TutorialText extends CustomWorld {
     public TutorialText(){
-        super(1920, 1080,1);
+        super();
         GreenfootImage img = new GreenfootImage("TutorialText.jpeg");
         img.scale(1920,1080);
         setBackground(img);

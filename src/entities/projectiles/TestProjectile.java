@@ -11,8 +11,5 @@ public class TestProjectile extends Projectile {
         setImage(img);
     }
 
-    @Override
-    public String getName() {
-        return "TestProjectile";
-    }
+
 }

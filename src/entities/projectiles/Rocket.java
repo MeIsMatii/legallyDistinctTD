@@ -7,6 +7,7 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import ui.common.ImageDisplay;
 import util.HasSound;
+import util.multiplayer.NetworkManager;
 
 import java.util.List;
 
@@ -20,13 +21,20 @@ public class Rocket extends Projectile implements HasSound {
 
 
     public void onHit(Entity hitter) {
-        if(!(hitter instanceof Enemy) || getWorld() == null) return;
+        if (!(hitter instanceof Enemy) || getWorld() == null) return;
         ImageDisplay explosion = new ImageDisplay("Explosion.png");
-        getWorld().addObject(explosion,getX(),getY());
-        List<Enemy> enemies = getObjectsInRange(200, Enemy.class);
-        if (!enemies.isEmpty()){
-            for (Enemy enemy : enemies) {
-                enemy.damage(getDamage());
+        getWorld().addObject(explosion, getX(), getY());
+        
+        if (NetworkManager.getInstance().isHost()) {
+            List<Enemy> enemies = getObjectsInRange(200, Enemy.class);
+            if (!enemies.isEmpty()) {
+                for (Enemy enemy : enemies) {
+                    enemy.damage(getDamage());
+                    if (getWorldOfType(maps.levels.GameMap.class) != null && getWorldOfType(maps.levels.GameMap.class).isMultiplayer()) {
+                        String msg = "DAMAGE_ENEMY" + "," + enemy.getUniqueId() + "," + getDamage();
+                        NetworkManager.getInstance().sendData(msg);
+                    }
+                }
             }
         }
         playSound("Explosion.mp3");
@@ -35,10 +43,6 @@ public class Rocket extends Projectile implements HasSound {
         getWorld().removeObject(this);
     }
 
-    @Override
-    public String getName() {
-        return "Rocket";
-    }
 
     private void handleVisual(){
         playSound("Explosion.mp3");

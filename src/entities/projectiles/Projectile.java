@@ -66,13 +66,13 @@ public abstract class Projectile extends Entity implements HasSound {
 
         spawnHitbox(hitboxWidth, hitboxHeight);
 
-        if (owner != null) {
+        if (owner != null && owner.getWorld() != null) {
             this.speed = owner.getProjectileSpeed();
             this.piercing = owner.getProjectilePiercing();
             this.damage = owner.getProjectileDamage();
             this.iframes = owner.getProjectileIFrames();
 
-            if (owner.getTargetedEnemy() != null) {
+            if (owner.getTargetedEnemy() != null && owner.getTargetedEnemy().getWorld() != null) {
                 this.targetX = owner.getTargetedEnemy().getX();
                 this.targetY = owner.getTargetedEnemy().getY();
                 target();
@@ -134,6 +134,5 @@ public abstract class Projectile extends Entity implements HasSound {
         move((int) Math.round(speed));
     }
 
-    public abstract String getName();
 }
 

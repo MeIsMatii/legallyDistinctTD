@@ -9,8 +9,8 @@ public class Explosion extends Projectile implements HasSound {
 
     private int timer = 10;
 
-    public Explosion(Tower owner) {
-        super(owner);
+    public Explosion() {
+        super(null);
         setImage("Explosion.png");
         getImage().scale(100, 100);
         playSound("Explosion.mp3");
@@ -23,9 +23,5 @@ public class Explosion extends Projectile implements HasSound {
         }
     }
 
-    @Override
-    public String getName() {
-        return "Explosion";
-    }
 }
 //für traptower lool

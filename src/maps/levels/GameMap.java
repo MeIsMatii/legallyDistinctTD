@@ -61,6 +61,8 @@ public abstract class GameMap extends World {
     private final List<Enemy> aliveEnemies = new ArrayList<>();
     private boolean isMultiplayer;
     private boolean hasGameStarted;
+    private int dotCounter = 0;
+    private int dotTimer = 90;
     private UpgradeMenu upgradeMenu;
     private boolean isUpgradeMenuVisible;
     private int[] spawnLocation;
@@ -136,8 +138,6 @@ public abstract class GameMap extends World {
      * Listed earlier = painted on top (front).
      * Listed later = painted underneath (back).
      *
-     * An SAE, die kommentare dahinter sind größtenteils falsch
-     * (bsp: "Semi-transparent range circle (under tower image)" ist falsch - das sind die debug-hitboxen)
      */
     private void setupPaintOrder() {
         setPaintOrder(
@@ -420,10 +420,23 @@ public abstract class GameMap extends World {
                     nm.setConnected(false);
                     NetworkManager.getInstance().startHost(7777);
                 }
-            }
-            if(nm.isConnected() && !hasGameStarted) {
+            } else if(nm.isConnected() && !hasGameStarted) {
                 hasGameStarted = true;
+                showText("", getWidth()/2, getHeight()/2);
                 onContinue();
+            } else if (!nm.isConnected() && !hasGameStarted) {
+                dotTimer++;
+                if(dotTimer < 23) {
+                    return;
+                }
+                dotTimer = 0;
+
+                dotCounter++;
+                if(dotCounter > 3) {
+                    dotCounter = 1;
+                }
+                String dotAmount = ".".repeat(dotCounter);
+                showText("Waiting for second Player to join" + dotAmount, getWidth()/2, getHeight()/2);
             }
             readNetworkData();
         }

@@ -8,11 +8,15 @@ import maps.util.CustomWorld;
 import ui.common.BackButton;
 import util.HasSound;
 
+/**
+ * @author Jannis
+ * @author Mathilo
+ */
 public class GamblingWonCredits extends CustomWorld implements HasSound {
 
     private final String[] credits = new String[]{
-        "A long, loong time ago",
-        "in a galaxy, far, faaar away",
+        "A long, long time ago",
+        "in a galaxy, far, far away",
         "there were several idiots",
         "who spent way too much\ntime on a school project",
         "",
@@ -61,7 +65,7 @@ public class GamblingWonCredits extends CustomWorld implements HasSound {
             return;
         }
 
-        if(counter < 90) {
+        if(counter < 23) {
             counter++;
             return;
         }

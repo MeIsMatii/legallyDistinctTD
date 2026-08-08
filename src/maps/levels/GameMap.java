@@ -99,8 +99,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         gameSaveManager.setMapNr("map" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
 
-        setupPaintOrder();
-
         this.pathWidth = 120;
         player = new Player(100, 100); //jannis ganz alleine gemacht
         cursor = new Cursor();
@@ -133,69 +131,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         NetworkManager.getInstance().startHost(7777);
     }
 
-    /**
-     * Sets the rendering paint order for all actors spawned on a GameMap,
-     * based on their visual image hierarchy (foreground to background).
-     *
-     * Listed earlier = painted on top (front).
-     * Listed later = painted underneath (back).
-     *
-     */
-    private void setupPaintOrder() {
-        setPaintOrder(
-            // --- TOP LAYER: Tooltips & Dropdowns ---
-            UpgradeDescriptionOverlay.class, // Text tooltip over upgrade options
-            SongButton.class,                // Song dropdown items (rendered over settings)
-            SongDropDown.class,              // Song dropdown box
-
-            // --- UI BUTTONS & CONTROLS (Rendered on top of Popups/Menus) ---
-            ClosePopupButton.class,             // "x.png"
-            RetryButton.class,
-            PlayOnButton.class,
-            BackButton.class,                // "BackButton.png"
-            SettingsButton.class,
-            MuteButton.class,
-            WaveResetButton.class,
-            SellButton.class,
-            StartingButton.class,
-            NewSaveButton.class,
-            LoadSaveButton.class,
-            TutorialHud.class,               // "StartingButton.PNG"
-            Button.class,                    // Base class for all buttons
-            VolumeSlider.class,              // Volume slider control
-
-            // --- POPUPS & MODAL OVERLAYS (Rendered over HUD & Game) ---
-            QuestionPopup.class,
-            IPMenuOverlay.class,
-            PopupScreen.class,               // Base class for popups
-            SettingsPopup.class,             // Brown settings modal window
-            PauseMenu.class,                 // Gray pause menu box (1500x700)
-
-            // --- HUD & PANELS ---
-            UpgradePath.class,               // Upgrade buttons inside upgrade menu
-            UpgradeMenu.class,               // "upgradeMenu.png" (1620x216 bottom HUD panel)
-            TowerSelector.class,             // Individual tower icons in sidebar
-            TowerSelectorSpawner.class,      // "upgradesPrototype.png" (right sidebar panel)
-            ImageDisplay.class,              // "heart.png", "Coin.png" HUD icons
-            CustomImageDisplay.class,
-            Textboard.class,
-            Player.class,
-
-            // --- GAME ENTITIES (Towers, FX, Bloons, Projectiles) ---
-            Helicopter.class,                // Flying helicopter (above ground towers)
-            Explosion.class,                 // "Explosion.png" visual effect
-            Hitbox.class,                    // Placement / collision red/green debug outline
-            Projectile.class,                // Projectiles ("rocket.png", etc.)
-            Tower.class,                     // "towers/<name>/<name>_idle.png"
-            RangeDisplay.class,              // Semi-transparent range circle (under tower image)
-            Enemy.class,                     // Enemy bloon sprites ("arealEnemy1.png", etc.)
-
-            // --- INVISIBLE / UTILITY / TRACK ACTORS (Bottom Layer) ---
-            Cursor.class,                    // "invisible.png" (mouse follower)
-            Path.class,                      // "invisible.png" (path waypoint tiles)
-            MapCoordinatesUtilGuy.class      // Developer coordinate utility tool
-        );
-    }
 
     /**
      * adds hud elements to the screen.

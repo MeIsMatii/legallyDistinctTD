@@ -17,7 +17,7 @@ public class UpgradeMenu extends Actor {
     private Player player;
 
     public UpgradeMenu(Tower tower) {
-        setImage("upgradeMenu.png");
+        setImage("upgradeMenuNew.png");
         getImage().scale(1620, 216);
         this.tower = tower;
         path1 = new UpgradePath(this.tower, 1);

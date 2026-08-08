@@ -15,7 +15,7 @@ public class UpgradePath extends Actor implements Clickable {
 
 
     public UpgradePath(Tower TOWER, int path) {
-        setImage("upgrade.png");
+        setImage("upgradeNew.png");
         this.path = path;
         this.tower = TOWER;
     }

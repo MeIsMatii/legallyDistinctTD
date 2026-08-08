@@ -5,6 +5,7 @@ import entities.tower.Tower;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import util.HasSound;
+import util.multiplayer.NetworkManager;
 
 public class SellButton extends Button implements HasSound {
 
@@ -25,5 +26,12 @@ public class SellButton extends Button implements HasSound {
         playSound("sellSound.mp3");
         player.setCoins(player.getCoins() + tower.getPrice() / 2);
         getWorldOfType(GameMap.class).setUpgradeMenuVisibility(false, tower);
+
+        NetworkManager nm = NetworkManager.getInstance();
+
+        if(nm.isMultiplayer()) {
+            String msg = "REMOVE_ENTITY" + "," + tower.getUniqueId();
+            nm.sendData(msg);
+        }
     }
 }

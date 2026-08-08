@@ -660,6 +660,11 @@ public abstract class GameMap extends World {
                 int x = Integer.parseInt(tokens[2]);
                 int y = Integer.parseInt(tokens[3]);
                 moveEntityFromNetwork(entityID,x,y);
+                break;
+            } case "REMOVE_ENTITY": {
+                String entityID = tokens[1];
+                removeEntityFromNetwork(entityID);
+                break;
             }
 
 
@@ -786,6 +791,15 @@ public abstract class GameMap extends World {
         for (Entity e : getObjects(Entity.class)) {
             if (e.getUniqueId().equals(uuid)) {
                 e.setLocation(x,y, true);
+                break;
+            }
+        }
+    }
+
+    public void removeEntityFromNetwork(String uuid) {
+        for (Entity e : getObjects(Entity.class)) {
+            if (e.getUniqueId().equals(uuid)) {
+                removeObject(e);
                 break;
             }
         }

@@ -103,11 +103,6 @@ public class NetworkClient implements MultiplayerConnection {
                 nextWorld = new GameMap8(true, false);
                 break;
             }
-            case 9: {
-                nextWorld = new GameMap9(true, false);
-                break;
-            }
-
             default: {
                 throw new RuntimeException("recieved map is invalid");
             }

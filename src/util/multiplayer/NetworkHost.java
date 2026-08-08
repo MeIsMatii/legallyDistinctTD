@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+/**
+ * @author Mathilo
+ */
 public class NetworkHost implements MultiplayerConnection {
     private final int port;
     private PrintWriter out;

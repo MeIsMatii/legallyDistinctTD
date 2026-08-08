@@ -6,7 +6,7 @@ import ui.hud.buttons.Button;
 import util.multiplayer.NetworkManager;
 
 /**
- * @author mati
+ * @author Mathilo
  */
 public class HostButton extends Button {
     public HostButton() {

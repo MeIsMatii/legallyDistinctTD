@@ -1,10 +1,15 @@
-package util.multiplayer.popups;
+package util.multiplayer;
 
 import core.MainClass;
 import greenfoot.GreenfootImage;
 import ui.hud.QuestionPopup;
 import util.Clickable;
+import util.multiplayer.popups.ClientButton;
+import util.multiplayer.popups.HostButton;
 
+/**
+ * @author Mathilo
+ */
 public class MultiplayerPreview extends MainClass implements Clickable {
 
     public MultiplayerPreview() {

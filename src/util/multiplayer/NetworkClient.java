@@ -12,7 +12,9 @@ import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-
+/**
+ * @author Mathilo
+ */
 public class NetworkClient implements MultiplayerConnection {
     private final String hostIp;
     private final int port;

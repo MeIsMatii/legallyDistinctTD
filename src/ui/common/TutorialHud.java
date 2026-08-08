@@ -9,7 +9,7 @@ import util.Clickable;
 
 public class TutorialHud extends Button implements Clickable {
     public TutorialHud(){
-        setImage("StartingButton.PNG");
+        setImage("buttons/StartingButton.PNG");
     }
     @Override
     public void onClick() {

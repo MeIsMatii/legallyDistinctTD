@@ -291,13 +291,21 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 int nextX = pathList[i + 1][0];
                 int nextY = pathList[i + 1][1];
 
-                addObject(new Path(nextX, nextY, pathWidth), x, y);
+                if(isPathValid(x,y)) {
+                    addObject(new Path(nextX, nextY, pathWidth), x, y);
+                } else {
+                    System.out.println("Invalid path at:" + x + " | " + y);
+                }
                 //System.out.println("meow" +x +y);
             } else {
                 addObject(new Path(0, 0, pathWidth), x, y);
             }
 
         }
+    }
+
+    public boolean isPathValid(int x, int y) {
+        return x < getWidth() && y < getHeight();
     }
 
     /**

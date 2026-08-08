@@ -53,6 +53,9 @@ public class MapSelector extends World implements HasSound {
         int y;
         int offsetX = 250;
         int offsetY = 125;
+        if (lastPlayedInt>=9||lastPlayedInt==0){
+            return;
+        }
         switch (lastPlayedInt) {
             case 1:
                 x = 350 + offsetX;
@@ -84,10 +87,6 @@ public class MapSelector extends World implements HasSound {
                 break;
             case 8:
                 x = 950 + offsetX;
-                y = 850 - offsetY;
-                break;
-            case 9:
-                x = 1550 + offsetX;
                 y = 850 - offsetY;
                 break;
             default:

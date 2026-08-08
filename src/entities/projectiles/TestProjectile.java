@@ -10,4 +10,6 @@ public class TestProjectile extends Projectile {
         //img.scale(100,60);
         setImage(img);
     }
+
+
 }

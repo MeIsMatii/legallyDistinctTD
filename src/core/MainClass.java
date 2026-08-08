@@ -17,9 +17,6 @@ public abstract class MainClass extends Actor {
         setPaused(false);
     }
 
-    public void act() {
-
-    }
 
     public boolean isPaused() {
         return isPaused;

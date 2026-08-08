@@ -22,6 +22,7 @@ public abstract class Projectile extends Entity implements HasSound {
     private int targetY;
 
     public Projectile(Tower owner) {
+        super();
         this.owner = owner;
     }
 
@@ -65,16 +66,24 @@ public abstract class Projectile extends Entity implements HasSound {
 
         spawnHitbox(hitboxWidth, hitboxHeight);
 
+        if (owner != null && owner.getWorld() != null) {
+            this.speed = owner.getProjectileSpeed();
+            this.piercing = owner.getProjectilePiercing();
+            this.damage = owner.getProjectileDamage();
+            this.iframes = owner.getProjectileIFrames();
 
-        target();
-
-        this.speed = owner.getProjectileSpeed();
-        this.piercing = owner.getProjectilePiercing();
-        this.damage = owner.getProjectileDamage();
-        this.targetX = owner.getTargetedEnemy().getX();
-        this.targetY = owner.getTargetedEnemy().getY();
-
-        this.iframes = owner.getProjectileIFrames();
+            if (owner.getTargetedEnemy() != null && owner.getTargetedEnemy().getWorld() != null) {
+                this.targetX = owner.getTargetedEnemy().getX();
+                this.targetY = owner.getTargetedEnemy().getY();
+                target();
+            } else if (targetX != 0 || targetY != 0) {
+                target();
+            } else {
+                setRotation(owner.getRotation());
+            }
+        } else if (targetX != 0 || targetY != 0) {
+            target();
+        }
     }
 
     public void act() {
@@ -124,5 +133,6 @@ public abstract class Projectile extends Entity implements HasSound {
     public void move() {
         move((int) Math.round(speed));
     }
+
 }
 

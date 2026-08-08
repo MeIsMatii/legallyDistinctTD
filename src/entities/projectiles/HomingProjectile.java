@@ -24,19 +24,30 @@ public class HomingProjectile extends Projectile {
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
-        this.targetedEnemy = getWorld().getObjectsAt(getTargetX(), getTargetY(), Enemy.class).get(0);
+        List<Enemy> enemiesAtTarget = getWorld().getObjectsAt(getTargetX(), getTargetY(), Enemy.class);
+        if (!enemiesAtTarget.isEmpty()) {
+            this.targetedEnemy = enemiesAtTarget.get(0);
+        } else if (getOwner() != null && getOwner().getTargetedEnemy() != null) {
+            this.targetedEnemy = getOwner().getTargetedEnemy();
+        } else {
+            List<Enemy> enemyList = getObjectsInRange(homingRadius, Enemy.class);
+            if (!enemyList.isEmpty()) {
+                this.targetedEnemy = enemyList.get(0);
+            }
+        }
     }
 
     public void move() {
-        if (targetedEnemy.getWorld() == null) {
+        if (targetedEnemy == null || targetedEnemy.getWorld() == null) {
             List<Enemy> enemyList = getObjectsInRange(homingRadius, Enemy.class);
             if (!enemyList.isEmpty()) {
                 this.targetedEnemy = enemyList.get(0);
             } else {
                 move((int) Math.round(getSpeed()));
+                return;
             }
         }
-        if (targetedEnemy.getWorld() == null) {
+        if (targetedEnemy == null || targetedEnemy.getWorld() == null) {
             move((int) Math.round(getSpeed()));
             return;
         }

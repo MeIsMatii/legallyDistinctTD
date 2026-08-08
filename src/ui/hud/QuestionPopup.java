@@ -8,8 +8,8 @@ import ui.hud.buttons.ClosePopupButton;
  * a basic popup with text, a left button and a right button.
  */
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 public class QuestionPopup extends PopupScreen {
     private ClosePopupButton closeButton;
@@ -17,14 +17,10 @@ public class QuestionPopup extends PopupScreen {
     private Button leftButton;
 
     public QuestionPopup(String text, Button leftButton, Button rightButton) {
-        int width = 800;
-        int height = 600;
-        GreenfootImage boxImage = new GreenfootImage(width, height);
-        boxImage.setColor(new Color(139, 69, 19));
-        boxImage.fill();
+        GreenfootImage boxImage = getImage();
         boxImage.setColor(Color.WHITE);
         boxImage.setFont(new Font("Arial", true, false, 24));
-        boxImage.drawString(text, 20, height / 2);
+        boxImage.drawString(text, 20, boxImage.getHeight() / 2);
         setImage(boxImage);
 
         closeButton = new ClosePopupButton(this);

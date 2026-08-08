@@ -73,7 +73,6 @@ public class Player extends MainClass implements HasSound {
     }
 
     public void act() {
-        damage(0);
         coinCheat();
         show(getWorld());
 

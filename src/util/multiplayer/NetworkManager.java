@@ -1,7 +1,9 @@
 package util.multiplayer;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
-
+/**
+ * @author Mathilo
+ */
 public class NetworkManager {
     //bc singleton
     private static NetworkManager instance;

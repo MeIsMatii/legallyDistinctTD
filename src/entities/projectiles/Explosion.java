@@ -1,14 +1,16 @@
 package entities.projectiles;
 
 import core.MainClass;
+import entities.tower.Tower;
 import greenfoot.Actor;
 import util.HasSound;
 
-public class Explosion extends MainClass implements HasSound {
+public class Explosion extends Projectile implements HasSound {
 
     private int timer = 10;
 
     public Explosion() {
+        super(null);
         setImage("Explosion.png");
         getImage().scale(100, 100);
         playSound("Explosion.mp3");
@@ -20,5 +22,6 @@ public class Explosion extends MainClass implements HasSound {
             getWorld().removeObject(this);
         }
     }
+
 }
 //für traptower lool

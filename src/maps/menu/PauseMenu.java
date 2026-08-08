@@ -24,10 +24,6 @@ public class PauseMenu extends PopupScreen {
    private WaveResetButton waveResetButton;
 
     public PauseMenu() {
-        GreenfootImage img = new GreenfootImage(1500, 700);
-        img.setColor(Color.GRAY);
-        img.fill();
-        setImage(img);
     }
 
 

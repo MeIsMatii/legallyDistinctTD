@@ -15,7 +15,8 @@ import java.util.Objects;
 
 
     /**
-     * @Author Colin,Julian
+     * @author julian
+     * @author colin
      */
 public class SettingsPopup extends PopupScreen {
 
@@ -26,13 +27,9 @@ public class SettingsPopup extends PopupScreen {
 
 
     public SettingsPopup() {
-        int width = 1500;
-        int height = 800;
-        GreenfootImage boxImage = new GreenfootImage(width, height);
-        boxImage.setColor(new Color(139, 69, 19));boxImage.fill();
-        boxImage.setColor(Color.WHITE);
+        GreenfootImage boxImage = getImage();
         boxImage.setFont(new Font("Arial", true, false, 24));
-        boxImage.drawString("Settings:", 20, height / 2);
+        boxImage.drawString("Settings:", 20, boxImage.getHeight() / 2);
         setImage(boxImage);
 
         closeButton = null;

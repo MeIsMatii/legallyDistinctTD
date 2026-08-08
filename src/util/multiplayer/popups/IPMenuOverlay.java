@@ -7,8 +7,8 @@ import util.multiplayer.NetworkManager;
 import util.saves.SaveManager;
 
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 
 public class IPMenuOverlay extends PopupScreen implements Clickable {

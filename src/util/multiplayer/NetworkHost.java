@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-
+/**
+ * @author Mathilo
+ */
 public class NetworkHost implements MultiplayerConnection {
     private final int port;
     private PrintWriter out;
@@ -35,7 +37,6 @@ public class NetworkHost implements MultiplayerConnection {
 
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
-                System.out.println(msg);
                 if (msg != null) {
                     NetworkManager.getInstance().queueIncomingMessage(msg);
                 } else {

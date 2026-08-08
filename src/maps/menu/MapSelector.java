@@ -8,7 +8,7 @@ import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
-import util.multiplayer.popups.MultiplayerPreview;
+import util.multiplayer.MultiplayerPreview;
 import util.saves.SaveManager;
 
 /**

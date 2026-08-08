@@ -8,9 +8,12 @@ import ui.common.BackButton;
 import ui.common.ImageDisplay;
 import ui.hud.QuestionPopup;
 import ui.hud.buttons.RetryButton;
+import util.HasSound;
 import util.multiplayer.NetworkManager;
 
-public class Player extends MainClass {
+import javax.naming.ldap.HasControls;
+
+public class Player extends MainClass implements HasSound {
 
     private int coins;
     private int health;
@@ -99,6 +102,8 @@ public class Player extends MainClass {
 
             GameMap gameMap = (GameMap) getWorld();
             gameMap.getGameSaveManager().removeSaveFile();
+
+            playSound("gameOverSound.mp3");
             isGameOver = true;
         }
     }

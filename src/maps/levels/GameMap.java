@@ -3,35 +3,20 @@ package maps.levels;
 import core.MainClass;
 import core.Player;
 import entities.Entity;
-import entities.Hitbox;
 import entities.enemy.Enemy;
-import entities.projectiles.Explosion;
 import entities.projectiles.Projectile;
-import entities.tower.Helicopter;
 import entities.tower.Tower;
-import entities.tower.util.RangeDisplay;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
-import greenfoot.World;
-import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
 import maps.menu.PauseMenu;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
-import ui.common.CustomImageDisplay;
-import ui.common.ImageDisplay;
-import ui.common.TutorialHud;
-import ui.hud.PopupScreen;
 import ui.hud.QuestionPopup;
-import ui.hud.Textboard;
-import ui.hud.UpgradeDescriptionOverlay;
-import ui.hud.buttons.*;
-import ui.hud.towerSelector.TowerSelector;
 import ui.hud.buttons.*;
 import ui.hud.towerSelector.TowerSelectorSpawner;
 import ui.hud.upgrades.UpgradeMenu;
-import ui.hud.upgrades.UpgradePath;
 import ui.settings.SettingsPopup;
 import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;
@@ -39,7 +24,6 @@ import ui.settings.sound.VolumeSlider;
 import util.Cursor;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
-import util.multiplayer.popups.IPMenuOverlay;
 import util.saves.GameSaveManager;
 
 import java.util.ArrayList;
@@ -122,7 +106,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         setMultiplayer(true);
         NetworkManager.getInstance().setMapNr(getMapNumber()); //doesnt hurt incase the client also knows the mapnr lmao
         if (isHost) {
-           startHost();//so the multiplayer session only starts when a map is connected
+            startHost();//so the multiplayer session only starts when a map is connected
         }
         pauseObjects(true, true); //so nothing moves while client not connected
     }
@@ -226,7 +210,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 int nextX = pathList[i + 1][0];
                 int nextY = pathList[i + 1][1];
 
-                if(isPathValid(x,y)) {
+                if (isPathValid(x, y)) {
                     addObject(new Path(nextX, nextY, pathWidth), x, y);
                 } else {
                     System.out.println("Invalid path at:" + x + " | " + y);
@@ -344,14 +328,14 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     public void act() {
         NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {
-            if(nm.isDisconnected()) { //disconnected incase restart on connection loss
+            if (nm.isDisconnected()) { //disconnected incase restart on connection loss
                 System.out.println("disconnected@Map");
-                if(hasGameStarted){
+                if (hasGameStarted) {
                     pauseObjects(true, true);
                     BackButton backButton = new BackButton();
                     nm.setConnected(false);
                     nm.setDisconnected(false); // to make it stop
-                    if(nm.isHost()) {
+                    if (nm.isHost()) {
                         QuestionPopup questionPopup = new QuestionPopup("You were disconnected.\nWould you like to start a new session?", backButton, new RestartMultiplayerButton());
                         removeObject(questionPopup.getCloseButton());
                         addObject(questionPopup, getWidth() / 2, getHeight() / 2);
@@ -359,29 +343,28 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                     } else {
                         addObject(new QuestionPopup("You were disconnected.\nReturn to title?", backButton, null), getWidth() / 2, getHeight() / 2);
                     }
-                }
-                else {
+                } else {
                     nm.setDisconnected(false);
                     nm.setConnected(false);
                     NetworkManager.getInstance().startHost(7777);
                 }
-            } else if(nm.isConnected() && !hasGameStarted) {
+            } else if (nm.isConnected() && !hasGameStarted) {
                 hasGameStarted = true;
-                showText("", getWidth()/2, getHeight()/2);
+                showText("", getWidth() / 2, getHeight() / 2);
                 onContinue();
             } else if (!nm.isConnected() && !hasGameStarted) {
                 dotTimer++;
-                if(dotTimer < 23) {
+                if (dotTimer < 23) {
                     return;
                 }
                 dotTimer = 0;
 
                 dotCounter++;
-                if(dotCounter > 3) {
+                if (dotCounter > 3) {
                     dotCounter = 1;
                 }
                 String dotAmount = ".".repeat(dotCounter);
-                showText("Waiting for second Player to join" + dotAmount, getWidth()/2, getHeight()/2);
+                showText("Waiting for second Player to join" + dotAmount, getWidth() / 2, getHeight() / 2);
             }
             readNetworkData();
         }
@@ -525,7 +508,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     // <--! MULTIPLAYER !-->
 
 
-
     public boolean isMultiplayer() {
         return isMultiplayer;
     }
@@ -592,7 +574,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 String projectileType = tokens[1];
                 String projectileId = tokens[2];
                 String ownerId = tokens[3];
-                spawnProjectileFromNetwork(projectileType,projectileId,ownerId);
+                spawnProjectileFromNetwork(projectileType, projectileId, ownerId);
                 break;
             }
             case "DAMAGE_PLAYER": {
@@ -609,18 +591,21 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 int wave = Integer.parseInt(tokens[1]);
                 setWaveFromNetwork(wave);
                 break;
-            } case "SET_TARGETED_ENEMY": {
+            }
+            case "SET_TARGETED_ENEMY": {
                 String towerID = tokens[1];
                 String enemyID = tokens[2];
-                targetEnemyFromNetwork(towerID,enemyID);
+                targetEnemyFromNetwork(towerID, enemyID);
                 break;
-            } case "MOVE_ENTITY": {
+            }
+            case "MOVE_ENTITY": {
                 String entityID = tokens[1];
                 int x = Integer.parseInt(tokens[2]);
                 int y = Integer.parseInt(tokens[3]);
-                moveEntityFromNetwork(entityID,x,y);
+                moveEntityFromNetwork(entityID, x, y);
                 break;
-            } case "REMOVE_ENTITY": {
+            }
+            case "REMOVE_ENTITY": {
                 String entityID = tokens[1];
                 removeEntityFromNetwork(entityID);
                 break;
@@ -684,14 +669,14 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     }
 
-    public void spawnProjectileFromNetwork(String targetId,String projectileId, String towerOwnerId) {
+    public void spawnProjectileFromNetwork(String targetId, String projectileId, String towerOwnerId) {
         Tower owner = null;
         for (Tower t : getObjects(Tower.class)) {
             if (t.getUniqueId().equals(towerOwnerId)) {
                 owner = t;
             }
         }
-        if(owner == null) {
+        if (owner == null) {
             return;
         }
 
@@ -701,11 +686,11 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 target = e;
             }
         }
-        if(target == null) {
+        if (target == null) {
             return;
         }
 
-        owner.shoot(target,projectileId);
+        owner.shoot(target, projectileId);
 
     }
 
@@ -738,8 +723,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 break;
             }
         }
-        for (Tower t: getObjects(Tower.class)) {
-            if(t.getUniqueId().equals(towerUUID)) {
+        for (Tower t : getObjects(Tower.class)) {
+            if (t.getUniqueId().equals(towerUUID)) {
                 t.setTargetedEnemyManual(enemyToTarget);
                 break;
             }
@@ -749,7 +734,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     public void moveEntityFromNetwork(String uuid, int x, int y) {
         for (Entity e : getObjects(Entity.class)) {
             if (e.getUniqueId().equals(uuid)) {
-                e.setLocation(x,y, true);
+                e.setLocation(x, y, true);
                 break;
             }
         }

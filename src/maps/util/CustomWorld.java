@@ -13,7 +13,6 @@ import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
 import maps.menu.PauseMenu;
 import ui.common.BackButton;
-import ui.common.CustomImageDisplay;
 import ui.common.ImageDisplay;
 import ui.common.TutorialHud;
 import ui.hud.PopupScreen;
@@ -87,7 +86,6 @@ public class CustomWorld extends World {
             TowerSelector.class,             // Individual tower icons in sidebar
             TowerSelectorSpawner.class,      // "upgradesPrototype.png" (right sidebar panel)
             ImageDisplay.class,              // "heart.png", "Coin.png" HUD icons
-            CustomImageDisplay.class,
             Textboard.class,
             Player.class,
 

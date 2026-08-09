@@ -86,7 +86,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         gameSaveManager.setMapNr("map" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
-        getGameSaveManager().saveGame();
 
         this.pathWidth = 120;
         player = new Player(100, 100); //jannis ganz alleine gemacht
@@ -140,7 +139,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;
-        //TODO add paths and delete them @Elias
         if (isVisible) {
             int width = (getWidth() - 300) / 2;
             if (upgradeMenu != null) {

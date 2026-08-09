@@ -57,7 +57,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
-    private int receivedWaveMoney;
+    private int receivedWaveMoney = 0;
     private int wave = 0;
     private int oldWave = 0;
 

@@ -5,6 +5,9 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 
+/**
+ * @author Mathilo
+ */
 public class DifficultySelector extends Button{
     private final GameMap map;
 
@@ -13,7 +16,7 @@ public class DifficultySelector extends Button{
         this.map.setDifficulty(difficulty);
 
 
-        GreenfootImage img = new GreenfootImage(40,20);
+        GreenfootImage img = new GreenfootImage(80,40);
         String text = "";
 
         switch (difficulty) {
@@ -35,7 +38,8 @@ public class DifficultySelector extends Button{
         }
         img.fillRect(0,0,img.getWidth(),img.getHeight());
         img.setColor(Color.BLACK);
-        img.drawString(text, img.getWidth(),img.getHeight());
+        img.drawString(text, img.getWidth()/2-20,20);
+        setImage(img);
     }
 
 

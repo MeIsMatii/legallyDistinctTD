@@ -8,6 +8,7 @@ import util.saves.SaveManager;
 /**
  * @author Colin
  * @author Mathilo
+ * @author Julian
  */
 public class NewSaveButton extends Button {
     private int worldNr;
@@ -77,7 +78,7 @@ public class NewSaveButton extends Button {
         assert nextWorld != null : "invalid map number";//idea suggested this --Mathilo
 
         DifficultySelectorPopup difficultySelectorPopup = new DifficultySelectorPopup(nextWorld);
-        getWorld().addObject(difficultySelectorPopup,getX(),getY());
+        getWorld().addObject(difficultySelectorPopup,getWorld().getWidth()/2,getWorld().getHeight()/2);
 
 }
 }

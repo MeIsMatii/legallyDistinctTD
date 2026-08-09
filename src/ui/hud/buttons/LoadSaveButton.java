@@ -7,6 +7,7 @@ import maps.levels.*;
 /**
  * @author Colin
  * @author Mathilo
+ * @author Julian
  */
 public class LoadSaveButton extends Button{
     int worldNr;
@@ -72,7 +73,7 @@ public class LoadSaveButton extends Button{
         nextWorld.getGameSaveManager().loadGame(nextWorld);
 
         DifficultySelectorPopup difficultySelectorPopup = new DifficultySelectorPopup(nextWorld);
-        getWorld().addObject(difficultySelectorPopup,getX(),getY());
+        getWorld().addObject(difficultySelectorPopup,getWorld().getWidth()/2,getWorld().getHeight()/2);
 
 
         //todo Make it load game saves and not just enw worlds @Mathilo @Colin

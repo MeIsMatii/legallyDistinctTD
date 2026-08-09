@@ -55,7 +55,8 @@ public class CustomWorld extends World {
             // --- TOP LAYER: Tooltips & Dropdowns ---
             UpgradeDescriptionOverlay.class, // Text tooltip over upgrade options
             SongButton.class,                // Song dropdown items (rendered over settings)
-            SongDropDown.class,              // Song dropdown box
+            SongDropDown.class,// Song dropdown box
+
 
             // --- UI BUTTONS & CONTROLS (Rendered on top of Popups/Menus) ---
             ClosePopupButton.class,             // "x.png"
@@ -71,9 +72,13 @@ public class CustomWorld extends World {
             LoadSaveButton.class,
             TutorialHud.class,               // "StartingButton.PNG"
             Button.class,                    // Base class for all buttons
-            VolumeSlider.class,              // Volume slider control
+            VolumeSlider.class,             // Volume slider control
+            DifficultySelector.class,
+            DifficultySelectorPopup.class,
+
 
             // --- POPUPS & MODAL OVERLAYS (Rendered over HUD & Game) ---
+
             QuestionPopup.class,
             IPMenuOverlay.class,
             PopupScreen.class,               // Base class for popups

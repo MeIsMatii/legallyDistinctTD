@@ -2,6 +2,7 @@ package util.multiplayer;
 
 import greenfoot.Greenfoot;
 import maps.levels.*;
+import ui.hud.buttons.DifficultySelectorPopup;
 import util.saves.SaveManager;
 
 import java.io.BufferedReader;
@@ -110,6 +111,8 @@ public class NetworkClient implements MultiplayerConnection {
         }
 
         SaveManager.getInstance().setLastMap(mapNr);
+
+
     }
 
 

@@ -74,6 +74,10 @@ public class NewSaveButton extends Button {
         }
 
         SaveManager.getInstance().setLastMap(getWorldNr());
-        assert nextWorld != null : "invalid map number"; //idea suggested this --Mathilo
-    }
+        assert nextWorld != null : "invalid map number";//idea suggested this --Mathilo
+
+        DifficultySelectorPopup difficultySelectorPopup = new DifficultySelectorPopup(nextWorld);
+        getWorld().addObject(difficultySelectorPopup,getX(),getY());
+
+}
 }

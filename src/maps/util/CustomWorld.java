@@ -57,7 +57,7 @@ public class CustomWorld extends World {
         "hack"              //programm named hack
     );
     public CustomWorld() {
-        super(1920, 1080, 1);
+        super(1880, 1030, 1);
         setupPaintOrder();
         checkForCheatEngine();
     }

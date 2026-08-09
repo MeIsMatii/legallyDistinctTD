@@ -1,14 +1,29 @@
 package ui.hud.buttons;
 
+import greenfoot.Color;
+import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import greenfoot.Greenfoot;
-/// @Author Julian
+
+/** @author Julian
+ *
+ */
 public class RetryButton extends Button{
 
 
     public RetryButton() {
-        setImage("buttons/RetryButton.png");
-        getImage().scale(60, 60);
+        GreenfootImage img = new GreenfootImage(80,30);
+
+        img.setColor(Color.BLACK);
+        img.drawRect(0,0,img.getWidth(),img.getHeight());
+        img.setColor(Color.WHITE);
+        img.fillRect(0,0,img.getWidth(),img.getHeight());
+
+        GreenfootImage text = new GreenfootImage("buttons/RetryButton.png");
+        text.scale(60,60);
+
+        img.drawImage(text,10,-10);
+        setImage(img);
     }
 
     public void onClick(){

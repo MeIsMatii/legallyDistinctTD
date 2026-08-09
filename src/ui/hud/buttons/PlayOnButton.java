@@ -5,7 +5,10 @@ import maps.menu.PauseMenu;
 import ui.hud.PopupScreen;
 
 import java.util.List;
-/// @Author Julian
+
+/**
+ * @author julian
+ */
 public class PlayOnButton extends Button{
 
     public PlayOnButton() {
@@ -17,9 +20,9 @@ public class PlayOnButton extends Button{
     public void onClick() {
 
         getWorldOfType(GameMap.class).onContinue();
-        List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
+        List<PopupScreen> pauseMenus = getWorld().getObjects(PopupScreen.class);
         if (!pauseMenus.isEmpty()){
-            for (PauseMenu pauseMenu : pauseMenus) {
+            for (PopupScreen pauseMenu : pauseMenus) {
                 pauseMenu.onRemove(); //removes generic popupscreen, no problem, bc there can only be one
             }
         }

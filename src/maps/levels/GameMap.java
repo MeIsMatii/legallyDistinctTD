@@ -38,6 +38,8 @@ import java.util.function.Supplier;
  * @author waves & gamesaves: Mati
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
+    private Difficulty difficulty;
+
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -370,6 +372,19 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
 
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
+
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE UP")) {
+            setWave(getWinWave());
+            enemiesToSpawn.clear();
+            aliveEnemies.clear();
+
+            for(Enemy e : getObjects(Enemy.class)) {
+              removeObject(e);
+            }
+        }
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE DOWN")) {
+            player.damage(1232131111);
+        }
         checkPaused();
 
         if (nm.isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined
@@ -424,11 +439,18 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
+    public void setDifficulty(Difficulty difficulty){
+        this.difficulty = difficulty;
+    }
+
     public int getWinWave() {
+        if(difficulty == null) {
+            return 40;
+        }
         return difficulty.getWinWave();
     }
 
-    private final Difficulty difficulty = Difficulty.EASY;
+
 
 
     private boolean isFreeplay = false;

@@ -1,11 +1,14 @@
 package maps.levels.tutorial;
 
+import greenfoot.Greenfoot;
 import maps.levels.GameMap;
 import ui.common.ClickawayImageDisplay;
+import ui.hud.towerSelector.TowerSelector;
+import util.Cursor;
 
 /**
- * @Author Sophia
- * @Author Colin
+ * @author Sophia
+ * @author Colin
  */
 public class TutorialMap extends GameMap {
     private int counter = 0;
@@ -22,6 +25,23 @@ public class TutorialMap extends GameMap {
     public void act() {
         super.act();
         textBoardPlacer();
+        Cursor cursor = null;
+        for(Cursor c : getObjects(Cursor.class)) {
+            cursor = c;
+            break;
+        }
+        if(cursor == null) {
+            return;
+        }
+
+        if(isTutorialPopupActive && cursor.isTouching(TowerSelector.class) && Greenfoot.getMouseInfo().getButton() == 1) {
+            onContinue();
+            isTutorialPopupActive = false;
+            for(ClickawayImageDisplay cImg : getObjects(ClickawayImageDisplay.class)) {
+                removeObject(cImg);
+            }
+
+        }
     }
 
     public void textBoardPlacer(){

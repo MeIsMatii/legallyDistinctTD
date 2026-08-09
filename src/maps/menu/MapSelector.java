@@ -16,11 +16,6 @@ import util.saves.SaveManager;
  * @author Mathilo
  */
 public class MapSelector extends CustomWorld implements HasSound {
-
-    /**
-     * @Author Colin
-     * @Author Mathilo
-     */
     public MapSelector() {
         super();
         setPaintOrder(ImageDisplay.class, SettingsButton.class, SlotMachineButton.class, MapSelector.class);

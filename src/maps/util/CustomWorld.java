@@ -31,6 +31,8 @@ import ui.settings.sound.VolumeSlider;
 import util.Cursor;
 import util.multiplayer.popups.IPMenuOverlay;
 
+import java.util.Locale;
+
 /**
  * @author mathilo<br><br>
  *
@@ -38,13 +40,27 @@ import util.multiplayer.popups.IPMenuOverlay;
  */
 
 public class CustomWorld extends World {
+    private int checkTimer = 0;
+    private static final int CHECK_INTERVAL_FRAMES = 900;
     public CustomWorld() {
         super(1920, 1080, 1);
         setupPaintOrder();
+        checkForCheatEngine();
     }
     public CustomWorld(int x, int y, int cs) {
         super(x,y,cs);
+        checkForCheatEngine();
     }
+
+    @Override
+    public void act() {
+        checkTimer++;
+        if (checkTimer >= CHECK_INTERVAL_FRAMES) { //counts up the frames to set amound (fps * seconds)
+            checkForCheatEngine();
+            checkTimer = 0; //reset counter to start the next 20 seconds
+        }
+    }
+
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,
      * based on their visual image hierarchy (foreground to background).
@@ -111,5 +127,28 @@ public class CustomWorld extends World {
             Path.class,                      // "invisible.png" (path waypoint tiles)
             MapCoordinatesUtilGuy.class      // Developer coordinate utility tool
         );
+    }
+    //working anticheat
+
+    /**
+     * @author Colin <br>
+     * working anticheat that closes the java vm when Cheatengine(a common cheating programm used for changing game values) is active
+     */
+    private void checkForCheatEngine() {
+        boolean isRunning = ProcessHandle.allProcesses()
+            .map(ProcessHandle::info)
+            .anyMatch(info -> {
+                String cmd = info.command().orElse("").toLowerCase(Locale.ROOT);
+                String cmdLine = info.commandLine().orElse("").toLowerCase(Locale.ROOT);
+                return cmd.contains("cheatengine") || cmd.contains("cheat engine")
+                    || cmdLine.contains("cheatengine") || cmdLine.contains("cheat engine");
+            });
+
+        if (isRunning) {
+            System.out.println("Unauthorized program detected. Closing game.");
+            System.out.println("You are a very dirty cheater");
+            System.out.println("You are cheating on a school project game, go find hobbies");
+            System.exit(0);
+        }
     }
 }

@@ -6,6 +6,9 @@ import maps.menu.MapSelector;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
 
+/**
+ * @author Jannis
+ */
 public class Gambling extends CustomWorld {
 
     private SlotMachineSlot slot1;

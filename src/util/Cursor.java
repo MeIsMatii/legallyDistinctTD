@@ -30,4 +30,8 @@ public class Cursor extends Actor {
             setLocation(mouseInfo.getX(), mouseInfo.getY());
         }
     }
+
+    public boolean isTouching(Class<?> cls) {
+        return super.isTouching(cls);
+    }
 }

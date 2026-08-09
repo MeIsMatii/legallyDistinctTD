@@ -32,17 +32,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
-    private double range;
     protected int[] upgrade1Prices = new int[3];
     protected int[] upgrade2Prices = new int[3];
     protected int[] upgrade3Prices = new int[3];
     protected String[] upgradeDescription1 = new String[3];
     protected String[] upgradeDescription2 = new String[3];
     protected String[] upgradeDescription3 = new String[3];
-    private boolean isPlacing;
-    private Enemy targetedEnemy;
-    private boolean canPlace;
-
     protected Projectile projectileToShoot = null;
     protected double projectileDamage;
     protected double projectileSpeed;
@@ -53,6 +48,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     protected int upgrade3 = 0;
     protected int shootingDelay;
     protected int shootingDelayCounter;
+    private double range;
+    private boolean isPlacing;
+    private Enemy targetedEnemy;
+    private boolean canPlace;
     /// <ANIMATIONS>
     private int frameCounter = 0;
     private List<String> frameList;
@@ -63,7 +62,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     /// </ANIMATIONS>
 
-    public Tower(int price, boolean isPlacing, int range, int shootingDelay,int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
+    public Tower(int price, boolean isPlacing, int range, int shootingDelay, int projectileDamage, int projectileSpeed, int projectilePiercing, int projectileIFrames) {
         super();
         this.rangeDisplay = new RangeDisplay(this, range, isPlacing);
         this.price = price;
@@ -340,9 +339,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         } else {
             shootingDelayCounter++;
             rangeDisplay.setFollowing(false);
-            if(NetworkManager.getInstance().isHost()){
+            if (NetworkManager.getInstance().isHost()) {
                 setTargetedEnemy();
-                if(NetworkManager.getInstance().isMultiplayer() && targetedEnemy != null) {
+                if (NetworkManager.getInstance().isMultiplayer() && targetedEnemy != null) {
                     String msg = "SET_TARGETED_ENEMY" + "," + getUniqueId() + "," + targetedEnemy.getUniqueId();
                     NetworkManager.getInstance().sendData(msg);
                 }
@@ -429,7 +428,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         playSound("Place.mp3");
 
         if (getWorldOfType(GameMap.class).isMultiplayer()) {
-            String msg = "SPAWN_TOWER" + "," + getName()  + "," + uniqueId + "," + getX() + "," + getY();
+            String msg = "SPAWN_TOWER" + "," + getName() + "," + uniqueId + "," + getX() + "," + getY();
             NetworkManager.getInstance().sendData(msg);
         }
     }
@@ -491,11 +490,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         upgrade(1);
         onUpgrade(1);
 
-        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 1 + "," + getUpgrade1();
             NetworkManager.getInstance().sendData(msg);
         }
     }
+
     public void upgrade1(boolean receivedFromNetwork) {
         int oldLevel = getUpgrade1();
         setUpgrade1(getUpgrade1() + 1);
@@ -503,7 +503,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         upgrade(1);
         onUpgrade(1);
 
-        if(getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
+        if (getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 1 + "," + getUpgrade1();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -515,18 +515,19 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
         upgrade(2);
         onUpgrade(2);
-        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 2 + "," + getUpgrade2();
             NetworkManager.getInstance().sendData(msg);
         }
     }
+
     public void upgrade2(boolean receivedFromNetwork) {
         int oldLevel = getUpgrade2();
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
         upgrade(2);
         onUpgrade(2);
-        if(getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
+        if (getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 2 + "," + getUpgrade2();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -538,18 +539,19 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
         upgrade(3);
         onUpgrade(3);
-        if(getWorldOfType(GameMap.class).isMultiplayer()) {
+        if (getWorldOfType(GameMap.class).isMultiplayer()) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 3 + "," + getUpgrade3();
             NetworkManager.getInstance().sendData(msg);
         }
     }
+
     public void upgrade3(boolean receivedFromNetwork) {
         int oldLevel = getUpgrade3();
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
         upgrade(3);
         onUpgrade(3);
-        if(getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
+        if (getWorldOfType(GameMap.class).isMultiplayer() && !receivedFromNetwork) {
             String msg = "UPGRADE_TOWER" + "," + getUniqueId() + "," + 3 + "," + getUpgrade3();
             NetworkManager.getInstance().sendData(msg);
         }
@@ -566,6 +568,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     public Projectile getProjectileToShoot() {
         return this.projectileToShoot;
     }
+
     public void setProjectileToShoot(Projectile projectileToShoot) {
         this.projectileToShoot = projectileToShoot;
     }
@@ -595,7 +598,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void shoot(Enemy e, String projectileId) {
-        if(projectileId.isBlank()) {
+        if (projectileId.isBlank()) {
             shoot(e);
             return;
         }

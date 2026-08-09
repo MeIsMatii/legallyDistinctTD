@@ -4,24 +4,25 @@ import entities.enemy.Enemy;
 import entities.projectiles.FlameProjectile;
 import greenfoot.World;
 
-public class Flamethrower extends Tower{
+public class Flamethrower extends Tower {
+    private final int[] upgrades1 = new int[]{150, 500, 2500};
+    private final int[] upgrades2 = new int[]{200, 450, 3000};
+    private final int[] upgrades3 = new int[]{100, 350, 1750};
+    private final String[] upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower", "final upgrade done"};
+    private final String[] upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot", "final upgrade done"};
+    private final String[] upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range", "final upgrade done"};
     private int magazine = 15;
     private int rechargeCounter;
-    private final int[] upgrades1 = new int[]{150,500,2500};
-    private final int[] upgrades2 = new int[]{200,450,3000};
-    private final int[] upgrades3 = new int[]{100,350,1750};
-    private final String[] upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting","The fastest Flamethrower","final upgrade done"};
-    private final String[] upgradeDescription2 = new String[]{"Yellow hot", "White hot","Blue hot","final upgrade done"};
-    private final String[] upgradeDescription3 = new String[]{"More range", "Even more range","Very long range","final upgrade done"};
 
     public Flamethrower() {
-        super(150,true, 300, 1, 1, 10, 1000, 45);
+        super(150, true, 300, 1, 1, 10, 1000, 45);
     }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
         projectileToShoot = new FlameProjectile(this);
     }
+
     public int[] getUpgrades1() {
         return upgrades1;
     }
@@ -47,13 +48,13 @@ public class Flamethrower extends Tower{
         return upgradeDescription3[getUpgrade3()];
     }
 
-        @Override
+    @Override
     public void shoot(Enemy e) {
-        if (magazine > 0){
+        if (magazine > 0) {
             playSound("fire.mp3");
-            getWorld().addObject(getProjectileToShoot(),getX(),getY());
+            getWorld().addObject(getProjectileToShoot(), getX(), getY());
             magazine--;
-        }else {
+        } else {
             recharge();
         }
     }
@@ -79,7 +80,7 @@ public class Flamethrower extends Tower{
     }
 
     public void act() {
-        if(isPaused()) return;
+        if (isPaused()) return;
         super.act();
     }
 

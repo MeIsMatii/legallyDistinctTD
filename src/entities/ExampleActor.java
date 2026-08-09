@@ -1,12 +1,12 @@
 package entities;
 
-import util.Clickable;
-import util.HasSound;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
+import util.Clickable;
+import util.HasSound;
 
 public class ExampleActor extends MainClass implements Clickable, HasSound {
 

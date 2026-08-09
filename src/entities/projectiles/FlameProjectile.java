@@ -7,7 +7,7 @@ public class FlameProjectile extends Projectile {
     public FlameProjectile(Tower owner) {
         super(owner);
         GreenfootImage img = new GreenfootImage("flame.png");
-        img.scale(100,150);
+        img.scale(100, 150);
         setImage(img);
     }
 

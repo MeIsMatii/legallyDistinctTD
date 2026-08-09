@@ -2,8 +2,6 @@ package ui.hud.gambling;
 
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
-import greenfoot.World;
-import maps.menu.MapSelector;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
 import util.HasSound;
@@ -57,25 +55,24 @@ public class GamblingWonCredits extends CustomWorld implements HasSound {
         playSound("Credits.mp3");
 
 
-
     }
 
     public void act() {
-        if (creditsLocation > credits.length-1 && creditsDone){
+        if (creditsLocation > credits.length - 1 && creditsDone) {
             return;
         }
 
-        if(counter < 23) {
+        if (counter < 23) {
             counter++;
             return;
         }
-        if(creditsLocation > credits.length -1 && !creditsDone ) {
-            showText("Danke fuer's spielen;)" ,getWidth()/2, getHeight()/2);
+        if (creditsLocation > credits.length - 1 && !creditsDone) {
+            showText("Danke fuer's spielen;)", getWidth() / 2, getHeight() / 2);
             creditsDone = true;
             return;
         }
         counter = 0;
-        addObject(new TextBlock(credits[creditsLocation], -4), getWidth()/2, getHeight()-25);
+        addObject(new TextBlock(credits[creditsLocation], -4), getWidth() / 2, getHeight() - 25);
         creditsLocation++;
     }
 }

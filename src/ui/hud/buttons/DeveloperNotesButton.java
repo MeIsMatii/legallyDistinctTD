@@ -5,14 +5,15 @@ import greenfoot.GreenfootImage;
 import ui.settings.DevNotesMap;
 
 /**
- * @Author Colin
+ * @author Colin
  */
-public class DeveloperNotesButton extends Button{
-    public DeveloperNotesButton(){
+public class DeveloperNotesButton extends Button {
+    public DeveloperNotesButton() {
         GreenfootImage img = new GreenfootImage("DeveloperNotesButton.png");
-        img.scale(250,150);
+        img.scale(250, 150);
         setImage(img);
     }
+
     @Override
     public void act() {
         checkClick();

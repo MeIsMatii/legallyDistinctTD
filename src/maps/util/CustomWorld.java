@@ -35,20 +35,22 @@ import java.util.Locale;
 
 /**
  * @author mathilo<br><br>
- *
+ * <p>
  * To set a unified world size for all worlds.
  */
 
 public class CustomWorld extends World {
-    private int checkTimer = 0;
     private static final int CHECK_INTERVAL_FRAMES = 900;
+    private int checkTimer = 0;
+
     public CustomWorld() {
         super(1920, 1080, 1);
         setupPaintOrder();
         checkForCheatEngine();
     }
+
     public CustomWorld(int x, int y, int cs) {
-        super(x,y,cs);
+        super(x, y, cs);
         setupPaintOrder();
         checkForCheatEngine();
     }
@@ -65,7 +67,7 @@ public class CustomWorld extends World {
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,
      * based on their visual image hierarchy (foreground to background).
-     *
+     * <p>
      * Listed earlier = painted on top (front).
      * Listed later = painted underneath (back).
      *

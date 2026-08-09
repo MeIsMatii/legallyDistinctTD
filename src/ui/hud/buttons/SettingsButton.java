@@ -1,16 +1,14 @@
 package ui.hud.buttons;
 
 import ui.settings.SettingsPopup;
-import greenfoot.Greenfoot;
-import maps.levels.GameMap;
-import maps.menu.MapSelector;
+
 /**
- * @Author Colin
- * @Author Mathilo
- * @Author Julian
+ * @author Colin
+ * @author Mathilo
+ * @author Julian
  */
 
-public class SettingsButton extends Button{
+public class SettingsButton extends Button {
 
     public SettingsButton() {
         setImage("settingsIcon.png");
@@ -19,7 +17,7 @@ public class SettingsButton extends Button{
 
     @Override
     public void onClick() {
-        getWorld().addObject(new SettingsPopup(),getWorld().getWidth()/2,getWorld().getHeight()/2);
-        }
+        getWorld().addObject(new SettingsPopup(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+    }
 
 }

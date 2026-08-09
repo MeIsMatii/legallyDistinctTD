@@ -1,7 +1,5 @@
 package entities.tower;
 
-import entities.Entity;
-import entities.enemy.Enemy;
 import greenfoot.World;
 
 public class HelicopterPad extends Tower {
@@ -11,10 +9,10 @@ public class HelicopterPad extends Tower {
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
-        if(!isPlacing()) {
+        if (!isPlacing()) {
             Helicopter heli = new Helicopter();
             heli.setPlacing(false);
-            getWorld().addObject(heli,getX(),getY());
+            getWorld().addObject(heli, getX(), getY());
         }
     }
 
@@ -22,9 +20,8 @@ public class HelicopterPad extends Tower {
         super.place();
         Helicopter heli = new Helicopter();
         heli.setPlacing(false);
-        getWorld().addObject(heli,getX(),getY());
+        getWorld().addObject(heli, getX(), getY());
     }
-
 
 
     @Override

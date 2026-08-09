@@ -12,30 +12,28 @@ import java.util.List;
 
 public class Mine extends Projectile implements HasSound {
     private int explosionCounter = 0;
-    private int explosionTime;
+    private final int explosionTime;
     private boolean isExploding = false;
 
-    private boolean isMoving =true;
+    private boolean isMoving = true;
 
     private int mineRadius;
 
     public Mine(Tower owner) {
         super(owner);
-        this.mineRadius = mineRadius;
         this.explosionTime = 45;
     }
 
     public void move() {
-        if(!isMoving) {
+        if (!isMoving) {
             return;
         }
         move((int) Math.round(getSpeed()));
     }
 
 
-
     public void onHit(Entity hitter) {
-        if(hitter instanceof Path) {
+        if (hitter instanceof Path) {
             isMoving = false;
         }
         this.isExploding = true;
@@ -48,18 +46,18 @@ public class Mine extends Projectile implements HasSound {
 
     public void act() {
         super.act();
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
-        if(isExploding) {
+        if (isExploding) {
             explode();
         }
     }
 
     public void explode() {
         explosionCounter++;
-        if(explosionCounter >= explosionTime) {
+        if (explosionCounter >= explosionTime) {
             getWorld().removeObject(this);
             return;
         }

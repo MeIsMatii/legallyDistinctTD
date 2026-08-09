@@ -29,7 +29,7 @@ public class SellButton extends Button implements HasSound {
 
         NetworkManager nm = NetworkManager.getInstance();
 
-        if(nm.isMultiplayer()) {
+        if (nm.isMultiplayer()) {
             String msg = "REMOVE_ENTITY" + "," + tower.getUniqueId();
             nm.sendData(msg);
         }

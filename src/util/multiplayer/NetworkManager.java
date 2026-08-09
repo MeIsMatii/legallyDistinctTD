@@ -3,20 +3,18 @@ package util.multiplayer;
 import maps.levels.GameMap;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
+
 /**
  * @author Mathilo
  */
 public class NetworkManager {
     //bc singleton
     private static NetworkManager instance;
-
+    //incoming messages
+    private final ConcurrentLinkedQueue<String> incomingMessages = new ConcurrentLinkedQueue<>();
     //the active runner (host/client) to recieve & send data
     private Thread networkThread;
     private MultiplayerConnection activeWorker;
-
-    //incoming messages
-    private final ConcurrentLinkedQueue<String> incomingMessages = new ConcurrentLinkedQueue<>();
-
     private boolean isHost = true; //singleplayer
     private boolean isMultiplayer = false; //singleplayer
 
@@ -103,12 +101,12 @@ public class NetworkManager {
         return incomingMessages;
     }
 
-    public void setMapNr(int nr) {
-        this.mapNr = nr;
-    }
-
     public int getMapNr() {
         return this.mapNr;
+    }
+
+    public void setMapNr(int nr) {
+        this.mapNr = nr;
     }
 
     public GameMap.Difficulty getDifficulty() {

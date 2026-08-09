@@ -1,18 +1,18 @@
 package ui.settings.sound;
 
-import util.Clickable;
-import util.HasSound;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
+import util.Clickable;
+import util.HasSound;
 
 public class SongButton extends MainClass implements Clickable, HasSound {
-    /**
-     * @Author Colin
-      */
-    private final String songName;
     private static GreenfootSound currentlyPlaying = null;
+    /**
+     * @author Colin
+     */
+    private final String songName;
 
     public SongButton(String songName) {
         this.songName = songName;
@@ -41,7 +41,7 @@ public class SongButton extends MainClass implements Clickable, HasSound {
         }
         // sound volume zu volume anpassen
         currentlyPlaying = playSoundAndKeep(songName);
-        if(currentlyPlaying == null) {
+        if (currentlyPlaying == null) {
             System.out.println("muted or something");
             return;
         }

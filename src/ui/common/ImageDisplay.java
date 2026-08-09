@@ -3,19 +3,17 @@ package ui.common;
 import core.MainClass;
 import greenfoot.Font;
 import greenfoot.GreenfootImage;
-import util.Clickable;
 
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
  */
 
 
-public class ImageDisplay extends MainClass{
+public class ImageDisplay extends MainClass {
     /**
-     * @param image
-     * @param scaleX
-     * @param scaleY
+     * @param image the image to be used.
+     * @param scaleX the scaleX of the image.
+     * @param scaleY the scaleY of the image.
      */
     public ImageDisplay(String image, int scaleX, int scaleY) {
         setImage(image);
@@ -23,33 +21,33 @@ public class ImageDisplay extends MainClass{
     }
 
     /**
-     * @param img
+     * @param img the image to be used.
      */
-    public ImageDisplay(GreenfootImage img){
+    public ImageDisplay(GreenfootImage img) {
         setImage(img);
     }
 
     /**
+     * @param filename the filename (and location) of the image.
      * @Usecase Display pictures in their original resolution
-     *
-     * @param filename
      */
-    public ImageDisplay(String filename){
+    public ImageDisplay(String filename) {
         setImage(filename);
     }
 
     /**
+     * @param height height.
+     * @param width width.
+     * @param message text to be displayed.
+     * @param backGroundColor backgroundcolour.
+     * @param textColor textcolour.
+     * @param textFont font.
      * @Usecase Draw new Imagedisplays with your preferred font, color, size and custom text
-     * @param height
-     * @param width
-     * @param message
-     * @param backGroundColor
-     * @param textColor
-     * @param textFont
      */
-    public ImageDisplay(int height, int width, String message, greenfoot.Color backGroundColor, greenfoot.Color textColor, Font textFont){
+    public ImageDisplay(int height, int width, String message, greenfoot.Color backGroundColor, greenfoot.Color textColor, Font textFont) {
         GreenfootImage boxImage = new GreenfootImage(width, height);
-        boxImage.setColor(backGroundColor);boxImage.fill();
+        boxImage.setColor(backGroundColor);
+        boxImage.fill();
         boxImage.setColor(textColor);
         boxImage.setFont(textFont);
         boxImage.drawString(message, 20, height / 2);

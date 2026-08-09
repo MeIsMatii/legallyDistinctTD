@@ -5,6 +5,7 @@ public class EnemyLevel2 extends Enemy {
         super(1.25, 1);
         setImage("enemies/arealEnemy1.png"); //TODO FIX @elias/art guys
     }
+
     @Override
     public String getName() {
         return "EnemyLevel2";

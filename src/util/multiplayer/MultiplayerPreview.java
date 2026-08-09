@@ -27,7 +27,7 @@ public class MultiplayerPreview extends MainClass implements Clickable {
     public void onClick() {
         boolean isMultiplayer = NetworkManager.getInstance().isMultiplayer();
         System.out.println("Multiplayer: " + isMultiplayer);
-        if(!isMultiplayer) {
+        if (!isMultiplayer) {
 
 
             HostButton hostButton = new HostButton(true);

@@ -39,7 +39,7 @@ public class TrapTower extends Tower implements Clickable {
     public void shoot(Enemy e) {
         List<Enemy> inRange = getObjectsInRange((int) getRange(), Enemy.class);
 
-        for(Enemy enemy : inRange) {
+        for (Enemy enemy : inRange) {
             enemy.damage(getProjectileDamage());
         }
 

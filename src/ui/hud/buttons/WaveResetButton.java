@@ -7,35 +7,37 @@ import maps.menu.PauseMenu;
 import util.Clickable;
 
 import java.util.List;
-/// @Author Julian
+
+/**
+ * @author Julian
+ */
 public class WaveResetButton extends Button implements Clickable {
 
 
-
-    public WaveResetButton(){
-        GreenfootImage img = new GreenfootImage(80,40);
+    public WaveResetButton() {
+        GreenfootImage img = new GreenfootImage(80, 40);
 
         img.setColor(Color.BLACK);
-        img.drawRect(0,0,img.getWidth(),img.getHeight());
+        img.drawRect(0, 0, img.getWidth(), img.getHeight());
         img.setColor(Color.WHITE);
-        img.fillRect(0,0,img.getWidth(),img.getHeight());
+        img.fillRect(0, 0, img.getWidth(), img.getHeight());
 
         GreenfootImage text = new GreenfootImage("buttons/WaveResetButton.png");
-        text.scale(60,60);
+        text.scale(60, 60);
 
-        img.drawImage(text,10,-5);
+        img.drawImage(text, 10, -5);
         setImage(img);
 
     }
 
 
-    public void onClick(){
+    public void onClick() {
         ((GameMap) getWorld()).resetWave();
         ((GameMap) getWorld()).onContinue();
 
 
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
-        if (!pauseMenus.isEmpty()){
+        if (!pauseMenus.isEmpty()) {
             for (PauseMenu pauseMenu : pauseMenus) {
                 pauseMenu.onRemove();
             }

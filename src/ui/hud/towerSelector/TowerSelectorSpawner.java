@@ -4,9 +4,8 @@ import core.MainClass;
 import entities.tower.*;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
-import util.Clickable;
 
-public class TowerSelectorSpawner extends MainClass{
+public class TowerSelectorSpawner extends MainClass {
 
     public TowerSelectorSpawner() {
         GreenfootImage img = new GreenfootImage("towerSelectorMenu.png");

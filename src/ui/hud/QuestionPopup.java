@@ -4,12 +4,12 @@ import greenfoot.*;
 import ui.hud.buttons.Button;
 import ui.hud.buttons.ClosePopupButton;
 
-/**
- * a basic popup with text, a left button and a right button.
- */
+
 /**
  * @author Colin
  * @author Mathilo
+ *
+ * @Usecase a basic popup with text, a left button and a right button.
  */
 public class QuestionPopup extends PopupScreen {
     private ClosePopupButton closeButton;
@@ -33,13 +33,13 @@ public class QuestionPopup extends PopupScreen {
         // Automatically adds the close button to the top right of this popup when the popup is added
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
-        if(closeButton != null) {
+        if (closeButton != null) {
             world.addObject(closeButton, buttonX, buttonY);
         }
-        if(rightButton != null) {
+        if (rightButton != null) {
             world.addObject(rightButton, 1200, 700);
         }
-        if(leftButton != null) {
+        if (leftButton != null) {
             world.addObject(leftButton, 800, 700);
         }
 

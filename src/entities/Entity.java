@@ -87,7 +87,7 @@ public abstract class Entity extends MainClass {
         super.move(speed);
 
         NetworkManager nm = NetworkManager.getInstance();
-        if(nm.isMultiplayer() && nm.isHost()) {
+        if (nm.isMultiplayer() && nm.isHost()) {
             String msg = "MOVE_ENTITY" + "," + uniqueId + "," + getX() + "," + getY();
             nm.sendData(msg);
         }
@@ -105,11 +105,10 @@ public abstract class Entity extends MainClass {
     }
 
     public void setLocation(int x, int y, boolean isFromNetwork) {
-        if(isFromNetwork) {
+        if (isFromNetwork) {
             super.setLocation(x, y);
-        }
-        else {
-            setLocation(x,y);
+        } else {
+            setLocation(x, y);
         }
     }
 

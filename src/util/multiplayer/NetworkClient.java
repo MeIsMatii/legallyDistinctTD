@@ -1,8 +1,6 @@
 package util.multiplayer;
 
-import greenfoot.Color;
 import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
 import maps.levels.*;
 import util.saves.SaveManager;
 
@@ -13,6 +11,7 @@ import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+
 /**
  * @author Mathilo
  */

@@ -4,20 +4,21 @@ import greenfoot.Greenfoot;
 import maps.levels.tutorial.TutorialText;
 import maps.menu.MapSelector;
 import util.saves.SaveManager;
+
 /**
- * @Author Colin
+ * @author Colin
  */
-public class StartingButton extends Button{
-    public StartingButton(){
+public class StartingButton extends Button {
+    public StartingButton() {
         setImage("buttons/StartingButton.PNG");
     }
 
     @Override
     public void onClick() {
 
-        if (SaveManager.getInstance().getTutorialStatus()){
+        if (SaveManager.getInstance().getTutorialStatus()) {
             Greenfoot.setWorld(new MapSelector());
-        }else{
+        } else {
             Greenfoot.setWorld(new TutorialText());
         }
     }

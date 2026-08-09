@@ -8,7 +8,7 @@ import maps.levels.GameMap;
 /**
  * @author Mathilo
  */
-public class DifficultySelector extends Button{
+public class DifficultySelector extends Button {
     private final GameMap map;
     private final GameMap.Difficulty difficulty;
 
@@ -17,8 +17,7 @@ public class DifficultySelector extends Button{
         this.difficulty = difficulty;
 
 
-
-        GreenfootImage img = new GreenfootImage(80,40);
+        GreenfootImage img = new GreenfootImage(80, 40);
         String text = "";
 
         switch (difficulty) {
@@ -38,9 +37,9 @@ public class DifficultySelector extends Button{
                 break;
             }
         }
-        img.fillRect(0,0,img.getWidth(),img.getHeight());
+        img.fillRect(0, 0, img.getWidth(), img.getHeight());
         img.setColor(Color.BLACK);
-        img.drawString(text, img.getWidth()/2-20,20);
+        img.drawString(text, img.getWidth() / 2 - 20, 20);
         setImage(img);
     }
 

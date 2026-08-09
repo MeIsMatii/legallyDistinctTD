@@ -5,6 +5,7 @@ public class TestBloon extends Enemy {
         super(speed, lives);
         setImage("enemies/arealEnemy1.png"); //TODO FIX @elias/art guys
     }
+
     @Override
     public String getName() {
         return "test";

@@ -370,6 +370,19 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
 
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
+
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE UP")) {
+            setWave(getWinWave());
+            enemiesToSpawn.clear();
+            aliveEnemies.clear();
+
+            for(Enemy e : getObjects(Enemy.class)) {
+              removeObject(e);
+            }
+        }
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE DOWN")) {
+            player.damage(1232131111);
+        }
         checkPaused();
 
         if (nm.isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined

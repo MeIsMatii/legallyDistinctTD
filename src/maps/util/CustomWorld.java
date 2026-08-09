@@ -53,7 +53,7 @@ public class CustomWorld extends World {
         "gameguardian",     // Emulator memory editor
         "x64dbg",           // Debuggers
         "x32dbg",           // Debuggers
-        "cheathappens",      // CheatHappens Trainers
+        "cheathappens",     // CheatHappens Trainers
         "hack"              //programm named hack
     );
     public CustomWorld() {

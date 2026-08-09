@@ -56,7 +56,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
     private int receivedWaveMoney;
-    private int wave = 39;
+    private int wave = 0;
     private int oldWave = 0;
 
     private boolean isPaused;

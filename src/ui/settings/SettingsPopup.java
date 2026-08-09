@@ -5,6 +5,8 @@ import maps.levels.GameMap;
 import maps.menu.PauseMenu;
 import ui.hud.PopupScreen;
 import ui.hud.buttons.ClosePopupButton;
+import ui.hud.buttons.DeveloperNotesButton;
+import ui.hud.buttons.GoToTutButton;
 import ui.hud.buttons.MuteButton;
 import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;
@@ -24,6 +26,8 @@ public class SettingsPopup extends PopupScreen {
     private SongDropDown songDropDown;
     private MuteButton muteButton;
     private ClosePopupButton closeButton;
+    private DeveloperNotesButton DeveloperNotesButton;
+    private GoToTutButton GoToTutButton;
 
 
     public SettingsPopup() {
@@ -39,9 +43,13 @@ public class SettingsPopup extends PopupScreen {
         volumeSlider = new VolumeSlider();
         songDropDown = new SongDropDown();
         muteButton = new MuteButton();
+        GoToTutButton = new GoToTutButton();
+        DeveloperNotesButton = new DeveloperNotesButton();
         w.addObject(volumeSlider, getX() - getImage().getWidth() / 3, getY());
         w.addObject(songDropDown, getX()+getImage().getWidth()/3,getY());
         w.addObject(muteButton,getImage().getWidth(),getY());
+        w.addObject(DeveloperNotesButton, getX()-200,650);
+        w.addObject(GoToTutButton,getX()+200,650);
 
         // Automatically adds the close button to the top right of this popup when the popup is added
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;
@@ -70,6 +78,8 @@ public class SettingsPopup extends PopupScreen {
         w.removeObject(volumeSlider);
         w.removeObject(songDropDown);
         w.removeObject(muteButton);
+        w.removeObject(GoToTutButton);
+        w.removeObject(DeveloperNotesButton);
         if(closeButton != null) {
             w.removeObject(closeButton);
         }

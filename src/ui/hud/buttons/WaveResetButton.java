@@ -31,6 +31,8 @@ public class WaveResetButton extends Button implements Clickable {
 
     public void onClick(){
         ((GameMap) getWorld()).resetWave();
+        ((GameMap) getWorld()).onContinue();
+
 
         List<PauseMenu> pauseMenus = getWorld().getObjects(PauseMenu.class);
         if (!pauseMenus.isEmpty()){

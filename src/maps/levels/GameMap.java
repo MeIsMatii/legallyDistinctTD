@@ -311,7 +311,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 return;
             }
             deadEnemies.add(enemy);
-            receivedWaveMoney += enemy.getInitialLives();
+            receivedWaveMoney += enemy.getInitialLives() * 2;
         }
         aliveEnemies.removeAll(deadEnemies);
     }
@@ -332,6 +332,9 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         for (Projectile p : getObjects(Projectile.class)) {
             removeObject(p);
+        }
+        for ( Enemy e: getObjects(Enemy.class)) {
+            removeObject(e);
         }
     }
 

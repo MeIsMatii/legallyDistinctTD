@@ -37,7 +37,12 @@ public class TrapTower extends Tower implements Clickable {
 
 
     public void shoot(Enemy e) {
-        e.damage(getProjectileDamage());
+        List<Enemy> inRange = getObjectsInRange((int) getRange(), Enemy.class);
+
+        for(Enemy enemy : inRange) {
+            enemy.damage(getProjectileDamage());
+        }
+
         //setImage("Explosion.png");
         //getImage().scale(100, 100);
         //Greenfoot.delay(20);

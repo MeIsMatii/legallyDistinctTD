@@ -1,6 +1,8 @@
 package util.multiplayer;
 
+import greenfoot.Color;
 import greenfoot.Greenfoot;
+import greenfoot.GreenfootImage;
 import maps.levels.*;
 import util.saves.SaveManager;
 
@@ -46,8 +48,9 @@ public class NetworkClient implements MultiplayerConnection {
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();
                 if (msg != null) {
-                    if (msg.startsWith("MAP:")) {
-                        setMap(Integer.parseInt(msg.substring(4))); //to load a map
+                    if (msg.startsWith("MAP")) {
+                        String[] tokens = msg.split(",");
+                        setMap(Integer.parseInt(tokens[1]), tokens[2]);
                     } else {
                         NetworkManager.getInstance().queueIncomingMessage(msg);
                     }
@@ -69,7 +72,7 @@ public class NetworkClient implements MultiplayerConnection {
         }
     }
 
-    public void setMap(int mapNr) {
+    public void setMap(int mapNr, String difficulty) {
         GameMap nextWorld;
         switch (mapNr) {
             case 1: {
@@ -109,7 +112,29 @@ public class NetworkClient implements MultiplayerConnection {
             }
         }
 
+        GameMap.Difficulty worldDifficulty;
+        switch (difficulty) {
+            case "EASY": {
+                worldDifficulty = GameMap.Difficulty.EASY;
+                break;
+            }
+            case "MEDIUM": {
+                worldDifficulty = GameMap.Difficulty.MEDIUM;
+                break;
+            }
+            case "HARD": {
+                worldDifficulty = GameMap.Difficulty.HARD;
+                break;
+            }
+            default: {
+                worldDifficulty = GameMap.Difficulty.EASY;
+                break;
+            }
+        }
+        nextWorld.setDifficulty(worldDifficulty);
         SaveManager.getInstance().setLastMap(mapNr);
+
+        Greenfoot.setWorld(nextWorld);
     }
 
 

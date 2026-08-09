@@ -1,5 +1,7 @@
 package util.multiplayer;
 
+import maps.levels.GameMap;
+
 import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * @author Mathilo
@@ -19,6 +21,7 @@ public class NetworkManager {
     private boolean isMultiplayer = false; //singleplayer
 
     private int mapNr = 0;
+    private GameMap.Difficulty difficulty = GameMap.Difficulty.EASY;
 
     private boolean isConnectionTimeout = false;
     private boolean isConnected = false;
@@ -106,6 +109,14 @@ public class NetworkManager {
 
     public int getMapNr() {
         return this.mapNr;
+    }
+
+    public GameMap.Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(GameMap.Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public boolean isMultiplayer() {

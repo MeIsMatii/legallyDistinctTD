@@ -7,8 +7,10 @@ import greenfoot.Greenfoot;
 public class SlotMachineButton extends MainClass implements Clickable {
 
     public SlotMachineButton() {
-        setImage("Slot-MachineDefault.png");
-        getImage().scale(50, 50);
+        //setImage("Slot-MachineDefault.png");
+        setImage("SlotMachine.png");
+        //getImage().scale(50, 50);
+        getImage().scale(100, 100);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class NetworkHost implements MultiplayerConnection {
 
             BufferedReader in = new BufferedReader(new InputStreamReader(clientsocket.getInputStream()));
             this.out = new PrintWriter(clientsocket.getOutputStream(), true);
-            send("MAP:" + NetworkManager.getInstance().getMapNr());
+            send("MAP" + "," + NetworkManager.getInstance().getMapNr() + "," + NetworkManager.getInstance().getDifficulty());
 
             while (true) { //endlosschleife wohoo --Mathilo
                 String msg = in.readLine();

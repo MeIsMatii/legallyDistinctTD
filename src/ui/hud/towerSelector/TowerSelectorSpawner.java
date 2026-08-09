@@ -2,13 +2,15 @@ package ui.hud.towerSelector;
 
 import core.MainClass;
 import entities.tower.*;
+import greenfoot.GreenfootImage;
 import greenfoot.World;
 import util.Clickable;
 
-public class TowerSelectorSpawner extends MainClass implements Clickable {
+public class TowerSelectorSpawner extends MainClass{
 
     public TowerSelectorSpawner() {
-        setImage("upgradesPrototype.png");
+        GreenfootImage img = new GreenfootImage("towerSelectorMenu.png");
+        setImage(img);
 
 
     }
@@ -23,17 +25,5 @@ public class TowerSelectorSpawner extends MainClass implements Clickable {
         getWorld().addObject(new TowerSelector(Rocketlauncher::new), 1700, 60); // temp,TODO needs to be changed later
         getWorld().addObject(new TowerSelector(HelicopterPad::new), 1900, 860);
         getWorld().addObject(new TowerSelector(IceTower::new), 1900, 900);
-    }
-
-    public void onClick() {
-
-    }
-
-
-    @Override
-    public void act() {
-        checkClick();
-
-        super.act();
     }
 }

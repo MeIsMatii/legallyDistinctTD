@@ -38,6 +38,8 @@ import java.util.function.Supplier;
  * @author waves & gamesaves: Mati
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
+    private Difficulty difficulty;
+
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -55,8 +57,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     private List<Enemy> enemiesToSpawn = new ArrayList<>();
     private int spawnDelayCounter = 0;
     private int waveEndMoney;
-    private int receivedWaveMoney;
-    private int wave = 39;
+    private int receivedWaveMoney = 0;
+    private int wave = 0;
     private int oldWave = 0;
 
     private boolean isPaused;
@@ -70,6 +72,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         GreenfootImage map = new GreenfootImage("Maps/Map" + getMapNumber() + ".png");
         map.scale(1620, 1080);
         setBackground(map);
+
+
 
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
 
@@ -135,7 +139,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void setUpgradeMenuVisibility(boolean isVisible, Tower tower) {
         isUpgradeMenuVisible = isVisible;
-        //TODO add paths and delete them @Elias
         if (isVisible) {
             int width = (getWidth() - 300) / 2;
             if (upgradeMenu != null) {
@@ -370,6 +373,19 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
 
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
+
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE UP")) {
+            setWave(getWinWave());
+            enemiesToSpawn.clear();
+            aliveEnemies.clear();
+
+            for(Enemy e : getObjects(Enemy.class)) {
+              removeObject(e);
+            }
+        }
+        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE DOWN")) {
+            player.damage(1232131111);
+        }
         checkPaused();
 
         if (nm.isHost() && !isPaused && !(getSpawnLocation() == null)) { //you only have the ability to spawnwaves when: It is singleplayer or u are the host  and its not paused and paths are defined
@@ -408,7 +424,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
-    enum Difficulty {
+    public enum Difficulty {
         EASY(40),
         MEDIUM(60),
         HARD(80);
@@ -424,11 +440,23 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
+    public void setDifficulty(Difficulty difficulty){
+        this.difficulty = difficulty;
+        getGameSaveManager().saveGame();
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
     public int getWinWave() {
+        if(difficulty == null) {
+            return 40;
+        }
         return difficulty.getWinWave();
     }
 
-    private final Difficulty difficulty = Difficulty.EASY;
+
 
 
     private boolean isFreeplay = false;

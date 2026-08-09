@@ -78,7 +78,6 @@ public class CustomWorld extends World {
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,
      * based on their visual image hierarchy (foreground to background).
-     *
      * Listed earlier = painted on top (front).
      * Listed later = painted underneath (back).
      *

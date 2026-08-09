@@ -49,6 +49,7 @@ public class CustomWorld extends World {
     }
     public CustomWorld(int x, int y, int cs) {
         super(x,y,cs);
+        setupPaintOrder();
         checkForCheatEngine();
     }
 

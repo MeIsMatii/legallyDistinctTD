@@ -62,6 +62,7 @@ public class SongDropDown extends MainClass implements Clickable {
 
     // macht songbuttons
     private void openDropdown() {
+        setLocation(getX(),getY()-175);
         for (int i = 0; i < SONGS.length; i++) {
             SongButton button = new SongButton(SONGS[i]);
 
@@ -74,6 +75,7 @@ public class SongDropDown extends MainClass implements Clickable {
 
     // entfernt alle sachen beim schließen
     private void closeDropdown() {
+       setLocation(getX(),getY()+175);
         for (SongButton btn : songButtons) {
             getWorld().removeObject(btn);
         }

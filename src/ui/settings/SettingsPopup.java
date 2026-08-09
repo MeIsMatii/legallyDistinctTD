@@ -29,7 +29,7 @@ public class SettingsPopup extends PopupScreen {
     public SettingsPopup() {
         GreenfootImage boxImage = getImage();
         boxImage.setFont(new Font("Arial", true, false, 24));
-        boxImage.drawString("Settings:", 20, boxImage.getHeight() / 2);
+        boxImage.drawString("Settings", getImage().getWidth()/2, boxImage.getHeight() / 4);
         setImage(boxImage);
 
         closeButton = null;
@@ -40,8 +40,8 @@ public class SettingsPopup extends PopupScreen {
         songDropDown = new SongDropDown();
         muteButton = new MuteButton();
         w.addObject(volumeSlider, getX() - getImage().getWidth() / 3, getY());
-        w.addObject(songDropDown, getX()+getImage().getWidth()/3, getY());
-        w.addObject(muteButton,getX(),getY());
+        w.addObject(songDropDown, getX()+getImage().getWidth()/3,getY());
+        w.addObject(muteButton,getImage().getWidth(),getY());
 
         // Automatically adds the close button to the top right of this popup when the popup is added
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;

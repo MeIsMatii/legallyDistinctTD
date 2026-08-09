@@ -38,9 +38,10 @@ public class PauseMenu extends PopupScreen {
 
         w.addObject(backButton,getX()-getImage().getWidth()/3, getY());
         w.addObject(settingsButton,getX(), getY());
-        w.addObject(playOnButton,getX()+500,getY());
+        w.addObject(playOnButton,getX()+getImage().getWidth()/3, getY());
         w.addObject(retryButton,getX(),getY()- getImage().getHeight()/3);
-        w.addObject(waveResetButton,getX(),getY()+250);
+        w.addObject(waveResetButton,getX(),getY()+200);
+
     }
 
 public void onRemove(){

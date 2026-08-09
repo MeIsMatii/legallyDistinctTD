@@ -113,6 +113,7 @@ public class NetworkClient implements MultiplayerConnection {
         }
 
         GameMap.Difficulty worldDifficulty;
+        System.out.println("                            " + difficulty);
         switch (difficulty) {
             case "EASY": {
                 worldDifficulty = GameMap.Difficulty.EASY;

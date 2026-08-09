@@ -109,6 +109,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         System.out.println("Multiplayer");
         setMultiplayer(true);
         NetworkManager.getInstance().setMapNr(getMapNumber()); //doesnt hurt incase the client also knows the mapnr lmao
+        NetworkManager.getInstance().setDifficulty(difficulty);
         if (isHost) {
             startHost();//so the multiplayer session only starts when a map is connected
         }
@@ -443,6 +444,9 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     public void setDifficulty(Difficulty difficulty){
         this.difficulty = difficulty;
         getGameSaveManager().saveGame();
+        if(NetworkManager.getInstance().isMultiplayer() && NetworkManager.getInstance().isHost()) {
+            NetworkManager.getInstance().setDifficulty(difficulty);
+        }
     }
 
     public Difficulty getDifficulty() {

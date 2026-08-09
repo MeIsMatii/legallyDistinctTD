@@ -64,8 +64,6 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     public void act() {
         handleKeyboard();
         checkClick();
-        checkClick();          // from Clickable — calls onClick() if this actor was clicked
-
         if (isConnecting && !NetworkManager.getInstance().isConnected()) {
             dotTimer++;
             if (dotTimer > 10) {

@@ -3,9 +3,10 @@ package ui.hud.gambling;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.menu.MapSelector;
+import maps.util.CustomWorld;
 import ui.common.BackButton;
 
-public class Gambling extends World {
+public class Gambling extends CustomWorld {
 
     private SlotMachineSlot slot1;
     private SlotMachineSlot slot2;

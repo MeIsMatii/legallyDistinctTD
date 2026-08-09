@@ -71,9 +71,7 @@ public class LoadSaveButton extends Button{
         nextWorld.getGameSaveManager().reload();
 
         nextWorld.getGameSaveManager().loadGame(nextWorld);
-
-        DifficultySelectorPopup difficultySelectorPopup = new DifficultySelectorPopup(nextWorld);
-        getWorld().addObject(difficultySelectorPopup,getWorld().getWidth()/2,getWorld().getHeight()/2);
+        Greenfoot.setWorld(nextWorld);
 
 
         //todo Make it load game saves and not just enw worlds @Mathilo @Colin

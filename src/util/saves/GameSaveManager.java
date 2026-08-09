@@ -228,6 +228,7 @@ public class GameSaveManager extends Actor implements Saveable {
         switch (get("difficulty")) {
             case "EASY": {
                 gameMap.setDifficulty(GameMap.Difficulty.EASY);
+                break;
             }
             case "MEDIUM": {
                 gameMap.setDifficulty(GameMap.Difficulty.MEDIUM);

@@ -42,6 +42,9 @@ public class CustomWorld extends World {
         super(1920, 1080, 1);
         setupPaintOrder();
     }
+    public CustomWorld(int x, int y, int cs) {
+        super(x,y,cs);
+    }
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,
      * based on their visual image hierarchy (foreground to background).

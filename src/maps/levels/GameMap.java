@@ -128,7 +128,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         addObject(cursor, 0, 0);
 
-        addObject(new TowerSelectorSpawner(), 1770, 540);
+        addObject(new TowerSelectorSpawner(), 1741, 540);
     }
 
     /**

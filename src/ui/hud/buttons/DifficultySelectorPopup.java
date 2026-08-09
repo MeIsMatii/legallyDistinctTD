@@ -15,30 +15,28 @@ public class DifficultySelectorPopup extends PopupScreen {
     }
 
 
-
-    public void addedToWorld(World w){
-        for (PopupScreen p:getWorld().getObjects(PopupScreen.class) ){
-            if (p!=this){
+    public void addedToWorld(World w) {
+        for (PopupScreen p : getWorld().getObjects(PopupScreen.class)) {
+            if (p != this) {
                 getWorld().removeObject(p);
             }
         }
-       DifficultySelector difficultySelectorEasy= new DifficultySelector(map, GameMap.Difficulty.EASY);
+        DifficultySelector difficultySelectorEasy = new DifficultySelector(map, GameMap.Difficulty.EASY);
 
-       DifficultySelector difficultySelectorMedium= new DifficultySelector(map, GameMap.Difficulty.MEDIUM);
+        DifficultySelector difficultySelectorMedium = new DifficultySelector(map, GameMap.Difficulty.MEDIUM);
 
-       DifficultySelector difficultySelectorHard= new DifficultySelector(map, GameMap.Difficulty.HARD);
-        getWorld().addObject(difficultySelectorHard,getX()+getImage().getWidth()/3,getY());
-        getWorld().addObject(difficultySelectorMedium,getX(),getY());
-       getWorld().addObject(difficultySelectorEasy,getX()-getImage().getWidth()/3,getY());
+        DifficultySelector difficultySelectorHard = new DifficultySelector(map, GameMap.Difficulty.HARD);
+        getWorld().addObject(difficultySelectorHard, getX() + getImage().getWidth() / 3, getY());
+        getWorld().addObject(difficultySelectorMedium, getX(), getY());
+        getWorld().addObject(difficultySelectorEasy, getX() - getImage().getWidth() / 3, getY());
 
 
     }
 
 
-
-    public void onRemove(){
-        for (PopupScreen p:getWorld().getObjects(PopupScreen.class) ){
-            if (p!=this){
+    public void onRemove() {
+        for (PopupScreen p : getWorld().getObjects(PopupScreen.class)) {
+            if (p != this) {
                 getWorld().removeObject(p);
             }
         }

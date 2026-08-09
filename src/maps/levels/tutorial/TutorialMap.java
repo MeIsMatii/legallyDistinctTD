@@ -15,9 +15,9 @@ public class TutorialMap extends GameMap {
     private int lastDisplayedWave = -1;
     private boolean isTutorialPopupActive = false;
 
-    public TutorialMap(){
+    public TutorialMap() {
         super();
-        int[][] pathLocations = {{0,233},{752,233},{752,531},{1414,531},{1414,getHeight()}};
+        int[][] pathLocations = {{0, 233}, {752, 233}, {752, 531}, {1414, 531}, {1414, getHeight()}};
         super.addPath(pathLocations);
     }
 
@@ -26,25 +26,25 @@ public class TutorialMap extends GameMap {
         super.act();
         textBoardPlacer();
         Cursor cursor = null;
-        for(Cursor c : getObjects(Cursor.class)) {
+        for (Cursor c : getObjects(Cursor.class)) {
             cursor = c;
             break;
         }
-        if(cursor == null) {
+        if (cursor == null) {
             return;
         }
 
-        if(isTutorialPopupActive && cursor.isTouching(TowerSelector.class) && Greenfoot.getMouseInfo().getButton() == 1) {
+        if (isTutorialPopupActive && cursor.isTouching(TowerSelector.class) && Greenfoot.getMouseInfo().getButton() == 1) {
             onContinue();
             isTutorialPopupActive = false;
-            for(ClickawayImageDisplay cImg : getObjects(ClickawayImageDisplay.class)) {
+            for (ClickawayImageDisplay cImg : getObjects(ClickawayImageDisplay.class)) {
                 removeObject(cImg);
             }
 
         }
     }
 
-    public void textBoardPlacer(){
+    public void textBoardPlacer() {
         int currentRound = getWave();
 
         // Skip if popup is already showing or if we already showed it for this wave
@@ -52,7 +52,7 @@ public class TutorialMap extends GameMap {
             return;
         }
 
-        switch (currentRound){
+        switch (currentRound) {
             case 1:
                 showTutorialBoard();
                 lastDisplayedWave = currentRound;
@@ -74,7 +74,7 @@ public class TutorialMap extends GameMap {
 
     private void showTutorialBoard() {
         counter = counter + 1;
-        switch (counter){
+        switch (counter) {
             case 1:
                 isTutorialPopupActive = true;
                 addObject(new ClickawayImageDisplay("TutorialDisplayOne.png", 1620, 216, true), 810, 972);
@@ -94,7 +94,6 @@ public class TutorialMap extends GameMap {
                 isTutorialPopupActive = true;
                 addObject(new ClickawayImageDisplay("TutorialDisplayLast.png", 1620, 216, true), 810, 972);
                 pauseObjects(true, true);
-                return;
         }
     }
 

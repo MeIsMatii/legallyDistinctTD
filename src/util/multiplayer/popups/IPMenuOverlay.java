@@ -7,8 +7,8 @@ import util.multiplayer.NetworkManager;
 import util.saves.SaveManager;
 
 /**
- * @author Colin
- * @author Mathilo
+ * @author the complicated stuff (idk how that black magic works --Mathilo) - Colin
+ * @author <br>Multiplayer - Mathilo
  */
 
 public class IPMenuOverlay extends PopupScreen implements Clickable {
@@ -34,12 +34,6 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     private static final int CLOSE_X = W - 42;
     private static final int CLOSE_Y = 8;
     private static final int CLOSE_SIZE = 30;
-
-    private boolean isConnecting = false;
-
-    private int dotTimer = 0;
-    private int dotCounter = 0;
-
     // The keypad layout: row 3 col 2 is the backspace key
     private static final String[][] KEYS = {
         {"1", "2", "3"},
@@ -47,7 +41,9 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
         {"7", "8", "9"},
         {".", "0", "<-"}
     };
-
+    private boolean isConnecting = false;
+    private int dotTimer = 0;
+    private int dotCounter = 0;
     // State
     private String ipAddress;      // what the user has typed so far
     private boolean connected = false;  // true if user pressed Connect/Enter
@@ -55,7 +51,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     //  Constructor
     public IPMenuOverlay() {
         String ip = SaveManager.getInstance().get("lastTypedIP");
-        ipAddress = (ip != null) ? ip: "";
+        ipAddress = (ip != null) ? ip : "";
         redraw();
     }
 
@@ -64,8 +60,6 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
     public void act() {
         handleKeyboard();
         checkClick();
-        checkClick();          // from Clickable — calls onClick() if this actor was clicked
-
         if (isConnecting && !NetworkManager.getInstance().isConnected()) {
             dotTimer++;
             if (dotTimer > 10) {
@@ -83,7 +77,7 @@ public class IPMenuOverlay extends PopupScreen implements Clickable {
                 getWorld().showText("Connection timed out! (host not found/available)", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
                 isConnecting = false;
             }
-        } else if(NetworkManager.getInstance().isConnected() && isConnecting) {
+        } else if (NetworkManager.getInstance().isConnected() && isConnecting) {
             getWorld().showText("Connected!", getWorld().getWidth() / 2, getWorld().getHeight() / 2 + 200);
             isConnecting = false;
         }

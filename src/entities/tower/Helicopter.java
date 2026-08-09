@@ -1,8 +1,6 @@
 package entities.tower;
 
-import entities.enemy.Enemy;
-
-public class Helicopter extends Tower{
+public class Helicopter extends Tower {
     public Helicopter() {
         super(0, true, 250, 50, 1, 10, 1, 45);
     }

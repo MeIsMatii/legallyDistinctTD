@@ -7,32 +7,33 @@ import greenfoot.GreenfootImage;
 
 public class UpgradeDescriptionOverlay extends Actor {
     private final int path;
-    public UpgradeDescriptionOverlay(Tower tower, int path, int maxPath){
+
+    public UpgradeDescriptionOverlay(Tower tower, int path, int maxPath) {
         String upgradeDesc = "";
-        if(maxPath == 0) {
+        if (maxPath == 0) {
             upgradeDesc = "locked";
             setImage(new GreenfootImage(upgradeDesc, 20, Color.WHITE, Color.BLACK));
             this.path = path;
             return;
         }
 
-        switch(path) {
+        switch (path) {
             case 1:
-                if(tower.getUpgrade1() >= maxPath) {
+                if (tower.getUpgrade1() >= maxPath) {
                     upgradeDesc = "done";
                     break;
                 }
                 upgradeDesc = tower.getUpgradeDescription1();
                 break;
             case 2:
-                if(tower.getUpgrade2() >= maxPath) {
+                if (tower.getUpgrade2() >= maxPath) {
                     upgradeDesc = "done";
                     break;
                 }
                 upgradeDesc = tower.getUpgradeDescription2();
                 break;
             case 3:
-                if(tower.getUpgrade3() >= maxPath) {
+                if (tower.getUpgrade3() >= maxPath) {
                     upgradeDesc = "done";
                     break;
                 }

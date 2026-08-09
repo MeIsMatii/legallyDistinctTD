@@ -22,14 +22,14 @@ public class RangeDisplay extends MainClass {
 
 
     public void act() {
-        if(isPaused()) return;
+        if (isPaused()) return;
 
         if (OWNER == null || OWNER.getWorld() == null) {
             getWorld().removeObject(this);
             return;
         }
 
-        if(this.range != OWNER.getRange()) {
+        if (this.range != OWNER.getRange()) {
             updateRange(OWNER.getRange());
         }
 

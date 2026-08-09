@@ -1,8 +1,5 @@
 package entities.projectiles;
 
-import core.MainClass;
-import entities.tower.Tower;
-import greenfoot.Actor;
 import util.HasSound;
 
 public class Explosion extends Projectile implements HasSound {

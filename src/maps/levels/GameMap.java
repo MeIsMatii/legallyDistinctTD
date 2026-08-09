@@ -38,8 +38,6 @@ import java.util.function.Supplier;
  * @author waves & gamesaves: Mati
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
-    private Difficulty difficulty;
-
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -47,6 +45,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     private final WaveManager waveManager;
     private final int spawnDelay;
     private final List<Enemy> aliveEnemies = new ArrayList<>();
+    private Difficulty difficulty;
     private boolean isMultiplayer;
     private boolean hasGameStarted;
     private int dotCounter = 0;
@@ -65,6 +64,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     private boolean isForcedPause;
 
     private String lastKeyPressed;
+    private boolean isFreeplay = false;
 
     public GameMap() {
 
@@ -72,7 +72,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         GreenfootImage map = new GreenfootImage("Maps/Map" + getMapNumber() + ".png");
         map.scale(1620, 1080);
         setBackground(map);
-
 
 
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
@@ -119,7 +118,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     public void startHost() {
         NetworkManager.getInstance().startHost(7777);
     }
-
 
     /**
      * adds hud elements to the screen.
@@ -269,15 +267,15 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             receivedWaveMoney = 0;
 
             for (Enemy enemy : enemiesToSpawn) {
-                waveEndMoney += (int) enemy.getLives() *2;
+                waveEndMoney += (int) enemy.getLives() * 2;
             }
             waveEndMoney *= getWave();
 
             gameSaveManager.saveGame(); //so when you quit it continues on the last wave
         }
 
-        int delay = (spawnDelay - (getWave()/2));
-        if(delay < 0) {
+        int delay = (spawnDelay - (getWave() / 2));
+        if (delay < 0) {
             delay = 0;
         }
 
@@ -311,7 +309,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 return;
             }
             deadEnemies.add(enemy);
-            receivedWaveMoney += enemy.getInitialLives();
+            receivedWaveMoney += enemy.getInitialLives() * 2;
         }
         aliveEnemies.removeAll(deadEnemies);
     }
@@ -332,6 +330,9 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         for (Projectile p : getObjects(Projectile.class)) {
             removeObject(p);
+        }
+        for (Enemy e : getObjects(Enemy.class)) {
+            removeObject(e);
         }
     }
 
@@ -381,16 +382,16 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         lastKeyPressed = Greenfoot.getKey(); //so it updates exactly once per frame
 
-        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE UP")) {
+        if (Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE UP")) {
             setWave(getWinWave());
             enemiesToSpawn.clear();
             aliveEnemies.clear();
 
-            for(Enemy e : getObjects(Enemy.class)) {
-              removeObject(e);
+            for (Enemy e : getObjects(Enemy.class)) {
+                removeObject(e);
             }
         }
-        if(Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE DOWN")) {
+        if (Greenfoot.isKeyDown("SHIFT") && Greenfoot.isKeyDown("PAGE DOWN")) {
             player.damage(1232131111);
         }
         checkPaused();
@@ -431,46 +432,24 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
-    public enum Difficulty {
-        EASY(40),
-        MEDIUM(60),
-        HARD(80);
-
-        private final int winWave;
-
-        Difficulty(int winWave) {
-            this.winWave = winWave;
-        }
-
-        public int getWinWave() {
-            return winWave;
-        }
-    }
-
-    public void setDifficulty(Difficulty difficulty){
-        this.difficulty = difficulty;
-        getGameSaveManager().saveGame();
-        if(NetworkManager.getInstance().isMultiplayer() && NetworkManager.getInstance().isHost()) {
-            NetworkManager.getInstance().setDifficulty(difficulty);
-        }
-    }
-
     public Difficulty getDifficulty() {
         return difficulty;
     }
 
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+        getGameSaveManager().saveGame();
+        if (NetworkManager.getInstance().isMultiplayer() && NetworkManager.getInstance().isHost()) {
+            NetworkManager.getInstance().setDifficulty(difficulty);
+        }
+    }
+
     public int getWinWave() {
-        if(difficulty == null) {
+        if (difficulty == null) {
             return 40;
         }
         return difficulty.getWinWave();
     }
-
-
-
-
-    private boolean isFreeplay = false;
-
 
     public boolean isPaused() {
         return isPaused;
@@ -487,9 +466,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     public void setForcedPause(boolean paused) {
         this.isForcedPause = paused;
     }
-
-
-    // <--! PAUSING LOGIC !-->
 
     public void checkPaused() {
         if (isForcedPause) {
@@ -524,6 +500,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     }
 
 
+    // <--! PAUSING LOGIC !-->
+
     public void pauseObjects() {
         List<MainClass> objs = getObjects(MainClass.class);
         for (int i = 0; i < objs.size(); i++) {
@@ -543,13 +521,11 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         pauseObjects();
     }
 
-    // <--! MULTIPLAYER !-->
-
-
     public boolean isMultiplayer() {
         return isMultiplayer;
     }
 
+    // <--! MULTIPLAYER !-->
 
     public void setMultiplayer(boolean multiplayer) {
         isMultiplayer = multiplayer;
@@ -732,7 +708,6 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     }
 
-
     public void damageEnemyFromNetwork(String enemyId, double damage) {
         for (Enemy e : getObjects(Enemy.class)) {
             if (e.getUniqueId().equals(enemyId)) {
@@ -784,6 +759,22 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 removeObject(e);
                 break;
             }
+        }
+    }
+
+    public enum Difficulty {
+        EASY(40),
+        MEDIUM(60),
+        HARD(80);
+
+        private final int winWave;
+
+        Difficulty(int winWave) {
+            this.winWave = winWave;
+        }
+
+        public int getWinWave() {
+            return winWave;
         }
     }
 

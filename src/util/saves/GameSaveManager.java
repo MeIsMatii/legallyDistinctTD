@@ -2,18 +2,13 @@ package util.saves;
 
 import entities.tower.*;
 import greenfoot.Actor;
-import greenfoot.Color;
 import maps.levels.GameMap;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.Objects;
-import java.util.Properties;
+import java.util.*;
 import java.util.function.Supplier;
 
 /**
@@ -54,6 +49,10 @@ public class GameSaveManager extends Actor implements Saveable {
         saveData = loadSave(savePath);
     }
 
+    public static Map<String, Supplier<Tower>> getTowerList() {
+        return TOWER_LIST;
+    }
+
     public String getMapNr() {
         return Map;
     }
@@ -62,10 +61,6 @@ public class GameSaveManager extends Actor implements Saveable {
         Map = map;
         savePath = "saves/savedgames/" + Map + ".save";
         createSaveFile();
-    }
-
-    public static Map<String, Supplier<Tower>> getTowerList() {
-        return TOWER_LIST;
     }
 
     public void createSaveFile() {

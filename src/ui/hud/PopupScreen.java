@@ -1,9 +1,6 @@
 package ui.hud;
 
-import core.MainClass;
 import greenfoot.Actor;
-import greenfoot.Color;
-import greenfoot.GreenfootImage;
 
 /**
  * @author Jan
@@ -17,5 +14,6 @@ public abstract class PopupScreen extends Actor {
         setImage("pauseSettingsMenuBlur.png");
         //setImage(img);
     }
+
     public abstract void onRemove();
 }

@@ -3,15 +3,12 @@ package core;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 import maps.levels.GameMap;
-import maps.menu.MapSelector;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
 import ui.hud.QuestionPopup;
 import ui.hud.buttons.RetryButton;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
-
-import javax.naming.ldap.HasControls;
 
 public class Player extends MainClass implements HasSound {
 
@@ -22,10 +19,12 @@ public class Player extends MainClass implements HasSound {
     private int oldHealth;
 
     private boolean isGameOver = false;
+    private String lastPressedKey;
 
     public Player() {
         this(0, -1);
     }
+
 
     public Player(int startCoins, int startHealth) {
         coins = startCoins;
@@ -35,9 +34,6 @@ public class Player extends MainClass implements HasSound {
         oldHealth = 0;
 
     }                                               //noch sehr stolz auf mich
-
-
-    private String lastPressedKey;
 
     public int getCoins() {
         return coins;
@@ -51,6 +47,7 @@ public class Player extends MainClass implements HasSound {
             NetworkManager.getInstance().sendData(msg);
         }
     }
+
     public void setCoins(int coins, boolean wasSentFromMultiplayer) {
         this.coins = coins;
 

@@ -1,7 +1,5 @@
 package entities.tower;
 
-import entities.enemy.Enemy;
-import entities.projectiles.Rocket;
 import entities.projectiles.TestProjectile;
 import greenfoot.World;
 
@@ -32,9 +30,9 @@ public class TestTower extends Tower {
     }
 
     public void defineDescriptions() {
-        setUpgradeDescription1(new String[]{"slightly larger\n range", "even larger\n range","very large\n range"});
-        setUpgradeDescription2(new String[]{"slightly more\n piercing", "even more\n piercing","very much piercing"});
-        setUpgradeDescription3(new String[]{"slightly faster\n arrows", "even faster\n arrows","very quick arrows"});
+        setUpgradeDescription1(new String[]{"slightly larger\n range", "even larger\n range", "very large\n range"});
+        setUpgradeDescription2(new String[]{"slightly more\n piercing", "even more\n piercing", "very much piercing"});
+        setUpgradeDescription3(new String[]{"slightly faster\n arrows", "even faster\n arrows", "very quick arrows"});
     }
 
 
@@ -102,7 +100,6 @@ public class TestTower extends Tower {
 
         super.act();
     }
-
 
 
 }

@@ -10,8 +10,8 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
 /**
- * @Author Colin
- * @Author Mathilo(linux compatibility)
+ * @author Colin
+ * @author Mathilo(linux compatibility)
  */
 public interface HasSound {
 
@@ -30,11 +30,11 @@ public interface HasSound {
 
 
     default void playSound(String soundFileName) {
-        if(!SaveManager.getInstance().isSoundOn()) {
+        if (!SaveManager.getInstance().isSoundOn()) {
             return;
         }
 
-        if(!isAudioHardwareSupported()) {
+        if (!isAudioHardwareSupported()) {
             return;
         }
         GreenfootSound soundToPlay;
@@ -46,15 +46,15 @@ public interface HasSound {
             SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
             soundToPlay.play();//play
         } catch (Exception e) {
-            return;
+            e.printStackTrace();
         }
     }
 
     default void playSound(GreenfootSound soundToPlay) {
-        if(!SaveManager.getInstance().isSoundOn()) {
+        if (!SaveManager.getInstance().isSoundOn()) {
             return;
         }
-        if(!isAudioHardwareSupported()) {
+        if (!isAudioHardwareSupported()) {
             return;
         }
         try {
@@ -62,15 +62,15 @@ public interface HasSound {
             SoundSettings.getInstance().addRegisteredSound(soundToPlay);//liste hinzufügen
             soundToPlay.play();//sync
         } catch (Exception e) {
-            return;
+            e.printStackTrace();
         }
     }
 
     default GreenfootSound playSoundAndKeep(String soundFileName) {
-        if(!SaveManager.getInstance().isSoundOn()) {
+        if (!SaveManager.getInstance().isSoundOn()) {
             return null;
         }
-        if(!isAudioHardwareSupported()) {
+        if (!isAudioHardwareSupported()) {
             return null;
         }
 
@@ -84,9 +84,6 @@ public interface HasSound {
         }
     }
 
-    default void hardWareMute() { //incase hardware doesnt work
-        SaveManager.getInstance().setSoundOn(false);
-    }
 }
 
 

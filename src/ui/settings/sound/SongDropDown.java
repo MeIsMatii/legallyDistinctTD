@@ -1,18 +1,19 @@
 package ui.settings.sound;
 
-import util.Clickable;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
+import util.Clickable;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Colin
+ */
 public class SongDropDown extends MainClass implements Clickable {
 
-    /**
-     * @Author Colin
-     */
+
     //Für mehr songs einfach Filename als string hier hinschreiben
     private static final String[] SONGS = {
         "backgourndSound1.mp3",
@@ -22,9 +23,8 @@ public class SongDropDown extends MainClass implements Clickable {
         "TropicalSong(Gemini).mp3",
         "bloons1.mp3"
     };
-
-    private boolean isOpen = false;
     private final List<SongButton> songButtons = new ArrayList<>(); // speichert alle buttons
+    private boolean isOpen = false;
 
     public SongDropDown() {
         draw();
@@ -62,7 +62,7 @@ public class SongDropDown extends MainClass implements Clickable {
 
     // macht songbuttons
     private void openDropdown() {
-        setLocation(getX(),getY()-175);
+        setLocation(getX(), getY() - 175);
         for (int i = 0; i < SONGS.length; i++) {
             SongButton button = new SongButton(SONGS[i]);
 
@@ -75,7 +75,7 @@ public class SongDropDown extends MainClass implements Clickable {
 
     // entfernt alle sachen beim schließen
     private void closeDropdown() {
-       setLocation(getX(),getY()+175);
+        setLocation(getX(), getY() + 175);
         for (SongButton btn : songButtons) {
             getWorld().removeObject(btn);
         }

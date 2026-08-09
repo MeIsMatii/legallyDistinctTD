@@ -1,13 +1,12 @@
 package maps.menu;
 
+import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 import maps.util.CustomWorld;
-import util.HasSound;
-import greenfoot.Greenfoot;
-import greenfoot.World;
 import ui.common.ImageDisplay;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
+import util.HasSound;
 import util.multiplayer.MultiplayerPreview;
 import util.saves.SaveManager;
 
@@ -31,8 +30,8 @@ public class MapSelector extends CustomWorld implements HasSound {
         addObject(new MultiplayerPreview(), 1550, 875);///Map Preview
         addObject(new SettingsButton(), 50, 27);
         addObject(new SlotMachineButton(), 30, 1018);  //hört auf das zu entfernen       //50,1018 bei anderem bild
-        addObject(new ImageDisplay("MenueBalken1.png", 960,40),1440,1060);
-        addObject(new ImageDisplay("MenueBalken1.png", 960,40),480,1060);
+        addObject(new ImageDisplay("MenueBalken1.png", 960, 40), 1440, 1060);
+        addObject(new ImageDisplay("MenueBalken1.png", 960, 40), 480, 1060);
         //addObject(new ImageDisplay("Credits.png", 300, 60), 10, 27);
         Greenfoot.start();
         lastPlayed();
@@ -40,12 +39,13 @@ public class MapSelector extends CustomWorld implements HasSound {
 
     @Override
     public void act() {
-        if (Greenfoot.isKeyDown("f1")){
+        if (Greenfoot.isKeyDown("f1")) {
             MouseInfo mouseInfo = Greenfoot.getMouseInfo();
             System.out.println("X: " + mouseInfo.getX() + "  Y: " + mouseInfo.getY());
         }
     }
-    public void lastPlayed(){
+
+    public void lastPlayed() {
         SaveManager saveManager = SaveManager.getInstance();
         int lastPlayedInt = saveManager.getLastMap();
 
@@ -53,7 +53,7 @@ public class MapSelector extends CustomWorld implements HasSound {
         int y;
         int offsetX = 250;
         int offsetY = 125;
-        if (lastPlayedInt>=9||lastPlayedInt==0){
+        if (lastPlayedInt >= 9 || lastPlayedInt == 0) {
             return;
         }
         switch (lastPlayedInt) {

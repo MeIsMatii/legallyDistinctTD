@@ -2,26 +2,15 @@ package ui.hud.buttons;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
-import greenfoot.World;
 import maps.levels.*;
+
 /**
  * @author Colin
  * @author Mathilo
  * @author Julian
  */
-public class LoadSaveButton extends Button{
+public class LoadSaveButton extends Button {
     int worldNr;
-
-
-
-
-    public int getWorldNr() {
-        return worldNr;
-    }
-
-    public void setWorldNr(int worldNr) {
-        this.worldNr = worldNr;
-    }
 
 
     public LoadSaveButton(int Worldnr) {
@@ -31,6 +20,13 @@ public class LoadSaveButton extends Button{
         setWorldNr(Worldnr);
     }
 
+    public int getWorldNr() {
+        return worldNr;
+    }
+
+    public void setWorldNr(int worldNr) {
+        this.worldNr = worldNr;
+    }
 
     public void onClick() {
         GameMap nextWorld = null;

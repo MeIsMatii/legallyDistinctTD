@@ -1,8 +1,6 @@
 package ui.hud.gambling;
 
 import greenfoot.GreenfootImage;
-import greenfoot.World;
-import maps.menu.MapSelector;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
 
@@ -11,11 +9,42 @@ import ui.common.BackButton;
  */
 public class Gambling extends CustomWorld {
 
-    private SlotMachineSlot slot1;
-    private SlotMachineSlot slot2;
-    private SlotMachineSlot slot3;
+    private final SlotMachineSlot slot1;
+    private final SlotMachineSlot slot2;
+    private final SlotMachineSlot slot3;
 
 
+    public Gambling() {
+        super(29, 29, 20);
+
+
+        setBackground("gambleBackground.png");
+        addObject(new BackButton(), 4, 4);
+        addObject(new SlotMachineButtonGamble(), 10, 16);
+        showText("Click! Click! Click!", 14, 24);
+
+
+        slot1 = new SlotMachineSlot();
+        slot2 = new SlotMachineSlot();
+        slot3 = new SlotMachineSlot();
+
+        GreenfootImage img1 = new GreenfootImage("Gamble1.png");
+        GreenfootImage img2 = new GreenfootImage("Gamble2.png");
+        GreenfootImage img3 = new GreenfootImage("Gamble3.png");
+
+        img1.scale(500, 500);
+        img2.scale(500, 500);
+        img3.scale(500, 500);
+
+        slot1.setImage(img1);
+        slot2.setImage(img2);
+        slot3.setImage(img3);
+
+        addObject(slot1, 25, 18);
+        addObject(slot2, 22, 18);
+        addObject(slot3, 19, 18);
+
+    }
 
     public SlotMachineSlot getSlot1() {
         return slot1;
@@ -27,42 +56,6 @@ public class Gambling extends CustomWorld {
 
     public SlotMachineSlot getSlot3() {
         return slot3;
-    }
-
-
-
-    public Gambling() {
-        super(29, 29, 20);
-
-
-
-        setBackground("gambleBackground.png");
-        addObject(new BackButton(), 4, 4);
-        addObject(new SlotMachineButtonGamble(), 10, 16);
-        showText("Click! Click! Click!", 14, 24);
-
-
-
-        slot1 = new SlotMachineSlot();
-        slot2 = new SlotMachineSlot();
-        slot3 = new SlotMachineSlot();
-
-        GreenfootImage img1 = new GreenfootImage("Gamble1.png");
-        GreenfootImage img2 = new GreenfootImage("Gamble2.png");
-        GreenfootImage img3 = new GreenfootImage("Gamble3.png");
-
-        img1.scale(500,500);
-        img2.scale(500,500);
-        img3.scale(500,500);
-
-        slot1.setImage(img1);
-        slot2.setImage(img2);
-        slot3.setImage(img3);
-
-        addObject(slot1,25,18);
-        addObject(slot2,22,18);
-        addObject(slot3,19,18);
-
     }
 
 }

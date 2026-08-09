@@ -1,12 +1,11 @@
 package ui.common;
 
-import greenfoot.Greenfoot;
 import maps.levels.GameMap;
 import maps.levels.tutorial.TutorialMap;
 import util.Clickable;
 
 /**
- * @Author Colin
+ * @author Colin
  */
 public class ClickawayImageDisplay extends ImageDisplay implements Clickable {
 
@@ -15,6 +14,7 @@ public class ClickawayImageDisplay extends ImageDisplay implements Clickable {
     public ClickawayImageDisplay(String image, int scaleX, int scaleY) {
         super(image, scaleX, scaleY);
     }
+
     //second constructor only for Tutorial Use case
     public ClickawayImageDisplay(String image, int scaleX, int scaleY, boolean PartOfTut) {
         super(image, scaleX, scaleY);
@@ -23,9 +23,9 @@ public class ClickawayImageDisplay extends ImageDisplay implements Clickable {
 
     @Override
     public void onClick() {
-        if(PartOfTutorial){
+        if (PartOfTutorial) {
             onRemove();
-        }else {
+        } else {
             getWorld().removeObject(this);
         }
     }

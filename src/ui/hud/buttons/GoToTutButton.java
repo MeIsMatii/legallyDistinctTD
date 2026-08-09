@@ -5,12 +5,13 @@ import maps.menu.MapTitlescreen;
 import util.saves.SaveManager;
 
 /**
- * @Author Colin
+ * @author Colin
  */
-public class GoToTutButton extends Button{
-    public GoToTutButton(){
+public class GoToTutButton extends Button {
+    public GoToTutButton() {
         setImage("GoToTut.png");
     }
+
     @Override
     public void onClick() {
         SaveManager.getInstance().setTutorialStatus(false);

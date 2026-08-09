@@ -1,7 +1,6 @@
 package ui.hud.buttons;
 
 import maps.levels.GameMap;
-import maps.menu.PauseMenu;
 import ui.hud.PopupScreen;
 
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * @author julian
  */
-public class PlayOnButton extends Button{
+public class PlayOnButton extends Button {
 
     public PlayOnButton() {
         setImage("buttons/PlayOnButton.png");
@@ -21,7 +20,7 @@ public class PlayOnButton extends Button{
 
         getWorldOfType(GameMap.class).onContinue();
         List<PopupScreen> pauseMenus = getWorld().getObjects(PopupScreen.class);
-        if (!pauseMenus.isEmpty()){
+        if (!pauseMenus.isEmpty()) {
             for (PopupScreen pauseMenu : pauseMenus) {
                 pauseMenu.onRemove(); //removes generic popupscreen, no problem, bc there can only be one
             }

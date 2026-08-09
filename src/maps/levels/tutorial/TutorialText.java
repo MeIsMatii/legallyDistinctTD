@@ -1,7 +1,6 @@
 package maps.levels.tutorial;
 
 import greenfoot.GreenfootImage;
-import greenfoot.World;
 import maps.util.CustomWorld;
 import ui.common.TutorialHud;
 import util.saves.SaveManager;
@@ -10,12 +9,12 @@ import util.saves.SaveManager;
  * @author Sophia
  */
 public class TutorialText extends CustomWorld {
-    public TutorialText(){
+    public TutorialText() {
         super();
         GreenfootImage img = new GreenfootImage("TutorialText.jpeg");
-        img.scale(1920,1080);
+        img.scale(1920, 1080);
         setBackground(img);
-        addObject(new TutorialHud(),960, 1040);
+        addObject(new TutorialHud(), 960, 1040);
         SaveManager.getInstance().setTutorialStatus(true);
     }
 }

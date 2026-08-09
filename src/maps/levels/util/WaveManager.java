@@ -3,6 +3,7 @@ package maps.levels.util;
 import core.MainClass;
 import entities.enemy.*;
 import greenfoot.Greenfoot;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.function.Supplier;
 
 
 // === Metadata === \\
+
 /**
  * @author Fred
  * @version 1.1-beta
@@ -18,28 +20,6 @@ import java.util.function.Supplier;
 
 // ========== WAVE MANAGER ========== \\
 public class WaveManager extends MainClass {
-
-
-    // ===== Instance Variable ===== \\
-    private static WaveManager INSTANCE;
-
-
-
-    // ===== Constructor ===== \\
-    private WaveManager(){}
-
-
-
-    // ===== WaveManager Getter ===== \\
-    public static WaveManager getInstance() {
-        
-        if(INSTANCE == null) {
-            INSTANCE = new WaveManager();
-        }
-
-        return INSTANCE;
-    }
-
 
 
     // ===== Enemy Map ===== \\
@@ -85,7 +65,6 @@ public class WaveManager extends MainClass {
             )
 
         );
-
     // ===== Enemy List for other classes to fetch ===== \\
     private static final Map<String, Supplier<Enemy>> ENEMY_LIST = Map.of(
         "EnemyLevel1", EnemyLevel1::new,
@@ -94,11 +73,27 @@ public class WaveManager extends MainClass {
         "EnemyLevel4", EnemyLevel4::new,
         "EnemyLevel5", EnemyLevel5::new
     );
+    // ===== Instance Variable ===== \\
+    private static WaveManager INSTANCE;
+
+
+    // ===== Constructor ===== \\
+    private WaveManager() {
+    }
+
+    // ===== WaveManager Getter ===== \\
+    public static WaveManager getInstance() {
+
+        if (INSTANCE == null) {
+            INSTANCE = new WaveManager();
+        }
+
+        return INSTANCE;
+    }
 
     public static Map<String, Supplier<Enemy>> getEnemyList() {
         return ENEMY_LIST;
     }
-
 
 
     // ===== Map Generator ===== \\
@@ -112,15 +107,14 @@ public class WaveManager extends MainClass {
         List<Supplier<Enemy>> mappedEnemies = ENEMY_MAP.get(mapCheck(level));
 
 
-
         // === Generator Logic === \\
-        for (int i = 0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
 
             int random = Greenfoot.getRandomNumber(level + 1);
             int amount = random + 2;
 
 
-            for (int e = amount; e >0; e--) {
+            for (int e = amount; e > 0; e--) {
 
                 int zahl = Greenfoot.getRandomNumber(mappedEnemies.size());
 
@@ -134,7 +128,6 @@ public class WaveManager extends MainClass {
     }
 
 
-
     // ===== Map Check ===== \\
     private int mapCheck(int level) {
 
@@ -143,13 +136,12 @@ public class WaveManager extends MainClass {
 
 
         // === Checks Map for nearest Key === \\
-        while(!ENEMY_MAP.containsKey(mapTarget)) {
+        while (!ENEMY_MAP.containsKey(mapTarget)) {
             mapTarget++;
         }
 
         return mapTarget;
     }
-
 
 
 }

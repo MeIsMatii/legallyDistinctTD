@@ -4,8 +4,9 @@ import greenfoot.Actor;
 import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 import greenfoot.World;
+
 /**
- * @Author Colin
+ * @author Colin
  */
 public interface Clickable {
 

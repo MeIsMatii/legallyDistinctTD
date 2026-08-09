@@ -1,15 +1,12 @@
 package entities.tower;
 
-import entities.enemy.Enemy;
 import entities.projectiles.Rocket;
-import entities.projectiles.TestProjectile;
-import greenfoot.GreenfootImage;
 import greenfoot.World;
 
-public class Rocketlauncher extends Tower{
-    private final int[] upgrades1 = new int[]{150,500,2500};
-    private final int[] upgrades2 = new int[]{200,450,3000};
-    private final int[] upgrades3 = new int[]{100,350,1750};
+public class Rocketlauncher extends Tower {
+    private final int[] upgrades1 = new int[]{150, 500, 2500};
+    private final int[] upgrades2 = new int[]{200, 450, 3000};
+    private final int[] upgrades3 = new int[]{100, 350, 1750};
 
     public Rocketlauncher() {
         super(500, true, 500, 150, 50, 25, 1, 0);
@@ -36,7 +33,6 @@ public class Rocketlauncher extends Tower{
     public int[] getUpgrades3() {
         return upgrades3;
     }
-
 
 
     @Override

@@ -13,10 +13,10 @@ import java.util.Map;
 
 public abstract class Projectile extends Entity implements HasSound {
     private final Tower owner;
+    private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
     private double damage;
     private int iframes;
     private double speed;
-    private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
     private double piercing;
     private int targetX;
     private int targetY;
@@ -113,7 +113,7 @@ public abstract class Projectile extends Entity implements HasSound {
         hitEnemies.put(e, 1); //add enemy to hashmap, with 1 iframe
         if (NetworkManager.getInstance().isHost()) { //host or singleplayer
             e.damage(this.damage);
-            if((getWorldOfType(GameMap.class).isMultiplayer())) {//multiplayer and is host
+            if ((getWorldOfType(GameMap.class).isMultiplayer())) {//multiplayer and is host
                 String msg = "DAMAGE_ENEMY" + "," + e.getUniqueId() + "," + damage;
                 NetworkManager.getInstance().sendData(msg);
             }

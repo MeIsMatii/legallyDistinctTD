@@ -1,14 +1,10 @@
 package ui.hud.gambling;
 
-import ui.hud.buttons.Button;
-import util.Clickable;
-import core.MainClass;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+import ui.hud.buttons.Button;
 
 public class SlotMachineButtonGamble extends Button {
-
-
 
 
     public SlotMachineButtonGamble() {
@@ -19,22 +15,20 @@ public class SlotMachineButtonGamble extends Button {
     @Override
     public void onClick() {
         Gambling world = (Gambling) getWorld();
-        getWorld().showText("",14,24);
+        getWorld().showText("", 14, 24);
 
         SlotMachineSlot[] slots = new SlotMachineSlot[]{
-                world.getSlot1(),
-                world.getSlot2(),
-                world.getSlot3()
+            world.getSlot1(),
+            world.getSlot2(),
+            world.getSlot3()
         };
-
 
 
         GreenfootImage[] images = new GreenfootImage[]{
-                world.getSlot1().getImage(),
-                world.getSlot2().getImage(),
-                world.getSlot3().getImage()
+            world.getSlot1().getImage(),
+            world.getSlot2().getImage(),
+            world.getSlot3().getImage()
         };
-
 
 
         int stop = Greenfoot.getRandomNumber(45);

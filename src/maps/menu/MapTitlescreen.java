@@ -1,9 +1,9 @@
 package maps.menu;
 
 import greenfoot.GreenfootImage;
-import greenfoot.World;
 import maps.util.CustomWorld;
 import ui.hud.buttons.StartingButton;
+
 /**
  * @author Colin
  * @author Mathilo

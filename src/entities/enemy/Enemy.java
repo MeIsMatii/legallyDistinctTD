@@ -8,35 +8,22 @@ import maps.levels.util.Path;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
-import java.util.UUID;
 
+/**
+ * @author Elias
+ * @author Mathilo
+ */
 public abstract class Enemy extends Entity {
 
     double lives;
     double speed;
-    private double realPosX;
-    private double realPosY;
-
     double normalSpeed;                             //Freezetower
-    private int slowTimer = 0;                          //Freezetower
-
-
-
-    public double getSpeed() {                     //von Jannis hoffe darf das weil ist für freezetower
-        return speed;
-    }
-
-    public void setSpeed(double speed) {                        //Freezetower
-        this.speed = speed;
-    }
-
-
-
-
     int initialLives;
-
     int nextX;
     int nextY;
+    private double realPosX;
+    private double realPosY;
+    private int slowTimer = 0;                          //Freezetower
 
     public Enemy(double speed, int lives) {
         super();
@@ -44,6 +31,14 @@ public abstract class Enemy extends Entity {
         this.speed = speed;
         this.lives = lives;
         initialLives = lives;
+    }
+
+    public double getSpeed() {                     //von Jannis hoffe darf das weil ist für freezetower
+        return speed;
+    }
+
+    public void setSpeed(double speed) {                        //Freezetower
+        this.speed = speed;
     }
 
     public void applySlow(double slowSpeed, int duration) {                  //Freezetower
@@ -68,7 +63,6 @@ public abstract class Enemy extends Entity {
     public abstract String getName();
 
 
-
     public void addedToWorld(World world) {
         super.addedToWorld(world);
 
@@ -83,7 +77,7 @@ public abstract class Enemy extends Entity {
 
     public void act() {
         if (isPaused()) return;
-        if(NetworkManager.getInstance().isHost()) {
+        if (NetworkManager.getInstance().isHost()) {
             findPath();
             moveTo(nextX, nextY);
         }
@@ -101,12 +95,12 @@ public abstract class Enemy extends Entity {
                 if (NetworkManager.getInstance().isHost()) { // host or singleplayer
                     gameMap.getPlayer().damage(getInitialLives());
 
-                    if(gameMap.isMultiplayer()) { //host and is multiplayer
+                    if (gameMap.isMultiplayer()) { //host and is multiplayer
                         String msg = "DAMAGE_PLAYER" + "," + getInitialLives();
                         NetworkManager.getInstance().sendData(msg);
                     }
                 }
-                if(getWorld() != null) {
+                if (getWorld() != null) {
                     gameMap.removeObject(this);
                 }
             }
@@ -134,9 +128,9 @@ public abstract class Enemy extends Entity {
     }
 
     // move()
-    
+
     public void moveTo(int targetX, int targetY) {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 

@@ -151,19 +151,6 @@ public abstract class Enemy extends Entity {
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
-    /// Note (from Mathilo): this did NOT work, because sometimes the proj deleted itself before the enemies hitbox could pick up on it existing leading to it not being damaged
-    /// So i made the proj call damage()
-    /*public void onHit(Entity hitter) {
-        if(getWorld() == null) {
-            return;
-        }
-        if (hitter instanceof Projectile)
-        {
-            System.out.println(lives);
-            Projectile p = (Projectile) hitter;
-            damage(p.getDamage());
-        }
-    }*/
     public void onHit(Entity e) {
     }
 

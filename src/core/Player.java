@@ -19,11 +19,6 @@ public class Player extends MainClass implements HasSound {
     private int oldHealth;
 
     private boolean isGameOver = false;
-    private String lastPressedKey;
-
-    public Player() {
-        this(0, -1);
-    }
 
 
     public Player(int startCoins, int startHealth) {

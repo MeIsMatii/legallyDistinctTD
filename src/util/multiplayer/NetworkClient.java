@@ -2,7 +2,6 @@ package util.multiplayer;
 
 import greenfoot.Greenfoot;
 import maps.levels.*;
-import maps.menu.LoadingScreen;
 import util.saves.SaveManager;
 
 import java.io.BufferedReader;
@@ -109,12 +108,8 @@ public class NetworkClient implements MultiplayerConnection {
                 throw new RuntimeException("recieved map is invalid");
             }
         }
-        LoadingScreen ls = new LoadingScreen();
-        Greenfoot.setWorld(ls);
-        ls.setNextWorld(nextWorld);
 
         SaveManager.getInstance().setLastMap(mapNr);
-        nextWorld.getGameSaveManager().saveGame();
     }
 
 

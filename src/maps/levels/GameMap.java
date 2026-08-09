@@ -73,6 +73,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         map.scale(1620, 1080);
         setBackground(map);
 
+
+
         setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
 
         this.isMultiplayer = false;
@@ -84,6 +86,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
         gameSaveManager.setMapNr("map" + getMapNumber());
         addObject(gameSaveManager, 0, 0);
+        getGameSaveManager().saveGame();
 
         this.pathWidth = 120;
         player = new Player(100, 100); //jannis ganz alleine gemacht
@@ -423,7 +426,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
-    enum Difficulty {
+    public enum Difficulty {
         EASY(40),
         MEDIUM(60),
         HARD(80);
@@ -441,6 +444,11 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void setDifficulty(Difficulty difficulty){
         this.difficulty = difficulty;
+        getGameSaveManager().saveGame();
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
     }
 
     public int getWinWave() {

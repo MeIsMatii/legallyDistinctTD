@@ -2,6 +2,7 @@ package util.saves;
 
 import entities.tower.*;
 import greenfoot.Actor;
+import greenfoot.Color;
 import maps.levels.GameMap;
 
 import java.io.File;
@@ -180,6 +181,7 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void saveGame() {
         GameMap gameMap = (GameMap) getWorld();
+        set("difficulty", gameMap.getDifficulty());
         set("currentWave", gameMap.getWave() - 1); //bc the wave immediately advances bc all enemies are dead
         set("Towers", saveTowerData(gameMap));
         set("coins", gameMap.getPlayer().getCoins() - gameMap.getReceivedWaveMoney()); //to avoid an exploit where you can save and keep your earned money
@@ -217,10 +219,25 @@ public class GameSaveManager extends Actor implements Saveable {
      */
     public void loadGame(GameMap gameMap) {
         System.out.println(savePath);
+
         gameMap.setWave(Integer.parseInt(get("currentWave")));
         gameMap.getPlayer().setCoins(Integer.parseInt(get("coins")));
         gameMap.getPlayer().setHealth(Integer.parseInt(get("health")));
         loadTowerData();
+
+        switch (get("difficulty")) {
+            case "EASY": {
+                gameMap.setDifficulty(GameMap.Difficulty.EASY);
+            }
+            case "MEDIUM": {
+                gameMap.setDifficulty(GameMap.Difficulty.MEDIUM);
+                break;
+            }
+            case "HARD": {
+                gameMap.setDifficulty(GameMap.Difficulty.HARD);
+                break;
+            }
+        }
 
 
     }

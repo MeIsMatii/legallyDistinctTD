@@ -4,15 +4,13 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.levels.*;
-import maps.menu.LoadingScreen;
 import util.saves.SaveManager;
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 public class NewSaveButton extends Button {
     private int worldNr;
-    private final World loadingScreen = new LoadingScreen();
 
     private boolean isMultiplayer = false;
 
@@ -29,9 +27,6 @@ public class NewSaveButton extends Button {
         this.isMultiplayer = isMultiplayer; //isHost doesnt need to be said, bc clients dont select maps --Mathilo
     }
 
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
 
     public int getWorldNr() {
         return worldNr;
@@ -42,7 +37,6 @@ public class NewSaveButton extends Button {
     }
 
     public void onClick() {
-        LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
         GameMap nextWorld = null;
         switch (getWorldNr()) {///  erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden)
             case 1: {
@@ -78,11 +72,8 @@ public class NewSaveButton extends Button {
                 break;
             }
         }
-        Greenfoot.setWorld(getLoadingScreen());
-        ls.setNextWorld(nextWorld);
 
         SaveManager.getInstance().setLastMap(getWorldNr());
         assert nextWorld != null : "invalid map number"; //idea suggested this --Mathilo
-        nextWorld.getGameSaveManager().saveGame();
     }
 }

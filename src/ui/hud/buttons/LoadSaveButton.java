@@ -4,23 +4,15 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.levels.*;
-import maps.menu.LoadingScreen;
 /**
- * @Author Colin
- * @Author Mathilo
+ * @author Colin
+ * @author Mathilo
  */
 public class LoadSaveButton extends Button{
     int worldNr;
-    private World loadingScreen = new LoadingScreen();
 
 
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
 
-    public void setLoadingScreen(World loadingScreen) {
-        this.loadingScreen = loadingScreen;
-    }
 
     public int getWorldNr() {
         return worldNr;
@@ -40,7 +32,6 @@ public class LoadSaveButton extends Button{
 
 
     public void onClick() {
-        LoadingScreen ls = (LoadingScreen) loadingScreen; //bc loadingScreen is a World
         GameMap nextWorld = null;
         switch (getWorldNr()) { /// erstellt die welt wenn man drauf drückt(welche kann im Konstruktor als Parameter angegeben werden) --Colin
             case 1: {
@@ -76,8 +67,6 @@ public class LoadSaveButton extends Button{
                 break;
             }
         }
-        Greenfoot.setWorld(getLoadingScreen());
-        ls.setNextWorld(nextWorld);
         nextWorld.getGameSaveManager().reload();
 
         nextWorld.getGameSaveManager().loadGame(nextWorld);

@@ -269,14 +269,20 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             receivedWaveMoney = 0;
 
             for (Enemy enemy : enemiesToSpawn) {
-                waveEndMoney += (int) enemy.getLives();
+                waveEndMoney += (int) enemy.getLives() *2;
             }
             waveEndMoney *= getWave();
 
             gameSaveManager.saveGame(); //so when you quit it continues on the last wave
         }
 
-        if (spawnDelayCounter < spawnDelay) { //so they don't all spawn on 1 tick
+        int delay = (spawnDelay - (getWave()/2));
+        if(delay < 0) {
+            delay = 0;
+        }
+
+
+        if (spawnDelayCounter < delay) { //so they don't all spawn on 1 tick
             spawnDelayCounter++;
             return;
         }

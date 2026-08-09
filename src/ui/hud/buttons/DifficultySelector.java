@@ -10,10 +10,12 @@ import maps.levels.GameMap;
  */
 public class DifficultySelector extends Button{
     private final GameMap map;
+    private final GameMap.Difficulty difficulty;
 
     public DifficultySelector(GameMap map, GameMap.Difficulty difficulty) {
         this.map = map;
-        this.map.setDifficulty(difficulty);
+        this.difficulty = difficulty;
+
 
 
         GreenfootImage img = new GreenfootImage(80,40);
@@ -44,6 +46,8 @@ public class DifficultySelector extends Button{
 
 
     public void onClick() {
+        this.map.setDifficulty(difficulty);
+
         Greenfoot.setWorld(map);
     }
 }

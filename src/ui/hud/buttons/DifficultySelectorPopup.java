@@ -24,9 +24,7 @@ public class DifficultySelectorPopup extends PopupScreen {
         }
        DifficultySelector difficultySelectorEasy= new DifficultySelector(map, GameMap.Difficulty.EASY);
 
-
        DifficultySelector difficultySelectorMedium= new DifficultySelector(map, GameMap.Difficulty.MEDIUM);
-
 
        DifficultySelector difficultySelectorHard= new DifficultySelector(map, GameMap.Difficulty.HARD);
         getWorld().addObject(difficultySelectorHard,getX()+getImage().getWidth()/3,getY());

@@ -6,7 +6,7 @@ import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 
 public class DifficultySelector extends Button{
-    private GameMap map;
+    private final GameMap map;
 
     public DifficultySelector(GameMap map, GameMap.Difficulty difficulty) {
         this.map = map;

@@ -36,7 +36,7 @@ public class SaveManager implements Saveable {
             if (isNewFile) {
                 Path path = Paths.get(SAVE_PATH);
                 Files.writeString(path, "volume=50\n" +
-                    "TutorialStatus=true\n" +
+                    "TutorialStatus=false\n" +
                     "soundEnabled=true"); //Todo change to false when a tutorial is made
             }
         } catch (IOException e) {

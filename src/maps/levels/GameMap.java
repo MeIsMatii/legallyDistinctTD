@@ -38,6 +38,8 @@ import java.util.function.Supplier;
  * @author waves & gamesaves: Mati
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
+    private Difficulty difficulty;
+
     private final Player player;
     private final Cursor cursor;
     private final int pathWidth;
@@ -437,11 +439,18 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         }
     }
 
+    public void setDifficulty(Difficulty difficulty){
+        this.difficulty = difficulty;
+    }
+
     public int getWinWave() {
+        if(difficulty == null) {
+            return 40;
+        }
         return difficulty.getWinWave();
     }
 
-    private final Difficulty difficulty = Difficulty.EASY;
+
 
 
     private boolean isFreeplay = false;

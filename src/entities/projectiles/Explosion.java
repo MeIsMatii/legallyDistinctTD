@@ -1,5 +1,6 @@
 package entities.projectiles;
 
+import entities.Entity;
 import entities.enemy.Enemy;
 import entities.tower.Tower;
 import util.HasSound;
@@ -56,7 +57,8 @@ public class Explosion extends Projectile implements HasSound {
         this.explosionCounter = explosionCounter;
     }
 
-    public void onHit(Enemy e) {
+    public void onHit(Entity hitter) {
+        if(!(hitter instanceof Enemy))
         hasHit = true;
         setImage("Explosion.png");
         getImage().scale(100, 100);

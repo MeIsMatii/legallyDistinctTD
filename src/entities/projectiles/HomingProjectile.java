@@ -20,6 +20,15 @@ public class HomingProjectile extends Projectile {
 
         this.homingRadius = 100;
     }
+    public HomingProjectile() {
+        super();
+
+        GreenfootImage img = new GreenfootImage("projectile.png");
+        img.scale(100, 60);
+        setImage(img);
+
+        this.homingRadius = 100;
+    }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);

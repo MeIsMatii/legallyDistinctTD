@@ -23,6 +23,14 @@ public class Ice extends Projectile implements HasSound {
         setImage(img);
 
     }
+    public Ice() {
+        super();
+        GreenfootImage img = new GreenfootImage("ice.png");
+        img.scale(150, 150);
+        img.rotate(90);
+        setImage(img);
+
+    }
 
 
     public void onHit(Entity hitter) {

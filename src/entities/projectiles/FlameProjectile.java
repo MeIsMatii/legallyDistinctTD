@@ -10,6 +10,12 @@ public class FlameProjectile extends Projectile {
         img.scale(100, 150);
         setImage(img);
     }
+    public FlameProjectile() {
+        super();
+        GreenfootImage img = new GreenfootImage("flame.png");
+        img.scale(100, 150);
+        setImage(img);
+    }
 
 }
 

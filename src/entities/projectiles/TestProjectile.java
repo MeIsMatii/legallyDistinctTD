@@ -10,6 +10,12 @@ public class TestProjectile extends Projectile {
         //img.scale(100,60);
         setImage(img);
     }
+    public TestProjectile() {
+        super();
+        GreenfootImage img = new GreenfootImage("projectile.png");
+        //img.scale(100,60);
+        setImage(img);
+    }
 
 
 }

@@ -16,6 +16,10 @@ public class Rocket extends Projectile implements HasSound {
         super(owner);
         setImage("rocket.png");
     }
+    public Rocket() {
+        super();
+        setImage("rocket.png");
+    }
 
 
     public void onHit(Entity hitter) {

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Projectile extends Entity implements HasSound {
-    private final Tower owner;
+    private Tower owner;
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();
     private double damage;
     private int iframes;
@@ -25,9 +25,16 @@ public abstract class Projectile extends Entity implements HasSound {
         super();
         this.owner = owner;
     }
+    public Projectile() {
+        super();
+    }
 
     public Tower getOwner() {
         return owner;
+    }
+
+    public void setOwner(Tower owner) {
+        this.owner = owner;
     }
 
     public double getSpeed() {

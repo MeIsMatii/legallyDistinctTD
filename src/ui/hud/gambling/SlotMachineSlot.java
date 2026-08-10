@@ -1,7 +1,9 @@
 package ui.hud.gambling;
 
 import core.MainClass;
-
+/**
+ * @author Jannis
+ */
 public class SlotMachineSlot extends MainClass {
 
     public SlotMachineSlot() {

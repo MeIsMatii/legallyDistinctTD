@@ -28,14 +28,13 @@ public class MuteButton extends Button {
     }
 
     public void updateApperance() {
+        GreenfootImage img;
         if (muted) {
-            GreenfootImage img = new GreenfootImage("buttons/LautsprecherMuted.png");
-            img.scale(30, 30);
-            setImage(img);
+            img = new GreenfootImage("buttons/LautsprecherMuted.png");
         } else {
-            GreenfootImage img = new GreenfootImage("buttons/Lautsprecher.png");
-            img.scale(30, 30);
-            setImage(img);
+            img = new GreenfootImage("buttons/Lautsprecher.png");
         }
+        img.scale(30, 30);
+        setImage(img);
     }
 }

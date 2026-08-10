@@ -3,7 +3,9 @@ package ui.hud.gambling;
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import ui.hud.buttons.Button;
-
+/**
+ * @author Jannis
+ */
 public class SlotMachineButtonGamble extends Button {
 
 
@@ -41,8 +43,6 @@ public class SlotMachineButtonGamble extends Button {
                 Greenfoot.delay(1);
 
             }
-
-            //Greenfoot.delay(2);
 
         }
         if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage()) || Greenfoot.isKeyDown("C")) {

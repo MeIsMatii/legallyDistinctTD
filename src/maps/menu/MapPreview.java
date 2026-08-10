@@ -19,7 +19,6 @@ import util.saves.GameSaveManager;
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
     private int world = 0;
-    private World loadingScreen;
 
     public MapPreview(int worldNumber) {
         setWorldNr(worldNumber);
@@ -51,14 +50,6 @@ public class MapPreview extends MainClass implements Clickable {
 
     public void setClicked(boolean clicked) {
         this.clicked = clicked;
-    }
-
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
-
-    public void setLoadingScreen(World loadingScreen) {
-        this.loadingScreen = loadingScreen;
     }
 
     @Override

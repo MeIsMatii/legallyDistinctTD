@@ -10,7 +10,10 @@ import util.multiplayer.NetworkManager;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author Mathilo
+ * @author Julian
+ */
 public abstract class Projectile extends Entity implements HasSound {
     private Tower owner;
     private final Map<Enemy, Integer> hitEnemies = new HashMap<>();

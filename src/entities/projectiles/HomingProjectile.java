@@ -6,7 +6,9 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 import java.util.List;
-
+/**
+ * @author Mathilo
+ */
 public class HomingProjectile extends Projectile {
     private final int homingRadius;
     private Enemy targetedEnemy;

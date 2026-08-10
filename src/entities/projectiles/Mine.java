@@ -9,7 +9,9 @@ import maps.levels.util.Path;
 import util.HasSound;
 
 import java.util.List;
-
+/**
+ * @author Jannis
+ */
 public class Mine extends Projectile implements HasSound {
     private int explosionCounter = 0;
     private final int explosionTime;

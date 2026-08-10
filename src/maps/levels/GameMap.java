@@ -504,8 +504,8 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void pauseObjects() {
         List<MainClass> objs = getObjects(MainClass.class);
-        for (int i = 0; i < objs.size(); i++) {
-            objs.get(i).setPaused(isPaused());
+        for (MainClass obj : objs) {
+            obj.setPaused(isPaused());
         }
     }
 

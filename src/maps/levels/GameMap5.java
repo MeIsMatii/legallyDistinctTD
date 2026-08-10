@@ -1,5 +1,8 @@
 package maps.levels;
-
+/**
+ * @author Mathilo
+ * @author colin
+ */
 public class GameMap5 extends GameMap {
     public GameMap5() {
 

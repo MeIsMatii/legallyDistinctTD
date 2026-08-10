@@ -53,7 +53,7 @@ public class CustomWorld extends World {
         "gameguardian",     // Emulator memory editor
         "x64dbg",           // Debuggers
         "x32dbg",           // Debuggers
-        "cheathappens",      // CheatHappens Trainers
+        "cheathappens",     // CheatHappens Trainers
         "hack"              //programm named hack
     );
     public CustomWorld() {
@@ -78,7 +78,6 @@ public class CustomWorld extends World {
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,
      * based on their visual image hierarchy (foreground to background).
-     *
      * Listed earlier = painted on top (front).
      * Listed later = painted underneath (back).
      *

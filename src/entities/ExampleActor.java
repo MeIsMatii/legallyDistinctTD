@@ -7,7 +7,10 @@ import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
 import util.Clickable;
 import util.HasSound;
-
+/**
+ * @author Julian
+ * @author colin
+ */
 public class ExampleActor extends MainClass implements Clickable, HasSound {
 
 

@@ -1,5 +1,8 @@
 package entities.enemy;
-
+/**
+ * @author Mathilo
+ * @author Elias
+ */
 public class EnemyLevel1 extends Enemy {
     public EnemyLevel1() {
         super(1, 1);

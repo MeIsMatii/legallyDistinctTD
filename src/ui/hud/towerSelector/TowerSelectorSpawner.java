@@ -6,7 +6,9 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 public class TowerSelectorSpawner extends MainClass {
-
+    /**
+     * @author Mathilo
+     */
     public TowerSelectorSpawner() {
         GreenfootImage img = new GreenfootImage("towerSelectorMenu.png");
         setImage(img);

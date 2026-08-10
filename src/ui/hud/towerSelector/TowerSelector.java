@@ -10,7 +10,9 @@ import util.Clickable;
 
 import java.util.List;
 import java.util.function.Supplier;
-
+/**
+ * @author Febo
+ */
 public class TowerSelector extends MainClass implements Clickable {
     private final Supplier<Tower> towerToSpawn;
     private final Tower tower;

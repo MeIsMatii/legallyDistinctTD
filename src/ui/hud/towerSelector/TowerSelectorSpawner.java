@@ -26,5 +26,6 @@ public class TowerSelectorSpawner extends MainClass {
         getWorld().addObject(new TowerSelector(Rocketlauncher::new), 1700, 60); // temp,TODO needs to be changed later
         getWorld().addObject(new TowerSelector(HelicopterPad::new), 1900, 860);
         getWorld().addObject(new TowerSelector(IceTower::new), 1900, 900);
+
     }
 }

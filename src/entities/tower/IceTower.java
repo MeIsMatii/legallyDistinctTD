@@ -16,9 +16,6 @@ public class IceTower extends Tower {
 
     public IceTower() {
         super(200, true, 200, 80, 0, 25, 1, 0);
-        //GreenfootImage img = new GreenfootImage("Credits.jpg");
-        //img.scale(200,200);
-        //setImage(img);
     }
 
     public double getSlow() {
@@ -83,14 +80,19 @@ public class IceTower extends Tower {
         //TODO better upgrades
         switch (path) {
             case 1:
+                Ice ice = (Ice) getProjectileToShoot();
                 switch (getUpgrade1()) {
                     case 1:
+                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.1);
                         setRange((getRange() * 1.1));
                         break;
                     case 2:
+
+                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.3);
                         setRange((getRange() * 1.3));
                         break;
                     case 3:
+                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.6);
                         setRange((getRange() * 1.6));
                         break;
                 }

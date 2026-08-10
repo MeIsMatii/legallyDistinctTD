@@ -39,7 +39,6 @@ public class GamblingWonCredits extends CustomWorld implements HasSound {
 
     public GamblingWonCredits() {
         super();
-        setBackground("dirtsquare.png");
         setPaintOrder(BackButton.class, TextBlock.class);
         addObject(new BackButton(), 4, 4);
         credits();

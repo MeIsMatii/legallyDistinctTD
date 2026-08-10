@@ -19,11 +19,15 @@ public class TowerSelector extends MainClass implements Clickable {
 
     public TowerSelector(Supplier<Tower> towerToSpawn) {
         tower = towerToSpawn.get();
-        setImage(tower.getImage());
-        GreenfootImage img = getImage();
-        img.scale(200, 200);
+        GreenfootImage imgage = new GreenfootImage("towerSelectorFrame.png");
+        imgage.scale(150,150);
+
+
+        GreenfootImage img = tower.getImage();
+        img.scale(120, 120);
+        imgage.drawImage(img,0,0);
         img.drawString(String.valueOf(tower.getPrice()), 30, 20);
-        setImage(img);
+        setImage(imgage);
 
         this.towerToSpawn = towerToSpawn;
     }

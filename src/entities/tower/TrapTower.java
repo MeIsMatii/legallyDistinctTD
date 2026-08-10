@@ -12,9 +12,13 @@ import java.util.List;
 public class TrapTower extends Tower implements Clickable {
     private final int mineRadius;
 
-    private final int[] upgrades1 = new int[]{150, 500, 2500, 7500, 17000};
-    private final int[] upgrades2 = new int[]{200, 450, 3000, 10000, 25000};
-    private final int[] upgrades3 = new int[]{100, 350, 1750, 6000, 9500};
+    private final int[] upgrades1 = new int[]{150, 500, 2500};
+    private final int[] upgrades2 = new int[]{200, 450, 3000};
+    private final int[] upgrades3 = new int[]{100, 350, 1750};
+
+    private final String[] upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze", "final upgrade done"};
+    private final String[] upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer", "final upgrade done"};
+    private final String[] upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range", "final upgrade done"};
 
     public TrapTower() {
         super(125, true, 80, 99999999, 200, 10, 1, 90);

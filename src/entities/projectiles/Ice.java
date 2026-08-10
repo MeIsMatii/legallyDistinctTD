@@ -10,11 +10,19 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
-/**
- * @author Mathilo
- * @author Jannis
- */
+
 public class Ice extends Projectile implements HasSound {
+
+    private double destroyAfter = 20;
+    private int destructionCounter = 0;
+
+    public double getDestroyAfter() {
+        return destroyAfter;
+    }
+
+    public void setDestroyAfter(double destroyAfter) {
+        this.destroyAfter = destroyAfter;
+    }
 
 
     public Ice(Tower owner) {
@@ -55,13 +63,14 @@ public class Ice extends Projectile implements HasSound {
         }
     }
 
-
-    /*private void handleVisual(){
-        playSound("Explosion.mp3");
-        ImageDisplay explosion = new ImageDisplay("Explosion.png");
-        getWorld().addObject(explosion,getX(),getY());
-        if (destroyAfter < System.currentTimeMillis()){
-            getWorld().removeObject(explosion);
-        }   */
-
+    public void act(){
+        if (getWorld() == null){
+            return;
+        }
+        super.act();
+        destructionCounter++;
+        if (destructionCounter > destroyAfter){
+            getWorld().removeObject(this);
+        }
+    }
 }

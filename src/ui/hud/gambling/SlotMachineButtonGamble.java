@@ -44,6 +44,8 @@ public class SlotMachineButtonGamble extends Button {
 
             }
 
+
+
         }
         if (slots[0].getImage().equals(slots[1].getImage()) && slots[0].getImage().equals(slots[2].getImage()) || Greenfoot.isKeyDown("C")) {
             Greenfoot.delay(20);
@@ -55,7 +57,6 @@ public class SlotMachineButtonGamble extends Button {
 
         }
 
-    }//slot machien bild weg dafür 3 bilder oder objekte nebeneinander jede viertel sekunde ändern
-    //zufallszahl und wenn z.b. 5 ist dann anhalten
+    }
 
 }

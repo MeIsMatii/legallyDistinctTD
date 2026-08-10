@@ -15,32 +15,21 @@ import java.util.List;
  */
 
 public class TrapTower extends Tower implements Clickable {
-    private final int mineRadius;
 
-    private final int[] upgrades1 = new int[]{150, 500, 2500};
-    private final int[] upgrades2 = new int[]{200, 450, 3000};
-    private final int[] upgrades3 = new int[]{100, 350, 1750};
-
-    private final String[] upgradeDescription3 = new String[]{"Slightly longer explosion", "Even longer explosion", "The longest explosion ever!"};
-    private final String[] upgradeDescription2 = new String[]{"Slightly more damage", "Even more damage", "The deadlyist bomb!"};
-    private final String[] upgradeDescription1 = new String[]{"Slightly bigger explosion", "Even more bigger explosion", "Very large explosion"};
 
     public TrapTower() {
         super(125, true, 80, 99999999, 10, 10, 1, 90);
-        mineRadius = 150;
+
+
+        upgradeDescription1 = new String[]{"Slightly bigger explosion", "Even more bigger explosion", "Very large explosion"};
+        upgradeDescription2 = new String[]{"Slightly more damage", "Even more damage", "The deadliest bomb!"};
+        upgradeDescription3 = new String[]{"Slightly longer explosion", "Even longer explosion", "The longest explosion ever!"};
+
+        upgrade1Prices = new int[]{150, 500, 2500};
+        upgrade2Prices = new int[]{200, 450, 3000};
+        upgrade3Prices = new int[]{100, 350, 1750};
     }
 
-    public int[] getUpgrades1() {
-        return upgrades1;
-    }
-
-    public int[] getUpgrades2() {
-        return upgrades2;
-    }
-
-    public int[] getUpgrades3() {
-        return upgrades3;
-    }
 
 
     public void shoot(Enemy e) {

@@ -5,12 +5,8 @@ import entities.projectiles.FlameProjectile;
 import greenfoot.World;
 
 public class Flamethrower extends Tower {
-    private final int[] upgrades1 = new int[]{150, 500, 2500};
-    private final int[] upgrades2 = new int[]{200, 450, 3000};
-    private final int[] upgrades3 = new int[]{100, 350, 1750};
-    private final String[] upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower", "final upgrade done"};
-    private final String[] upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot", "final upgrade done"};
-    private final String[] upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range", "final upgrade done"};
+
+
     private int magazine = 15;
     private int rechargeCounter;
 
@@ -21,32 +17,16 @@ public class Flamethrower extends Tower {
     public void addedToWorld(World w) {
         super.addedToWorld(w);
         projectileToShoot = new FlameProjectile(this);
+
+        upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
+        upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
+        upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range"};
+
+        upgrade1Prices = new int[]{150, 500, 2500};
+        upgrade2Prices = new int[]{200, 450, 3000};
+        upgrade3Prices = new int[]{100, 350, 1750};
     }
 
-    public int[] getUpgrades1() {
-        return upgrades1;
-    }
-
-    public int[] getUpgrades2() {
-        return upgrades2;
-    }
-
-    public int[] getUpgrades3() {
-        return upgrades3;
-    }
-
-
-    public String getUpgradeDescription1() {
-        return upgradeDescription1[getUpgrade1()];
-    }
-
-    public String getUpgradeDescription2() {
-        return upgradeDescription2[getUpgrade2()];
-    }
-
-    public String getUpgradeDescription3() {
-        return upgradeDescription3[getUpgrade3()];
-    }
 
     @Override
     public void shoot(Enemy e) {

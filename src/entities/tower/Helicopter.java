@@ -1,5 +1,8 @@
 package entities.tower;
 
+/**
+ * @Usecase unused - not yet implemented
+ */
 public class Helicopter extends Tower {
     public Helicopter() {
         super(0, true, 250, 50, 1, 10, 1, 45);

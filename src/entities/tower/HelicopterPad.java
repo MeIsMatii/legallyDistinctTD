@@ -2,6 +2,9 @@ package entities.tower;
 
 import greenfoot.World;
 
+/**
+ * @Usecase unused - not yet implemented
+ */
 public class HelicopterPad extends Tower {
     public HelicopterPad() {
         super(0, true, 150, 99999999, 0, 0, 0, 0);

@@ -32,6 +32,8 @@ public class Explosion extends Projectile implements HasSound {
             return;
         }
 
+
+
         damageCounter++;
         if(damageCounter >= damageTimer) {
             damageCounter = 0;

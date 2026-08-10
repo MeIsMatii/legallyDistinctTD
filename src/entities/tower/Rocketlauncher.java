@@ -4,34 +4,26 @@ import entities.projectiles.Rocket;
 import greenfoot.World;
 
 public class Rocketlauncher extends Tower {
-    private final int[] upgrades1 = new int[]{150, 500, 2500};
-    private final int[] upgrades2 = new int[]{200, 450, 3000};
-    private final int[] upgrades3 = new int[]{100, 350, 1750};
+
 
     public Rocketlauncher() {
         super(500, true, 500, 150, 50, 25, 1, 0);
 
-        //GreenfootImage img = new GreenfootImage("Rocketlauncher.jpg");
-        //img.scale(200,200);
-        //setImage(img);
+        //TODO upgrades
+        upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
+        upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
+        upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
+
+        upgrade1Prices = new int[]{150, 500, 2500};
+        upgrade2Prices = new int[]{200, 450, 3000};
+        upgrade3Prices = new int[]{100, 350, 1750};
+
+
     }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
         projectileToShoot = new Rocket(this);
-    }
-
-
-    public int[] getUpgrades1() {
-        return upgrades1;
-    }
-
-    public int[] getUpgrades2() {
-        return upgrades2;
-    }
-
-    public int[] getUpgrades3() {
-        return upgrades3;
     }
 
 

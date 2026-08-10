@@ -32,9 +32,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private final RangeDisplay rangeDisplay;
     private final Color colorRed = new Color(128, 0, 0, 128);
     private final Color colorGrey = new Color(128, 128, 128, 128);
-    protected int[] upgrade1Prices = new int[3];
-    protected int[] upgrade2Prices = new int[3];
-    protected int[] upgrade3Prices = new int[3];
+    protected int[] upgrade1Prices;
+    protected int[] upgrade2Prices;
+    protected int[] upgrade3Prices;
     protected String[] upgradeDescription1 = new String[3];
     protected String[] upgradeDescription2 = new String[3];
     protected String[] upgradeDescription3 = new String[3];
@@ -85,7 +85,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
         setImage("towers/" + getName() + "/" + getName() + "_idle.png");
 
-        defineDescriptions();
+
         setPrices();
     }
 
@@ -258,34 +258,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      */
     public void setUpgradeDescription3(String[] desc) {
         this.upgradeDescription3 = desc;
-    }
-
-    /**
-     * <!-- IMPORTANT --!>
-     * IMPORTANT, NEEDS TO BE DONE:<br>
-     * setUpgradeDescription1(desc1);<br>
-     * setUpgradeDescription2(desc2);<br>
-     * setUpgradeDescription3(desc3);<br>
-     */
-    public void defineDescriptions() {
-        setUpgradeDescription1(
-            new String[]{
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-            });
-        setUpgradeDescription2(
-            new String[]{
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-            });
-        setUpgradeDescription3(
-            new String[]{
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-                "define descriptions using defineDescriptions()",
-            });
     }
 
 

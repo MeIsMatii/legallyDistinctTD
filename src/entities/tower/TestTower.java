@@ -9,15 +9,20 @@ public class TestTower extends Tower {
     public TestTower() {
         super(50, true, 300, 45, 1, 3, 1, 45);
 
+        upgradeDescription3 = new String[]{"slightly larger\n range", "even larger\n range", "very large\n range"};
+        upgradeDescription2 = new String[]{"slightly more\n piercing", "even more\n piercing", "very much piercing"};
+        upgradeDescription1 = new String[]{"slightly faster\n arrows", "even faster\n arrows", "very quick arrows"};
+
+
+        upgrade1Prices = new int[]{150, 500, 2500};
+        upgrade2Prices = new int[]{200, 450, 3000};
+        upgrade3Prices = new int[]{100, 350, 1750};
     }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
         projectileToShoot = new TestProjectile(this);
     }
-
-
-    //Upgrades need: str description [done] + int Level + option to buy
 
     @Override
     public String getName() {
@@ -27,12 +32,6 @@ public class TestTower extends Tower {
     @Override
     public int getAnimationSpeed() {
         return 1;
-    }
-
-    public void defineDescriptions() {
-        setUpgradeDescription1(new String[]{"slightly larger\n range", "even larger\n range", "very large\n range"});
-        setUpgradeDescription2(new String[]{"slightly more\n piercing", "even more\n piercing", "very much piercing"});
-        setUpgradeDescription3(new String[]{"slightly faster\n arrows", "even faster\n arrows", "very quick arrows"});
     }
 
 

@@ -3,15 +3,16 @@ package ui.hud.gambling;
 import greenfoot.GreenfootImage;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
+import ui.common.ImageDisplay;
 
 /**
  * @author Jannis
  */
 public class Gambling extends CustomWorld {
 
-    private final SlotMachineSlot slot1;
-    private final SlotMachineSlot slot2;
-    private final SlotMachineSlot slot3;
+    private final ImageDisplay slot1;
+    private final ImageDisplay slot2;
+    private final ImageDisplay slot3;
 
 
     public Gambling() {
@@ -24,10 +25,6 @@ public class Gambling extends CustomWorld {
         showText("Click! Click! Click!", 14, 24);
 
 
-        slot1 = new SlotMachineSlot();
-        slot2 = new SlotMachineSlot();
-        slot3 = new SlotMachineSlot();
-
         GreenfootImage img1 = new GreenfootImage("Gamble1.png");
         GreenfootImage img2 = new GreenfootImage("Gamble2.png");
         GreenfootImage img3 = new GreenfootImage("Gamble3.png");
@@ -36,9 +33,10 @@ public class Gambling extends CustomWorld {
         img2.scale(500, 500);
         img3.scale(500, 500);
 
-        slot1.setImage(img1);
-        slot2.setImage(img2);
-        slot3.setImage(img3);
+        slot1 = new ImageDisplay(img1);
+        slot2 = new ImageDisplay(img2);
+        slot3 = new ImageDisplay(img3);
+
 
         addObject(slot1, 25, 18);
         addObject(slot2, 22, 18);
@@ -46,15 +44,15 @@ public class Gambling extends CustomWorld {
 
     }
 
-    public SlotMachineSlot getSlot1() {
+    public ImageDisplay getSlot1() {
         return slot1;
     }
 
-    public SlotMachineSlot getSlot2() {
+    public ImageDisplay getSlot2() {
         return slot2;
     }
 
-    public SlotMachineSlot getSlot3() {
+    public ImageDisplay getSlot3() {
         return slot3;
     }
 

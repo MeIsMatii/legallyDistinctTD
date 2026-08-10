@@ -2,6 +2,7 @@ package ui.hud.gambling;
 
 import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
+import ui.common.ImageDisplay;
 import ui.hud.buttons.Button;
 /**
  * @author Jannis
@@ -19,7 +20,7 @@ public class SlotMachineButtonGamble extends Button {
         Gambling world = (Gambling) getWorld();
         getWorld().showText("", 14, 24);
 
-        SlotMachineSlot[] slots = new SlotMachineSlot[]{
+        ImageDisplay[] slots = new ImageDisplay[]{
             world.getSlot1(),
             world.getSlot2(),
             world.getSlot3()

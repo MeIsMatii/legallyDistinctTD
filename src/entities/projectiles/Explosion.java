@@ -19,15 +19,11 @@ public class Explosion extends Projectile implements HasSound {
 
     public Explosion(Tower owner) {
         super(owner);
-        setImage("Explosion.png");
-        getImage().scale(100, 100);
-        playSound("Explosion.mp3");
+        setImage("invisible.png");
     }
     public Explosion() {
         super();
-        setImage("Explosion.png");
-        getImage().scale(100, 100);
-        playSound("Explosion.mp3");
+        setImage("invisible.png");
     }
 
     public void act() {
@@ -62,6 +58,9 @@ public class Explosion extends Projectile implements HasSound {
 
     public void onHit(Enemy e) {
         hasHit = true;
+        setImage("Explosion.png");
+        getImage().scale(100, 100);
+        playSound("Explosion.mp3");
     }
 
 }

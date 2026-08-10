@@ -9,7 +9,11 @@ import ui.hud.QuestionPopup;
 import ui.hud.buttons.RetryButton;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
-
+/**
+ * @author Mathilo
+ * @author jannis
+ * @author colin (IDK what I did)
+ */
 public class Player extends MainClass implements HasSound {
 
     private int coins;

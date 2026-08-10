@@ -2,7 +2,10 @@ package entities.projectiles;
 
 import entities.tower.Tower;
 import greenfoot.GreenfootImage;
-
+/**
+ * @author Elias
+ * @author colin
+ */
 public class FlameProjectile extends Projectile {
     public FlameProjectile(Tower owner) {
         super(owner);

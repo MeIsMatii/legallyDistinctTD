@@ -1,7 +1,10 @@
 package entities.projectiles;
 
 import util.HasSound;
-
+/**
+ * @author Mathilo
+ * @author Jannis
+ */
 public class Explosion extends Projectile implements HasSound {
 
     private int timer = 10;

@@ -1,9 +1,13 @@
 package entities.enemy;
 
+/**
+ * @author Mathilo
+ * @author Elias
+ */
 public class TestBloon extends Enemy {
     public TestBloon(double speed, int lives) {
         super(speed, lives);
-        setImage("enemies/arealEnemy1.png"); //TODO FIX @elias/art guys
+        setImage("enemies/arealEnemy1.png");
     }
 
     @Override

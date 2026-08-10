@@ -29,6 +29,7 @@ public class WaveResetButton extends Button implements Clickable {
         img.drawImage(text, 10, -5);
         setImage(img);
 
+
     }
 
 

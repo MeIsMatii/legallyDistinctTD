@@ -8,7 +8,11 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
-
+/**
+ * @author Mathilo
+ * @author colin
+ * @author Elias
+ */
 public class Rocket extends Projectile implements HasSound {
     private final long destroyAfter = System.currentTimeMillis() + 150;
 

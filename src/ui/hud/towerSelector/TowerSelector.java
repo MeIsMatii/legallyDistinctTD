@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.function.Supplier;
 /**
  * @author Febo
+ * @author Jannis
  */
 public class TowerSelector extends MainClass implements Clickable {
     private final Supplier<Tower> towerToSpawn;
@@ -20,13 +21,14 @@ public class TowerSelector extends MainClass implements Clickable {
     public TowerSelector(Supplier<Tower> towerToSpawn) {
         tower = towerToSpawn.get();
         GreenfootImage imgage = new GreenfootImage("towerSelectorFrame.png");
-        imgage.scale(150,150);
+        imgage.scale(130,130);
 
 
         GreenfootImage img = tower.getImage();
-        img.scale(120, 120);
-        imgage.drawImage(img,0,0);
-        img.drawString(String.valueOf(tower.getPrice()), 30, 20);
+        img.scale(100, 100);
+        imgage.drawImage(img,15,15);
+        // TODO Fix price display
+        //img.drawString(String.valueOf(tower.getPrice()), 30, 20);
         setImage(imgage);
 
         this.towerToSpawn = towerToSpawn;

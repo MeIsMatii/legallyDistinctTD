@@ -10,14 +10,13 @@ import java.util.List;
  * @author Mathilo
  */
 public class HomingProjectile extends Projectile {
-    private final int homingRadius;
+    private int homingRadius;
     private Enemy targetedEnemy;
 
     public HomingProjectile(Tower owner) {
         super(owner);
 
         GreenfootImage img = new GreenfootImage("projectile.png");
-        img.scale(100, 60);
         setImage(img);
 
         this.homingRadius = 100;
@@ -26,7 +25,6 @@ public class HomingProjectile extends Projectile {
         super();
 
         GreenfootImage img = new GreenfootImage("projectile.png");
-        img.scale(100, 60);
         setImage(img);
 
         this.homingRadius = 100;
@@ -34,10 +32,7 @@ public class HomingProjectile extends Projectile {
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
-        List<Enemy> enemiesAtTarget = getWorld().getObjectsAt(getTargetX(), getTargetY(), Enemy.class);
-        if (!enemiesAtTarget.isEmpty()) {
-            this.targetedEnemy = enemiesAtTarget.get(0);
-        } else if (getOwner() != null && getOwner().getTargetedEnemy() != null) {
+        if (getOwner() != null && getOwner().getTargetedEnemy() != null) {
             this.targetedEnemy = getOwner().getTargetedEnemy();
         } else {
             List<Enemy> enemyList = getObjectsInRange(homingRadius, Enemy.class);
@@ -57,10 +52,6 @@ public class HomingProjectile extends Projectile {
                 return;
             }
         }
-        if (targetedEnemy == null || targetedEnemy.getWorld() == null) {
-            move((int) Math.round(getSpeed()));
-            return;
-        }
 
         target(targetedEnemy);
     }
@@ -71,5 +62,13 @@ public class HomingProjectile extends Projectile {
 
         target();
         move((int) Math.round(getSpeed()));
+    }
+
+    public int getHomingRadius() {
+        return homingRadius;
+    }
+
+    public void setHomingRadius(int homingRadius) {
+        this.homingRadius = homingRadius;
     }
 }

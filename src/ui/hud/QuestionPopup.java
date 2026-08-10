@@ -8,7 +8,6 @@ import ui.hud.buttons.ClosePopupButton;
 /**
  * @author Colin
  * @author Mathilo
- *
  * @Usecase a basic popup with text, a left button and a right button.
  */
 public class QuestionPopup extends PopupScreen {

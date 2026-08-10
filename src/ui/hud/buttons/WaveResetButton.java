@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * @author Julian
+ * @author Mathilo
  */
 public class WaveResetButton extends Button implements Clickable {
 
@@ -27,6 +28,7 @@ public class WaveResetButton extends Button implements Clickable {
 
         img.drawImage(text, 10, -5);
         setImage(img);
+
 
     }
 

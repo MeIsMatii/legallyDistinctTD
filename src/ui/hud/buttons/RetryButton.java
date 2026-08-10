@@ -7,7 +7,7 @@ import maps.levels.GameMap;
 
 /**
  * @author Julian
- *
+ * @author Mathilo
  */
 public class RetryButton extends Button {
 

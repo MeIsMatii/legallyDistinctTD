@@ -15,11 +15,6 @@ public class DeveloperNotesButton extends Button {
     }
 
     @Override
-    public void act() {
-        checkClick();
-    }
-
-    @Override
     public void onClick() {
         Greenfoot.setWorld(new DevNotesMap());
     }

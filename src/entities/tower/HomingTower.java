@@ -5,17 +5,17 @@ import greenfoot.World;
 
 public class HomingTower extends Tower {
 
-    private final int[] upgrades1 = new int[]{150, 500, 2500, 7500, 17000};
-    private final int[] upgrades2 = new int[]{200, 450, 3000, 10000, 25000};
-    private final int[] upgrades3 = new int[]{100, 350, 1750, 6000, 9500};
-
 
     public HomingTower() {
-        super(100, true, 300, 10, 20, 30, 2, 10);
+        super(100, true, 300, 45, 20, 1, 2, 10);
 
-        //GreenfootImage img = new GreenfootImage("MageTower.png");
-        //img.scale(120, 100);
-        //setImage(img);
+        upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
+        upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
+        upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range"};
+
+        upgrade1Prices = new int[]{150, 500, 2500, 7500, 17000};
+        upgrade2Prices = new int[]{200, 450, 3000, 10000, 25000};
+        upgrade3Prices = new int[]{100, 350, 1750, 6000, 9500};
 
     }
 
@@ -24,17 +24,6 @@ public class HomingTower extends Tower {
         projectileToShoot = new HomingProjectile(this);
     }
 
-    public int[] getUpgrades1() {
-        return upgrades1;
-    }
-
-    public int[] getUpgrades2() {
-        return upgrades2;
-    }
-
-    public int[] getUpgrades3() {
-        return upgrades3;
-    }
 
     public void act() {
         if (isPaused()) {

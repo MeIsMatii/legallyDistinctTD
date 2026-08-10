@@ -7,6 +7,11 @@ import maps.levels.GameMap;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
 
+/**
+ * @author Mathilo
+ * @author Colin
+ * @author Jannis
+ */
 public class SellButton extends Button implements HasSound {
 
     private final Tower tower;

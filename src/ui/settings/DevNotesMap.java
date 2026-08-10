@@ -3,11 +3,10 @@ package ui.settings;
 import greenfoot.GreenfootImage;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
-
+/**
+ * @author Colin
+ */
 public class DevNotesMap extends CustomWorld {
-    /**
-     * @author Colin
-     */
     public DevNotesMap() {
         super();
         GreenfootImage img = new GreenfootImage("Maps/DeveloperNotes.png");

@@ -53,14 +53,6 @@ public class MapPreview extends MainClass implements Clickable {
         this.clicked = clicked;
     }
 
-    public World getLoadingScreen() {
-        return loadingScreen;
-    }
-
-    public void setLoadingScreen(World loadingScreen) {
-        this.loadingScreen = loadingScreen;
-    }
-
     @Override
     public void act() {
         checkClick();

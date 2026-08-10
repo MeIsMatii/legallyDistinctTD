@@ -414,9 +414,9 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         if (oldWave != wave) {
             //showText("Wave: " + getWave(), 1540, 40);
             if (!isFreeplay) {
-                showText("Wave: " + getWave() + " / " + getWinWave(), 1540, 40);
+                showText("Wave: " + getWave() + " / " + getWinWave(), 1500, 40);
                 if (getWave() > getWinWave()) {
-                    showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
+                    showText("Wave: " + getWave() + " / " + "inf", 1500, 40);
 
                     QuestionPopup questionPopup = new QuestionPopup("You won!\nWould you like to continue in Freeplay\nor return to title", new BackButton(), new PlayOnButton());
                     removeObject(questionPopup.getCloseButton());
@@ -427,7 +427,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                     isFreeplay = true;
                 }
             } else {
-                showText("Wave: " + getWave() + " / " + "inf", 1540, 40);
+                showText("Wave: " + getWave() + " / " + "inf", 1500, 40);
             }
             oldWave = wave;
         }

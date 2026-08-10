@@ -19,7 +19,6 @@ import util.saves.GameSaveManager;
 public class MapPreview extends MainClass implements Clickable {
     private boolean clicked = false;
     private int world = 0;
-    private World loadingScreen;
 
     public MapPreview(int worldNumber) {
         setWorldNr(worldNumber);

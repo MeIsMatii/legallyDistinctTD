@@ -1,11 +1,11 @@
 package ui.hud.towerSelector;
 
 import core.MainClass;
+import core.Player;
 import entities.tower.Tower;
-import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.MouseInfo;
+import greenfoot.*;
 import maps.levels.GameMap;
+import ui.hud.buttons.Button;
 import util.Clickable;
 
 import java.util.List;
@@ -18,6 +18,10 @@ public class TowerSelector extends MainClass implements Clickable {
     private final Supplier<Tower> towerToSpawn;
     private final Tower tower;
 
+    private final GreenfootImage imageNoPrice;
+
+    private int oldCoins = 0;
+
     public TowerSelector(Supplier<Tower> towerToSpawn) {
         tower = towerToSpawn.get();
         GreenfootImage imgage = new GreenfootImage("towerSelectorFrame.png");
@@ -27,11 +31,42 @@ public class TowerSelector extends MainClass implements Clickable {
         GreenfootImage img = tower.getImage();
         img.scale(100, 100);
         imgage.drawImage(img,15,15);
-        // TODO Fix price display
-        //img.drawString(String.valueOf(tower.getPrice()), 30, 20);
-        setImage(imgage);
+
+        GreenfootImage priceDisplay = new GreenfootImage("towerSelectorPrice.png");
+        GreenfootImage fullImage = new GreenfootImage(130,170);
+
+        fullImage.drawImage(imgage,0,0);
+        fullImage.drawImage(priceDisplay, 23, 130);
+
+        fullImage.setFont(new Font("Arial", true, false, 20));
+
+        imageNoPrice = fullImage;
+        setImage(imageNoPrice);
 
         this.towerToSpawn = towerToSpawn;
+    }
+
+    public void addedToWorld(World w) {
+        updatePrice();
+    }
+
+
+    public void updatePrice() {
+        int coins = getWorldOfType(GameMap.class).getPlayer().getCoins();
+        if(coins == oldCoins) { //coins didnt change so state didnt either
+            return;
+        }
+        oldCoins =  coins;
+
+        GreenfootImage img = new GreenfootImage(imageNoPrice);
+        if(coins >= tower.getPrice()) {
+            img.setColor(Color.GREEN);
+        } else {
+            img.setColor(Color.RED);
+        }
+
+        img.drawString(String.valueOf(tower.getPrice() + "$"), 45, 157);
+        setImage(img);
     }
 
     @Override
@@ -72,6 +107,7 @@ public class TowerSelector extends MainClass implements Clickable {
 
     public void act() {
         checkClick();
+        updatePrice();
     }
 }
 

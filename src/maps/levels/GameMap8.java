@@ -2,6 +2,10 @@ package maps.levels;
 
 import maps.levels.util.MapCoordinatesUtilGuy;
 
+/**
+ * @author Mathilo
+ * @author colin
+ */
 public class GameMap8 extends GameMap {
     public GameMap8() {
         addObject(new MapCoordinatesUtilGuy(), 0, 0);

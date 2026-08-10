@@ -1,5 +1,8 @@
 package maps.levels;
-
+/**
+ * @author Mathilo
+ * @author colin
+ */
 public class GameMap6 extends GameMap {
     public GameMap6() {
         int[][] pathLocations = {{192, 6}, {192, 809}, {1613, 809}};

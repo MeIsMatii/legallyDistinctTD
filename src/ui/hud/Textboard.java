@@ -2,7 +2,9 @@ package ui.hud;
 
 import core.MainClass;
 import greenfoot.GreenfootImage;
-
+/**
+ * @author Sophia
+ */
 public class Textboard extends MainClass {
     public Textboard(int x, int y) {
         GreenfootImage img = new GreenfootImage("Textboard.png");

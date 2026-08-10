@@ -7,7 +7,10 @@ import greenfoot.World;
 import ui.hud.buttons.SellButton;
 
 import java.util.List;
-
+/**
+ * @author Mathilo
+ * @author colin
+ */
 public class UpgradeMenu extends Actor {
     private final Tower tower;
     private final UpgradePath path1;

@@ -64,6 +64,7 @@ public class LoadSaveButton extends Button {
                 break;
             }
         }
+        assert nextWorld != null;
         nextWorld.getGameSaveManager().reload();
 
         nextWorld.getGameSaveManager().loadGame(nextWorld);

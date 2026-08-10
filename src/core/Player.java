@@ -80,7 +80,8 @@ public class Player extends MainClass implements HasSound {
     @Override
     public void addedToWorld(World world) {
         world.addObject(new ImageDisplay("heart.png", 30, 30), 40, 40);
-        world.addObject(new ImageDisplay("Coin.png", 45, 45), 120, 40);
+        world.showText("$", 1780, 33); //statt coin
+        //world.addObject(new ImageDisplay("Coin.png", 45, 45), 1730, 40);
     }
 
 
@@ -109,13 +110,13 @@ public class Player extends MainClass implements HasSound {
 
         }
         if (oldCoins != coins) {
-            world.showText(String.valueOf(getCoins()), 160, 40);//rechts vom coinpng
+            world.showText(String.valueOf(getCoins()), 1740, 34);
         }
     }
 
     public void coinCheat() {
-        if (Greenfoot.isKeyDown("c")) {
-            setCoins(getCoins() + 100000);
+        if (Greenfoot.isKeyDown("shift") && Greenfoot.isKeyDown("backspace")) {
+            setCoins(getCoins() + 1000);
         }
     }
 

@@ -8,7 +8,10 @@ import ui.hud.UpgradeDescriptionOverlay;
 import util.Clickable;
 
 import java.util.List;
-
+/**
+ * @author Mathilo
+ * @author Elias
+ */
 public class UpgradePath extends Actor implements Clickable {
     private final Tower tower;
     private final int path;

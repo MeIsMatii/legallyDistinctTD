@@ -29,7 +29,7 @@ public class MapSelector extends CustomWorld implements HasSound {
         addObject(new MapPreview(8), 950, 875);///Map Preview
         addObject(new MultiplayerPreview(), 1550, 875);///Map Preview
         addObject(new SettingsButton(), 50, 27);
-        addObject(new SlotMachineButton(), 30, 950);  //hört auf das zu entfernen       //50,1018 bei anderem bild
+        addObject(new SlotMachineButton(), 30, 950);  //hört auf das zu entfernen
         addObject(new ImageDisplay("MenueBalken1.png", 960, 40), 1440, 1060);
         addObject(new ImageDisplay("MenueBalken1.png", 960, 40), 480, 1060);
         //addObject(new ImageDisplay("Credits.png", 300, 60), 10, 27);

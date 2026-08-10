@@ -58,7 +58,9 @@ public class Explosion extends Projectile implements HasSound {
     }
 
     public void onHit(Entity hitter) {
-        if(!(hitter instanceof Enemy))
+        if(!(hitter instanceof Enemy) || hasHit){
+            return;
+        }
         hasHit = true;
         setImage("Explosion.png");
         getImage().scale(100, 100);
@@ -66,4 +68,4 @@ public class Explosion extends Projectile implements HasSound {
     }
 
 }
-//für traptower lool
+//für traptower

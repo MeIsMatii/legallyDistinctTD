@@ -4,10 +4,15 @@ import entities.Entity;
 import entities.Hitbox;
 import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
+import entities.projectiles.Ice;
+import greenfoot.World;
 import maps.levels.util.Path;
 import util.Clickable;
 
 import java.util.List;
+/**
+ * @author Jannis
+ */
 
 public class TrapTower extends Tower implements Clickable {
     private final int mineRadius;
@@ -16,15 +21,13 @@ public class TrapTower extends Tower implements Clickable {
     private final int[] upgrades2 = new int[]{200, 450, 3000};
     private final int[] upgrades3 = new int[]{100, 350, 1750};
 
-    private final String[] upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze", "final upgrade done"};
-    private final String[] upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer", "final upgrade done"};
-    private final String[] upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range", "final upgrade done"};
+    private final String[] upgradeDescription3 = new String[]{"Slightly longer explosion", "Even longer explosion", "The longest explosion ever!"};
+    private final String[] upgradeDescription2 = new String[]{"Slightly more damage", "Even more damage", "The deadlyist bomb!"};
+    private final String[] upgradeDescription1 = new String[]{"Slightly bigger explosion", "Even more bigger explosion", "Very large explosion"};
 
     public TrapTower() {
-        super(125, true, 80, 99999999, 200, 10, 1, 90);
+        super(125, true, 80, 99999999, 10, 10, 1, 90);
         mineRadius = 150;
-
-        //setImage("comingSoon.png");
     }
 
     public int[] getUpgrades1() {
@@ -41,17 +44,19 @@ public class TrapTower extends Tower implements Clickable {
 
 
     public void shoot(Enemy e) {
-        List<Enemy> inRange = getObjectsInRange((int) getRange(), Enemy.class);
-
-        for (Enemy enemy : inRange) {
-            enemy.damage(getProjectileDamage());
+        if(getIntersectingObjects(Enemy.class).isEmpty()){
+            return;
         }
 
-        //setImage("Explosion.png");
-        //getImage().scale(100, 100);
-        //Greenfoot.delay(20);
-        getWorld().addObject(new Explosion(), getX(), getY());
+
+        super.shoot(e);
         getWorld().removeObject(this);
+    }
+
+    @Override
+    public void addedToWorld(World world) {
+        super.addedToWorld(world);
+        projectileToShoot = new Explosion(this);
     }
 
     @Override
@@ -103,11 +108,9 @@ public class TrapTower extends Tower implements Clickable {
                         break;
                     case 2:
                         setRange((getRange() * 1.3));
-                        //some kinda different behaviour
                         break;
                     case 3:
                         setRange((getRange() * 1.5));
-                        //some kinda different behaviour
                         break;
                 }
 
@@ -116,34 +119,21 @@ public class TrapTower extends Tower implements Clickable {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectilePiercing(getProjectilePiercing() * 1.5);
+                        setProjectileDamage(getProjectileDamage()+5);
 
                         break;
                     case 2:
-                        setProjectilePiercing(getProjectilePiercing() * 2);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()+10);
                         break;
                     case 3:
-                        setProjectilePiercing(getProjectilePiercing() * 3);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()+15);
                         break;
                 }
                 break;
 
             case 3:
-                switch (getUpgrade3()) {
-                    case 1:
-                        setProjectileSpeed(getProjectileSpeed() * 1.5);
-                        break;
-                    case 2:
-                        setProjectileSpeed(getProjectileSpeed() * 2);
-                        //some kinda different behaviour
-                        break;
-                    case 3:
-                        setProjectileSpeed(getProjectileSpeed() * 3);
-                        //some kinda different behaviour
-                        break;
-                }
+                Explosion explosion = (Explosion) getProjectileToShoot();
+                explosion.setExplosionCounter(explosion.getExplosionCounter()+10);
                 break;
             default:
                 System.out.println("Given Path must be between 1 & 3");

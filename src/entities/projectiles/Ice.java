@@ -10,9 +10,11 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
-
+/**
+ * @author Mathilo
+ * @author Jannis
+ */
 public class Ice extends Projectile implements HasSound {
-    private final long destroyAfter = System.currentTimeMillis() + 100;
 
 
     public Ice(Tower owner) {

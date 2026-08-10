@@ -4,6 +4,9 @@ import greenfoot.Greenfoot;
 import maps.levels.GameMap;
 import util.multiplayer.NetworkManager;
 
+/**
+ * @author Mathilo
+ */
 public class RestartMultiplayerButton extends Button {
     public RestartMultiplayerButton() {
         setImage("buttons/RetryButton.png");

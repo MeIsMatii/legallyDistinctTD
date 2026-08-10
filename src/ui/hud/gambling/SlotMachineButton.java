@@ -3,7 +3,9 @@ package ui.hud.gambling;
 import core.MainClass;
 import greenfoot.Greenfoot;
 import util.Clickable;
-
+/**
+ * @author Jannis
+ */
 public class SlotMachineButton extends MainClass implements Clickable {
 
     public SlotMachineButton() {

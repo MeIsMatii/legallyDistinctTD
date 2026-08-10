@@ -562,7 +562,14 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public Projectile createProjectile() {
-        return null;
+        Projectile proj = null;
+        try {
+            proj =  projectileToShoot.getClass().getDeclaredConstructor().newInstance();
+            proj.setOwner(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return proj;
     }
 
     public Projectile getProjectileToShoot() {

@@ -5,12 +5,10 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import maps.levels.GameMap;
-import maps.menu.PauseMenu;
+import maps.menu.MapSelector;
 import ui.hud.PopupScreen;
-import ui.hud.buttons.ClosePopupButton;
-import ui.hud.buttons.DeveloperNotesButton;
-import ui.hud.buttons.GoToTutButton;
-import ui.hud.buttons.MuteButton;
+import ui.hud.QuestionPopup;
+import ui.hud.buttons.*;
 import ui.settings.sound.SongButton;
 import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
@@ -36,7 +34,6 @@ public class SettingsPopup extends PopupScreen {
     public SettingsPopup() {
         GreenfootImage boxImage = getImage();
         boxImage.setFont(new Font("Arial", true, false, 24));
-        boxImage.drawString("Settings", getImage().getWidth() / 2, boxImage.getHeight() / 4);
         setImage(boxImage);
 
         closeButton = null;
@@ -51,9 +48,11 @@ public class SettingsPopup extends PopupScreen {
         w.addObject(volumeSlider, getX() - getImage().getWidth() / 3, getY());
         w.addObject(songDropDown, getX() + getImage().getWidth() / 3, getY());
         w.addObject(muteButton, getImage().getWidth(), getY());
-        w.addObject(DeveloperNotesButton, getX() - 200, 650);
-        w.addObject(GoToTutButton, getX() + 200, 650);
 
+        if (getWorld() instanceof MapSelector) {
+            w.addObject(DeveloperNotesButton, getX() - 200, 650);
+            w.addObject(GoToTutButton, getX() + 200, 650);
+        }
         // Automatically adds the close button to the top right of this popup when the popup is added
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
@@ -65,10 +64,24 @@ public class SettingsPopup extends PopupScreen {
             w.addObject(closeButton, buttonX, buttonY);
         }
 
-        List<PauseMenu> pauseMenus = w.getObjects(PauseMenu.class);
-        if (!pauseMenus.isEmpty()) {
-            for (PauseMenu pauseMenu : pauseMenus) {
-                pauseMenu.onRemove();
+        List<QuestionPopup> questionPopups = w.getObjects(QuestionPopup.class);
+        if (!questionPopups.isEmpty()) {
+            for (QuestionPopup questionPopup: questionPopups) {
+                questionPopup.onRemove();
+            }
+        }
+
+        List<RetryButton> retryButtons = w.getObjects(RetryButton.class);
+        if (!retryButtons.isEmpty()){
+            for (RetryButton retryButton: retryButtons){
+                w.removeObject(retryButton);
+            }
+        }
+
+        List<WaveResetButton> waveResetButtons = w.getObjects(WaveResetButton.class);
+        if (!waveResetButtons.isEmpty()){
+            for (WaveResetButton waveResetButton: waveResetButtons){
+                w.removeObject(waveResetButton);
             }
         }
 
@@ -94,12 +107,6 @@ public class SettingsPopup extends PopupScreen {
         }
         w.removeObject(this);
 
-        List<PauseMenu> pauseMenus = w.getObjects(PauseMenu.class);
-        if (!pauseMenus.isEmpty()) {
-            for (PauseMenu pauseMenu : pauseMenus) {
-                pauseMenu.onRemove();
-            }
-        }
 
 
     }
@@ -108,6 +115,18 @@ public class SettingsPopup extends PopupScreen {
         if (Objects.equals(Greenfoot.getKey(), "escape")) {
             onRemove();
         }
+
+        if (songDropDown.isOpen()){
+            List<GoToTutButton> goToTutButtons = getWorld().getObjects(GoToTutButton.class);
+            for (GoToTutButton goToTutButton : goToTutButtons) {
+                getWorld().removeObject(goToTutButton);
+            }
+
+        }else if (!songDropDown.isOpen()&& getWorld().getObjects(GoToTutButton.class).isEmpty()){
+            getWorld().addObject(GoToTutButton, getX() + 200, 650);
+
+        }
+
     }
 
 

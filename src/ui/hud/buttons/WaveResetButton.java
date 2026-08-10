@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * @author Julian
+ * @author Mathilo
  */
 public class WaveResetButton extends Button implements Clickable {
 

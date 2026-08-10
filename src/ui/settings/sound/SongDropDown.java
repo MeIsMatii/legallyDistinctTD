@@ -1,15 +1,18 @@
 package ui.settings.sound;
 
+import bluej.editor.flow.GoToLineDialog;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
+import ui.hud.buttons.GoToTutButton;
 import util.Clickable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Colin
+ * @author Colin (function)
+ * @author julian (positioning)
  */
 public class SongDropDown extends MainClass implements Clickable {
 
@@ -28,6 +31,14 @@ public class SongDropDown extends MainClass implements Clickable {
 
     public SongDropDown() {
         draw();
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean open) {
+        isOpen = open;
     }
 
     private void draw() {

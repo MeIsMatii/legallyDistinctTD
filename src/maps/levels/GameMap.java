@@ -36,6 +36,7 @@ import java.util.function.Supplier;
 /**
  * @author paths: Julian
  * @author waves & gamesaves: Mati
+ *  * @author Jannis
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
     private final Player player;
@@ -87,7 +88,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         addObject(gameSaveManager, 0, 0);
 
         this.pathWidth = 120;
-        player = new Player(100, 100); //jannis ganz alleine gemacht
+        player = new Player(100, 100);
         cursor = new Cursor();
 
         isPaused = false;

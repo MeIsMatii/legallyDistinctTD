@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * @author Elias
  * @author Mathilo
+ * @author Jannis
  */
 public abstract class Enemy extends Entity {
 

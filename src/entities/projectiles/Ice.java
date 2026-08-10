@@ -10,7 +10,9 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
-
+/**
+ * @author Jannis
+ */
 public class Ice extends Projectile implements HasSound {
 
     private double destroyAfter = 20;

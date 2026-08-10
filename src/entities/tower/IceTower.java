@@ -2,15 +2,17 @@ package entities.tower;
 
 import entities.projectiles.Ice;
 import greenfoot.World;
-
+/**
+ * @author Jannis
+ */
 public class IceTower extends Tower {
     private final int[] upgrades1 = new int[]{150, 500, 2500};
     private final int[] upgrades2 = new int[]{200, 450, 3000};
     private final int[] upgrades3 = new int[]{100, 350, 1750};
 
-    private final String[] upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze", "final upgrade done"};
-    private final String[] upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer", "final upgrade done"};
-    private final String[] upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range", "final upgrade done"};
+    private final String[] upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
+    private final String[] upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
+    private final String[] upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
     public double slow = 0.5;
     public int slowTimer = 50;
 

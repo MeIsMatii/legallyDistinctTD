@@ -71,7 +71,7 @@ public class Ice extends Projectile implements HasSound {
         }
         super.act();
         destructionCounter++;
-        if (destructionCounter > destroyAfter){
+        if (destructionCounter > destroyAfter && getWorld() != null){
             getWorld().removeObject(this);
         }
     }

@@ -338,6 +338,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
     }
 
     public void act() {
+        super.act();
         NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {
             if (nm.isDisconnected()) { //disconnected incase restart on connection loss

@@ -11,6 +11,7 @@ import entities.tower.util.RangeDisplay;
 import greenfoot.World;
 import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
+import maps.levels.util.antiCheat.AntiCheat;
 import maps.menu.PauseMenu;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
@@ -37,42 +38,21 @@ import java.util.Locale;
 
 /**
  * @author mathilobr>
- * @author colin (the anticheat) <br><br>
  * To set a unified world size for all worlds.
  */
 
 public class CustomWorld extends World {
-    private int checkTimer = 0;
-    private static final int CHECK_INTERVAL_FRAMES = 900;
-    private static final List<String> BLACKLISTED_PROGRAMS = Arrays.asList(
-        "cheatengine",      // Cheat Engine
-        "artmoney",         // ArtMoney
-        "wemod",            // WeMod Trainer Platform
-        "cheat-engine",     // Alternative installer names
-        "speedhack",        // Standalone speedhack utilities
-        "gameguardian",     // Emulator memory editor
-        "x64dbg",           // Debuggers
-        "x32dbg",           // Debuggers
-        "cheathappens",     // CheatHappens Trainers
-        "hack"              //programm named hack
-    );
     public CustomWorld() {
         super(1880, 1030, 1);
         setupPaintOrder();
-        checkForCheatEngine();
     }
     public CustomWorld(int x, int y, int cs) {
         super(x,y,cs);
-        checkForCheatEngine();
     }
 
     @Override
     public void act() {
-        checkTimer++;
-        if (checkTimer >= CHECK_INTERVAL_FRAMES) { //counts up the frames to set amound (fps * seconds)
-            checkForCheatEngine();
-            checkTimer = 0; //reset counter to start the next 20 seconds
-        }
+        AntiCheat.update();
     }
 
     /**
@@ -140,27 +120,5 @@ public class CustomWorld extends World {
             Path.class,                      // "invisible.png" (path waypoint tiles)
             MapCoordinatesUtilGuy.class      // Developer coordinate utility tool
         );
-    }
-    //working anticheat
-
-    /**
-     * @author Colin <br>
-     * working anticheat that closes the java vm when Cheatengine(a common cheating programm used for changing game values) is active
-     */
-    private void checkForCheatEngine() {
-        boolean detected = ProcessHandle.allProcesses().map(ProcessHandle::info).anyMatch(info -> {
-            String cmd = info.command().orElse("").toLowerCase(Locale.ROOT);
-            String cmdLine = info.commandLine().orElse("").toLowerCase(Locale.ROOT);
-
-            // Match against any blacklisted keyword in the executable path or arguments
-            return BLACKLISTED_PROGRAMS.stream().anyMatch(program -> cmd.contains(program) || cmdLine.contains(program));
-        });
-
-        if (detected) {
-            System.out.println("Unauthorized program detected. Closing game.");
-            System.out.println("You are a very dirty cheater");
-            System.out.println("You are cheating on a school project game, go find hobbies");
-            System.exit(0);
-        }
     }
 }

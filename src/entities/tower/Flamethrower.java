@@ -6,27 +6,29 @@ import entities.projectiles.Projectile;
 import greenfoot.World;
 import util.multiplayer.NetworkManager;
 
+// Author: @Elias
+
 public class Flamethrower extends Tower {
 
 
-    private int magazine = 15;
+    private int magazine = 5;
     private int rechargeCounter;
 
     public Flamethrower() {
-        super(150, true, 300, 1, 1, 10, 1000, 45);
+        super(150, true, 300, 1, 1, 10, 1, 45);
     }
 
     public void addedToWorld(World w) {
         super.addedToWorld(w);
         projectileToShoot = new FlameProjectile(this);
 
-        upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
+        upgradeDescription3 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
         upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
-        upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range"};
+        upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
-        upgrade1Prices = new int[]{150, 500, 2500};
+        upgrade3Prices = new int[]{150, 500, 2500};
         upgrade2Prices = new int[]{200, 450, 3000};
-        upgrade3Prices = new int[]{100, 350, 1750};
+        upgrade1Prices = new int[]{100, 350, 1750};
     }
 
 
@@ -53,12 +55,12 @@ public class Flamethrower extends Tower {
     }
 
     private void recharge() { //works, no need to touch that ever again
-        int rechargeDelay = 50;
+        int rechargeDelay = 70;
         if (rechargeCounter < rechargeDelay) {
             rechargeCounter++;
             return;
         }
-        magazine = magazine + 15;
+        magazine = magazine + 5;
         rechargeCounter = 0;
     }
 

@@ -7,8 +7,7 @@ import maps.levels.util.MapCoordinatesUtilGuy;
  */
 public class GameMap2 extends GameMap {
     public GameMap2() {
-        addObject(new MapCoordinatesUtilGuy(), 0, 0);
-        int[][] pathLocations = {{0, 233}, {752, 233}, {752, 531}, {1414, 531}, {1414, 984}};
+        int[][] pathLocations = {{1412,24},{1403,24},{1403,385},{217,385},{217,866},{1576,866}};
         super.addPath(pathLocations);
 
     }
@@ -16,7 +15,7 @@ public class GameMap2 extends GameMap {
     public GameMap2(boolean isMultiplayer, boolean isHost) {
         super(isMultiplayer, isHost);
 
-        int[][] pathLocations = {{0, 233}, {752, 233}, {752, 531}, {1414, 531}, {1414, 984}};
+        int[][] pathLocations = {{1412,24},{1403,24},{1403,385},{217,385},{217,866},{1576,866}};
         super.addPath(pathLocations);
 
     }

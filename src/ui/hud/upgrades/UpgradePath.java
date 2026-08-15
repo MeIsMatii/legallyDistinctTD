@@ -25,74 +25,43 @@ public class UpgradePath extends Actor implements Clickable {
 
     @Override
     protected void addedToWorld(World world) {
-        updateText(3);
-        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, 3), getX(), getY());
+        int maxPath = getMaxPath();
 
+        updateText(maxPath);
+        updatePrice(maxPath);
 
-        switch (path) {
-            case 1:
-                getWorld().showText(tower.getUpgrade1Prices()[Math.min(tower.getUpgrade1(),2)] + "$", getX(), getY() - 65);
-                break;
-            case 2:
-                getWorld().showText(tower.getUpgrade2Prices()[Math.min(tower.getUpgrade2(),2)] + "$", getX(), getY() - 65);
-                break;
-            case 3:
-                getWorld().showText(tower.getUpgrade3Prices()[Math.min(tower.getUpgrade3(),2)] + "$", getX(), getY() - 65);
-                break;
-            default:
-                System.out.println("upgrade path must be 0<x<4");
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
 
-        }
     }
 
     @Override
-    public void onClick() {
+    public void onClick() { // i have added a few sectioning comments because i could not read this --Mathilo
+        //VARIABLES
         List<Player> player = getWorld().getObjects(Player.class);
         if (player.isEmpty()) return;
         Player player1 = player.get(0);
 
-        int maxUpgrade;
-        int maxPath = 3;
+        int upgradeLevel = getCurrentUpgradeLevel();
+        int[] upgrades = getUpgradePrices();
 
-        int upgradeLevel; //current price
-        int[] upgrades; //all the prices
-        int otherUpgradeA; //e.g. path = 1; then otherUpgradeA = 2; otherUpgradeB = 3;
-        int otherUpgradeB;
+        if (upgrades == null) return;
 
-        List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
-        UpgradeDescriptionOverlay upgradedesctoremove = null;
-        for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
-            if (upgradeDescription.getPath() == this.path) {
-                upgradedesctoremove = upgradeDescription;
-            }
-        }
-        switch (this.path) {
-            case 1:
-                upgradeLevel = tower.getUpgrade1();
-                upgrades = tower.getUpgrade1Prices();
-                otherUpgradeA = tower.getUpgrade2();
-                otherUpgradeB = tower.getUpgrade3();
-                break;
-            case 2:
-                upgradeLevel = tower.getUpgrade2();
-                upgrades = tower.getUpgrade2Prices();
-                otherUpgradeA = tower.getUpgrade1();
-                otherUpgradeB = tower.getUpgrade3();
-                break;
-            case 3:
-                upgradeLevel = tower.getUpgrade3();
-                upgrades = tower.getUpgrade3Prices();
-                otherUpgradeA = tower.getUpgrade1();
-                otherUpgradeB = tower.getUpgrade2();
-                break;
-            default:
-                System.out.println("upgrade path must be 0<x<4");
-                return;
+        int otherUpgradeA = getOtherUpgradeA();
+        int otherUpgradeB = getOtherUpgradeB();
+
+        //PATH LOCKING
+        if (otherUpgradeA > 0 && otherUpgradeB > 0) {
+            System.out.println("locked case " + this.path);
+            updateText(0);
+            updatePrice(0);
+            return;
         }
 
+        int maxPath = getMaxPath();
 
-        if (upgradeLevel >= upgrades.length) {
+        if (upgradeLevel >= upgrades.length || upgradeLevel >= maxPath) {
             System.out.println("Max upgrade reached");
+            updatePrice(maxPath);
             return;
         }
 
@@ -102,44 +71,21 @@ public class UpgradePath extends Actor implements Clickable {
             return;
         }
 
-        if (otherUpgradeA > 0 && otherUpgradeB > 0) {
-            System.out.println("locked case " + this.path);
-            updateText(0);
-            return;
+        //UPGRADE LOGIC (rm coins and upgrade)
+        player1.setCoins(player1.getCoins() - price);
+
+        switch (this.path) {
+            case 1: tower.upgrade1(); break;
+            case 2: tower.upgrade2(); break;
+            case 3: tower.upgrade3(); break;
         }
 
-        maxUpgrade = Math.max(otherUpgradeA, otherUpgradeB);
-        if (maxUpgrade >= 2) {
-            maxPath = 1;
-        }
-
-        if (upgradeLevel + 1 >= maxPath) {
-            getWorld().showText("", getX(), getY() - 65);
-        } else {
-            getWorld().showText(price + "$", getX(), getY() - 65);
-        }
-
-        if (upgradeLevel < maxPath) {
-            player1.setCoins(player1.getCoins() - price);
-            //System.out.println(price);
-
-            switch (this.path) {
-                case 1:
-                    tower.upgrade1();
-                    break;
-                case 2:
-                    tower.upgrade2();
-                    break;
-                case 3:
-                    tower.upgrade3();
-                    break;
-            }
-            getWorld().removeObject(upgradedesctoremove);
-            getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
-
-        }
-
+        //OVERLAY
+        removeOverlay();
+        getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
+        //HUD
         updateText(maxPath);
+        updatePrice(maxPath);
     }
 
     public void act() {
@@ -148,79 +94,103 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
     public void checkText() {
-        switch (this.path) {
-            case 1:
-                if (tower.getUpgrade2() > 0 && tower.getUpgrade3() > 0) {
-                    updateText(0);
-                } else if (tower.getUpgrade2() > 1 ^ tower.getUpgrade3() > 1) { // ^ is XOR
-                    updateText(1);
-                }
-                break;
-            case 2:
-                if (tower.getUpgrade1() > 0 && tower.getUpgrade3() > 0) {
-                    updateText(0);
-                } else if (tower.getUpgrade1() > 1 ^ tower.getUpgrade3() > 1) {
-                    updateText(1);
-                }
-                break;
-            case 3:
-                if (tower.getUpgrade1() > 0 && tower.getUpgrade2() > 0) {
-                    updateText(0);
-                } else if (tower.getUpgrade1() > 1 ^ tower.getUpgrade2() > 1) {
-                    updateText(1);
-                }
-                break;
+        int maxPath = getMaxPath();
+        updateText(maxPath);
+        updatePrice(maxPath);
+    }
+
+    public void updatePrice(int maxPath) {
+        int upgradeLevel = getCurrentUpgradeLevel();
+        int[] upgrades = getUpgradePrices();
+
+        if (upgrades == null) return;
+
+        if (upgradeLevel >= upgrades.length || upgradeLevel >= maxPath) {
+            getWorld().showText("", getX(), getY() - 65);
+        } else {
+            int price = upgrades[upgradeLevel];
+            getWorld().showText(price + "$", getX(), getY() - 65);
         }
     }
 
     public void updateText(int maxPath) {
-        int currentUpgrade;
-        switch (this.path) {
-            case 1:
-                currentUpgrade = tower.getUpgrade1();
-                break;
-            case 2:
-                currentUpgrade = tower.getUpgrade2();
-                break;
-            case 3:
-                currentUpgrade = tower.getUpgrade3();
-                break;
-            default:
-                System.out.println("upgrade path must be 0<x<4");
-                return;
-        }
+        int currentUpgrade = getCurrentUpgradeLevel();
 
-        if (maxPath == 0) {
-            List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
-            UpgradeDescriptionOverlay upgradedesctoremove = null;
-            for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
-                if (upgradeDescription.getPath() == this.path) {
-                    upgradedesctoremove = upgradeDescription;
-                }
-            }
-            getWorld().removeObject(upgradedesctoremove);
+        if(maxPath == 0) {
+            removeOverlay();
             getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
-
-            getWorld().showText("", getX(), getY() - 65); //you dont need price when you are finished
+            getWorld().showText("", getX(), getY() - 65); // so it does not display price
         }
 
         getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
     }
 
     public void onRemove() {
-        List<UpgradeDescriptionOverlay> upgradedesc = getWorld().getObjects(UpgradeDescriptionOverlay.class);
-        UpgradeDescriptionOverlay upgradedesctoremove = null;
-        for (UpgradeDescriptionOverlay upgradeDescription : upgradedesc) {
-            if (upgradeDescription.getPath() == this.path) {
-                upgradedesctoremove = upgradeDescription;
+        removeOverlay();
+        getWorld().showText("", getX(), getY() + 65); // so it does not display tier
+        getWorld().showText("", getX(), getY() - 65); // so it does not display price
+        getWorld().removeObject(this);
+    }
+
+
+    //HELPER METHODS (so i can read the code, this was sooooo difficult to read -- Mathilo)
+
+    private int getMaxPath() {
+        int otherA = getOtherUpgradeA();
+        int otherB = getOtherUpgradeB();
+
+        if (otherA > 0 && otherB > 0) return 0;
+        if (Math.max(otherA, otherB) >= 2) return 1;
+        return 3;
+    }
+
+    private int getOtherUpgradeA() {
+        switch (this.path) {
+            case 1:  return tower.getUpgrade2();
+            case 2://case 3 and 2 do the same thing
+            case 3:
+                return tower.getUpgrade1();
+            default: return 0;
+        }
+    }
+
+    private int getOtherUpgradeB() {
+        switch (this.path) {
+            case 1: //case 1 and 2 do the same thing
+            case 2:
+                return tower.getUpgrade3();
+            case 3:  return tower.getUpgrade2();
+            default: return 0;
+        }
+    }
+
+    private void removeOverlay() {
+        List<UpgradeDescriptionOverlay> overlays = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+        for (UpgradeDescriptionOverlay overlay : overlays) {
+            if (overlay.getPath() == this.path) {
+                getWorld().removeObject(overlay);
+                break;
             }
         }
-        getWorld().removeObject(upgradedesctoremove);
-
-        getWorld().showText("", getX(), getY() + 65); //to delete the text
-        getWorld().showText("", getX(), getY() - 65);
-
-        getWorld().removeObject(this);
-
     }
+
+    private int getCurrentUpgradeLevel() {
+        switch (this.path) {
+            case 1: return tower.getUpgrade1();
+            case 2: return tower.getUpgrade2();
+            case 3: return tower.getUpgrade3();
+            default: return 0;
+        }
+    }
+
+    private int[] getUpgradePrices() {
+        switch (this.path) {
+            case 1: return tower.getUpgrade1Prices();
+            case 2: return tower.getUpgrade2Prices();
+            case 3: return tower.getUpgrade3Prices();
+            default: return null;
+        }
+    }
+
+
 }

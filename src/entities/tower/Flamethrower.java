@@ -2,7 +2,9 @@ package entities.tower;
 
 import entities.enemy.Enemy;
 import entities.projectiles.FlameProjectile;
+import entities.projectiles.Projectile;
 import greenfoot.World;
+import util.multiplayer.NetworkManager;
 
 public class Flamethrower extends Tower {
 
@@ -30,13 +32,14 @@ public class Flamethrower extends Tower {
 
     @Override
     public void shoot(Enemy e) {
-        if (magazine > 0) {
-            playSound("fire.mp3");
-            getWorld().addObject(getProjectileToShoot(), getX(), getY());
-            magazine--;
-        } else {
+        if(magazine <= 0) {
             recharge();
+            return;
         }
+
+        magazine--;
+        playSound("fire.mp3");
+        super.shoot(e);
     }
 
     @Override

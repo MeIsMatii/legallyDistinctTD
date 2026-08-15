@@ -6,6 +6,8 @@ import entities.projectiles.Projectile;
 import greenfoot.World;
 import util.multiplayer.NetworkManager;
 
+// Author: @Elias
+
 public class Flamethrower extends Tower {
 
 

@@ -31,13 +31,13 @@ public class UpgradePath extends Actor implements Clickable {
 
         switch (path) {
             case 1:
-                getWorld().showText(tower.getUpgrade1Prices()[0] + "$", getX(), getY() - 65);
+                getWorld().showText(tower.getUpgrade1Prices()[Math.min(tower.getUpgrade1(),2)] + "$", getX(), getY() - 65);
                 break;
             case 2:
-                getWorld().showText(tower.getUpgrade2Prices()[0] + "$", getX(), getY() - 65);
+                getWorld().showText(tower.getUpgrade2Prices()[Math.min(tower.getUpgrade2(),2)] + "$", getX(), getY() - 65);
                 break;
             case 3:
-                getWorld().showText(tower.getUpgrade3Prices()[0] + "$", getX(), getY() - 65);
+                getWorld().showText(tower.getUpgrade3Prices()[Math.min(tower.getUpgrade3(),2)] + "$", getX(), getY() - 65);
                 break;
             default:
                 System.out.println("upgrade path must be 0<x<4");

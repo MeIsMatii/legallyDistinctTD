@@ -1,6 +1,7 @@
 package maps.menu;
 
 import core.MainClass;
+import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 import ui.hud.PopupScreen;
@@ -9,7 +10,6 @@ import ui.hud.buttons.ClosePopupButton;
 import ui.hud.buttons.LoadSaveButton;
 import ui.hud.buttons.NewSaveButton;
 import util.Clickable;
-import util.PopupOpener;
 import util.multiplayer.NetworkManager;
 import util.saves.GameSaveManager;
 
@@ -17,7 +17,7 @@ import util.saves.GameSaveManager;
  * @author Colin
  * @author Mathilo
  */
-public class MapPreview extends PopupOpener {
+public class MapPreview extends Actor implements Clickable {
     private boolean clicked = false;
     private int world = 0;
 
@@ -53,31 +53,33 @@ public class MapPreview extends PopupOpener {
         this.clicked = clicked;
     }
 
+    @Override
+    public void act() {
+        checkClick();
+    }
 
 
     public void onClick() {
-        super.onClick();
-        if(!canOpen) {
+        if (!getWorld().getObjects(PopupScreen.class).isEmpty()) {
+            System.out.println("Map popup could not be opened bc blocked by: " + getWorld().getObjects(PopupScreen.class));
             return;
         }
-
         setClicked(!isClicked());
 
         World world = getWorld();
 
         QuestionPopup questionPopup;
         NewSaveButton newSaveButton;
-        ClosePopupButton closeButton = null;
 
         if (NetworkManager.getInstance().isMultiplayer()) {
             newSaveButton = new NewSaveButton(getWorldNr(), true);
-            closeButton = new ClosePopupButton(null); //to be set later
+            ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
 
             newSaveButton.setImage("buttons/YesButton.png");
             closeButton.setImage("buttons/NoButton.png");
 
             questionPopup = new QuestionPopup("Start a new multiplayer session on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO FIX (rm the loadsave
-
+            closeButton.setOwner(questionPopup); //like now
         } else {
             GameSaveManager gameSaveManager = new GameSaveManager();
             newSaveButton = new NewSaveButton(getWorldNr(), false);
@@ -85,15 +87,20 @@ public class MapPreview extends PopupOpener {
             if (gameSaveManager.saveFileExists("map" + getWorldNr() + ".save")) {
                 questionPopup = new QuestionPopup("Do you want to continue your previous game?", new NewSaveButton(getWorldNr()), new LoadSaveButton(getWorldNr()));
             } else {
-                closeButton = new ClosePopupButton(null); //to be set later
+                ClosePopupButton closeButton = new ClosePopupButton(null); //to be set later
 
                 newSaveButton.setImage("buttons/YesButton.png");
                 closeButton.setImage("buttons/NoButton.png");
                 questionPopup = new QuestionPopup("Would you like to start a new game on \nmap " + getWorldNr() + "?", closeButton, newSaveButton); //TODO fix
+                closeButton.setOwner(questionPopup); //now is later
+
             }
+
         }
 
-        world.addObject(questionPopup, getWorld().getWidth()/2, getWorld().getHeight()/2);
+
+        world.addObject(questionPopup, 960, 540);
         questionPopup.getLeftButton().setOwner(questionPopup);
+
     }
 }

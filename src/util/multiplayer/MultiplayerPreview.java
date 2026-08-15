@@ -1,30 +1,36 @@
 package util.multiplayer;
 
 import core.MainClass;
+import greenfoot.Actor;
 import greenfoot.GreenfootImage;
+import ui.hud.PopupScreen;
 import ui.hud.QuestionPopup;
 import ui.hud.buttons.ClosePopupButton;
 import util.Clickable;
-import util.PopupOpener;
 import util.multiplayer.popups.ClientButton;
 import util.multiplayer.popups.HostButton;
 
 /**
  * @author Mathilo
  */
-public class MultiplayerPreview extends PopupOpener  {
+public class MultiplayerPreview extends Actor implements Clickable  {
     public MultiplayerPreview() {
         GreenfootImage im = new GreenfootImage("Maps/MapPreview/Multiplayer.png");
         im.scale(500, 300);
         setImage(im);
     }
 
+    public void act() {
+        checkClick();
+    }
+
     @Override
     public void onClick() {
-        super.onClick();
-        if(!canOpen) {
+        if (!getWorld().getObjects(PopupScreen.class).isEmpty()) {
+            System.out.println("Multiplayer popup could not be opened bc blocked by: " + getWorld().getObjects(PopupScreen.class));
             return;
         }
+
         boolean isMultiplayer = NetworkManager.getInstance().isMultiplayer();
         System.out.println("Multiplayer: " + isMultiplayer);
         if (!isMultiplayer) {

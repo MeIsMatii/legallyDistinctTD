@@ -25,29 +25,29 @@ public class WaveManager extends MainClass {
     // ===== Enemy Map ===== \\
     private static final Map<Integer, List<Supplier<Enemy>>> ENEMY_MAP =
         Map.of(
-            10, List.of(
+            5, List.of(
                 EnemyLevel1::new
             ),
 
-            20, List.of(
+            10, List.of(
                 EnemyLevel1::new,
                 EnemyLevel2::new
             ),
 
-            30, List.of(
+            15, List.of(
                 EnemyLevel1::new,
                 EnemyLevel2::new,
                 EnemyLevel3::new
             ),
 
-            50, List.of(
+            20, List.of(
                 EnemyLevel1::new,
                 EnemyLevel2::new,
                 EnemyLevel3::new,
                 EnemyLevel4::new
             ),
 
-            70, List.of(
+            25, List.of(
                 EnemyLevel1::new,
                 EnemyLevel2::new,
                 EnemyLevel3::new,
@@ -55,7 +55,7 @@ public class WaveManager extends MainClass {
                 EnemyLevel5::new
             ),
 
-            100, List.of(
+            30, List.of(
                 EnemyLevel1::new,
                 EnemyLevel2::new,
                 EnemyLevel3::new,

@@ -9,8 +9,8 @@ public class HomingTower extends Tower {
     public HomingTower() {
         super(200, true, 300, 45, 7, 1, 2, 10);
 
-        upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
-        upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
+        upgradeDescription1 = new String[]{"Greater damage", "even greater damage", "One shot to\nrule them all"};
+        upgradeDescription2 = new String[]{"Faster energy", "even faster energy", "the flash"};
         upgradeDescription3 = new String[]{"More range", "Even more range", "Very long range"};
 
         upgrade3Prices = new int[]{50, 500, 5000};
@@ -49,35 +49,21 @@ public class HomingTower extends Tower {
         //TODO better upgrades
         switch (path) {
             case 1:
-                switch (getUpgrade1()) {
-                    case 1:
-                        setRange((getRange() * 1.1));
-                        break;
-                    case 2:
-                        setRange((getRange() * 1.3));
-                        //some kinda different behaviour
-                        break;
-                    case 3:
-                        setRange((getRange() * 1.5));
-                        //some kinda different behaviour
-                        break;
-                }
-
+                setProjectileDamage(getProjectileDamage()*2);
+                setProjectileSpeed(getProjectileSpeed()/1.2);
+                setShootingDelay(getShootingDelay()*2);
                 break;
 
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
                         setProjectilePiercing(getProjectilePiercing() * 1.5);
-
                         break;
                     case 2:
                         setProjectilePiercing(getProjectilePiercing() * 2);
-                        //some kinda different behaviour
                         break;
                     case 3:
                         setProjectilePiercing(getProjectilePiercing() * 3);
-                        //some kinda different behaviour
                         break;
                 }
                 break;

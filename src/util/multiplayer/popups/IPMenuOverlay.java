@@ -8,7 +8,8 @@ import util.saves.SaveManager;
 
 /**
  * @author the complicated stuff (idk how that black magic works --Mathilo) - Colin
- * @author <br>Multiplayer - Mathilo
+ * @author <br>Multiplayer - Mathilo<br><br>
+ * Made with research on Reddit, talking to other game devs on discord(They didnt use greenfoot) and google for the idea with not using one button for every class (The how I worked out myself with some help from old reddit threads)
  */
 
 public class IPMenuOverlay extends PopupScreen implements Clickable {

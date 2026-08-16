@@ -134,6 +134,9 @@ public class WaveManager extends MainClass {
         // === Map Target === \\
         int mapTarget = level;
 
+        if(mapTarget > 30) {
+            return 30;
+        }
 
         // === Checks Map for nearest Key === \\
         while (!ENEMY_MAP.containsKey(mapTarget)) {

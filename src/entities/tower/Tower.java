@@ -296,7 +296,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
             if (targetedEnemy != null && canShoot()) {
                 shoot(targetedEnemy);
-                Animations.super.startAnimation();
+                startAnimation();
                 shootingDelayCounter = 0;
             }
 
@@ -310,6 +310,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
 
 
+    }
+
+    public void startAnimation() {
+        Animations.super.startAnimation();
     }
 
     public void onHit(Entity hitter) {

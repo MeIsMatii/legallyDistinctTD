@@ -18,19 +18,26 @@ public class TrapTower extends Tower implements Clickable {
 
 
     public TrapTower() {
-        super(125, true, 80, 99999999, 15, 10, 1, 90);
+        super(125, true, 80, 99999999, 40, 10, 1, 90);
 
 
-        upgradeDescription1 = new String[]{"Slightly bigger explosion", "Even more bigger explosion", "Very large explosion"};
-        upgradeDescription2 = new String[]{"Slightly more damage", "Even more damage", "The deadliest bomb!"};
-        upgradeDescription3 = new String[]{"Slightly longer explosion", "Even longer explosion", "The longest explosion ever!"};
+        upgradeDescription1 = new String[]{"no upgrades available", "no upgrades available", "no upgrades available"};
+        upgradeDescription2 = new String[]{"no upgrades available", "no upgrades available", "no upgrades available"};
+        upgradeDescription3 = new String[]{"no upgrades available", "no upgrades available", "no upgrades available"};
 
-        upgrade3Prices = new int[]{30, 200, 500};
-        upgrade2Prices = new int[]{50, 300, 600};
-        upgrade1Prices = new int[]{35, 150, 350};
+        upgrade3Prices = new int[]{0, 0, 0};
+        upgrade2Prices = new int[]{0, 0, 0};
+        upgrade1Prices = new int[]{0, 0, 0};
 
         this.projectileSpawnOffset[0] = 0;
         this.projectileSpawnOffset[1] = 0;
+    }
+
+    public void onClick() {
+        if(!isPlacing()) {
+            return;
+        }
+        super.onClick();
     }
 
 

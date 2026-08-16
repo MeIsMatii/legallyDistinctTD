@@ -64,7 +64,7 @@ public class Explosion extends Projectile implements HasSound {
             return;
         }
         hasHit = true;
-        setImage("Explosion.png");
+        setImage("projectiles/Explosion.png");
         getImage().scale(100, 100);
         playSound("Explosion.mp3");
     }

@@ -80,7 +80,7 @@ public class Player extends MainClass implements HasSound {
     @Override
     public void addedToWorld(World world) {
         world.addObject(new ImageDisplay("heart.png", 30, 30), 40, 40);
-        world.showText("$", 1778, 33); //statt coin
+        world.showText("$", 1800, 33); //statt coin
         //world.addObject(new ImageDisplay("Coin.png", 45, 45), 1730, 40);
     }
 
@@ -110,7 +110,7 @@ public class Player extends MainClass implements HasSound {
 
         }
         if (oldCoins != coins) {
-            world.showText(String.valueOf(getCoins()), 1735, 34);
+            world.showText(String.valueOf(getCoins()), 1730, 34);
         }
     }
 

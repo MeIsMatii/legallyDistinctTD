@@ -18,17 +18,17 @@ public class Rocket extends Projectile implements HasSound {
 
     public Rocket(Tower owner) {
         super(owner);
-        setImage("rocket.png");
+        setImage("projectiles/rocket.png");
     }
     public Rocket() {
         super();
-        setImage("rocket.png");
+        setImage("projectiles/rocket.png");
     }
 
 
     public void onHit(Entity hitter) {
         if (!(hitter instanceof Enemy) || getWorld() == null) return;
-        ImageDisplay explosion = new ImageDisplay("Explosion.png");
+        ImageDisplay explosion = new ImageDisplay("projectiles/Explosion.png");
         getWorld().addObject(explosion, getX(), getY());
 
         if (NetworkManager.getInstance().isHost()) {
@@ -52,7 +52,7 @@ public class Rocket extends Projectile implements HasSound {
 
     private void handleVisual() {
         playSound("Explosion.mp3");
-        ImageDisplay explosion = new ImageDisplay("Explosion.png");
+        ImageDisplay explosion = new ImageDisplay("projectiles/Explosion.png");
         getWorld().addObject(explosion, getX(), getY());
         if (destroyAfter < System.currentTimeMillis()) {
             getWorld().removeObject(explosion);

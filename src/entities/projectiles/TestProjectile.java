@@ -10,13 +10,13 @@ import greenfoot.GreenfootImage;
 public class TestProjectile extends Projectile {
     public TestProjectile(Tower owner) {
         super(owner);
-        GreenfootImage img = new GreenfootImage("projectile.png");
+        GreenfootImage img = new GreenfootImage("projectiles/projectile.png");
         //img.scale(100,60);
         setImage(img);
     }
     public TestProjectile() {
         super();
-        GreenfootImage img = new GreenfootImage("projectile.png");
+        GreenfootImage img = new GreenfootImage("projectiles/projectile.png");
         //img.scale(100,60);
         setImage(img);
     }

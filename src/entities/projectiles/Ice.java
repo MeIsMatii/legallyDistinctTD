@@ -21,7 +21,7 @@ public class Ice extends Projectile implements HasSound {
 
     public Ice(Tower owner) {
         super(owner);
-        GreenfootImage img = new GreenfootImage("ice.png");
+        GreenfootImage img = new GreenfootImage("projectiles/ice.png");
         img.scale(150, 150);
         img.rotate(90);
         setImage(img);
@@ -29,7 +29,7 @@ public class Ice extends Projectile implements HasSound {
     }
     public Ice() {
         super();
-        GreenfootImage img = new GreenfootImage("ice.png");
+        GreenfootImage img = new GreenfootImage("projectiles/ice.png");
         img.scale(150, 150);
         img.rotate(90);
         setImage(img);

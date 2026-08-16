@@ -87,9 +87,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         setImage("towers/" + getName() + "/" + getName() + "_idle.png");
         setSpriteName(getName());
         setSpritePath("towers/" + getName());
-        generateFrameList();
 
-        setPrices();
     }
 
 
@@ -102,6 +100,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void addedToWorld(World world) {
+        Animations.super.addedToWorld(world);
         int CELLSIZE = getWorld().getCellSize();
 
         int hitboxWidth = getImage().getWidth() / CELLSIZE - 30;
@@ -264,33 +263,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
 
-    /**
-     * <!-- IMPORTANT --!>
-     * IMPORTANT, NEEDS TO BE DONE:<br>
-     */
-    public void setPrices() {
-        setUpgrade1Prices(
-            new int[]{
-                1,
-                2,
-                3,
-            }
-        );
-        setUpgrade2Prices(
-            new int[]{
-                1,
-                2,
-                3,
-            }
-        );
-        setUpgrade3Prices(
-            new int[]{
-                1,
-                2,
-                3,
-            }
-        );
-    }
 
     public void setShootingDelayCounter(int count) {
         shootingDelayCounter = count;

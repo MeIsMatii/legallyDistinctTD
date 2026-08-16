@@ -10,11 +10,11 @@ import greenfoot.GreenfootImage;
 public class FlameProjectile extends Projectile {
     public FlameProjectile(Tower owner) {
         super(owner);
-        setImage("flame.png");
+        setImage("projectiles/flame.png");
     }
     public FlameProjectile() {
         super();
-        setImage("flame.png");
+        setImage("projectiles/flame.png");
     }
 
     public void move() {

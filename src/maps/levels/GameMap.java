@@ -339,6 +339,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void act() {
         super.act();
+        Wavecheat();
         NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {
             if (nm.isDisconnected()) { //disconnected incase restart on connection loss
@@ -743,6 +744,11 @@ public abstract class GameMap extends CustomWorld implements HasSound {
                 t.setTargetedEnemyManual(enemyToTarget);
                 break;
             }
+        }
+    }
+    public void Wavecheat(){
+        if (Greenfoot.isKeyDown("P")&& Greenfoot.isKeyDown("Shift")){
+            wave = wave+1;
         }
     }
 

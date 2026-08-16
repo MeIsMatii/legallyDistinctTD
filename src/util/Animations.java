@@ -108,10 +108,6 @@ public interface Animations {
         }
 
         self.setImage(getFrameList().get(getCurrentFrameIndex()));
-        System.out.println(getFrameList().get(getCurrentFrameIndex()));
-        System.out.println(getCurrentFrameIndex());
-
-
     }
 }
 

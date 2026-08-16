@@ -593,8 +593,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             System.out.println(string);
             return;
         }
-
-        System.out.print("SPAWNING\n\n\n\n\n\n\nProjectile");
         projectile.setUniqueId(projectileId);
         getWorld().addObject(projectile, getX(), getY());
     }

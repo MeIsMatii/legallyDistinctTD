@@ -46,7 +46,7 @@ We are a group of 8 students who are trying to fix all the things that are wrong
 - 🪱 **Parasites** travel along a path and you must stop them
 - 🤖 **Machine towers** are placed strategically to pop the balloons
 - 💰 **Currency** is earned by popping balloons and used to buy/upgrade towers
-- 😰 **You lose lives** when balloons reach the end of the path
+- 😰 **You lose lives** when parasites reach the end of the path
 
 Basically, it's just like any other TD game just without any Pay-to-win Mechanics.
 

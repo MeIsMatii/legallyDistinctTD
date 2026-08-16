@@ -129,6 +129,7 @@ public class UpgradePath extends Actor implements Clickable {
         removeOverlay();
         getWorld().showText("", getX(), getY() + 65); // so it does not display tier
         getWorld().showText("", getX(), getY() - 65); // so it does not display price
+        removeOverlay();
         getWorld().removeObject(this);
     }
 

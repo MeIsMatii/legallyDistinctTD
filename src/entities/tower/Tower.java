@@ -459,6 +459,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
 
     public void upgrade1() {
+        if(getWorld() == null) {
+            return;
+        }
+
         int oldLevel = getUpgrade1();
         setUpgrade1(getUpgrade1() + 1);
         System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
@@ -472,6 +476,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade1(boolean receivedFromNetwork) {
+        if(getWorld() == null) {
+            return;
+        }
         int oldLevel = getUpgrade1();
         setUpgrade1(getUpgrade1() + 1);
         System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
@@ -485,6 +492,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade2() {
+        if(getWorld() == null) {
+            return;
+        }
         int oldLevel = getUpgrade2();
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
@@ -497,6 +507,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade2(boolean receivedFromNetwork) {
+        if(getWorld() == null) {
+            return;
+        }
         int oldLevel = getUpgrade2();
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
@@ -509,6 +522,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade3() {
+        if(getWorld() == null) {
+            return;
+        }
         int oldLevel = getUpgrade3();
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
@@ -521,6 +537,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade3(boolean receivedFromNetwork) {
+        if(getWorld() == null) {
+            return;
+        }
         int oldLevel = getUpgrade3();
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());

@@ -7,16 +7,16 @@ public class Rocketlauncher extends Tower {
 
 
     public Rocketlauncher() {
-        super(500, true, 500, 150, 20, 10, 1, 0);
+        super(500, true, 200, 150, 20, 10, 1, 0);
 
         //TODO upgrades
         upgradeDescription3 = new String[]{"Faster Projectiles", "Even faster Projectiles", "MAX Speed Projectiles"};
         upgradeDescription2 = new String[]{"More Projectile Piercing", "even more Projectile Piercing", "MAX Projectile Piercing"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
-        upgrade3Prices = new int[]{50, 500, 5000};
-        upgrade2Prices = new int[]{100, 450, 6000};
-        upgrade1Prices = new int[]{75, 350, 3500};
+        upgrade3Prices = new int[]{150, 750, 6000};
+        upgrade2Prices = new int[]{100, 1050, 8000};
+        upgrade1Prices = new int[]{125, 650, 3500};
 
         this.projectileSpawnOffset[0] = 0;
         this.projectileSpawnOffset[1] = 10;
@@ -39,20 +39,17 @@ public class Rocketlauncher extends Tower {
     }
 
     public void upgrade(int path) {
-        //TODO better upgrades
         switch (path) {
             case 1:
                 switch (getUpgrade1()) {
                     case 1:
-                        setRange((getRange() * 1.1));
+                        setRange((getRange() * 1.2));
                         break;
                     case 2:
-                        setRange((getRange() * 1.3));
-                        //some kinda different behaviour
+                        setRange((getRange() * 1.4));
                         break;
                     case 3:
-                        setRange((getRange() * 1.5));
-                        //some kinda different behaviour
+                        setRange((getRange() * 1.6));
                         break;
                 }
 
@@ -61,16 +58,13 @@ public class Rocketlauncher extends Tower {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectilePiercing(getProjectilePiercing() * 1.5);
-
+                        setProjectileDamage(getProjectileDamage()*1.2);
                         break;
                     case 2:
-                        setProjectilePiercing(getProjectilePiercing() * 2);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()*1.4);
                         break;
                     case 3:
-                        setProjectilePiercing(getProjectilePiercing() * 3);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()*1.7);
                         break;
                 }
                 break;

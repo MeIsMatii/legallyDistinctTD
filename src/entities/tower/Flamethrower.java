@@ -26,9 +26,9 @@ public class Flamethrower extends Tower {
         upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
-        upgrade3Prices = new int[]{50, 500, 5000};
-        upgrade2Prices = new int[]{100, 450, 6000};
-        upgrade1Prices = new int[]{75, 350, 3500};
+        upgrade3Prices = new int[]{50, 1500, 6000};
+        upgrade2Prices = new int[]{100, 1050, 7000};
+        upgrade1Prices = new int[]{75, 650, 5500};
     }
 
 
@@ -55,7 +55,7 @@ public class Flamethrower extends Tower {
     }
 
     private void recharge() { //works, no need to touch that ever again
-        int rechargeDelay = 460;
+        int rechargeDelay = 400;
         if (rechargeCounter < rechargeDelay) {
             rechargeCounter++;
             return;

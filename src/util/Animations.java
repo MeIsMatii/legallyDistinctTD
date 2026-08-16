@@ -70,6 +70,7 @@ public interface Animations {
         List<String> frames = new ArrayList<>();
         for (int i = 0; i < 100; i++) { //100 should be enough //@Febo is a madman if we have more than 100f for 1 thingy
             String fileName = folderPath + "/" + getSpriteName() + "_" + i + ".png";
+            System.out.println(fileName);
             File file = new File(fileName);
 
             if (file.exists()) {
@@ -85,10 +86,9 @@ public interface Animations {
     }
 
     default void startAnimation() {
-        if (getFrameList() == null || getFrameList().size() <= 0) {
+        if (getFrameList() == null || getFrameList().isEmpty()) {
             return;
         }
-
         Actor self = (Actor) this;
         isAnimating(true);
         setCurrentFrameIndex(1);
@@ -100,15 +100,18 @@ public interface Animations {
 
     default void playAnimation() {
         Actor self = (Actor) this;
-
-
-        self.setImage(getFrameList().get(getCurrentFrameIndex()));
         setCurrentFrameIndex(getCurrentFrameIndex() + 1);
-
         if (getCurrentFrameIndex() >= getFrameList().size()) {
             isAnimating(false);
             self.setImage("images/" + getSpritePath() + "/" + getSpriteName() + "_idle.png");
+            return;
         }
+
+        self.setImage(getFrameList().get(getCurrentFrameIndex()));
+        System.out.println(getFrameList().get(getCurrentFrameIndex()));
+        System.out.println(getCurrentFrameIndex());
+
+
     }
 }
 

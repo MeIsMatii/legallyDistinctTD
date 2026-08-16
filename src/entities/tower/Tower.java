@@ -84,7 +84,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.projectilePiercing = projectilePiercing;
 
         setImage("towers/" + getName() + "/" + getName() + "_idle.png");
-
+        setSpriteName(getName());
+        setSpritePath("towers/" + getName());
+        generateFrameList();
 
         setPrices();
     }
@@ -667,7 +669,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
      * @param path the path to upgrade
      */
     public void onUpgrade(int path) {
-
+        // @SAE, this was implemented and works, but cut because we do not have the time to make different sprites and animations for each upgrade --Mathilo
+        /*
 
         int u1 = getUpgrade1();
         int u2 = getUpgrade2();
@@ -711,7 +714,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
             default:
                 System.out.println("Given Path must be between 1 & 3");
-        }
+        }*/
     }
 
     abstract void upgrade(int path);

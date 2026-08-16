@@ -9,6 +9,8 @@ public class IceTower extends Tower {
     public double slow = 0.5;
     public int slowTimer = 50;
 
+    private double destroyAfter = 20;
+
     public IceTower() {
         super(200, true, 200, 80, 0, 10, 1, 0);
 
@@ -45,18 +47,10 @@ public class IceTower extends Tower {
         projectileToShoot = new Ice(this);
     }
 
-
-    public String getUpgradeDescription1() {
-        return upgradeDescription1[getUpgrade1()];
+    public double getDestroyAfter() {
+        return destroyAfter;
     }
 
-    public String getUpgradeDescription2() {
-        return upgradeDescription2[getUpgrade2()];
-    }
-
-    public String getUpgradeDescription3() {
-        return upgradeDescription3[getUpgrade3()];
-    }
 
 
     @Override
@@ -77,16 +71,15 @@ public class IceTower extends Tower {
                 Ice ice = (Ice) getProjectileToShoot();
                 switch (getUpgrade1()) {
                     case 1:
-                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.1);
+                        destroyAfter =  destroyAfter * 1.1;
                         setRange((getRange() * 1.1));
                         break;
                     case 2:
-
-                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.3);
+                        destroyAfter =  destroyAfter * 1.3;
                         setRange((getRange() * 1.3));
                         break;
                     case 3:
-                        ice.setDestroyAfter(ice.getDestroyAfter() * 1.6);
+                        destroyAfter =  destroyAfter * 1.6;
                         setRange((getRange() * 1.6));
                         break;
                 }

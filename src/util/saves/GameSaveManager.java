@@ -30,6 +30,7 @@ public class GameSaveManager extends Actor implements Saveable {
         put("Flamethrower", Flamethrower::new);
         put("Helicopter", null); //we do not want to spawn the heli, bc the pad spawns it
         put("HelicopterPad", HelicopterPad::new);
+        put("IceTower", IceTower::new);
     }};
 
     // path to the save file — stored in a "saves" folder next to the project

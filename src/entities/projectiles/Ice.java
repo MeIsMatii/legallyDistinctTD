@@ -15,16 +15,8 @@ import java.util.List;
  */
 public class Ice extends Projectile implements HasSound {
 
-    private double destroyAfter = 20;
     private int destructionCounter = 0;
 
-    public double getDestroyAfter() {
-        return destroyAfter;
-    }
-
-    public void setDestroyAfter(double destroyAfter) {
-        this.destroyAfter = destroyAfter;
-    }
 
 
     public Ice(Tower owner) {
@@ -71,7 +63,8 @@ public class Ice extends Projectile implements HasSound {
         }
         super.act();
         destructionCounter++;
-        if (destructionCounter > destroyAfter && getWorld() != null){
+        IceTower owner = (IceTower) getOwner();
+        if (destructionCounter > owner.getDestroyAfter() && getWorld() != null){
             getWorld().removeObject(this);
         }
     }

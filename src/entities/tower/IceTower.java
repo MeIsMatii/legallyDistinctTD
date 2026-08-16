@@ -7,7 +7,7 @@ import greenfoot.World;
  */
 public class IceTower extends Tower {
     public double slow = 0.5;
-    public int slowTimer = 50;
+    public int slowTimer = 40;
 
     private double destroyAfter = 20;
 
@@ -95,7 +95,7 @@ public class IceTower extends Tower {
                         setSlow(0);
                         break;
                     case 3:
-                        setSlowTimer(getSlowTimer() + 40);
+                        setSlowTimer(getSlowTimer() + 5);
                         break;
                 }
                 break;
@@ -106,10 +106,10 @@ public class IceTower extends Tower {
                         setProjectileDamage(1);
                         break;
                     case 2:
-                        setProjectileDamage(getProjectileDamage() * 1.1);
+                        setProjectileDamage(getProjectileDamage() * 1.5);
                         break;
                     case 3:
-                        setProjectileSpeed(getProjectileSpeed() * 1.3);
+                        setProjectileSpeed(getProjectileSpeed() * 2.0);
                         break;
                 }
                 break;

@@ -10,9 +10,10 @@ public class Sniper extends Tower {
         super(200, true, 150, 100, 10, 0, 0, 0);
 
         //TODO UPGRADES
-        upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
-        upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
+        upgradeDescription3 = new String[]{"Faster projectiles", "Even faster projectiles", "The fastest projectiles"};
+        upgradeDescription2 = new String[]{"Piercing", "Even more piercing", "Very long piercing"};
+
 
         upgrade1Prices = new int[]{150, 500, 2500};
         upgrade2Prices = new int[]{200, 450, 3000};

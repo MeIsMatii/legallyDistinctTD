@@ -7,7 +7,7 @@ public class HomingTower extends Tower {
 
 
     public HomingTower() {
-        super(100, true, 300, 45, 20, 1, 2, 10);
+        super(200, true, 300, 45, 7, 1, 2, 10);
 
         upgradeDescription1 = new String[]{"Faster shooting", "Even faster shooting", "The fastest Flamethrower"};
         upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};

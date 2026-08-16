@@ -13,7 +13,7 @@ public class Flamethrower extends Tower {
     private int rechargeCounter;
 
     public Flamethrower() {
-        super(150, true, 300, 1, 1, 10, 1, 45);
+        super(350, true, 300, 1, 1, 10, 1, 45);
         this.projectileSpawnOffset[0] = 0;
         this.projectileSpawnOffset[1] = -10;
     }

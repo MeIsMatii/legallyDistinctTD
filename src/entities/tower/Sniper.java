@@ -15,9 +15,9 @@ public class Sniper extends Tower {
         upgradeDescription2 = new String[]{"Piercing", "Even more piercing", "Very long piercing"};
 
 
-        upgrade1Prices = new int[]{150, 500, 2500};
-        upgrade2Prices = new int[]{200, 450, 3000};
-        upgrade3Prices = new int[]{100, 350, 1750};
+        upgrade3Prices = new int[]{50, 500, 5000};
+        upgrade2Prices = new int[]{100, 450, 6000};
+        upgrade1Prices = new int[]{75, 350, 3500};
 
         //not used bc it does not spawn projectiles
         this.projectileSpawnOffset[0] = 0;

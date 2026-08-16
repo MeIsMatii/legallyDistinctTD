@@ -5,7 +5,7 @@ package entities.enemy;
  */
 public class EnemyLevel4 extends Enemy {
     public EnemyLevel4() {
-        super(3, 15);
+        super(4, 50);
         setImage("enemies/Minni-boss1.png");
     }
 

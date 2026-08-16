@@ -122,7 +122,7 @@ public abstract class Enemy extends Entity {
             List<Player> player = getWorld().getObjects(Player.class);
             Player player1 = player.get(0);
             if (NetworkManager.getInstance().isHost()) {
-                player1.setCoins(player1.getCoins() + (getInitialLives() * 2));
+                player1.setCoins(player1.getCoins() + (getInitialLives()));
             }
             getWorld().removeObject(this);
         }

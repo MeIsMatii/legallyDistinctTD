@@ -1,18 +1,21 @@
 package maps.levels;
+
+import maps.levels.util.MapCoordinatesUtilGuy;
+
 /**
  * @author Mathilo
  * @author colin
  */
 public class GameMap6 extends GameMap {
     public GameMap6() {
-        int[][] pathLocations = {{192, 6}, {192, 809}, {1613, 809}};
+        int[][] pathLocations = {{191,9},{191,807},{1579,807}};
         super.addPath(pathLocations);
 
     }
 
     public GameMap6(boolean isMultiplayer, boolean isHost) {
         super(isMultiplayer, isHost);
-        int[][] pathLocations = {{192, 6}, {192, 809}, {1613, 809}};
+        int[][] pathLocations = {{191,9},{191,807},{1579,807}};
         super.addPath(pathLocations);
 
     }

@@ -41,15 +41,16 @@ public class Hitbox extends MainClass {
     }
 
     public void addedToWorld(World world) {
-        int widthInCells = this.width * world.getCellSize() + world.getCellSize() / 2; //this was from when we were not using 1px cells   //ima just leave it here --Mathilo
-        int heightInCells = this.height * world.getCellSize() + world.getCellSize() / 2;
+        updateProportions();
+        act();
+    }
 
+    public void updateProportions() {
         // w, h*2 bc my offset is in each direction
-        setImage(drawHitbox(widthInCells, heightInCells, Color.RED, false));
+        setImage(drawHitbox(this.width, this.height, Color.RED, false));
 
         updateAppearance(isHittingSomething);
     }
-
     public GreenfootImage drawHitbox(int w, int h, Color color, boolean fill) {
         GreenfootImage img = new GreenfootImage(w, h);
         img.setColor(color);

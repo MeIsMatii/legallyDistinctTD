@@ -40,7 +40,7 @@ public class HomingTower extends Tower {
 
     @Override
     public int getAnimationSpeed() {
-        return 1;
+        return 3;
     }
 
     public void upgrade(int path) {

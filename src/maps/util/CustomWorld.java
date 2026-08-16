@@ -110,8 +110,8 @@ public class CustomWorld extends World {
             Helicopter.class,                // Flying helicopter (above ground towers)
             Explosion.class,                 // "Explosion.png" visual effect
             Hitbox.class,                    // Placement / collision red/green debug outline
-            Projectile.class,                // Projectiles ("rocket.png", etc.)
             Tower.class,                     // "towers/<name>/<name>_idle.png"
+            Projectile.class,                // Projectiles ("rocket.png", etc.)
             RangeDisplay.class,              // Semi-transparent range circle (under tower image)
             Enemy.class,                     // Enemy bloon sprites ("arealEnemy1.png", etc.)
 

@@ -26,6 +26,9 @@ public class HostButton extends Button {
 
     public void act() {
         super.act();
+        if(!wasClicked) {
+            return;
+        }
         counter++;
 
         if (counter > 90) {
@@ -38,6 +41,11 @@ public class HostButton extends Button {
     public void onClick() {
         wasClicked = true;
         NetworkManager.getInstance().setMultiplayer(isHosting);
-        getWorld().showText("To start hosting, start a new game on a map.", getWorld().getWidth() / 2, getWorld().getHeight() / 3);
+        if (isHosting) {
+            getWorld().showText("To start hosting, start a new game on a map.", getWorld().getWidth() / 2, getWorld().getHeight() / 3);
+
+        } else {
+            owner.onRemove();
+        }
     }
 }

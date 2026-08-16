@@ -99,8 +99,7 @@ public class MapPreview extends Actor implements Clickable {
         }
 
 
-        world.addObject(questionPopup, 960, 540);
+        world.addObject(questionPopup, getWorld().getWidth()/2, getWorld().getHeight()/2);
         questionPopup.getLeftButton().setOwner(questionPopup);
-
     }
 }

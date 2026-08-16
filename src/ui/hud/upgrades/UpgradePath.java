@@ -2,8 +2,8 @@ package ui.hud.upgrades;
 
 import core.Player;
 import entities.tower.Tower;
-import greenfoot.Actor;
-import greenfoot.World;
+import greenfoot.*;
+import maps.levels.GameMap;
 import ui.hud.UpgradeDescriptionOverlay;
 import util.Clickable;
 
@@ -15,10 +15,16 @@ import java.util.List;
 public class UpgradePath extends Actor implements Clickable {
     private final Tower tower;
     private final int path;
+    private final GreenfootImage imageNoPrice;
+    private int oldCoins = 0;
+    private boolean isPriceVisible = true;
 
 
     public UpgradePath(Tower TOWER, int path) {
         setImage("upgradeNew.png");
+        imageNoPrice = getImage();
+        imageNoPrice.setFont(new Font("Arial", true, false, 20));
+
         this.path = path;
         this.tower = TOWER;
     }
@@ -91,6 +97,7 @@ public class UpgradePath extends Actor implements Clickable {
     public void act() {
         checkClick();
         checkText();
+        updatePrice();
     }
 
     public void checkText() {
@@ -106,12 +113,42 @@ public class UpgradePath extends Actor implements Clickable {
         if (upgrades == null) return;
 
         if (upgradeLevel >= upgrades.length || upgradeLevel >= maxPath) {
-            getWorld().showText("", getX(), getY() - 65);
-        } else {
-            int price = upgrades[upgradeLevel];
-            getWorld().showText(price + "$", getX(), getY() - 65);
+            setImage(imageNoPrice);
+            isPriceVisible = false;
+            return;
         }
+        updatePrice();
     }
+
+    /**
+     * updates the colour of the Price.
+     * This function is not included in the UML Diagram, because I am lazy --Mathilo
+     */
+    public void updatePrice() {
+        int coins = getWorldOfType(GameMap.class).getPlayer().getCoins();
+        int upgradeLevel = getCurrentUpgradeLevel();
+        int[] upgrades = getUpgradePrices();
+
+        if(coins == oldCoins || upgradeLevel >= upgrades.length || !isPriceVisible) {
+            return;
+        }
+        oldCoins = coins;
+
+        int price = upgrades[upgradeLevel];
+
+
+
+        GreenfootImage img = new GreenfootImage(imageNoPrice);
+        if(coins >= price) {
+            img.setColor(Color.GREEN);
+        } else {
+            img.setColor(Color.RED);
+        }
+
+        img.drawString(String.valueOf(price + "$"), getImage().getWidth()/2 -30, 30);
+        setImage(img);
+    }
+
 
     public void updateText(int maxPath) {
         int currentUpgrade = getCurrentUpgradeLevel();
@@ -119,7 +156,7 @@ public class UpgradePath extends Actor implements Clickable {
         if(maxPath == 0) {
             removeOverlay();
             getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
-            getWorld().showText("", getX(), getY() - 65); // so it does not display price
+            getWorld().showText("", getX(), getY() - 65); // so it does not display "0/0"
         }
 
         getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
@@ -127,8 +164,7 @@ public class UpgradePath extends Actor implements Clickable {
 
     public void onRemove() {
         removeOverlay();
-        getWorld().showText("", getX(), getY() + 65); // so it does not display tier
-        getWorld().showText("", getX(), getY() - 65); // so it does not display price
+        getWorld().showText("", getX(), getY() - 65); // so it does not display tier
         removeOverlay();
         getWorld().removeObject(this);
     }

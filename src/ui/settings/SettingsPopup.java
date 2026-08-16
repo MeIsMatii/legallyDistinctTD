@@ -124,7 +124,6 @@ public class SettingsPopup extends PopupScreen {
 
         }else if (!songDropDown.isOpen()&& getWorld().getObjects(GoToTutButton.class).isEmpty()){
             getWorld().addObject(GoToTutButton, getX() + 200, 650);
-
         }
 
     }

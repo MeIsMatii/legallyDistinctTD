@@ -480,7 +480,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             pauseObjects();
             List<PauseMenu> pauseMenus = getObjects(PauseMenu.class);
             List<SettingsPopup> settingsPopups = getObjects(SettingsPopup.class);
-            if (pauseMenus.isEmpty()) {
+            if (pauseMenus.isEmpty() && settingsPopups.isEmpty()) {
                 addObject(new PauseMenu(), getWidth() / 2, getHeight() / 2);
             } else {
                 for (PauseMenu pauseMenu : pauseMenus) {

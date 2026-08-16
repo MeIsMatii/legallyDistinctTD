@@ -26,7 +26,7 @@ public class PauseMenu extends PopupScreen {
 
     public void addedToWorld(World w) {
         backButton = new BackButton();
-        settingsButton = new SettingsButton();
+        settingsButton = new SettingsButton(this);
         playOnButton = new PlayOnButton();
         retryButton = new RetryButton();
         waveResetButton = new WaveResetButton();

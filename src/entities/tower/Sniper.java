@@ -17,6 +17,10 @@ public class Sniper extends Tower {
         upgrade1Prices = new int[]{150, 500, 2500};
         upgrade2Prices = new int[]{200, 450, 3000};
         upgrade3Prices = new int[]{100, 350, 1750};
+
+        //not used bc it does not spawn projectiles
+        this.projectileSpawnOffset[0] = 0;
+        this.projectileSpawnOffset[1] = 0;
     }
 
 

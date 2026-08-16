@@ -17,6 +17,8 @@ public class HomingTower extends Tower {
         upgrade2Prices = new int[]{200, 450, 3000, 10000, 25000};
         upgrade3Prices = new int[]{100, 350, 1750, 6000, 9500};
 
+        this.projectileSpawnOffset[0] = 0;
+        this.projectileSpawnOffset[1] = -35;
     }
 
     public void addedToWorld(World w) {

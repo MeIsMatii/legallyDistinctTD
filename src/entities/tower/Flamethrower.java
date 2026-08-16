@@ -2,9 +2,7 @@ package entities.tower;
 
 import entities.enemy.Enemy;
 import entities.projectiles.FlameProjectile;
-import entities.projectiles.Projectile;
 import greenfoot.World;
-import util.multiplayer.NetworkManager;
 
 // Author: @Elias
 
@@ -16,6 +14,8 @@ public class Flamethrower extends Tower {
 
     public Flamethrower() {
         super(150, true, 300, 1, 1, 10, 1, 45);
+        this.projectileSpawnOffset[0] = 0;
+        this.projectileSpawnOffset[1] = -10;
     }
 
     public void addedToWorld(World w) {

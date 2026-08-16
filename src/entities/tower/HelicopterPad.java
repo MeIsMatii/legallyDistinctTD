@@ -8,6 +8,8 @@ import greenfoot.World;
 public class HelicopterPad extends Tower {
     public HelicopterPad() {
         super(0, true, 150, 99999999, 0, 0, 0, 0);
+        this.projectileSpawnOffset[0] = 0;
+        this.projectileSpawnOffset[1] = 0;
     }
 
     public void addedToWorld(World w) {

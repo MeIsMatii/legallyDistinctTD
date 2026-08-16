@@ -17,6 +17,9 @@ public class TestTower extends Tower {
         upgrade1Prices = new int[]{150, 500, 2500};
         upgrade2Prices = new int[]{200, 450, 3000};
         upgrade3Prices = new int[]{100, 350, 1750};
+
+        this.projectileSpawnOffset[0] = -40;
+        this.projectileSpawnOffset[1] = -22;
     }
 
     public void addedToWorld(World w) {

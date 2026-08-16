@@ -59,6 +59,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     private boolean isAnimating = false;
     private String spritePath;
     private String spriteName;
+    protected int[] projectileSpawnOffset = new int[2];
 
     /// </ANIMATIONS>
 
@@ -569,7 +570,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
         NetworkManager nm = NetworkManager.getInstance();
         if (nm.isHost()) {
-            getWorld().addObject(projectile, getX(), getY());
+            getWorld().addObject(projectile, getX() + projectileSpawnOffset[0], getY() + + projectileSpawnOffset[1]);
 
             if (nm.isMultiplayer()) {
                 String msg = "SPAWN_PROJECTILE" + "," + e.getUniqueId() + "," + projectile.getUniqueId() + "," + getUniqueId();

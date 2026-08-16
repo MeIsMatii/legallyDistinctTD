@@ -10,7 +10,7 @@ public class IceTower extends Tower {
     public int slowTimer = 50;
 
     public IceTower() {
-        super(200, true, 200, 80, 0, 25, 1, 0);
+        super(200, true, 200, 80, 0, 10, 1, 0);
 
         upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
         upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
@@ -19,6 +19,9 @@ public class IceTower extends Tower {
         upgrade1Prices = new int[]{150, 500, 2500};
         upgrade2Prices = new int[]{200, 450, 3000};
         upgrade3Prices = new int[]{100, 350, 1750};
+
+        this.projectileSpawnOffset[0] = -44;
+        this.projectileSpawnOffset[1] = -25;
     }
 
     public double getSlow() {

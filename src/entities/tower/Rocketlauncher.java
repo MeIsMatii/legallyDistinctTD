@@ -7,7 +7,7 @@ public class Rocketlauncher extends Tower {
 
 
     public Rocketlauncher() {
-        super(500, true, 500, 150, 50, 25, 1, 0);
+        super(500, true, 500, 150, 50, 10, 1, 0);
 
         //TODO upgrades
         upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
@@ -18,7 +18,8 @@ public class Rocketlauncher extends Tower {
         upgrade2Prices = new int[]{200, 450, 3000};
         upgrade3Prices = new int[]{100, 350, 1750};
 
-
+        this.projectileSpawnOffset[0] = 0;
+        this.projectileSpawnOffset[1] = 10;
     }
 
     public void addedToWorld(World w) {

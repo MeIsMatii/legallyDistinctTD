@@ -9,7 +9,7 @@ import greenfoot.World;
 public class Flamethrower extends Tower {
 
 
-    private int magazine = 5;
+    private int magazine = 4;
     private int rechargeCounter;
 
     public Flamethrower() {
@@ -55,12 +55,12 @@ public class Flamethrower extends Tower {
     }
 
     private void recharge() { //works, no need to touch that ever again
-        int rechargeDelay = 70;
+        int rechargeDelay = 460;
         if (rechargeCounter < rechargeDelay) {
             rechargeCounter++;
             return;
         }
-        magazine = magazine + 5;
+        magazine = magazine + 4;
         rechargeCounter = 0;
     }
 

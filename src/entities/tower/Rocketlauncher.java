@@ -34,7 +34,7 @@ public class Rocketlauncher extends Tower {
 
     @Override
     public int getAnimationSpeed() {
-        return 1;
+        return 10;
     }
 
     public void upgrade(int path) {

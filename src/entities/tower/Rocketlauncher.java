@@ -7,7 +7,7 @@ public class Rocketlauncher extends Tower {
 
 
     public Rocketlauncher() {
-        super(500, true, 500, 150, 50, 10, 1, 0);
+        super(500, true, 500, 150, 20, 10, 1, 0);
 
         //TODO upgrades
         upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};

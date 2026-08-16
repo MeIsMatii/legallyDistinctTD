@@ -7,7 +7,7 @@ public class TestTower extends Tower {
 
 
     public TestTower() {
-        super(50, true, 300, 45, 1, 3, 1, 45);
+        super(50, true, 300, 45, 3, 3, 1, 45);
 
         upgradeDescription3 = new String[]{"slightly larger\n range", "even larger\n range", "very large\n range"};
         upgradeDescription2 = new String[]{"slightly more\n piercing", "even more\n piercing", "very much piercing"};

@@ -10,8 +10,8 @@ public class Rocketlauncher extends Tower {
         super(500, true, 500, 150, 20, 10, 1, 0);
 
         //TODO upgrades
-        upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
-        upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
+        upgradeDescription3 = new String[]{"Faster Projectiles", "Even faster Projectiles", "MAX Speed Projectiles"};
+        upgradeDescription2 = new String[]{"More Projectile Piercing", "even more Projectile Piercing", "MAX Projectile Piercing"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
         upgrade3Prices = new int[]{50, 500, 5000};

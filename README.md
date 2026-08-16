@@ -72,7 +72,7 @@ Basically, it's just like any other TD game just without any Pay-to-win Mechanic
 
 ---
 ## 👾 Bugs
-Bugs report bugs by opening an issue, but it's not guaranteed that they will be fixed.
+Report bugs by opening an issue, but it's not guaranteed that they will be fixed.
 
 ---
 

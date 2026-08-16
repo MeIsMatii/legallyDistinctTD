@@ -5,7 +5,7 @@ package entities.enemy;
  */
 public class EnemyLevel6 extends Enemy {
     public EnemyLevel6() {
-        super(2.25, 100);
+        super(2.25, 130);
         setImage("Coin.png"); //TODO FIX @elias/art guys
     }
 

@@ -16,10 +16,7 @@ import maps.menu.PauseMenu;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
 import ui.common.TutorialHud;
-import ui.hud.PopupScreen;
-import ui.hud.QuestionPopup;
-import ui.hud.Textboard;
-import ui.hud.UpgradeDescriptionOverlay;
+import ui.hud.*;
 import ui.hud.buttons.*;
 import ui.hud.towerSelector.TowerSelector;
 import ui.hud.towerSelector.TowerSelectorSpawner;
@@ -102,9 +99,10 @@ public class CustomWorld extends World {
             UpgradeMenu.class,               // "upgradeMenu.png" (1620x216 bottom HUD panel)
             TowerSelector.class,             // Individual tower icons in sidebar
             TowerSelectorSpawner.class,      // "upgradesPrototype.png" (right sidebar panel)
-            ImageDisplay.class,              // "heart.png", "Coin.png" HUD icons
             Textboard.class,
             Player.class,
+            LastPLayed.class,
+            ImageDisplay.class,              // "heart.png", "Coin.png" HUD icons
 
             // --- GAME ENTITIES (Towers, FX, Bloons, Projectiles) ---
             Helicopter.class,                // Flying helicopter (above ground towers)

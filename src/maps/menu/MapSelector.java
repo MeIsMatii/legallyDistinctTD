@@ -4,6 +4,7 @@ import greenfoot.Greenfoot;
 import greenfoot.MouseInfo;
 import maps.util.CustomWorld;
 import ui.common.ImageDisplay;
+import ui.hud.LastPLayed;
 import ui.hud.buttons.SettingsButton;
 import ui.hud.gambling.SlotMachineButton;
 import util.HasSound;
@@ -93,6 +94,6 @@ public class MapSelector extends CustomWorld implements HasSound {
                 return; // no valid last map, don't place marker
         }
 
-        addObject(new ImageDisplay("buttons/lastPlayed.png", 100, 100), x, y);
+        addObject(new LastPLayed(), x, y);
     }
 }

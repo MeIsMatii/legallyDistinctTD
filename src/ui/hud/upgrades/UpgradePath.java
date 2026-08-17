@@ -121,8 +121,7 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
     /**
-     * updates the colour of the Price.
-     * This function is not included in the UML Diagram, because I am lazy --Mathilo
+     * updates the colour of the price
      */
     public void updatePrice() {
         int coins = getWorldOfType(GameMap.class).getPlayer().getCoins();

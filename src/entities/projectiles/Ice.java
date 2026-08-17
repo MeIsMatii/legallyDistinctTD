@@ -1,9 +1,10 @@
 package entities.projectiles;
 
 import entities.Entity;
-import entities.enemy.Enemy;
+import entities.base.Enemy;
+import entities.base.Projectile;
 import entities.tower.IceTower;
-import entities.tower.Tower;
+import entities.base.Tower;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import util.HasSound;

@@ -1,5 +1,7 @@
 package entities.enemy;
 
+import entities.base.Enemy;
+
 /**
  * @author Mathilo
  * @author Elias

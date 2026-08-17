@@ -1,7 +1,8 @@
 package entities.projectiles;
 
-import entities.enemy.Enemy;
-import entities.tower.Tower;
+import entities.base.Enemy;
+import entities.base.Projectile;
+import entities.base.Tower;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 

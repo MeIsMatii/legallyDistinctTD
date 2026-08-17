@@ -1,5 +1,6 @@
 package entities.tower;
 
+import entities.base.Tower;
 import entities.projectiles.HomingProjectile;
 import greenfoot.World;
 

@@ -1,11 +1,9 @@
 package ui.hud.towerSelector;
 
 import core.MainClass;
-import core.Player;
-import entities.tower.Tower;
+import entities.base.Tower;
 import greenfoot.*;
 import maps.levels.GameMap;
-import ui.hud.buttons.Button;
 import util.Clickable;
 
 import java.util.List;

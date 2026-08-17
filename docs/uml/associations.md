@@ -1,19 +1,23 @@
+The full diagram with associations
+```mermaid
 classDiagram
 direction BT
+
 class Animations {
-<<Interface>>
+  <<Interface>>
   + playAnimation() void
   + generateFrameList() void
   + startAnimation() void
   + isAnimating(boolean) void
   + addedToWorld(World) void
-   List~String~ frameList
-   String spritePath
-   String spriteName
-   int frameCounter
-   int currentFrameIndex
-   int animationSpeed
+  List~String~ frameList
+  String spritePath
+  String spriteName
+  int frameCounter
+  int currentFrameIndex
+  int animationSpeed
 }
+
 class AntiCheat {
   - AntiCheat() 
   - checkHoneypot() void
@@ -22,22 +26,26 @@ class AntiCheat {
   - tick() void
   + update() void
 }
+
 class BackButton {
   + BackButton() 
   + onClick() void
   + getBack(World) void
 }
+
 class Button {
   + Button() 
   # PopupScreen owner
   + act() void
-   PopupScreen owner
+  PopupScreen owner
 }
+
 class Clickable {
-<<Interface>>
+  <<Interface>>
   + checkClick() void
   + onClick() void
 }
+
 class ClickawayImageDisplay {
   + ClickawayImageDisplay(String, int, int) 
   + ClickawayImageDisplay(String, int, int, boolean) 
@@ -45,51 +53,61 @@ class ClickawayImageDisplay {
   + onClick() void
   + act() void
 }
+
 class ClientButton {
   + ClientButton() 
   + onClick() void
 }
+
 class ClosePopupButton {
   + ClosePopupButton(PopupScreen) 
   + onClick() void
 }
+
 class Cursor {
   + Cursor() 
   + act() void
   + followMouse() void
   + isTouching(Class~?~) boolean
 }
+
 class CustomWorld {
   + CustomWorld() 
   + CustomWorld(int, int, int) 
   - setupPaintOrder() void
   + act() void
 }
+
 class DevNotesMap {
   + DevNotesMap() 
 }
+
 class DeveloperNotesButton {
   + DeveloperNotesButton() 
   + onClick() void
 }
+
 class Difficulty {
-<<enumeration>>
+  <<enumeration>>
   - Difficulty(int) 
   - int winWave
   + valueOf(String) Difficulty
   + values() Difficulty[]
-   int winWave
+  int winWave
 }
+
 class DifficultySelector {
   + DifficultySelector(GameMap, Difficulty) 
   + onClick() void
 }
+
 class DifficultySelectorPopup {
   + DifficultySelectorPopup(GameMap) 
   + onRemove() void
   + addedToWorld(World) void
   + act() void
 }
+
 class Enemy {
   + Enemy(double, int) 
   ~ int initialLives
@@ -105,39 +123,47 @@ class Enemy {
   + moveTo(int, int) void
   + findPath() void
   + addedToWorld(World) void
-   int initialLives
-   String name
-   double lives
-   double speed
+  int initialLives
+  String name
+  double lives
+  double speed
 }
+
 class EnemyHitbox {
   + EnemyHitbox(int, int, Entity) 
   + drawHitbox(int, int, Color, boolean) GreenfootImage
 }
+
 class EnemyLevel1 {
   + EnemyLevel1() 
-   String name
+  String name
 }
+
 class EnemyLevel2 {
   + EnemyLevel2() 
-   String name
+  String name
 }
+
 class EnemyLevel3 {
   + EnemyLevel3() 
-   String name
+  String name
 }
+
 class EnemyLevel4 {
   + EnemyLevel4() 
-   String name
+  String name
 }
+
 class EnemyLevel5 {
   + EnemyLevel5() 
-   String name
+  String name
 }
+
 class EnemyLevel6 {
   + EnemyLevel6() 
-   String name
+  String name
 }
+
 class Entity {
   + Entity() 
   # String uniqueId
@@ -151,27 +177,31 @@ class Entity {
   + spawnHitbox(int, int) void
   + setLocation(int, int) void
   + act() void
-   String uniqueId
+  String uniqueId
 }
+
 class ExampleActor {
   + ExampleActor() 
   + act() void
   - updateAppearance() void
   + onClick() void
 }
+
 class Explosion {
   + Explosion(Tower) 
   + Explosion() 
   - int explosionCounter
   + act() void
   + onHit(Entity) void
-   int explosionCounter
+  int explosionCounter
 }
+
 class FlameProjectile {
   + FlameProjectile(Tower) 
   + FlameProjectile() 
   + move() void
 }
+
 class Flamethrower {
   + Flamethrower() 
   + upgrade(int) void
@@ -179,23 +209,26 @@ class Flamethrower {
   + act() void
   + addedToWorld(World) void
   + shoot(Enemy) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class Gambling {
   + Gambling() 
   - ImageDisplay slot1
   - ImageDisplay slot2
   - ImageDisplay slot3
-   ImageDisplay slot1
-   ImageDisplay slot3
-   ImageDisplay slot2
+  ImageDisplay slot1
+  ImageDisplay slot3
+  ImageDisplay slot2
 }
+
 class GamblingWonCredits {
   + GamblingWonCredits() 
   + act() void
   + credits() void
 }
+
 class GameMap {
   + GameMap(boolean, boolean) 
   + GameMap() 
@@ -236,63 +269,72 @@ class GameMap {
   + pauseObjects() void
   + spawnTowerFromNetwork(String, String, int, int) void
   + readNetworkData() void
-   boolean isForcedPause
-   UpgradeMenu upgradeMenu
-   int receivedWaveMoney
-   boolean isMultiplayer
-   GameSaveManager gameSaveManager
-   int coinsFromNetwork
-   int waveFromNetwork
-   int wave
-   int[] spawnLocation
-   Difficulty difficulty
-   Player player
-   int mapNumber
-   boolean isPaused
-   boolean isUpgradeMenuVisible
-   int winWave
-   boolean hasGameStarted
+  boolean isForcedPause
+  UpgradeMenu upgradeMenu
+  int receivedWaveMoney
+  boolean isMultiplayer
+  GameSaveManager gameSaveManager
+  int coinsFromNetwork
+  int waveFromNetwork
+  int wave
+  int[] spawnLocation
+  Difficulty difficulty
+  Player player
+  int mapNumber
+  boolean isPaused
+  boolean isUpgradeMenuVisible
+  int winWave
+  boolean hasGameStarted
 }
+
 class GameMap1 {
   + GameMap1(boolean, boolean) 
   + GameMap1() 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap2 {
   + GameMap2(boolean, boolean) 
   + GameMap2() 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap3 {
   + GameMap3(boolean, boolean) 
   + GameMap3() 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap4 {
   + GameMap4() 
   + GameMap4(boolean, boolean) 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap5 {
   + GameMap5(boolean, boolean) 
   + GameMap5() 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap6 {
   + GameMap6() 
   + GameMap6(boolean, boolean) 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap7 {
   + GameMap7() 
   + GameMap7(boolean, boolean) 
-   int mapNumber
+  int mapNumber
 }
+
 class GameMap8 {
   + GameMap8() 
   + GameMap8(boolean, boolean) 
-   int mapNumber
+  int mapNumber
 }
+
 class GameSaveManager {
   + GameSaveManager() 
   - GameSaveManager instance
@@ -310,37 +352,42 @@ class GameSaveManager {
   + get(String) String
   + getAsDouble(String, double) double
   + removeSaveFile() void
-   int lastRound
-   GameSaveManager instance
-   String mapNr
-   Map~String, Supplier~Tower~~ TOWER_LIST
-   int coins
+  int lastRound
+  GameSaveManager instance
+  String mapNr
+  Map~String, Supplier~Tower~~ TOWER_LIST
+  int coins
 }
+
 class GoToTutButton {
   + GoToTutButton() 
   + onClick() void
 }
+
 class HasSound {
-<<Interface>>
+  <<Interface>>
   + playSound(GreenfootSound) void
   + playSound(String) void
   + playSoundAndKeep(String) GreenfootSound
-   boolean audioHardwareSupported
+  boolean audioHardwareSupported
 }
+
 class Helicopter {
   + Helicopter() 
   + upgrade(int) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class HelicopterPad {
   + HelicopterPad() 
   + place() void
   + addedToWorld(World) void
   + upgrade(int) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class Hitbox {
   + Hitbox(int, int, Entity) 
   - Entity owner
@@ -355,10 +402,11 @@ class Hitbox {
   + updateAppearance(boolean) void
   + getSpecificEntitiesInHitbox(Class~T~) List~T~
   + checkHover() boolean
-   boolean isFollowing
-   Entity owner
-   List~Entity~ entitiesInHitbox
+  boolean isFollowing
+  Entity owner
+  List~Entity~ entitiesInHitbox
 }
+
 class HomingProjectile {
   + HomingProjectile() 
   + HomingProjectile(Tower) 
@@ -366,21 +414,24 @@ class HomingProjectile {
   + addedToWorld(World) void
   + move() void
   + target(Enemy) void
-   int homingRadius
+  int homingRadius
 }
+
 class HomingTower {
   + HomingTower() 
   + addedToWorld(World) void
   + act() void
   + upgrade(int) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class HostButton {
   + HostButton(boolean) 
   + onClick() void
   + act() void
 }
+
 class IPMenuOverlay {
   + IPMenuOverlay() 
   - boolean connected
@@ -392,15 +443,17 @@ class IPMenuOverlay {
   - typeBackspace() void
   - typeChar(char) void
   - onConnect() void
-   boolean connected
-   String IP
+  boolean connected
+  String IP
 }
+
 class Ice {
   + Ice(Tower) 
   + Ice() 
   + act() void
   + onHit(Entity) void
 }
+
 class IceTower {
   + IceTower() 
   + int slowTimer
@@ -408,32 +461,37 @@ class IceTower {
   + double slow
   + addedToWorld(World) void
   + upgrade(int) void
-   String name
-   double slow
-   double destroyAfter
-   int animationSpeed
-   int slowTimer
+  String name
+  double slow
+  double destroyAfter
+  int animationSpeed
+  int slowTimer
 }
+
 class ImageDisplay {
   + ImageDisplay(GreenfootImage) 
   + ImageDisplay(int, int, String, Color, Color, Font) 
   + ImageDisplay(String, int, int) 
   + ImageDisplay(String) 
 }
+
 class LastPLayed {
   + LastPLayed() 
 }
+
 class LoadSaveButton {
   + LoadSaveButton(int) 
   ~ int worldNr
   + onClick() void
-   int worldNr
+  int worldNr
 }
+
 class MainClass {
   + MainClass() 
   - boolean isPaused
-   boolean isPaused
+  boolean isPaused
 }
+
 class MapCoordinatesUtilGuy {
   + MapCoordinatesUtilGuy() 
   + act() void
@@ -441,47 +499,56 @@ class MapCoordinatesUtilGuy {
   + roundCoordinates(int[][]) int[][]
   + addCoordinates(int, int) void
 }
+
 class MapPreview {
   + MapPreview(int) 
   - boolean clicked
   + onClick() void
   + act() void
-   boolean clicked
-   int worldNr
+  boolean clicked
+  int worldNr
 }
+
 class MapSelector {
   + MapSelector() 
   + act() void
   + lastPlayed() void
 }
+
 class MapTitlescreen {
   + MapTitlescreen() 
 }
+
 class MultiplayerConnection {
-<<Interface>>
+  <<Interface>>
   + send(String) void
 }
+
 class MultiplayerPreview {
   + MultiplayerPreview() 
   + act() void
   + onClick() void
 }
+
 class MuteButton {
   + MuteButton() 
   + onClick() void
   + updateApperance() void
 }
+
 class NetworkClient {
   + NetworkClient(String, int) 
   + send(String) void
   + setMap(int, String) void
   + run() void
 }
+
 class NetworkHost {
   + NetworkHost(int) 
   + run() void
   + send(String) void
 }
+
 class NetworkManager {
   - NetworkManager() 
   - boolean isMultiplayer
@@ -495,25 +562,27 @@ class NetworkManager {
   + sendData(String) void
   + startHost(int) void
   + queueIncomingMessage(String) void
-   Difficulty difficulty
-   boolean connectionTimedOut
-   boolean connectionTimeouted
-   boolean active
-   boolean isMultiplayer
-   boolean isDisconnected
-   NetworkManager instance
-   int mapNr
-   boolean isHost
-   boolean isConnected
-   ConcurrentLinkedQueue~String~ inboundQueue
+  Difficulty difficulty
+  boolean connectionTimedOut
+  boolean connectionTimeouted
+  boolean active
+  boolean isMultiplayer
+  boolean isDisconnected
+  NetworkManager instance
+  int mapNr
+  boolean isHost
+  boolean isConnected
+  ConcurrentLinkedQueue~String~ inboundQueue
 }
+
 class NewSaveButton {
   + NewSaveButton(int) 
   + NewSaveButton(int, boolean) 
   - int worldNr
   + onClick() void
-   int worldNr
+  int worldNr
 }
+
 class Path {
   + Path(int, int, int) 
   - int nextPathX
@@ -522,18 +591,21 @@ class Path {
   + addedToWorld(World) void
   + onHover() void
   + onHit(Entity) void
-   int nextPathX
-   int nextPathY
+  int nextPathX
+  int nextPathY
 }
+
 class PauseMenu {
   + PauseMenu() 
   + addedToWorld(World) void
   + onRemove() void
 }
+
 class PlayOnButton {
   + PlayOnButton() 
   + onClick() void
 }
+
 class Player {
   + Player(int, int) 
   - int coins
@@ -544,13 +616,15 @@ class Player {
   + show(World) void
   + coinCheat() void
   + setCoins(int, boolean) void
-   int coins
-   int health
+  int coins
+  int health
 }
+
 class PopupScreen {
   + PopupScreen() 
   + onRemove() void
 }
+
 class Projectile {
   + Projectile() 
   + Projectile(Tower) 
@@ -566,13 +640,14 @@ class Projectile {
   + move() void
   + updateIFrames() void
   + target() void
-   Tower owner
-   double damage
-   int targetY
-   int targetX
-   double speed
-   double piercing
+  Tower owner
+  double damage
+  int targetY
+  int targetX
+  double speed
+  double piercing
 }
+
 class QuestionPopup {
   + QuestionPopup(String, Button, Button) 
   - Button rightButton
@@ -581,10 +656,11 @@ class QuestionPopup {
   # addedToWorld(World) void
   + act() void
   + onRemove() void
-   Button leftButton
-   Button rightButton
-   ClosePopupButton closeButton
+  Button leftButton
+  Button rightButton
+  ClosePopupButton closeButton
 }
+
 class RangeDisplay {
   + RangeDisplay(Tower, double, boolean) 
   - boolean isFollowing
@@ -594,29 +670,34 @@ class RangeDisplay {
   + displayRange(Color) void
   - getGreenfootImage(int, Color) GreenfootImage
   + updateRange(double) void
-   boolean isFollowing
+  boolean isFollowing
 }
+
 class RestartMultiplayerButton {
   + RestartMultiplayerButton() 
   + onClick() void
 }
+
 class RetryButton {
   + RetryButton() 
   + onClick() void
 }
+
 class Rocket {
   + Rocket() 
   + Rocket(Tower) 
   - handleVisual() void
   + onHit(Entity) void
 }
+
 class Rocketlauncher {
   + Rocketlauncher() 
   + upgrade(int) void
   + addedToWorld(World) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class SaveManager {
   - SaveManager() 
   - SaveManager instance
@@ -626,14 +707,15 @@ class SaveManager {
   + getAsBoolean(String, boolean) boolean
   + set(String, Object) void
   + reload() void
-   int lastMap
-   int volume
-   SaveManager instance
-   boolean tutorialStatus
-   boolean soundOn
+  int lastMap
+  int volume
+  SaveManager instance
+  boolean tutorialStatus
+  boolean soundOn
 }
+
 class Saveable {
-<<Interface>>
+  <<Interface>>
   + saveAll(String, Properties) void
   + loadSave(String) Properties
   + getValue(Properties, String) String
@@ -642,42 +724,50 @@ class Saveable {
   + getBoolean(Properties, String, boolean) boolean
   + getInt(Properties, String, int) int
 }
+
 class SellButton {
   + SellButton(Tower, Player) 
   + onClick() void
 }
+
 class SettingsButton {
   + SettingsButton() 
   + SettingsButton(PopupScreen) 
   + onClick() void
 }
+
 class SettingsPopup {
   + SettingsPopup() 
   + addedToWorld(World) void
   + act() void
   + onRemove() void
 }
+
 class SlotMachineButton {
   + SlotMachineButton() 
   + onClick() void
 }
+
 class SlotMachineButtonGamble {
   + SlotMachineButtonGamble() 
   + onClick() void
 }
+
 class Sniper {
   + Sniper() 
   + upgrade(int) void
   + shoot(Enemy) void
   + act() void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class SongButton {
   + SongButton(String) 
   + act() void
   + onClick() void
 }
+
 class SongDropDown {
   + SongDropDown() 
   - boolean isOpen
@@ -686,8 +776,9 @@ class SongDropDown {
   - draw() void
   + onClick() void
   + act() void
-   boolean isOpen
+  boolean isOpen
 }
+
 class SoundSettings {
   - SoundSettings() 
   - int masterVolume
@@ -698,30 +789,35 @@ class SoundSettings {
   + unMuteAllSounds() void
   + muteALLSound() void
   + decreaseVolume(int) void
-   int masterVolume
-   SoundSettings instance
-   boolean muted
+  int masterVolume
+  SoundSettings instance
+  boolean muted
 }
+
 class StartingButton {
   + StartingButton() 
   + onClick() void
 }
+
 class TestBloon {
   + TestBloon(double, int) 
-   String name
+  String name
 }
+
 class TestProjectile {
   + TestProjectile(Tower) 
   + TestProjectile() 
 }
+
 class TestTower {
   + TestTower() 
   + addedToWorld(World) void
   + act() void
   + upgrade(int) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class TextBlock {
   + TextBlock(String, double) 
   - double speed
@@ -729,12 +825,14 @@ class TextBlock {
   + goUp() void
   - updateImage() void
   + act() void
-   double speed
+  double speed
 }
+
 class Textboard {
   + Textboard(int, int) 
-   String text
+  String text
 }
+
 class Tower {
   + Tower(int, boolean, int, int, int, int, int, int) 
   - Enemy targetedEnemy
@@ -791,39 +889,40 @@ class Tower {
   + onUnhover() void
   + shoot(Enemy, String) void
   ~ upgrade(int) void
-   List~String~ frameList
-   int price
-   String spritePath
-   int upgrade3
-   String upgradeDescription3
-   double projectilePiercing
-   Color colorGrey
-   int upgrade1
-   String spriteName
-   double projectileSpeed
-   Enemy targetedEnemyManual
-   Projectile projectileToShoot
-   Color colorRed
-   int shootingDelayCounter
-   int frameCounter
-   int animationSpeed
-   double projectileDamage
-   double range
-   RangeDisplay rangeDisplay
-   int upgrade2
-   int[] upgrade1Prices
-   String upgradeDescription2
-   boolean isPlacing
-   String name
-   int[] upgrade3Prices
-   String upgradeDescription1
-   int[] upgrade2Prices
-   Enemy targetedEnemy
-   boolean canPlace
-   int projectileIFrames
-   int currentFrameIndex
-   int shootingDelay
+  List~String~ frameList
+  int price
+  String spritePath
+  int upgrade3
+  String upgradeDescription3
+  double projectilePiercing
+  Color colorGrey
+  int upgrade1
+  String spriteName
+  double projectileSpeed
+  Enemy targetedEnemyManual
+  Projectile projectileToShoot
+  Color colorRed
+  int shootingDelayCounter
+  int frameCounter
+  int animationSpeed
+  double projectileDamage
+  double range
+  RangeDisplay rangeDisplay
+  int upgrade2
+  int[] upgrade1Prices
+  String upgradeDescription2
+  boolean isPlacing
+  String name
+  int[] upgrade3Prices
+  String upgradeDescription1
+  int[] upgrade2Prices
+  Enemy targetedEnemy
+  boolean canPlace
+  int projectileIFrames
+  int currentFrameIndex
+  int shootingDelay
 }
+
 class TowerSelector {
   + TowerSelector(Supplier~Tower~) 
   + onClick() void
@@ -831,10 +930,12 @@ class TowerSelector {
   + act() void
   + addedToWorld(World) void
 }
+
 class TowerSelectorSpawner {
   + TowerSelectorSpawner() 
   # addedToWorld(World) void
 }
+
 class TrapTower {
   + TrapTower() 
   + onHit(Entity) void
@@ -844,51 +945,59 @@ class TrapTower {
   + shoot(Enemy) void
   + onClick() void
   + upgrade(int) void
-   String name
-   int animationSpeed
+  String name
+  int animationSpeed
 }
+
 class Tuple~A, B~ {
   + Tuple(A, B) 
   - B second
   - A first
-   A first
-   B second
+  A first
+  B second
 }
+
 class TutorialHud {
   + TutorialHud() 
   + onClick() void
 }
+
 class TutorialMap {
   + TutorialMap() 
   - boolean isTutorialPopupActive
   + act() void
   + textBoardPlacer() void
   - showTutorialBoard() void
-   boolean isTutorialPopupActive
-   int mapNumber
+  boolean isTutorialPopupActive
+  int mapNumber
 }
+
 class TutorialText {
   + TutorialText() 
 }
+
 class Upgrade {
   + Upgrade() 
   - int level
   - String description
-   int level
-   String description
+  int level
+  String description
 }
+
 class UpgradeDescriptionOverlay {
   + UpgradeDescriptionOverlay(Tower, int, int) 
   - int path
-   int path
+  int path
 }
+
 class UpgradeMenu {
   + UpgradeMenu(Tower) 
   - Tower tower
   # addedToWorld(World) void
   + delete() void
-   Tower tower
+  Tower tower
 }
+
 class UpgradePath {
   + UpgradePath(Tower, int) 
   + updateText(int) void
@@ -900,12 +1009,13 @@ class UpgradePath {
   + act() void
   # addedToWorld(World) void
   + onRemove() void
-   int otherUpgradeA
-   int[]? upgradePrices
-   int currentUpgradeLevel
-   int maxPath
-   int otherUpgradeB
+  int otherUpgradeA
+  int[]? upgradePrices
+  int currentUpgradeLevel
+  int maxPath
+  int otherUpgradeB
 }
+
 class VolumeSlider {
   + VolumeSlider() 
   - updateVolumeFromMousePosition(MouseInfo) void
@@ -914,286 +1024,291 @@ class VolumeSlider {
   - isMouseOverSlider(MouseInfo) boolean
   - redrawSlider() void
 }
+
 class WaveManager {
   - WaveManager() 
   - Map~String, Supplier~Enemy~~ ENEMY_LIST
   + generateWave(int) List~Enemy~
   - mapCheck(int) int
-   Map~String, Supplier~Enemy~~ ENEMY_LIST
-   WaveManager instance
+  Map~String, Supplier~Enemy~~ ENEMY_LIST
+  WaveManager instance
 }
+
 class WaveResetButton {
   + WaveResetButton() 
   + onClick() void
 }
 
-AntiCheat  -->  MainClass 
-BackButton  -->  Button 
-BackButton  ..>  MapSelector : «create»
-Button  ..>  Clickable 
-Button "1" *--> "owner 1" PopupScreen 
-ClickawayImageDisplay  ..>  Clickable 
-ClickawayImageDisplay  -->  ImageDisplay 
-ClientButton  -->  Button 
-ClientButton  ..>  IPMenuOverlay : «create»
-ClosePopupButton  -->  Button 
-DevNotesMap  ..>  BackButton : «create»
-DevNotesMap  -->  CustomWorld 
-DeveloperNotesButton  -->  Button 
-DeveloperNotesButton  ..>  DevNotesMap : «create»
-GameMap  -->  Difficulty 
-DifficultySelector  -->  Button 
-DifficultySelector "1" *--> "difficulty 1" Difficulty 
-DifficultySelector "1" *--> "map 1" GameMap 
-DifficultySelectorPopup "1" *--> "closeButton 1" ClosePopupButton 
-DifficultySelectorPopup  ..>  ClosePopupButton : «create»
-DifficultySelectorPopup  ..>  DifficultySelector : «create»
-DifficultySelectorPopup "1" *--> "map 1" GameMap 
-DifficultySelectorPopup  -->  PopupScreen 
-Enemy  ..>  EnemyHitbox : «create»
-Enemy  -->  Entity 
-EnemyHitbox  -->  Hitbox 
-EnemyLevel1  -->  Enemy 
-EnemyLevel2  -->  Enemy 
-EnemyLevel3  -->  Enemy 
-EnemyLevel4  -->  Enemy 
-EnemyLevel5  -->  Enemy 
-EnemyLevel6  -->  Enemy 
-Entity  ..>  Hitbox : «create»
-Entity  -->  MainClass 
-ExampleActor  ..>  Clickable 
-ExampleActor  ..>  HasSound 
-ExampleActor  -->  MainClass 
-Explosion  ..>  HasSound 
-Explosion  -->  Projectile 
-FlameProjectile  -->  Projectile 
-Flamethrower  ..>  FlameProjectile : «create»
-Flamethrower  -->  Tower 
-Gambling  ..>  BackButton : «create»
-Gambling  -->  CustomWorld 
-Gambling "1" *--> "slot1 1" ImageDisplay 
-Gambling  ..>  ImageDisplay : «create»
-Gambling  ..>  SlotMachineButtonGamble : «create»
-GamblingWonCredits  ..>  BackButton : «create»
-GamblingWonCredits  -->  CustomWorld 
-GamblingWonCredits  ..>  HasSound 
-GamblingWonCredits  ..>  TextBlock : «create»
-GameMap  ..>  BackButton : «create»
-GameMap "1" *--> "cursor 1" Cursor 
-GameMap  ..>  Cursor : «create»
-GameMap  -->  CustomWorld 
-GameMap "1" *--> "difficulty 1" Difficulty 
-GameMap "1" *--> "aliveEnemies *" Enemy 
-GameMap  ..>  GameSaveManager : «create»
-GameMap "1" *--> "gameSaveManager 1" GameSaveManager 
-GameMap  ..>  HasSound 
-GameMap  ..>  Path : «create»
-GameMap  ..>  PauseMenu : «create»
-GameMap  ..>  PlayOnButton : «create»
-GameMap  ..>  Player : «create»
-GameMap "1" *--> "player 1" Player 
-GameMap  ..>  QuestionPopup : «create»
-GameMap  ..>  RestartMultiplayerButton : «create»
-GameMap  ..>  TowerSelectorSpawner : «create»
-GameMap  ..>  UpgradeMenu : «create»
-GameMap "1" *--> "upgradeMenu 1" UpgradeMenu 
-GameMap "1" *--> "waveManager 1" WaveManager 
-GameMap1  -->  GameMap 
-GameMap2  -->  GameMap 
-GameMap3  -->  GameMap 
-GameMap4  -->  GameMap 
-GameMap5  -->  GameMap 
-GameMap6  -->  GameMap 
-GameMap7  -->  GameMap 
-GameMap8  -->  GameMap 
-GameSaveManager  ..>  Saveable 
-GoToTutButton  -->  Button 
-GoToTutButton  ..>  MapTitlescreen : «create»
-Helicopter  -->  Tower 
-HelicopterPad  ..>  Helicopter : «create»
-HelicopterPad  -->  Tower 
-Hitbox "1" *--> "owner 1" Entity 
-Hitbox  -->  MainClass 
-HomingProjectile "1" *--> "targetedEnemy 1" Enemy 
-HomingProjectile  -->  Projectile 
-HomingTower  ..>  HomingProjectile : «create»
-HomingTower  -->  Tower 
-HostButton  -->  Button 
-IPMenuOverlay  ..>  Clickable 
-IPMenuOverlay  -->  PopupScreen 
-Ice  ..>  HasSound 
-Ice  -->  Projectile 
-IceTower  ..>  Ice : «create»
-IceTower  -->  Tower 
-ImageDisplay  -->  MainClass 
-LastPLayed  -->  MainClass 
-LoadSaveButton  -->  Button 
-LoadSaveButton  ..>  GameMap1 : «create»
-LoadSaveButton  ..>  GameMap2 : «create»
-LoadSaveButton  ..>  GameMap3 : «create»
-LoadSaveButton  ..>  GameMap4 : «create»
-LoadSaveButton  ..>  GameMap5 : «create»
-LoadSaveButton  ..>  GameMap6 : «create»
-LoadSaveButton  ..>  GameMap7 : «create»
-LoadSaveButton  ..>  GameMap8 : «create»
-MapPreview  ..>  Clickable 
-MapPreview  ..>  ClosePopupButton : «create»
-MapPreview  ..>  GameSaveManager : «create»
-MapPreview  ..>  LoadSaveButton : «create»
-MapPreview  ..>  NewSaveButton : «create»
-MapPreview  ..>  QuestionPopup : «create»
-MapSelector  -->  CustomWorld 
-MapSelector  ..>  HasSound 
-MapSelector  ..>  ImageDisplay : «create»
-MapSelector  ..>  LastPLayed : «create»
-MapSelector  ..>  MapPreview : «create»
-MapSelector  ..>  MultiplayerPreview : «create»
-MapSelector  ..>  SettingsButton : «create»
-MapSelector  ..>  SlotMachineButton : «create»
-MapTitlescreen  -->  CustomWorld 
-MapTitlescreen  ..>  StartingButton : «create»
-MultiplayerPreview  ..>  Clickable 
-MultiplayerPreview  ..>  ClientButton : «create»
-MultiplayerPreview  ..>  ClosePopupButton : «create»
-MultiplayerPreview  ..>  HostButton : «create»
-MultiplayerPreview  ..>  QuestionPopup : «create»
-MuteButton  -->  Button 
-NetworkClient  ..>  GameMap1 : «create»
-NetworkClient  ..>  GameMap2 : «create»
-NetworkClient  ..>  GameMap3 : «create»
-NetworkClient  ..>  GameMap4 : «create»
-NetworkClient  ..>  GameMap5 : «create»
-NetworkClient  ..>  GameMap6 : «create»
-NetworkClient  ..>  GameMap7 : «create»
-NetworkClient  ..>  GameMap8 : «create»
-NetworkClient  ..>  MultiplayerConnection 
-NetworkHost  ..>  MultiplayerConnection 
-NetworkManager "1" *--> "difficulty 1" Difficulty 
-NetworkManager "1" *--> "activeWorker 1" MultiplayerConnection 
-NetworkManager  ..>  NetworkClient : «create»
-NetworkManager  ..>  NetworkHost : «create»
-NewSaveButton  -->  Button 
-NewSaveButton  ..>  DifficultySelectorPopup : «create»
-NewSaveButton  ..>  GameMap1 : «create»
-NewSaveButton  ..>  GameMap2 : «create»
-NewSaveButton  ..>  GameMap3 : «create»
-NewSaveButton  ..>  GameMap4 : «create»
-NewSaveButton  ..>  GameMap5 : «create»
-NewSaveButton  ..>  GameMap6 : «create»
-NewSaveButton  ..>  GameMap7 : «create»
-NewSaveButton  ..>  GameMap8 : «create»
-Path  -->  Entity 
-Path  ..>  Hitbox : «create»
-PauseMenu "1" *--> "backButton 1" BackButton 
-PauseMenu  ..>  BackButton : «create»
-PauseMenu "1" *--> "playOnButton 1" PlayOnButton 
-PauseMenu  ..>  PlayOnButton : «create»
-PauseMenu  -->  PopupScreen 
-PauseMenu  ..>  RetryButton : «create»
-PauseMenu "1" *--> "retryButton 1" RetryButton 
-PauseMenu "1" *--> "settingsButton 1" SettingsButton 
-PauseMenu  ..>  SettingsButton : «create»
-PauseMenu  ..>  WaveResetButton : «create»
-PauseMenu "1" *--> "waveResetButton 1" WaveResetButton 
-PlayOnButton  -->  Button 
-Player  ..>  BackButton : «create»
-Player  ..>  HasSound 
-Player  ..>  ImageDisplay : «create»
-Player  -->  MainClass 
-Player  ..>  QuestionPopup : «create»
-Player  ..>  RetryButton : «create»
-Projectile "1" *--> "hitEnemies *" Enemy 
-Projectile  -->  Entity 
-Projectile  ..>  HasSound 
-Projectile "1" *--> "owner 1" Tower 
-QuestionPopup "1" *--> "rightButton 1" Button 
-QuestionPopup  ..>  ClosePopupButton : «create»
-QuestionPopup "1" *--> "closeButton 1" ClosePopupButton 
-QuestionPopup  -->  PopupScreen 
-RangeDisplay  -->  MainClass 
-RangeDisplay "1" *--> "OWNER 1" Tower 
-RestartMultiplayerButton  -->  Button 
-RetryButton  -->  Button 
-Rocket  ..>  HasSound 
-Rocket  ..>  ImageDisplay : «create»
-Rocket  -->  Projectile 
-Rocketlauncher  ..>  Rocket : «create»
-Rocketlauncher  -->  Tower 
-SaveManager  ..>  Saveable 
-SellButton  -->  Button 
-SellButton  ..>  HasSound 
-SellButton "1" *--> "player 1" Player 
-SellButton "1" *--> "tower 1" Tower 
-SettingsButton  -->  Button 
-SettingsButton  ..>  SettingsPopup : «create»
-SettingsPopup  ..>  ClosePopupButton : «create»
-SettingsPopup "1" *--> "closeButton 1" ClosePopupButton 
-SettingsPopup  ..>  DeveloperNotesButton : «create»
-SettingsPopup "1" *--> "DeveloperNotesButton 1" DeveloperNotesButton 
-SettingsPopup "1" *--> "GoToTutButton 1" GoToTutButton 
-SettingsPopup  ..>  GoToTutButton : «create»
-SettingsPopup "1" *--> "muteButton 1" MuteButton 
-SettingsPopup  ..>  MuteButton : «create»
-SettingsPopup  -->  PopupScreen 
-SettingsPopup "1" *--> "songDropDown 1" SongDropDown 
-SettingsPopup  ..>  SongDropDown : «create»
-SettingsPopup  ..>  VolumeSlider : «create»
-SettingsPopup "1" *--> "volumeSlider 1" VolumeSlider 
-SlotMachineButton  -->  Button 
-SlotMachineButton  ..>  Gambling : «create»
-SlotMachineButtonGamble  -->  Button 
-SlotMachineButtonGamble  ..>  GamblingWonCredits : «create»
-SlotMachineButtonGamble  ..>  ImageDisplay : «create»
-Sniper  -->  Tower 
-SongButton  ..>  Clickable 
-SongButton  ..>  HasSound 
-SongButton  -->  MainClass 
-SongDropDown  ..>  Clickable 
-SongDropDown  -->  MainClass 
-SongDropDown "1" *--> "songButtons *" SongButton 
-SongDropDown  ..>  SongButton : «create»
-StartingButton  -->  Button 
-StartingButton  ..>  MapSelector : «create»
-StartingButton  ..>  TutorialText : «create»
-TestBloon  -->  Enemy 
-TestProjectile  -->  Projectile 
-TestTower  ..>  TestProjectile : «create»
-TestTower  -->  Tower 
-Textboard  -->  MainClass 
-Tower  ..>  Animations 
-Tower  ..>  Clickable 
-Tower "1" *--> "targetedEnemy 1" Enemy 
-Tower  -->  Entity 
-Tower  ..>  HasSound 
-Tower "1" *--> "projectileToShoot 1" Projectile 
-Tower  ..>  RangeDisplay : «create»
-Tower "1" *--> "rangeDisplay 1" RangeDisplay 
-TowerSelector  ..>  Clickable 
-TowerSelector  -->  MainClass 
-TowerSelector "1" *--> "tower 1" Tower 
-TowerSelectorSpawner  -->  MainClass 
-TowerSelectorSpawner  ..>  TowerSelector : «create»
-TrapTower  ..>  Clickable 
-TrapTower  ..>  Explosion : «create»
-TrapTower  -->  Tower 
-TutorialHud  -->  Button 
-TutorialHud  ..>  Clickable 
-TutorialHud  ..>  TutorialMap : «create»
-TutorialMap  ..>  ClickawayImageDisplay : «create»
-TutorialMap  -->  GameMap 
-TutorialText  -->  CustomWorld 
-TutorialText  ..>  TutorialHud : «create»
-UpgradeMenu "1" *--> "player 1" Player 
-UpgradeMenu  ..>  SellButton : «create»
-UpgradeMenu "1" *--> "sellButton 1" SellButton 
-UpgradeMenu "1" *--> "tower 1" Tower 
-UpgradeMenu "1" *--> "path1 1" UpgradePath 
-UpgradeMenu  ..>  UpgradePath : «create»
-UpgradePath  ..>  Clickable 
-UpgradePath "1" *--> "tower 1" Tower 
-UpgradePath  ..>  UpgradeDescriptionOverlay : «create»
-VolumeSlider  ..>  Clickable 
-VolumeSlider  -->  MainClass 
-WaveManager  -->  MainClass 
-WaveResetButton  -->  Button 
-WaveResetButton  ..>  Clickable 
+AntiCheat --> MainClass
+BackButton --> Button
+BackButton ..> MapSelector : «create»
+Button ..> Clickable
+Button "1" *-- "owner 1" PopupScreen
+ClickawayImageDisplay ..> Clickable
+ClickawayImageDisplay --> ImageDisplay
+ClientButton --> Button
+ClientButton ..> IPMenuOverlay : «create»
+ClosePopupButton --> Button
+DevNotesMap ..> BackButton : «create»
+DevNotesMap --> CustomWorld
+DeveloperNotesButton --> Button
+DeveloperNotesButton ..> DevNotesMap : «create»
+GameMap --> Difficulty
+DifficultySelector --> Button
+DifficultySelector "1" *-- "difficulty 1" Difficulty
+DifficultySelector "1" *-- "map 1" GameMap
+DifficultySelectorPopup "1" *-- "closeButton 1" ClosePopupButton
+DifficultySelectorPopup ..> ClosePopupButton : «create»
+DifficultySelectorPopup ..> DifficultySelector : «create»
+DifficultySelectorPopup "1" *-- "map 1" GameMap
+DifficultySelectorPopup --> PopupScreen
+Enemy ..> EnemyHitbox : «create»
+Enemy --> Entity
+EnemyHitbox --> Hitbox
+EnemyLevel1 --> Enemy
+EnemyLevel2 --> Enemy
+EnemyLevel3 --> Enemy
+EnemyLevel4 --> Enemy
+EnemyLevel5 --> Enemy
+EnemyLevel6 --> Enemy
+Entity ..> Hitbox : «create»
+Entity --> MainClass
+ExampleActor ..> Clickable
+ExampleActor ..> HasSound
+ExampleActor --> MainClass
+Explosion ..> HasSound
+Explosion --> Projectile
+FlameProjectile --> Projectile
+Flamethrower ..> FlameProjectile : «create»
+Flamethrower --> Tower
+Gambling ..> BackButton : «create»
+Gambling --> CustomWorld
+Gambling "1" *-- "slot1 1" ImageDisplay
+Gambling ..> ImageDisplay : «create»
+Gambling ..> SlotMachineButtonGamble : «create»
+GamblingWonCredits ..> BackButton : «create»
+GamblingWonCredits --> CustomWorld
+GamblingWonCredits ..> HasSound
+GamblingWonCredits ..> TextBlock : «create»
+GameMap ..> BackButton : «create»
+GameMap "1" *-- "cursor 1" Cursor
+GameMap ..> Cursor : «create»
+GameMap --> CustomWorld
+GameMap "1" *-- "difficulty 1" Difficulty
+GameMap "1" *-- "aliveEnemies *" Enemy
+GameMap ..> GameSaveManager : «create»
+GameMap "1" *-- "gameSaveManager 1" GameSaveManager
+GameMap ..> HasSound
+GameMap ..> Path : «create»
+GameMap ..> PauseMenu : «create»
+GameMap ..> PlayOnButton : «create»
+GameMap ..> Player : «create»
+GameMap "1" *-- "player 1" Player
+GameMap ..> QuestionPopup : «create»
+GameMap ..> RestartMultiplayerButton : «create»
+GameMap ..> TowerSelectorSpawner : «create»
+GameMap ..> UpgradeMenu : «create»
+GameMap "1" *-- "upgradeMenu 1" UpgradeMenu
+GameMap "1" *-- "waveManager 1" WaveManager
+GameMap1 --> GameMap
+GameMap2 --> GameMap
+GameMap3 --> GameMap
+GameMap4 --> GameMap
+GameMap5 --> GameMap
+GameMap6 --> GameMap
+GameMap7 --> GameMap
+GameMap8 --> GameMap
+GameSaveManager ..> Saveable
+GoToTutButton --> Button
+GoToTutButton ..> MapTitlescreen : «create»
+Helicopter --> Tower
+HelicopterPad ..> Helicopter : «create»
+HelicopterPad --> Tower
+Hitbox "1" *-- "owner 1" Entity
+Hitbox --> MainClass
+HomingProjectile "1" *-- "targetedEnemy 1" Enemy
+HomingProjectile --> Projectile
+HomingTower ..> HomingProjectile : «create»
+HomingTower --> Tower
+HostButton --> Button
+IPMenuOverlay ..> Clickable
+IPMenuOverlay --> PopupScreen
+Ice ..> HasSound
+Ice --> Projectile
+IceTower ..> Ice : «create»
+IceTower --> Tower
+ImageDisplay --> MainClass
+LastPLayed --> MainClass
+LoadSaveButton --> Button
+LoadSaveButton ..> GameMap1 : «create»
+LoadSaveButton ..> GameMap2 : «create»
+LoadSaveButton ..> GameMap3 : «create»
+LoadSaveButton ..> GameMap4 : «create»
+LoadSaveButton ..> GameMap5 : «create»
+LoadSaveButton ..> GameMap6 : «create»
+LoadSaveButton ..> GameMap7 : «create»
+LoadSaveButton ..> GameMap8 : «create»
+MapPreview ..> Clickable
+MapPreview ..> ClosePopupButton : «create»
+MapPreview ..> GameSaveManager : «create»
+MapPreview ..> LoadSaveButton : «create»
+MapPreview ..> NewSaveButton : «create»
+MapPreview ..> QuestionPopup : «create»
+MapSelector --> CustomWorld
+MapSelector ..> HasSound
+MapSelector ..> ImageDisplay : «create»
+MapSelector ..> LastPLayed : «create»
+MapSelector ..> MapPreview : «create»
+MapSelector ..> MultiplayerPreview : «create»
+MapSelector ..> SettingsButton : «create»
+MapSelector ..> SlotMachineButton : «create»
+MapTitlescreen --> CustomWorld
+MapTitlescreen ..> StartingButton : «create»
+MultiplayerPreview ..> Clickable
+MultiplayerPreview ..> ClientButton : «create»
+MultiplayerPreview ..> ClosePopupButton : «create»
+MultiplayerPreview ..> HostButton : «create»
+MultiplayerPreview ..> QuestionPopup : «create»
+MuteButton --> Button
+NetworkClient ..> GameMap1 : «create»
+NetworkClient ..> GameMap2 : «create»
+NetworkClient ..> GameMap3 : «create»
+NetworkClient ..> GameMap4 : «create»
+NetworkClient ..> GameMap5 : «create»
+NetworkClient ..> GameMap6 : «create»
+NetworkClient ..> GameMap7 : «create»
+NetworkClient ..> GameMap8 : «create»
+NetworkClient ..> MultiplayerConnection
+NetworkHost ..> MultiplayerConnection
+NetworkManager "1" *-- "difficulty 1" Difficulty
+NetworkManager "1" *-- "activeWorker 1" MultiplayerConnection
+NetworkManager ..> NetworkClient : «create»
+NetworkManager ..> NetworkHost : «create»
+NewSaveButton --> Button
+NewSaveButton ..> DifficultySelectorPopup : «create»
+NewSaveButton ..> GameMap1 : «create»
+NewSaveButton ..> GameMap2 : «create»
+NewSaveButton ..> GameMap3 : «create»
+NewSaveButton ..> GameMap4 : «create»
+NewSaveButton ..> GameMap5 : «create»
+NewSaveButton ..> GameMap6 : «create»
+NewSaveButton ..> GameMap7 : «create»
+NewSaveButton ..> GameMap8 : «create»
+Path --> Entity
+Path ..> Hitbox : «create»
+PauseMenu "1" *-- "backButton 1" BackButton
+PauseMenu ..> BackButton : «create»
+PauseMenu "1" *-- "playOnButton 1" PlayOnButton
+PauseMenu ..> PlayOnButton : «create»
+PauseMenu --> PopupScreen
+PauseMenu ..> RetryButton : «create»
+PauseMenu "1" *-- "retryButton 1" RetryButton
+PauseMenu "1" *-- "settingsButton 1" SettingsButton
+PauseMenu ..> SettingsButton : «create»
+PauseMenu ..> WaveResetButton : «create»
+PauseMenu "1" *-- "waveResetButton 1" WaveResetButton
+PlayOnButton --> Button
+Player ..> BackButton : «create»
+Player ..> HasSound
+Player ..> ImageDisplay : «create»
+Player --> MainClass
+Player ..> QuestionPopup : «create»
+Player ..> RetryButton : «create»
+Projectile "1" *-- "hitEnemies *" Enemy
+Projectile --> Entity
+Projectile ..> HasSound
+Projectile "1" *-- "owner 1" Tower
+QuestionPopup "1" *-- "rightButton 1" Button
+QuestionPopup ..> ClosePopupButton : «create»
+QuestionPopup "1" *-- "closeButton 1" ClosePopupButton
+QuestionPopup --> PopupScreen
+RangeDisplay --> MainClass
+RangeDisplay "1" *-- "OWNER 1" Tower
+RestartMultiplayerButton --> Button
+RetryButton --> Button
+Rocket ..> HasSound
+Rocket ..> ImageDisplay : «create»
+Rocket --> Projectile
+Rocketlauncher ..> Rocket : «create»
+Rocketlauncher --> Tower
+SaveManager ..> Saveable
+SellButton --> Button
+SellButton ..> HasSound
+SellButton "1" *-- "player 1" Player
+SellButton "1" *-- "tower 1" Tower
+SettingsButton --> Button
+SettingsButton ..> SettingsPopup : «create»
+SettingsPopup ..> ClosePopupButton : «create»
+SettingsPopup "1" *-- "closeButton 1" ClosePopupButton
+SettingsPopup ..> DeveloperNotesButton : «create»
+SettingsPopup "1" *-- "DeveloperNotesButton 1" DeveloperNotesButton
+SettingsPopup "1" *-- "GoToTutButton 1" GoToTutButton
+SettingsPopup ..> GoToTutButton : «create»
+SettingsPopup "1" *-- "muteButton 1" MuteButton
+SettingsPopup ..> MuteButton : «create»
+SettingsPopup --> PopupScreen
+SettingsPopup "1" *-- "songDropDown 1" SongDropDown
+SettingsPopup ..> SongDropDown : «create»
+SettingsPopup ..> VolumeSlider : «create»
+SettingsPopup "1" *-- "volumeSlider 1" VolumeSlider
+SlotMachineButton --> Button
+SlotMachineButton ..> Gambling : «create»
+SlotMachineButtonGamble --> Button
+SlotMachineButtonGamble ..> GamblingWonCredits : «create»
+SlotMachineButtonGamble ..> ImageDisplay : «create»
+Sniper --> Tower
+SongButton ..> Clickable
+SongButton ..> HasSound
+SongButton --> MainClass
+SongDropDown ..> Clickable
+SongDropDown --> MainClass
+SongDropDown "1" *-- "songButtons *" SongButton
+SongDropDown ..> SongButton : «create»
+StartingButton --> Button
+StartingButton ..> MapSelector : «create»
+StartingButton ..> TutorialText : «create»
+TestBloon --> Enemy
+TestProjectile --> Projectile
+TestTower ..> TestProjectile : «create»
+TestTower --> Tower
+TextBlock --> MainClass
+Textboard --> MainClass
+Tower ..> Animations
+Tower ..> Clickable
+Tower "1" *-- "targetedEnemy 1" Enemy
+Tower --> Entity
+Tower ..> HasSound
+Tower "1" *-- "projectileToShoot 1" Projectile
+Tower ..> RangeDisplay : «create»
+Tower "1" *-- "rangeDisplay 1" RangeDisplay
+TowerSelector ..> Clickable
+TowerSelector --> MainClass
+TowerSelector "1" *-- "tower 1" Tower
+TowerSelectorSpawner --> MainClass
+TowerSelectorSpawner ..> TowerSelector : «create»
+TrapTower ..> Clickable
+TrapTower ..> Explosion : «create»
+TrapTower --> Tower
+TutorialHud --> Button
+TutorialHud ..> Clickable
+TutorialHud ..> TutorialMap : «create»
+TutorialMap ..> ClickawayImageDisplay : «create»
+TutorialMap --> GameMap
+TutorialText --> CustomWorld
+TutorialText ..> TutorialHud : «create»
+UpgradeMenu "1" *-- "player 1" Player
+UpgradeMenu ..> SellButton : «create»
+UpgradeMenu "1" *-- "sellButton 1" SellButton
+UpgradeMenu "1" *-- "tower 1" Tower
+UpgradeMenu "1" *-- "path1 1" UpgradePath
+UpgradeMenu ..> UpgradePath : «create»
+UpgradePath ..> Clickable
+UpgradePath "1" *-- "tower 1" Tower
+UpgradePath ..> UpgradeDescriptionOverlay : «create»
+VolumeSlider ..> Clickable
+VolumeSlider --> MainClass
+WaveManager --> MainClass
+WaveResetButton --> Button
+WaveResetButton ..> Clickable
+
+```

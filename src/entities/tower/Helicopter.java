@@ -1,7 +1,5 @@
 package entities.tower;
 
-import entities.base.Tower;
-
 /**
  * @Usecase unused - not yet implemented
  */

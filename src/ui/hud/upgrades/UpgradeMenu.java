@@ -1,7 +1,7 @@
 package ui.hud.upgrades;
 
 import core.Player;
-import entities.base.Tower;
+import entities.tower.Tower;
 import greenfoot.Actor;
 import greenfoot.World;
 import ui.hud.buttons.SellButton;

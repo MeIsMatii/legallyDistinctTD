@@ -1,6 +1,5 @@
 package util.saves;
 
-import entities.base.Tower;
 import entities.tower.*;
 import greenfoot.Actor;
 import maps.levels.GameMap;

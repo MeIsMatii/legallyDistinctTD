@@ -2,9 +2,9 @@ package entities.tower;
 
 import entities.Entity;
 import entities.Hitbox;
-import entities.base.Enemy;
-import entities.base.Tower;
+import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
+import entities.projectiles.Ice;
 import greenfoot.World;
 import maps.levels.util.Path;
 import util.Clickable;

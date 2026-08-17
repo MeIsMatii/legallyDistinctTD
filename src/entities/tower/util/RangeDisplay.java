@@ -1,7 +1,7 @@
 package entities.tower.util;
 
 import core.MainClass;
-import entities.base.Tower;
+import entities.tower.Tower;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
 

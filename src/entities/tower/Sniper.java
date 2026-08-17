@@ -1,7 +1,7 @@
 package entities.tower;
 
-import entities.base.Enemy;
-import entities.base.Tower;
+import entities.enemy.Enemy;
+import util.Animations;
 
 import java.util.List;
 

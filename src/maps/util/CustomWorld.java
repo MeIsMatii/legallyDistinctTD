@@ -2,11 +2,11 @@ package maps.util;
 
 import core.Player;
 import entities.Hitbox;
-import entities.base.Enemy;
+import entities.enemy.Enemy;
 import entities.projectiles.Explosion;
-import entities.base.Projectile;
+import entities.projectiles.Projectile;
 import entities.tower.Helicopter;
-import entities.base.Tower;
+import entities.tower.Tower;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
 import maps.levels.util.MapCoordinatesUtilGuy;
@@ -28,6 +28,10 @@ import ui.settings.sound.SongDropDown;
 import ui.settings.sound.VolumeSlider;
 import util.Cursor;
 import util.multiplayer.popups.IPMenuOverlay;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * @author mathilobr>

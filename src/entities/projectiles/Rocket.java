@@ -1,9 +1,8 @@
 package entities.projectiles;
 
 import entities.Entity;
-import entities.base.Enemy;
-import entities.base.Projectile;
-import entities.base.Tower;
+import entities.enemy.Enemy;
+import entities.tower.Tower;
 import ui.common.ImageDisplay;
 import util.HasSound;
 import util.multiplayer.NetworkManager;

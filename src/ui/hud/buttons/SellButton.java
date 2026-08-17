@@ -1,7 +1,7 @@
 package ui.hud.buttons;
 
 import core.Player;
-import entities.base.Tower;
+import entities.tower.Tower;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import util.HasSound;

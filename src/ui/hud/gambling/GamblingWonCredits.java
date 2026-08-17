@@ -66,7 +66,7 @@ public class GamblingWonCredits extends CustomWorld implements HasSound {
             return;
         }
         if (creditsLocation > credits.length - 1 && !creditsDone) {
-            showText("Danke fuer's spielen;)", getWidth() / 2, getHeight() / 2);
+            showText("Danke fuer's Spielen ;)", getWidth() / 2, getHeight() / 2);
             creditsDone = true;
             return;
         }

@@ -1,8 +1,4 @@
-Here is your class diagram formatted as valid **Mermaid.md** code blocks.
-
-You can copy and paste this into any Markdown previewer that supports Mermaid (like GitHub, GitLab, VS Code, or Notion) to render the diagram.
-
-```markdown
+The full diagram with associations
 ```mermaid
 classDiagram
 direction BT
@@ -1314,9 +1310,5 @@ VolumeSlider --> MainClass
 WaveManager --> MainClass
 WaveResetButton --> Button
 WaveResetButton ..> Clickable
-
-```
-
-```
 
 ```

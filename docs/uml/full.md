@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
 direction BT
 class Animations {
@@ -1197,3 +1198,4 @@ VolumeSlider  -->  MainClass
 WaveManager  -->  MainClass 
 WaveResetButton  -->  Button 
 WaveResetButton  ..>  Clickable 
+```

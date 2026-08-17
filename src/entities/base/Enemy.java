@@ -1,7 +1,8 @@
-package entities.enemy;
+package entities.base;
 
 import core.Player;
 import entities.Entity;
+import entities.enemy.EnemyHitbox;
 import greenfoot.World;
 import maps.levels.GameMap;
 import maps.levels.util.Path;

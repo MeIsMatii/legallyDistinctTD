@@ -1,6 +1,7 @@
 package entities.projectiles;
 
-import entities.tower.Tower;
+import entities.base.Projectile;
+import entities.base.Tower;
 import greenfoot.GreenfootImage;
 /**
  * @author Mathilo

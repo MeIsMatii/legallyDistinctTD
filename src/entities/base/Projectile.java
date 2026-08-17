@@ -1,8 +1,6 @@
-package entities.projectiles;
+package entities.base;
 
 import entities.Entity;
-import entities.enemy.Enemy;
-import entities.tower.Tower;
 import greenfoot.World;
 import maps.levels.GameMap;
 import util.HasSound;

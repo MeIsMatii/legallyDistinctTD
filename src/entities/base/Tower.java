@@ -1,9 +1,7 @@
-package entities.tower;
+package entities.base;
 
 import entities.Entity;
 import entities.Hitbox;
-import entities.enemy.Enemy;
-import entities.projectiles.Projectile;
 import entities.tower.util.RangeDisplay;
 import greenfoot.Color;
 import greenfoot.Greenfoot;
@@ -711,6 +709,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }*/
     }
 
-    abstract void upgrade(int path);
+    public abstract void upgrade(int path);
     ///</UPGRADES>
 }

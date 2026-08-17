@@ -1,6 +1,6 @@
 package ui.hud;
 
-import entities.tower.Tower;
+import entities.base.Tower;
 import greenfoot.Actor;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;

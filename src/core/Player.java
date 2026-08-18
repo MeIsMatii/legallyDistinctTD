@@ -32,7 +32,7 @@ public class Player extends MainClass implements HasSound {
         oldCoins = 0;
         oldHealth = 0;
 
-    }                                               //noch sehr stolz auf mich
+    }
 
     public int getCoins() {
         return coins;
@@ -81,14 +81,12 @@ public class Player extends MainClass implements HasSound {
     public void addedToWorld(World world) {
         world.addObject(new ImageDisplay("heart.png", 30, 30), 40, 40);
         world.showText("$", 1778, 33); //statt coin
-        //world.addObject(new ImageDisplay("Coin.png", 45, 45), 1730, 40);
     }
 
 
     public void damage(int damage) {
         setHealth(health - damage);
         if (health <= 0 && !isGameOver) {
-            //getWorld().showText("you lost", 400, 400);
             QuestionPopup questionPopup = new QuestionPopup("You lost!\n Restart would you like start a new game?", new BackButton(), new RetryButton());
             getWorld().removeObject(questionPopup.getCloseButton());
             questionPopup.setCloseButton(null);

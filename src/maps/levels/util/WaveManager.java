@@ -1,6 +1,7 @@
 package maps.levels.util;
 
 import core.MainClass;
+import entities.base.Enemy;
 import entities.enemy.*;
 import greenfoot.Greenfoot;
 

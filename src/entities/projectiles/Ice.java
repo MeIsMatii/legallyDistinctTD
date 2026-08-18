@@ -1,9 +1,10 @@
 package entities.projectiles;
 
 import entities.Entity;
-import entities.enemy.Enemy;
+import entities.base.Enemy;
+import entities.base.Projectile;
 import entities.tower.IceTower;
-import entities.tower.Tower;
+import entities.base.Tower;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import util.HasSound;
@@ -21,7 +22,7 @@ public class Ice extends Projectile implements HasSound {
 
     public Ice(Tower owner) {
         super(owner);
-        GreenfootImage img = new GreenfootImage("ice.png");
+        GreenfootImage img = new GreenfootImage("projectiles/ice.png");
         img.scale(150, 150);
         img.rotate(90);
         setImage(img);
@@ -29,7 +30,7 @@ public class Ice extends Projectile implements HasSound {
     }
     public Ice() {
         super();
-        GreenfootImage img = new GreenfootImage("ice.png");
+        GreenfootImage img = new GreenfootImage("projectiles/ice.png");
         img.scale(150, 150);
         img.rotate(90);
         setImage(img);

@@ -1,5 +1,6 @@
 package entities.tower;
 
+import entities.base.Tower;
 import entities.projectiles.Ice;
 import greenfoot.World;
 /**
@@ -60,7 +61,7 @@ public class IceTower extends Tower {
 
     @Override
     public int getAnimationSpeed() {
-        return 1;
+        return 0;
     }
 
 

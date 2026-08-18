@@ -1,0 +1,2644 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/home/mati/gitHub/legallyDistinctTD/src</OriginalElement>
+  <nodes>
+    <node x="1578.5" y="10796.0">maps.levels.GameMap3</node>
+    <node x="2405.0" y="5828.0">ui.hud.buttons.DeveloperNotesButton</node>
+    <node x="6847.5" y="4692.0">ui.hud.towerSelector.TowerSelector</node>
+    <node x="478.5" y="6056.0">maps.levels.GameMap5</node>
+    <node x="4535.5" y="3164.0">entities.projectiles.Rocket</node>
+    <node x="695.5" y="11952.0">maps.levels.util.MapCoordinatesUtilGuy</node>
+    <node x="4841.0" y="7056.0">util.multiplayer.MultiplayerPreview</node>
+    <node x="1799.5" y="6068.0">ui.hud.gambling.SlotMachineButton</node>
+    <node x="3762.0" y="-571.5">util.Clickable</node>
+    <node x="-2.5" y="9028.0">ui.hud.buttons.RestartMultiplayerButton</node>
+    <node x="5293.0" y="8728.0">ui.hud.buttons.SellButton</node>
+    <node x="6924.0" y="5468.0">ui.hud.towerSelector.TowerSelectorSpawner</node>
+    <node x="3856.0" y="-852.0">ui.hud.Textboard</node>
+    <node x="3392.5" y="1336.0">ui.settings.sound.SongButton</node>
+    <node x="4702.0" y="1348.0">entities.enemy.EnemyLevel4</node>
+    <node x="2348.5" y="1348.0">ui.common.TutorialHud</node>
+    <node x="7158.5" y="-620.0">maps.levels.util.antiCheat.AntiCheat</node>
+    <node x="4016.0" y="404.0">util.HasSound</node>
+    <node x="5971.5" y="-741.0">entities.Hitbox</node>
+    <node x="6042.0" y="1348.0">entities.enemy.EnemyLevel3</node>
+    <node x="1312.5" y="11024.0">util.multiplayer.NetworkClient</node>
+    <node x="5849.5" y="-205.0">entities.Entity</node>
+    <node x="2613.5" y="6068.0">ui.hud.buttons.GoToTutButton</node>
+    <node x="2702.0" y="-72.0">ui.hud.PopupScreen</node>
+    <node x="6731.5" y="343.0">maps.levels.util.Path</node>
+    <node x="2594.0" y="5480.5">maps.menu.MapTitlescreen</node>
+    <node x="3151.5" y="7044.0">ui.settings.SettingsPopup</node>
+    <node x="4374.5" y="6359.0">util.saves.GameSaveManager</node>
+    <node x="599.5" y="11471.5">entities.tower.upgrades.Upgrade</node>
+    <node x="1398.5" y="5816.0">maps.levels.GameMap8</node>
+    <node x="5071.5" y="3127.0">entities.projectiles.HomingProjectile</node>
+    <node x="5542.0" y="1348.0">entities.enemy.EnemyLevel2</node>
+    <node x="1671.5" y="8396.0">maps.menu.PauseMenu</node>
+    <node x="3331.5" y="5288.0">ui.hud.buttons.DifficultySelector</node>
+    <node x="4871.5" y="4679.5">entities.tower.TestTower</node>
+    <node x="-58.0" y="11255.0">util.multiplayer.NetworkManager</node>
+    <node x="2171.0" y="3176.0">ui.hud.gambling.GamblingWonCredits</node>
+    <node x="2279.0" y="6056.0">ui.hud.buttons.MuteButton</node>
+    <node x="5070.5" y="8299.0">core.Player</node>
+    <node x="2158.5" y="5480.5">ui.settings.DevNotesMap</node>
+    <node x="5431.5" y="4655.5">entities.tower.Flamethrower</node>
+    <node x="3704.5" y="307.0">util.multiplayer.popups.IPMenuOverlay</node>
+    <node x="5151.5" y="4679.5">entities.tower.HomingTower</node>
+    <node x="1357.0" y="5407.5">ui.hud.gambling.Gambling</node>
+    <node x="4508.5" y="7480.5">ui.hud.LastPLayed</node>
+    <node x="-160.0" y="-1064.5">core.MainClass</node>
+    <node x="4300.0" y="3164.0">entities.projectiles.Ice</node>
+    <node x="5440.5" y="2036.0">entities.projectiles.FlameProjectile</node>
+    <node x="3901.5" y="7419.0">maps.menu.MapPreview</node>
+    <node x="1840.5" y="7031.0">ui.hud.buttons.NewSaveButton</node>
+    <node x="6411.5" y="4571.5">ui.hud.upgrades.UpgradePath</node>
+    <node x="4630.0" y="235.0">entities.base.Enemy</node>
+    <node x="1198.5" y="6056.0">maps.levels.GameMap2</node>
+    <node x="3704.5" y="1348.0">util.multiplayer.popups.ClientButton</node>
+    <node x="404.5" y="8008.0">ui.hud.buttons.WaveResetButton</node>
+    <node x="1325.5" y="-595.5">ui.common.ImageDisplay</node>
+    <node x="337.0" y="11867.0">ui.settings.sound.SoundSettings</node>
+    <node x="5343.0" y="1348.0">entities.enemy.EnemyLevel1</node>
+    <node x="4491.5" y="-72.0">entities.enemy.EnemyHitbox</node>
+    <node x="679.0" y="5816.0">maps.levels.GameMap7</node>
+    <node x="4902.0" y="1348.0">entities.enemy.EnemyLevel5</node>
+    <node x="3891.0" y="5971.0">ui.hud.QuestionPopup</node>
+    <node x="2551.5" y="1287.0">ui.hud.gambling.TextBlock</node>
+    <node x="-81.5" y="6056.0">maps.levels.GameMap4</node>
+    <node x="-154.5" y="-108.0">ui.common.ClickawayImageDisplay</node>
+    <node x="3127.5" y="5468.0">ui.hud.buttons.ClosePopupButton</node>
+    <node x="-100.0" y="367.0">maps.levels.tutorial.TutorialMap</node>
+    <node x="4283.5" y="6008.5">util.saves.Saveable</node>
+    <node x="1994.0" y="1324.0">maps.util.CustomWorld</node>
+    <node x="-155.5" y="11951.5">util.Tuple</node>
+    <node x="5647.0" y="823.0">entities.tower.util.RangeDisplay</node>
+    <node x="4591.5" y="4691.5">entities.tower.Rocketlauncher</node>
+    <node x="118.0" y="11036.0">util.multiplayer.NetworkHost</node>
+    <node x="1049.0" y="7043.0">ui.hud.buttons.LoadSaveButton</node>
+    <node x="1872.0" y="7996.0">ui.common.BackButton</node>
+    <node x="4431.5" y="1131.0">entities.base.Projectile</node>
+    <node x="879.5" y="6056.0">maps.levels.GameMap1</node>
+    <node x="5351.5" y="5419.5">entities.tower.HelicopterPad</node>
+    <node x="4311.5" y="4619.0">entities.tower.IceTower</node>
+    <node x="1570.5" y="4728.0">ui.hud.gambling.SlotMachineButtonGamble</node>
+    <node x="3949.5" y="3139.0">entities.projectiles.Explosion</node>
+    <node x="5242.0" y="908.0">entities.enemy.EnemyLevel6</node>
+    <node x="3880.0" y="9004.0">util.Cursor</node>
+    <node x="2487.0" y="3200.5">maps.levels.tutorial.TutorialText</node>
+    <node x="6411.5" y="800.0">util.Animations</node>
+    <node x="4767.0" y="6056.0">util.multiplayer.popups.HostButton</node>
+    <node x="198.5" y="6056.0">maps.levels.GameMap6</node>
+    <node x="6235.5" y="1324.0">entities.ExampleActor</node>
+    <node x="1839.0" y="7456.0">ui.hud.buttons.SettingsButton</node>
+    <node x="5615.0" y="4403.5">entities.tower.Helicopter</node>
+    <node x="1811.0" y="403.0">ui.hud.buttons.Button</node>
+    <node x="6155.0" y="4679.5">entities.tower.Sniper</node>
+    <node x="6091.5" y="8991.0">ui.hud.upgrades.UpgradeMenu</node>
+    <node x="3283.0" y="5804.0">ui.hud.buttons.DifficultySelectorPopup</node>
+    <node x="3843.5" y="7776.0">maps.menu.MapSelector</node>
+    <node x="3911.5" y="4631.5">entities.tower.TrapTower</node>
+    <node x="3346.0" y="3115.0">ui.settings.sound.SongDropDown</node>
+    <node x="4132.0" y="6935.0">util.saves.SaveManager</node>
+    <node x="2476.5" y="4728.0">ui.hud.buttons.StartingButton</node>
+    <node x="1627.0" y="8008.0">ui.hud.buttons.RetryButton</node>
+    <node x="7178.0" y="4691.0">maps.levels.GameMap.Difficulty</node>
+    <node x="4825.0" y="3188.5">entities.projectiles.TestProjectile</node>
+    <node x="6358.0" y="3175.5">ui.hud.UpgradeDescriptionOverlay</node>
+    <node x="-14.0" y="10820.5">util.multiplayer.MultiplayerConnection</node>
+    <node x="2973.5" y="6020.0">ui.settings.sound.VolumeSlider</node>
+    <node x="6653.0" y="8979.0">maps.levels.util.WaveManager</node>
+    <node x="3739.0" y="9331.0">maps.levels.GameMap</node>
+    <node x="640.0" y="8008.0">ui.hud.buttons.PlayOnButton</node>
+    <node x="5779.0" y="2167.0">entities.base.Tower</node>
+    <node x="5103.0" y="1348.0">entities.enemy.TestBloon</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="entities.enemy.EnemyHitbox" target="entities.Hitbox" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4679.0" y="-508.0" />
+      <point x="5939.0" y="-508.0" />
+      <point x="5939.0" y="-768.0" />
+      <point x="6159.0" y="-768.0" />
+      <point x="0.0" y="-213.0" />
+    </edge>
+    <edge source="ui.hud.buttons.RestartMultiplayerButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="119.0" y="7092.0" />
+      <point x="-101.0" y="7092.0" />
+      <point x="-101.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.common.ClickawayImageDisplay" target="util.Clickable" relationship="REALIZATION">
+      <point x="86.75" y="-80.0" />
+      <point x="105.75" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.common.BackButton" target="maps.menu.MapSelector" relationship="CREATE">
+      <point x="43.5" y="-56.0" />
+      <point x="2002.5" y="7912.0" />
+      <point x="3819.0" y="7912.0" />
+      <point x="3819.0" y="7732.0" />
+      <point x="3919.0" y="7732.0" />
+      <point x="0.0" y="-56.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.SettingsButton" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="1779.0" y="8372.0" />
+      <point x="1759.0" y="8372.0" />
+      <point x="1759.0" y="8152.0" />
+      <point x="2119.0" y="8152.0" />
+      <point x="2119.0" y="7932.0" />
+      <point x="2059.0" y="7932.0" />
+      <point x="2059.0" y="7812.0" />
+      <point x="1959.0" y="7812.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.GoToTutButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="42.75" y="-44.0" />
+      <point x="2741.75" y="5732.0" />
+      <point x="2839.0" y="5732.0" />
+      <point x="2839.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="core.Player" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="5259.0" y="9192.0" />
+      <point x="5259.0" y="8672.0" />
+      <point x="5319.0" y="8672.0" />
+      <point x="5319.0" y="8272.0" />
+      <point x="5106.666666666667" y="8272.0" />
+      <point x="-72.33333333333334" y="-153.0" />
+    </edge>
+    <edge source="ui.hud.gambling.Gambling" target="ui.common.BackButton" relationship="CREATE">
+      <point x="0.0" y="104.5" />
+      <point x="1439.0" y="5792.0" />
+      <point x="1179.0" y="5792.0" />
+      <point x="1179.0" y="6252.0" />
+      <point x="1299.0" y="6252.0" />
+      <point x="1299.0" y="7852.0" />
+      <point x="2139.0" y="7852.0" />
+      <point x="2139.0" y="7952.0" />
+      <point x="2002.5" y="7952.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="maps.menu.PauseMenu" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="2039.0" y="9192.0" />
+      <point x="2039.0" y="8352.0" />
+      <point x="1707.3333333333333" y="8352.0" />
+      <point x="-71.66666666666666" y="-56.0" />
+    </edge>
+    <edge source="ui.settings.sound.SongDropDown" target="ui.settings.sound.SongButton" relationship="CREATE">
+      <point x="69.75" y="-117.0" />
+      <point x="3508.75" y="3072.0" />
+      <point x="3522.25" y="3072.0" />
+      <point x="43.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.gambling.GamblingWonCredits" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="-54.0" y="-56.0" />
+      <point x="2225.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="maps.levels.GameMap.Difficulty" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="7179.0" y="9212.0" />
+      <point x="7179.0" y="5232.0" />
+      <point x="7219.0" y="5232.0" />
+      <point x="7219.0" y="4892.0" />
+      <point x="7228.5" y="4892.0" />
+      <point x="-50.5" y="81.0" />
+    </edge>
+    <edge source="ui.hud.buttons.StartingButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2559.0" y="4692.0" />
+      <point x="2419.0" y="4692.0" />
+      <point x="2419.0" y="3112.0" />
+      <point x="2319.0" y="3112.0" />
+      <point x="2319.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.base.Enemy" target="entities.enemy.EnemyHitbox" relationship="CREATE">
+      <point x="-54.5" y="-237.0" />
+      <point x="4684.5" y="172.0" />
+      <point x="4679.0" y="172.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelector" target="maps.levels.GameMap" relationship="TO_ONE">
+      <point x="73.75" y="-44.0" />
+      <point x="3552.75" y="5252.0" />
+      <point x="3659.0" y="5252.0" />
+      <point x="3659.0" y="5612.0" />
+      <point x="4259.0" y="5612.0" />
+      <point x="4259.0" y="6912.0" />
+      <point x="4099.0" y="6912.0" />
+      <point x="4099.0" y="7372.0" />
+      <point x="4139.0" y="7372.0" />
+      <point x="4139.0" y="9152.0" />
+      <point x="3859.0" y="9152.0" />
+      <point x="-80.0" y="-681.0" />
+    </edge>
+    <edge source="ui.common.TutorialHud" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="47.0" y="-44.0" />
+      <point x="2466.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.Textboard" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="3939.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="entities.base.Tower" target="entities.tower.util.RangeDisplay" relationship="CREATE">
+      <point x="40.0" y="-1065.0" />
+      <point x="5979.0" y="2052.0" />
+      <point x="5905.0" y="2052.0" />
+      <point x="86.0" y="129.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-81.0" />
+      <point x="1959.0" y="6992.0" />
+      <point x="2059.0" y="6992.0" />
+      <point x="2059.0" y="4752.0" />
+      <point x="2019.0" y="4752.0" />
+      <point x="2019.0" y="3132.0" />
+      <point x="1979.0" y="3132.0" />
+      <point x="1979.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.common.ImageDisplay" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-67.5" />
+      <point x="1499.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.hud.buttons.DeveloperNotesButton" target="ui.settings.DevNotesMap" relationship="CREATE">
+      <point x="-57.0" y="-44.0" />
+      <point x="2462.0" y="5712.0" />
+      <point x="2239.0" y="5712.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="util.multiplayer.popups.IPMenuOverlay" target="ui.hud.PopupScreen" relationship="GENERALIZATION">
+      <point x="-47.25" y="-165.0" />
+      <point x="3751.75" y="272.0" />
+      <point x="3159.0" y="272.0" />
+      <point x="3159.0" y="52.0" />
+      <point x="2817.5" y="52.0" />
+      <point x="38.5" y="44.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="ui.hud.LastPLayed" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7632.0" />
+      <point x="4579.0" y="7632.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+    <edge source="entities.tower.Helicopter" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="0.0" y="-68.5" />
+      <point x="5699.0" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.settings.sound.SongDropDown" target="ui.settings.sound.SongButton" relationship="TO_MANY">
+      <point x="23.25" y="-117.0" />
+      <point x="3462.25" y="3072.0" />
+      <point x="3435.75" y="3072.0" />
+      <point x="-43.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.gambling.SlotMachineButtonGamble" target="ui.hud.gambling.GamblingWonCredits" relationship="CREATE">
+      <point x="64.25" y="-44.0" />
+      <point x="1763.25" y="4692.0" />
+      <point x="1759.0" y="4692.0" />
+      <point x="1759.0" y="3372.0" />
+      <point x="2279.0" y="3372.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="ui.hud.buttons.SettingsButton" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7692.0" />
+      <point x="1819.0" y="7692.0" />
+      <point x="1819.0" y="7432.0" />
+      <point x="2019.0" y="7432.0" />
+      <point x="60.0" y="-56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkHost" target="util.multiplayer.MultiplayerConnection" relationship="REALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="199.0" y="10912.0" />
+      <point x="155.5" y="10912.0" />
+      <point x="56.5" y="31.5" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="ui.hud.buttons.LoadSaveButton" relationship="CREATE">
+      <point x="-38.75" y="-93.0" />
+      <point x="3940.25" y="7392.0" />
+      <point x="3939.0" y="7392.0" />
+      <point x="3939.0" y="7252.0" />
+      <point x="1139.0" y="7252.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.base.Enemy" target="entities.Entity" relationship="GENERALIZATION">
+      <point x="54.5" y="-237.0" />
+      <point x="4793.5" y="192.0" />
+      <point x="6019.0" y="192.0" />
+      <point x="6019.0" y="172.0" />
+      <point x="6139.0" y="172.0" />
+      <point x="6139.0" y="-248.0" />
+      <point x="5892.666666666667" y="-248.0" />
+      <point x="-86.33333333333334" y="-177.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.PopupScreen" relationship="GENERALIZATION">
+      <point x="71.66666666666666" y="-56.0" />
+      <point x="1850.6666666666665" y="8252.0" />
+      <point x="3779.0" y="8252.0" />
+      <point x="3779.0" y="5172.0" />
+      <point x="3439.0" y="5172.0" />
+      <point x="3439.0" y="4612.0" />
+      <point x="3159.0" y="4612.0" />
+      <point x="3159.0" y="52.0" />
+      <point x="2817.5" y="52.0" />
+      <point x="38.5" y="44.0" />
+    </edge>
+    <edge source="entities.tower.TrapTower" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="71.66666666666666" y="-140.5" />
+      <point x="4090.666666666667" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="ui.hud.buttons.ClosePopupButton" relationship="CREATE">
+      <point x="-38.75" y="-93.0" />
+      <point x="3940.25" y="7392.0" />
+      <point x="3939.0" y="7392.0" />
+      <point x="3939.0" y="6292.0" />
+      <point x="3819.0" y="6292.0" />
+      <point x="3819.0" y="5592.0" />
+      <point x="3324.75" y="5592.0" />
+      <point x="65.75" y="44.0" />
+    </edge>
+    <edge source="ui.settings.sound.SongDropDown" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="-69.75" y="-117.0" />
+      <point x="3369.25" y="3072.0" />
+      <point x="3319.0" y="3072.0" />
+      <point x="3319.0" y="-408.0" />
+      <point x="-41.0" y="-408.0" />
+      <point x="-41.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.hud.gambling.Gambling" target="ui.common.ImageDisplay" relationship="CREATE">
+      <point x="0.0" y="104.5" />
+      <point x="1439.0" y="5652.0" />
+      <point x="1339.0" y="5652.0" />
+      <point x="1339.0" y="-88.0" />
+      <point x="3639.0" y="-88.0" />
+      <point x="3639.0" y="-428.0" />
+      <point x="1585.75" y="-428.0" />
+      <point x="86.75" y="67.5" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradePath" target="util.Clickable" relationship="REALIZATION">
+      <point x="71.66666666666666" y="-200.5" />
+      <point x="6590.666666666667" y="3312.0" />
+      <point x="6699.0" y="3312.0" />
+      <point x="6699.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.common.TutorialHud" target="maps.levels.tutorial.TutorialMap" relationship="CREATE">
+      <point x="-47.0" y="-44.0" />
+      <point x="2372.0" y="752.0" />
+      <point x="179.0" y="752.0" />
+      <point x="179.0" y="332.0" />
+      <point x="19.0" y="332.0" />
+      <point x="0.0" y="-105.0" />
+    </edge>
+    <edge source="ui.hud.gambling.Gambling" target="ui.hud.gambling.SlotMachineButtonGamble" relationship="CREATE">
+      <point x="0.0" y="104.5" />
+      <point x="1439.0" y="5652.0" />
+      <point x="1339.0" y="5652.0" />
+      <point x="1339.0" y="5352.0" />
+      <point x="1539.0" y="5352.0" />
+      <point x="1539.0" y="4672.0" />
+      <point x="1763.25" y="4672.0" />
+      <point x="64.25" y="-44.0" />
+    </edge>
+    <edge source="util.multiplayer.popups.HostButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="4859.0" y="5532.0" />
+      <point x="4379.0" y="5532.0" />
+      <point x="4379.0" y="5052.0" />
+      <point x="3679.0" y="5052.0" />
+      <point x="3679.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.buttons.WaveResetButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="47.25" y="-44.0" />
+      <point x="546.25" y="7972.0" />
+      <point x="839.0" y="7972.0" />
+      <point x="839.0" y="7052.0" />
+      <point x="459.0" y="7052.0" />
+      <point x="459.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.gambling.Gambling" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="41.0" y="-104.5" />
+      <point x="1480.0" y="5372.0" />
+      <point x="1459.0" y="5372.0" />
+      <point x="1459.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.PlayOnButton" relationship="CREATE">
+      <point x="-71.66666666666666" y="-56.0" />
+      <point x="1707.3333333333333" y="8372.0" />
+      <point x="1699.0" y="8372.0" />
+      <point x="1699.0" y="8352.0" />
+      <point x="679.0" y="8352.0" />
+      <point x="679.0" y="8132.0" />
+      <point x="679.5" y="8132.0" />
+      <point x="-39.5" y="44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelectorPopup" target="ui.hud.buttons.DifficultySelector" relationship="CREATE">
+      <point x="90.66666666666666" y="-68.0" />
+      <point x="3509.6666666666665" y="5772.0" />
+      <point x="3519.0" y="5772.0" />
+      <point x="3519.0" y="5712.0" />
+      <point x="3479.0" y="5712.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="entities.projectiles.FlameProjectile" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="5539.0" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="ui.settings.DevNotesMap" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.5" />
+      <point x="2239.0" y="5452.0" />
+      <point x="2179.0" y="5452.0" />
+      <point x="2179.0" y="3352.0" />
+      <point x="2099.0" y="3352.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.levels.util.Path" target="entities.Hitbox" relationship="CREATE">
+      <point x="53.75" y="-129.0" />
+      <point x="6892.75" y="-8.0" />
+      <point x="6739.0" y="-8.0" />
+      <point x="6739.0" y="-228.0" />
+      <point x="6259.0" y="-228.0" />
+      <point x="6259.0" y="-288.0" />
+      <point x="6252.75" y="-288.0" />
+      <point x="93.75" y="213.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.common.BackButton" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="2079.0" y="9192.0" />
+      <point x="2079.0" y="7972.0" />
+      <point x="2002.5" y="7972.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="ui.hud.gambling.SlotMachineButton" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7632.0" />
+      <point x="2259.0" y="7632.0" />
+      <point x="2259.0" y="6972.0" />
+      <point x="2019.0" y="6972.0" />
+      <point x="2019.0" y="6032.0" />
+      <point x="1849.25" y="6032.0" />
+      <point x="-49.75" y="-44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.PlayOnButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="719.0" y="7072.0" />
+      <point x="179.0" y="7072.0" />
+      <point x="179.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelectorPopup" target="ui.hud.buttons.ClosePopupButton" relationship="CREATE">
+      <point x="90.66666666666666" y="-68.0" />
+      <point x="3509.6666666666665" y="5772.0" />
+      <point x="3519.0" y="5772.0" />
+      <point x="3519.0" y="5692.0" />
+      <point x="3819.0" y="5692.0" />
+      <point x="3819.0" y="5592.0" />
+      <point x="3324.75" y="5592.0" />
+      <point x="65.75" y="44.0" />
+    </edge>
+    <edge source="ui.hud.towerSelector.TowerSelectorSpawner" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="57.5" y="-44.0" />
+      <point x="7096.5" y="5432.0" />
+      <point x="7139.0" y="5432.0" />
+      <point x="7139.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="util.multiplayer.NetworkManager" target="maps.levels.GameMap.Difficulty" relationship="TO_ONE">
+      <point x="-88.5" y="-297.0" />
+      <point x="30.5" y="11232.0" />
+      <point x="39.0" y="11232.0" />
+      <point x="39.0" y="11192.0" />
+      <point x="7219.0" y="11192.0" />
+      <point x="7219.0" y="4892.0" />
+      <point x="7228.5" y="4892.0" />
+      <point x="-50.5" y="81.0" />
+    </edge>
+    <edge source="entities.Entity" target="entities.Hitbox" relationship="CREATE">
+      <point x="86.33333333333334" y="-177.0" />
+      <point x="6065.333333333333" y="-228.0" />
+      <point x="6259.0" y="-228.0" />
+      <point x="6259.0" y="-288.0" />
+      <point x="6252.75" y="-288.0" />
+      <point x="93.75" y="213.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.QuestionPopup" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="3859.0" y="9192.0" />
+      <point x="3859.0" y="8752.0" />
+      <point x="4019.0" y="8752.0" />
+      <point x="4019.0" y="7652.0" />
+      <point x="3819.0" y="7652.0" />
+      <point x="3819.0" y="7092.0" />
+      <point x="4059.0" y="7092.0" />
+      <point x="4059.0" y="6272.0" />
+      <point x="4219.0" y="6272.0" />
+      <point x="4219.0" y="5912.0" />
+      <point x="3940.333333333333" y="5912.0" />
+      <point x="-98.66666666666666" y="-141.0" />
+    </edge>
+    <edge source="ui.hud.buttons.Button" target="util.Clickable" relationship="REALIZATION">
+      <point x="-44.0" y="-69.0" />
+      <point x="1855.0" y="372.0" />
+      <point x="1859.0" y="372.0" />
+      <point x="1859.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="util.multiplayer.NetworkManager" target="util.multiplayer.NetworkClient" relationship="CREATE">
+      <point x="88.5" y="-297.0" />
+      <point x="207.5" y="11232.0" />
+      <point x="199.0" y="11232.0" />
+      <point x="199.0" y="11212.0" />
+      <point x="299.0" y="11212.0" />
+      <point x="299.0" y="10972.0" />
+      <point x="1472.25" y="10972.0" />
+      <point x="53.25" y="-68.0" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="ui.hud.QuestionPopup" relationship="CREATE">
+      <point x="-38.75" y="-93.0" />
+      <point x="3940.25" y="7392.0" />
+      <point x="3939.0" y="7392.0" />
+      <point x="3939.0" y="7252.0" />
+      <point x="3979.0" y="7252.0" />
+      <point x="3979.0" y="7092.0" />
+      <point x="4059.0" y="7092.0" />
+      <point x="4059.0" y="6272.0" />
+      <point x="4219.0" y="6272.0" />
+      <point x="4219.0" y="5912.0" />
+      <point x="3940.333333333333" y="5912.0" />
+      <point x="-98.66666666666666" y="-141.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-69.0" />
+      <point x="1139.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="entities.tower.util.RangeDisplay" relationship="TO_ONE">
+      <point x="-120.0" y="-1065.0" />
+      <point x="5819.0" y="1732.0" />
+      <point x="5733.0" y="1732.0" />
+      <point x="-86.0" y="129.0" />
+    </edge>
+    <edge source="entities.tower.util.RangeDisplay" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="-86.0" y="129.0" />
+      <point x="5733.0" y="1772.0" />
+      <point x="5739.0" y="1772.0" />
+      <point x="5739.0" y="2132.0" />
+      <point x="5819.0" y="2132.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.hud.buttons.SettingsButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-60.0" y="-56.0" />
+      <point x="1899.0" y="7412.0" />
+      <point x="1779.0" y="7412.0" />
+      <point x="1779.0" y="5692.0" />
+      <point x="1899.0" y="5692.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelectorPopup" target="ui.hud.buttons.ClosePopupButton" relationship="TO_ONE">
+      <point x="-90.66666666666666" y="-68.0" />
+      <point x="3328.3333333333335" y="5772.0" />
+      <point x="3319.0" y="5772.0" />
+      <point x="3319.0" y="5592.0" />
+      <point x="3193.25" y="5592.0" />
+      <point x="-65.75" y="44.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.settings.sound.SongDropDown" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="3659.0" y="6232.0" />
+      <point x="3659.0" y="5672.0" />
+      <point x="3099.0" y="5672.0" />
+      <point x="3099.0" y="4532.0" />
+      <point x="3559.0" y="4532.0" />
+      <point x="3559.0" y="3092.0" />
+      <point x="3508.75" y="3092.0" />
+      <point x="69.75" y="-117.0" />
+    </edge>
+    <edge source="util.multiplayer.MultiplayerPreview" target="util.multiplayer.popups.ClientButton" relationship="CREATE">
+      <point x="-49.0" y="-56.0" />
+      <point x="4890.0" y="7012.0" />
+      <point x="4899.0" y="7012.0" />
+      <point x="4899.0" y="6192.0" />
+      <point x="4979.0" y="6192.0" />
+      <point x="4979.0" y="5032.0" />
+      <point x="3879.0" y="5032.0" />
+      <point x="3879.0" y="1312.0" />
+      <point x="3816.25" y="1312.0" />
+      <point x="37.25" y="-44.0" />
+    </edge>
+    <edge source="entities.tower.HelicopterPad" target="entities.tower.Helicopter" relationship="CREATE">
+      <point x="53.75" y="-92.5" />
+      <point x="5512.75" y="5392.0" />
+      <point x="5699.0" y="5392.0" />
+      <point x="0.0" y="68.5" />
+    </edge>
+    <edge source="maps.levels.tutorial.TutorialText" target="ui.common.TutorialHud" relationship="CREATE">
+      <point x="36.0" y="-31.5" />
+      <point x="2595.0" y="3132.0" />
+      <point x="2519.0" y="3132.0" />
+      <point x="2519.0" y="1312.0" />
+      <point x="2372.0" y="1312.0" />
+      <point x="-47.0" y="-44.0" />
+    </edge>
+    <edge source="entities.tower.Flamethrower" target="entities.projectiles.FlameProjectile" relationship="CREATE">
+      <point x="53.75" y="-116.5" />
+      <point x="5592.75" y="4352.0" />
+      <point x="5539.0" y="4352.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.MuteButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="2379.0" y="3332.0" />
+      <point x="2139.0" y="3332.0" />
+      <point x="2139.0" y="3132.0" />
+      <point x="2219.0" y="3132.0" />
+      <point x="2219.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.towerSelector.TowerSelector" target="util.Clickable" relationship="REALIZATION">
+      <point x="87.66666666666666" y="-80.0" />
+      <point x="7066.666666666667" y="4672.0" />
+      <point x="7099.0" y="4672.0" />
+      <point x="7099.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="core.Player" target="ui.hud.QuestionPopup" relationship="CREATE">
+      <point x="-72.33333333333334" y="-153.0" />
+      <point x="5106.666666666667" y="8252.0" />
+      <point x="4079.0" y="8252.0" />
+      <point x="4079.0" y="7392.0" />
+      <point x="4059.0" y="7392.0" />
+      <point x="4059.0" y="6272.0" />
+      <point x="4219.0" y="6272.0" />
+      <point x="4219.0" y="5912.0" />
+      <point x="3940.333333333333" y="5912.0" />
+      <point x="-98.66666666666666" y="-141.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap1" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6192.0" />
+      <point x="1058.75" y="6192.0" />
+      <point x="59.75" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap2" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6872.0" />
+      <point x="1259.0" y="6872.0" />
+      <point x="1259.0" y="6192.0" />
+      <point x="1258.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap3" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7272.0" />
+      <point x="1599.0" y="7272.0" />
+      <point x="1599.0" y="10772.0" />
+      <point x="1638.75" y="10772.0" />
+      <point x="-60.25" y="-56.0" />
+    </edge>
+    <edge source="entities.projectiles.HomingProjectile" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="-53.75" y="-105.0" />
+      <point x="5125.25" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap4" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6932.0" />
+      <point x="879.0" y="6932.0" />
+      <point x="879.0" y="6232.0" />
+      <point x="99.25" y="6232.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="-53.75" y="-81.0" />
+      <point x="6145.25" y="8952.0" />
+      <point x="6139.0" y="8952.0" />
+      <point x="6139.0" y="4352.0" />
+      <point x="6339.0" y="4352.0" />
+      <point x="6339.0" y="2112.0" />
+      <point x="5819.0" y="2112.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="entities.tower.IceTower" target="entities.projectiles.Ice" relationship="CREATE">
+      <point x="-53.75" y="-153.0" />
+      <point x="4365.25" y="3332.0" />
+      <point x="4379.0" y="3332.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.MuteButton" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="2429.0" y="6232.0" />
+      <point x="50.0" y="56.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="util.HasSound" relationship="REALIZATION">
+      <point x="120.0" y="-1065.0" />
+      <point x="6059.0" y="2132.0" />
+      <point x="6219.0" y="2132.0" />
+      <point x="6219.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.hud.QuestionPopup" target="ui.hud.buttons.Button" relationship="TO_ONE">
+      <point x="0.0" y="-141.0" />
+      <point x="4039.0" y="5932.0" />
+      <point x="3979.0" y="5932.0" />
+      <point x="3979.0" y="5632.0" />
+      <point x="3899.0" y="5632.0" />
+      <point x="3899.0" y="5132.0" />
+      <point x="3519.0" y="5132.0" />
+      <point x="3519.0" y="4572.0" />
+      <point x="3239.0" y="4572.0" />
+      <point x="3239.0" y="492.0" />
+      <point x="2379.0" y="492.0" />
+      <point x="2379.0" y="372.0" />
+      <point x="1943.0" y="372.0" />
+      <point x="44.0" y="-69.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="ui.hud.upgrades.UpgradePath" relationship="TO_ONE">
+      <point x="-53.75" y="-81.0" />
+      <point x="6145.25" y="8952.0" />
+      <point x="6139.0" y="8952.0" />
+      <point x="6139.0" y="8872.0" />
+      <point x="6379.0" y="8872.0" />
+      <point x="6379.0" y="4532.0" />
+      <point x="6447.333333333333" y="4532.0" />
+      <point x="-71.66666666666666" y="-200.5" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="util.Clickable" relationship="REALIZATION">
+      <point x="38.75" y="-93.0" />
+      <point x="4017.75" y="7392.0" />
+      <point x="4019.0" y="7392.0" />
+      <point x="4019.0" y="6272.0" />
+      <point x="3859.0" y="6272.0" />
+      <point x="3859.0" y="5872.0" />
+      <point x="3819.0" y="5872.0" />
+      <point x="3819.0" y="5152.0" />
+      <point x="3479.0" y="5152.0" />
+      <point x="3479.0" y="4592.0" />
+      <point x="3199.0" y="4592.0" />
+      <point x="3199.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.settings.sound.SongButton" target="util.Clickable" relationship="REALIZATION">
+      <point x="43.25" y="-56.0" />
+      <point x="3522.25" y="1312.0" />
+      <point x="3519.0" y="1312.0" />
+      <point x="3519.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.GoToTutButton" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="6252.0" />
+      <point x="2699.0" y="6252.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="entities.tower.HelicopterPad" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="-53.75" y="-92.5" />
+      <point x="5405.25" y="5392.0" />
+      <point x="5399.0" y="5392.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.RetryButton" relationship="CREATE">
+      <point x="-71.66666666666666" y="-56.0" />
+      <point x="1707.3333333333333" y="8372.0" />
+      <point x="1699.0" y="8372.0" />
+      <point x="1699.0" y="8132.0" />
+      <point x="1663.0" y="8132.0" />
+      <point x="-36.0" y="44.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="ui.common.ImageDisplay" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7632.0" />
+      <point x="4759.0" y="7632.0" />
+      <point x="4759.0" y="6312.0" />
+      <point x="4699.0" y="6312.0" />
+      <point x="4699.0" y="5552.0" />
+      <point x="4339.0" y="5552.0" />
+      <point x="4339.0" y="5072.0" />
+      <point x="3639.0" y="5072.0" />
+      <point x="3639.0" y="-428.0" />
+      <point x="1585.75" y="-428.0" />
+      <point x="86.75" y="67.5" />
+    </edge>
+    <edge source="util.multiplayer.NetworkManager" target="util.multiplayer.MultiplayerConnection" relationship="TO_ONE">
+      <point x="-88.5" y="-297.0" />
+      <point x="30.5" y="11232.0" />
+      <point x="39.0" y="11232.0" />
+      <point x="39.0" y="11072.0" />
+      <point x="42.5" y="11072.0" />
+      <point x="-56.5" y="31.5" />
+    </edge>
+    <edge source="entities.Hitbox" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-213.0" />
+      <point x="6159.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="util.multiplayer.popups.ClientButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-37.25" y="-44.0" />
+      <point x="3741.75" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.buttons.Button" target="ui.hud.PopupScreen" relationship="TO_ONE">
+      <point x="44.0" y="-69.0" />
+      <point x="1943.0" y="352.0" />
+      <point x="2740.5" y="352.0" />
+      <point x="-38.5" y="44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelectorPopup" target="ui.hud.PopupScreen" relationship="GENERALIZATION">
+      <point x="0.0" y="-68.0" />
+      <point x="3419.0" y="5692.0" />
+      <point x="3059.0" y="5692.0" />
+      <point x="3059.0" y="4712.0" />
+      <point x="2959.0" y="4712.0" />
+      <point x="2959.0" y="272.0" />
+      <point x="3159.0" y="272.0" />
+      <point x="3159.0" y="52.0" />
+      <point x="2817.5" y="52.0" />
+      <point x="38.5" y="44.0" />
+    </edge>
+    <edge source="ui.hud.gambling.SlotMachineButtonGamble" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-64.25" y="-44.0" />
+      <point x="1634.75" y="4652.0" />
+      <point x="1639.0" y="4652.0" />
+      <point x="1639.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel2" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="5619.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel1" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="5419.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="entities.projectiles.Explosion" target="util.HasSound" relationship="REALIZATION">
+      <point x="-44.75" y="-93.0" />
+      <point x="3994.25" y="3112.0" />
+      <point x="3959.0" y="3112.0" />
+      <point x="3959.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.DeveloperNotesButton" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="6252.0" />
+      <point x="2519.0" y="6252.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="ui.hud.QuestionPopup" target="ui.hud.buttons.ClosePopupButton" relationship="CREATE">
+      <point x="-98.66666666666666" y="-141.0" />
+      <point x="3940.333333333333" y="5892.0" />
+      <point x="3819.0" y="5892.0" />
+      <point x="3819.0" y="5592.0" />
+      <point x="3324.75" y="5592.0" />
+      <point x="65.75" y="44.0" />
+    </edge>
+    <edge source="entities.projectiles.Ice" target="util.HasSound" relationship="REALIZATION">
+      <point x="-39.5" y="-68.0" />
+      <point x="4339.5" y="1912.0" />
+      <point x="4159.0" y="1912.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="core.Player" target="ui.common.ImageDisplay" relationship="CREATE">
+      <point x="-72.33333333333334" y="-153.0" />
+      <point x="5106.666666666667" y="8252.0" />
+      <point x="4079.0" y="8252.0" />
+      <point x="4079.0" y="8212.0" />
+      <point x="5059.0" y="8212.0" />
+      <point x="5059.0" y="4992.0" />
+      <point x="4199.0" y="4992.0" />
+      <point x="4199.0" y="1972.0" />
+      <point x="4039.0" y="1972.0" />
+      <point x="4039.0" y="552.0" />
+      <point x="3999.0" y="552.0" />
+      <point x="3999.0" y="-88.0" />
+      <point x="3639.0" y="-88.0" />
+      <point x="3639.0" y="-428.0" />
+      <point x="1585.75" y="-428.0" />
+      <point x="86.75" y="67.5" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="maps.levels.util.WaveManager" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="6819.0" y="9212.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap5" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6892.0" />
+      <point x="959.0" y="6892.0" />
+      <point x="959.0" y="6192.0" />
+      <point x="659.25" y="6192.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap6" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6332.0" />
+      <point x="919.0" y="6332.0" />
+      <point x="919.0" y="6212.0" />
+      <point x="379.25" y="6212.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap7" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6852.0" />
+      <point x="999.0" y="6852.0" />
+      <point x="999.0" y="6252.0" />
+      <point x="859.0" y="6252.0" />
+      <point x="60.0" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="maps.levels.GameMap8" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6912.0" />
+      <point x="1399.0" y="6912.0" />
+      <point x="1399.0" y="6192.0" />
+      <point x="1458.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.gambling.SlotMachineButton" target="ui.hud.gambling.Gambling" relationship="CREATE">
+      <point x="-49.75" y="-44.0" />
+      <point x="1849.25" y="5672.0" />
+      <point x="1439.0" y="5672.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel4" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4779.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel3" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="6119.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel6" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="5319.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="ui.hud.buttons.NewSaveButton" relationship="CREATE">
+      <point x="-38.75" y="-93.0" />
+      <point x="3940.25" y="7392.0" />
+      <point x="3939.0" y="7392.0" />
+      <point x="3939.0" y="7252.0" />
+      <point x="1959.0" y="7252.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="maps.levels.util.Path" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="6619.0" y="9192.0" />
+      <point x="6619.0" y="5492.0" />
+      <point x="6739.0" y="5492.0" />
+      <point x="6739.0" y="1372.0" />
+      <point x="6979.0" y="1372.0" />
+      <point x="6979.0" y="312.0" />
+      <point x="6892.75" y="312.0" />
+      <point x="53.75" y="-129.0" />
+    </edge>
+    <edge source="entities.enemy.EnemyLevel5" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="entities.base.Projectile" target="entities.base.Enemy" relationship="TO_MANY">
+      <point x="0.0" y="261.0" />
+      <point x="4539.0" y="1692.0" />
+      <point x="4679.0" y="1692.0" />
+      <point x="4679.0" y="792.0" />
+      <point x="4739.0" y="792.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="util.multiplayer.popups.ClientButton" target="util.multiplayer.popups.IPMenuOverlay" relationship="CREATE">
+      <point x="37.25" y="-44.0" />
+      <point x="3816.25" y="752.0" />
+      <point x="3799.0" y="752.0" />
+      <point x="0.0" y="165.0" />
+    </edge>
+    <edge source="maps.levels.GameMap.Difficulty" target="maps.levels.GameMap" relationship="INNER_CLASS">
+      <point x="50.5" y="81.0" />
+      <point x="7329.5" y="5492.0" />
+      <point x="7339.0" y="5492.0" />
+      <point x="7339.0" y="9252.0" />
+      <point x="4099.0" y="9252.0" />
+      <point x="160.0" y="-681.0" />
+    </edge>
+    <edge source="ui.hud.gambling.GamblingWonCredits" target="util.HasSound" relationship="REALIZATION">
+      <point x="54.0" y="-56.0" />
+      <point x="2333.0" y="3132.0" />
+      <point x="2279.0" y="3132.0" />
+      <point x="2279.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="util.Animations" relationship="REALIZATION">
+      <point x="120.0" y="-1065.0" />
+      <point x="6059.0" y="2132.0" />
+      <point x="6219.0" y="2132.0" />
+      <point x="6219.0" y="2092.0" />
+      <point x="6519.0" y="2092.0" />
+      <point x="0.0" y="152.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="util.Cursor" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="3939.5" y="9192.0" />
+      <point x="-59.5" y="68.0" />
+    </edge>
+    <edge source="entities.projectiles.Rocket" target="util.HasSound" relationship="REALIZATION">
+      <point x="0.0" y="-68.0" />
+      <point x="4619.0" y="1852.0" />
+      <point x="4279.0" y="1852.0" />
+      <point x="4279.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.common.BackButton" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="1779.0" y="8372.0" />
+      <point x="1759.0" y="8372.0" />
+      <point x="1759.0" y="8152.0" />
+      <point x="1959.0" y="8152.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="entities.Hitbox" target="entities.Entity" relationship="TO_ONE">
+      <point x="-93.75" y="213.0" />
+      <point x="6065.25" y="-288.0" />
+      <point x="5979.0" y="-288.0" />
+      <point x="0.0" y="-177.0" />
+    </edge>
+    <edge source="ui.hud.towerSelector.TowerSelector" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="-87.66666666666666" y="-80.0" />
+      <point x="6891.333333333333" y="4352.0" />
+      <point x="6339.0" y="4352.0" />
+      <point x="6339.0" y="2112.0" />
+      <point x="5819.0" y="2112.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="entities.projectiles.TestProjectile" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="0.0" y="-43.5" />
+      <point x="4919.0" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap8" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6832.0" />
+      <point x="1399.0" y="6832.0" />
+      <point x="1399.0" y="6192.0" />
+      <point x="1458.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap7" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6452.0" />
+      <point x="999.0" y="6452.0" />
+      <point x="999.0" y="6252.0" />
+      <point x="859.0" y="6252.0" />
+      <point x="60.0" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap6" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6212.0" />
+      <point x="379.25" y="6212.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="maps.levels.tutorial.TutorialText" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="-36.0" y="-31.5" />
+      <point x="2523.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap5" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6412.0" />
+      <point x="959.0" y="6412.0" />
+      <point x="959.0" y="6192.0" />
+      <point x="659.25" y="6192.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="maps.levels.util.WaveManager" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-93.0" />
+      <point x="6819.0" y="3252.0" />
+      <point x="7019.0" y="3252.0" />
+      <point x="7019.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.settings.sound.VolumeSlider" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="6252.0" />
+      <point x="3066.25" y="6252.0" />
+      <point x="-92.75" y="92.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap4" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6432.0" />
+      <point x="879.0" y="6432.0" />
+      <point x="879.0" y="6232.0" />
+      <point x="99.25" y="6232.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap3" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7472.0" />
+      <point x="339.0" y="7472.0" />
+      <point x="339.0" y="10752.0" />
+      <point x="1599.0" y="10752.0" />
+      <point x="1599.0" y="10772.0" />
+      <point x="1638.75" y="10772.0" />
+      <point x="-60.25" y="-56.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.PlayOnButton" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="1779.0" y="8372.0" />
+      <point x="1759.0" y="8372.0" />
+      <point x="1759.0" y="8152.0" />
+      <point x="758.5" y="8152.0" />
+      <point x="39.5" y="44.0" />
+    </edge>
+    <edge source="maps.levels.tutorial.TutorialMap" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="0.0" y="105.0" />
+      <point x="19.0" y="612.0" />
+      <point x="-181.0" y="612.0" />
+      <point x="-181.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="entities.tower.TestTower" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="53.75" y="-92.5" />
+      <point x="5032.75" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.hud.buttons.StartingButton" target="maps.menu.MapSelector" relationship="CREATE">
+      <point x="0.0" y="44.0" />
+      <point x="2559.0" y="4872.0" />
+      <point x="2139.0" y="4872.0" />
+      <point x="2139.0" y="5572.0" />
+      <point x="2179.0" y="5572.0" />
+      <point x="2179.0" y="7672.0" />
+      <point x="3919.0" y="7672.0" />
+      <point x="0.0" y="-56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelectorPopup" target="maps.levels.GameMap" relationship="TO_ONE">
+      <point x="-90.66666666666666" y="-68.0" />
+      <point x="3328.3333333333335" y="5732.0" />
+      <point x="3579.0" y="5732.0" />
+      <point x="3579.0" y="7092.0" />
+      <point x="3699.0" y="7092.0" />
+      <point x="3699.0" y="9152.0" />
+      <point x="3859.0" y="9152.0" />
+      <point x="-80.0" y="-681.0" />
+    </edge>
+    <edge source="entities.tower.Rocketlauncher" target="entities.projectiles.Rocket" relationship="CREATE">
+      <point x="-53.75" y="-80.5" />
+      <point x="4645.25" y="3312.0" />
+      <point x="4519.0" y="3312.0" />
+      <point x="4519.0" y="3132.0" />
+      <point x="4563.333333333333" y="3132.0" />
+      <point x="-55.666666666666686" y="-68.0" />
+    </edge>
+    <edge source="ui.hud.buttons.NewSaveButton" target="ui.hud.buttons.DifficultySelectorPopup" relationship="CREATE">
+      <point x="0.0" y="81.0" />
+      <point x="1959.0" y="7232.0" />
+      <point x="1819.0" y="7232.0" />
+      <point x="1819.0" y="7032.0" />
+      <point x="1219.0" y="7032.0" />
+      <point x="1219.0" y="6952.0" />
+      <point x="2259.0" y="6952.0" />
+      <point x="2259.0" y="5752.0" />
+      <point x="3509.6666666666665" y="5752.0" />
+      <point x="90.66666666666666" y="-68.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap2" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6392.0" />
+      <point x="1259.0" y="6392.0" />
+      <point x="1259.0" y="6192.0" />
+      <point x="1258.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.LoadSaveButton" target="maps.levels.GameMap1" relationship="CREATE">
+      <point x="0.0" y="69.0" />
+      <point x="1139.0" y="7272.0" />
+      <point x="919.0" y="7272.0" />
+      <point x="919.0" y="6472.0" />
+      <point x="1219.0" y="6472.0" />
+      <point x="1219.0" y="6192.0" />
+      <point x="1058.75" y="6192.0" />
+      <point x="59.75" y="56.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.PopupScreen" relationship="GENERALIZATION">
+      <point x="71.66666666666666" y="-68.0" />
+      <point x="3330.6666666666665" y="6252.0" />
+      <point x="3699.0" y="6252.0" />
+      <point x="3699.0" y="5212.0" />
+      <point x="3359.0" y="5212.0" />
+      <point x="3359.0" y="4652.0" />
+      <point x="3079.0" y="4652.0" />
+      <point x="3079.0" y="272.0" />
+      <point x="3159.0" y="272.0" />
+      <point x="3159.0" y="52.0" />
+      <point x="2817.5" y="52.0" />
+      <point x="38.5" y="44.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="ui.hud.upgrades.UpgradePath" relationship="CREATE">
+      <point x="53.75" y="-81.0" />
+      <point x="6252.75" y="8952.0" />
+      <point x="6259.0" y="8952.0" />
+      <point x="6259.0" y="8852.0" />
+      <point x="6579.0" y="8852.0" />
+      <point x="6579.0" y="5472.0" />
+      <point x="6659.0" y="5472.0" />
+      <point x="6659.0" y="4532.0" />
+      <point x="6519.0" y="4532.0" />
+      <point x="0.0" y="-200.5" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.settings.sound.SongDropDown" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="6252.0" />
+      <point x="2939.0" y="6252.0" />
+      <point x="2939.0" y="4512.0" />
+      <point x="3319.0" y="4512.0" />
+      <point x="3319.0" y="3092.0" />
+      <point x="3462.25" y="3092.0" />
+      <point x="23.25" y="-117.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.RetryButton" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="1779.0" y="8372.0" />
+      <point x="1759.0" y="8372.0" />
+      <point x="1759.0" y="8152.0" />
+      <point x="1735.0" y="8152.0" />
+      <point x="36.0" y="44.0" />
+    </edge>
+    <edge source="util.multiplayer.MultiplayerPreview" target="util.Clickable" relationship="REALIZATION">
+      <point x="49.0" y="-56.0" />
+      <point x="4988.0" y="7032.0" />
+      <point x="5019.0" y="7032.0" />
+      <point x="5019.0" y="5012.0" />
+      <point x="4159.0" y="5012.0" />
+      <point x="4159.0" y="1992.0" />
+      <point x="3999.0" y="1992.0" />
+      <point x="3999.0" y="752.0" />
+      <point x="3959.0" y="752.0" />
+      <point x="3959.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="util.multiplayer.MultiplayerPreview" target="ui.hud.QuestionPopup" relationship="CREATE">
+      <point x="-49.0" y="-56.0" />
+      <point x="4890.0" y="7012.0" />
+      <point x="4899.0" y="7012.0" />
+      <point x="4899.0" y="6292.0" />
+      <point x="4059.0" y="6292.0" />
+      <point x="4059.0" y="6272.0" />
+      <point x="4219.0" y="6272.0" />
+      <point x="4219.0" y="5912.0" />
+      <point x="3940.333333333333" y="5912.0" />
+      <point x="-98.66666666666666" y="-141.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.GoToTutButton" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="2819.0" y="6232.0" />
+      <point x="2819.0" y="6032.0" />
+      <point x="2656.25" y="6032.0" />
+      <point x="-42.75" y="-44.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradePath" target="ui.hud.UpgradeDescriptionOverlay" relationship="CREATE">
+      <point x="0.0" y="-200.5" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.settings.sound.VolumeSlider" target="util.Clickable" relationship="REALIZATION">
+      <point x="92.75" y="-92.0" />
+      <point x="3251.75" y="5712.0" />
+      <point x="3019.0" y="5712.0" />
+      <point x="3019.0" y="4732.0" />
+      <point x="2919.0" y="4732.0" />
+      <point x="2919.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap4" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="239.0" y="10932.0" />
+      <point x="239.0" y="9992.0" />
+      <point x="-21.0" y="9992.0" />
+      <point x="-21.0" y="6272.0" />
+      <point x="879.0" y="6272.0" />
+      <point x="879.0" y="6232.0" />
+      <point x="99.25" y="6232.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap3" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="1839.0" y="10932.0" />
+      <point x="1839.0" y="10752.0" />
+      <point x="1638.75" y="10752.0" />
+      <point x="-60.25" y="-56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap2" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="6232.0" />
+      <point x="1259.0" y="6232.0" />
+      <point x="1259.0" y="6192.0" />
+      <point x="1258.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap1" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="1259.0" y="10932.0" />
+      <point x="1259.0" y="6412.0" />
+      <point x="1219.0" y="6412.0" />
+      <point x="1219.0" y="6192.0" />
+      <point x="1058.75" y="6192.0" />
+      <point x="59.75" y="56.0" />
+    </edge>
+    <edge source="ui.hud.QuestionPopup" target="ui.hud.PopupScreen" relationship="GENERALIZATION">
+      <point x="98.66666666666666" y="-141.0" />
+      <point x="4137.666666666667" y="5532.0" />
+      <point x="3939.0" y="5532.0" />
+      <point x="3939.0" y="5112.0" />
+      <point x="3559.0" y="5112.0" />
+      <point x="3559.0" y="4552.0" />
+      <point x="3279.0" y="4552.0" />
+      <point x="3279.0" y="272.0" />
+      <point x="3159.0" y="272.0" />
+      <point x="3159.0" y="52.0" />
+      <point x="2817.5" y="52.0" />
+      <point x="38.5" y="44.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap8" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="1559.0" y="10932.0" />
+      <point x="1559.0" y="6212.0" />
+      <point x="1399.0" y="6212.0" />
+      <point x="1399.0" y="6192.0" />
+      <point x="1458.75" y="6192.0" />
+      <point x="-60.25" y="56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap7" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="859.0" y="10932.0" />
+      <point x="859.0" y="7932.0" />
+      <point x="799.0" y="7932.0" />
+      <point x="799.0" y="6352.0" />
+      <point x="999.0" y="6352.0" />
+      <point x="999.0" y="6252.0" />
+      <point x="859.0" y="6252.0" />
+      <point x="60.0" y="56.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="util.HasSound" relationship="REALIZATION">
+      <point x="50.33333333333333" y="-56.0" />
+      <point x="3969.333333333333" y="7752.0" />
+      <point x="5099.0" y="7752.0" />
+      <point x="5099.0" y="4972.0" />
+      <point x="4239.0" y="4972.0" />
+      <point x="4239.0" y="1952.0" />
+      <point x="4079.0" y="1952.0" />
+      <point x="4079.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap6" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="299.0" y="10932.0" />
+      <point x="299.0" y="6292.0" />
+      <point x="919.0" y="6292.0" />
+      <point x="919.0" y="6212.0" />
+      <point x="379.25" y="6212.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="maps.levels.GameMap5" relationship="CREATE">
+      <point x="53.25" y="-68.0" />
+      <point x="1472.25" y="10992.0" />
+      <point x="1479.0" y="10992.0" />
+      <point x="1479.0" y="10932.0" />
+      <point x="619.0" y="10932.0" />
+      <point x="619.0" y="6312.0" />
+      <point x="959.0" y="6312.0" />
+      <point x="959.0" y="6192.0" />
+      <point x="659.25" y="6192.0" />
+      <point x="60.25" y="56.0" />
+    </edge>
+    <edge source="maps.levels.util.antiCheat.AntiCheat" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-92.0" />
+      <point x="7279.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="util.saves.SaveManager" target="util.saves.Saveable" relationship="REALIZATION">
+      <point x="0.0" y="-177.0" />
+      <point x="4279.0" y="6332.0" />
+      <point x="4459.0" y="6332.0" />
+      <point x="0.0" y="103.5" />
+    </edge>
+    <edge source="ui.hud.buttons.SellButton" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="70.66666666666666" y="-44.0" />
+      <point x="5469.666666666667" y="8692.0" />
+      <point x="5479.0" y="8692.0" />
+      <point x="5479.0" y="8652.0" />
+      <point x="6339.0" y="8652.0" />
+      <point x="6339.0" y="2112.0" />
+      <point x="5819.0" y="2112.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="entities.projectiles.HomingProjectile" target="entities.base.Enemy" relationship="TO_ONE">
+      <point x="53.75" y="-105.0" />
+      <point x="5232.75" y="1792.0" />
+      <point x="4879.0" y="1792.0" />
+      <point x="4879.0" y="792.0" />
+      <point x="4739.0" y="792.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.upgrades.UpgradeMenu" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="8912.0" />
+      <point x="6145.25" y="8912.0" />
+      <point x="-53.75" y="-81.0" />
+    </edge>
+    <edge source="entities.enemy.TestBloon" target="entities.base.Enemy" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="5199.0" y="812.0" />
+      <point x="4979.0" y="812.0" />
+      <point x="4979.0" y="212.0" />
+      <point x="4793.5" y="212.0" />
+      <point x="54.5" y="-237.0" />
+    </edge>
+    <edge source="ui.hud.buttons.GoToTutButton" target="maps.menu.MapTitlescreen" relationship="CREATE">
+      <point x="-42.75" y="-44.0" />
+      <point x="2656.25" y="5572.0" />
+      <point x="2779.0" y="5572.0" />
+      <point x="2779.0" y="5452.0" />
+      <point x="2721.5" y="5452.0" />
+      <point x="42.5" y="-31.5" />
+    </edge>
+    <edge source="ui.hud.buttons.SellButton" target="util.HasSound" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="5399.0" y="8652.0" />
+      <point x="5039.0" y="8652.0" />
+      <point x="5039.0" y="8232.0" />
+      <point x="5139.0" y="8232.0" />
+      <point x="5139.0" y="4952.0" />
+      <point x="4279.0" y="4952.0" />
+      <point x="4279.0" y="1932.0" />
+      <point x="4119.0" y="1932.0" />
+      <point x="4119.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="entities.tower.util.RangeDisplay" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-129.0" />
+      <point x="5819.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="entities.tower.TrapTower" target="util.Clickable" relationship="REALIZATION">
+      <point x="-71.66666666666666" y="-140.5" />
+      <point x="3947.333333333333" y="4592.0" />
+      <point x="3919.0" y="4592.0" />
+      <point x="3919.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="entities.tower.TrapTower" target="entities.projectiles.Explosion" relationship="CREATE">
+      <point x="0.0" y="-140.5" />
+      <point x="4019.0" y="4592.0" />
+      <point x="4039.0" y="4592.0" />
+      <point x="0.0" y="93.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="ui.hud.buttons.SellButton" relationship="TO_ONE">
+      <point x="-53.75" y="-81.0" />
+      <point x="6145.25" y="8952.0" />
+      <point x="6139.0" y="8952.0" />
+      <point x="6139.0" y="8872.0" />
+      <point x="5539.0" y="8872.0" />
+      <point x="5539.0" y="8672.0" />
+      <point x="5469.666666666667" y="8672.0" />
+      <point x="70.66666666666666" y="-44.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="util.Cursor" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="4058.5" y="9212.0" />
+      <point x="59.5" y="68.0" />
+    </edge>
+    <edge source="core.Player" target="ui.common.BackButton" relationship="CREATE">
+      <point x="-72.33333333333334" y="-153.0" />
+      <point x="5106.666666666667" y="8252.0" />
+      <point x="4079.0" y="8252.0" />
+      <point x="4079.0" y="8172.0" />
+      <point x="2079.0" y="8172.0" />
+      <point x="2079.0" y="7972.0" />
+      <point x="2002.5" y="7972.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="entities.ExampleActor" target="util.HasSound" relationship="REALIZATION">
+      <point x="-51.75" y="-68.0" />
+      <point x="6287.25" y="1292.0" />
+      <point x="6279.0" y="1292.0" />
+      <point x="6279.0" y="732.0" />
+      <point x="4159.0" y="732.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.hud.buttons.WaveResetButton" target="util.Clickable" relationship="REALIZATION">
+      <point x="-47.25" y="-44.0" />
+      <point x="451.75" y="7972.0" />
+      <point x="-141.0" y="7972.0" />
+      <point x="-141.0" y="1252.0" />
+      <point x="219.0" y="1252.0" />
+      <point x="219.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.common.TutorialHud" target="util.Clickable" relationship="REALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="2419.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.hud.gambling.SlotMachineButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="49.75" y="-44.0" />
+      <point x="1948.75" y="6012.0" />
+      <point x="1939.0" y="6012.0" />
+      <point x="1939.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="util.multiplayer.popups.IPMenuOverlay" target="util.Clickable" relationship="REALIZATION">
+      <point x="47.25" y="-165.0" />
+      <point x="3846.25" y="272.0" />
+      <point x="3839.0" y="272.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="maps.levels.tutorial.TutorialMap" target="ui.common.ClickawayImageDisplay" relationship="CREATE">
+      <point x="0.0" y="-105.0" />
+      <point x="0.0" y="80.0" />
+    </edge>
+    <edge source="entities.tower.IceTower" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="53.75" y="-153.0" />
+      <point x="4472.75" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.ClosePopupButton" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="5772.0" />
+      <point x="3319.0" y="5772.0" />
+      <point x="3319.0" y="5592.0" />
+      <point x="3193.25" y="5592.0" />
+      <point x="-65.75" y="44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.SettingsButton" target="ui.settings.SettingsPopup" relationship="CREATE">
+      <point x="60.0" y="-56.0" />
+      <point x="2019.0" y="7412.0" />
+      <point x="2299.0" y="7412.0" />
+      <point x="2299.0" y="6992.0" />
+      <point x="3259.0" y="6992.0" />
+      <point x="0.0" y="-68.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.buttons.RestartMultiplayerButton" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="119.0" y="9192.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="ui.hud.buttons.ClosePopupButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="3259.0" y="5432.0" />
+      <point x="3139.0" y="5432.0" />
+      <point x="3139.0" y="4692.0" />
+      <point x="2999.0" y="4692.0" />
+      <point x="2999.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelector" target="maps.levels.GameMap.Difficulty" relationship="TO_ONE">
+      <point x="73.75" y="-44.0" />
+      <point x="3552.75" y="5232.0" />
+      <point x="7219.0" y="5232.0" />
+      <point x="7219.0" y="4892.0" />
+      <point x="7228.5" y="4892.0" />
+      <point x="-50.5" y="81.0" />
+    </edge>
+    <edge source="entities.Entity" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="-86.33333333333334" y="-177.0" />
+      <point x="5892.666666666667" y="-288.0" />
+      <point x="5899.0" y="-288.0" />
+      <point x="5899.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.hud.gambling.SlotMachineButtonGamble" target="ui.common.ImageDisplay" relationship="CREATE">
+      <point x="64.25" y="-44.0" />
+      <point x="1763.25" y="4692.0" />
+      <point x="1759.0" y="4692.0" />
+      <point x="1759.0" y="-88.0" />
+      <point x="3639.0" y="-88.0" />
+      <point x="3639.0" y="-428.0" />
+      <point x="1585.75" y="-428.0" />
+      <point x="86.75" y="67.5" />
+    </edge>
+    <edge source="ui.common.BackButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-43.5" y="-56.0" />
+      <point x="1915.5" y="7972.0" />
+      <point x="1659.0" y="7972.0" />
+      <point x="1659.0" y="5772.0" />
+      <point x="1299.0" y="5772.0" />
+      <point x="1299.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.projectiles.Ice" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="39.5" y="-68.0" />
+      <point x="4418.5" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="entities.base.Projectile" target="util.HasSound" relationship="REALIZATION">
+      <point x="-53.75" y="-261.0" />
+      <point x="4485.25" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="entities.projectiles.Rocket" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="55.66666666666667" y="-68.0" />
+      <point x="4674.666666666667" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.settings.sound.VolumeSlider" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="3251.75" y="6232.0" />
+      <point x="92.75" y="92.0" />
+    </edge>
+    <edge source="maps.menu.MapTitlescreen" target="ui.hud.buttons.StartingButton" relationship="CREATE">
+      <point x="42.5" y="-31.5" />
+      <point x="2721.5" y="5412.0" />
+      <point x="2559.0" y="5412.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="util.Clickable" relationship="REALIZATION">
+      <point x="120.0" y="-1065.0" />
+      <point x="6059.0" y="2132.0" />
+      <point x="6219.0" y="2132.0" />
+      <point x="6219.0" y="2092.0" />
+      <point x="6659.0" y="2092.0" />
+      <point x="6659.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="ui.settings.sound.VolumeSlider" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="-92.75" y="-92.0" />
+      <point x="3066.25" y="5732.0" />
+      <point x="2979.0" y="5732.0" />
+      <point x="2979.0" y="4752.0" />
+      <point x="2879.0" y="4752.0" />
+      <point x="2879.0" y="-388.0" />
+      <point x="-81.0" y="-388.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.hud.buttons.DifficultySelector" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-73.75" y="-44.0" />
+      <point x="3405.25" y="5252.0" />
+      <point x="3179.0" y="5252.0" />
+      <point x="3179.0" y="4672.0" />
+      <point x="3039.0" y="4672.0" />
+      <point x="3039.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.projectiles.Explosion" target="entities.base.Projectile" relationship="GENERALIZATION">
+      <point x="44.75" y="-93.0" />
+      <point x="4083.75" y="2012.0" />
+      <point x="4679.0" y="2012.0" />
+      <point x="4679.0" y="1712.0" />
+      <point x="4399.0" y="1712.0" />
+      <point x="4399.0" y="1092.0" />
+      <point x="4592.75" y="1092.0" />
+      <point x="53.75" y="-261.0" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="maps.menu.MapPreview" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7372.0" />
+      <point x="3940.25" y="7372.0" />
+      <point x="-38.75" y="-93.0" />
+    </edge>
+    <edge source="entities.ExampleActor" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="51.75" y="-68.0" />
+      <point x="6390.75" y="772.0" />
+      <point x="6399.0" y="772.0" />
+      <point x="6399.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="util.saves.GameSaveManager" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="4719.0" y="9212.0" />
+      <point x="4719.0" y="7152.0" />
+      <point x="4621.25" y="7152.0" />
+      <point x="82.25" y="273.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.common.BackButton" relationship="CREATE">
+      <point x="-71.66666666666666" y="-56.0" />
+      <point x="1707.3333333333333" y="8372.0" />
+      <point x="1699.0" y="8372.0" />
+      <point x="1699.0" y="8232.0" />
+      <point x="2079.0" y="8232.0" />
+      <point x="2079.0" y="7972.0" />
+      <point x="2002.5" y="7972.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="ui.hud.QuestionPopup" target="ui.hud.buttons.ClosePopupButton" relationship="TO_ONE">
+      <point x="0.0" y="-141.0" />
+      <point x="4039.0" y="5932.0" />
+      <point x="3979.0" y="5932.0" />
+      <point x="3979.0" y="5652.0" />
+      <point x="3319.0" y="5652.0" />
+      <point x="3319.0" y="5592.0" />
+      <point x="3193.25" y="5592.0" />
+      <point x="-65.75" y="44.0" />
+    </edge>
+    <edge source="ui.common.ClickawayImageDisplay" target="ui.common.ImageDisplay" relationship="GENERALIZATION">
+      <point x="-86.75" y="-80.0" />
+      <point x="-67.75" y="-128.0" />
+      <point x="-1.0" y="-128.0" />
+      <point x="-1.0" y="-628.0" />
+      <point x="1499.0" y="-628.0" />
+      <point x="0.0" y="-67.5" />
+    </edge>
+    <edge source="maps.menu.MapTitlescreen" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="-42.5" y="-31.5" />
+      <point x="2636.5" y="5432.0" />
+      <point x="2739.0" y="5432.0" />
+      <point x="2739.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.buttons.PlayOnButton" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="679.0" y="9192.0" />
+      <point x="679.0" y="8132.0" />
+      <point x="679.5" y="8132.0" />
+      <point x="-39.5" y="44.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.DeveloperNotesButton" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="2859.0" y="6232.0" />
+      <point x="2859.0" y="5792.0" />
+      <point x="2462.0" y="5792.0" />
+      <point x="-57.0" y="-44.0" />
+    </edge>
+    <edge source="entities.tower.HomingTower" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="53.75" y="-92.5" />
+      <point x="5312.75" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="entities.ExampleActor" target="util.Clickable" relationship="REALIZATION">
+      <point x="-51.75" y="-68.0" />
+      <point x="6287.25" y="1292.0" />
+      <point x="6279.0" y="1292.0" />
+      <point x="6279.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="util.multiplayer.MultiplayerPreview" relationship="CREATE">
+      <point x="0.0" y="-56.0" />
+      <point x="3919.0" y="7752.0" />
+      <point x="3879.0" y="7752.0" />
+      <point x="3879.0" y="7632.0" />
+      <point x="4799.0" y="7632.0" />
+      <point x="4799.0" y="7032.0" />
+      <point x="4890.0" y="7032.0" />
+      <point x="-49.0" y="-56.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.upgrades.UpgradeMenu" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="5619.0" y="9192.0" />
+      <point x="5619.0" y="8932.0" />
+      <point x="6252.75" y="8932.0" />
+      <point x="53.75" y="-81.0" />
+    </edge>
+    <edge source="ui.hud.towerSelector.TowerSelectorSpawner" target="ui.hud.towerSelector.TowerSelector" relationship="CREATE">
+      <point x="-57.5" y="-44.0" />
+      <point x="6981.5" y="5412.0" />
+      <point x="6979.0" y="5412.0" />
+      <point x="0.0" y="80.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.WaveResetButton" relationship="CREATE">
+      <point x="-71.66666666666666" y="-56.0" />
+      <point x="1707.3333333333333" y="8372.0" />
+      <point x="1699.0" y="8372.0" />
+      <point x="1699.0" y="8172.0" />
+      <point x="451.75" y="8172.0" />
+      <point x="-47.25" y="44.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="entities.base.Projectile" relationship="TO_ONE">
+      <point x="-120.0" y="-1065.0" />
+      <point x="5819.0" y="1732.0" />
+      <point x="4539.0" y="1732.0" />
+      <point x="0.0" y="261.0" />
+    </edge>
+    <edge source="entities.base.Projectile" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="0.0" y="261.0" />
+      <point x="4539.0" y="1772.0" />
+      <point x="5739.0" y="1772.0" />
+      <point x="5739.0" y="2132.0" />
+      <point x="5819.0" y="2132.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="util.saves.GameSaveManager" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="4679.0" y="9192.0" />
+      <point x="4679.0" y="7332.0" />
+      <point x="4099.0" y="7332.0" />
+      <point x="4099.0" y="7312.0" />
+      <point x="4456.75" y="7312.0" />
+      <point x="-82.25" y="273.0" />
+    </edge>
+    <edge source="maps.menu.MapPreview" target="util.saves.GameSaveManager" relationship="CREATE">
+      <point x="-38.75" y="-93.0" />
+      <point x="3940.25" y="7392.0" />
+      <point x="3939.0" y="7392.0" />
+      <point x="3939.0" y="7352.0" />
+      <point x="4099.0" y="7352.0" />
+      <point x="4099.0" y="7312.0" />
+      <point x="4456.75" y="7312.0" />
+      <point x="-82.25" y="273.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="entities.Entity" relationship="GENERALIZATION">
+      <point x="-40.0" y="-1065.0" />
+      <point x="5899.0" y="2072.0" />
+      <point x="6019.0" y="2072.0" />
+      <point x="6019.0" y="172.0" />
+      <point x="6139.0" y="172.0" />
+      <point x="6139.0" y="-248.0" />
+      <point x="5892.666666666667" y="-248.0" />
+      <point x="-86.33333333333334" y="-177.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkClient" target="util.multiplayer.MultiplayerConnection" relationship="REALIZATION">
+      <point x="-53.25" y="-68.0" />
+      <point x="1365.75" y="10952.0" />
+      <point x="199.0" y="10952.0" />
+      <point x="199.0" y="10912.0" />
+      <point x="155.5" y="10912.0" />
+      <point x="56.5" y="31.5" />
+    </edge>
+    <edge source="entities.tower.Rocketlauncher" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="53.75" y="-80.5" />
+      <point x="4752.75" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.settings.sound.SongDropDown" target="util.Clickable" relationship="REALIZATION">
+      <point x="-23.25" y="-117.0" />
+      <point x="3415.75" y="3052.0" />
+      <point x="3359.0" y="3052.0" />
+      <point x="3359.0" y="-268.0" />
+      <point x="3839.0" y="-268.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="core.Player" target="ui.hud.buttons.RetryButton" relationship="CREATE">
+      <point x="-72.33333333333334" y="-153.0" />
+      <point x="5106.666666666667" y="8252.0" />
+      <point x="4079.0" y="8252.0" />
+      <point x="4079.0" y="8192.0" />
+      <point x="1699.0" y="8192.0" />
+      <point x="1699.0" y="8132.0" />
+      <point x="1663.0" y="8132.0" />
+      <point x="-36.0" y="44.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="core.Player" relationship="TO_ONE">
+      <point x="-53.75" y="-81.0" />
+      <point x="6145.25" y="8952.0" />
+      <point x="6139.0" y="8952.0" />
+      <point x="6139.0" y="8872.0" />
+      <point x="5179.0" y="8872.0" />
+      <point x="0.0" y="153.0" />
+    </edge>
+    <edge source="ui.hud.buttons.RetryButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="0.0" y="-44.0" />
+      <point x="1699.0" y="5752.0" />
+      <point x="1539.0" y="5752.0" />
+      <point x="1539.0" y="5392.0" />
+      <point x="1499.0" y="5392.0" />
+      <point x="1499.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.base.Tower" target="entities.base.Enemy" relationship="TO_ONE">
+      <point x="-120.0" y="-1065.0" />
+      <point x="5819.0" y="1732.0" />
+      <point x="5519.0" y="1732.0" />
+      <point x="5519.0" y="792.0" />
+      <point x="4739.0" y="792.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="ui.hud.buttons.SellButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="-70.66666666666666" y="-44.0" />
+      <point x="5328.333333333333" y="8692.0" />
+      <point x="3739.0" y="8692.0" />
+      <point x="3739.0" y="5192.0" />
+      <point x="3399.0" y="5192.0" />
+      <point x="3399.0" y="4632.0" />
+      <point x="3119.0" y="4632.0" />
+      <point x="3119.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="entities.tower.TestTower" target="entities.projectiles.TestProjectile" relationship="CREATE">
+      <point x="-53.75" y="-92.5" />
+      <point x="4925.25" y="4352.0" />
+      <point x="4919.0" y="4352.0" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="util.saves.GameSaveManager" target="util.saves.Saveable" relationship="REALIZATION">
+      <point x="0.0" y="-273.0" />
+      <point x="4539.0" y="6332.0" />
+      <point x="4459.0" y="6332.0" />
+      <point x="0.0" y="103.5" />
+    </edge>
+    <edge source="ui.hud.gambling.GamblingWonCredits" target="ui.common.BackButton" relationship="CREATE">
+      <point x="0.0" y="56.0" />
+      <point x="2279.0" y="4752.0" />
+      <point x="2339.0" y="4752.0" />
+      <point x="2339.0" y="5732.0" />
+      <point x="2219.0" y="5732.0" />
+      <point x="2219.0" y="7852.0" />
+      <point x="2139.0" y="7852.0" />
+      <point x="2139.0" y="7952.0" />
+      <point x="2002.5" y="7952.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="ui.hud.buttons.DeveloperNotesButton" target="ui.hud.buttons.Button" relationship="GENERALIZATION">
+      <point x="57.0" y="-44.0" />
+      <point x="2576.0" y="5732.0" />
+      <point x="2579.0" y="5732.0" />
+      <point x="2579.0" y="4832.0" />
+      <point x="2699.0" y="4832.0" />
+      <point x="2699.0" y="3132.0" />
+      <point x="2799.0" y="3132.0" />
+      <point x="2799.0" y="1272.0" />
+      <point x="1899.0" y="1272.0" />
+      <point x="0.0" y="69.0" />
+    </edge>
+    <edge source="ui.hud.gambling.GamblingWonCredits" target="ui.hud.gambling.TextBlock" relationship="CREATE">
+      <point x="0.0" y="56.0" />
+      <point x="2279.0" y="3312.0" />
+      <point x="2659.0" y="3312.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="entities.base.Enemy" relationship="TO_MANY">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="6379.0" y="9212.0" />
+      <point x="6379.0" y="8892.0" />
+      <point x="5799.0" y="8892.0" />
+      <point x="5799.0" y="4352.0" />
+      <point x="5659.0" y="4352.0" />
+      <point x="5659.0" y="1752.0" />
+      <point x="5079.0" y="1752.0" />
+      <point x="5079.0" y="792.0" />
+      <point x="4739.0" y="792.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.MuteButton" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-68.0" />
+      <point x="3187.3333333333335" y="7012.0" />
+      <point x="2899.0" y="7012.0" />
+      <point x="2899.0" y="6252.0" />
+      <point x="2329.0" y="6252.0" />
+      <point x="-50.0" y="56.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.SettingsButton" relationship="CREATE">
+      <point x="-71.66666666666666" y="-56.0" />
+      <point x="1707.3333333333333" y="8372.0" />
+      <point x="1699.0" y="8372.0" />
+      <point x="1699.0" y="8172.0" />
+      <point x="1839.0" y="8172.0" />
+      <point x="1839.0" y="7812.0" />
+      <point x="1819.0" y="7812.0" />
+      <point x="1819.0" y="7432.0" />
+      <point x="2019.0" y="7432.0" />
+      <point x="60.0" y="-56.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="ui.hud.towerSelector.TowerSelectorSpawner" relationship="CREATE">
+      <point x="0.0" y="-681.0" />
+      <point x="3939.0" y="9192.0" />
+      <point x="7019.0" y="9192.0" />
+      <point x="7019.0" y="6092.0" />
+      <point x="6899.0" y="6092.0" />
+      <point x="6899.0" y="5432.0" />
+      <point x="6981.5" y="5432.0" />
+      <point x="-57.5" y="-44.0" />
+    </edge>
+    <edge source="util.multiplayer.NetworkManager" target="util.multiplayer.NetworkHost" relationship="CREATE">
+      <point x="88.5" y="-297.0" />
+      <point x="207.5" y="11232.0" />
+      <point x="199.0" y="11232.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="ui.settings.SettingsPopup" target="ui.hud.buttons.ClosePopupButton" relationship="CREATE">
+      <point x="0.0" y="-68.0" />
+      <point x="3259.0" y="6232.0" />
+      <point x="3619.0" y="6232.0" />
+      <point x="3619.0" y="5892.0" />
+      <point x="3819.0" y="5892.0" />
+      <point x="3819.0" y="5592.0" />
+      <point x="3324.75" y="5592.0" />
+      <point x="65.75" y="44.0" />
+    </edge>
+    <edge source="ui.settings.sound.SongButton" target="util.HasSound" relationship="REALIZATION">
+      <point x="43.25" y="-56.0" />
+      <point x="3522.25" y="1312.0" />
+      <point x="3519.0" y="1312.0" />
+      <point x="3519.0" y="652.0" />
+      <point x="4159.0" y="652.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.hud.buttons.SellButton" target="core.Player" relationship="TO_ONE">
+      <point x="70.66666666666666" y="-44.0" />
+      <point x="5469.666666666667" y="8692.0" />
+      <point x="5479.0" y="8692.0" />
+      <point x="5479.0" y="8632.0" />
+      <point x="5179.0" y="8632.0" />
+      <point x="0.0" y="153.0" />
+    </edge>
+    <edge source="core.Player" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="72.33333333333334" y="-153.0" />
+      <point x="5251.333333333333" y="8232.0" />
+      <point x="5259.0" y="8232.0" />
+      <point x="5259.0" y="4892.0" />
+      <point x="5119.0" y="4892.0" />
+      <point x="5119.0" y="4352.0" />
+      <point x="5039.0" y="4352.0" />
+      <point x="5039.0" y="1812.0" />
+      <point x="4359.0" y="1812.0" />
+      <point x="4359.0" y="752.0" />
+      <point x="4399.0" y="752.0" />
+      <point x="4399.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.settings.sound.SongButton" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="-43.25" y="-56.0" />
+      <point x="3435.75" y="752.0" />
+      <point x="3439.0" y="752.0" />
+      <point x="3439.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="maps.menu.MapSelector" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="-50.33333333333333" y="-56.0" />
+      <point x="3868.6666666666665" y="7712.0" />
+      <point x="2099.0" y="7712.0" />
+      <point x="2099.0" y="3392.0" />
+      <point x="2059.0" y="3392.0" />
+      <point x="2059.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="ui.hud.towerSelector.TowerSelector" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-80.0" />
+      <point x="6979.0" y="3272.0" />
+      <point x="7059.0" y="3272.0" />
+      <point x="7059.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.hud.gambling.Gambling" target="ui.common.ImageDisplay" relationship="TO_ONE">
+      <point x="-41.0" y="-104.5" />
+      <point x="1398.0" y="5372.0" />
+      <point x="1419.0" y="5372.0" />
+      <point x="1419.0" y="-288.0" />
+      <point x="1412.25" y="-288.0" />
+      <point x="-86.75" y="67.5" />
+    </edge>
+    <edge source="entities.tower.Flamethrower" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="-53.75" y="-116.5" />
+      <point x="5485.25" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="ui.hud.LastPLayed" target="core.MainClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-31.5" />
+      <point x="4579.0" y="7132.0" />
+      <point x="4719.0" y="7132.0" />
+      <point x="4719.0" y="6332.0" />
+      <point x="4659.0" y="6332.0" />
+      <point x="4659.0" y="5872.0" />
+      <point x="4299.0" y="5872.0" />
+      <point x="4299.0" y="5092.0" />
+      <point x="3599.0" y="5092.0" />
+      <point x="3599.0" y="-888.0" />
+      <point x="-81.0" y="-888.0" />
+      <point x="0.0" y="56.5" />
+    </edge>
+    <edge source="ui.settings.DevNotesMap" target="ui.common.BackButton" relationship="CREATE">
+      <point x="0.0" y="31.5" />
+      <point x="2239.0" y="5692.0" />
+      <point x="2139.0" y="5692.0" />
+      <point x="2139.0" y="7952.0" />
+      <point x="2002.5" y="7952.0" />
+      <point x="43.5" y="-56.0" />
+    </edge>
+    <edge source="entities.base.Projectile" target="entities.Entity" relationship="GENERALIZATION">
+      <point x="53.75" y="-261.0" />
+      <point x="4592.75" y="752.0" />
+      <point x="4599.0" y="752.0" />
+      <point x="4599.0" y="192.0" />
+      <point x="6019.0" y="192.0" />
+      <point x="6019.0" y="172.0" />
+      <point x="6139.0" y="172.0" />
+      <point x="6139.0" y="-248.0" />
+      <point x="5892.666666666667" y="-248.0" />
+      <point x="-86.33333333333334" y="-177.0" />
+    </edge>
+    <edge source="core.Player" target="util.HasSound" relationship="REALIZATION">
+      <point x="0.0" y="-153.0" />
+      <point x="5179.0" y="4932.0" />
+      <point x="4559.0" y="4932.0" />
+      <point x="4559.0" y="3332.0" />
+      <point x="4479.0" y="3332.0" />
+      <point x="4479.0" y="1892.0" />
+      <point x="4199.0" y="1892.0" />
+      <point x="4199.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="util.HasSound" relationship="REALIZATION">
+      <point x="80.0" y="-681.0" />
+      <point x="4019.0" y="9232.0" />
+      <point x="5579.0" y="9232.0" />
+      <point x="5579.0" y="8252.0" />
+      <point x="5219.0" y="8252.0" />
+      <point x="5219.0" y="4912.0" />
+      <point x="4839.0" y="4912.0" />
+      <point x="4839.0" y="4352.0" />
+      <point x="4799.0" y="4352.0" />
+      <point x="4799.0" y="1832.0" />
+      <point x="4319.0" y="1832.0" />
+      <point x="4319.0" y="772.0" />
+      <point x="4159.0" y="772.0" />
+      <point x="4159.0" y="572.0" />
+      <point x="4179.0" y="572.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+    <edge source="entities.tower.Sniper" target="entities.base.Tower" relationship="GENERALIZATION">
+      <point x="0.0" y="-92.5" />
+      <point x="6239.0" y="4372.0" />
+      <point x="5399.0" y="4372.0" />
+      <point x="5399.0" y="3252.0" />
+      <point x="5699.0" y="3252.0" />
+      <point x="5699.0" y="2092.0" />
+      <point x="5899.0" y="2092.0" />
+      <point x="-40.0" y="-1065.0" />
+    </edge>
+    <edge source="util.multiplayer.MultiplayerPreview" target="util.multiplayer.popups.HostButton" relationship="CREATE">
+      <point x="-49.0" y="-56.0" />
+      <point x="4890.0" y="7012.0" />
+      <point x="4899.0" y="7012.0" />
+      <point x="4899.0" y="6192.0" />
+      <point x="4859.0" y="6192.0" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="entities.projectiles.Rocket" target="ui.common.ImageDisplay" relationship="CREATE">
+      <point x="-55.666666666666686" y="-68.0" />
+      <point x="4563.333333333333" y="1872.0" />
+      <point x="4239.0" y="1872.0" />
+      <point x="4239.0" y="552.0" />
+      <point x="4359.0" y="552.0" />
+      <point x="4359.0" y="-88.0" />
+      <point x="3639.0" y="-88.0" />
+      <point x="3639.0" y="-428.0" />
+      <point x="1585.75" y="-428.0" />
+      <point x="86.75" y="67.5" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradeMenu" target="ui.hud.buttons.SellButton" relationship="CREATE">
+      <point x="53.75" y="-81.0" />
+      <point x="6252.75" y="8952.0" />
+      <point x="6259.0" y="8952.0" />
+      <point x="6259.0" y="8852.0" />
+      <point x="5399.0" y="8852.0" />
+      <point x="0.0" y="44.0" />
+    </edge>
+    <edge source="maps.levels.GameMap1" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="-59.75" y="56.0" />
+      <point x="939.25" y="6372.0" />
+      <point x="879.0" y="6372.0" />
+      <point x="879.0" y="7492.0" />
+      <point x="899.0" y="7492.0" />
+      <point x="899.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="maps.levels.GameMap2" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="60.25" y="56.0" />
+      <point x="1379.25" y="7012.0" />
+      <point x="1439.0" y="7012.0" />
+      <point x="1439.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="maps.levels.GameMap3" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="60.25" y="-56.0" />
+      <point x="1759.25" y="10732.0" />
+      <point x="4159.0" y="10732.0" />
+      <point x="4159.0" y="9272.0" />
+      <point x="3779.0" y="9272.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="ui.hud.upgrades.UpgradePath" target="entities.base.Tower" relationship="TO_ONE">
+      <point x="-71.66666666666666" y="-200.5" />
+      <point x="6447.333333333333" y="4352.0" />
+      <point x="6339.0" y="4352.0" />
+      <point x="6339.0" y="2112.0" />
+      <point x="5819.0" y="2112.0" />
+      <point x="-120.0" y="-1065.0" />
+    </edge>
+    <edge source="maps.levels.util.Path" target="entities.Entity" relationship="GENERALIZATION">
+      <point x="-53.75" y="-129.0" />
+      <point x="6785.25" y="192.0" />
+      <point x="6019.0" y="192.0" />
+      <point x="6019.0" y="172.0" />
+      <point x="6139.0" y="172.0" />
+      <point x="6139.0" y="-248.0" />
+      <point x="5892.666666666667" y="-248.0" />
+      <point x="-86.33333333333334" y="-177.0" />
+    </edge>
+    <edge source="maps.menu.PauseMenu" target="ui.hud.buttons.WaveResetButton" relationship="TO_ONE">
+      <point x="0.0" y="-56.0" />
+      <point x="1779.0" y="8372.0" />
+      <point x="1759.0" y="8372.0" />
+      <point x="1759.0" y="8152.0" />
+      <point x="546.25" y="8152.0" />
+      <point x="47.25" y="44.0" />
+    </edge>
+    <edge source="maps.levels.GameMap4" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="-60.25" y="56.0" />
+      <point x="-21.25" y="6192.0" />
+      <point x="-61.0" y="6192.0" />
+      <point x="-61.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="entities.tower.HomingTower" target="entities.projectiles.HomingProjectile" relationship="CREATE">
+      <point x="-53.75" y="-92.5" />
+      <point x="5205.25" y="4352.0" />
+      <point x="5179.0" y="4352.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="util.multiplayer.MultiplayerPreview" target="ui.hud.buttons.ClosePopupButton" relationship="CREATE">
+      <point x="-49.0" y="-56.0" />
+      <point x="4890.0" y="7012.0" />
+      <point x="4899.0" y="7012.0" />
+      <point x="4899.0" y="6192.0" />
+      <point x="4739.0" y="6192.0" />
+      <point x="4739.0" y="5892.0" />
+      <point x="3819.0" y="5892.0" />
+      <point x="3819.0" y="5592.0" />
+      <point x="3324.75" y="5592.0" />
+      <point x="65.75" y="44.0" />
+    </edge>
+    <edge source="maps.levels.GameMap5" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="-60.25" y="56.0" />
+      <point x="538.75" y="7092.0" />
+      <point x="379.0" y="7092.0" />
+      <point x="379.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="core.Player" relationship="TO_ONE">
+      <point x="-80.0" y="-681.0" />
+      <point x="3859.0" y="9292.0" />
+      <point x="6339.0" y="9292.0" />
+      <point x="6339.0" y="9212.0" />
+      <point x="5219.0" y="9212.0" />
+      <point x="5219.0" y="8752.0" />
+      <point x="5179.0" y="8752.0" />
+      <point x="0.0" y="153.0" />
+    </edge>
+    <edge source="maps.levels.GameMap6" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="-60.25" y="56.0" />
+      <point x="258.75" y="7092.0" />
+      <point x="259.0" y="7092.0" />
+      <point x="259.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="maps.levels.GameMap7" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="-60.0" y="56.0" />
+      <point x="739.0" y="7092.0" />
+      <point x="759.0" y="7092.0" />
+      <point x="759.0" y="7952.0" />
+      <point x="819.0" y="7952.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="maps.levels.GameMap8" target="maps.levels.GameMap" relationship="GENERALIZATION">
+      <point x="60.25" y="56.0" />
+      <point x="1579.25" y="7012.0" />
+      <point x="1519.0" y="7012.0" />
+      <point x="1519.0" y="9212.0" />
+      <point x="819.0" y="9212.0" />
+      <point x="819.0" y="9292.0" />
+      <point x="3779.0" y="9292.0" />
+      <point x="-160.0" y="-681.0" />
+    </edge>
+    <edge source="ui.hud.buttons.StartingButton" target="maps.levels.tutorial.TutorialText" relationship="CREATE">
+      <point x="0.0" y="44.0" />
+      <point x="2559.0" y="4852.0" />
+      <point x="2459.0" y="4852.0" />
+      <point x="2459.0" y="3172.0" />
+      <point x="2595.0" y="3172.0" />
+      <point x="36.0" y="-31.5" />
+    </edge>
+    <edge source="maps.levels.GameMap" target="maps.util.CustomWorld" relationship="GENERALIZATION">
+      <point x="-160.0" y="-681.0" />
+      <point x="3779.0" y="9252.0" />
+      <point x="1639.0" y="9252.0" />
+      <point x="1639.0" y="8212.0" />
+      <point x="1799.0" y="8212.0" />
+      <point x="1799.0" y="7952.0" />
+      <point x="1739.0" y="7952.0" />
+      <point x="1739.0" y="5532.0" />
+      <point x="1859.0" y="5532.0" />
+      <point x="1859.0" y="3152.0" />
+      <point x="2099.0" y="3152.0" />
+      <point x="0.0" y="68.0" />
+    </edge>
+  </edges>
+  <RemovedNodes />
+  <RemovedEdges />
+  <settings layout="Hierarchic Compact" zoom="0.05902725493148622" showDependencies="true" x="3619.5" y="5576.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

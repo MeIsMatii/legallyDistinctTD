@@ -101,7 +101,7 @@ public class AntiCheat extends MainClass {
             GameMap world = (GameMap) getWorld();
             Player player = world.getPlayer();
             if (player != null) {
-                if (player.getCoins() > 100000 || player.getHealth() > 100) {
+                if (player.getCoins() > 10000000 || player.getHealth() > 100) {
                     System.out.println("Anti-Cheat Trigger: Invalid Coins/Health values.");
                     System.exit(1);
                 }

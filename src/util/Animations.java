@@ -68,9 +68,8 @@ public interface Animations {
         System.out.printf("generating frameList for %s\n", folderPath);
 
         List<String> frames = new ArrayList<>();
-        for (int i = 0; i < 100; i++) { //100 should be enough //@Febo is a madman if we have more than 100f for 1 thingy
+        for (int i = 0; i < 100; i++) { //100 should be enough //@Febo is a madman if we have more than 100f for 1 thingy (or @mathilo bc i did them for whatever reason D: )
             String fileName = folderPath + "/" + getSpriteName() + "_" + i + ".png";
-            System.out.println(fileName);
             File file = new File(fileName);
 
             if (file.exists()) {

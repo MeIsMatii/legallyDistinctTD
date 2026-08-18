@@ -1,7 +1,8 @@
 package entities.projectiles;
 
-import entities.enemy.Enemy;
-import entities.tower.Tower;
+import entities.base.Enemy;
+import entities.base.Projectile;
+import entities.base.Tower;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
 
@@ -16,7 +17,7 @@ public class HomingProjectile extends Projectile {
     public HomingProjectile(Tower owner) {
         super(owner);
 
-        GreenfootImage img = new GreenfootImage("projectile.png");
+        GreenfootImage img = new GreenfootImage("projectiles/homingProjectile.png");
         setImage(img);
 
         this.homingRadius = 100;
@@ -24,7 +25,7 @@ public class HomingProjectile extends Projectile {
     public HomingProjectile() {
         super();
 
-        GreenfootImage img = new GreenfootImage("projectile.png");
+        GreenfootImage img = new GreenfootImage("projectiles/homingProjectile.png");
         setImage(img);
 
         this.homingRadius = 100;

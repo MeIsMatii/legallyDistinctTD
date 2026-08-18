@@ -1,6 +1,7 @@
 package entities.tower;
 
-import entities.enemy.Enemy;
+import entities.base.Tower;
+import entities.base.Enemy;
 
 import java.util.List;
 
@@ -38,17 +39,18 @@ public class Sniper extends Tower {
 
     @Override
     public int getAnimationSpeed() {
-        return 1;
+        return 4;
     }
 
 
     public void act() {
         super.act();
         if (canShoot() && !isPlacing()) {
+            startAnimation();
             setShootingDelayCounter(0);
             List<Enemy> enemies = getWorld().getObjects(Enemy.class);
             if (!enemies.isEmpty()) {
-                turnTowards(enemies.get(0).getX(), enemies.get(0).getY());
+                //turnTowards(enemies.get(0).getX(), enemies.get(0).getY());
                 shoot(enemies.get(0));
             }
         }

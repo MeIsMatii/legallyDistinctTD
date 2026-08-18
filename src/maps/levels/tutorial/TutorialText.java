@@ -14,7 +14,7 @@ public class TutorialText extends CustomWorld {
         GreenfootImage img = new GreenfootImage("TutorialText.jpeg");
         img.scale(1920, 1080);
         setBackground(img);
-        addObject(new TutorialHud(), 960, 1040);
+        addObject(new TutorialHud(), 960, 980);
         SaveManager.getInstance().setTutorialStatus(true);
     }
 }

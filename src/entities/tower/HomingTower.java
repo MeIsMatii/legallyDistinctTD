@@ -8,15 +8,15 @@ public class HomingTower extends Tower {
 
 
     public HomingTower() {
-        super(250, true, 250, 80, 5, 1, 1, 10);
+        super(700, true, 300, 45, 7, 1, 2, 10);
 
         upgradeDescription1 = new String[]{"Greater damage", "even greater damage", "One shot to\nrule them all"};
         upgradeDescription2 = new String[]{"Faster energy", "even faster energy", "the flash"};
         upgradeDescription3 = new String[]{"More piercing", "Even more piercing", "Max piercing"};
 
-        upgrade3Prices = new int[]{75, 1500, 7000};
-        upgrade2Prices = new int[]{150, 1450, 6500};
-        upgrade1Prices = new int[]{100, 1350, 4000};
+        upgrade3Prices = new int[]{50, 1000, 10000};
+        upgrade2Prices = new int[]{100, 850, 12000};
+        upgrade1Prices = new int[]{75, 750, 7000};
 
         this.projectileSpawnOffset[0] = 0;
         this.projectileSpawnOffset[1] = -35;
@@ -47,6 +47,7 @@ public class HomingTower extends Tower {
     }
 
     public void upgrade(int path) {
+        //TODO better upgrades
         switch (path) {
             case 1:
                 setProjectileDamage(getProjectileDamage()*2);

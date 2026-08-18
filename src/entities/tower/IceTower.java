@@ -13,15 +13,15 @@ public class IceTower extends Tower {
     private double destroyAfter = 20;
 
     public IceTower() {
-        super(200, true, 200, 80, 0, 10, 1, 0);
+        super(350, true, 200, 80, 0, 10, 1, 0);
 
         upgradeDescription3 = new String[]{"Freeze damages enemy's", "Freeze damages enemy's even more", "The deadlyist freeze"};
         upgradeDescription2 = new String[]{"Ice slows enemy's more", "Ice freezes enemy's completely", "Enemy's are frozen longer"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
-        upgrade3Prices = new int[]{50, 500, 5000};
-        upgrade2Prices = new int[]{100, 450, 6000};
-        upgrade1Prices = new int[]{75, 350, 3500};
+        upgrade3Prices = new int[]{50, 1000, 10000};
+        upgrade2Prices = new int[]{100, 4050, 12000};
+        upgrade1Prices = new int[]{75, 750, 7000};
 
         this.projectileSpawnOffset[0] = -44;
         this.projectileSpawnOffset[1] = -25;

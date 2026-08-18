@@ -15,9 +15,9 @@ public class TestTower extends Tower {
         upgradeDescription1 = new String[]{"slightly faster\n arrows", "even faster\n arrows", "very quick arrows"};
 
 
-        upgrade3Prices = new int[]{50, 500, 5000};
-        upgrade2Prices = new int[]{100, 450, 6000};
-        upgrade1Prices = new int[]{75, 350, 3500};
+        upgrade3Prices = new int[]{50, 500, 10000};
+        upgrade2Prices = new int[]{100, 450, 12000};
+        upgrade1Prices = new int[]{75, 350, 7000};
 
         this.projectileSpawnOffset[0] = -40;
         this.projectileSpawnOffset[1] = -22;

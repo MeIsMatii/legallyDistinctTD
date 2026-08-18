@@ -87,7 +87,6 @@ public class Player extends MainClass implements HasSound {
     public void damage(int damage) {
         setHealth(health - damage);
         if (health <= 0 && !isGameOver) {
-            //getWorld().showText("you lost", 400, 400);
             QuestionPopup questionPopup = new QuestionPopup("You lost!\n Restart would you like start a new game?", new BackButton(), new RetryButton());
             getWorld().removeObject(questionPopup.getCloseButton());
             questionPopup.setCloseButton(null);

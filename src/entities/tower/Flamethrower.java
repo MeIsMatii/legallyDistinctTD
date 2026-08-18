@@ -27,9 +27,9 @@ public class Flamethrower extends Tower {
         upgradeDescription2 = new String[]{"Yellow hot", "White hot", "Blue hot"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
-        upgrade3Prices = new int[]{50, 1500, 6000};
-        upgrade2Prices = new int[]{100, 1050, 7000};
-        upgrade1Prices = new int[]{75, 650, 5500};
+        upgrade3Prices = new int[]{50, 3500, 12000};
+        upgrade2Prices = new int[]{100, 3050, 14000};
+        upgrade1Prices = new int[]{75, 1250, 10500};
     }
 
 

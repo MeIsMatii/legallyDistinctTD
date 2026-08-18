@@ -1,7 +1,7 @@
 package entities.tower;
 
-import entities.base.Tower;
 import entities.base.Enemy;
+import entities.base.Tower;
 
 import java.util.List;
 
@@ -23,7 +23,6 @@ public class Sniper extends Tower {
         this.projectileSpawnOffset[0] = 0;
         this.projectileSpawnOffset[1] = 0;
     }
-
 
 
     @Override
@@ -71,14 +70,14 @@ public class Sniper extends Tower {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setShootingDelay(getShootingDelay()-5);
+                        setShootingDelay(getShootingDelay() - 5);
 
                         break;
                     case 2:
-                        setShootingDelay(getShootingDelay()-6);
+                        setShootingDelay(getShootingDelay() - 6);
                         break;
                     case 3:
-                        setShootingDelay(getShootingDelay()-7);
+                        setShootingDelay(getShootingDelay() - 7);
                         break;
                 }
                 break;
@@ -86,13 +85,13 @@ public class Sniper extends Tower {
             case 3:
                 switch (getUpgrade3()) {
                     case 1:
-                        setProjectileDamage(getProjectileDamage()*1.2);
+                        setProjectileDamage(getProjectileDamage() * 1.2);
                         break;
                     case 2:
-                        setProjectileDamage(getProjectileDamage()*1.4);
+                        setProjectileDamage(getProjectileDamage() * 1.4);
                         break;
                     case 3:
-                        setProjectileDamage(getProjectileDamage()*1.6);
+                        setProjectileDamage(getProjectileDamage() * 1.6);
                         break;
                 }
                 break;

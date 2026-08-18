@@ -8,6 +8,7 @@ import util.Clickable;
 
 import java.util.List;
 import java.util.function.Supplier;
+
 /**
  * @author Febo
  * @author Jannis
@@ -23,17 +24,17 @@ public class TowerSelector extends MainClass implements Clickable {
     public TowerSelector(Supplier<Tower> towerToSpawn) {
         tower = towerToSpawn.get();
         GreenfootImage imgage = new GreenfootImage("towerSelectorFrame.png");
-        imgage.scale(130,130);
+        imgage.scale(130, 130);
 
 
         GreenfootImage img = tower.getImage();
         img.scale(100, 100);
-        imgage.drawImage(img,15,15);
+        imgage.drawImage(img, 15, 15);
 
         GreenfootImage priceDisplay = new GreenfootImage("towerSelectorPrice.png");
-        GreenfootImage fullImage = new GreenfootImage(130,170);
+        GreenfootImage fullImage = new GreenfootImage(130, 170);
 
-        fullImage.drawImage(imgage,0,0);
+        fullImage.drawImage(imgage, 0, 0);
         fullImage.drawImage(priceDisplay, 23, 130);
 
         fullImage.setFont(new Font("Arial", true, false, 20));
@@ -51,19 +52,19 @@ public class TowerSelector extends MainClass implements Clickable {
 
     public void updatePrice() {
         int coins = getWorldOfType(GameMap.class).getPlayer().getCoins();
-        if(coins == oldCoins) { //coins didnt change so state didnt either
+        if (coins == oldCoins) { //coins didnt change so state didnt either
             return;
         }
-        oldCoins =  coins;
+        oldCoins = coins;
 
         GreenfootImage img = new GreenfootImage(imageNoPrice);
-        if(coins >= tower.getPrice()) {
+        if (coins >= tower.getPrice()) {
             img.setColor(Color.GREEN);
         } else {
             img.setColor(Color.RED);
         }
 
-        img.drawString(String.valueOf(tower.getPrice() + "$"), 45, 157);
+        img.drawString(tower.getPrice() + "$", 45, 157);
         setImage(img);
     }
 

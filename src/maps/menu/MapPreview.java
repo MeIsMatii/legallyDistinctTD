@@ -1,6 +1,5 @@
 package maps.menu;
 
-import core.MainClass;
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import greenfoot.World;
@@ -99,7 +98,7 @@ public class MapPreview extends Actor implements Clickable {
         }
 
 
-        world.addObject(questionPopup, getWorld().getWidth()/2, getWorld().getHeight()/2);
+        world.addObject(questionPopup, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
         questionPopup.getLeftButton().setOwner(questionPopup);
     }
 }

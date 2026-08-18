@@ -6,6 +6,7 @@ package util;
  * @param <A> class a.
  * @param <B> class b.
  */
+
 /**
  * @author Mathilo
  */

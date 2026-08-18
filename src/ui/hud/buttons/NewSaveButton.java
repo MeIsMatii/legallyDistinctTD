@@ -80,7 +80,7 @@ public class NewSaveButton extends Button {
         getWorld().addObject(difficultySelectorPopup, getWorld().getWidth() / 2, getWorld().getHeight() / 2);
 
 
-        if (owner != null){
+        if (owner != null) {
             owner.onRemove();
         }
 

@@ -8,6 +8,7 @@ import util.multiplayer.NetworkManager;
 
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * @author Mathilo
  * @author Julian
@@ -26,6 +27,7 @@ public abstract class Projectile extends Entity implements HasSound {
         super();
         this.owner = owner;
     }
+
     public Projectile() {
         super();
     }

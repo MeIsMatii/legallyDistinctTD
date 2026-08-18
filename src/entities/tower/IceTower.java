@@ -3,6 +3,7 @@ package entities.tower;
 import entities.base.Tower;
 import entities.projectiles.Ice;
 import greenfoot.World;
+
 /**
  * @author Jannis
  */
@@ -53,7 +54,6 @@ public class IceTower extends Tower {
     }
 
 
-
     @Override
     public String getName() {
         return "IceTower";
@@ -72,15 +72,15 @@ public class IceTower extends Tower {
                 Ice ice = (Ice) getProjectileToShoot();
                 switch (getUpgrade1()) {
                     case 1:
-                        destroyAfter =  destroyAfter * 1.1;
+                        destroyAfter = destroyAfter * 1.1;
                         setRange((getRange() * 1.1));
                         break;
                     case 2:
-                        destroyAfter =  destroyAfter * 1.3;
+                        destroyAfter = destroyAfter * 1.3;
                         setRange((getRange() * 1.3));
                         break;
                     case 3:
-                        destroyAfter =  destroyAfter * 1.6;
+                        destroyAfter = destroyAfter * 1.6;
                         setRange((getRange() * 1.6));
                         break;
                 }

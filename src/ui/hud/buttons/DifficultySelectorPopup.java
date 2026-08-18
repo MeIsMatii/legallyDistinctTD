@@ -18,7 +18,6 @@ public class DifficultySelectorPopup extends PopupScreen {
     }
 
 
-
     public void addedToWorld(World w) {
         int buttonX = getX() + (getImage().getWidth() / 2) - 20;
         int buttonY = getY() - (getImage().getHeight() / 2) + 20;
@@ -53,10 +52,10 @@ public class DifficultySelectorPopup extends PopupScreen {
                 getWorld().removeObject(p);
             }
         }
-        if(closeButton != null) {
+        if (closeButton != null) {
             getWorld().removeObject(closeButton);
         }
-        for(DifficultySelector d: getWorld().getObjects(DifficultySelector.class)) {
+        for (DifficultySelector d : getWorld().getObjects(DifficultySelector.class)) {
             getWorld().removeObject(d);
         }
         getWorld().removeObject(this);

@@ -1,7 +1,7 @@
 package entities.tower;
 
-import entities.base.Tower;
 import entities.base.Enemy;
+import entities.base.Tower;
 import entities.projectiles.FlameProjectile;
 import greenfoot.World;
 
@@ -78,26 +78,44 @@ public class Flamethrower extends Tower {
         switch (path) {
             case 1:
                 switch (getUpgrade1()) {
-                    case 1: setRange((int) (getRange() * 1.1)); break;
-                    case 2: setRange((int) (getRange() * 1.3)); break;
-                    case 3: setRange((int) (getRange() * 1.5)); break;
+                    case 1:
+                        setRange((int) (getRange() * 1.1));
+                        break;
+                    case 2:
+                        setRange((int) (getRange() * 1.3));
+                        break;
+                    case 3:
+                        setRange((int) (getRange() * 1.5));
+                        break;
                 }
                 break;
 
             case 2:
                 switch (getUpgrade2()) {
-                    case 1: setProjectilePiercing((int) (getProjectilePiercing() * 1.5)); break;
-                    case 2: setProjectilePiercing(getProjectilePiercing() * 2); break;
-                    case 3: setProjectilePiercing(getProjectilePiercing() * 3); break;
+                    case 1:
+                        setProjectilePiercing((int) (getProjectilePiercing() * 1.5));
+                        break;
+                    case 2:
+                        setProjectilePiercing(getProjectilePiercing() * 2);
+                        break;
+                    case 3:
+                        setProjectilePiercing(getProjectilePiercing() * 3);
+                        break;
                 }
                 break;
 
             case 3:
                 // Decreases downtime between magazines without breaking shot pacing
                 switch (getUpgrade3()) {
-                    case 1: rechargeDelay = 250; break;
-                    case 2: rechargeDelay = 200; break;
-                    case 3: rechargeDelay = 160;  break;
+                    case 1:
+                        rechargeDelay = 250;
+                        break;
+                    case 2:
+                        rechargeDelay = 200;
+                        break;
+                    case 3:
+                        rechargeDelay = 160;
+                        break;
                 }
                 break;
 

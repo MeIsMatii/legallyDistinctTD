@@ -2,6 +2,7 @@ package ui.hud.gambling;
 
 import greenfoot.Greenfoot;
 import ui.hud.buttons.Button;
+
 /**
  * @author Jannis
  */
@@ -17,7 +18,6 @@ public class SlotMachineButton extends Button {
     public void onClick() {
         Greenfoot.setWorld(new Gambling());
     }
-
 
 
 }

@@ -66,21 +66,21 @@ public class SettingsPopup extends PopupScreen {
 
         List<QuestionPopup> questionPopups = w.getObjects(QuestionPopup.class);
         if (!questionPopups.isEmpty()) {
-            for (QuestionPopup questionPopup: questionPopups) {
+            for (QuestionPopup questionPopup : questionPopups) {
                 questionPopup.onRemove();
             }
         }
 
         List<RetryButton> retryButtons = w.getObjects(RetryButton.class);
-        if (!retryButtons.isEmpty()){
-            for (RetryButton retryButton: retryButtons){
+        if (!retryButtons.isEmpty()) {
+            for (RetryButton retryButton : retryButtons) {
                 w.removeObject(retryButton);
             }
         }
 
         List<WaveResetButton> waveResetButtons = w.getObjects(WaveResetButton.class);
-        if (!waveResetButtons.isEmpty()){
-            for (WaveResetButton waveResetButton: waveResetButtons){
+        if (!waveResetButtons.isEmpty()) {
+            for (WaveResetButton waveResetButton : waveResetButtons) {
                 w.removeObject(waveResetButton);
             }
         }
@@ -108,7 +108,6 @@ public class SettingsPopup extends PopupScreen {
         w.removeObject(this);
 
 
-
     }
 
     public void act() {
@@ -116,13 +115,13 @@ public class SettingsPopup extends PopupScreen {
             onRemove();
         }
 
-        if (songDropDown.isOpen()){
+        if (songDropDown.isOpen()) {
             List<GoToTutButton> goToTutButtons = getWorld().getObjects(GoToTutButton.class);
             for (GoToTutButton goToTutButton : goToTutButtons) {
                 getWorld().removeObject(goToTutButton);
             }
 
-        }else if (!songDropDown.isOpen()&& getWorld().getObjects(GoToTutButton.class).isEmpty()){
+        } else if (!songDropDown.isOpen() && getWorld().getObjects(GoToTutButton.class).isEmpty()) {
             getWorld().addObject(GoToTutButton, getX() + 200, 650);
         }
 

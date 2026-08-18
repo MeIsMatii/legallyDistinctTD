@@ -8,6 +8,7 @@ import ui.hud.UpgradeDescriptionOverlay;
 import util.Clickable;
 
 import java.util.List;
+
 /**
  * @author Mathilo
  * @author Elias
@@ -81,9 +82,15 @@ public class UpgradePath extends Actor implements Clickable {
         player1.setCoins(player1.getCoins() - price);
 
         switch (this.path) {
-            case 1: tower.upgrade1(); break;
-            case 2: tower.upgrade2(); break;
-            case 3: tower.upgrade3(); break;
+            case 1:
+                tower.upgrade1();
+                break;
+            case 2:
+                tower.upgrade2();
+                break;
+            case 3:
+                tower.upgrade3();
+                break;
         }
 
         //OVERLAY
@@ -128,7 +135,7 @@ public class UpgradePath extends Actor implements Clickable {
         int upgradeLevel = getCurrentUpgradeLevel();
         int[] upgrades = getUpgradePrices();
 
-        if(coins == oldCoins || upgradeLevel >= upgrades.length || !isPriceVisible) {
+        if (coins == oldCoins || upgradeLevel >= upgrades.length || !isPriceVisible) {
             return;
         }
         oldCoins = coins;
@@ -136,15 +143,14 @@ public class UpgradePath extends Actor implements Clickable {
         int price = upgrades[upgradeLevel];
 
 
-
         GreenfootImage img = new GreenfootImage(imageNoPrice);
-        if(coins >= price) {
+        if (coins >= price) {
             img.setColor(Color.GREEN);
         } else {
             img.setColor(Color.RED);
         }
 
-        img.drawString(String.valueOf(price + "$"), getImage().getWidth()/2 -30, 30);
+        img.drawString(price + "$", getImage().getWidth() / 2 - 30, 30);
         setImage(img);
     }
 
@@ -184,11 +190,13 @@ public class UpgradePath extends Actor implements Clickable {
 
     private int getOtherUpgradeA() {
         switch (this.path) {
-            case 1:  return tower.getUpgrade2();
+            case 1:
+                return tower.getUpgrade2();
             case 2://case 3 and 2 do the same thing
             case 3:
                 return tower.getUpgrade1();
-            default: return 0;
+            default:
+                return 0;
         }
     }
 
@@ -197,8 +205,10 @@ public class UpgradePath extends Actor implements Clickable {
             case 1: //case 1 and 2 do the same thing
             case 2:
                 return tower.getUpgrade3();
-            case 3:  return tower.getUpgrade2();
-            default: return 0;
+            case 3:
+                return tower.getUpgrade2();
+            default:
+                return 0;
         }
     }
 
@@ -214,19 +224,27 @@ public class UpgradePath extends Actor implements Clickable {
 
     private int getCurrentUpgradeLevel() {
         switch (this.path) {
-            case 1: return tower.getUpgrade1();
-            case 2: return tower.getUpgrade2();
-            case 3: return tower.getUpgrade3();
-            default: return 0;
+            case 1:
+                return tower.getUpgrade1();
+            case 2:
+                return tower.getUpgrade2();
+            case 3:
+                return tower.getUpgrade3();
+            default:
+                return 0;
         }
     }
 
     private int[] getUpgradePrices() {
         switch (this.path) {
-            case 1: return tower.getUpgrade1Prices();
-            case 2: return tower.getUpgrade2Prices();
-            case 3: return tower.getUpgrade3Prices();
-            default: return null;
+            case 1:
+                return tower.getUpgrade1Prices();
+            case 2:
+                return tower.getUpgrade2Prices();
+            case 3:
+                return tower.getUpgrade3Prices();
+            default:
+                return null;
         }
     }
 

@@ -1,6 +1,5 @@
 package ui.hud.buttons;
 
-import greenfoot.Actor;
 import ui.hud.PopupScreen;
 import ui.settings.SettingsPopup;
 
@@ -17,6 +16,7 @@ public class SettingsButton extends Button {
         getImage().scale(60, 60);
         owner = null;
     }
+
     public SettingsButton(PopupScreen owner) {
         this();
         this.owner = owner;
@@ -25,7 +25,7 @@ public class SettingsButton extends Button {
     @Override
     public void onClick() {
         getWorld().addObject(new SettingsPopup(), getWorld().getWidth() / 2, getWorld().getHeight() / 2);
-        if(owner != null) {
+        if (owner != null) {
             owner.onRemove();
         }
 

@@ -1,6 +1,5 @@
 package util.multiplayer;
 
-import core.MainClass;
 import greenfoot.Actor;
 import greenfoot.GreenfootImage;
 import ui.hud.PopupScreen;
@@ -13,7 +12,7 @@ import util.multiplayer.popups.HostButton;
 /**
  * @author Mathilo
  */
-public class MultiplayerPreview extends Actor implements Clickable  {
+public class MultiplayerPreview extends Actor implements Clickable {
     public MultiplayerPreview() {
         GreenfootImage im = new GreenfootImage("Maps/MapPreview/Multiplayer.png");
         im.scale(500, 300);

@@ -9,6 +9,7 @@ import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
+
 /**
  * @author Mathilo
  * @author colin
@@ -21,6 +22,7 @@ public class Rocket extends Projectile implements HasSound {
         super(owner);
         setImage("projectiles/rocket.png");
     }
+
     public Rocket() {
         super();
         setImage("projectiles/rocket.png");

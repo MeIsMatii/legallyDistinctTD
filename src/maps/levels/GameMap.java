@@ -37,7 +37,7 @@ import java.util.function.Supplier;
 /**
  * @author paths: Julian
  * @author waves & gamesaves: Mati
- *  * @author Jannis
+ * * @author Jannis
  */
 public abstract class GameMap extends CustomWorld implements HasSound {
     private final Player player;
@@ -269,11 +269,10 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             receivedWaveMoney = 0;
             //nerv in later rounds
             for (Enemy enemy : enemiesToSpawn) {
-                waveEndMoney += (int) ((int) enemy.getLives()/2);
+                waveEndMoney += (int) enemy.getLives() / 2;
             }
-            double divisor = (wave < 6)  ? 1.0 : (wave < 13) ? 1.5 : (wave < 20) ? 2.0 : (wave < 26) ? 2.5 : (wave < 31) ? 3.0 : (wave < 41) ? 4.0 : (wave < 51) ? 5.0 : (wave < 61) ? 6.0 :8.0;
+            double divisor = (wave < 6) ? 1.0 : (wave < 13) ? 1.5 : (wave < 20) ? 2.0 : (wave < 26) ? 2.5 : (wave < 31) ? 3.0 : (wave < 41) ? 4.0 : (wave < 51) ? 5.0 : (wave < 61) ? 6.0 : 8.0;
             waveEndMoney = (int) (waveEndMoney * (wave / divisor));
-
 
 
             gameSaveManager.saveGame(); //so when you quit it continues on the last wave
@@ -751,9 +750,10 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             }
         }
     }
-    public void Wavecheat(){
-        if (Greenfoot.isKeyDown("P")&& Greenfoot.isKeyDown("Shift")){
-            wave = wave+1;
+
+    public void Wavecheat() {
+        if (Greenfoot.isKeyDown("P") && Greenfoot.isKeyDown("Shift")) {
+            wave = wave + 1;
         }
     }
 

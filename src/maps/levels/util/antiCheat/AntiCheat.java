@@ -4,14 +4,14 @@ import core.MainClass;
 import core.Player;
 import maps.levels.GameMap;
 
-import java.util.List;
-import java.util.Locale;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * @author colin
- *
+ * <p>
  * Simple anticheat against memory altering
  */
 public class AntiCheat extends MainClass {
@@ -45,7 +45,8 @@ public class AntiCheat extends MainClass {
     );
 
     // private constructor bc of singleton
-    private AntiCheat() {}
+    private AntiCheat() {
+    }
 
     // Pass the active world into update
     public static void update(GameMap world) {

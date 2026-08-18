@@ -11,7 +11,7 @@ import greenfoot.GreenfootImage;
 
 public class ImageDisplay extends MainClass {
     /**
-     * @param image the image to be used.
+     * @param image  the image to be used.
      * @param scaleX the scaleX of the image.
      * @param scaleY the scaleY of the image.
      */
@@ -36,12 +36,12 @@ public class ImageDisplay extends MainClass {
     }
 
     /**
-     * @param height height.
-     * @param width width.
-     * @param message text to be displayed.
+     * @param height          height.
+     * @param width           width.
+     * @param message         text to be displayed.
      * @param backGroundColor backgroundcolour.
-     * @param textColor textcolour.
-     * @param textFont font.
+     * @param textColor       textcolour.
+     * @param textFont        font.
      * @Usecase Draw new Imagedisplays with your preferred font, color, size and custom text
      */
     public ImageDisplay(int height, int width, String message, greenfoot.Color backGroundColor, greenfoot.Color textColor, Font textFont) {

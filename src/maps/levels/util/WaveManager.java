@@ -135,7 +135,7 @@ public class WaveManager extends MainClass {
         // === Map Target === \\
         int mapTarget = level;
 
-        if(mapTarget > 30) {
+        if (mapTarget > 30) {
             return 30;
         }
 

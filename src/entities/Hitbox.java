@@ -51,6 +51,7 @@ public class Hitbox extends MainClass {
 
         updateAppearance(isHittingSomething);
     }
+
     public GreenfootImage drawHitbox(int w, int h, Color color, boolean fill) {
         GreenfootImage img = new GreenfootImage(w, h);
         img.setColor(color);

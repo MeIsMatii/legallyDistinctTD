@@ -2,14 +2,15 @@ package entities.tower;
 
 import entities.Entity;
 import entities.Hitbox;
-import entities.base.Tower;
 import entities.base.Enemy;
+import entities.base.Tower;
 import entities.projectiles.Explosion;
 import greenfoot.World;
 import maps.levels.util.Path;
 import util.Clickable;
 
 import java.util.List;
+
 /**
  * @author Jannis
  */
@@ -34,16 +35,15 @@ public class TrapTower extends Tower implements Clickable {
     }
 
     public void onClick() {
-        if(!isPlacing()) {
+        if (!isPlacing()) {
             return;
         }
         super.onClick();
     }
 
 
-
     public void shoot(Enemy e) {
-        if(getIntersectingObjects(Enemy.class).isEmpty()){
+        if (getIntersectingObjects(Enemy.class).isEmpty()) {
             return;
         }
 
@@ -118,21 +118,21 @@ public class TrapTower extends Tower implements Clickable {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectileDamage(getProjectileDamage()+5);
+                        setProjectileDamage(getProjectileDamage() + 5);
 
                         break;
                     case 2:
-                        setProjectileDamage(getProjectileDamage()+10);
+                        setProjectileDamage(getProjectileDamage() + 10);
                         break;
                     case 3:
-                        setProjectileDamage(getProjectileDamage()+15);
+                        setProjectileDamage(getProjectileDamage() + 15);
                         break;
                 }
                 break;
 
             case 3:
                 Explosion explosion = (Explosion) getProjectileToShoot();
-                explosion.setExplosionCounter(explosion.getExplosionCounter()+10);
+                explosion.setExplosionCounter(explosion.getExplosionCounter() + 10);
                 break;
             default:
                 System.out.println("Given Path must be between 1 & 3");

@@ -44,6 +44,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     protected int upgrade1 = 0;
     protected int upgrade2 = 0;
     protected int upgrade3 = 0;
+    private int moneySpentOnUpgrades = 0;
+
     protected int shootingDelay;
     protected int shootingDelayCounter;
     private double range;
@@ -123,6 +125,39 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
 
     public int getPrice() {
         return price;
+    }
+
+
+    public int getMoneySpentOnUpgrades() {
+        return moneySpentOnUpgrades;
+    }
+
+    public void setMoneySpentOnUpgrades(int moneySpentOnUpgrades) {
+        this.moneySpentOnUpgrades = moneySpentOnUpgrades;
+    }
+
+    private void trackUpgradeCost(int path) {
+        int[] prices = null;
+        int currentLevel = 0;
+
+        switch (path) {
+            case 1:
+                prices = upgrade1Prices;
+                currentLevel = getUpgrade1();
+                break;
+            case 2:
+                prices = upgrade2Prices;
+                currentLevel = getUpgrade2();
+                break;
+            case 3:
+                prices = upgrade3Prices;
+                currentLevel = getUpgrade3();
+                break;
+        }
+
+        if (prices != null && currentLevel >= 0 && currentLevel < prices.length) {
+            this.moneySpentOnUpgrades += prices[currentLevel];
+        }
     }
 
     public double getRange() {
@@ -225,11 +260,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgradeDescription1[getUpgrade1()];
     }
 
-    /**
-     * Put the descriptions for all path 1 upgrades here.
-     *
-     * @param desc the description
-     */
     public void setUpgradeDescription1(String[] desc) {
         this.upgradeDescription1 = desc;
     }
@@ -238,11 +268,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgradeDescription2[getUpgrade2()];
     }
 
-    /**
-     * Put the descriptions for all path 2 upgrades here.
-     *
-     * @param desc the description
-     */
     public void setUpgradeDescription2(String[] desc) {
         this.upgradeDescription2 = desc;
     }
@@ -251,16 +276,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return upgradeDescription3[getUpgrade3()];
     }
 
-    /**
-     * Put the descriptions for all path 3 upgrades here.
-     *
-     * @param desc the description
-     */
     public void setUpgradeDescription3(String[] desc) {
         this.upgradeDescription3 = desc;
     }
-
-
 
     public void setShootingDelayCounter(int count) {
         shootingDelayCounter = count;
@@ -306,8 +324,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
                 }
             }
         }
-
-
     }
 
     public void startAnimation() {
@@ -324,14 +340,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         super.checkHover(isHovering);
     }
 
-    /**
-     * {@code  if isPlacing AND canPlace:}<br>
-     * Places the Tower.<br>
-     * {@code if not isPlacing:}<br>
-     * Toggles the UpgradeMenu.<br>
-     */
     public void onClick() {
-
         if ((isPlacing && canPlace) || getX() > 1620) {
             if (!(getX() > 1620)) {
                 place();
@@ -350,9 +359,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
             } else {
                 gameMap.setUpgradeMenuVisibility(false, null);
             }
-
-
-            //TODO make it so it checks the specific upgrade menu for this tower @Mathilo
         }
     }
 
@@ -368,9 +374,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
     }
 
-    /**
-     * Places the tower onto the map and makes the range invisible.
-     */
     public void place() {
         isPlacing = false;
         rangeDisplay.setRangeVisibility(false, null);
@@ -382,10 +385,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
     }
 
-    /**
-     * Makes the tower follow the cursor. <br>
-     * Calls the checkPlacement() func to set the placement indicator.
-     */
     public void followCursor() {
         MouseInfo mouseInfo = Greenfoot.getMouseInfo();
         if (mouseInfo == null || getWorld() == null) {
@@ -401,14 +400,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         checkPlacement();
     }
 
-    /**
-     * Checks whether the tower can be placed in the current location.<br>
-     * {@code red} when the placement location is obstructed.<br>
-     * {@code grey} when the placement location is valid.<br>
-     */
     public void checkPlacement() {
-
-
         List<Hitbox> hitboxes = getIntersectingObjects(Hitbox.class);
         canPlace = true;
         if (getX() > 1620) {
@@ -431,11 +423,12 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
     }
 
-
     public void upgrade1() {
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(1);
 
         int oldLevel = getUpgrade1();
         setUpgrade1(getUpgrade1() + 1);
@@ -453,6 +446,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(1);
+
         int oldLevel = getUpgrade1();
         setUpgrade1(getUpgrade1() + 1);
         System.out.println(getName() + " upgrade1 level:" + oldLevel + "->" + getUpgrade1());
@@ -469,6 +465,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(2);
+
         int oldLevel = getUpgrade2();
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
@@ -484,6 +483,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(2);
+
         int oldLevel = getUpgrade2();
         setUpgrade2(getUpgrade2() + 1);
         System.out.println(getName() + " upgrade2 level:" + oldLevel + "->" + getUpgrade2());
@@ -499,6 +501,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(3);
+
         int oldLevel = getUpgrade3();
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
@@ -514,6 +519,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         if(getWorld() == null) {
             return;
         }
+
+        trackUpgradeCost(3);
+
         int oldLevel = getUpgrade3();
         setUpgrade3(getUpgrade3() + 1);
         System.out.println(getName() + " upgrade3 level:" + oldLevel + "->" + getUpgrade3());
@@ -548,9 +556,6 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.projectileToShoot = projectileToShoot;
     }
 
-    /**
-     * this method gets called when an enemy e is inside the range of the tower.
-     */
     public void shoot(Enemy e) {
         Projectile projectile = createProjectile();
         if (projectile == null) {
@@ -655,60 +660,8 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.isAnimating = isAnimating;
     }
 
-    /**
-     * Changes the sprite and animation
-     *
-     * @param path the path to upgrade
-     */
     public void onUpgrade(int path) {
-        // @SAE, this was implemented and works, but cut because we do not have the time to make different sprites and animations for each upgrade --Mathilo
-        /*
-
-        int u1 = getUpgrade1();
-        int u2 = getUpgrade2();
-        int u3 = getUpgrade3();
-
-        int maxPath;
-
-        if (u1 >= u2 && u1 >= u3) {
-            maxPath = 1;
-        } else if (u2 >= u1 && u2 >= u3) {
-            maxPath = 2;
-        } else {
-            maxPath = 3;
-        }
-
-        //so a lesser upgrade does not override the animation
-        if (true) { //bc we dont have animations yet
-            return;
-        }
-        if (maxPath != path) {
-            return;
-        }
-        switch (path) {
-            case 1:
-                setSpriteName(getName() + "_upgrade1");
-                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade1());
-                generateFrameList();
-                break;
-
-            case 2:
-                setSpriteName(getName() + "_upgrade2");
-                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade2());
-                generateFrameList();
-                break;
-
-            case 3:
-                setSpriteName(getName() + "_upgrade3");
-                setSpritePath("towers/" + getName() + "/upgrades/upgrade" + path + "/" + getUpgrade3());
-                generateFrameList();
-                break;
-
-            default:
-                System.out.println("Given Path must be between 1 & 3");
-        }*/
     }
 
     public abstract void upgrade(int path);
-    ///</UPGRADES>
 }

@@ -152,10 +152,11 @@ public class UpgradePath extends Actor implements Clickable {
     public void updateText(int maxPath) {
         int currentUpgrade = getCurrentUpgradeLevel();
 
-        if(maxPath == 0) {
+        if (maxPath == 0) {
             removeOverlay();
             getWorld().addObject(new UpgradeDescriptionOverlay(tower, this.path, maxPath), getX(), getY());
-            getWorld().showText("", getX(), getY() - 65); // so it does not display "0/0"
+            getWorld().showText("", getX(), getY() + 65); // Fixed coordinate to +65
+            return; // Stop execution so it doesn't draw below
         }
 
         getWorld().showText(currentUpgrade + " / " + maxPath, getX(), getY() + 65);
@@ -163,9 +164,10 @@ public class UpgradePath extends Actor implements Clickable {
 
     public void onRemove() {
         removeOverlay();
-        getWorld().showText("", getX(), getY() - 65); // so it does not display tier
-        removeOverlay();
-        getWorld().removeObject(this);
+        if (getWorld() != null) {
+            getWorld().showText("", getX(), getY() + 65); // Fixed coordinate to +65
+            getWorld().removeObject(this);
+        }
     }
 
 

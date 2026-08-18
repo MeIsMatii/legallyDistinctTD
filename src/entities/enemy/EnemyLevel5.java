@@ -8,8 +8,8 @@ import entities.base.Enemy;
  */
 public class EnemyLevel5 extends Enemy {
     public EnemyLevel5() {
-        super(2, 100);
-        setImage("Coin.png"); //TODO FIX @elias/art guys
+        super(2, 150);
+        setImage("enemies/leviathan.png"); //TODO FIX @elias/art guys
     }
 
     @Override

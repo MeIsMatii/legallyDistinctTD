@@ -18,7 +18,7 @@ public class TrapTower extends Tower implements Clickable {
 
 
     public TrapTower() {
-        super(125, true, 80, 99999999, 40, 10, 1, 90);
+        super(125, true, 80, 99999999, 50, 10, 1, 90);
 
 
         upgradeDescription1 = new String[]{"no upgrades available", "no upgrades available", "no upgrades available"};

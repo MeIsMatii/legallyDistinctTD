@@ -8,7 +8,7 @@ import entities.base.Enemy;
  */
 public class EnemyLevel3 extends Enemy {
     public EnemyLevel3() {
-        super(1.5, 60);
+        super(1.5, 80);
         setImage("enemies/arealEater.png");
     }
 

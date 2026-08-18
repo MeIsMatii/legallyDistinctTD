@@ -10,10 +10,9 @@ public class Sniper extends Tower {
     public Sniper() {
         super(200, true, 150, 90, 15, 0, 0, 0);
 
-        //TODO UPGRADES
-        upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
-        upgradeDescription3 = new String[]{"Faster projectiles", "Even faster projectiles", "The fastest projectiles"};
-        upgradeDescription2 = new String[]{"Piercing", "Even more piercing", "Very long piercing"};
+        upgradeDescription1 = new String[]{"Little Donation", "bigger donation", "biggest donation"};
+        upgradeDescription3 = new String[]{"More Damage", "Even more Damage", "The most Damage"};//weg
+        upgradeDescription2 = new String[]{"Faster firing  rate", "Even faster firing  rate", "Max firing  rate"};//weg
 
 
         upgrade3Prices = new int[]{50, 500, 5000};
@@ -57,20 +56,13 @@ public class Sniper extends Tower {
     }
 
     public void upgrade(int path) {
-        //TODO better upgrades
         switch (path) {
             case 1:
                 switch (getUpgrade1()) {
                     case 1:
-                        setRange((getRange() * 1.1));
-                        break;
                     case 2:
-                        setRange((getRange() * 1.3));
-                        //some kinda different behaviour
-                        break;
                     case 3:
-                        setRange((getRange() * 1.5));
-                        //some kinda different behaviour
+                        //no third option available
                         break;
                 }
 
@@ -79,16 +71,14 @@ public class Sniper extends Tower {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectilePiercing(getProjectilePiercing() * 1.5);
+                        setShootingDelay(getShootingDelay()-5);
 
                         break;
                     case 2:
-                        setProjectilePiercing(getProjectilePiercing() * 2);
-                        //some kinda different behaviour
+                        setShootingDelay(getShootingDelay()-6);
                         break;
                     case 3:
-                        setProjectilePiercing(getProjectilePiercing() * 3);
-                        //some kinda different behaviour
+                        setShootingDelay(getShootingDelay()-7);
                         break;
                 }
                 break;
@@ -96,15 +86,13 @@ public class Sniper extends Tower {
             case 3:
                 switch (getUpgrade3()) {
                     case 1:
-                        setProjectileSpeed(getProjectileSpeed() * 1.5);
+                        setProjectileDamage(getProjectileDamage()*1.2);
                         break;
                     case 2:
-                        setProjectileSpeed(getProjectileSpeed() * 2);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()*1.4);
                         break;
                     case 3:
-                        setProjectileSpeed(getProjectileSpeed() * 3);
-                        //some kinda different behaviour
+                        setProjectileDamage(getProjectileDamage()*1.6);
                         break;
                 }
                 break;

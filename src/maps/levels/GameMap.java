@@ -10,6 +10,7 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import maps.levels.util.Path;
 import maps.levels.util.WaveManager;
+import maps.levels.util.antiCheat.AntiCheat;
 import maps.menu.PauseMenu;
 import maps.util.CustomWorld;
 import ui.common.BackButton;
@@ -339,6 +340,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
     public void act() {
         super.act();
+        AntiCheat.update(this);
         Wavecheat();
         NetworkManager nm = NetworkManager.getInstance();
         if (isMultiplayer) {

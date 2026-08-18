@@ -47,38 +47,44 @@ public class AntiCheat extends MainClass {
     // private constructor bc of singleton
     private AntiCheat() {}
 
-    /**
-     * use this method in every worlds act() method
-     */
-    public static void update() {
+    // Pass the active world into update
+    public static void update(GameMap world) {
         if (instance == null) {
             instance = new AntiCheat();
         }
-        instance.tick();
+        instance.tick(world);
+    }
+
+    private void tick(GameMap world) {
+        long currentTime = System.currentTimeMillis();
+
+        if (currentTime - lastCheckTime >= CHECK_INTERVAL_MS) {
+            try {
+                checkHoneypot();
+                checkRunningProcesses();
+                checkValueCeiling(world);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            lastCheckTime = currentTime;
+        }
     }
 
     /**
-     * a single tick that checks everything
+     * checks for pretty much impossible values
      */
-    private void tick() {
-        long currentTime = System.currentTimeMillis();
+    private void checkValueCeiling(GameMap world) {
+        if (world != null) {
+            Player player = world.getPlayer();
+            if (player != null) {
+                int coins = player.getCoins();
+                int health = player.getHealth();
 
-        // only every 20 seconds for performance
-        if (currentTime - lastCheckTime >= CHECK_INTERVAL_MS) {
-            try {
-                System.out.println("Running AntiCheat scan...");
-
-                checkHoneypot();
-                checkRunningProcesses();
-                checkValueCeiling();
-
-            } catch (Exception e) {
-                // if something throws an error the game doesnt close but prints the error
-                e.printStackTrace();
+                if (coins > 1000 || coins < 0 || health > 100 || health < 0) {
+                    System.out.println("Anti-Cheat Trigger: Invalid Coins/Health values.");
+                    System.exit(1);
+                }
             }
-
-            // reset timer
-            lastCheckTime = currentTime;
         }
     }
 
@@ -90,22 +96,6 @@ public class AntiCheat extends MainClass {
         if (playerMoney != INITIAL_HONEYPOT_MONEY || playerHealth != INITIAL_HONEYPOT_HEALTH) {
             System.out.println("Security Trigger: Stop changing values in your memory!");
             System.exit(1);
-        }
-    }
-
-    /**
-     * checks for pretty much impossible values
-     */
-    private void checkValueCeiling() {
-        if (getWorld() instanceof GameMap) {
-            GameMap world = (GameMap) getWorld();
-            Player player = world.getPlayer();
-            if (player != null) {
-                if (player.getCoins() > 10000000 || player.getHealth() > 100) {
-                    System.out.println("Anti-Cheat Trigger: Invalid Coins/Health values.");
-                    System.exit(1);
-                }
-            }
         }
     }
 

@@ -43,10 +43,6 @@ public class CustomWorld extends World {
         super(x,y,cs);
     }
 
-    @Override
-    public void act() {
-        AntiCheat.update();
-    }
 
     /**
      * Sets the rendering paint order for all actors spawned on a GameMap,

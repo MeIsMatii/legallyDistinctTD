@@ -25,9 +25,9 @@ We are a group of 8 students who are trying to fix all the things that are wrong
 
 ## 👥 The Team
 
-> A group of (more or less) highly motivated individuals<br>
+> A group of (more or less) highly motivated individuals:<br>
 > @Vanquish1905 : Group Leader/Programming<br>
-> @MelsMatii : Deputy Group Leader/Programming<br>
+> @MelsMatii : Group Leader/Programming<br>
 > @Solo-67 : Art/Programming<br>
 > @TeaNtea939 : Art/Programming<br>
 > @jul3110 : Programming/Sounds<br>

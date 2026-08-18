@@ -9,7 +9,7 @@ import entities.base.Enemy;
 public class EnemyLevel1 extends Enemy {
     public EnemyLevel1() {
         super(1, 5);
-        setImage("enemies/arealEnemy1.png"); //TODO FIX @elias/art guys
+        setImage("enemies/arealEnemy1.png");
     }
 
     @Override

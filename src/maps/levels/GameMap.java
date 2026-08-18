@@ -267,11 +267,14 @@ public abstract class GameMap extends CustomWorld implements HasSound {
 
             waveEndMoney = 0;
             receivedWaveMoney = 0;
-
+            //nerv in later rounds
             for (Enemy enemy : enemiesToSpawn) {
-                waveEndMoney += (int) ((int) enemy.getLives()/1.7);
+                waveEndMoney += (int) ((int) enemy.getLives()/2);
             }
-            waveEndMoney *= getWave();
+            double divisor = (wave < 6)  ? 1.0 : (wave < 13) ? 1.5 : (wave < 20) ? 2.0 : (wave < 26) ? 2.5 : (wave < 31) ? 3.0 : (wave < 41) ? 4.0 : (wave < 51) ? 5.0 : (wave < 61) ? 6.0 :8.0;
+            waveEndMoney = (int) (waveEndMoney * (wave / divisor));
+
+
 
             gameSaveManager.saveGame(); //so when you quit it continues on the last wave
         }

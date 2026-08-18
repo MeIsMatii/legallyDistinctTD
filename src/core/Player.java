@@ -32,7 +32,7 @@ public class Player extends MainClass implements HasSound {
         oldCoins = 0;
         oldHealth = 0;
 
-    }                                               //noch sehr stolz auf mich
+    }
 
     public int getCoins() {
         return coins;
@@ -81,7 +81,6 @@ public class Player extends MainClass implements HasSound {
     public void addedToWorld(World world) {
         world.addObject(new ImageDisplay("heart.png", 30, 30), 40, 40);
         world.showText("$", 1800, 33); //statt coin
-        //world.addObject(new ImageDisplay("Coin.png", 45, 45), 1730, 40);
     }
 
 

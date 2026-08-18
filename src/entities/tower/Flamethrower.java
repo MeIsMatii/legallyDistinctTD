@@ -96,8 +96,8 @@ public class Flamethrower extends Tower {
                 // Decreases downtime between magazines without breaking shot pacing
                 switch (getUpgrade3()) {
                     case 1: rechargeDelay = 250; break;
-                    case 2: rechargeDelay = 120; break;
-                    case 3: rechargeDelay = 40;  break;
+                    case 2: rechargeDelay = 200; break;
+                    case 3: rechargeDelay = 160;  break;
                 }
                 break;
 

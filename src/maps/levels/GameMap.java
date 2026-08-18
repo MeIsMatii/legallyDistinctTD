@@ -269,7 +269,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
             receivedWaveMoney = 0;
 
             for (Enemy enemy : enemiesToSpawn) {
-                waveEndMoney += (int) enemy.getLives();
+                waveEndMoney += (int) ((int) enemy.getLives()/1.7);
             }
             waveEndMoney *= getWave();
 

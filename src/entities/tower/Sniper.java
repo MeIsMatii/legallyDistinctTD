@@ -8,7 +8,7 @@ import java.util.List;
 public class Sniper extends Tower {
 
     public Sniper() {
-        super(200, true, 150, 100, 10, 0, 0, 0);
+        super(200, true, 150, 90, 15, 0, 0, 0);
 
         //TODO UPGRADES
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};

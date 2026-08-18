@@ -7,8 +7,8 @@ import greenfoot.World;
  * @author Jannis
  */
 public class IceTower extends Tower {
-    public double slow = 0.5;
-    public int slowTimer = 40;
+    public double slow = 0.4;
+    public int slowTimer = 45;
 
     private double destroyAfter = 20;
 

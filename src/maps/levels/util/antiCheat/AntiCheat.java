@@ -80,7 +80,7 @@ public class AntiCheat extends MainClass {
                 int coins = player.getCoins();
                 int health = player.getHealth();
 
-                if (coins > 1000 || coins < 0 || health > 100 || health < 0) {
+                if (coins > 10000000 || coins < 0 || health > 100 || health < 0) {
                     System.out.println("Anti-Cheat Trigger: Invalid Coins/Health values.");
                     System.exit(1);
                 }

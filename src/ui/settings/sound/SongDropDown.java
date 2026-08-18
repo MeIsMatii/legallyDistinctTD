@@ -22,7 +22,8 @@ public class SongDropDown extends MainClass implements Clickable {
         "backgourndSound3.mp3",
         "ChillSong(Gemini).mp3",
         "TropicalSong(Gemini).mp3",
-        "bloons1.mp3"
+        "bloons1.mp3",
+        "None.mp3"//would randomly throw errors on linux if solved otherise
     };
     private final List<SongButton> songButtons = new ArrayList<>(); // speichert alle buttons
     private boolean isOpen = false;

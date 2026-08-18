@@ -1,7 +1,5 @@
 package maps.levels;
 
-import maps.levels.util.MapCoordinatesUtilGuy;
-
 /**
  * @author Mathilo
  * @author colin

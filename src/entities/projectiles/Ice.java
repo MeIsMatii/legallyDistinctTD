@@ -3,21 +3,21 @@ package entities.projectiles;
 import entities.Entity;
 import entities.base.Enemy;
 import entities.base.Projectile;
-import entities.tower.IceTower;
 import entities.base.Tower;
+import entities.tower.IceTower;
 import greenfoot.GreenfootImage;
 import maps.levels.GameMap;
 import util.HasSound;
 import util.multiplayer.NetworkManager;
 
 import java.util.List;
+
 /**
  * @author Jannis
  */
 public class Ice extends Projectile implements HasSound {
 
     private int destructionCounter = 0;
-
 
 
     public Ice(Tower owner) {
@@ -28,6 +28,7 @@ public class Ice extends Projectile implements HasSound {
         setImage(img);
 
     }
+
     public Ice() {
         super();
         GreenfootImage img = new GreenfootImage("projectiles/ice.png");
@@ -58,14 +59,14 @@ public class Ice extends Projectile implements HasSound {
         }
     }
 
-    public void act(){
-        if (getWorld() == null){
+    public void act() {
+        if (getWorld() == null) {
             return;
         }
         super.act();
         destructionCounter++;
         IceTower owner = (IceTower) getOwner();
-        if (destructionCounter > owner.getDestroyAfter() && getWorld() != null){
+        if (destructionCounter > owner.getDestroyAfter() && getWorld() != null) {
             getWorld().removeObject(this);
         }
     }

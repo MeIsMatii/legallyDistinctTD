@@ -50,9 +50,9 @@ public class HomingTower extends Tower {
         //TODO better upgrades
         switch (path) {
             case 1:
-                setProjectileDamage(getProjectileDamage()*2);
-                setProjectileSpeed(getProjectileSpeed()/1.2);
-                setShootingDelay(getShootingDelay()*2);
+                setProjectileDamage(getProjectileDamage() * 2);
+                setProjectileSpeed(getProjectileSpeed() / 1.2);
+                setShootingDelay(getShootingDelay() * 2);
                 break;
 
             case 2:

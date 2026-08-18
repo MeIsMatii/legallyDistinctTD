@@ -52,16 +52,16 @@ public class QuestionPopup extends PopupScreen {
     }
 
     public void onRemove() {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
-        if(rightButton != null) {
+        if (rightButton != null) {
             getWorld().removeObject(rightButton);
         }
         if (leftButton != null) {
             getWorld().removeObject(leftButton);
         }
-        if(closeButton != null) {
+        if (closeButton != null) {
             getWorld().removeObject(closeButton);
         }
         getWorld().removeObject(this);

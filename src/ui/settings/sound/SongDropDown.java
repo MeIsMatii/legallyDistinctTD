@@ -1,10 +1,8 @@
 package ui.settings.sound;
 
-import bluej.editor.flow.GoToLineDialog;
 import core.MainClass;
 import greenfoot.Color;
 import greenfoot.GreenfootImage;
-import ui.hud.buttons.GoToTutButton;
 import util.Clickable;
 
 import java.util.ArrayList;

@@ -6,9 +6,10 @@ import greenfoot.Greenfoot;
 import greenfoot.GreenfootImage;
 import greenfoot.MouseInfo;
 import util.Clickable;
+
 /**
- * @Author Colin
  * @author Mathilo(Linux Compatibility)
+ * @Author Colin
  */
 public class VolumeSlider extends MainClass implements Clickable {
 

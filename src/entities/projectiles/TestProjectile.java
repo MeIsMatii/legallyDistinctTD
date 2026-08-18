@@ -3,6 +3,7 @@ package entities.projectiles;
 import entities.base.Projectile;
 import entities.base.Tower;
 import greenfoot.GreenfootImage;
+
 /**
  * @author Mathilo
  * @author colin
@@ -15,6 +16,7 @@ public class TestProjectile extends Projectile {
         //img.scale(100,60);
         setImage(img);
     }
+
     public TestProjectile() {
         super();
         GreenfootImage img = new GreenfootImage("projectiles/projectile.png");

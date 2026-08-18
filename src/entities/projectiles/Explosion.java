@@ -23,20 +23,20 @@ public class Explosion extends Projectile implements HasSound {
         super(owner);
         setImage("invisible.png");
     }
+
     public Explosion() {
         super();
         setImage("invisible.png");
     }
 
     public void act() {
-        if(!hasHit) {
+        if (!hasHit) {
             return;
         }
 
 
-
         damageCounter++;
-        if(damageCounter >= damageTimer) {
+        if (damageCounter >= damageTimer) {
             damageCounter = 0;
 
             List<Enemy> inRange = getObjectsInRange((int) getOwner().getRange(), Enemy.class);
@@ -61,7 +61,7 @@ public class Explosion extends Projectile implements HasSound {
     }
 
     public void onHit(Entity hitter) {
-        if(!(hitter instanceof Enemy) || hasHit){
+        if (!(hitter instanceof Enemy) || hasHit) {
             return;
         }
         hasHit = true;

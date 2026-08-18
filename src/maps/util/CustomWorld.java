@@ -3,15 +3,14 @@ package maps.util;
 import core.Player;
 import entities.Hitbox;
 import entities.base.Enemy;
-import entities.projectiles.Explosion;
 import entities.base.Projectile;
-import entities.tower.Helicopter;
 import entities.base.Tower;
+import entities.projectiles.Explosion;
+import entities.tower.Helicopter;
 import entities.tower.util.RangeDisplay;
 import greenfoot.World;
 import maps.levels.util.MapCoordinatesUtilGuy;
 import maps.levels.util.Path;
-import maps.levels.util.antiCheat.AntiCheat;
 import maps.menu.PauseMenu;
 import ui.common.BackButton;
 import ui.common.ImageDisplay;
@@ -39,8 +38,9 @@ public class CustomWorld extends World {
         super(1880, 1030, 1);
         setupPaintOrder();
     }
+
     public CustomWorld(int x, int y, int cs) {
-        super(x,y,cs);
+        super(x, y, cs);
     }
 
 

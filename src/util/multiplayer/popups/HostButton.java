@@ -26,7 +26,7 @@ public class HostButton extends Button {
 
     public void act() {
         super.act();
-        if(!wasClicked) {
+        if (!wasClicked) {
             return;
         }
         counter++;

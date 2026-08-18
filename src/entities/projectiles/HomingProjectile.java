@@ -7,6 +7,7 @@ import greenfoot.GreenfootImage;
 import greenfoot.World;
 
 import java.util.List;
+
 /**
  * @author Mathilo
  */
@@ -22,6 +23,7 @@ public class HomingProjectile extends Projectile {
 
         this.homingRadius = 100;
     }
+
     public HomingProjectile() {
         super();
 

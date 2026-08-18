@@ -59,13 +59,13 @@ public class Rocketlauncher extends Tower {
             case 2:
                 switch (getUpgrade2()) {
                     case 1:
-                        setProjectileDamage(getProjectileDamage()*1.2);
+                        setProjectileDamage(getProjectileDamage() * 1.2);
                         break;
                     case 2:
-                        setProjectileDamage(getProjectileDamage()*1.4);
+                        setProjectileDamage(getProjectileDamage() * 1.4);
                         break;
                     case 3:
-                        setProjectileDamage(getProjectileDamage()*1.7);
+                        setProjectileDamage(getProjectileDamage() * 1.7);
                         break;
                 }
                 break;

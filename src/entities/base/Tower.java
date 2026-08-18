@@ -424,7 +424,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade1() {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -443,7 +443,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade1(boolean receivedFromNetwork) {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -462,7 +462,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade2() {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -480,7 +480,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade2(boolean receivedFromNetwork) {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -498,7 +498,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade3() {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -516,7 +516,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     }
 
     public void upgrade3(boolean receivedFromNetwork) {
-        if(getWorld() == null) {
+        if (getWorld() == null) {
             return;
         }
 
@@ -540,7 +540,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
     public Projectile createProjectile() {
         Projectile proj = null;
         try {
-            proj =  projectileToShoot.getClass().getDeclaredConstructor().newInstance();
+            proj = projectileToShoot.getClass().getDeclaredConstructor().newInstance();
             proj.setOwner(this);
         } catch (Exception e) {
             e.printStackTrace();
@@ -568,7 +568,7 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
         NetworkManager nm = NetworkManager.getInstance();
         if (nm.isHost()) {
-            getWorld().addObject(projectile, getX() + projectileSpawnOffset[0], getY() + + projectileSpawnOffset[1]);
+            getWorld().addObject(projectile, getX() + projectileSpawnOffset[0], getY() + +projectileSpawnOffset[1]);
 
             if (nm.isMultiplayer()) {
                 String msg = "SPAWN_PROJECTILE" + "," + e.getUniqueId() + "," + projectile.getUniqueId() + "," + getUniqueId();

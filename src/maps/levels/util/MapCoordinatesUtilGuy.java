@@ -9,7 +9,7 @@ import static java.lang.Math.toIntExact;
 
 /**
  * @author mati
- * @Usecase  class to help add Paths to maps easily
+ * @Usecase class to help add Paths to maps easily
  */
 
 public class MapCoordinatesUtilGuy extends Actor {

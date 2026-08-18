@@ -6,13 +6,14 @@ import greenfoot.GreenfootImage;
 import greenfoot.GreenfootSound;
 import util.Clickable;
 import util.HasSound;
+
 /**
  * @author colin
  */
 
 public class SongButton extends MainClass implements Clickable, HasSound {
     private static GreenfootSound currentlyPlaying = null;
-     final String songName;
+    final String songName;
 
     public SongButton(String songName) {
         this.songName = songName;

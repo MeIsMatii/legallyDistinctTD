@@ -29,7 +29,7 @@ public class SellButton extends Button implements HasSound {
     public void onClick() {
         getWorld().removeObject(tower);
         playSound("sellSound.mp3");
-        player.setCoins(player.getCoins() + (int) (tower.getMoneySpentOnUpgrades()*0.85));
+        player.setCoins(player.getCoins() + (int) (tower.getMoneySpentOnUpgrades() * 0.85));
         player.setCoins(player.getCoins() + tower.getPrice() / 2);
         getWorldOfType(GameMap.class).setUpgradeMenuVisibility(false, tower);
 

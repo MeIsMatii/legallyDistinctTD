@@ -76,7 +76,7 @@ public abstract class GameMap extends CustomWorld implements HasSound {
         setBackground(map);
 
 
-        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class); //TODO better paintorder
+        setPaintOrder(RetryButton.class, MuteButton.class, SongButton.class, WaveResetButton.class, SongDropDown.class, VolumeSlider.class, SettingsPopup.class, SettingsButton.class, BackButton.class, PlayOnButton.class, PauseMenu.class);
 
         this.isMultiplayer = false;
         setHasGameStarted(true);

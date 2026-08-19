@@ -12,7 +12,7 @@ public class Rocketlauncher extends Tower {
 
         //TODO upgrades
         upgradeDescription3 = new String[]{"Faster Projectiles", "Even faster Projectiles", "MAX Speed Projectiles"};
-        upgradeDescription2 = new String[]{"More Projectile Piercing", "even more Projectile Piercing", "MAX Projectile Piercing"};
+        upgradeDescription2 = new String[]{"More Projectile Damage", "even more Projectile Damage", "MAX Projectile Damage"};
         upgradeDescription1 = new String[]{"More range", "Even more range", "Very long range"};
 
         upgrade3Prices = new int[]{150, 750, 6000};

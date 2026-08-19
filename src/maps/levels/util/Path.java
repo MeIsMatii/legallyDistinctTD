@@ -14,7 +14,6 @@ public class Path extends Entity {
         this.nextPathY = nextPathY;
         this.pathWidth = pathWidth;
         setImage("invisible.png");
-        //Todo Real Path Size
 
     }
 

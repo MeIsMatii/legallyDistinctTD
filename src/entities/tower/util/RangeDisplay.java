@@ -6,7 +6,6 @@ import greenfoot.Color;
 import greenfoot.GreenfootImage;
 
 public class RangeDisplay extends MainClass {
-    //TODO fix @Mathilo
     private final Tower OWNER;
     public boolean isRangeVisible;
     private double range;

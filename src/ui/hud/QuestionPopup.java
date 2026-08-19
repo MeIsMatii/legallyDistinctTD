@@ -90,4 +90,5 @@ public class QuestionPopup extends PopupScreen {
     public void setLeftButton(Button leftButton) {
         this.leftButton = leftButton;
     }
+
 }

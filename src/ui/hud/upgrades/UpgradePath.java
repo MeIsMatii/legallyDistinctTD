@@ -7,6 +7,7 @@ import maps.levels.GameMap;
 import ui.hud.UpgradeDescriptionOverlay;
 import util.Clickable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -216,13 +217,18 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
     private void removeOverlay() {
+        if(getWorld() == null) {
+            return;
+        }
         List<UpgradeDescriptionOverlay> overlays = getWorld().getObjects(UpgradeDescriptionOverlay.class);
+        List<UpgradeDescriptionOverlay> overlaysToRemove = new ArrayList<>();
         for (UpgradeDescriptionOverlay overlay : overlays) {
             if (overlay.getPath() == this.path) {
-                getWorld().removeObject(overlay);
+                overlaysToRemove.add(overlay);
                 break;
             }
         }
+        getWorld().removeObjects(overlaysToRemove);
     }
 
     private int getCurrentUpgradeLevel() {

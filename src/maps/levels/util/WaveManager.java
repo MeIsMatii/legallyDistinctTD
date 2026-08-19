@@ -72,8 +72,11 @@ public class WaveManager extends MainClass {
         "EnemyLevel2", EnemyLevel2::new,
         "EnemyLevel3", EnemyLevel3::new,
         "EnemyLevel4", EnemyLevel4::new,
-        "EnemyLevel5", EnemyLevel5::new
+        "EnemyLevel5", EnemyLevel5::new,
+        "EnemyLevel6", EnemyLevel6::new
     );
+
+    
     // ===== Instance Variable ===== \\
     private static WaveManager INSTANCE;
 

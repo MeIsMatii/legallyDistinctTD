@@ -43,6 +43,11 @@ public abstract class Enemy extends Entity {
         this.speed = speed;
     }
 
+    /**
+     * Slows the enemy. This effect is applied by things like the IceTower.
+     * @param slowSpeed how fast the enemy should be.
+     * @param duration how long it should be slowed for.
+     */
     public void applySlow(double slowSpeed, int duration) {                  //Freezetower
         if (slowTimer == 0) {
             normalSpeed = speed;
@@ -52,6 +57,9 @@ public abstract class Enemy extends Entity {
         slowTimer = duration;
     }
 
+    /**
+     * Updates the slowing effect on an enemy.
+     */
     public void updateSlow() {                                         //Freezetower
         if (slowTimer > 0) {
             slowTimer--;
@@ -72,6 +80,11 @@ public abstract class Enemy extends Entity {
         this.realPosY = getY();
     }
 
+    /**
+     * Spawns a custom oval hitbox for enemies instead of the normal square one.
+     * @param hitboxWidth  width of the hitbox.
+     * @param hitboxHeight height of the hitbox.
+     */
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
         EnemyHitbox hitbox = new EnemyHitbox(hitboxWidth, hitboxHeight, this);
         getWorld().addObject(hitbox, getX(), getY());
@@ -86,6 +99,9 @@ public abstract class Enemy extends Entity {
         updateSlow();              //Freezetower
     }
 
+    /**
+     * Sets the next path-waypoint to go to, or incase there is no next waypoint, it damages the player.
+     */
     public void findPath() {
         List<Path> pathList = getWorld().getObjectsAt(getX(), getY(), Path.class);
         if (!pathList.isEmpty()) {
@@ -109,11 +125,10 @@ public abstract class Enemy extends Entity {
         }
     }
 
-
-    public void onHover() {
-        //nothing?
-    }
-
+    /**
+     * Damages the enemy and makes it die in case the health reaches <= 0.
+     * @param damage the amount of damage.
+     */
     public void damage(double damage) {
         if (getWorld() == null) {
             return;
@@ -131,6 +146,12 @@ public abstract class Enemy extends Entity {
 
     // move()
 
+    /**
+     * Moves the enemy towards a targeted position.<br>
+     * The step-size is dependent on the speed attribute.
+     * @param targetX
+     * @param targetY
+     */
     public void moveTo(int targetX, int targetY) {
         if (getWorld() == null) {
             return;
@@ -153,13 +174,23 @@ public abstract class Enemy extends Entity {
         setLocation((int) Math.round(realPosX), (int) Math.round(realPosY));
     }
 
+    /**
+     * This method was used to detect whether a projectile is hitting it, but has since been moved to Projectile.java.
+     * @param e the Entity that collided with the hitbox.
+     */
     public void onHit(Entity e) {
     }
 
+    /**
+     * @return The current amount of lives
+     */
     public double getLives() {
         return this.lives;
     }
 
+    /**
+     * @return The amount of lives an enemy initially had
+     */
     public int getInitialLives() {
         return initialLives;
     }

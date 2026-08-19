@@ -136,6 +136,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.moneySpentOnUpgrades = moneySpentOnUpgrades;
     }
 
+
+    /**
+     * This method tracks the spent coins on a given upgrade-path.
+     * @param path the
+     */
     private void trackUpgradeCost(int path) {
         int[] prices = null;
         int currentLevel = 0;
@@ -537,6 +542,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         return shootingDelayCounter >= shootingDelay;
     }
 
+    /**
+     * @return A copy of the projectile.
+     */
     public Projectile createProjectile() {
         Projectile proj = null;
         try {
@@ -556,6 +564,10 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.projectileToShoot = projectileToShoot;
     }
 
+    /**
+     * Spawns a projectile to shoot enemies with.
+     * @param e The enemy.
+     **/
     public void shoot(Enemy e) {
         Projectile projectile = createProjectile();
         if (projectile == null) {
@@ -577,6 +589,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         }
     }
 
+    /**
+     * Spawns a projectile to shoot enemies with.
+     * @param e The enemy.
+     * @param projectileId A UUID to track the projectile in multiplayer sessions
+     */
     public void shoot(Enemy e, String projectileId) {
         if (projectileId.isBlank()) {
             shoot(e);
@@ -599,6 +616,9 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.targetedEnemy = e;
     }
 
+    /**
+     * Sets the targeted enemy.
+     */
     public void setTargetedEnemy() {
         List<Enemy> enemiesInRange = getObjectsInRange((int) Math.round(range), Enemy.class);
         if (enemiesInRange.isEmpty()) {
@@ -660,6 +680,11 @@ public abstract class Tower extends Entity implements Clickable, Animations, Has
         this.isAnimating = isAnimating;
     }
 
+    /**
+     * This method is currently unused, and was used to change the image of a Tower when upgrading.<br>
+     * However, our budget was cut, so we did not have the funds to create an image and animation for every upgrade.
+     * @param path The path that was upgraded.
+     */
     public void onUpgrade(int path) {
     }
 

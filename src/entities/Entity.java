@@ -72,10 +72,10 @@ public abstract class Entity extends MainClass {
     }
 
     /**
-     * spawns a new hitbox for an entity
+     * Spawns a new hitbox for an entity.
      *
-     * @param hitboxWidth  width of the hitbox
-     * @param hitboxHeight height of the hitbox
+     * @param hitboxWidth  width of the hitbox.
+     * @param hitboxHeight height of the hitbox.
      */
     public void spawnHitbox(int hitboxWidth, int hitboxHeight) {
         Hitbox hitbox = new Hitbox(hitboxWidth, hitboxHeight, this);

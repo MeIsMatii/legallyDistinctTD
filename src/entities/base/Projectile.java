@@ -109,11 +109,20 @@ public abstract class Projectile extends Entity implements HasSound {
 
     }
 
+    /**
+     * Advances the iFrames of every hit enemy by one.<br>
+     * When an enemies value is greater than 10, it removes it from the Map, allowing it to be hit again.
+     */
     public void updateIFrames() {
         hitEnemies.replaceAll((e, frames) -> frames + 1); //increment local iframes by 1
         hitEnemies.entrySet().removeIf(entry -> entry.getValue() >= this.iframes);
     }
 
+    /**
+     * This method only does something when the hitter is an Enemy.<br>
+     * In that case, it damages it and adds it to the hitEnemies Map.
+     * @param hitter the Entity that collided with the hitbox.
+     */
     public void onHit(Entity hitter) {
         if (piercing <= 0 || !(hitter instanceof Enemy)) return;
 
@@ -138,7 +147,7 @@ public abstract class Projectile extends Entity implements HasSound {
     }
 
     /**
-     * default implementation
+     * Default implementation.
      */
     public void move() {
         move((int) Math.round(speed));

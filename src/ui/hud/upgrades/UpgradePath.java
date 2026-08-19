@@ -102,6 +102,9 @@ public class UpgradePath extends Actor implements Clickable {
     }
 
     public void act() {
+        if(getWorld() == null) {
+            return;
+        }
         checkClick();
         checkText();
         updatePrice();

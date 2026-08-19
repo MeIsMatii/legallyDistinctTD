@@ -17,7 +17,7 @@ public class UpgradePath extends Actor implements Clickable {
     private final Tower tower;
     private final int path;
     private final GreenfootImage imageNoPrice;
-    private int oldCoins = 0;
+    private int oldCoins = -1;
     private boolean isPriceVisible = true;
 
 

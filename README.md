@@ -73,6 +73,7 @@ Basically, it's just like any other TD game just without any Pay-to-win Mechanic
 ---
 ## 👾 Bugs
 Report bugs by opening an issue, but it's not guaranteed that they will be fixed.
+(We mean like real code-bugs. Not the parasites. The Machines are taking care of those.)
 
 ---
 

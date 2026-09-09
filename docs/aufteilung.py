@@ -16,13 +16,13 @@ values = { #in percent
         "mathilo" : 15,
         "colin" : 14,
         "jannis": 13,
-        "julian" : 12,
-        "febo" : 12,
+        "julian" : 12 - 0.14,
+        "febo" : 12 + 0.14,
         "sophia" : 12,
         "jan" : 11,
         "elias": 11
         }
 
 
-#print_combined(values)
+print_combined(values)
 calc_mss(mss_points, values)

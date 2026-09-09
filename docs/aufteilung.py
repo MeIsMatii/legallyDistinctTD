@@ -3,12 +3,12 @@ def print_combined(values): #in percent, a valid suggestion should total 100
         for percent in values.values():
                 total += percent
         
-        print("total : " + str(total))
+        print(f"total : {str(total)}")
 
 def calc_mss(mss_points, values): # in mss points. any value < 0 or > 15 is invalid and would redistribute the rest i think
-        print("mss_points : " + str(mss_points))
+        print(f"mss_points : {str(mss_points)}")
         for name, percent in values.items():
-                print(name + " : " +  str(mss_points * len(values) * (percent/100)))
+                print(f"{name} : {mss_points * len(values) * (percent / 100)}")
 
 
 mss_points = 11
